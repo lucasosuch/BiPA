@@ -10,19 +10,49 @@ namespace AlgorytmyDoTTP
     {
         private int[] chromosom;
         private double fenotyp;
-        private double fitness;
+        private double przydatnosc;
         private int przodek1;
         private int przodek2;
         private int xsite;
 
-        public Przedstawiciel(int[] chromosom, double fenotyp, double fitnes, int przodek1, int przodek2, int xsite)
+        public Przedstawiciel(int[] chromosom, double fenotyp, double przydatnosc, int przodek1, int przodek2, int xsite)
         {
             this.chromosom = chromosom;
             this.fenotyp = fenotyp;
-            this.fitness = fitnes;
+            this.przydatnosc = przydatnosc;
             this.przodek1 = przodek1;
             this.przodek2 = przodek2;
             this.xsite = xsite;
+        }
+
+        public int[] zwrocChromosom()
+        {
+            return chromosom;
+        }
+
+        public double zwrocFenotyp()
+        {
+            return fenotyp;
+        }
+
+        public double zwrocPrzydatnosc()
+        {
+            return przydatnosc;
+        }
+        
+        public int zwrocPrzodka1()
+        {
+            return przodek1;
+        }
+
+        public int zwrocPrzodka2()
+        {
+            return przodek2;
+        }
+
+        public int zwrocXSite()
+        {
+            return xsite;
         }
 
         override
@@ -36,7 +66,7 @@ namespace AlgorytmyDoTTP
 
             return "Chromosom: "+ chromosomStr +
                     "\nfenotyp: "+ fenotyp +
-                    "\nfitness: "+ fitness +
+                    "\nfitness: "+ przydatnosc +
                     "\nprzodek1: "+ przodek1 +
                     "\nprzodek2: "+ przodek2 +
                     "\nxsite: "+ xsite;

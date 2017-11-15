@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP
             }
         }
 
-        public Przedstawiciel[] zwrocPrzedstawiciela()
+        public Przedstawiciel[] zwrocPopulacje()
         {
             return this.przedstawiciele;
         }

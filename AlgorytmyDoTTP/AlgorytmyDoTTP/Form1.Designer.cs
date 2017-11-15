@@ -14,7 +14,7 @@
         protected override void Dispose(bool disposing)
         {
             AlgorytmEwolucyjny algorytm = new AlgorytmEwolucyjny(200, 30);
-            System.Diagnostics.Debug.WriteLine(algorytm.zwrocPrzedstawiciela()[0].ToString());
+            System.Diagnostics.Debug.WriteLine(algorytm.zwrocPopulacje()[0].ToString());
 
             if (disposing && (components != null))
             {
