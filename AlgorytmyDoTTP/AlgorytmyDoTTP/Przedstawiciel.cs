@@ -8,21 +8,17 @@ namespace AlgorytmyDoTTP
 {
     class Przedstawiciel
     {
+        private int fenotyp;
+        private int pokolenie;
         private int[] chromosom;
-        private double fenotyp;
         private double przydatnosc;
-        private int przodek1;
-        private int przodek2;
-        private int xsite;
 
-        public Przedstawiciel(int[] chromosom, double fenotyp, double przydatnosc, int przodek1, int przodek2, int xsite)
+        public Przedstawiciel(int[] chromosom, int fenotyp, double przydatnosc, int pokolenie)
         {
             this.chromosom = chromosom;
             this.fenotyp = fenotyp;
             this.przydatnosc = przydatnosc;
-            this.przodek1 = przodek1;
-            this.przodek2 = przodek2;
-            this.xsite = xsite;
+            this.pokolenie = pokolenie;
         }
 
         public int[] zwrocChromosom()
@@ -30,7 +26,7 @@ namespace AlgorytmyDoTTP
             return chromosom;
         }
 
-        public double zwrocFenotyp()
+        public int zwrocFenotyp()
         {
             return fenotyp;
         }
@@ -39,37 +35,21 @@ namespace AlgorytmyDoTTP
         {
             return przydatnosc;
         }
-        
-        public int zwrocPrzodka1()
-        {
-            return przodek1;
-        }
 
-        public int zwrocPrzodka2()
+        public int zwrocPokolenie()
         {
-            return przodek2;
-        }
-
-        public int zwrocXSite()
-        {
-            return xsite;
+            return pokolenie;
         }
 
         override
         public String ToString()
         {
-            String chromosomStr = "";
-            foreach(int bit in chromosom)
-            {
-                chromosomStr += (bit + "");
-            }
+            String chromosomStr = string.Join("", chromosom);
 
             return "Chromosom: "+ chromosomStr +
                     "\nfenotyp: "+ fenotyp +
                     "\nfitness: "+ przydatnosc +
-                    "\nprzodek1: "+ przodek1 +
-                    "\nprzodek2: "+ przodek2 +
-                    "\nxsite: "+ xsite;
+                    "\npokolenie: "+ pokolenie;
         }
     }
 }
