@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,29 @@ namespace AlgorytmyDoTTP
             this.pwoMutacji = pwoMutacji;
         }
 
-        public int wybierzOsobniki(int wielkoscPopulacji, double sumaPrzydatnosci, Przedstawiciel[] populacja)
+        public Przedstawiciel[] wybierzOsobniki(Przedstawiciel[] populacja)
         {
-            int indexPopulacji = 0;
-            double sumaCzesciowa = 0;
+            double sumaPrzydatnosci = 0;
 
-            double wartoscKrytyczna = sumaPrzydatnosci * random.Next(0, 2);
-            while (sumaCzesciowa >= wartoscKrytyczna || indexPopulacji == wielkoscPopulacji) {
-                indexPopulacji += 1;
-                sumaCzesciowa += populacja[indexPopulacji].zwrocPrzydatnosc();
+            foreach(Przedstawiciel osobnik in populacja)
+            {
+                sumaPrzydatnosci += osobnik.zwrocPrzydatnosc();
             }
 
-            return indexPopulacji;
+            double wartoscKrytyczna = sumaPrzydatnosci / populacja.Length;
+            ArrayList lista = new ArrayList();
+
+            foreach (Przedstawiciel osobnik in populacja)
+            {
+                if(osobnik.zwrocPrzydatnosc() > wartoscKrytyczna)
+                {
+                    lista.Add(osobnik);
+                }
+            }
+
+            Przedstawiciel[] nowaPopulacja = (Przedstawiciel[])lista.ToArray(typeof(Przedstawiciel));
+
+            return nowaPopulacja;
         }
 
         public int[][] krzyzowanie(int[] przodek1, int[] przodek2, int liczbaChromosomow)

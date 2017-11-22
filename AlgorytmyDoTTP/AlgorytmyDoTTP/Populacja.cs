@@ -23,17 +23,12 @@ namespace AlgorytmyDoTTP
                 for (int j = 0; j < dlugoscChromosomu; j++)
                 {
                     chromosom[j] = random.Next(0, 2);
-                    fenotyp += liczFenotyp(chromosom[j], j);
+                    fenotyp += chromosom[j];
                 }
 
                 int funkcjaPrzydatnosci = zwrocFunkcjePrzydatnosci(fenotyp);
                 this.przedstawiciele[i] = new Przedstawiciel(chromosom, fenotyp, funkcjaPrzydatnosci, 0);
             }
-        }
-
-        private int liczFenotyp(int wartosc, int i)
-        {
-            return (int)(Math.Pow(wartosc, i));
         }
 
         private int zwrocFunkcjePrzydatnosci(int fenotyp)
@@ -46,19 +41,18 @@ namespace AlgorytmyDoTTP
             this.przedstawiciele = new Przedstawiciel[wielkoscPopulacji];
 
             System.Diagnostics.Debug.WriteLine("-------------------------------------------------------------");
-            System.Diagnostics.Debug.WriteLine("Generacja: " + generacja + ":\n");
             for (int i = 0; i < wielkoscPopulacji; i++)
             {
                 int fenotyp = 0;
 
                 for (int j = 0; j < chromosomy[i].Length; j++)
                 {
-                    fenotyp += liczFenotyp(chromosomy[i][j], j);
+                    fenotyp += chromosomy[i][j];
                 }
 
                 int funkcjaPrzydatnosci = zwrocFunkcjePrzydatnosci(fenotyp);
                 this.przedstawiciele[i] = new Przedstawiciel(chromosomy[i], fenotyp, funkcjaPrzydatnosci, generacja);
-                
+
                 System.Diagnostics.Debug.WriteLine(this.przedstawiciele[i].ToString());
             }
         }

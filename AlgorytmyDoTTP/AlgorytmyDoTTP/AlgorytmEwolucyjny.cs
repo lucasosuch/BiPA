@@ -24,7 +24,8 @@ namespace AlgorytmyDoTTP
 
             for (int i = 0; i < ileRazy; i++)
             {
-                Przedstawiciel[] przedstawiciele = populacjaBazowa.zwrocPopulacje();
+                Przedstawiciel[] przedstawiciele = operacje.wybierzOsobniki(populacjaBazowa.zwrocPopulacje());
+                wielkoscPopulacji = (przedstawiciele.Length % 2 == 1) ? przedstawiciele.Length - 1 : przedstawiciele.Length;
 
                 int iter = 0;
                 int[][] chromosomy = new int[wielkoscPopulacji][];

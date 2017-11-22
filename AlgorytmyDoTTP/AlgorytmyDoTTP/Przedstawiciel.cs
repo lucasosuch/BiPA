@@ -48,7 +48,7 @@ namespace AlgorytmyDoTTP
 
             return "Chromosom: "+ chromosomStr +
                     "\nfenotyp: "+ fenotyp +
-                    "\nfitness: "+ przydatnosc +
+                    "\nprzydatnosc: " + przydatnosc +
                     "\npokolenie: "+ pokolenie;
         }
     }
