@@ -13,8 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            AlgorytmEwolucyjny algorytm = new AlgorytmEwolucyjny(0.67, 0.4);
-            algorytm.wykonajEwolucje(400, 15, 7);
+            AlgorytmEwolucyjny algorytm = new AlgorytmEwolucyjny(0.67, 0.04);
+            algorytm.wykonajEwolucje(4000, 25, 10);
+            System.Diagnostics.Debug.WriteLine("Najlepszy wynik: "+ algorytm.zwrocNajlepszyWynik());
 
             if (disposing && (components != null))
             {
