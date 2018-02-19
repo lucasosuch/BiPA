@@ -14,8 +14,9 @@
         protected override void Dispose(bool disposing)
         {
             AlgorytmEwolucyjny algorytm = new AlgorytmEwolucyjny(0.67, 0.04);
-            algorytm.wykonajEwolucje(4000, 25, 10);
+            algorytm.wykonajEwolucje(400, 25, 10);
             System.Diagnostics.Debug.WriteLine("Najlepszy wynik: "+ algorytm.zwrocNajlepszyWynik());
+            System.Diagnostics.Debug.WriteLine("Średnie z generacji: " + algorytm.zwrocSrednia());
 
             if (disposing && (components != null))
             {
