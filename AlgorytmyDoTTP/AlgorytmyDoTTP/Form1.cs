@@ -16,5 +16,10 @@ namespace AlgorytmyDoTTP
         {
             InitializeComponent();
         }
+
+        private void metroScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
     }
 }

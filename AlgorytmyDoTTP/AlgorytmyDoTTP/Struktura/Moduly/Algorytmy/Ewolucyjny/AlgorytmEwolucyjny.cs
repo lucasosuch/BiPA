@@ -76,7 +76,7 @@ namespace AlgorytmyDoTTP
 
             foreach (double sredniaGeneracji in this.srednia)
             {
-                wynik += "Generacja: " + i + " | średnia: " + sredniaGeneracji;
+                wynik += " Generacja: " + i + " | średnia: " + sredniaGeneracji;
                 i++;
             }
 
