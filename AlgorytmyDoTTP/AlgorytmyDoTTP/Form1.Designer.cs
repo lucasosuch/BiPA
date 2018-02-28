@@ -1,4 +1,6 @@
-﻿namespace AlgorytmyDoTTP
+﻿using AlgorytmyDoTTP.Struktura.Moduly.Algorytmy.Ewolucyjny;
+
+namespace AlgorytmyDoTTP
 {
     partial class Form1
     {
@@ -13,10 +15,8 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            AlgorytmEwolucyjny algorytm = new AlgorytmEwolucyjny(0.67, 0.04);
-            algorytm.wykonajEwolucje(400, 25, 10);
-            System.Diagnostics.Debug.WriteLine("Najlepszy wynik: "+ algorytm.zwrocNajlepszyWynik());
-            System.Diagnostics.Debug.WriteLine("Średnie z generacji: " + algorytm.zwrocSrednia());
+            cSEA algorytm = new cSEA();
+            algorytm.Start();
 
             if (disposing && (components != null))
             {
