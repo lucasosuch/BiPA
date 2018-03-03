@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Moduly.Algorytmy.Ewolucyjny;
+﻿using AlgorytmyDoTTP.Struktura;
 
 namespace AlgorytmyDoTTP
 {
@@ -15,8 +15,10 @@ namespace AlgorytmyDoTTP
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            cSEA algorytm = new cSEA();
-            algorytm.Start();
+            double pwoMutacji = 0.01;
+            double pwoKrzyzowania = 0.5;
+            Config ewolucyjny = new Config();
+            ewolucyjny.ZbudujAlgorytm(pwoKrzyzowania, pwoMutacji).Start();
 
             if (disposing && (components != null))
             {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura
 {
-    abstract class Class1
+    abstract class Algorytm
     {
-
+        public abstract IAlgorytm ZbudujAlgorytm(double pwoKrzyzowania, double pwoMutacji);
     }
 }

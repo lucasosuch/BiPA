@@ -1,21 +1,27 @@
 ﻿using System;
 
-namespace AlgorytmyDoTTP.Struktura.Moduly.Algorytmy.Ewolucyjny
+namespace AlgorytmyDoTTP.Struktura.Algorytmy
 {
-    class cSEA : iSEA
+    class SEA : IAlgorytm
     {
+        private double pwoMutacji;
+        private double pwoKrzyzowania;
         static Random random = new Random();
 
         // arg x maxymilizujący funkcję: f(x) = xsin(x) * sin(10*x), x od -1 do 4, [-1, 4], dokładność rozwiązania do 0.001
+
+        public SEA(double pwoKrzyzowania, double pwoMutacji)
+        {
+            this.pwoKrzyzowania = pwoKrzyzowania;
+            this.pwoMutacji = pwoMutacji;
+        }
+
         public void Start()
         {
             int iteracje = 100;
-            double pwoMutacji = 0.001;
-            double pwoKrzyzowania = 0.5;
             ushort rozmiarPopulacji = 5000;
 
             ushort[] populacja = this.StworzPopulacje(rozmiarPopulacji);
-
 
             while (iteracje > 0)
             {
@@ -44,7 +50,7 @@ namespace AlgorytmyDoTTP.Struktura.Moduly.Algorytmy.Ewolucyjny
 
         public ushort Mutacja(ushort geny)
         {
-            if (random.NextDouble() > 0.1)
+            if (random.NextDouble() > this.pwoMutacji)
             {
                 return geny;
             }
@@ -63,15 +69,8 @@ namespace AlgorytmyDoTTP.Struktura.Moduly.Algorytmy.Ewolucyjny
             maska = (ushort)~maska;
             maska <<= ciecie;
 
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("maska="+maska);
-            Console.WriteLine("mama=" + mama);
-            Console.WriteLine("tata=" + tata);
-
             ushort dzieciak = (ushort)(maska & mama);
-            Console.WriteLine("dzieciak przed=" + dzieciak);
             dzieciak |= (ushort)(~maska & tata);
-            Console.WriteLine("dzieciak po=" + dzieciak);
 
             return this.Mutacja(dzieciak);
         }
