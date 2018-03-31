@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Struktura
+﻿namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
     abstract class Algorytm
     {

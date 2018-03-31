@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny;
 
 namespace AlgorytmyDoTTP.Struktura
 {
