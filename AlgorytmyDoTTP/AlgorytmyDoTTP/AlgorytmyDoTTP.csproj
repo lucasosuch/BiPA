@@ -62,6 +62,8 @@
     <Compile Include="Struktura\Config.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\SEA.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\ProstaFunkcja.cs" />
     <Compile Include="Widoki\Form1.cs">
       <SubType>Form</SubType>
