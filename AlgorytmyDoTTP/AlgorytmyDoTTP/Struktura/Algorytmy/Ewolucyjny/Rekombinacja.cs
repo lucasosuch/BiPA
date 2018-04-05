@@ -36,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             ushort dzieciak = (ushort)(maska & mama);
             dzieciak |= (ushort)(~maska & tata);
 
-            return this.Mutacja(dzieciak);
+            return Mutacja(dzieciak);
         }
     }
 }
