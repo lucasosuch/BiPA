@@ -12,29 +12,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoMutacji = pwoMutacji;
         }
 
-        public ushort Mutacja(ushort geny)
+        public ushort[] Mutacja(ushort[] geny)
         {
             if (losowy.NextDouble() > pwoMutacji)
             {
                 return geny;
             }
 
-            int bit = losowy.Next(12);
-            ushort maska = (ushort)(1 << bit);
+            int bit = losowy.Next(geny.Length);
+            geny[bit] = (ushort)((geny[bit] == 0) ? 1 : 0);
 
-            return (ushort)(maska ^ geny);
+            return geny;
         }
 
-        public ushort Krzyzowanie(ushort mama, ushort tata)
+        public ushort[] Krzyzowanie(ushort[] mama, ushort[] tata)
         {
-            int ciecie = losowy.Next(1, 12 + 1);
-            ushort maska = 0;
+            int ciecie = losowy.Next(0, mama.Length);
 
-            maska = (ushort)~maska;
-            maska <<= ciecie;
-
-            ushort dzieciak = (ushort)(maska & mama);
-            dzieciak |= (ushort)(~maska & tata);
+            ushort[] dzieciak = 
 
             return Mutacja(dzieciak);
         }

@@ -1,19 +1,26 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     class Osobnik
     {
-        public double Fenotyp(ushort genotyp)
+        private ProblemPlecakowy problemPlecakowy;
+
+        public Osobnik(ProblemPlecakowy problemPlecakowy)
         {
-            return -1 + genotyp / 1000;
+            this.problemPlecakowy = problemPlecakowy;
         }
 
-        public double FunkcjaDopasowania(double x)
+        public ArrayList Fenotyp(ushort[] genotyp)
         {
-            ProstaFunkcja funkcja = new ProstaFunkcja();
+            return problemPlecakowy.zwrocWybraneElementy(genotyp);
+        }
 
-            return funkcja.Fx(x);
+        public double[] FunkcjaDopasowania(ArrayList przedmioty)
+        {
+            return problemPlecakowy.obliczZysk(przedmioty);
         }
     }
 }
