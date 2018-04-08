@@ -29,7 +29,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         {
             int ciecie = losowy.Next(0, mama.Length);
 
-            ushort[] dzieciak = 
+            ushort[] dzieciak = mama;
+            for(int i = 0; i < ciecie; i++)
+            {
+                dzieciak[i] = tata[i];
+            }
 
             return Mutacja(dzieciak);
         }

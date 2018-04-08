@@ -9,15 +9,13 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
     class ProblemPlecakowy
     {
-        private double wagaPlecaka;
-        private double wartoscPlecaka;
         private double maxWagaPlecaka;
         private Instancja[] przedmioty;
 
-        public ProblemPlecakowy(int liczbaPrzedmiotow)
+        public ProblemPlecakowy()
         {
-            this.przedmioty = new Instancja[liczbaPrzedmiotow];
-            this.inicjalizacjaPrzypadku(liczbaPrzedmiotow);
+            this.przedmioty = new Instancja[15];
+            this.inicjalizacjaPrzypadku();
         }
 
         public ArrayList zwrocWybraneElementy(ushort[] wybraneElementy)
@@ -40,17 +38,23 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             this.maxWagaPlecaka = maxWagaPlecaka;
         }
 
-        private void inicjalizacjaPrzypadku(int liczbaPrzedmiotow)
+        private void inicjalizacjaPrzypadku()
         {
-            Random losowy = new Random();
-
-            for(int i = 0; i < liczbaPrzedmiotow; i++)
-            {
-                double waga = losowy.NextDouble(),
-                       wartosc = waga * losowy.NextDouble() * 10;
-
-                this.przedmioty[i] = new Instancja(waga, wartosc);
-            }
+            this.przedmioty[0] = new Instancja(0.1, 10.0);
+            this.przedmioty[1] = new Instancja(0.04, 4.0);
+            this.przedmioty[2] = new Instancja(0.15, 16.0);
+            this.przedmioty[3] = new Instancja(0.4, 9.0);
+            this.przedmioty[4] = new Instancja(0.3, 23.0);
+            this.przedmioty[5] = new Instancja(0.7, 54.0);
+            this.przedmioty[6] = new Instancja(0.8, 16.0);
+            this.przedmioty[7] = new Instancja(0.12, 56.0);
+            this.przedmioty[8] = new Instancja(0.34, 7.0);
+            this.przedmioty[9] = new Instancja(0.41, 78.0);
+            this.przedmioty[10] = new Instancja(0.56, 11.0);
+            this.przedmioty[11] = new Instancja(0.75, 18.0);
+            this.przedmioty[12] = new Instancja(0.87, 100.0);
+            this.przedmioty[13] = new Instancja(0.45, 34.0);
+            this.przedmioty[14] = new Instancja(0.91, 15.0);
         }
 
         public double[] obliczZysk(ArrayList wybranePrzedmioty)

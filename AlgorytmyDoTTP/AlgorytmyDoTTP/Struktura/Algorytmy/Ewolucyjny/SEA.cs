@@ -19,34 +19,41 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public void Start()
         {
-            int iteracje = 100;
-            ushort rozmiarPopulacji = 5000;
+            int iloscPokolen = 300;
+            ushort rozmiarPopulacji = 150;
 
-            ushort[][] populacja = StworzPopulacje(rozmiarPopulacji, 25);
+            ushort[][] populacja = StworzPopulacje(rozmiarPopulacji, 15);
             Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
             Selekcja selekcja = new Selekcja(problemPlecakowy);
 
-            while (iteracje > 0)
+            while (iloscPokolen > 0)
             {
-                ushort[] nowaPopulacja = new ushort[rozmiarPopulacji];
+                ushort[][] nowaPopulacja = new ushort[rozmiarPopulacji][];
 
                 for (int i = 0; i < rozmiarPopulacji; i++)
                 {
                     ushort[] mama = selekcja.Turniej(populacja),
                              tata = selekcja.Turniej(populacja),
                              dziecko = rekombinacja.Krzyzowanie(mama, tata);
+                    
+                    //Console.WriteLine(string.Join("|", dziecko));
 
                     nowaPopulacja[i] = dziecko;
                 }
 
                 populacja = nowaPopulacja;
-                --iteracje;
+                --iloscPokolen;
             }
 
             for (int i = 0; i < populacja.Length; i++)
             {
-                Console.WriteLine("dla x=" + rozwiazanie.Fenotyp(populacja[i]) + " f(x)=" + rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[i])));
+                Console.WriteLine("dla x=[");
+                foreach (Instancja element in rozwiazanie.Fenotyp(populacja[i]))
+                {
+                    Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
+                }
+                Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[i]))));
             }
 
             Console.ReadLine();
@@ -59,9 +66,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
-                for(int j = 0; j < dlugoscGenotypu; j++)
+                populacja[i] = new ushort[dlugoscGenotypu];
+                for (int j = 0; j < dlugoscGenotypu; j++)
                 {
-                    populacja[i][j] = (ushort)losowy.Next(1);
+                    populacja[i][j] = (ushort)losowy.Next(2);
                 }
             }
 

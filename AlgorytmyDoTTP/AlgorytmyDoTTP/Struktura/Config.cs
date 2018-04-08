@@ -8,8 +8,8 @@ namespace AlgorytmyDoTTP.Struktura
     {
         public override IAlgorytm ZbudujAlgorytm(double pwoKrzyzowania, double pwoMutacji)
         {
-            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(25);
-            problemPlecakowy.ustawMaxWagePlecaka(10);
+            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy();
+            problemPlecakowy.ustawMaxWagePlecaka(5);
 
             return new SEA(pwoKrzyzowania, pwoMutacji, problemPlecakowy);
         }
