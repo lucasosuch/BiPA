@@ -19,8 +19,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public void Start()
         {
-            int iloscPokolen = 300;
-            ushort rozmiarPopulacji = 150;
+            int iloscPokolen = 1000;
+            ushort rozmiarPopulacji = 700;
 
             ushort[][] populacja = StworzPopulacje(rozmiarPopulacji, 15);
             Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
@@ -35,11 +35,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 {
                     ushort[] mama = selekcja.Turniej(populacja),
                              tata = selekcja.Turniej(populacja),
-                             dziecko = rekombinacja.Krzyzowanie(mama, tata);
-                    
+                             dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
+                             dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
+
                     //Console.WriteLine(string.Join("|", dziecko));
 
-                    nowaPopulacja[i] = dziecko;
+                    ushort[] wybranyPotomek = dziecko1;
+
+                    if(rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))[1] < rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))[1])
+                    {
+                        wybranyPotomek = dziecko2;
+                    }
+
+                    nowaPopulacja[i] = wybranyPotomek;
                 }
 
                 populacja = nowaPopulacja;

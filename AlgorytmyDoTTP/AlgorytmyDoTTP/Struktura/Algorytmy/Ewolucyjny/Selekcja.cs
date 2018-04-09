@@ -15,21 +15,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public ushort[] Turniej(ushort[][] populacja)
         {
-            int k1 = losowy.Next(populacja.Length - 1),
-                k2 = losowy.Next(populacja.Length - 1);
-
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
-            double[] dopasowanie1 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[k1])),
-                     dopasowanie2 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[k2]));
 
-            if (dopasowanie1[1] > dopasowanie2[1])
+            ushort[] zwyciezca = populacja[0];
+            double[] dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[0]));
+
+            for (int i = 0; i <= 25; i++)
             {
-                return populacja[k1];
+                int k = losowy.Next(populacja.Length - 1);
+                double[] dopasowanie = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[k]));
+
+                if(dopasowanieZwyciezcy[1] < dopasowanie[1])
+                {
+                    zwyciezca = populacja[k];
+                    dopasowanieZwyciezcy = dopasowanie;
+                }
             }
-            else
-            {
-                return populacja[k2];
-            }
+
+            return zwyciezca;
         }
     }
 }

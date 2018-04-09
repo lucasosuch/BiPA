@@ -25,14 +25,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return geny;
         }
 
-        public ushort[] Krzyzowanie(ushort[] mama, ushort[] tata)
+        public ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
         {
-            int ciecie = losowy.Next(0, mama.Length);
+            int ciecie = losowy.Next(0, przodek1.Length);
 
-            ushort[] dzieciak = mama;
+            ushort[] dzieciak = przodek1;
             for(int i = 0; i < ciecie; i++)
             {
-                dzieciak[i] = tata[i];
+                dzieciak[i] = przodek2[i];
             }
 
             return Mutacja(dzieciak);
