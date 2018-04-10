@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP
         protected override void Dispose(bool disposing)
         {
             double pwoMutacji = 0.3;
-            double pwoKrzyzowania = 0.5;
+            double pwoKrzyzowania = 0.7;
             Config ewolucyjny = new Config();
             ewolucyjny.ZbudujAlgorytm(pwoKrzyzowania, pwoMutacji).Start();
 

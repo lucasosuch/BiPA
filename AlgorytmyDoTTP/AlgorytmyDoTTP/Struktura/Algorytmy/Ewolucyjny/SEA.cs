@@ -1,6 +1,7 @@
 ﻿using System;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -19,66 +20,74 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public void Start()
         {
-            int iloscPokolen = 1000;
-            ushort rozmiarPopulacji = 700;
+            int iloscPokolen = 10;
+            ushort rozmiarPopulacji = 30;
 
-            ushort[][] populacja = StworzPopulacje(rozmiarPopulacji, 15);
+            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, 15);
             Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
             Selekcja selekcja = new Selekcja(problemPlecakowy);
+            Random losowy = new Random();
 
-            while (iloscPokolen > 0)
+            while (iloscPokolen >= 0)
             {
-                ushort[][] nowaPopulacja = new ushort[rozmiarPopulacji][];
+                ArrayList nowaPopulacja = new ArrayList();
 
                 for (int i = 0; i < rozmiarPopulacji; i++)
                 {
-                    ushort[] mama = selekcja.Turniej(populacja),
-                             tata = selekcja.Turniej(populacja),
-                             dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
-                             dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
-
-                    //Console.WriteLine(string.Join("|", dziecko));
-
-                    ushort[] wybranyPotomek = dziecko1;
-
-                    if(rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))[1] < rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))[1])
+                    if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
-                        wybranyPotomek = dziecko2;
-                    }
+                        ushort[] mama = selekcja.Turniej(populacja),
+                                 tata = selekcja.Turniej(populacja),
+                                 dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
+                                 dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
 
-                    nowaPopulacja[i] = wybranyPotomek;
+                        Console.WriteLine("Pokolenie:" + iloscPokolen);
+                        Console.WriteLine("dziecko1:"+ string.Join("|", dziecko1) +" f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))));
+                        Console.WriteLine("dziecko2:" + string.Join("|", dziecko2) + " f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))));
+                        nowaPopulacja.Add(dziecko1);
+                        nowaPopulacja.Add(dziecko2);
+
+                        for (int j = 0; j < nowaPopulacja.Count; j++)
+                        {
+                            Console.WriteLine("element "+(j) +": "+ string.Join("|", (ushort[])nowaPopulacja[j]) + " f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])nowaPopulacja[j]))));
+                        }
+                    }
                 }
 
-                populacja = nowaPopulacja;
+                populacja.Clear();
+                populacja.AddRange(nowaPopulacja);
+                nowaPopulacja.Clear();
                 --iloscPokolen;
             }
 
-            for (int i = 0; i < populacja.Length; i++)
-            {
-                Console.WriteLine("dla x=[");
-                foreach (Instancja element in rozwiazanie.Fenotyp(populacja[i]))
-                {
-                    Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
-                }
-                Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(populacja[i]))));
-            }
+            //for (int i = 0; i < populacja.Count; i++)
+            //{
+            //    Console.WriteLine("dla x=[");
+            //    foreach (Instancja element in rozwiazanie.Fenotyp((ushort[])populacja[i]))
+            //    {
+            //        Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
+            //    }
+            //    Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[i]))));
+            //}
 
             Console.ReadLine();
         }
 
-        public ushort[][] StworzPopulacje(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
+        public ArrayList StworzPopulacje(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {
             Random losowy = new Random();
-            ushort[][] populacja = new ushort[rozmiarPopulacji][];
+            ArrayList populacja = new ArrayList();
 
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
-                populacja[i] = new ushort[dlugoscGenotypu];
+                ushort[] genotyp = new ushort[dlugoscGenotypu];
                 for (int j = 0; j < dlugoscGenotypu; j++)
                 {
-                    populacja[i][j] = (ushort)losowy.Next(2);
+                    genotyp[j] = (ushort)losowy.Next(2);
                 }
+
+                populacja.Add(genotyp);
             }
 
             return populacja;

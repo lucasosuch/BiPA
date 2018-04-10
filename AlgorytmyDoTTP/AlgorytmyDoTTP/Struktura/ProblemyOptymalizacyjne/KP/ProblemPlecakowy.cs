@@ -67,7 +67,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
                 wynik[1] += przedmiot.zwrocWartosc();
             }
 
-            if (wynik[0] > maxWagaPlecaka) wynik[1] = -1;
+            if (wynik[0] > maxWagaPlecaka) wynik[1] /= 3;
 
             return wynik;
         }
