@@ -2,6 +2,6 @@
 {
     abstract class Algorytm
     {
-        public abstract IAlgorytm ZbudujAlgorytm(double pwoKrzyzowania, double pwoMutacji);
+        public abstract IAlgorytm ZbudujAlgorytm();
     }
 }

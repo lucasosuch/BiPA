@@ -15,10 +15,8 @@ namespace AlgorytmyDoTTP
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            double pwoMutacji = 0.3;
-            double pwoKrzyzowania = 0.7;
             Config ewolucyjny = new Config();
-            ewolucyjny.ZbudujAlgorytm(pwoKrzyzowania, pwoMutacji).Start();
+            ewolucyjny.ZbudujAlgorytm().Start();
 
             if (disposing && (components != null))
             {

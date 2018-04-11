@@ -31,12 +31,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             Random losowy = new Random();
             ArrayList nowaPopulacja = new ArrayList();
 
-            ushort[] mama, tata, dziecko1, dziecko2 = new ushort[dlugoscGenotypu];
+            ushort[] niebo, mama, tata, dziecko1, dziecko2 = new ushort[dlugoscGenotypu];
+
+            double wartoscNiebo = 0,
+                    globalnieNajlepszyOsobnik = 409;
 
             while (iloscPokolen >= 0)
             {
-                
-
                 for (int i = 0; i < rozmiarPopulacji; i++)
                 {
                     if (losowy.NextDouble() <= pwoKrzyzowania)
@@ -45,36 +46,36 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         tata = selekcja.Turniej(populacja, dlugoscGenotypu);
                         dziecko1 = rekombinacja.Krzyzowanie(mama, tata);
                         dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
-
-                        //Console.WriteLine("Pokolenie:" + iloscPokolen);
-                        //Console.WriteLine("dziecko1:"+ string.Join("|", dziecko1) +" f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))));
-                        //Console.WriteLine("dziecko2:" + string.Join("|", dziecko2) + " f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))));
+                        
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
 
-                        //for (int j = 0; j < nowaPopulacja.Count; j++)
-                        //{
-                        //    Console.WriteLine("element "+(j) +": "+ string.Join("|", (ushort[])nowaPopulacja[j]) + " f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])nowaPopulacja[j]))));
-                        //}
+                        double przystosowanieDziecko1 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))[1],
+                               przystosowanieDziecko2 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))[1];
+
+                        if (wartoscNiebo < przystosowanieDziecko1)
+                        {
+                            wartoscNiebo = przystosowanieDziecko1;
+                            niebo = (ushort[])dziecko1.Clone();
+                        }
+
+                        if (wartoscNiebo < przystosowanieDziecko2)
+                        {
+                            wartoscNiebo = przystosowanieDziecko2;
+                            niebo = (ushort[])dziecko2.Clone();
+                        }
                     }
                 }
 
                 populacja.Clear();
                 populacja.AddRange(nowaPopulacja);
                 nowaPopulacja.Clear();
+
+
                 --iloscPokolen;
             }
 
-            for (int i = 0; i < populacja.Count; i++)
-            {
-                Console.WriteLine("dla x=[");
-                foreach (Instancja element in rozwiazanie.Fenotyp((ushort[])populacja[i]))
-                {
-                    Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
-                }
-                Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[i]))));
-            }
-
+            Console.WriteLine("Maxymalna znaleziona wartosc: "+ wartoscNiebo);
             Console.ReadLine();
         }
 
@@ -95,6 +96,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             return populacja;
+        }
+
+        public Boolean KryteriumStopu(String wybor, object parametr)
+        {
+            Boolean wynik = true;
+
+            switch(wybor)
+            {
+                case "Pokolenia":
+                    wynik = (short)parametr >= 0;
+                    break;
+
+                case "Czas":
+
+                    break;
+
+                case "Poprawa":
+
+                    break;
+
+                case "Roznorodnosc":
+
+                    break;
+            }
+
+            return wynik;
         }
     }
 }
