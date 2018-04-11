@@ -20,38 +20,42 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public void Start()
         {
-            int iloscPokolen = 10;
-            ushort rozmiarPopulacji = 30;
+            short iloscPokolen = 100;
+            ushort rozmiarPopulacji = 70,
+                   dlugoscGenotypu = 15;
 
-            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, 15);
+            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, dlugoscGenotypu);
             Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
             Selekcja selekcja = new Selekcja(problemPlecakowy);
             Random losowy = new Random();
+            ArrayList nowaPopulacja = new ArrayList();
+
+            ushort[] mama, tata, dziecko1, dziecko2 = new ushort[dlugoscGenotypu];
 
             while (iloscPokolen >= 0)
             {
-                ArrayList nowaPopulacja = new ArrayList();
+                
 
                 for (int i = 0; i < rozmiarPopulacji; i++)
                 {
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
-                        ushort[] mama = selekcja.Turniej(populacja),
-                                 tata = selekcja.Turniej(populacja),
-                                 dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
-                                 dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
+                        mama = selekcja.Turniej(populacja, dlugoscGenotypu);
+                        tata = selekcja.Turniej(populacja, dlugoscGenotypu);
+                        dziecko1 = rekombinacja.Krzyzowanie(mama, tata);
+                        dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
 
-                        Console.WriteLine("Pokolenie:" + iloscPokolen);
-                        Console.WriteLine("dziecko1:"+ string.Join("|", dziecko1) +" f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))));
-                        Console.WriteLine("dziecko2:" + string.Join("|", dziecko2) + " f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))));
+                        //Console.WriteLine("Pokolenie:" + iloscPokolen);
+                        //Console.WriteLine("dziecko1:"+ string.Join("|", dziecko1) +" f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))));
+                        //Console.WriteLine("dziecko2:" + string.Join("|", dziecko2) + " f(x)="+ string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))));
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
 
-                        for (int j = 0; j < nowaPopulacja.Count; j++)
-                        {
-                            Console.WriteLine("element "+(j) +": "+ string.Join("|", (ushort[])nowaPopulacja[j]) + " f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])nowaPopulacja[j]))));
-                        }
+                        //for (int j = 0; j < nowaPopulacja.Count; j++)
+                        //{
+                        //    Console.WriteLine("element "+(j) +": "+ string.Join("|", (ushort[])nowaPopulacja[j]) + " f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])nowaPopulacja[j]))));
+                        //}
                     }
                 }
 
@@ -61,15 +65,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 --iloscPokolen;
             }
 
-            //for (int i = 0; i < populacja.Count; i++)
-            //{
-            //    Console.WriteLine("dla x=[");
-            //    foreach (Instancja element in rozwiazanie.Fenotyp((ushort[])populacja[i]))
-            //    {
-            //        Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
-            //    }
-            //    Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[i]))));
-            //}
+            for (int i = 0; i < populacja.Count; i++)
+            {
+                Console.WriteLine("dla x=[");
+                foreach (Instancja element in rozwiazanie.Fenotyp((ushort[])populacja[i]))
+                {
+                    Console.WriteLine(element.zwrocWage() + "|" + element.zwrocWartosc() + ";");
+                }
+                Console.WriteLine("] f(x)=" + string.Join("|", rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[i]))));
+            }
 
             Console.ReadLine();
         }

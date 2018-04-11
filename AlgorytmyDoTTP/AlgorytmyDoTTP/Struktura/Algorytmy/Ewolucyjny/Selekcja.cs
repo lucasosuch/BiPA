@@ -14,11 +14,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.problemPlecakowy = problemPlecakowy;
         }
 
-        public ushort[] Turniej(ArrayList populacja)
+        public ushort[] Turniej(ArrayList populacja, ushort dlugoscGenotypu)
         {
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
 
-            ushort[] zwyciezca = (ushort[])populacja[0];
+            ushort[] zwyciezca = new ushort[dlugoscGenotypu];
+
+            ((ushort[])populacja[0]).CopyTo(zwyciezca, 0);
             double[] dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[0]));
 
             for (int i = 0; i <= 25; i++)

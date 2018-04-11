@@ -28,8 +28,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         public ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
         {
             int ciecie = losowy.Next(0, przodek1.Length);
+            ushort[] dzieciak = new ushort[przodek1.Length];
 
-            ushort[] dzieciak = przodek1;
+            dzieciak = (ushort[])przodek1.Clone();
             for(int i = 0; i < ciecie; i++)
             {
                 dzieciak[i] = przodek2[i];
