@@ -14,11 +14,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
         public ProblemPlecakowy()
         {
-            this.przedmioty = new Instancja[15];
-            this.inicjalizacjaPrzypadku();
+            InicjalizacjaPrzypadku();
         }
 
-        public ArrayList zwrocWybraneElementy(ushort[] wybraneElementy)
+        public ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
             ArrayList listaElementow = new ArrayList();
 
@@ -33,31 +32,32 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             return listaElementow;
         }
 
-        public void ustawMaxWagePlecaka(double maxWagaPlecaka)
+        public void UstawMaxWagePlecaka(double maxWagaPlecaka)
         {
             this.maxWagaPlecaka = maxWagaPlecaka;
         }
 
-        private void inicjalizacjaPrzypadku()
+        private void InicjalizacjaPrzypadku()
         {
-            this.przedmioty[0] = new Instancja(0.1, 10.0);
-            this.przedmioty[1] = new Instancja(0.04, 4.0);
-            this.przedmioty[2] = new Instancja(0.15, 16.0);
-            this.przedmioty[3] = new Instancja(0.4, 9.0);
-            this.przedmioty[4] = new Instancja(0.3, 23.0);
-            this.przedmioty[5] = new Instancja(0.7, 54.0);
-            this.przedmioty[6] = new Instancja(0.8, 16.0);
-            this.przedmioty[7] = new Instancja(0.12, 56.0);
-            this.przedmioty[8] = new Instancja(0.34, 7.0);
-            this.przedmioty[9] = new Instancja(0.41, 78.0);
-            this.przedmioty[10] = new Instancja(0.56, 11.0);
-            this.przedmioty[11] = new Instancja(0.75, 18.0);
-            this.przedmioty[12] = new Instancja(0.87, 100.0);
-            this.przedmioty[13] = new Instancja(0.45, 34.0);
-            this.przedmioty[14] = new Instancja(0.91, 15.0);
+            przedmioty = new Instancja[15];
+            przedmioty[0] = new Instancja(0.1, 10.0);
+            przedmioty[1] = new Instancja(0.04, 4.0);
+            przedmioty[2] = new Instancja(0.15, 16.0);
+            przedmioty[3] = new Instancja(0.4, 9.0);
+            przedmioty[4] = new Instancja(0.3, 23.0);
+            przedmioty[5] = new Instancja(0.7, 54.0);
+            przedmioty[6] = new Instancja(0.8, 16.0);
+            przedmioty[7] = new Instancja(0.12, 56.0);
+            przedmioty[8] = new Instancja(0.34, 7.0);
+            przedmioty[9] = new Instancja(0.41, 78.0);
+            przedmioty[10] = new Instancja(0.56, 11.0);
+            przedmioty[11] = new Instancja(0.75, 18.0);
+            przedmioty[12] = new Instancja(0.87, 100.0);
+            przedmioty[13] = new Instancja(0.45, 34.0);
+            przedmioty[14] = new Instancja(0.91, 15.0);
         }
 
-        public double[] obliczZysk(ArrayList wybranePrzedmioty)
+        public double[] ObliczZysk(ArrayList wybranePrzedmioty)
         {
             double[] wynik = new double[] {0, 0};
 
@@ -70,6 +70,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             if (wynik[0] > maxWagaPlecaka) wynik[1] /= 3;
 
             return wynik;
+        }
+
+        public ushort ZwrocLiczbePrzedmiotow()
+        {
+            return (ushort)przedmioty.Length;
         }
     }
 }

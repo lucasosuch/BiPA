@@ -12,9 +12,9 @@ namespace AlgorytmyDoTTP.Struktura
             double pwoKrzyzowania = 0.7;
 
             ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy();
-            problemPlecakowy.ustawMaxWagePlecaka(5);
+            problemPlecakowy.UstawMaxWagePlecaka(5);
 
-            return new SEA(pwoKrzyzowania, pwoMutacji, problemPlecakowy);
+            return new SEA(pwoKrzyzowania, pwoMutacji, problemPlecakowy.ZwrocLiczbePrzedmiotow(), problemPlecakowy);
         }
     }
 }

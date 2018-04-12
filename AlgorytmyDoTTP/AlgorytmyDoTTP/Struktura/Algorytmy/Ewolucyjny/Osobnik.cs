@@ -15,12 +15,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         public ArrayList Fenotyp(ushort[] genotyp)
         {
-            return problemPlecakowy.zwrocWybraneElementy(genotyp);
+            return problemPlecakowy.ZwrocWybraneElementy(genotyp);
         }
 
         public double[] FunkcjaDopasowania(ArrayList przedmioty)
         {
-            return problemPlecakowy.obliczZysk(przedmioty);
+            return problemPlecakowy.ObliczZysk(przedmioty);
         }
     }
 }

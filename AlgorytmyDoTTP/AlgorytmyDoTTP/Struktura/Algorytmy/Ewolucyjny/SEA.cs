@@ -2,48 +2,52 @@
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System.Collections;
+using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     class SEA : IAlgorytm
     {
+        private ushort liczbaPrzypadkow;
         private double pwoMutacji;
         private double pwoKrzyzowania;
         private ProblemPlecakowy problemPlecakowy;
 
-        public SEA(double pwoKrzyzowania, double pwoMutacji, ProblemPlecakowy problemPlecakowy)
+        public SEA(double pwoKrzyzowania, double pwoMutacji, ushort liczbaPrzypadkow, ProblemPlecakowy problemPlecakowy)
         {
             this.pwoKrzyzowania = pwoKrzyzowania;
             this.pwoMutacji = pwoMutacji;
             this.problemPlecakowy = problemPlecakowy;
+            this.liczbaPrzypadkow = liczbaPrzypadkow;
         }
 
         public void Start()
         {
             short iloscPokolen = 100;
-            ushort rozmiarPopulacji = 70,
-                   dlugoscGenotypu = 15;
+            ushort rozmiarPopulacji = 70;
 
-            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, dlugoscGenotypu);
+            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, liczbaPrzypadkow);
             Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
-            Selekcja selekcja = new Selekcja(problemPlecakowy);
+            Selekcja selekcja = new Selekcja(problemPlecakowy, liczbaPrzypadkow);
             Random losowy = new Random();
             ArrayList nowaPopulacja = new ArrayList();
 
-            ushort[] niebo, mama, tata, dziecko1, dziecko2 = new ushort[dlugoscGenotypu];
+            ushort[] niebo, mama, tata, dziecko1, dziecko2 = new ushort[liczbaPrzypadkow];
 
             double wartoscNiebo = 0,
                     globalnieNajlepszyOsobnik = 409;
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             while (iloscPokolen >= 0)
             {
                 for (int i = 0; i < rozmiarPopulacji; i++)
                 {
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
-                        mama = selekcja.Turniej(populacja, dlugoscGenotypu);
-                        tata = selekcja.Turniej(populacja, dlugoscGenotypu);
+                        mama = selekcja.Turniej(populacja);
+                        tata = selekcja.Turniej(populacja);
                         dziecko1 = rekombinacja.Krzyzowanie(mama, tata);
                         dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
                         
@@ -64,6 +68,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                             wartoscNiebo = przystosowanieDziecko2;
                             niebo = (ushort[])dziecko2.Clone();
                         }
+
+                        if(wartoscNiebo >= (0.8 * globalnieNajlepszyOsobnik))
+                        {
+                            stopWatch.Stop();
+                        }
                     }
                 }
 
@@ -75,7 +84,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 --iloscPokolen;
             }
 
-            Console.WriteLine("Maxymalna znaleziona wartosc: "+ wartoscNiebo);
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+            Console.WriteLine("Czas: " + elapsedTime);
+            Console.WriteLine("Maksymalna znaleziona wartosc: "+ wartoscNiebo);
             Console.ReadLine();
         }
 
