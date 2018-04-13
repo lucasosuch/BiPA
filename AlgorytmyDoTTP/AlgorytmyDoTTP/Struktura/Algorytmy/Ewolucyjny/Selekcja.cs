@@ -1,5 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
-using System;
+﻿using System;
 using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
@@ -8,18 +7,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
     {
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
-        private ProblemPlecakowy problemPlecakowy;
+        private Osobnik rozwiazanie;
 
-        public Selekcja(ProblemPlecakowy problemPlecakowy, ushort dlugoscGenotypu)
+        public Selekcja(Osobnik rozwiazanie, ushort dlugoscGenotypu)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
-            this.problemPlecakowy = problemPlecakowy;
+            this.rozwiazanie = rozwiazanie;
         }
 
         public ushort[] Turniej(ArrayList populacja)
         {
-            Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
-
             ushort[] zwyciezca = new ushort[dlugoscGenotypu];
 
             ((ushort[])populacja[0]).CopyTo(zwyciezca, 0);
@@ -42,7 +39,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         private ArrayList ZwrocWskazniki(ArrayList populacja)
         {
-            Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
             ArrayList wskazniki = new ArrayList();
             double suma = 0;
 
@@ -82,13 +78,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     }
 
                     poprzednik = (double)wskazniki[i];
-                }
-            } else
-            {
-                double srednia = 0;
-                foreach(double wskanik in wskazniki)
-                {
-                    srednia += wskanik;
                 }
             }
 

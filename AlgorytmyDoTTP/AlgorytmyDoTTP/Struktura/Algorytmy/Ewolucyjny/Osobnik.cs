@@ -1,5 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny

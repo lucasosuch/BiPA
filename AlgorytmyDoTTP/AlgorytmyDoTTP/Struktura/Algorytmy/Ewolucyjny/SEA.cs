@@ -8,37 +8,43 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     class SEA : IAlgorytm
     {
+        private short iloscPokolen;
+        private ushort rozmiarPopulacji;
         private ushort liczbaPrzypadkow;
         private double pwoMutacji;
         private double pwoKrzyzowania;
-        private ProblemPlecakowy problemPlecakowy;
+        private Osobnik rozwiazanie;
+        private Random losowy = new Random();
 
-        public SEA(double pwoKrzyzowania, double pwoMutacji, ushort liczbaPrzypadkow, ProblemPlecakowy problemPlecakowy)
+        public SEA(double pwoKrzyzowania, double pwoMutacji, ushort liczbaPrzypadkow, Osobnik rozwiazanie, short iloscPokolen, ushort rozmiarPopulacji)
         {
             this.pwoKrzyzowania = pwoKrzyzowania;
             this.pwoMutacji = pwoMutacji;
-            this.problemPlecakowy = problemPlecakowy;
             this.liczbaPrzypadkow = liczbaPrzypadkow;
+            this.rozwiazanie = rozwiazanie;
+            this.iloscPokolen = iloscPokolen;
+            this.rozmiarPopulacji = rozmiarPopulacji;
         }
 
         public void Start()
         {
-            short iloscPokolen = 100;
-            ushort rozmiarPopulacji = 70;
-
-            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, liczbaPrzypadkow);
-            Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
-            Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
-            Selekcja selekcja = new Selekcja(problemPlecakowy, liczbaPrzypadkow);
-            Random losowy = new Random();
-            ArrayList nowaPopulacja = new ArrayList();
-
-            ushort[] niebo, mama, tata, dziecko1, dziecko2 = new ushort[liczbaPrzypadkow];
-
             double wartoscNiebo = 0,
-                    globalnieNajlepszyOsobnik = 409;
+                   procentNajlepszego = 0.8,
+                   globalnieNajlepszyOsobnik = 409;
+
+            ushort[] niebo = new ushort[liczbaPrzypadkow];
+            Selekcja selekcja = new Selekcja(rozwiazanie, liczbaPrzypadkow);
+            Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
 
             Stopwatch stopWatch = new Stopwatch();
+            ArrayList nowaPopulacja = new ArrayList();
+            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, liczbaPrzypadkow);
+
+            for (int i = 0; i < liczbaPrzypadkow; i++)
+            {
+                niebo[i] = 0;
+            }
+
             stopWatch.Start();
             while (iloscPokolen >= 0)
             {
@@ -46,10 +52,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 {
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
-                        mama = selekcja.Turniej(populacja);
-                        tata = selekcja.Turniej(populacja);
-                        dziecko1 = rekombinacja.Krzyzowanie(mama, tata);
-                        dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
+                        ushort[] mama = selekcja.Turniej(populacja),
+                                 tata = selekcja.Turniej(populacja),
+                                 dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
+                                 dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
                         
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
@@ -69,7 +75,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                             niebo = (ushort[])dziecko2.Clone();
                         }
 
-                        if(wartoscNiebo >= (0.8 * globalnieNajlepszyOsobnik))
+                        if(wartoscNiebo >= (procentNajlepszego * globalnieNajlepszyOsobnik))
                         {
                             stopWatch.Stop();
                         }
@@ -79,23 +85,30 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 populacja.Clear();
                 populacja.AddRange(nowaPopulacja);
                 nowaPopulacja.Clear();
-
-
+                
                 --iloscPokolen;
             }
 
             TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            ts.Hours, ts.Minutes, ts.Seconds,
-            ts.Milliseconds / 10);
-            Console.WriteLine("Czas: " + elapsedTime);
-            Console.WriteLine("Maksymalna znaleziona wartosc: "+ wartoscNiebo);
+            Console.WriteLine("Czas w, którym znaleziono "+ procentNajlepszego + " najlepszego osobnika: " + ts);
+            Console.WriteLine("Najlepszy osobnik: Genotyp = ["+string.Join(",", niebo) + "]");
+
+            String fenotyp = "";
+            foreach (Instancja element in rozwiazanie.Fenotyp(niebo))
+            {
+                fenotyp += element.zwrocWage() +"|"+ element.zwrocWartosc() +"; ";
+            }
+
+            double[] najlepszyOsobnik = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(niebo));
+
+            Console.WriteLine("Fenotyp = ["+ fenotyp +"]");
+            Console.WriteLine("Funkcja dopasowania: waga = "+ najlepszyOsobnik[0]+ ", wynik = "+ najlepszyOsobnik[1]);
+
             Console.ReadLine();
         }
 
         public ArrayList StworzPopulacje(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {
-            Random losowy = new Random();
             ArrayList populacja = new ArrayList();
 
             for (int i = 0; i < rozmiarPopulacji; i++)
@@ -110,32 +123,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             return populacja;
-        }
-
-        public Boolean KryteriumStopu(String wybor, object parametr)
-        {
-            Boolean wynik = true;
-
-            switch(wybor)
-            {
-                case "Pokolenia":
-                    wynik = (short)parametr >= 0;
-                    break;
-
-                case "Czas":
-
-                    break;
-
-                case "Poprawa":
-
-                    break;
-
-                case "Roznorodnosc":
-
-                    break;
-            }
-
-            return wynik;
         }
     }
 }
