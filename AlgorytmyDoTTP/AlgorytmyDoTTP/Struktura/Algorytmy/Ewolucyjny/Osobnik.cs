@@ -17,9 +17,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return problemPlecakowy.ZwrocWybraneElementy(genotyp);
         }
 
-        public double[] FunkcjaDopasowania(ArrayList przedmioty)
+        public double[] FunkcjaDopasowania(ushort[] genotyp)
         {
-            return problemPlecakowy.ObliczZysk(przedmioty);
+            return problemPlecakowy.ObliczZysk(Fenotyp((genotyp)));
         }
     }
 }

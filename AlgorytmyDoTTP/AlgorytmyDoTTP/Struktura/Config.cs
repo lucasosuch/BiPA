@@ -8,17 +8,18 @@ namespace AlgorytmyDoTTP.Struktura
     {
         public override IAlgorytm ZbudujAlgorytm()
         {
-            short iloscPokolen = 100;
-            ushort rozmiarPopulacji = 70;
-            double pwoMutacji = 0.3;
-            double pwoKrzyzowania = 0.7;
+            short iloscPokolen = 200;
+            ushort rozmiarPopulacji = 90,
+                   liczbaPrzedmiotow = 15;
+            double pwoMutacji = 0.2,
+                   pwoKrzyzowania = 0.8;
 
-            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy();
+            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(liczbaPrzedmiotow);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
 
-            problemPlecakowy.UstawMaxWagePlecaka(5);
+            problemPlecakowy.UstawMaxWagePlecaka(3);
 
-            return new SEA(pwoKrzyzowania, pwoMutacji, problemPlecakowy.ZwrocLiczbePrzedmiotow(), rozwiazanie, iloscPokolen, rozmiarPopulacji);
+            return new SEA(pwoKrzyzowania, pwoMutacji, liczbaPrzedmiotow, rozwiazanie, iloscPokolen, rozmiarPopulacji);
         }
     }
 }

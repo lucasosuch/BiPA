@@ -12,9 +12,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
         private double maxWagaPlecaka;
         private Instancja[] przedmioty;
 
-        public ProblemPlecakowy()
+        public ProblemPlecakowy(ushort liczbaPrzedmiotow)
         {
-            InicjalizacjaPrzypadku();
+            InicjalizacjaPrzypadku(liczbaPrzedmiotow);
         }
 
         public ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
@@ -37,9 +37,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             this.maxWagaPlecaka = maxWagaPlecaka;
         }
 
-        private void InicjalizacjaPrzypadku()
+        private void InicjalizacjaPrzypadku(ushort liczbaPrzedmiotow)
         {
-            przedmioty = new Instancja[15];
+            przedmioty = new Instancja[liczbaPrzedmiotow];
             przedmioty[0] = new Instancja(0.1, 10.0);
             przedmioty[1] = new Instancja(0.04, 4.0);
             przedmioty[2] = new Instancja(0.15, 16.0);
@@ -59,22 +59,22 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
         public double[] ObliczZysk(ArrayList wybranePrzedmioty)
         {
+            double srednia = 0;
             double[] wynik = new double[] {0, 0};
 
             foreach(Instancja przedmiot in wybranePrzedmioty)
             {
-                wynik[0] += przedmiot.zwrocWage();
-                wynik[1] += przedmiot.zwrocWartosc();
+                wynik[0] += przedmiot.ZwrocWage();
+                wynik[1] += przedmiot.ZwrocWartosc();
+
+                srednia += przedmiot.ZwrocWartosc();
             }
 
-            if (wynik[0] > maxWagaPlecaka) wynik[1] /= 3;
+            srednia /= wybranePrzedmioty.Count;
+
+            if (wynik[0] > maxWagaPlecaka) wynik[1] = 0;
 
             return wynik;
-        }
-
-        public ushort ZwrocLiczbePrzedmiotow()
-        {
-            return (ushort)przedmioty.Length;
         }
     }
 }

@@ -60,8 +60,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
 
-                        double przystosowanieDziecko1 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko1))[1],
-                               przystosowanieDziecko2 = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(dziecko2))[1];
+                        double przystosowanieDziecko1 = rozwiazanie.FunkcjaDopasowania(dziecko1)[1],
+                               przystosowanieDziecko2 = rozwiazanie.FunkcjaDopasowania(dziecko2)[1];
 
                         if (wartoscNiebo < przystosowanieDziecko1)
                         {
@@ -96,14 +96,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             String fenotyp = "";
             foreach (Instancja element in rozwiazanie.Fenotyp(niebo))
             {
-                fenotyp += element.zwrocWage() +"|"+ element.zwrocWartosc() +"; ";
+                fenotyp += element.ZwrocWage() +"|"+ element.ZwrocWartosc() +"; ";
             }
 
-            double[] najlepszyOsobnik = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(niebo));
+            double[] najlepszyOsobnik = rozwiazanie.FunkcjaDopasowania(niebo);
 
             Console.WriteLine("Fenotyp = ["+ fenotyp +"]");
             Console.WriteLine("Funkcja dopasowania: waga = "+ najlepszyOsobnik[0]+ ", wynik = "+ najlepszyOsobnik[1]);
 
+            double srednia = SredniaPopulacji(populacja),
+                   odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
+
+            Console.WriteLine("Średnia = " + srednia +", odchylenie standardowe = "+ odchylenieStadowe);
             Console.ReadLine();
         }
 
@@ -123,6 +127,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             return populacja;
+        }
+
+        public double SredniaPopulacji(ArrayList populacja)
+        {
+            double wynik = 0;
+            
+            foreach(ushort[] osobnik in populacja)
+            {
+                Console.WriteLine(rozwiazanie.FunkcjaDopasowania(osobnik)[1]);
+                wynik += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
+            }
+
+            return wynik / populacja.Count;
+        }
+
+        public double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
+        {
+            double sumaKwadratow = 0;
+
+            foreach (ushort[] osobnik in populacja)
+            {
+                sumaKwadratow += Math.Pow(rozwiazanie.FunkcjaDopasowania(osobnik)[1], 2);
+            }
+
+            double sredniaSumaKwadratow = sumaKwadratow / (populacja.Count - 1);
+            return Math.Sqrt(sredniaSumaKwadratow - (Math.Pow(srednia, 2)));
         }
     }
 }

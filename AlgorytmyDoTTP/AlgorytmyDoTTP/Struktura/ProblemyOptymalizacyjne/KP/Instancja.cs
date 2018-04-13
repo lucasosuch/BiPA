@@ -17,12 +17,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             this.wartosc = wartosc;
         }
 
-        public double zwrocWage()
+        public double ZwrocWage()
         {
             return this.waga;
         }
 
-        public double zwrocWartosc()
+        public double ZwrocWartosc()
         {
             return this.wartosc;
         }

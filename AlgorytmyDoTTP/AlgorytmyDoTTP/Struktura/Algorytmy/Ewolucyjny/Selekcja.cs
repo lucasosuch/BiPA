@@ -20,12 +20,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             ushort[] zwyciezca = new ushort[dlugoscGenotypu];
 
             ((ushort[])populacja[0]).CopyTo(zwyciezca, 0);
-            double[] dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[0]));
+            double[] dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[0]);
 
             for (int i = 0; i <= 25; i++)
             {
                 int k = losowy.Next(populacja.Count - 1);
-                double[] dopasowanie = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp((ushort[])populacja[k]));
+                double[] dopasowanie = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[k]);
 
                 if(dopasowanieZwyciezcy[1] < dopasowanie[1])
                 {
@@ -44,13 +44,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             foreach(ushort[] osobnik in populacja)
             {
-                suma += rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(osobnik))[1];
+                suma += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
             }
 
             double sumaCzesciowa = 0;
             foreach(ushort[] osobnik in populacja)
             {
-                double wskaznik = rozwiazanie.FunkcjaDopasowania(rozwiazanie.Fenotyp(osobnik))[1] / suma;
+                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)[1] / suma;
 
                 sumaCzesciowa += wskaznik;
                 wskazniki.Add(sumaCzesciowa);
