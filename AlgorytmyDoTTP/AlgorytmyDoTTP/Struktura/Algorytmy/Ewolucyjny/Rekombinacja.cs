@@ -1,15 +1,33 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using System;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     class Rekombinacja
     {
         private double pwoMutacji;
+        private Osobnik rozwiazanie;
         private Random losowy = new Random();
 
-        public Rekombinacja(double pwoMutacji)
+        public Rekombinacja(double pwoMutacji, Osobnik rozwiazanie)
         {
             this.pwoMutacji = pwoMutacji;
+            this.rozwiazanie = rozwiazanie;
+        }
+
+        public ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
+        {
+            int ciecie = losowy.Next(0, przodek1.Length);
+            ushort[] dzieciak = new ushort[przodek1.Length];
+
+            dzieciak = (ushort[])przodek1.Clone();
+            for (int i = 0; i < ciecie; i++)
+            {
+                dzieciak[i] = przodek2[i];
+            }
+
+            return SprawdzNaruszenieOgraniczen(Mutacja(dzieciak));
         }
 
         private ushort[] Mutacja(ushort[] geny)
@@ -25,18 +43,23 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return geny;
         }
 
-        public ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
+        private ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
         {
-            int ciecie = losowy.Next(0, przodek1.Length);
-            ushort[] dzieciak = new ushort[przodek1.Length];
+            double maxWagaPlecaka = rozwiazanie.ZwrocProblemPlecakowy().ZwrocMaxWagePlecaka();
 
-            dzieciak = (ushort[])przodek1.Clone();
-            for(int i = 0; i < ciecie; i++)
+            while (rozwiazanie.FunkcjaDopasowania(geny)[0] > maxWagaPlecaka)
             {
-                dzieciak[i] = przodek2[i];
+                for(int i = 0; i < geny.Length; i++)
+                {
+                    if(geny[i] == 1)
+                    {
+                        geny[i] = 0;
+                        break;
+                    }
+                }
             }
 
-            return Mutacja(dzieciak);
+            return geny;
         }
     }
 }

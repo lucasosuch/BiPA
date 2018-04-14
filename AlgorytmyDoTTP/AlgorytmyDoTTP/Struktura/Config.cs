@@ -10,14 +10,14 @@ namespace AlgorytmyDoTTP.Struktura
         {
             short iloscPokolen = 200;
             ushort rozmiarPopulacji = 90,
-                   liczbaPrzedmiotow = 15;
+                   liczbaPrzedmiotow = 25;
             double pwoMutacji = 0.2,
                    pwoKrzyzowania = 0.8;
 
             ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(liczbaPrzedmiotow);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
 
-            problemPlecakowy.UstawMaxWagePlecaka(4);
+            problemPlecakowy.UstawMaxWagePlecaka(7);
 
             return new SEA(pwoKrzyzowania, pwoMutacji, liczbaPrzedmiotow, rozwiazanie, iloscPokolen, rozmiarPopulacji);
         }

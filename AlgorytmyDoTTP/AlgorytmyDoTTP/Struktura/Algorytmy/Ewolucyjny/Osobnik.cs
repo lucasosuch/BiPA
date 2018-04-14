@@ -21,5 +21,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         {
             return problemPlecakowy.ObliczZysk(Fenotyp((genotyp)));
         }
+
+        public ProblemPlecakowy ZwrocProblemPlecakowy()
+        {
+            return problemPlecakowy;
+        }
     }
 }

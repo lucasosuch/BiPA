@@ -34,7 +34,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             ushort[] niebo = new ushort[liczbaPrzypadkow];
             Selekcja selekcja = new Selekcja(rozwiazanie, liczbaPrzypadkow);
-            Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji);
+            Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji, rozwiazanie);
 
             Stopwatch stopWatch = new Stopwatch();
             ArrayList nowaPopulacja = new ArrayList();
@@ -56,7 +56,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                                  tata = selekcja.Turniej(populacja),
                                  dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
                                  dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
-                        
+
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
 
