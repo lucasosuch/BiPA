@@ -38,7 +38,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             Stopwatch stopWatch = new Stopwatch();
             ArrayList nowaPopulacja = new ArrayList();
-            ArrayList populacja = StworzPopulacje(rozmiarPopulacji, liczbaPrzypadkow);
+            ArrayList populacja = StworzPopulacje();
 
             for (int i = 0; i < liczbaPrzypadkow; i++)
             {
@@ -111,14 +111,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             Console.ReadLine();
         }
 
-        public ArrayList StworzPopulacje(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
+        private ArrayList StworzPopulacje()
         {
             ArrayList populacja = new ArrayList();
 
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
-                ushort[] genotyp = new ushort[dlugoscGenotypu];
-                for (int j = 0; j < dlugoscGenotypu; j++)
+                ushort[] genotyp = new ushort[liczbaPrzypadkow];
+                for (int j = 0; j < liczbaPrzypadkow; j++)
                 {
                     genotyp[j] = (ushort)losowy.Next(2);
                 }
@@ -129,20 +129,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return populacja;
         }
 
-        public double SredniaPopulacji(ArrayList populacja)
+        private double SredniaPopulacji(ArrayList populacja)
         {
             double wynik = 0;
             
             foreach(ushort[] osobnik in populacja)
             {
-                Console.WriteLine(rozwiazanie.FunkcjaDopasowania(osobnik)[1]);
                 wynik += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
             }
 
             return wynik / populacja.Count;
         }
 
-        public double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
+        private double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
         {
             double sumaKwadratow = 0;
 

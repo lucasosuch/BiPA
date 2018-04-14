@@ -5,14 +5,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
     class Rekombinacja
     {
         private double pwoMutacji;
-        public Random losowy = new Random();
+        private Random losowy = new Random();
 
         public Rekombinacja(double pwoMutacji)
         {
             this.pwoMutacji = pwoMutacji;
         }
 
-        public ushort[] Mutacja(ushort[] geny)
+        private ushort[] Mutacja(ushort[] geny)
         {
             if (losowy.NextDouble() > pwoMutacji)
             {

@@ -17,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura
             ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(liczbaPrzedmiotow);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
 
-            problemPlecakowy.UstawMaxWagePlecaka(3);
+            problemPlecakowy.UstawMaxWagePlecaka(4);
 
             return new SEA(pwoKrzyzowania, pwoMutacji, liczbaPrzedmiotow, rozwiazanie, iloscPokolen, rozmiarPopulacji);
         }
