@@ -56,8 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\ARekombinacja.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektoraBinarnego.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Algorytm.cs" />
     <Compile Include="Struktura\Config.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />

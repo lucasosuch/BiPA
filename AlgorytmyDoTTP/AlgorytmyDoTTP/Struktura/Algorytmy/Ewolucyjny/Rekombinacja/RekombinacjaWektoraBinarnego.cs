@@ -2,21 +2,21 @@
 using System;
 using System.Collections;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
-    class Rekombinacja
+    class RekombinacjaWektoraBinarnego : ARekombinacja
     {
         private double pwoMutacji;
         private Osobnik rozwiazanie;
         private Random losowy = new Random();
 
-        public Rekombinacja(double pwoMutacji, Osobnik rozwiazanie)
+        public RekombinacjaWektoraBinarnego(double pwoMutacji, Osobnik rozwiazanie)
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
         }
 
-        public ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
+        public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
         {
             int ciecie = losowy.Next(0, przodek1.Length);
             ushort[] dzieciak = new ushort[przodek1.Length];
@@ -30,7 +30,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return SprawdzNaruszenieOgraniczen(Mutacja(dzieciak));
         }
 
-        private ushort[] Mutacja(ushort[] geny)
+        protected override ushort[] Mutacja(ushort[] geny)
         {
             if (losowy.NextDouble() > pwoMutacji)
             {
@@ -45,9 +45,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
         private ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
         {
-            double maxWagaPlecaka = rozwiazanie.ZwrocProblemPlecakowy().ZwrocMaxWagePlecaka();
+            double ograniczenie = rozwiazanie.ZwrocProblemPlecakowy().ZwrocMaxWagePlecaka();
 
-            while (rozwiazanie.FunkcjaDopasowania(geny)[0] > maxWagaPlecaka)
+            while (rozwiazanie.FunkcjaDopasowania(geny)[0] > ograniczenie)
             {
                 for(int i = 0; i < geny.Length; i++)
                 {

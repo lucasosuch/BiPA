@@ -1,6 +1,8 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 
 namespace AlgorytmyDoTTP.Struktura
 {
@@ -10,16 +12,18 @@ namespace AlgorytmyDoTTP.Struktura
         {
             short iloscPokolen = 200;
             ushort rozmiarPopulacji = 90,
-                   liczbaPrzedmiotow = 25;
+                   dlugoscGenotypu = 25;
             double pwoMutacji = 0.2,
                    pwoKrzyzowania = 0.8;
 
-            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(liczbaPrzedmiotow);
+            ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(dlugoscGenotypu);
             Osobnik rozwiazanie = new Osobnik(problemPlecakowy);
+            ARekombinacja rekombinacja = new RekombinacjaWektoraBinarnego(pwoMutacji, rozwiazanie);
+            ASelekcja selekcja = new SelekcjaWektoraBinarnego(rozwiazanie, dlugoscGenotypu);
 
             problemPlecakowy.UstawMaxWagePlecaka(7);
 
-            return new SEA(pwoKrzyzowania, pwoMutacji, liczbaPrzedmiotow, rozwiazanie, iloscPokolen, rozmiarPopulacji);
+            return new SEA(selekcja, rekombinacja, rozwiazanie, rozmiarPopulacji, iloscPokolen, dlugoscGenotypu, pwoKrzyzowania);
         }
     }
 }

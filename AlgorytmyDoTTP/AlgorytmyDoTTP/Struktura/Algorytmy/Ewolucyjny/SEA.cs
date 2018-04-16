@@ -11,19 +11,21 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private short iloscPokolen;
         private ushort rozmiarPopulacji;
         private ushort liczbaPrzypadkow;
-        private double pwoMutacji;
         private double pwoKrzyzowania;
+        private Rekombinacja.ARekombinacja rekombinacja;
+        private Selekcja.ASelekcja selekcja;
         private Osobnik rozwiazanie;
         private Random losowy = new Random();
 
-        public SEA(double pwoKrzyzowania, double pwoMutacji, ushort liczbaPrzypadkow, Osobnik rozwiazanie, short iloscPokolen, ushort rozmiarPopulacji)
+        public SEA(Selekcja.ASelekcja selekcja, Rekombinacja.ARekombinacja rekombinacja, Osobnik rozwiazanie, ushort rozmiarPopulacji, short iloscPokolen, ushort liczbaPrzypadkow, double pwoKrzyzowania)
         {
-            this.pwoKrzyzowania = pwoKrzyzowania;
-            this.pwoMutacji = pwoMutacji;
-            this.liczbaPrzypadkow = liczbaPrzypadkow;
+            this.selekcja = selekcja;
+            this.rekombinacja = rekombinacja;
             this.rozwiazanie = rozwiazanie;
-            this.iloscPokolen = iloscPokolen;
             this.rozmiarPopulacji = rozmiarPopulacji;
+            this.iloscPokolen = iloscPokolen;
+            this.liczbaPrzypadkow = liczbaPrzypadkow;
+            this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
         public void Start()
@@ -33,9 +35,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                    globalnieNajlepszyOsobnik = 409;
 
             ushort[] niebo = new ushort[liczbaPrzypadkow];
-            Selekcja selekcja = new Selekcja(rozwiazanie, liczbaPrzypadkow);
-            Rekombinacja rekombinacja = new Rekombinacja(pwoMutacji, rozwiazanie);
-
+            
             Stopwatch stopWatch = new Stopwatch();
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacja = StworzPopulacje();

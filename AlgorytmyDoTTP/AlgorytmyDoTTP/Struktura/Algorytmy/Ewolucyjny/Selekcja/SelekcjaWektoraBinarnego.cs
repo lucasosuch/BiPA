@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
-    class Selekcja
+    class SelekcjaWektoraBinarnego : ASelekcja
     {
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
         private Osobnik rozwiazanie;
 
-        public Selekcja(Osobnik rozwiazanie, ushort dlugoscGenotypu)
+        public SelekcjaWektoraBinarnego(Osobnik rozwiazanie, ushort dlugoscGenotypu)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;
         }
 
-        public ushort[] Turniej(ArrayList populacja)
+        public override ushort[] Turniej(ArrayList populacja)
         {
             ushort[] zwyciezca = new ushort[dlugoscGenotypu];
 
@@ -37,29 +37,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             return zwyciezca;
         }
 
-        private ArrayList ZwrocWskazniki(ArrayList populacja)
-        {
-            ArrayList wskazniki = new ArrayList();
-            double suma = 0;
-
-            foreach(ushort[] osobnik in populacja)
-            {
-                suma += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
-            }
-
-            double sumaCzesciowa = 0;
-            foreach(ushort[] osobnik in populacja)
-            {
-                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)[1] / suma;
-
-                sumaCzesciowa += wskaznik;
-                wskazniki.Add(sumaCzesciowa);
-            }
-
-            return wskazniki;
-        }
-
-        public ushort[] MetodaRuletki(String typRuletki, ArrayList populacja)
+        public override ushort[] MetodaRuletki(String typRuletki, ArrayList populacja)
         {
             ushort[] osobnik = new ushort[dlugoscGenotypu];
             ArrayList wskazniki = ZwrocWskazniki(populacja);
@@ -82,6 +60,28 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             return osobnik;
+        }
+
+        private ArrayList ZwrocWskazniki(ArrayList populacja)
+        {
+            ArrayList wskazniki = new ArrayList();
+            double suma = 0;
+
+            foreach (ushort[] osobnik in populacja)
+            {
+                suma += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
+            }
+
+            double sumaCzesciowa = 0;
+            foreach (ushort[] osobnik in populacja)
+            {
+                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)[1] / suma;
+
+                sumaCzesciowa += wskaznik;
+                wskazniki.Add(sumaCzesciowa);
+            }
+
+            return wskazniki;
         }
     }
 }
