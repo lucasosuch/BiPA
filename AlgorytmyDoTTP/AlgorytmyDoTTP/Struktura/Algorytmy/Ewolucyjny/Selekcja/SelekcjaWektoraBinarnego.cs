@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using System;
 using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
@@ -7,9 +8,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
     {
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
-        private Osobnik rozwiazanie;
+        private OsobnikKP rozwiazanie;
 
-        public SelekcjaWektoraBinarnego(Osobnik rozwiazanie, ushort dlugoscGenotypu)
+        public SelekcjaWektoraBinarnego(OsobnikKP rozwiazanie, ushort dlugoscGenotypu)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;

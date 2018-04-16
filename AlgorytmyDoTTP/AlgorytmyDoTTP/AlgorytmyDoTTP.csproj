@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\AOsobnik.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikKP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\ARekombinacja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />

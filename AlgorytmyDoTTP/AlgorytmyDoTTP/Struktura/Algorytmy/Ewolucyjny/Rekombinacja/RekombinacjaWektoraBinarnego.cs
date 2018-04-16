@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System;
 using System.Collections;
 
@@ -7,10 +8,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     class RekombinacjaWektoraBinarnego : ARekombinacja
     {
         private double pwoMutacji;
-        private Osobnik rozwiazanie;
+        private OsobnikKP rozwiazanie;
         private Random losowy = new Random();
 
-        public RekombinacjaWektoraBinarnego(double pwoMutacji, Osobnik rozwiazanie)
+        public RekombinacjaWektoraBinarnego(double pwoMutacji, OsobnikKP rozwiazanie)
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
