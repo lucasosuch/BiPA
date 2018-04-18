@@ -1,13 +1,9 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
-    class ProblemPlecakowy
+    class ProblemPlecakowy : ProblemOptymalizacyjny
     {
         private double maxWagaPlecaka;
         private Instancja[] przedmioty;
@@ -67,11 +63,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             przedmioty[24] = new Instancja(0.63, 99.0);
         }
 
-        public double[] ObliczZysk(ArrayList wybranePrzedmioty)
+        public override double[] ObliczZysk(ArrayList wektor)
         {
             double[] wynik = new double[] {0, 0};
 
-            foreach(Instancja przedmiot in wybranePrzedmioty)
+            foreach(Instancja przedmiot in wektor)
             {
                 wynik[0] += przedmiot.ZwrocWage();
                 wynik[1] += przedmiot.ZwrocWartosc();

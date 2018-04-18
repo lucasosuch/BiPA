@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
-    class Instancja
+    class Instancja : IPomocniczy
     {
         private double waga;
         private double wartosc;
@@ -15,6 +16,21 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
         {
             this.waga = waga;
             this.wartosc = wartosc;
+        }
+
+        public double ZwrocDlugosc()
+        {
+            throw new NotImplementedException();
+        }
+
+        public short ZwrocDo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public short ZwrocOd()
+        {
+            throw new NotImplementedException();
         }
 
         public double ZwrocWage()

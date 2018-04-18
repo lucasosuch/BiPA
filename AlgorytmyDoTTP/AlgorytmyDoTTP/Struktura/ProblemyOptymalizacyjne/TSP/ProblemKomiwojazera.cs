@@ -1,19 +1,18 @@
-﻿using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
-    class ProblemKomiwojazera
+    class ProblemKomiwojazera : ProblemOptymalizacyjny
     {
-        private int iloscWierzcholkow;
         private Instancja[] instancje;
 
-        public ProblemKomiwojazera(int iloscWierzcholkow)
+        public ProblemKomiwojazera(ushort iloscWierzcholkow)
         {
-            this.iloscWierzcholkow = iloscWierzcholkow;
-            this.Inicjalizacja();
+            this.Inicjalizacja(iloscWierzcholkow);
         }
 
-        private void Inicjalizacja()
+        private void Inicjalizacja(ushort iloscWierzcholkow)
         {
             instancje = new Instancja[iloscWierzcholkow * (iloscWierzcholkow - 1)];
 
@@ -34,7 +33,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             instancje[14] = new Instancja(5, 6, 3.0);
         }
 
-        public double ObliczDlugoscTrasy(ArrayList wektor)
+        private double ObliczDlugoscTrasy(ArrayList wektor)
         {
             double wynik = 0;
             int dlugoscWekotra = wektor.Count;
@@ -48,11 +47,19 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
                     if (instancja.ZwrocOd() == (short)wektor[j] && instancja.ZwrocDo() == (short)wektor[i])
                     {
                         wynik += instancja.ZwrocDlugosc();
+                    } else if(instancja.ZwrocDo() == (short)wektor[j] && instancja.ZwrocOd() == (short)wektor[i])
+                    {
+                        wynik += instancja.ZwrocDlugosc();
                     }
                 }
             }
 
             return wynik;
+        }
+
+        public override double[] ObliczZysk(ArrayList wektor)
+        {
+            return new double[] { ObliczDlugoscTrasy(wektor) * -1 };
         }
     }
 }

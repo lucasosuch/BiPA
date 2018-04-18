@@ -65,6 +65,8 @@
     <Compile Include="Struktura\Config.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\SEA.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\Instancja.cs" />
@@ -103,8 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

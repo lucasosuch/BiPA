@@ -1,6 +1,9 @@
-﻿namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
+﻿using System;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+
+namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
-    class Instancja
+    class Instancja : IPomocniczy
     {
         private short prowadziOd;
         private short prowadziDo;
@@ -26,6 +29,16 @@
         public double ZwrocDlugosc()
         {
             return dlugosc;
+        }
+
+        public double ZwrocWage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double ZwrocWartosc()
+        {
+            throw new NotImplementedException();
         }
     }
 }
