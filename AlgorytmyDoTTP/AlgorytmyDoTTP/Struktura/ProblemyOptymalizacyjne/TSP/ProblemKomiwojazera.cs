@@ -33,6 +33,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             instancje[14] = new Instancja(5, 6, 3.0);
         }
 
+        public override double[] ObliczZysk(ArrayList wektor)
+        {
+            return new double[] { ObliczDlugoscTrasy(wektor) * -1 };
+        }
+
         private double ObliczDlugoscTrasy(ArrayList wektor)
         {
             double wynik = 0;
@@ -47,7 +52,8 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
                     if (instancja.ZwrocOd() == (short)wektor[j] && instancja.ZwrocDo() == (short)wektor[i])
                     {
                         wynik += instancja.ZwrocDlugosc();
-                    } else if(instancja.ZwrocDo() == (short)wektor[j] && instancja.ZwrocOd() == (short)wektor[i])
+                    }
+                    else if (instancja.ZwrocDo() == (short)wektor[j] && instancja.ZwrocOd() == (short)wektor[i])
                     {
                         wynik += instancja.ZwrocDlugosc();
                     }
@@ -55,11 +61,6 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             }
 
             return wynik;
-        }
-
-        public override double[] ObliczZysk(ArrayList wektor)
-        {
-            return new double[] { ObliczDlugoscTrasy(wektor) * -1 };
         }
     }
 }

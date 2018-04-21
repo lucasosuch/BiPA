@@ -8,9 +8,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
     {
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
-        private OsobnikKP rozwiazanie;
+        private AOsobnik rozwiazanie;
 
-        public SelekcjaWektoraBinarnego(OsobnikKP rozwiazanie, ushort dlugoscGenotypu)
+        public SelekcjaWektoraBinarnego(AOsobnik rozwiazanie, ushort dlugoscGenotypu)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;

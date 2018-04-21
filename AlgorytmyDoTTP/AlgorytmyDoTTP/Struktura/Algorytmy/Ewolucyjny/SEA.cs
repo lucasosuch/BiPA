@@ -4,6 +4,8 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System.Collections;
 using System.Diagnostics;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -13,12 +15,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private ushort rozmiarPopulacji;
         private ushort liczbaPrzypadkow;
         private double pwoKrzyzowania;
-        private Rekombinacja.ARekombinacja rekombinacja;
-        private Selekcja.ASelekcja selekcja;
+        private ARekombinacja rekombinacja;
+        private ASelekcja selekcja;
         private AOsobnik rozwiazanie;
         private Random losowy = new Random();
 
-        public SEA(Selekcja.ASelekcja selekcja, Rekombinacja.ARekombinacja rekombinacja, AOsobnik rozwiazanie, ushort rozmiarPopulacji, short iloscPokolen, ushort liczbaPrzypadkow, double pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AOsobnik rozwiazanie, ushort rozmiarPopulacji, short iloscPokolen, ushort liczbaPrzypadkow, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
