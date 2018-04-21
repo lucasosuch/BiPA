@@ -59,6 +59,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikKP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\ARekombinacja.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektoraBinarnego.cs" />
