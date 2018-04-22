@@ -70,6 +70,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         private ushort[] PMX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
+            int ciecie1 = losowy.Next(0, przodek1.Length),
+                ciecie2 = losowy.Next(0, przodek1.Length),
+                start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
+                koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
+
+            potomek = (ushort[])przodek2.Clone();
+            for(int i = start; i < koniec; i++)
+            {
+
+            }
 
             return potomek;
         }
