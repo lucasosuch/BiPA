@@ -6,130 +6,60 @@ using System.Diagnostics;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     class SEA : IAlgorytm
     {
         private short iloscPokolen;
-        private ushort rozmiarPopulacji;
-        private ushort liczbaPrzypadkow;
         private double pwoKrzyzowania;
         private ARekombinacja rekombinacja;
         private ASelekcja selekcja;
         private AOsobnik rozwiazanie;
+        private APopulacja populacja;
         private Random losowy = new Random();
 
-        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AOsobnik rozwiazanie, ushort rozmiarPopulacji, short iloscPokolen, ushort liczbaPrzypadkow, double pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AOsobnik rozwiazanie, APopulacja populacja, short iloscPokolen, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
             this.rozwiazanie = rozwiazanie;
-            this.rozmiarPopulacji = rozmiarPopulacji;
             this.iloscPokolen = iloscPokolen;
-            this.liczbaPrzypadkow = liczbaPrzypadkow;
+            this.populacja = populacja;
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
         public void Start()
         {
-            double wartoscNiebo = 0,
-                   procentNajlepszego = 0.8,
-                   globalnieNajlepszyOsobnik = 409;
-
-            ushort[] niebo = new ushort[liczbaPrzypadkow];
-            
-            Stopwatch stopWatch = new Stopwatch();
             ArrayList nowaPopulacja = new ArrayList();
-            ArrayList populacja = StworzPopulacje();
+            ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
 
-            for (int i = 0; i < liczbaPrzypadkow; i++)
-            {
-                niebo[i] = 0;
-            }
-
-            stopWatch.Start();
             while (iloscPokolen >= 0)
             {
-                for (int i = 0; i < rozmiarPopulacji; i++)
+                for (int i = 0; i < populacjaBazowa.Count; i++)
                 {
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
-                        ushort[] mama = selekcja.Turniej(populacja),
-                                 tata = selekcja.Turniej(populacja),
+                        ushort[] mama = selekcja.WybierzOsobnika(populacjaBazowa),
+                                 tata = selekcja.WybierzOsobnika(populacjaBazowa),
                                  dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
                                  dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
 
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
-
-                        double przystosowanieDziecko1 = rozwiazanie.FunkcjaDopasowania(dziecko1)[1],
-                               przystosowanieDziecko2 = rozwiazanie.FunkcjaDopasowania(dziecko2)[1];
-
-                        if (wartoscNiebo < przystosowanieDziecko1)
-                        {
-                            wartoscNiebo = przystosowanieDziecko1;
-                            niebo = (ushort[])dziecko1.Clone();
-                        }
-
-                        if (wartoscNiebo < przystosowanieDziecko2)
-                        {
-                            wartoscNiebo = przystosowanieDziecko2;
-                            niebo = (ushort[])dziecko2.Clone();
-                        }
-
-                        if(wartoscNiebo >= (procentNajlepszego * globalnieNajlepszyOsobnik))
-                        {
-                            stopWatch.Stop();
-                        }
                     }
                 }
 
-                populacja.Clear();
-                populacja.AddRange(nowaPopulacja);
+                populacjaBazowa.Clear();
+                populacjaBazowa.AddRange(nowaPopulacja);
                 nowaPopulacja.Clear();
                 
                 --iloscPokolen;
             }
 
-            TimeSpan ts = stopWatch.Elapsed;
-            Console.WriteLine("Czas w, którym znaleziono "+ procentNajlepszego + " najlepszego osobnika: " + ts);
-            Console.WriteLine("Najlepszy osobnik: Genotyp = ["+string.Join(",", niebo) + "]");
-
-            String fenotyp = "";
-            foreach (Instancja element in rozwiazanie.Fenotyp(niebo))
-            {
-                fenotyp += element.ZwrocWage() +"|"+ element.ZwrocWartosc() +"; ";
-            }
-
-            double[] najlepszyOsobnik = rozwiazanie.FunkcjaDopasowania(niebo);
-
-            Console.WriteLine("Fenotyp = ["+ fenotyp +"]");
-            Console.WriteLine("Funkcja dopasowania: waga = "+ najlepszyOsobnik[0]+ ", wynik = "+ najlepszyOsobnik[1]);
-
-            double srednia = SredniaPopulacji(populacja),
-                   odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
-
-            Console.WriteLine("Średnia = " + srednia +", odchylenie standardowe = "+ odchylenieStadowe);
-            Console.ReadLine();
-        }
-
-        private ArrayList StworzPopulacje()
-        {
-            ArrayList populacja = new ArrayList();
-
-            for (int i = 0; i < rozmiarPopulacji; i++)
-            {
-                ushort[] genotyp = new ushort[liczbaPrzypadkow];
-                for (int j = 0; j < liczbaPrzypadkow; j++)
-                {
-                    genotyp[j] = (ushort)losowy.Next(2);
-                }
-
-                populacja.Add(genotyp);
-            }
-
-            return populacja;
+            //double srednia = SredniaPopulacji(populacja),
+            //       odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
         }
 
         private double SredniaPopulacji(ArrayList populacja)

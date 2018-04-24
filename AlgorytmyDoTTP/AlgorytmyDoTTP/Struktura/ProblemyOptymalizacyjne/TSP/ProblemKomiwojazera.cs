@@ -49,11 +49,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
                 foreach (Instancja instancja in instancje)
                 {
-                    if (instancja.ZwrocOd() == (short)wektor[j] && instancja.ZwrocDo() == (short)wektor[i])
+                    if (instancja.ZwrocOd() == (ushort)wektor[j] && instancja.ZwrocDo() == (ushort)wektor[i])
                     {
                         wynik += instancja.ZwrocDlugosc();
                     }
-                    else if (instancja.ZwrocDo() == (short)wektor[j] && instancja.ZwrocOd() == (short)wektor[i])
+                    else if (instancja.ZwrocDo() == (ushort)wektor[j] && instancja.ZwrocOd() == (ushort)wektor[i])
                     {
                         wynik += instancja.ZwrocDlugosc();
                     }

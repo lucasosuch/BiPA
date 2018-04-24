@@ -9,14 +9,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
         private AOsobnik rozwiazanie;
+        private String typSelekcji;
 
-        public SelekcjaWektoraBinarnego(AOsobnik rozwiazanie, ushort dlugoscGenotypu)
+        public SelekcjaWektoraBinarnego(AOsobnik rozwiazanie, ushort dlugoscGenotypu, String typSelekcji)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;
+            this.typSelekcji = typSelekcji;
         }
 
-        public override ushort[] Turniej(ArrayList populacja)
+        public override ushort[] WybierzOsobnika(ArrayList populacja)
+        {
+            if(typSelekcji == "Turniej")
+            {
+                return Turniej(populacja);
+            }
+
+            return MetodaRuletki(populacja);
+        }
+
+        protected override ushort[] Turniej(ArrayList populacja)
         {
             ushort[] zwyciezca = new ushort[dlugoscGenotypu];
 
@@ -38,26 +50,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             return zwyciezca;
         }
 
-        public override ushort[] MetodaRuletki(String typRuletki, ArrayList populacja)
+        protected override ushort[] MetodaRuletki(ArrayList populacja)
         {
             ushort[] osobnik = new ushort[dlugoscGenotypu];
             ArrayList wskazniki = ZwrocWskazniki(populacja);
+            double pwo = losowy.NextDouble(),
+                   poprzednik = 0;
 
-            if(typRuletki == "Zwykla")
+            for(int i = 0; i < populacja.Count; i++)
             {
-                double pwo = losowy.NextDouble(),
-                       poprzednik = 0;
-
-                for(int i = 0; i < populacja.Count; i++)
+                if(poprzednik <= pwo && pwo < (double)wskazniki[i])
                 {
-                    if(poprzednik <= pwo && pwo < (double)wskazniki[i])
-                    {
-                        osobnik = (ushort[])((ushort[])populacja[i]).Clone();
-                        break;
-                    }
-
-                    poprzednik = (double)wskazniki[i];
+                    osobnik = (ushort[])((ushort[])populacja[i]).Clone();
+                    break;
                 }
+
+                poprzednik = (double)wskazniki[i];
             }
 
             return osobnik;

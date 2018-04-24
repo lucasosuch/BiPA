@@ -1,5 +1,6 @@
 ﻿using System;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
@@ -70,16 +71,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         private ushort[] PMX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
-            int ciecie1 = losowy.Next(0, przodek1.Length),
-                ciecie2 = losowy.Next(0, przodek1.Length),
-                start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
-                koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
 
-            potomek = (ushort[])przodek2.Clone();
-            for(int i = start; i < koniec; i++)
-            {
-
-            }
+            PMX pmx = new PMX(przodek1, przodek2);
 
             return potomek;
         }

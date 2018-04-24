@@ -5,8 +5,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
     abstract class ASelekcja
     {
-        public abstract ushort[] Turniej(ArrayList populacja);
-
-        public abstract ushort[] MetodaRuletki(String typRuletki, ArrayList populacja);
+        public abstract ushort[] WybierzOsobnika(ArrayList populacja);
+        protected abstract ushort[] Turniej(ArrayList populacja);
+        protected abstract ushort[] MetodaRuletki(ArrayList populacja);
     }
 }
