@@ -34,7 +34,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         {
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
-
+           
             while (iloscPokolen >= 0)
             {
                 for (int i = 0; i < populacjaBazowa.Count; i++)

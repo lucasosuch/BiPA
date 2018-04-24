@@ -9,12 +9,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
         public ProblemKomiwojazera(ushort iloscWierzcholkow)
         {
-            this.Inicjalizacja(iloscWierzcholkow);
+            Inicjalizacja(iloscWierzcholkow);
         }
 
         private void Inicjalizacja(ushort iloscWierzcholkow)
         {
-            instancje = new Instancja[iloscWierzcholkow * (iloscWierzcholkow - 1)];
+            instancje = new Instancja[iloscWierzcholkow];
 
             instancje[0] = new Instancja(1, 2, 10.0);
             instancje[1] = new Instancja(1, 3, 5.0);

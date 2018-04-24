@@ -29,24 +29,30 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 
         public override ArrayList StworzPopulacjeBazowa()
         {
-            for(int i = 0; i < rozmiarPopulacji; i++)
+            for (int i = 0; i < rozmiarPopulacji; i++)
             {
                 ushort[] osobnik = new ushort[dlugoscGenotypu];
 
                 if (losowy.NextDouble() < zroznicowaniePopulacji)
                 {
+                    ArrayList wykorzystane = new ArrayList();
+
                     for (int j = 0; j < dlugoscGenotypu; j++)
                     {
-                        int wynik = 0;
-                        ArrayList wykorzystane = new ArrayList();
-
-                        while(wykorzystane.IndexOf(wynik) != -1)
+                        while(true)
                         {
-                            wynik = (ushort)losowy.Next(1, dlugoscGenotypu+1);
-                        }
+                            int wynik = (ushort)losowy.Next(1, dlugoscGenotypu + 1);
 
-                        osobnik[j] = (ushort)wynik;
+                            if (wykorzystane.IndexOf(wynik) == -1)
+                            {
+                                wykorzystane.Add(wynik);
+                                osobnik[j] = (ushort)wynik;
+                                break;
+                            }
+                        }
                     }
+
+                    wykorzystane.Clear();
                 } else
                 {
                     for(int j = 0; j < dlugoscGenotypu; j++)

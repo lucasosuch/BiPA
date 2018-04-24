@@ -7,6 +7,7 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using System.Collections;
+using System;
 
 namespace AlgorytmyDoTTP.Struktura
 {
@@ -16,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura
         {
             short iloscPokolen = 200;
             ushort rozmiarPopulacji = 90,
-                   dlugoscGenotypu = 25;
+                   dlugoscGenotypu = 15;
             double pwoMutacji = 0.2,
                    pwoKrzyzowania = 0.8;
 
@@ -24,11 +25,11 @@ namespace AlgorytmyDoTTP.Struktura
             //OsobnikKP rozwiazanie = new OsobnikKP(problemPlecakowy);
             //problemPlecakowy.UstawMaxWagePlecaka(7);
             //ARekombinacja rekombinacja = new RekombinacjaWektoraBinarnego(pwoMutacji, rozwiazanie);
-
-            APopulacja populacja = new PopulacjaACykliczna(rozmiarPopulacji, dlugoscGenotypu);
+            
+            APopulacja populacja = new PopulacjaCykliczna(rozmiarPopulacji, dlugoscGenotypu, dlugoscGenotypu);
 
             ProblemKomiwojazera problemKomiwojazera = new ProblemKomiwojazera(15);
-            OsobnikTSP rozwiazanie = new OsobnikTSP(problemKomiwojazera);
+            AOsobnik rozwiazanie = new OsobnikTSP(problemKomiwojazera);
             ARekombinacja rekombinacja = new RekombinacjaTSP(pwoMutacji, rozwiazanie, "PMX");
             ASelekcja selekcja = new SelekcjaWektoraBinarnego(rozwiazanie, dlugoscGenotypu, "Turniej");
 
