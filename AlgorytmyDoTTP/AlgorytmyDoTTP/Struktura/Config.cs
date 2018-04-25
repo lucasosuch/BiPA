@@ -31,7 +31,7 @@ namespace AlgorytmyDoTTP.Struktura
             ProblemKomiwojazera problemKomiwojazera = new ProblemKomiwojazera(15);
             AOsobnik rozwiazanie = new OsobnikTSP(problemKomiwojazera);
             ARekombinacja rekombinacja = new RekombinacjaTSP(pwoMutacji, rozwiazanie, "PMX");
-            ASelekcja selekcja = new SelekcjaWektoraBinarnego(rozwiazanie, dlugoscGenotypu, "Turniej");
+            ASelekcja selekcja = new SelekcjaWektora(rozwiazanie, dlugoscGenotypu, "Turniej");
 
             return new SEA(selekcja, rekombinacja, rozwiazanie, populacja, iloscPokolen, pwoKrzyzowania);
         }

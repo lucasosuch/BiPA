@@ -66,7 +66,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Rozszerzenia\PMX.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektoraBinarnego.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektora.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Algorytm.cs" />
     <Compile Include="Struktura\Config.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />

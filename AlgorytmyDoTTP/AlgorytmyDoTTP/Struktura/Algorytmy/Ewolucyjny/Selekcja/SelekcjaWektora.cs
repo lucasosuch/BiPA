@@ -4,14 +4,14 @@ using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
-    class SelekcjaWektoraBinarnego : ASelekcja
+    class SelekcjaWektora : ASelekcja
     {
         private ushort dlugoscGenotypu;
         private Random losowy = new Random();
         private AOsobnik rozwiazanie;
         private String typSelekcji;
 
-        public SelekcjaWektoraBinarnego(AOsobnik rozwiazanie, ushort dlugoscGenotypu, String typSelekcji)
+        public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, String typSelekcji)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;
