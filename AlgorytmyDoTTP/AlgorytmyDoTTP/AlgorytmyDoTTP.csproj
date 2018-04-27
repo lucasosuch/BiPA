@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\AnalizaPopulacji.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\IAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\AOsobnik.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikKP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikTSP.cs" />

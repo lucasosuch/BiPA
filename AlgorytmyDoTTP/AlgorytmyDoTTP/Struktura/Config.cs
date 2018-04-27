@@ -8,6 +8,7 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using System.Collections;
 using System;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 
 namespace AlgorytmyDoTTP.Struktura
 {
@@ -33,7 +34,9 @@ namespace AlgorytmyDoTTP.Struktura
             ARekombinacja rekombinacja = new RekombinacjaTSP(pwoMutacji, rozwiazanie, "PMX");
             ASelekcja selekcja = new SelekcjaWektora(rozwiazanie, dlugoscGenotypu, "Turniej");
 
-            return new SEA(selekcja, rekombinacja, rozwiazanie, populacja, iloscPokolen, pwoKrzyzowania);
+            IAnalityka analityka = new AnalizaPopulacji(rozwiazanie);
+
+            return new SEA(selekcja, rekombinacja, analityka, populacja, iloscPokolen, pwoKrzyzowania);
         }
     }
 }

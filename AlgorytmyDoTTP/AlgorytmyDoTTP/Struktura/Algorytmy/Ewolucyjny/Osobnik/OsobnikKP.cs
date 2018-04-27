@@ -1,30 +1,26 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
     class OsobnikKP : AOsobnik
     {
-        private ProblemPlecakowy problemPlecakowy;
-
-        public OsobnikKP(ProblemPlecakowy problemPlecakowy)
+        public OsobnikKP(ProblemOptymalizacyjny problemPlecakowy)
         {
-            this.problemPlecakowy = problemPlecakowy;
+            problemOptymalizacyjny = problemPlecakowy;
         }
 
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
-            return problemPlecakowy.ZwrocWybraneElementy(genotyp);
+            return ((ProblemPlecakowy)problemOptymalizacyjny).ZwrocWybraneElementy(genotyp);
         }
 
-        public override double[] FunkcjaDopasowania(ushort[] genotyp)
+        public override Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp)
         {
-            return problemPlecakowy.ObliczZysk(Fenotyp((genotyp)));
-        }
-
-        public ProblemPlecakowy ZwrocProblemPlecakowy()
-        {
-            return problemPlecakowy;
+            return problemOptymalizacyjny.ObliczZysk(Fenotyp((genotyp)));
         }
     }
 }

@@ -8,10 +8,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     class RekombinacjaWektoraBinarnego : ARekombinacja
     {
         private double pwoMutacji;
-        private OsobnikKP rozwiazanie;
+        private AOsobnik rozwiazanie;
         private Random losowy = new Random();
 
-        public RekombinacjaWektoraBinarnego(double pwoMutacji, OsobnikKP rozwiazanie)
+        public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie)
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
@@ -46,9 +46,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         private ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
         {
-            double ograniczenie = rozwiazanie.ZwrocProblemPlecakowy().ZwrocMaxWagePlecaka();
+            double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
-            while (rozwiazanie.FunkcjaDopasowania(geny)[0] > ograniczenie)
+            while (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
             {
                 for(int i = 0; i < geny.Length; i++)
                 {

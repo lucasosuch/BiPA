@@ -7,6 +7,7 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -16,15 +17,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private double pwoKrzyzowania;
         private ARekombinacja rekombinacja;
         private ASelekcja selekcja;
-        private AOsobnik rozwiazanie;
+        private IAnalityka analityka;
         private APopulacja populacja;
         private Random losowy = new Random();
 
-        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AOsobnik rozwiazanie, APopulacja populacja, short iloscPokolen, double pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, IAnalityka analityka, APopulacja populacja, short iloscPokolen, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
-            this.rozwiazanie = rozwiazanie;
+            this.analityka = analityka;
             this.iloscPokolen = iloscPokolen;
             this.populacja = populacja;
             this.pwoKrzyzowania = pwoKrzyzowania;
@@ -60,31 +61,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             //double srednia = SredniaPopulacji(populacja),
             //       odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
-        }
-
-        private double SredniaPopulacji(ArrayList populacja)
-        {
-            double wynik = 0;
-            
-            foreach(ushort[] osobnik in populacja)
-            {
-                wynik += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
-            }
-
-            return wynik / populacja.Count;
-        }
-
-        private double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
-        {
-            double sumaKwadratow = 0;
-
-            foreach (ushort[] osobnik in populacja)
-            {
-                sumaKwadratow += Math.Pow(rozwiazanie.FunkcjaDopasowania(osobnik)[1], 2);
-            }
-
-            double sredniaSumaKwadratow = sumaKwadratow / (populacja.Count - 1);
-            return Math.Sqrt(sredniaSumaKwadratow - (Math.Pow(srednia, 2)));
         }
     }
 }

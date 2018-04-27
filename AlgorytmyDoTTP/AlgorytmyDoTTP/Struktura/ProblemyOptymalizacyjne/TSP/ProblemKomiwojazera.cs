@@ -1,21 +1,20 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
     class ProblemKomiwojazera : ProblemOptymalizacyjny
     {
-        private Instancja[] instancje;
-
         public ProblemKomiwojazera(ushort iloscWierzcholkow)
         {
-            Inicjalizacja(iloscWierzcholkow);
+            instancje = new IPomocniczy[iloscWierzcholkow];
+            Inicjalizacja();
         }
 
-        private void Inicjalizacja(ushort iloscWierzcholkow)
+        private void Inicjalizacja()
         {
-            instancje = new Instancja[iloscWierzcholkow];
-
             instancje[0] = new Instancja(1, 2, 10.0);
             instancje[1] = new Instancja(1, 3, 5.0);
             instancje[2] = new Instancja(1, 4, 7.0);
@@ -33,9 +32,13 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             instancje[14] = new Instancja(5, 6, 3.0);
         }
 
-        public override double[] ObliczZysk(ArrayList wektor)
+        public override Dictionary<String, double[]> ObliczZysk(ArrayList wektor)
         {
-            return new double[] { ObliczDlugoscTrasy(wektor) * -1 };
+            Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
+            wynik["min"] = new double[] { 0 };
+            wynik["max"] = new double[] { ObliczDlugoscTrasy(wektor) * -1 };
+
+            return wynik;
         }
 
         private double ObliczDlugoscTrasy(ArrayList wektor)

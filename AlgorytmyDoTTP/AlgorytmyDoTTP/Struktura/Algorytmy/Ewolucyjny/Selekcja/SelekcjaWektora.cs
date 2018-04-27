@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
@@ -33,17 +34,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             ushort[] zwyciezca = new ushort[dlugoscGenotypu];
 
             ((ushort[])populacja[0]).CopyTo(zwyciezca, 0);
-            double[] dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[0]);
+            Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[0]);
 
             for (int i = 0; i <= 25; i++)
             {
                 int k = losowy.Next(populacja.Count - 1);
-                double[] dopasowanie = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[k]);
+                Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[k]);
 
-                if(dopasowanieZwyciezcy[1] < dopasowanie[1])
+                if (dopasowanieZwyciezcy["max"][0] < dopasowanie["max"][0])
                 {
                     zwyciezca = (ushort[])populacja[k];
                     dopasowanieZwyciezcy = dopasowanie;
+                    
                 }
             }
 
@@ -73,18 +75,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
         private ArrayList ZwrocWskazniki(ArrayList populacja)
         {
-            ArrayList wskazniki = new ArrayList();
             double suma = 0;
+            ArrayList wskazniki = new ArrayList();
 
             foreach (ushort[] osobnik in populacja)
             {
-                suma += rozwiazanie.FunkcjaDopasowania(osobnik)[1];
+                suma += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
 
             double sumaCzesciowa = 0;
             foreach (ushort[] osobnik in populacja)
             {
-                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)[1] / suma;
+                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
 
                 sumaCzesciowa += wskaznik;
                 wskazniki.Add(sumaCzesciowa);
