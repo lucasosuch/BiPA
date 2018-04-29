@@ -29,7 +29,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     break;
 
                 case "PMX":
-                    potomek = PMX(przodek1, przodek2);
+                    potomek = (ushort[])PMX(przodek1, przodek2).Clone();
                     break;
 
                 case "OX":
@@ -73,6 +73,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             ushort[] potomek = new ushort[przodek1.Length];
 
             PMX pmx = new PMX(przodek1, przodek2);
+            potomek = (ushort[])pmx.ZwrocPotomka().Clone();
 
             return potomek;
         }

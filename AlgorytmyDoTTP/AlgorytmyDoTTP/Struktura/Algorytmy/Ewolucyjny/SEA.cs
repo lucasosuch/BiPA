@@ -1,9 +1,6 @@
 ﻿using System;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System.Collections;
-using System.Diagnostics;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
@@ -44,12 +41,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     {
                         ushort[] mama = selekcja.WybierzOsobnika(populacjaBazowa),
                                  tata = selekcja.WybierzOsobnika(populacjaBazowa),
-                                 dziecko1 = rekombinacja.Krzyzowanie(mama, tata),
-                                 dziecko2 = rekombinacja.Krzyzowanie(tata, mama);
+                                 dziecko1 = (ushort[])rekombinacja.Krzyzowanie(mama, tata).Clone(),
+                                 dziecko2 = (ushort[])rekombinacja.Krzyzowanie(tata, mama).Clone();
 
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
                     }
+                }
+
+                foreach(ushort[] osobnik in nowaPopulacja)
+                {
+                    Console.WriteLine(String.Join(", ", osobnik));
                 }
 
                 populacjaBazowa.Clear();
@@ -59,8 +61,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 --iloscPokolen;
             }
 
-            //double srednia = SredniaPopulacji(populacja),
-            //       odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
+            double srednia = analityka.SredniaPopulacji(populacjaBazowa),
+                   odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
+
+            Console.WriteLine("Średnia: "+ srednia);
+            Console.WriteLine("Odchstd:" + odchylenieStadowe);
         }
     }
 }

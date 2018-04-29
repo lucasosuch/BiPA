@@ -16,8 +16,8 @@ namespace AlgorytmyDoTTP.Struktura
     {
         public override IAlgorytm ZbudujAlgorytm()
         {
-            short iloscPokolen = 200;
-            ushort rozmiarPopulacji = 90,
+            short iloscPokolen = 10;
+            ushort rozmiarPopulacji = 30,
                    dlugoscGenotypu = 15;
             double pwoMutacji = 0.2,
                    pwoKrzyzowania = 0.8;
