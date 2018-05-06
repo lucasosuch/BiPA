@@ -8,9 +8,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
     abstract class AOsobnik
     {
         protected ProblemOptymalizacyjny problemOptymalizacyjny;
-        public abstract ArrayList Fenotyp(ushort[] genotyp);
-        public abstract Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp);
 
+        public AOsobnik(ProblemOptymalizacyjny problemOptymalizacyjny)
+        {
+            this.problemOptymalizacyjny = problemOptymalizacyjny;
+        }
+
+        // Zwraca wektor osobnika opisanego genotypem
+        public abstract ArrayList Fenotyp(ushort[] genotyp);
+
+        // Zwraca wektor osobnika opisanego genotypem
+        public Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp)
+        {
+            return problemOptymalizacyjny.ObliczZysk(Fenotyp(genotyp));
+        }
+
+        // Zwraca instancje problemu optymalizacyjnego
         public ProblemOptymalizacyjny ZwrocInstancjeProblemu()
         {
             return problemOptymalizacyjny;

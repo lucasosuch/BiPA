@@ -13,6 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
             this.rozwiazanie = rozwiazanie;
         }
 
+        // Zwraca wartość średnią z funkcji celów w populacji
         public double SredniaPopulacji(ArrayList populacja)
         {
             double wynik = 0;
@@ -25,6 +26,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
             return wynik / populacja.Count;
         }
 
+        // Zwraca wartość odchylenia standardowego z funkcji celów w populacji
         public double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
         {
             double sumaKwadratow = 0;

@@ -28,8 +28,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
-        public void Start()
+        public string Start()
         {
+            string tekst = "";
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
            
@@ -48,10 +49,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         nowaPopulacja.Add(dziecko2);
                     }
                 }
-
-                foreach(ushort[] osobnik in nowaPopulacja)
+                
+                foreach (ushort[] osobnik in nowaPopulacja)
                 {
-                    Console.WriteLine(String.Join(", ", osobnik));
+                    tekst += String.Join(", ", osobnik) + Environment.NewLine;
                 }
 
                 populacjaBazowa.Clear();
@@ -64,8 +65,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             double srednia = analityka.SredniaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
-            Console.WriteLine("Średnia: "+ srednia);
-            Console.WriteLine("Odchstd:" + odchylenieStadowe);
+            tekst += "Średnia: "+ srednia + Environment.NewLine;
+            tekst += "Odchstd:"+ odchylenieStadowe + Environment.NewLine;
+
+            return tekst;
         }
     }
 }

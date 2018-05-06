@@ -12,8 +12,15 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 
 namespace AlgorytmyDoTTP.Struktura
 {
+    /// <summary>
+    /// Klasa konfiguracyjna.
+    /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmami je rozwiązującymi.
+    /// </summary>
     class Config : Algorytm
     {
+        /// <summary>
+        /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
+        /// </summary>
         public override IAlgorytm ZbudujAlgorytm()
         {
             short iloscPokolen = 10;

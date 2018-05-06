@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,11 +18,6 @@ namespace AlgorytmyDoTTP
             InitializeComponent();
         }
 
-        private void metroScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -30,6 +26,12 @@ namespace AlgorytmyDoTTP
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Config ewolucyjny = new Config();
+            output.Text = ewolucyjny.ZbudujAlgorytm().Start();
         }
     }
 }

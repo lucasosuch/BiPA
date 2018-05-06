@@ -8,19 +8,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
     class OsobnikKP : AOsobnik
     {
-        public OsobnikKP(ProblemOptymalizacyjny problemPlecakowy)
+        public OsobnikKP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny)
         {
-            problemOptymalizacyjny = problemPlecakowy;
         }
 
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
             return ((ProblemPlecakowy)problemOptymalizacyjny).ZwrocWybraneElementy(genotyp);
-        }
-
-        public override Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp)
-        {
-            return problemOptymalizacyjny.ObliczZysk(Fenotyp((genotyp)));
         }
     }
 }

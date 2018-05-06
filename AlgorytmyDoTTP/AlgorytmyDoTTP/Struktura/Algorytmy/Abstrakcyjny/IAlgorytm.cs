@@ -2,6 +2,6 @@
 {
     interface IAlgorytm
     {
-        void Start();
+        string Start();
     }
 }

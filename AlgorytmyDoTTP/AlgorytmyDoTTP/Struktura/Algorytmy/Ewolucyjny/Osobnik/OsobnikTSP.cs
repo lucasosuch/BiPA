@@ -2,14 +2,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
     class OsobnikTSP : AOsobnik
     {
-        public OsobnikTSP(ProblemKomiwojazera problemKomiwojazera)
+        public OsobnikTSP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny)
         {
-            problemOptymalizacyjny = problemKomiwojazera;
         }
 
         public override ArrayList Fenotyp(ushort[] genotyp)
@@ -18,11 +18,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
             wynik.AddRange(genotyp);
 
             return wynik;
-        }
-
-        public override Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp)
-        {
-            return problemOptymalizacyjny.ObliczZysk(Fenotyp(genotyp));
         }
     }
 }
