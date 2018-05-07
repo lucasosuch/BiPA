@@ -79,6 +79,12 @@
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\Instancja.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\ProblemKomiwojazera.cs" />
+    <Compile Include="Widoki\Badanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Widoki\Badanie.Designer.cs">
+      <DependentUpon>Badanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widoki\Glowna.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Widoki\Historia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Widoki\Historia.Designer.cs">
+      <DependentUpon>Historia.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Widoki\Glowna.resx">
       <DependentUpon>Glowna.cs</DependentUpon>
     </EmbeddedResource>
