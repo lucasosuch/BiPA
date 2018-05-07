@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura;
+using AlgorytmyDoTTP.Widoki;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace AlgorytmyDoTTP
 {
     public partial class Glowna : Form
     {
+        List<Panel> lista = new List<Panel>();
+
         public Glowna()
         {
             InitializeComponent();
@@ -24,12 +27,25 @@ namespace AlgorytmyDoTTP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lista.Add(metroPanel1);
+            lista.Add(metroPanel2);
 
+            lista[0].BringToFront();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
+        }
+
+        private void badanie_Click(object sender, EventArgs e)
+        {
+            lista[0].BringToFront();
+        }
+
+        private void historia_Click(object sender, EventArgs e)
+        {
+            lista[1].BringToFront();
         }
     }
 }
