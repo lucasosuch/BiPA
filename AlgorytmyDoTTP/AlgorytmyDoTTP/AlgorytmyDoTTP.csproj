@@ -73,6 +73,9 @@
     <Compile Include="Struktura\Config.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\SEA.cs" />
+    <Compile Include="Struktura\Lacznik.cs" />
+    <Compile Include="Struktura\Most\Algorytm.cs" />
+    <Compile Include="Struktura\Most\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
@@ -130,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Struktura\PlikiKonfiguracyjne\Ewolucyjny.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

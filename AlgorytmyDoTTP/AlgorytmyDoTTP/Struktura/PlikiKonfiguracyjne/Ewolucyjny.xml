@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Korzen>
+  <Jezyk>
+    <nazwa>Ewolucyjny</nazwa>
+    <parametry>
+      <p1 klucz="iloscPokolen">Ilosc Pokolen</p1>
+      <p2 klucz="rozmiarPopulacji">Rozmiar Populacji</p2>
+      <p3 klucz="pwoMutacji">Prawdopodobieństwo Mutacji</p3>
+      <p4 klucz="pwoKrzyzowania">Prawdopodobieństwo Krzyżowania</p4>
+    </parametry>
+  </Jezyk>
+  <WartosciDomyslne>
+    
+  </WartosciDomyslne>
+</Korzen>

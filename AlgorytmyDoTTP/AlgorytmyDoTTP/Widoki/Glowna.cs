@@ -30,7 +30,6 @@ namespace AlgorytmyDoTTP
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-
         }
 
         private void start_Click(object sender, EventArgs e)
