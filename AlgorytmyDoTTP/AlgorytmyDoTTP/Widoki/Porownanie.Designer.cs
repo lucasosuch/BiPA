@@ -1,6 +1,6 @@
 ﻿namespace AlgorytmyDoTTP.Widoki
 {
-    partial class Historia
+    partial class Porownanie
     {
         /// <summary>
         /// Required designer variable.

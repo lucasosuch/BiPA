@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP.Widoki
 {
-    public partial class Historia : Form
+    public partial class Porownanie : Form
     {
-        public Historia()
+        public Porownanie()
         {
             InitializeComponent();
         }

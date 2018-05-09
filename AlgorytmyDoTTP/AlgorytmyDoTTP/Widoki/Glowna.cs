@@ -32,5 +32,11 @@ namespace AlgorytmyDoTTP
         {
 
         }
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            Badanie badanieTemp = new Badanie();
+            badanieTemp.Show();
+        }
     }
 }

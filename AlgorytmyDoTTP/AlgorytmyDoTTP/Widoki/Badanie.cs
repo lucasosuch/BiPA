@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace AlgorytmyDoTTP.Widoki
         public Badanie()
         {
             InitializeComponent();
+        }
+
+        private void Badanie_Load(object sender, EventArgs e)
+        {
+            wynikiBadania.Text = (new Config()).ZbudujAlgorytm().Start();
         }
     }
 }

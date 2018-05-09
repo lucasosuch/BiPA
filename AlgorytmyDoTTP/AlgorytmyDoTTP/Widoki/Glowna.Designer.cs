@@ -33,9 +33,22 @@ namespace AlgorytmyDoTTP
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
+            this.iloscPokolen = new MetroFramework.Controls.MetroTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rozmiarPopulacji = new MetroFramework.Controls.MetroTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pwoKrzyzowania = new MetroFramework.Controls.MetroTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pwoMutacji = new MetroFramework.Controls.MetroTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.start = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
+            this.badanie.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -43,69 +56,285 @@ namespace AlgorytmyDoTTP
             this.metroPanel1.Controls.Add(this.metroTabControl1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(12, 12);
+            this.metroPanel1.HorizontalScrollbarSize = 12;
+            this.metroPanel1.Location = new System.Drawing.Point(16, 15);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(886, 527);
+            this.metroPanel1.Size = new System.Drawing.Size(1181, 649);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 13;
             // 
             // metroTabControl1
             // 
             this.metroTabControl1.Controls.Add(this.badanie);
             this.metroTabControl1.Controls.Add(this.historia);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(886, 527);
+            this.metroTabControl1.Size = new System.Drawing.Size(1181, 649);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
             // 
             // badanie
             // 
+            this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.start);
+            this.badanie.Controls.Add(this.label6);
+            this.badanie.Controls.Add(this.label4);
+            this.badanie.Controls.Add(this.pwoKrzyzowania);
+            this.badanie.Controls.Add(this.label5);
+            this.badanie.Controls.Add(this.pwoMutacji);
+            this.badanie.Controls.Add(this.label3);
+            this.badanie.Controls.Add(this.rozmiarPopulacji);
+            this.badanie.Controls.Add(this.label2);
+            this.badanie.Controls.Add(this.iloscPokolen);
+            this.badanie.Controls.Add(this.label1);
+            this.badanie.Controls.Add(this.wyborAlgorytmu);
             this.badanie.HorizontalScrollbarBarColor = true;
             this.badanie.HorizontalScrollbarHighlightOnWheel = false;
-            this.badanie.HorizontalScrollbarSize = 10;
+            this.badanie.HorizontalScrollbarSize = 12;
             this.badanie.Location = new System.Drawing.Point(4, 38);
+            this.badanie.Margin = new System.Windows.Forms.Padding(4);
             this.badanie.Name = "badanie";
-            this.badanie.Size = new System.Drawing.Size(878, 485);
+            this.badanie.Size = new System.Drawing.Size(1173, 607);
             this.badanie.TabIndex = 0;
             this.badanie.Text = "Badanie Algorytmu";
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
-            this.badanie.VerticalScrollbarSize = 10;
+            this.badanie.VerticalScrollbarSize = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(55, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(354, 38);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Konfiguracja Algorytmu";
+            // 
+            // wyborAlgorytmu
+            // 
+            this.wyborAlgorytmu.FormattingEnabled = true;
+            this.wyborAlgorytmu.ItemHeight = 24;
+            this.wyborAlgorytmu.Location = new System.Drawing.Point(62, 107);
+            this.wyborAlgorytmu.Name = "wyborAlgorytmu";
+            this.wyborAlgorytmu.Size = new System.Drawing.Size(333, 30);
+            this.wyborAlgorytmu.TabIndex = 1;
+            this.wyborAlgorytmu.UseSelectable = true;
             // 
             // historia
             // 
             this.historia.HorizontalScrollbarBarColor = true;
             this.historia.HorizontalScrollbarHighlightOnWheel = false;
-            this.historia.HorizontalScrollbarSize = 10;
+            this.historia.HorizontalScrollbarSize = 12;
             this.historia.Location = new System.Drawing.Point(4, 38);
+            this.historia.Margin = new System.Windows.Forms.Padding(4);
             this.historia.Name = "historia";
-            this.historia.Size = new System.Drawing.Size(878, 485);
+            this.historia.Size = new System.Drawing.Size(1173, 607);
             this.historia.TabIndex = 1;
             this.historia.Text = "Historia Badań";
             this.historia.VerticalScrollbarBarColor = true;
             this.historia.VerticalScrollbarHighlightOnWheel = false;
-            this.historia.VerticalScrollbarSize = 10;
+            this.historia.VerticalScrollbarSize = 13;
+            // 
+            // iloscPokolen
+            // 
+            // 
+            // 
+            // 
+            this.iloscPokolen.CustomButton.Image = null;
+            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(309, 1);
+            this.iloscPokolen.CustomButton.Name = "";
+            this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.iloscPokolen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.iloscPokolen.CustomButton.TabIndex = 1;
+            this.iloscPokolen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.iloscPokolen.CustomButton.UseSelectable = true;
+            this.iloscPokolen.CustomButton.Visible = false;
+            this.iloscPokolen.Lines = new string[0];
+            this.iloscPokolen.Location = new System.Drawing.Point(62, 345);
+            this.iloscPokolen.MaxLength = 32767;
+            this.iloscPokolen.Name = "iloscPokolen";
+            this.iloscPokolen.PasswordChar = '\0';
+            this.iloscPokolen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iloscPokolen.SelectedText = "";
+            this.iloscPokolen.SelectionLength = 0;
+            this.iloscPokolen.SelectionStart = 0;
+            this.iloscPokolen.ShortcutsEnabled = true;
+            this.iloscPokolen.Size = new System.Drawing.Size(333, 25);
+            this.iloscPokolen.TabIndex = 3;
+            this.iloscPokolen.UseSelectable = true;
+            this.iloscPokolen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.iloscPokolen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(59, 325);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Ilość pokoleń";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 248);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Rozmiar populacji";
+            // 
+            // rozmiarPopulacji
+            // 
+            // 
+            // 
+            // 
+            this.rozmiarPopulacji.CustomButton.Image = null;
+            this.rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(309, 1);
+            this.rozmiarPopulacji.CustomButton.Name = "";
+            this.rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.rozmiarPopulacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.rozmiarPopulacji.CustomButton.TabIndex = 1;
+            this.rozmiarPopulacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.rozmiarPopulacji.CustomButton.UseSelectable = true;
+            this.rozmiarPopulacji.CustomButton.Visible = false;
+            this.rozmiarPopulacji.Lines = new string[0];
+            this.rozmiarPopulacji.Location = new System.Drawing.Point(62, 268);
+            this.rozmiarPopulacji.MaxLength = 32767;
+            this.rozmiarPopulacji.Name = "rozmiarPopulacji";
+            this.rozmiarPopulacji.PasswordChar = '\0';
+            this.rozmiarPopulacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.rozmiarPopulacji.SelectedText = "";
+            this.rozmiarPopulacji.SelectionLength = 0;
+            this.rozmiarPopulacji.SelectionStart = 0;
+            this.rozmiarPopulacji.ShortcutsEnabled = true;
+            this.rozmiarPopulacji.Size = new System.Drawing.Size(333, 25);
+            this.rozmiarPopulacji.TabIndex = 2;
+            this.rozmiarPopulacji.UseSelectable = true;
+            this.rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.rozmiarPopulacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(697, 248);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(223, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Prawdopodobieństwo krzyżowania";
+            // 
+            // pwoKrzyzowania
+            // 
+            // 
+            // 
+            // 
+            this.pwoKrzyzowania.CustomButton.Image = null;
+            this.pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(309, 1);
+            this.pwoKrzyzowania.CustomButton.Name = "";
+            this.pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.pwoKrzyzowania.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.pwoKrzyzowania.CustomButton.TabIndex = 1;
+            this.pwoKrzyzowania.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.pwoKrzyzowania.CustomButton.UseSelectable = true;
+            this.pwoKrzyzowania.CustomButton.Visible = false;
+            this.pwoKrzyzowania.Lines = new string[0];
+            this.pwoKrzyzowania.Location = new System.Drawing.Point(700, 268);
+            this.pwoKrzyzowania.MaxLength = 32767;
+            this.pwoKrzyzowania.Name = "pwoKrzyzowania";
+            this.pwoKrzyzowania.PasswordChar = '\0';
+            this.pwoKrzyzowania.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pwoKrzyzowania.SelectedText = "";
+            this.pwoKrzyzowania.SelectionLength = 0;
+            this.pwoKrzyzowania.SelectionStart = 0;
+            this.pwoKrzyzowania.ShortcutsEnabled = true;
+            this.pwoKrzyzowania.Size = new System.Drawing.Size(333, 25);
+            this.pwoKrzyzowania.TabIndex = 4;
+            this.pwoKrzyzowania.UseSelectable = true;
+            this.pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.pwoKrzyzowania.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(697, 325);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(190, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Prawdopodobieństwo mutacji";
+            // 
+            // pwoMutacji
+            // 
+            // 
+            // 
+            // 
+            this.pwoMutacji.CustomButton.Image = null;
+            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(309, 1);
+            this.pwoMutacji.CustomButton.Name = "";
+            this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.pwoMutacji.CustomButton.TabIndex = 1;
+            this.pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.pwoMutacji.CustomButton.UseSelectable = true;
+            this.pwoMutacji.CustomButton.Visible = false;
+            this.pwoMutacji.Lines = new string[0];
+            this.pwoMutacji.Location = new System.Drawing.Point(700, 345);
+            this.pwoMutacji.MaxLength = 32767;
+            this.pwoMutacji.Name = "pwoMutacji";
+            this.pwoMutacji.PasswordChar = '\0';
+            this.pwoMutacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pwoMutacji.SelectedText = "";
+            this.pwoMutacji.SelectionLength = 0;
+            this.pwoMutacji.SelectionStart = 0;
+            this.pwoMutacji.ShortcutsEnabled = true;
+            this.pwoMutacji.Size = new System.Drawing.Size(333, 25);
+            this.pwoMutacji.TabIndex = 5;
+            this.pwoMutacji.UseSelectable = true;
+            this.pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.pwoMutacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(62, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Wybierz Algorytm";
+            // 
+            // start
+            // 
+            this.start.ActiveControl = null;
+            this.start.Location = new System.Drawing.Point(700, 472);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(264, 74);
+            this.start.TabIndex = 6;
+            this.start.Text = "Uruchom";
+            this.start.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.start.UseSelectable = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // Glowna
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(910, 551);
+            this.ClientSize = new System.Drawing.Size(1213, 678);
             this.Controls.Add(this.metroPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Glowna";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Glowna";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroTabControl1.ResumeLayout(false);
+            this.badanie.ResumeLayout(false);
+            this.badanie.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -116,6 +345,18 @@ namespace AlgorytmyDoTTP
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage badanie;
         private MetroFramework.Controls.MetroTabPage historia;
+        private MetroFramework.Controls.MetroComboBox wyborAlgorytmu;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private MetroFramework.Controls.MetroTextBox iloscPokolen;
+        private System.Windows.Forms.Label label3;
+        private MetroFramework.Controls.MetroTextBox rozmiarPopulacji;
+        private System.Windows.Forms.Label label4;
+        private MetroFramework.Controls.MetroTextBox pwoKrzyzowania;
+        private System.Windows.Forms.Label label5;
+        private MetroFramework.Controls.MetroTextBox pwoMutacji;
+        private System.Windows.Forms.Label label6;
+        private MetroFramework.Controls.MetroTile start;
     }
 }
 
