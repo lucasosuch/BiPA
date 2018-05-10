@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura;
+using AlgorytmyDoTTP.Struktura.Most;
 using AlgorytmyDoTTP.Widoki;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,21 @@ namespace AlgorytmyDoTTP
         public Glowna()
         {
             InitializeComponent();
+            Lacznik lacznik = new Lacznik();
             //this.metroComboBox1.Items.AddRange(new object[] {
             //"test1",
             //"test2"}
             //);
+
+            List<Algorytm> listaAlgorytmow = lacznik.ZwrocListeAlgorytmow();
+            object[] elementy = new object[listaAlgorytmow.Count];
+            
+            for(int i = 0; i < listaAlgorytmow.Count; i++)
+            {
+                elementy[i] = listaAlgorytmow[i].ZwrocNazwe();
+            }
+
+            this.wyborAlgorytmu.Items.AddRange(elementy);
         }
 
         private void Form1_Load(object sender, EventArgs e)

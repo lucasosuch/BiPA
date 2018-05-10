@@ -3,13 +3,16 @@
   <Jezyk>
     <nazwa>Ewolucyjny</nazwa>
     <parametry>
-      <p1 klucz="iloscPokolen">Ilosc Pokolen</p1>
-      <p2 klucz="rozmiarPopulacji">Rozmiar Populacji</p2>
-      <p3 klucz="pwoMutacji">Prawdopodobieństwo Mutacji</p3>
-      <p4 klucz="pwoKrzyzowania">Prawdopodobieństwo Krzyżowania</p4>
-    </parametry>
+      <parametr klucz="iloscPokolen">Ilosc Pokolen</parametr>
+      <parametr klucz="rozmiarPopulacji">Rozmiar Populacji</parametr>
+      <parametr klucz="pwoMutacji">Prawdopodobieństwo Mutacji</parametr>
+      <parametr klucz="pwoKrzyzowania">Prawdopodobieństwo Krzyżowania</parametr>
+  </parametry>
   </Jezyk>
   <WartosciDomyslne>
-    
+    <parametr>70</parametr>
+    <parametr>50</parametr>
+    <parametr>0.1</parametr>
+    <parametr>0.7</parametr>
   </WartosciDomyslne>
 </Korzen>

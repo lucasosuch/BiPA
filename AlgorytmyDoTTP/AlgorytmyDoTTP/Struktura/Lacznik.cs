@@ -9,23 +9,19 @@ namespace AlgorytmyDoTTP.Struktura
 {
     class Lacznik
     {
-        private List<Algorytm<object>> listaAlgorytmow = new List<Algorytm<object>>();
+        private List<Algorytm> listaAlgorytmow = new List<Algorytm>();
         private List<ProblemOptymalizacyjny> listaProblemow = new List<ProblemOptymalizacyjny>();
 
         public Lacznik()
         {
-            string[] parametryEwolucyjny = new string[] {
-                "Ilość pokoleń", "Rozmiar populacji", "Prawdopodobieństwo krzyżowania", "Prawdopodobieństwo mutacji"
-            };
-
-            Algorytm<object> ewolucyjny = new Algorytm<object>("Ewolucyjny", parametryEwolucyjny);
+            Algorytm ewolucyjny = new Algorytm("Ewolucyjny");
             listaAlgorytmow.Add(ewolucyjny);
 
             ProblemOptymalizacyjny kp = new ProblemOptymalizacyjny("Problem Plecakowy", "testowa");
             listaProblemow.Add(kp);
         }
 
-        public List<Algorytm<object>> ZwrocListeAlgorytmow()
+        public List<Algorytm> ZwrocListeAlgorytmow()
         {
             return listaAlgorytmow;
         }
