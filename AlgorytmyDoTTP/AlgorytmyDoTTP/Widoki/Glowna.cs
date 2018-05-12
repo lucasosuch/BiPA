@@ -1,5 +1,4 @@
 ﻿using AlgorytmyDoTTP.Struktura;
-using AlgorytmyDoTTP.Struktura.Most;
 using AlgorytmyDoTTP.Widoki;
 using System;
 using System.Collections.Generic;
@@ -15,23 +14,13 @@ namespace AlgorytmyDoTTP
 {
     public partial class Glowna : Form
     {
-        private List<Algorytm> listaAlgorytmow;
-
         public Glowna()
         {
             InitializeComponent();
-            listaAlgorytmow = (new Lacznik()).ZwrocListeAlgorytmow();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            object[] elementy = new object[listaAlgorytmow.Count];
-            for (int i = 0; i < listaAlgorytmow.Count; i++)
-            {
-                elementy[i] = listaAlgorytmow[i].ZwrocNazwe();
-            }
-
-            wyborAlgorytmu.Items.AddRange(elementy);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -40,21 +29,29 @@ namespace AlgorytmyDoTTP
 
         private void start_Click(object sender, EventArgs e)
         {
-            Badanie badanieTemp = new Badanie();
+            Dictionary<string, string> parametry = new Dictionary<string, string>();
+            parametry[pwoMutacji.Name] = pwoMutacji.Text;
+            parametry[pwoKrzyzowania.Name] = pwoKrzyzowania.Text;
+            parametry[rozmiarPopulacji.Name] = rozmiarPopulacji.Text;
+            parametry[iloscPokolen.Name] = iloscPokolen.Text;
+
+            Badanie badanieTemp = new Badanie(parametry);
             badanieTemp.Show();
         }
 
         private void wyborAlgorytmu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < listaAlgorytmow.Count; i++)
+            domyslny.Visible = false;
+
+            switch (wyborAlgorytmu.Text)
             {
-                if(listaAlgorytmow[i].ZwrocNazwe() == wyborAlgorytmu.GetItemText(wyborAlgorytmu.SelectedItem))
-                {
-                    foreach(KeyValuePair<string, string> parametr in listaAlgorytmow[i].ZwrocParametryAlgorytmu())
-                    {
-                        Console.WriteLine(parametr.Key +" "+ parametr.Value);
-                    }
-                }
+                case "Ewolucyjny":
+                    ewolucyjny.Visible = true;
+                    break;
+
+                default:
+                    domyslny.Visible = true;
+                    break;
             }
         }
     }

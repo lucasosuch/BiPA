@@ -6,7 +6,7 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 
@@ -21,29 +21,27 @@ namespace AlgorytmyDoTTP.Struktura
         /// <summary>
         /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
         /// </summary>
-        public override IAlgorytm ZbudujAlgorytm()
+        public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry)
         {
-            short iloscPokolen = 10;
-            ushort rozmiarPopulacji = 30,
-                   dlugoscGenotypu = 15;
-            double pwoMutacji = 0.2,
-                   pwoKrzyzowania = 0.8;
+            ushort dlugoscGenotypu = 15;
+
+            Console.WriteLine(double.Parse(parametry["pwoMutacji"]));
 
             //ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(dlugoscGenotypu);
             //OsobnikKP rozwiazanie = new OsobnikKP(problemPlecakowy);
             //problemPlecakowy.UstawMaxWagePlecaka(7);
             //ARekombinacja rekombinacja = new RekombinacjaWektoraBinarnego(pwoMutacji, rozwiazanie);
             
-            APopulacja populacja = new PopulacjaCykliczna(rozmiarPopulacji, dlugoscGenotypu, dlugoscGenotypu);
+            APopulacja populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), dlugoscGenotypu, dlugoscGenotypu);
 
             ProblemKomiwojazera problemKomiwojazera = new ProblemKomiwojazera(15);
             AOsobnik rozwiazanie = new OsobnikTSP(problemKomiwojazera);
-            ARekombinacja rekombinacja = new RekombinacjaTSP(pwoMutacji, rozwiazanie, "PMX");
+            ARekombinacja rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
             ASelekcja selekcja = new SelekcjaWektora(rozwiazanie, dlugoscGenotypu, "Turniej");
 
             IAnalityka analityka = new AnalizaPopulacji(rozwiazanie);
 
-            return new SEA(selekcja, rekombinacja, analityka, populacja, iloscPokolen, pwoKrzyzowania);
+            return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
         }
     }
 }

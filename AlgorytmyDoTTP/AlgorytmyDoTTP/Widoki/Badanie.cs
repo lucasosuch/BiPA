@@ -13,14 +13,17 @@ namespace AlgorytmyDoTTP.Widoki
 {
     public partial class Badanie : Form
     {
-        public Badanie()
+        private Dictionary<string, string> parametry;
+
+        public Badanie(Dictionary<string, string> parametry)
         {
             InitializeComponent();
+            this.parametry = parametry;
         }
 
         private void Badanie_Load(object sender, EventArgs e)
         {
-            wynikiBadania.Text = (new Config()).ZbudujAlgorytm().Start();
+            wynikiBadania.Text = (new Config()).ZbudujAlgorytm(parametry).Start();
         }
     }
 }
