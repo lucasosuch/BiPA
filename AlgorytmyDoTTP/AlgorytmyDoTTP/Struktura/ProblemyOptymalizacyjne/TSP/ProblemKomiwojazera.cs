@@ -2,34 +2,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
     class ProblemKomiwojazera : ProblemOptymalizacyjny
     {
-        public ProblemKomiwojazera(ushort iloscWierzcholkow)
+        public ProblemKomiwojazera(string nazwaPakietu)
         {
-            instancje = new IPomocniczy[iloscWierzcholkow];
-            Inicjalizacja();
+            Inicjalizacja(nazwaPakietu);
         }
 
-        private void Inicjalizacja()
+        private void Inicjalizacja(string nazwaPakietu)
         {
-            instancje[0] = new Instancja(1, 2, 10.0);
-            instancje[1] = new Instancja(1, 3, 5.0);
-            instancje[2] = new Instancja(1, 4, 7.0);
-            instancje[3] = new Instancja(1, 5, 6.5);
-            instancje[4] = new Instancja(1, 6, 5.5);
-            instancje[5] = new Instancja(2, 3, 6.0);
-            instancje[6] = new Instancja(2, 4, 3.0);
-            instancje[7] = new Instancja(2, 5, 8.0);
-            instancje[8] = new Instancja(2, 6, 2.5);
-            instancje[9] = new Instancja(3, 4, 9.5);
-            instancje[10] = new Instancja(3, 5, 1.5);
-            instancje[11] = new Instancja(3, 6, 4.0);
-            instancje[12] = new Instancja(4, 5, 8.0);
-            instancje[13] = new Instancja(4, 6, 7.0);
-            instancje[14] = new Instancja(5, 6, 3.0);
+            XmlDocument dokument = new XmlDocument();
+            dokument.Load("../../Dane/TSP/" + nazwaPakietu + ".xml");
+
+            XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
+
+            foreach (XmlNode miasto in miasta)
+            {
+
+            }
         }
 
         public override Dictionary<String, double[]> ObliczZysk(ArrayList wektor)

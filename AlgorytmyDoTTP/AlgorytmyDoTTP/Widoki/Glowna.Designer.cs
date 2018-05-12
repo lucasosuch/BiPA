@@ -33,7 +33,10 @@ namespace AlgorytmyDoTTP
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
             this.ewolucyjny = new MetroFramework.Controls.MetroPanel();
+            this.domyslny = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pwoKrzyzowania = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,9 +50,7 @@ namespace AlgorytmyDoTTP
             this.label1 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
-            this.domyslny = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
+            this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -84,6 +85,7 @@ namespace AlgorytmyDoTTP
             // badanie
             // 
             this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.wybierzDane);
             this.badanie.Controls.Add(this.label7);
             this.badanie.Controls.Add(this.wybierzProblem);
             this.badanie.Controls.Add(this.ewolucyjny);
@@ -102,6 +104,27 @@ namespace AlgorytmyDoTTP
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(418, 68);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(164, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Wybierz Problem Optymalizacyjny";
+            // 
+            // wybierzProblem
+            // 
+            this.wybierzProblem.FormattingEnabled = true;
+            this.wybierzProblem.ItemHeight = 23;
+            this.wybierzProblem.Location = new System.Drawing.Point(421, 87);
+            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
+            this.wybierzProblem.Name = "wybierzProblem";
+            this.wybierzProblem.Size = new System.Drawing.Size(251, 29);
+            this.wybierzProblem.TabIndex = 14;
+            this.wybierzProblem.UseSelectable = true;
             // 
             // ewolucyjny
             // 
@@ -124,6 +147,13 @@ namespace AlgorytmyDoTTP
             this.ewolucyjny.VerticalScrollbarBarColor = true;
             this.ewolucyjny.VerticalScrollbarHighlightOnWheel = false;
             this.ewolucyjny.VerticalScrollbarSize = 10;
+            // 
+            // domyslny
+            // 
+            this.domyslny.Location = new System.Drawing.Point(0, 0);
+            this.domyslny.Name = "domyslny";
+            this.domyslny.Size = new System.Drawing.Size(829, 280);
+            this.domyslny.TabIndex = 28;
             // 
             // label4
             // 
@@ -363,33 +393,15 @@ namespace AlgorytmyDoTTP
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
             // 
-            // domyslny
+            // wybierzDane
             // 
-            this.domyslny.Location = new System.Drawing.Point(0, 0);
-            this.domyslny.Name = "domyslny";
-            this.domyslny.Size = new System.Drawing.Size(829, 280);
-            this.domyslny.TabIndex = 28;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(623, 68);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Wybierz Problem Optymalizacyjny";
-            // 
-            // wybierzProblem
-            // 
-            this.wybierzProblem.FormattingEnabled = true;
-            this.wybierzProblem.ItemHeight = 23;
-            this.wybierzProblem.Location = new System.Drawing.Point(623, 87);
-            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
-            this.wybierzProblem.Name = "wybierzProblem";
-            this.wybierzProblem.Size = new System.Drawing.Size(251, 29);
-            this.wybierzProblem.TabIndex = 14;
-            this.wybierzProblem.UseSelectable = true;
+            this.wybierzDane.FormattingEnabled = true;
+            this.wybierzDane.ItemHeight = 23;
+            this.wybierzDane.Location = new System.Drawing.Point(677, 87);
+            this.wybierzDane.Name = "wybierzDane";
+            this.wybierzDane.Size = new System.Drawing.Size(198, 29);
+            this.wybierzDane.TabIndex = 16;
+            this.wybierzDane.UseSelectable = true;
             // 
             // Glowna
             // 
@@ -436,6 +448,7 @@ namespace AlgorytmyDoTTP
         private System.Windows.Forms.Panel domyslny;
         private System.Windows.Forms.Label label7;
         private MetroFramework.Controls.MetroComboBox wybierzProblem;
+        private MetroFramework.Controls.MetroComboBox wybierzDane;
     }
 }
 

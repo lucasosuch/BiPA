@@ -10,13 +10,13 @@ using System.Collections.Generic;
 using System;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 
-namespace AlgorytmyDoTTP.Struktura
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     /// <summary>
     /// Klasa konfiguracyjna.
     /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmami je rozwiązującymi.
     /// </summary>
-    class Config : Algorytm
+    class KonfiguracjaAlgorytmu : Algorytm
     {
         /// <summary>
         /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
@@ -25,20 +25,17 @@ namespace AlgorytmyDoTTP.Struktura
         {
             ushort dlugoscGenotypu = 15;
 
-            Console.WriteLine(double.Parse(parametry["pwoMutacji"]));
+            ProblemKomiwojazera problemKomiwojazera = new ProblemKomiwojazera(dlugoscGenotypu);
 
             //ProblemPlecakowy problemPlecakowy = new ProblemPlecakowy(dlugoscGenotypu);
             //OsobnikKP rozwiazanie = new OsobnikKP(problemPlecakowy);
             //problemPlecakowy.UstawMaxWagePlecaka(7);
             //ARekombinacja rekombinacja = new RekombinacjaWektoraBinarnego(pwoMutacji, rozwiazanie);
-            
-            APopulacja populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), dlugoscGenotypu, dlugoscGenotypu);
 
-            ProblemKomiwojazera problemKomiwojazera = new ProblemKomiwojazera(15);
+            APopulacja populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), dlugoscGenotypu, dlugoscGenotypu);
             AOsobnik rozwiazanie = new OsobnikTSP(problemKomiwojazera);
             ARekombinacja rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
             ASelekcja selekcja = new SelekcjaWektora(rozwiazanie, dlugoscGenotypu, "Turniej");
-
             IAnalityka analityka = new AnalizaPopulacji(rozwiazanie);
 
             return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));

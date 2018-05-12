@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +23,7 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void Badanie_Load(object sender, EventArgs e)
         {
-            wynikiBadania.Text = (new Config()).ZbudujAlgorytm(parametry).Start();
+            wynikiBadania.Text = (new KonfiguracjaAlgorytmu()).ZbudujAlgorytm(parametry).Start();
         }
     }
 }
