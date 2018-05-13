@@ -39,7 +39,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
             for (int i = 0; i < przedmioty.Count; i++)
             {
-                instancje[i] = new Instancja(double.Parse(przedmioty[i].FirstChild["waga"].InnerText), double.Parse(przedmioty[i].FirstChild["wartosc"].InnerText));
+                instancje[i] = new Instancja(double.Parse(przedmioty[i]["waga"].InnerText), double.Parse(przedmioty[i]["wartosc"].InnerText));
             }
         }
 

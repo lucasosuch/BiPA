@@ -24,22 +24,34 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         /// </summary>
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
-            //switch (parametry["problem"])
-            //{
-            //    case "Problem Plecakowy":
-            //        OsobnikKP rozwiazanie = new OsobnikKP(problem);
-            //        problem.UstawOgraniczeniaProblemu(7);
-            //        ARekombinacja rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
-            //        break;
-            //}
+            ASelekcja selekcja;
+            APopulacja populacja;
+            IAnalityka analityka;
+            AOsobnik rozwiazanie;
+            ARekombinacja rekombinacja;
 
-            APopulacja populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
-            AOsobnik rozwiazanie = new OsobnikTSP(problem);
-            ARekombinacja rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
-            ASelekcja selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), "Turniej");
-            IAnalityka analityka = new AnalizaPopulacji(rozwiazanie);
+            switch (parametry["problem"])
+            {
+                case "Problem Plecakowy":
+                    rozwiazanie = new OsobnikKP(problem);
+                    rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
+                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), "Turniej");
+                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    populacja = new PopulacjaACykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
-            return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
+
+                case "Problem Komiwojażera":
+                    rozwiazanie = new OsobnikTSP(problem);
+                    populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
+                    rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
+                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), "Turniej");
+
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
+            }
+
+            return new SEA();
         }
     }
 }

@@ -18,6 +18,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private APopulacja populacja;
         private Random losowy = new Random();
 
+        public SEA()
+        {
+            throw new Exception();
+        }
+
         public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, IAnalityka analityka, APopulacja populacja, short iloscPokolen, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
@@ -54,6 +59,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 {
                     tekst += String.Join(", ", osobnik) + Environment.NewLine;
                 }
+
+                Console.WriteLine(iloscPokolen);
+                Console.WriteLine(tekst);
 
                 populacjaBazowa.Clear();
                 populacjaBazowa.AddRange(nowaPopulacja);

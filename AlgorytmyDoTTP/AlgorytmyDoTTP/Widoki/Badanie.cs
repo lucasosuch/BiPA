@@ -32,6 +32,8 @@ namespace AlgorytmyDoTTP.Widoki
         private void Badanie_Load(object sender, EventArgs e)
         {
             ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
+            problem.UstawOgraniczeniaProblemu(7);
+
             wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.KonfiguracjaAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
         }
     }
