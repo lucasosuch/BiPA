@@ -6,6 +6,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 {
     abstract class ProblemOptymalizacyjny
     {
+        protected ushort dlugoscGenotypu = 0;
         protected IPomocniczy[] instancje;
         protected double[] ZwrocOgraniczenia;
         protected Boolean CzyIstniejaOgraniczenia = false;
@@ -28,6 +29,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         public void UstawOgraniczeniaProblemu(double[] ograniczenia)
         {
             ZwrocOgraniczenia = (double[])ograniczenia.Clone();
+        }
+
+        public ushort ZwrocDlugoscGenotypu()
+        {
+            return dlugoscGenotypu;
         }
 
         public abstract Dictionary<String, double[]> ObliczZysk(ArrayList wektor);

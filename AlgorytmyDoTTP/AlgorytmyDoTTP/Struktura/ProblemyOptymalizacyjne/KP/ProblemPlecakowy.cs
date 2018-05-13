@@ -34,10 +34,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             dokument.Load("../../Dane/KP/" + nazwaPakietu + ".xml");
 
             XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/przedmioty/przedmiot");
+            instancje = new Instancja[przedmioty.Count];
+            dlugoscGenotypu = (ushort)przedmioty.Count;
 
-            foreach (XmlNode przedmiot in przedmioty)
+            for (int i = 0; i < przedmioty.Count; i++)
             {
-                
+                instancje[i] = new Instancja(double.Parse(przedmioty[i].FirstChild["waga"].InnerText), double.Parse(przedmioty[i].FirstChild["wartosc"].InnerText));
             }
         }
 

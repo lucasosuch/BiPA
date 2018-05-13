@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,9 +22,17 @@ namespace AlgorytmyDoTTP.Widoki
             this.parametry = parametry;
         }
 
+        private ProblemOptymalizacyjny OkreslProblem()
+        {
+            ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
+
+            return problem;
+        }
+
         private void Badanie_Load(object sender, EventArgs e)
         {
-            wynikiBadania.Text = (new KonfiguracjaAlgorytmu()).ZbudujAlgorytm(parametry).Start();
+            ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
+            wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.KonfiguracjaAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace AlgorytmyDoTTP
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
             this.ewolucyjny = new MetroFramework.Controls.MetroPanel();
@@ -50,7 +51,6 @@ namespace AlgorytmyDoTTP
             this.label1 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
-            this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -105,6 +105,16 @@ namespace AlgorytmyDoTTP
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
             // 
+            // wybierzDane
+            // 
+            this.wybierzDane.FormattingEnabled = true;
+            this.wybierzDane.ItemHeight = 23;
+            this.wybierzDane.Location = new System.Drawing.Point(677, 87);
+            this.wybierzDane.Name = "wybierzDane";
+            this.wybierzDane.Size = new System.Drawing.Size(198, 29);
+            this.wybierzDane.TabIndex = 16;
+            this.wybierzDane.UseSelectable = true;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -119,12 +129,16 @@ namespace AlgorytmyDoTTP
             // 
             this.wybierzProblem.FormattingEnabled = true;
             this.wybierzProblem.ItemHeight = 23;
+            this.wybierzProblem.Items.AddRange(new object[] {
+            "Problem Plecakowy",
+            "Problem Komiwojażera"});
             this.wybierzProblem.Location = new System.Drawing.Point(421, 87);
             this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzProblem.Name = "wybierzProblem";
             this.wybierzProblem.Size = new System.Drawing.Size(251, 29);
             this.wybierzProblem.TabIndex = 14;
             this.wybierzProblem.UseSelectable = true;
+            this.wybierzProblem.SelectionChangeCommitted += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged);
             // 
             // ewolucyjny
             // 
@@ -392,16 +406,6 @@ namespace AlgorytmyDoTTP
             this.historia.VerticalScrollbarBarColor = true;
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
-            // 
-            // wybierzDane
-            // 
-            this.wybierzDane.FormattingEnabled = true;
-            this.wybierzDane.ItemHeight = 23;
-            this.wybierzDane.Location = new System.Drawing.Point(677, 87);
-            this.wybierzDane.Name = "wybierzDane";
-            this.wybierzDane.Size = new System.Drawing.Size(198, 29);
-            this.wybierzDane.TabIndex = 16;
-            this.wybierzDane.UseSelectable = true;
             // 
             // Glowna
             // 
