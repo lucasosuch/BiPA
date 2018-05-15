@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System;
 using System.Collections;
@@ -44,20 +45,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return geny;
         }
 
-        private ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
+        protected override ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
         {
             double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
-            while (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
+            if (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
             {
-                for(int i = 0; i < geny.Length; i++)
-                {
-                    if(geny[i] == 1)
-                    {
-                        geny[i] = 0;
-                        break;
-                    }
-                }
+                KP naprawaOgraniczen = new KP(geny);
+                naprawaOgraniczen.NaprawGeny();
+                geny = (ushort[])naprawaOgraniczen.ZwrocGeny().Clone();
             }
 
             return geny;

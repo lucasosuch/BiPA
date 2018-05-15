@@ -91,5 +91,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             return potomek;
         }
+
+        protected override ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

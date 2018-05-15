@@ -55,13 +55,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     }
                 }
                 
-                foreach (ushort[] osobnik in nowaPopulacja)
-                {
-                    tekst += String.Join(", ", osobnik) + Environment.NewLine;
-                }
+                //foreach (ushort[] osobnik in nowaPopulacja)
+                //{
+                //    tekst += String.Join(", ", osobnik) + Environment.NewLine;
+                //}
 
-                Console.WriteLine(iloscPokolen);
-                Console.WriteLine(tekst);
+                //Console.WriteLine(iloscPokolen);
+                //Console.WriteLine(tekst);
 
                 populacjaBazowa.Clear();
                 populacjaBazowa.AddRange(nowaPopulacja);
