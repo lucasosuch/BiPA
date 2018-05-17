@@ -15,9 +15,15 @@ namespace AlgorytmyDoTTP
 {
     public partial class Glowna : Form
     {
+        Konfiguracja srodowisko = new Konfiguracja();
+
         public Glowna()
         {
             InitializeComponent();
+
+            wyborAlgorytmu.Items.AddRange(srodowisko.ALGORYTMY);
+            wybierzProblem.Items.AddRange(srodowisko.PROBLEMY_OPTYMALIZACYJNE);
+            metodaSelekcji.Items.AddRange(srodowisko.SELEKCJA);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,7 +46,7 @@ namespace AlgorytmyDoTTP
 
             switch (wyborAlgorytmu.Text)
             {
-                case "Ewolucyjny":
+                case "Algorytm Ewolucyjny":
                     ewolucyjny.Visible = true;
                     break;
 
@@ -75,16 +81,14 @@ namespace AlgorytmyDoTTP
         {
             string nazwaFolderu = "";
             wybierzDane.Items.Clear();
-
-            switch (wybierzProblem.Text)
+            
+            for (int i = 0; i < srodowisko.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
             {
-                case "Problem Plecakowy":
-                    nazwaFolderu = "KP";
+                if((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybierzProblem.Text)
+                {
+                    nazwaFolderu = srodowisko.FOLDERY_Z_DANYMI[i];
                     break;
-
-                case "Problem Komiwojażera":
-                    nazwaFolderu = "TSP";
-                    break;
+                }
             }
 
             DirectoryInfo d = new DirectoryInfo("../../Dane/"+ nazwaFolderu);

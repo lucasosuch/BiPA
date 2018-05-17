@@ -51,6 +51,10 @@ namespace AlgorytmyDoTTP
             this.label1 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
+            this.metodaSelekcji = new MetroFramework.Controls.MetroComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rodzajKrzyzowania = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -85,6 +89,7 @@ namespace AlgorytmyDoTTP
             // badanie
             // 
             this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.domyslny);
             this.badanie.Controls.Add(this.wybierzDane);
             this.badanie.Controls.Add(this.label7);
             this.badanie.Controls.Add(this.wybierzProblem);
@@ -129,9 +134,6 @@ namespace AlgorytmyDoTTP
             // 
             this.wybierzProblem.FormattingEnabled = true;
             this.wybierzProblem.ItemHeight = 23;
-            this.wybierzProblem.Items.AddRange(new object[] {
-            "Problem Plecakowy",
-            "Problem Komiwojażera"});
             this.wybierzProblem.Location = new System.Drawing.Point(421, 87);
             this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzProblem.Name = "wybierzProblem";
@@ -142,7 +144,10 @@ namespace AlgorytmyDoTTP
             // 
             // ewolucyjny
             // 
-            this.ewolucyjny.Controls.Add(this.domyslny);
+            this.ewolucyjny.Controls.Add(this.label9);
+            this.ewolucyjny.Controls.Add(this.rodzajKrzyzowania);
+            this.ewolucyjny.Controls.Add(this.label8);
+            this.ewolucyjny.Controls.Add(this.metodaSelekcji);
             this.ewolucyjny.Controls.Add(this.label4);
             this.ewolucyjny.Controls.Add(this.pwoKrzyzowania);
             this.ewolucyjny.Controls.Add(this.label5);
@@ -164,7 +169,7 @@ namespace AlgorytmyDoTTP
             // 
             // domyslny
             // 
-            this.domyslny.Location = new System.Drawing.Point(0, 0);
+            this.domyslny.Location = new System.Drawing.Point(46, 138);
             this.domyslny.Name = "domyslny";
             this.domyslny.Size = new System.Drawing.Size(829, 280);
             this.domyslny.TabIndex = 28;
@@ -172,7 +177,7 @@ namespace AlgorytmyDoTTP
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(479, 63);
+            this.label4.Location = new System.Drawing.Point(371, 119);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(170, 13);
@@ -196,7 +201,7 @@ namespace AlgorytmyDoTTP
             this.pwoKrzyzowania.CustomButton.Visible = false;
             this.pwoKrzyzowania.Lines = new string[] {
         "0,7"};
-            this.pwoKrzyzowania.Location = new System.Drawing.Point(481, 79);
+            this.pwoKrzyzowania.Location = new System.Drawing.Point(374, 145);
             this.pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2);
             this.pwoKrzyzowania.MaxLength = 32767;
             this.pwoKrzyzowania.Name = "pwoKrzyzowania";
@@ -206,7 +211,7 @@ namespace AlgorytmyDoTTP
             this.pwoKrzyzowania.SelectionLength = 0;
             this.pwoKrzyzowania.SelectionStart = 0;
             this.pwoKrzyzowania.ShortcutsEnabled = true;
-            this.pwoKrzyzowania.Size = new System.Drawing.Size(250, 20);
+            this.pwoKrzyzowania.Size = new System.Drawing.Size(170, 20);
             this.pwoKrzyzowania.TabIndex = 22;
             this.pwoKrzyzowania.Text = "0,7";
             this.pwoKrzyzowania.UseSelectable = true;
@@ -216,7 +221,7 @@ namespace AlgorytmyDoTTP
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(479, 125);
+            this.label5.Location = new System.Drawing.Point(628, 119);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 13);
@@ -240,7 +245,7 @@ namespace AlgorytmyDoTTP
             this.pwoMutacji.CustomButton.Visible = false;
             this.pwoMutacji.Lines = new string[] {
         "0,1"};
-            this.pwoMutacji.Location = new System.Drawing.Point(481, 141);
+            this.pwoMutacji.Location = new System.Drawing.Point(631, 145);
             this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
             this.pwoMutacji.MaxLength = 32767;
             this.pwoMutacji.Name = "pwoMutacji";
@@ -250,7 +255,7 @@ namespace AlgorytmyDoTTP
             this.pwoMutacji.SelectionLength = 0;
             this.pwoMutacji.SelectionStart = 0;
             this.pwoMutacji.ShortcutsEnabled = true;
-            this.pwoMutacji.Size = new System.Drawing.Size(250, 20);
+            this.pwoMutacji.Size = new System.Drawing.Size(170, 20);
             this.pwoMutacji.TabIndex = 23;
             this.pwoMutacji.Text = "0,1";
             this.pwoMutacji.UseSelectable = true;
@@ -260,7 +265,7 @@ namespace AlgorytmyDoTTP
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 63);
+            this.label3.Location = new System.Drawing.Point(371, 51);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
@@ -284,7 +289,7 @@ namespace AlgorytmyDoTTP
             this.rozmiarPopulacji.CustomButton.Visible = false;
             this.rozmiarPopulacji.Lines = new string[] {
         "100"};
-            this.rozmiarPopulacji.Location = new System.Drawing.Point(2, 79);
+            this.rozmiarPopulacji.Location = new System.Drawing.Point(375, 77);
             this.rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2);
             this.rozmiarPopulacji.MaxLength = 32767;
             this.rozmiarPopulacji.Name = "rozmiarPopulacji";
@@ -294,7 +299,7 @@ namespace AlgorytmyDoTTP
             this.rozmiarPopulacji.SelectionLength = 0;
             this.rozmiarPopulacji.SelectionStart = 0;
             this.rozmiarPopulacji.ShortcutsEnabled = true;
-            this.rozmiarPopulacji.Size = new System.Drawing.Size(250, 20);
+            this.rozmiarPopulacji.Size = new System.Drawing.Size(169, 20);
             this.rozmiarPopulacji.TabIndex = 20;
             this.rozmiarPopulacji.Text = "100";
             this.rozmiarPopulacji.UseSelectable = true;
@@ -304,7 +309,7 @@ namespace AlgorytmyDoTTP
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 125);
+            this.label2.Location = new System.Drawing.Point(628, 51);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
@@ -328,7 +333,7 @@ namespace AlgorytmyDoTTP
             this.iloscPokolen.CustomButton.Visible = false;
             this.iloscPokolen.Lines = new string[] {
         "70"};
-            this.iloscPokolen.Location = new System.Drawing.Point(2, 141);
+            this.iloscPokolen.Location = new System.Drawing.Point(631, 77);
             this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2);
             this.iloscPokolen.MaxLength = 32767;
             this.iloscPokolen.Name = "iloscPokolen";
@@ -338,7 +343,7 @@ namespace AlgorytmyDoTTP
             this.iloscPokolen.SelectionLength = 0;
             this.iloscPokolen.SelectionStart = 0;
             this.iloscPokolen.ShortcutsEnabled = true;
-            this.iloscPokolen.Size = new System.Drawing.Size(250, 20);
+            this.iloscPokolen.Size = new System.Drawing.Size(170, 20);
             this.iloscPokolen.TabIndex = 21;
             this.iloscPokolen.Text = "70";
             this.iloscPokolen.UseSelectable = true;
@@ -383,8 +388,6 @@ namespace AlgorytmyDoTTP
             // 
             this.wyborAlgorytmu.FormattingEnabled = true;
             this.wyborAlgorytmu.ItemHeight = 23;
-            this.wyborAlgorytmu.Items.AddRange(new object[] {
-            "Ewolucyjny"});
             this.wyborAlgorytmu.Location = new System.Drawing.Point(46, 87);
             this.wyborAlgorytmu.Margin = new System.Windows.Forms.Padding(2);
             this.wyborAlgorytmu.Name = "wyborAlgorytmu";
@@ -406,6 +409,46 @@ namespace AlgorytmyDoTTP
             this.historia.VerticalScrollbarBarColor = true;
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
+            // 
+            // metodaSelekcji
+            // 
+            this.metodaSelekcji.FormattingEnabled = true;
+            this.metodaSelekcji.ItemHeight = 23;
+            this.metodaSelekcji.Location = new System.Drawing.Point(0, 68);
+            this.metodaSelekcji.Name = "metodaSelekcji";
+            this.metodaSelekcji.Size = new System.Drawing.Size(251, 29);
+            this.metodaSelekcji.TabIndex = 29;
+            this.metodaSelekcji.UseSelectable = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(-3, 51);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Metoda selekcji";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(-3, 119);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Rodzaj krzyżowania";
+            // 
+            // rodzajKrzyzowania
+            // 
+            this.rodzajKrzyzowania.FormattingEnabled = true;
+            this.rodzajKrzyzowania.ItemHeight = 23;
+            this.rodzajKrzyzowania.Location = new System.Drawing.Point(0, 136);
+            this.rodzajKrzyzowania.Name = "rodzajKrzyzowania";
+            this.rodzajKrzyzowania.Size = new System.Drawing.Size(251, 29);
+            this.rodzajKrzyzowania.TabIndex = 31;
+            this.rodzajKrzyzowania.UseSelectable = true;
             // 
             // Glowna
             // 
@@ -453,6 +496,10 @@ namespace AlgorytmyDoTTP
         private System.Windows.Forms.Label label7;
         private MetroFramework.Controls.MetroComboBox wybierzProblem;
         private MetroFramework.Controls.MetroComboBox wybierzDane;
+        private System.Windows.Forms.Label label9;
+        private MetroFramework.Controls.MetroComboBox rodzajKrzyzowania;
+        private System.Windows.Forms.Label label8;
+        private MetroFramework.Controls.MetroComboBox metodaSelekcji;
     }
 }
 
