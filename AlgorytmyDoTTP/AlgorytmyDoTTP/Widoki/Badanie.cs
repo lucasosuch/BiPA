@@ -34,7 +34,7 @@ namespace AlgorytmyDoTTP.Widoki
             ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
             problem.UstawOgraniczeniaProblemu(7);
 
-            wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.KonfiguracjaAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
+            wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
         }
     }
 }

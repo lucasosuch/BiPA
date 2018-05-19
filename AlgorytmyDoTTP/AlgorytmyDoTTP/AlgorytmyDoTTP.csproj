@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Konfiguracja.cs" />
+    <Compile Include="KonfiguracjaAlgorytmow\AE.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\AnalizaPopulacji.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\IAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\AOsobnik.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektora.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Algorytm.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\KonfiguracjaAlgorytmu.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\SEA.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />

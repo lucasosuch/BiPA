@@ -36,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             ((ushort[])populacja[0]).CopyTo(zwyciezca, 0);
             Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[0]);
 
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 int k = losowy.Next(populacja.Count - 1);
                 Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[k]);

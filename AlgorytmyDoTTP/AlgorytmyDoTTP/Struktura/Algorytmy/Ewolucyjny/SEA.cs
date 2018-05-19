@@ -38,7 +38,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             string tekst = "";
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
-           
+
             while (iloscPokolen >= 0)
             {
                 for (int i = 0; i < populacjaBazowa.Count; i++)
@@ -52,6 +52,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);
+
+                        analityka.ZmienWartoscNiebo(dziecko1);
+                        analityka.ZmienWartoscNiebo(dziecko2);
                     }
                 }
                 
@@ -73,6 +76,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             double srednia = analityka.SredniaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
+            ushort[] wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
+
+            tekst += "Najlepszy genotyp: " + string.Join(",", wartoscNiebo) + " o wartości: " + analityka.ZwrocWartoscNiebo() + Environment.NewLine;
             tekst += "Średnia: "+ srednia + Environment.NewLine;
             tekst += "Odchstd:"+ odchylenieStadowe + Environment.NewLine;
 

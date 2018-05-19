@@ -7,10 +7,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
     class AnalizaPopulacji : IAnalityka
     {
         private AOsobnik rozwiazanie;
+        private ushort[] najlepszyGenotyp;
 
         public AnalizaPopulacji(AOsobnik rozwiazanie)
         {
             this.rozwiazanie = rozwiazanie;
+
+            najlepszyGenotyp = new ushort[rozwiazanie.ZwrocInstancjeProblemu().ZwrocDlugoscGenotypu()];
+            for (int i = 0; i < rozwiazanie.ZwrocInstancjeProblemu().ZwrocDlugoscGenotypu(); i++)
+            {
+                najlepszyGenotyp[i] = 0;
+            }
         }
 
         // Zwraca wartość średnią z funkcji celów w populacji
@@ -38,6 +45,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 
             double sredniaSumaKwadratow = sumaKwadratow / (populacja.Count - 1);
             return Math.Sqrt(sredniaSumaKwadratow - (Math.Pow(srednia, 2)));
+        }
+
+        public void ZmienWartoscNiebo(ushort[] geny)
+        {
+            if(rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0] < rozwiazanie.FunkcjaDopasowania(geny)["max"][0])
+            {
+                najlepszyGenotyp = (ushort[])geny.Clone();
+            }
+        }
+
+        public ushort[] ZwrocNajlepszyGenotyp()
+        {
+            return najlepszyGenotyp;
+        }
+
+        public string ZwrocWartoscNiebo()
+        {
+            return " max: "+ rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0] + " | min: "+ rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["min"][0];
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 {
@@ -14,5 +9,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 
         // Zwraca wartość odchylenia standardowego z funkcji celów w populacji
         double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia);
+
+        void ZmienWartoscNiebo(ushort[] geny);
+
+        ushort[] ZwrocNajlepszyGenotyp();
+
+        string ZwrocWartoscNiebo();
     }
 }

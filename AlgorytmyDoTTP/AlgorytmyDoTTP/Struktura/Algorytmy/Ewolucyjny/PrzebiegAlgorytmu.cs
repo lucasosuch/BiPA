@@ -17,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
     /// Klasa konfiguracyjna.
     /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmami je rozwiązującymi.
     /// </summary>
-    class KonfiguracjaAlgorytmu : Algorytm
+    class PrzebiegAlgorytmu : Algorytm
     {
         /// <summary>
         /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
@@ -35,7 +35,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 case "Problem Plecakowy":
                     rozwiazanie = new OsobnikKP(problem);
                     rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
-                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), "Turniej");
+                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaPopulacji(rozwiazanie);
                     populacja = new PopulacjaACykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
@@ -44,9 +44,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 case "Problem Komiwojażera":
                     rozwiazanie = new OsobnikTSP(problem);
                     populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
-                    rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
+                    rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     analityka = new AnalizaPopulacji(rozwiazanie);
-                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), "Turniej");
+                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
             }

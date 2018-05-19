@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura;
+﻿using AlgorytmyDoTTP.KonfiguracjaAlgorytmow;
+using AlgorytmyDoTTP.Struktura;
 using AlgorytmyDoTTP.Widoki;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace AlgorytmyDoTTP
 {
     public partial class Glowna : Form
     {
+        AE algorytmEwolucyjny = new AE();
         Konfiguracja srodowisko = new Konfiguracja();
 
         public Glowna()
@@ -23,7 +25,8 @@ namespace AlgorytmyDoTTP
 
             wyborAlgorytmu.Items.AddRange(srodowisko.ALGORYTMY);
             wybierzProblem.Items.AddRange(srodowisko.PROBLEMY_OPTYMALIZACYJNE);
-            metodaSelekcji.Items.AddRange(srodowisko.SELEKCJA);
+            rodzajKrzyzowania.Items.AddRange(new object[] { "Proste" });
+            metodaSelekcji.Items.AddRange(algorytmEwolucyjny.SELEKCJA);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,11 +65,13 @@ namespace AlgorytmyDoTTP
 
             switch (wyborAlgorytmu.Text)
             {
-                case "Ewolucyjny":
-                    parametry[pwoMutacji.Name] = pwoMutacji.Text;
-                    parametry[pwoKrzyzowania.Name] = pwoKrzyzowania.Text;
-                    parametry[rozmiarPopulacji.Name] = rozmiarPopulacji.Text;
-                    parametry[iloscPokolen.Name] = iloscPokolen.Text;
+                case "Algorytm Ewolucyjny":
+                    parametry["pwoMutacji"] = pwoMutacji.Text;
+                    parametry["pwoKrzyzowania"] = pwoKrzyzowania.Text;
+                    parametry["rozmiarPopulacji"] = rozmiarPopulacji.Text;
+                    parametry["iloscPokolen"] = iloscPokolen.Text;
+                    parametry["metodaSelekcji"] = metodaSelekcji.Text;
+                    parametry["rodzajKrzyzowania"] = rodzajKrzyzowania.Text;
                     break;
             }
 
@@ -101,6 +106,16 @@ namespace AlgorytmyDoTTP
             }
 
             wybierzDane.Items.AddRange(pliki);
+
+            if(wybierzProblem.Text == "Problem Komiwojażera")
+            {
+                rodzajKrzyzowania.Items.Clear();
+                rodzajKrzyzowania.Items.AddRange(algorytmEwolucyjny.KRZYZOWANIE_TSP);
+            } else
+            {
+                rodzajKrzyzowania.Items.Clear();
+                rodzajKrzyzowania.Items.AddRange(new object[] { "Proste" });
+            }
         }
     }
 }
