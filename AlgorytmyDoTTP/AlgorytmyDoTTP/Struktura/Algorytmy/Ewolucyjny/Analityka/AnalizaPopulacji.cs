@@ -20,6 +20,21 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
             }
         }
 
+        public double MedianaPopulacji(ArrayList populacja)
+        {
+            int srodek = populacja.Count / 2;
+            double[] wynikiPopulacji = new double[populacja.Count];
+
+            for(int i = 0; i < populacja.Count; i++)
+            {
+                wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[i])["max"][0];
+            }
+
+            Array.Sort(wynikiPopulacji);
+
+            return wynikiPopulacji[srodek];
+        }
+
         // Zwraca wartość średnią z funkcji celów w populacji
         public double SredniaPopulacji(ArrayList populacja)
         {

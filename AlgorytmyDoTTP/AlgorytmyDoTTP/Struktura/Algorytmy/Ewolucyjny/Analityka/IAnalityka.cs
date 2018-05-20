@@ -7,6 +7,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         // Zwraca wartość średnią z funkcji celów w populacji
         double SredniaPopulacji(ArrayList populacja);
 
+        double MedianaPopulacji(ArrayList populacja);
+
         // Zwraca wartość odchylenia standardowego z funkcji celów w populacji
         double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia);
 

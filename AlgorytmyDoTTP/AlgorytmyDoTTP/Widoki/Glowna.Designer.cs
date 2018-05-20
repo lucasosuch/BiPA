@@ -33,6 +33,10 @@ namespace AlgorytmyDoTTP
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.panelKP = new System.Windows.Forms.Panel();
+            this.domyslnyProblem = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.maxWaga = new MetroFramework.Controls.MetroTextBox();
             this.domyslny = new System.Windows.Forms.Panel();
             this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,6 +49,7 @@ namespace AlgorytmyDoTTP
             this.label4 = new System.Windows.Forms.Label();
             this.pwoKrzyzowania = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pwoMutacji = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rozmiarPopulacji = new MetroFramework.Controls.MetroTextBox();
@@ -52,18 +57,14 @@ namespace AlgorytmyDoTTP
             this.iloscPokolen = new MetroFramework.Controls.MetroTextBox();
             this.start = new MetroFramework.Controls.MetroTile();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
-            this.panelKP = new System.Windows.Forms.Panel();
-            this.domyslnyProblem = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.maxWaga = new MetroFramework.Controls.MetroTextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
-            this.ewolucyjny.SuspendLayout();
             this.panelKP.SuspendLayout();
+            this.ewolucyjny.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -94,6 +95,8 @@ namespace AlgorytmyDoTTP
             // badanie
             // 
             this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.domyslnyProblem);
+            this.badanie.Controls.Add(this.label11);
             this.badanie.Controls.Add(this.panelKP);
             this.badanie.Controls.Add(this.domyslny);
             this.badanie.Controls.Add(this.wybierzDane);
@@ -114,6 +117,66 @@ namespace AlgorytmyDoTTP
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
+            // 
+            // panelKP
+            // 
+            this.panelKP.Controls.Add(this.label10);
+            this.panelKP.Controls.Add(this.maxWaga);
+            this.panelKP.Location = new System.Drawing.Point(420, 125);
+            this.panelKP.Name = "panelKP";
+            this.panelKP.Size = new System.Drawing.Size(454, 68);
+            this.panelKP.TabIndex = 29;
+            // 
+            // domyslnyProblem
+            // 
+            this.domyslnyProblem.Location = new System.Drawing.Point(420, 125);
+            this.domyslnyProblem.Name = "domyslnyProblem";
+            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
+            this.domyslnyProblem.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(-2, 0);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(136, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Maksymalna waga plecaka";
+            // 
+            // maxWaga
+            // 
+            // 
+            // 
+            // 
+            this.maxWaga.CustomButton.Image = null;
+            this.maxWaga.CustomButton.Location = new System.Drawing.Point(151, 2);
+            this.maxWaga.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.maxWaga.CustomButton.Name = "";
+            this.maxWaga.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.maxWaga.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.maxWaga.CustomButton.TabIndex = 1;
+            this.maxWaga.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.maxWaga.CustomButton.UseSelectable = true;
+            this.maxWaga.CustomButton.Visible = false;
+            this.maxWaga.Lines = new string[] {
+        "7"};
+            this.maxWaga.Location = new System.Drawing.Point(0, 25);
+            this.maxWaga.Margin = new System.Windows.Forms.Padding(2);
+            this.maxWaga.MaxLength = 32767;
+            this.maxWaga.Name = "maxWaga";
+            this.maxWaga.PasswordChar = '\0';
+            this.maxWaga.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.maxWaga.SelectedText = "";
+            this.maxWaga.SelectionLength = 0;
+            this.maxWaga.SelectionStart = 0;
+            this.maxWaga.ShortcutsEnabled = true;
+            this.maxWaga.Size = new System.Drawing.Size(169, 20);
+            this.maxWaga.TabIndex = 33;
+            this.maxWaga.Text = "7";
+            this.maxWaga.UseSelectable = true;
+            this.maxWaga.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.maxWaga.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // domyslny
             // 
@@ -274,6 +337,17 @@ namespace AlgorytmyDoTTP
             this.label5.TabIndex = 26;
             this.label5.Text = "Prawdopodobieństwo mutacji";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(-5, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(234, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Konfiguracja Algorytmu";
+            // 
             // pwoMutacji
             // 
             // 
@@ -419,17 +493,6 @@ namespace AlgorytmyDoTTP
             this.label6.TabIndex = 12;
             this.label6.Text = "Wybierz Algorytm";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(-5, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Konfiguracja Algorytmu";
-            // 
             // wyborAlgorytmu
             // 
             this.wyborAlgorytmu.FormattingEnabled = true;
@@ -456,66 +519,15 @@ namespace AlgorytmyDoTTP
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
             // 
-            // panelKP
+            // label11
             // 
-            this.panelKP.Controls.Add(this.domyslnyProblem);
-            this.panelKP.Controls.Add(this.label10);
-            this.panelKP.Controls.Add(this.maxWaga);
-            this.panelKP.Location = new System.Drawing.Point(421, 125);
-            this.panelKP.Name = "panelKP";
-            this.panelKP.Size = new System.Drawing.Size(454, 68);
-            this.panelKP.TabIndex = 29;
-            // 
-            // domyslnyProblem
-            // 
-            this.domyslnyProblem.Location = new System.Drawing.Point(0, 0);
-            this.domyslnyProblem.Name = "domyslnyProblem";
-            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
-            this.domyslnyProblem.TabIndex = 30;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 0);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(136, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Maksymalna waga plecaka";
-            // 
-            // maxWaga
-            // 
-            // 
-            // 
-            // 
-            this.maxWaga.CustomButton.Image = null;
-            this.maxWaga.CustomButton.Location = new System.Drawing.Point(151, 2);
-            this.maxWaga.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.maxWaga.CustomButton.Name = "";
-            this.maxWaga.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.maxWaga.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.maxWaga.CustomButton.TabIndex = 1;
-            this.maxWaga.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.maxWaga.CustomButton.UseSelectable = true;
-            this.maxWaga.CustomButton.Visible = false;
-            this.maxWaga.Lines = new string[] {
-        "7"};
-            this.maxWaga.Location = new System.Drawing.Point(6, 26);
-            this.maxWaga.Margin = new System.Windows.Forms.Padding(2);
-            this.maxWaga.MaxLength = 32767;
-            this.maxWaga.Name = "maxWaga";
-            this.maxWaga.PasswordChar = '\0';
-            this.maxWaga.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.maxWaga.SelectedText = "";
-            this.maxWaga.SelectionLength = 0;
-            this.maxWaga.SelectionStart = 0;
-            this.maxWaga.ShortcutsEnabled = true;
-            this.maxWaga.Size = new System.Drawing.Size(169, 20);
-            this.maxWaga.TabIndex = 33;
-            this.maxWaga.Text = "7";
-            this.maxWaga.UseSelectable = true;
-            this.maxWaga.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.maxWaga.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(674, 68);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Wybierz Plik Danych";
             // 
             // Glowna
             // 
@@ -527,6 +539,7 @@ namespace AlgorytmyDoTTP
             this.Controls.Add(this.metroPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(926, 590);
             this.MinimumSize = new System.Drawing.Size(926, 590);
             this.Name = "Glowna";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -536,10 +549,10 @@ namespace AlgorytmyDoTTP
             this.metroTabControl1.ResumeLayout(false);
             this.badanie.ResumeLayout(false);
             this.badanie.PerformLayout();
-            this.ewolucyjny.ResumeLayout(false);
-            this.ewolucyjny.PerformLayout();
             this.panelKP.ResumeLayout(false);
             this.panelKP.PerformLayout();
+            this.ewolucyjny.ResumeLayout(false);
+            this.ewolucyjny.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -575,6 +588,7 @@ namespace AlgorytmyDoTTP
         private System.Windows.Forms.Panel domyslnyProblem;
         private System.Windows.Forms.Label label10;
         private MetroFramework.Controls.MetroTextBox maxWaga;
+        private System.Windows.Forms.Label label11;
     }
 }
 

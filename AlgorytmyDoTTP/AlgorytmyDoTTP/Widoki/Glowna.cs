@@ -1,5 +1,7 @@
 ﻿using AlgorytmyDoTTP.KonfiguracjaAlgorytmow;
 using AlgorytmyDoTTP.Struktura;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Widoki;
 using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
@@ -107,7 +109,7 @@ namespace AlgorytmyDoTTP
 
             return parametry;
         }
-
+        
         private void wybierzProblem_SelectedIndexChanged(object sender, EventArgs e)
         {
             WczytajPliki();

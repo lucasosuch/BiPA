@@ -21,14 +21,7 @@ namespace AlgorytmyDoTTP.Widoki
             InitializeComponent();
             this.parametry = parametry;
         }
-
-        private ProblemOptymalizacyjny OkreslProblem()
-        {
-            ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
-
-            return problem;
-        }
-
+        
         private void Badanie_Load(object sender, EventArgs e)
         {
             ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);

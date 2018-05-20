@@ -74,12 +74,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             double srednia = analityka.SredniaPopulacji(populacjaBazowa),
+                   mediana = analityka.MedianaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
             ushort[] wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
             tekst += "Najlepszy genotyp: " + string.Join(",", wartoscNiebo) + " o wartości: " + analityka.ZwrocWartoscNiebo() + Environment.NewLine;
             tekst += "Średnia: "+ srednia + Environment.NewLine;
+            tekst += "Mediana: " + mediana + Environment.NewLine;
             tekst += "Odchstd:"+ odchylenieStadowe + Environment.NewLine;
 
             return tekst;
