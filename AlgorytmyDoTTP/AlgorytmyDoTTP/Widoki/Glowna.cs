@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.KonfiguracjaAlgorytmow;
 using AlgorytmyDoTTP.Struktura;
 using AlgorytmyDoTTP.Widoki;
+using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,16 @@ namespace AlgorytmyDoTTP
 
             wyborAlgorytmu.Items.AddRange(srodowisko.ALGORYTMY);
             wybierzProblem.Items.AddRange(srodowisko.PROBLEMY_OPTYMALIZACYJNE);
-            rodzajKrzyzowania.Items.AddRange(new object[] { "Proste" });
+            rodzajKrzyzowania.Items.AddRange(algorytmEwolucyjny.KRZYZOWANIE_WEKTORA);
             metodaSelekcji.Items.AddRange(algorytmEwolucyjny.SELEKCJA);
+
+            UstawWartosciDomyslne();
+        }
+
+        private void UstawWartosciDomyslne()
+        {
+            metodaSelekcji.Text = (string)algorytmEwolucyjny.SELEKCJA[0];
+            rodzajKrzyzowania.Text = (string)algorytmEwolucyjny.KRZYZOWANIE_WEKTORA[0];
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,8 +48,14 @@ namespace AlgorytmyDoTTP
 
         private void start_Click(object sender, EventArgs e)
         {
-            Badanie badanieTemp = new Badanie(ZwrocParametry());
-            badanieTemp.Show();
+            try
+            {
+                Badanie badanieTemp = new Badanie(ZwrocParametry());
+                badanieTemp.Show();
+            } catch(Exception exc)
+            {
+                MessageBox.Show("Wystąpił błąd w formularzu, sprawdź go jeszcze raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void wyborAlgorytmu_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +87,17 @@ namespace AlgorytmyDoTTP
                     parametry["iloscPokolen"] = iloscPokolen.Text;
                     parametry["metodaSelekcji"] = metodaSelekcji.Text;
                     parametry["rodzajKrzyzowania"] = rodzajKrzyzowania.Text;
+
+                    string[] parametryCalkowite = new string[] { "rozmiarPopulacji", "iloscPokolen" },
+                             parametryZmiennoPrzecinkowe = new string[] { "pwoMutacji", "pwoKrzyzowania" };
+
+                    bool walidacja = new WalidacjaAE().CzyPoprawneCalkowite(parametry, parametryCalkowite) && new WalidacjaAE().CzyPoprawneZmiennoPrzecinkowe(parametry, parametryZmiennoPrzecinkowe);
+
+                    if (!walidacja)
+                    {
+                        throw new Exception();
+                    }
+
                     break;
             }
 
@@ -84,20 +110,45 @@ namespace AlgorytmyDoTTP
 
         private void wybierzProblem_SelectedIndexChanged(object sender, EventArgs e)
         {
+            WczytajPliki();
+
+            domyslnyProblem.Visible = false;
+
+            switch(wybierzProblem.Text)
+            {
+                case "Problem Komiwojażera":
+                    rodzajKrzyzowania.Items.Clear();
+                    rodzajKrzyzowania.Items.AddRange(algorytmEwolucyjny.KRZYZOWANIE_TSP);
+                    rodzajKrzyzowania.Text = (string)algorytmEwolucyjny.KRZYZOWANIE_TSP[0];
+
+                    domyslnyProblem.Visible = true;
+                    break;
+                case "Problem Plecakowy":
+                    rodzajKrzyzowania.Items.Clear();
+                    rodzajKrzyzowania.Items.AddRange(algorytmEwolucyjny.KRZYZOWANIE_WEKTORA);
+                    rodzajKrzyzowania.Text = (string)algorytmEwolucyjny.KRZYZOWANIE_WEKTORA[0];
+
+                    panelKP.Visible = true;
+                    break;
+            }
+        }
+
+        private void WczytajPliki()
+        {
             string nazwaFolderu = "";
             wybierzDane.Items.Clear();
-            
+
             for (int i = 0; i < srodowisko.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
             {
-                if((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybierzProblem.Text)
+                if ((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybierzProblem.Text)
                 {
                     nazwaFolderu = srodowisko.FOLDERY_Z_DANYMI[i];
                     break;
                 }
             }
 
-            DirectoryInfo d = new DirectoryInfo("../../Dane/"+ nazwaFolderu);
-            FileInfo[] files = d.GetFiles("*.xml"); //Getting Text files
+            DirectoryInfo d = new DirectoryInfo("../../Dane/" + nazwaFolderu);
+            FileInfo[] files = d.GetFiles("*.xml");
             object[] pliki = new object[files.Length];
 
             for (int i = 0; i < files.Length; i++)
@@ -106,16 +157,6 @@ namespace AlgorytmyDoTTP
             }
 
             wybierzDane.Items.AddRange(pliki);
-
-            if(wybierzProblem.Text == "Problem Komiwojażera")
-            {
-                rodzajKrzyzowania.Items.Clear();
-                rodzajKrzyzowania.Items.AddRange(algorytmEwolucyjny.KRZYZOWANIE_TSP);
-            } else
-            {
-                rodzajKrzyzowania.Items.Clear();
-                rodzajKrzyzowania.Items.AddRange(new object[] { "Proste" });
-            }
         }
     }
 }
