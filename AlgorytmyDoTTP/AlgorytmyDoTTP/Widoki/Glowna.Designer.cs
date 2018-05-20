@@ -1,6 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura;
-
-namespace AlgorytmyDoTTP
+﻿namespace AlgorytmyDoTTP
 {
     partial class Glowna
     {

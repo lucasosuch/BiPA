@@ -1,10 +1,10 @@
-﻿using System;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
+using System;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {

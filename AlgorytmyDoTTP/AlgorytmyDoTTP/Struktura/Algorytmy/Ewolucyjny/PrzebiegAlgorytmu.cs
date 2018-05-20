@@ -1,15 +1,11 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
-using System.Collections.Generic;
-using System;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {

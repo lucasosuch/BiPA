@@ -2,12 +2,6 @@
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP.Widoki
@@ -24,10 +18,15 @@ namespace AlgorytmyDoTTP.Widoki
         
         private void Badanie_Load(object sender, EventArgs e)
         {
-            ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
-            problem.UstawOgraniczeniaProblemu(7);
+            switch(parametry["problem"])
+            {
+                case "Problem Plecakowy":
+                    ProblemOptymalizacyjny problem = new ProblemPlecakowy(parametry["dane"]);
+                    problem.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
 
-            wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
+                    wynikiBadania.Text = (new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu()).ZbudujAlgorytm(parametry, problem).Start();
+                    break;
+            }
         }
     }
 }

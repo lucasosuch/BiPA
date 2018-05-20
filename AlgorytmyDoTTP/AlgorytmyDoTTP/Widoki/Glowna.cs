@@ -1,18 +1,10 @@
 ﻿using AlgorytmyDoTTP.KonfiguracjaAlgorytmow;
-using AlgorytmyDoTTP.Struktura;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Widoki;
 using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
@@ -80,6 +72,16 @@ namespace AlgorytmyDoTTP
         {
             Dictionary<string, string> parametry = new Dictionary<string, string>();
 
+            switch (wybierzProblem.Text)
+            {
+                case "Problem Plecakowy":
+                    parametry["ograniczenie1"] = maxWaga.Text;
+                    break;
+                default:
+                    parametry["ograniczenie1"] = "0";
+                    break;
+            }
+
             switch (wyborAlgorytmu.Text)
             {
                 case "Algorytm Ewolucyjny":
@@ -91,7 +93,7 @@ namespace AlgorytmyDoTTP
                     parametry["rodzajKrzyzowania"] = rodzajKrzyzowania.Text;
 
                     string[] parametryCalkowite = new string[] { "rozmiarPopulacji", "iloscPokolen" },
-                             parametryZmiennoPrzecinkowe = new string[] { "pwoMutacji", "pwoKrzyzowania" };
+                             parametryZmiennoPrzecinkowe = new string[] { "pwoMutacji", "pwoKrzyzowania", "ograniczenie1" };
 
                     bool walidacja = new WalidacjaAE().CzyPoprawneCalkowite(parametry, parametryCalkowite) && new WalidacjaAE().CzyPoprawneZmiennoPrzecinkowe(parametry, parametryZmiennoPrzecinkowe);
 
