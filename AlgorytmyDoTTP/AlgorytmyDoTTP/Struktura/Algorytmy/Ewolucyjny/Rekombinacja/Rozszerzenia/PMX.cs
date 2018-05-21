@@ -2,7 +2,7 @@
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia
 {
-    class PMX
+    class PMX : IMetodaKrzyzowania
     {
         private ushort[] przodek1;
         private ushort[] przodek2;

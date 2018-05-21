@@ -37,7 +37,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     break;
 
                 case "CX":
-                    potomek = CX(przodek1, przodek2);
+                    potomek = (ushort[])CX(przodek1, przodek2).Clone();
                     break;
 
                 default:
@@ -88,6 +88,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         private ushort[] CX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
+
+            CX cx = new CX(przodek1, przodek2);
+            potomek = (ushort[])cx.ZwrocPotomka().Clone();
 
             return potomek;
         }
