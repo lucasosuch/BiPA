@@ -51,7 +51,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         protected override ushort[] Mutacja(ushort[] geny)
         {
-            throw new NotImplementedException();
+            Random losowy = new Random();
+            int los1 = losowy.Next(0, geny.Length),
+                los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
+
+            ushort tmp = geny[los1];
+            geny[los1] = geny[los2];
+            geny[los2] = tmp;
+
+            return geny;
         }
 
         private ushort[] NaprzemienneWybieranieKrawedzi(ushort[] przodek1, ushort[] przodek2)
