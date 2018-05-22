@@ -33,7 +33,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     break;
 
                 case "OX":
-                    potomek = OX(przodek1, przodek2);
+                    potomek = (ushort[])OX(przodek1, przodek2).Clone();
                     break;
 
                 case "CX":
@@ -81,6 +81,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         private ushort[] OX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
+
+            OX ox = new OX(przodek1, przodek2);
+            potomek = (ushort[])ox.ZwrocPotomka().Clone();
 
             return potomek;
         }
