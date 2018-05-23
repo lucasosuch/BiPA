@@ -55,9 +55,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
                         analityka.ZmienWartoscNiebo(dziecko1);
                         analityka.ZmienWartoscNiebo(dziecko2);
+                        
                     }
                 }
-                
+
                 //foreach (ushort[] osobnik in nowaPopulacja)
                 //{
                 //    tekst += String.Join(", ", osobnik) + Environment.NewLine;

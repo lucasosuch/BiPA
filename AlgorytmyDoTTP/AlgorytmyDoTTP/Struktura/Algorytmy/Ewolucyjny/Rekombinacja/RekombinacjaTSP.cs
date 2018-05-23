@@ -46,12 +46,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             }
 
+            if (losowy.NextDouble() <= pwoMutacji)
+            {
+                return Mutacja(potomek);
+            }
+
             return potomek;
         }
 
         protected override ushort[] Mutacja(ushort[] geny)
         {
-            Random losowy = new Random();
             int los1 = losowy.Next(0, geny.Length),
                 los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
 

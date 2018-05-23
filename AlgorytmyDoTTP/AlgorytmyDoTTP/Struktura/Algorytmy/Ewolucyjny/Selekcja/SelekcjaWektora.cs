@@ -45,9 +45,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 {
                     zwyciezca = (ushort[])populacja[k];
                     dopasowanieZwyciezcy = dopasowanie;
-                    
                 }
             }
+
+            Console.WriteLine("zwyciezca: "+ String.Join(",", zwyciezca) +" = "+ rozwiazanie.FunkcjaDopasowania(zwyciezca)["max"][0]);
 
             return zwyciezca;
         }
