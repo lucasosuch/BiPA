@@ -1,23 +1,38 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
+using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 {
     class AnalizaPopulacji : IAnalityka
     {
+        private double najlepszaWartoscFunkcji;
         private AOsobnik rozwiazanie;
         private ushort[] najlepszyGenotyp;
+        private Stopwatch pomiarCzasu;
 
         public AnalizaPopulacji(AOsobnik rozwiazanie)
         {
             this.rozwiazanie = rozwiazanie;
-
+            najlepszaWartoscFunkcji = -100;
             najlepszyGenotyp = new ushort[rozwiazanie.ZwrocInstancjeProblemu().ZwrocDlugoscGenotypu()];
-            for (int i = 0; i < rozwiazanie.ZwrocInstancjeProblemu().ZwrocDlugoscGenotypu(); i++)
-            {
-                najlepszyGenotyp[i] = 0;
-            }
+            pomiarCzasu = new Stopwatch();
+        }
+
+        public void RozpocznijPomiarCzasu()
+        {
+            pomiarCzasu.Start();
+        }
+
+        public void ZakonczPomiarCzasu()
+        {
+            pomiarCzasu.Stop();
+        }
+
+        public double ZwrocCzasDzialaniaAlgorytmu()
+        {
+            return pomiarCzasu.Elapsed.TotalMilliseconds;
         }
 
         public double MedianaPopulacji(ArrayList populacja)
@@ -64,9 +79,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 
         public void ZmienWartoscNiebo(ushort[] geny)
         {
-            if(rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0] < rozwiazanie.FunkcjaDopasowania(geny)["max"][0])
+            if(najlepszaWartoscFunkcji < rozwiazanie.FunkcjaDopasowania(geny)["max"][0])
             {
                 najlepszyGenotyp = (ushort[])geny.Clone();
+                najlepszaWartoscFunkcji = rozwiazanie.FunkcjaDopasowania(geny)["max"][0];
             }
         }
 

@@ -48,6 +48,7 @@ namespace AlgorytmyDoTTP
                 badanieTemp.Show();
             } catch(Exception exc)
             {
+                Console.WriteLine(exc);
                 MessageBox.Show("Wystąpił błąd w formularzu, sprawdź go jeszcze raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

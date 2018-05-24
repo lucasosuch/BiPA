@@ -48,8 +48,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 }
             }
 
-            Console.WriteLine("zwyciezca: "+ String.Join(",", zwyciezca) +" = "+ rozwiazanie.FunkcjaDopasowania(zwyciezca)["max"][0]);
-
             return zwyciezca;
         }
 

@@ -1,7 +1,9 @@
-﻿namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+﻿using System.Collections;
+
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
     interface IAlgorytm
     {
-        string Start();
+        ArrayList Start();
     }
 }

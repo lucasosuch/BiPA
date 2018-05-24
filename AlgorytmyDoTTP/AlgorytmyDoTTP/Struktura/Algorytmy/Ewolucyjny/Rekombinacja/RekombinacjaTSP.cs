@@ -58,7 +58,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             int los1 = losowy.Next(0, geny.Length),
                 los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
-
+          
             ushort tmp = geny[los1];
             geny[los1] = geny[los2];
             geny[los2] = tmp;

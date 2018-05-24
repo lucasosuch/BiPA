@@ -33,12 +33,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
-        public string Start()
+        public ArrayList Start()
         {
-            string tekst = "";
+            ArrayList zwracanyTekst = new ArrayList();
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
 
+            analityka.RozpocznijPomiarCzasu();
             while (iloscPokolen >= 0)
             {
                 for (int i = 0; i < populacjaBazowa.Count; i++)
@@ -74,18 +75,23 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 --iloscPokolen;
             }
 
-            double srednia = analityka.SredniaPopulacji(populacjaBazowa),
+            analityka.ZakonczPomiarCzasu();
+
+            double czasDzialania = analityka.ZwrocCzasDzialaniaAlgorytmu(),
+                   srednia = analityka.SredniaPopulacji(populacjaBazowa),
                    mediana = analityka.MedianaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
             ushort[] wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
-            tekst += "Najlepszy genotyp: " + string.Join(",", wartoscNiebo) + " o wartości: " + analityka.ZwrocWartoscNiebo() + Environment.NewLine;
-            tekst += "Średnia: "+ srednia + Environment.NewLine;
-            tekst += "Mediana: " + mediana + Environment.NewLine;
-            tekst += "Odchstd:"+ odchylenieStadowe + Environment.NewLine;
+            zwracanyTekst.Add(new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo) });
+            zwracanyTekst.Add(new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo() });
+            zwracanyTekst.Add(new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() });
+            zwracanyTekst.Add(new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() });
+            zwracanyTekst.Add(new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() });
+            zwracanyTekst.Add(new string[] { "Czas dzialania algorytmu", czasDzialania +" milisekund " });
 
-            return tekst;
+            return zwracanyTekst;
         }
     }
 }
