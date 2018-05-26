@@ -5,6 +5,7 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -33,11 +34,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
-        public ArrayList Start()
+        public Dictionary<string, string[]> Start()
         {
-            ArrayList zwracanyTekst = new ArrayList();
             ArrayList nowaPopulacja = new ArrayList();
             ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa();
+            Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analityka.RozpocznijPomiarCzasu();
             while (iloscPokolen >= 0)
@@ -84,12 +85,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             ushort[] wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
-            zwracanyTekst.Add(new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo) });
-            zwracanyTekst.Add(new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo() });
-            zwracanyTekst.Add(new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() });
-            zwracanyTekst.Add(new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() });
-            zwracanyTekst.Add(new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() });
-            zwracanyTekst.Add(new string[] { "Czas dzialania algorytmu", czasDzialania +" milisekund " });
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo) };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo()[0], analityka.ZwrocWartoscNiebo()[1] };
+            zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
+            zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
+            zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania +" ms" };
 
             return zwracanyTekst;
         }

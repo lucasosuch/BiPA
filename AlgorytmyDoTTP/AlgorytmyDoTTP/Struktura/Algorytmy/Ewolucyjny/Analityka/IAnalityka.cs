@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 
         ushort[] ZwrocNajlepszyGenotyp();
 
-        string ZwrocWartoscNiebo();
+        string[] ZwrocWartoscNiebo();
 
         void RozpocznijPomiarCzasu();
 

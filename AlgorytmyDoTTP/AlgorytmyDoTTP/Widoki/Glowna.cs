@@ -163,5 +163,10 @@ namespace AlgorytmyDoTTP
 
             wybierzDane.Items.AddRange(pliki);
         }
+
+        private void itemDoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Wystąpił błąd w formularzu, sprawdź go jeszcze raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

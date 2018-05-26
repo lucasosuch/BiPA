@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
     interface IAlgorytm
     {
-        ArrayList Start();
+        Dictionary<string, string[]> Start();
     }
 }

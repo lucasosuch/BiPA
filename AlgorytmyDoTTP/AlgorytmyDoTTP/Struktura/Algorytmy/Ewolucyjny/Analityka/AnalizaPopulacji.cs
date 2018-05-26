@@ -91,9 +91,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
             return najlepszyGenotyp;
         }
 
-        public string ZwrocWartoscNiebo()
+        public string[] ZwrocWartoscNiebo()
         {
-            return " max: "+ rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0] + " | min: "+ rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["min"][0];
+            return new string[] { rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0].ToString(), rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["min"][0].ToString() };
         }
     }
 }

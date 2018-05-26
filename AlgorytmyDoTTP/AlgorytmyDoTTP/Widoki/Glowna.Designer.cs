@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Nazwa1",
+            "test1"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Nazwa2",
+            "test2"}, -1);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
-            this.panelKP = new System.Windows.Forms.Panel();
             this.domyslnyProblem = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panelKP = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.maxWaga = new MetroFramework.Controls.MetroTextBox();
             this.domyslny = new System.Windows.Forms.Panel();
@@ -57,12 +64,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
-            this.label11 = new System.Windows.Forms.Label();
+            this.metroListView1 = new MetroFramework.Controls.MetroListView();
+            this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
             this.panelKP.SuspendLayout();
             this.ewolucyjny.SuspendLayout();
+            this.historia.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -85,7 +95,7 @@
             this.metroTabControl1.Controls.Add(this.historia);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(886, 527);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -116,6 +126,23 @@
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
             // 
+            // domyslnyProblem
+            // 
+            this.domyslnyProblem.Location = new System.Drawing.Point(420, 125);
+            this.domyslnyProblem.Name = "domyslnyProblem";
+            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
+            this.domyslnyProblem.TabIndex = 30;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(674, 68);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Wybierz Plik Danych";
+            // 
             // panelKP
             // 
             this.panelKP.Controls.Add(this.label10);
@@ -124,13 +151,6 @@
             this.panelKP.Name = "panelKP";
             this.panelKP.Size = new System.Drawing.Size(454, 68);
             this.panelKP.TabIndex = 29;
-            // 
-            // domyslnyProblem
-            // 
-            this.domyslnyProblem.Location = new System.Drawing.Point(420, 125);
-            this.domyslnyProblem.Name = "domyslnyProblem";
-            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
-            this.domyslnyProblem.TabIndex = 30;
             // 
             // label10
             // 
@@ -505,6 +525,7 @@
             // 
             // historia
             // 
+            this.historia.Controls.Add(this.metroListView1);
             this.historia.HorizontalScrollbarBarColor = true;
             this.historia.HorizontalScrollbarHighlightOnWheel = false;
             this.historia.HorizontalScrollbarSize = 10;
@@ -517,15 +538,35 @@
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
             // 
-            // label11
+            // metroListView1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(674, 68);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(105, 13);
-            this.label11.TabIndex = 30;
-            this.label11.Text = "Wybierz Plik Danych";
+            this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.nazwaBadania,
+            this.dataBadania});
+            this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListView1.FullRowSelect = true;
+            this.metroListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.metroListView1.Location = new System.Drawing.Point(50, 3);
+            this.metroListView1.Name = "metroListView1";
+            this.metroListView1.OwnerDraw = true;
+            this.metroListView1.Size = new System.Drawing.Size(408, 479);
+            this.metroListView1.TabIndex = 2;
+            this.metroListView1.UseCompatibleStateImageBehavior = false;
+            this.metroListView1.UseSelectable = true;
+            this.metroListView1.View = System.Windows.Forms.View.Details;
+            this.metroListView1.DoubleClick += new System.EventHandler(this.itemDoubleClick);
+            // 
+            // nazwaBadania
+            // 
+            this.nazwaBadania.Text = "Nazwa Badania";
+            this.nazwaBadania.Width = 239;
+            // 
+            // dataBadania
+            // 
+            this.dataBadania.Text = "Data Badania";
+            this.dataBadania.Width = 163;
             // 
             // Glowna
             // 
@@ -551,6 +592,7 @@
             this.panelKP.PerformLayout();
             this.ewolucyjny.ResumeLayout(false);
             this.ewolucyjny.PerformLayout();
+            this.historia.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -587,6 +629,9 @@
         private System.Windows.Forms.Label label10;
         private MetroFramework.Controls.MetroTextBox maxWaga;
         private System.Windows.Forms.Label label11;
+        private MetroFramework.Controls.MetroListView metroListView1;
+        private System.Windows.Forms.ColumnHeader nazwaBadania;
+        private System.Windows.Forms.ColumnHeader dataBadania;
     }
 }
 

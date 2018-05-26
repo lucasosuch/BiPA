@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.pobierzCSV = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.wynikiBadania = new System.Windows.Forms.TextBox();
-            this.pobierzCSV = new MetroFramework.Controls.MetroButton();
+            this.zapiszBadanie = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.zapiszBadanie);
             this.metroPanel1.Controls.Add(this.pobierzCSV);
             this.metroPanel1.Controls.Add(this.label1);
             this.metroPanel1.Controls.Add(this.wynikiBadania);
@@ -51,6 +53,16 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 8;
+            // 
+            // pobierzCSV
+            // 
+            this.pobierzCSV.Location = new System.Drawing.Point(657, 61);
+            this.pobierzCSV.Name = "pobierzCSV";
+            this.pobierzCSV.Size = new System.Drawing.Size(110, 23);
+            this.pobierzCSV.TabIndex = 4;
+            this.pobierzCSV.Text = "Pobierz plik CSV";
+            this.pobierzCSV.UseSelectable = true;
+            this.pobierzCSV.Click += new System.EventHandler(this.pobierzCSV_Click);
             // 
             // label1
             // 
@@ -75,15 +87,15 @@
             this.wynikiBadania.Size = new System.Drawing.Size(763, 288);
             this.wynikiBadania.TabIndex = 2;
             // 
-            // pobierzCSV
+            // zapiszBadanie
             // 
-            this.pobierzCSV.Location = new System.Drawing.Point(657, 61);
-            this.pobierzCSV.Name = "pobierzCSV";
-            this.pobierzCSV.Size = new System.Drawing.Size(110, 23);
-            this.pobierzCSV.TabIndex = 4;
-            this.pobierzCSV.Text = "Pobierz plik CSV";
-            this.pobierzCSV.UseSelectable = true;
-            this.pobierzCSV.Click += new System.EventHandler(this.pobierzCSV_Click);
+            this.zapiszBadanie.Location = new System.Drawing.Point(530, 61);
+            this.zapiszBadanie.Name = "zapiszBadanie";
+            this.zapiszBadanie.Size = new System.Drawing.Size(110, 23);
+            this.zapiszBadanie.TabIndex = 5;
+            this.zapiszBadanie.Text = "Zapisz Badanie";
+            this.zapiszBadanie.UseSelectable = true;
+            this.zapiszBadanie.Click += new System.EventHandler(this.zapiszBadanie_Click);
             // 
             // Badanie
             // 
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox wynikiBadania;
         private MetroFramework.Controls.MetroButton pobierzCSV;
+        private MetroFramework.Controls.MetroButton zapiszBadanie;
     }
 }
