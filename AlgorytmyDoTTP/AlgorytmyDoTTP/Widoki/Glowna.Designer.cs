@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Nazwa1",
-            "test1"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Nazwa2",
-            "test2"}, -1);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
@@ -64,9 +58,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
-            this.metroListView1 = new MetroFramework.Controls.MetroListView();
+            this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.porownaj = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -525,7 +520,8 @@
             // 
             // historia
             // 
-            this.historia.Controls.Add(this.metroListView1);
+            this.historia.Controls.Add(this.porownaj);
+            this.historia.Controls.Add(this.daneHistoryczne);
             this.historia.HorizontalScrollbarBarColor = true;
             this.historia.HorizontalScrollbarHighlightOnWheel = false;
             this.historia.HorizontalScrollbarSize = 10;
@@ -538,35 +534,45 @@
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
             // 
-            // metroListView1
+            // daneHistoryczne
             // 
-            this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.daneHistoryczne.CheckBoxes = true;
+            this.daneHistoryczne.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nazwaBadania,
             this.dataBadania});
-            this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.metroListView1.FullRowSelect = true;
-            this.metroListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.metroListView1.Location = new System.Drawing.Point(50, 3);
-            this.metroListView1.Name = "metroListView1";
-            this.metroListView1.OwnerDraw = true;
-            this.metroListView1.Size = new System.Drawing.Size(408, 479);
-            this.metroListView1.TabIndex = 2;
-            this.metroListView1.UseCompatibleStateImageBehavior = false;
-            this.metroListView1.UseSelectable = true;
-            this.metroListView1.View = System.Windows.Forms.View.Details;
-            this.metroListView1.DoubleClick += new System.EventHandler(this.itemDoubleClick);
+            this.daneHistoryczne.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.daneHistoryczne.FullRowSelect = true;
+            this.daneHistoryczne.Location = new System.Drawing.Point(50, 3);
+            this.daneHistoryczne.Name = "daneHistoryczne";
+            this.daneHistoryczne.OwnerDraw = true;
+            this.daneHistoryczne.Size = new System.Drawing.Size(580, 479);
+            this.daneHistoryczne.TabIndex = 2;
+            this.daneHistoryczne.UseCompatibleStateImageBehavior = false;
+            this.daneHistoryczne.UseSelectable = true;
+            this.daneHistoryczne.View = System.Windows.Forms.View.Details;
             // 
             // nazwaBadania
             // 
             this.nazwaBadania.Text = "Nazwa Badania";
-            this.nazwaBadania.Width = 239;
+            this.nazwaBadania.Width = 410;
             // 
             // dataBadania
             // 
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
+            // 
+            // porownaj
+            // 
+            this.porownaj.ActiveControl = null;
+            this.porownaj.Location = new System.Drawing.Point(684, 422);
+            this.porownaj.Margin = new System.Windows.Forms.Padding(2);
+            this.porownaj.Name = "porownaj";
+            this.porownaj.Size = new System.Drawing.Size(198, 60);
+            this.porownaj.TabIndex = 7;
+            this.porownaj.Text = "Porównaj";
+            this.porownaj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.porownaj.UseSelectable = true;
+            this.porownaj.Click += new System.EventHandler(this.porownaj_Click);
             // 
             // Glowna
             // 
@@ -629,9 +635,10 @@
         private System.Windows.Forms.Label label10;
         private MetroFramework.Controls.MetroTextBox maxWaga;
         private System.Windows.Forms.Label label11;
-        private MetroFramework.Controls.MetroListView metroListView1;
+        private MetroFramework.Controls.MetroListView daneHistoryczne;
         private System.Windows.Forms.ColumnHeader nazwaBadania;
         private System.Windows.Forms.ColumnHeader dataBadania;
+        private MetroFramework.Controls.MetroTile porownaj;
     }
 }
 

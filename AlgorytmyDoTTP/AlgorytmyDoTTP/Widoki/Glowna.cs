@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace AlgorytmyDoTTP
 {
@@ -34,6 +35,19 @@ namespace AlgorytmyDoTTP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DirectoryInfo d = new DirectoryInfo("../../../../Badania");
+            FileInfo[] pliki = d.GetFiles("*.xml");
+
+            for (int i = 0; i < pliki.Length; i++)
+            {
+                XmlDocument dokument = new XmlDocument();
+                dokument.Load("../../../../Badania/"+pliki[i].Name);
+                XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/dataZapisu");
+
+                string[] wiersz = new string[] { pliki[i].Name, dataZapisu.InnerText };
+                var elementy = new ListViewItem(wiersz);
+                daneHistoryczne.Items.Add(elementy);
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -164,9 +178,31 @@ namespace AlgorytmyDoTTP
             wybierzDane.Items.AddRange(pliki);
         }
 
-        private void itemDoubleClick(object sender, EventArgs e)
+        private void porownaj_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Wystąpił błąd w formularzu, sprawdź go jeszcze raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ListView.CheckedListViewItemCollection wybraneElementy = daneHistoryczne.CheckedItems;
+            int ilosc = wybraneElementy.Count;
+
+            if (ilosc <= 5)
+            {
+                Dictionary<string, string[]> paramentry = new Dictionary<string, string[]>();
+
+                foreach (ListViewItem element in wybraneElementy)
+                {
+                    string nazwa = element.SubItems[0].Text;
+
+                    XmlDocument dokument = new XmlDocument();
+                    dokument.Load("../../../../Badania/" + nazwa);
+
+                    XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/maxWartosc");
+                    XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/czasDzialania");
+
+                    paramentry[nazwa] = new string[] { czasDzialania.InnerText, maxWartosc.InnerText };
+                }
+            } else
+            {
+                MessageBox.Show("Wybrano za dużo elementów do porównania na raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
