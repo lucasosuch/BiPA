@@ -14,7 +14,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
-            return ((ProblemPlecakowy)problemOptymalizacyjny).ZwrocWybraneElementy(genotyp);
+            return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
     }
 }

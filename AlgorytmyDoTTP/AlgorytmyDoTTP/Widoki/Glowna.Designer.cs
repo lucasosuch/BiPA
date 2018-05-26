@@ -58,10 +58,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
+            this.porownaj = new MetroFramework.Controls.MetroTile();
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.porownaj = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -90,7 +90,7 @@
             this.metroTabControl1.Controls.Add(this.historia);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(886, 527);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -520,6 +520,7 @@
             // 
             // historia
             // 
+            this.historia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.historia.Controls.Add(this.porownaj);
             this.historia.Controls.Add(this.daneHistoryczne);
             this.historia.HorizontalScrollbarBarColor = true;
@@ -534,8 +535,22 @@
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
             // 
+            // porownaj
+            // 
+            this.porownaj.ActiveControl = null;
+            this.porownaj.Location = new System.Drawing.Point(677, 430);
+            this.porownaj.Margin = new System.Windows.Forms.Padding(2);
+            this.porownaj.Name = "porownaj";
+            this.porownaj.Size = new System.Drawing.Size(198, 60);
+            this.porownaj.TabIndex = 7;
+            this.porownaj.Text = "Porównaj";
+            this.porownaj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.porownaj.UseSelectable = true;
+            this.porownaj.Click += new System.EventHandler(this.porownaj_Click);
+            // 
             // daneHistoryczne
             // 
+            this.daneHistoryczne.AllowSorting = true;
             this.daneHistoryczne.CheckBoxes = true;
             this.daneHistoryczne.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nazwaBadania,
@@ -545,7 +560,7 @@
             this.daneHistoryczne.Location = new System.Drawing.Point(50, 3);
             this.daneHistoryczne.Name = "daneHistoryczne";
             this.daneHistoryczne.OwnerDraw = true;
-            this.daneHistoryczne.Size = new System.Drawing.Size(580, 479);
+            this.daneHistoryczne.Size = new System.Drawing.Size(580, 480);
             this.daneHistoryczne.TabIndex = 2;
             this.daneHistoryczne.UseCompatibleStateImageBehavior = false;
             this.daneHistoryczne.UseSelectable = true;
@@ -560,19 +575,6 @@
             // 
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
-            // 
-            // porownaj
-            // 
-            this.porownaj.ActiveControl = null;
-            this.porownaj.Location = new System.Drawing.Point(684, 422);
-            this.porownaj.Margin = new System.Windows.Forms.Padding(2);
-            this.porownaj.Name = "porownaj";
-            this.porownaj.Size = new System.Drawing.Size(198, 60);
-            this.porownaj.TabIndex = 7;
-            this.porownaj.Text = "Porównaj";
-            this.porownaj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.porownaj.UseSelectable = true;
-            this.porownaj.Click += new System.EventHandler(this.porownaj_Click);
             // 
             // Glowna
             // 

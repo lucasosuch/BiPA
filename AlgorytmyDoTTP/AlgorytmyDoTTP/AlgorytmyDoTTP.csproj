@@ -82,6 +82,11 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\IAlgorytm.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\SEA.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\PrzebiegAlgorytmu.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\RLS.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\ARozwiazanie.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieBinarne.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTSP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />

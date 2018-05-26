@@ -183,7 +183,7 @@ namespace AlgorytmyDoTTP
             ListView.CheckedListViewItemCollection wybraneElementy = daneHistoryczne.CheckedItems;
             int ilosc = wybraneElementy.Count;
 
-            if (ilosc <= 5)
+            if (ilosc <= 5 && ilosc > 0)
             {
                 Dictionary<string, string[]> paramentry = new Dictionary<string, string[]>();
 
@@ -199,7 +199,15 @@ namespace AlgorytmyDoTTP
 
                     paramentry[nazwa] = new string[] { czasDzialania.InnerText, maxWartosc.InnerText };
                 }
-            } else
+
+                Porownanie porownanieTemp = new Porownanie(paramentry);
+                porownanieTemp.Show();
+            }
+            else if(ilosc == 0)
+            {
+                MessageBox.Show("Nie wybrano żadnego elementu!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 MessageBox.Show("Wybrano za dużo elementów do porównania na raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

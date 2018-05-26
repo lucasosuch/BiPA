@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             Inicjalizacja(nazwaPakietu);
         }
 
-        public ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
             ArrayList listaElementow = new ArrayList();
 

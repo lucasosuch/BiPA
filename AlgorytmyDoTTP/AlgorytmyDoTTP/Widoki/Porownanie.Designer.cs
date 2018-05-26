@@ -54,7 +54,7 @@
             this.MaximumSize = new System.Drawing.Size(865, 540);
             this.MinimumSize = new System.Drawing.Size(865, 540);
             this.Name = "Porownanie";
-            this.Text = "Historia";
+            this.Text = "Porównanie";
             this.ResumeLayout(false);
 
         }

@@ -37,5 +37,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         }
 
         public abstract Dictionary<String, double[]> ObliczZysk(ArrayList wektor);
+
+        public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
     }
 }

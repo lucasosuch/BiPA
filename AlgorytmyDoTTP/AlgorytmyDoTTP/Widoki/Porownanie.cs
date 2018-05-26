@@ -12,9 +12,12 @@ namespace AlgorytmyDoTTP.Widoki
 {
     public partial class Porownanie : Form
     {
-        public Porownanie()
+        private Dictionary<string, string[]> paramentry;
+
+        public Porownanie(Dictionary<string, string[]> paramentry)
         {
             InitializeComponent();
+            this.paramentry = paramentry;
         }
     }
 }

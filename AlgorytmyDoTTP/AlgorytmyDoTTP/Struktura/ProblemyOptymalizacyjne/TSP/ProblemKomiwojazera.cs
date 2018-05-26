@@ -75,5 +75,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
             return wynik;
         }
+
+        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
