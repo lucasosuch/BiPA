@@ -7,16 +7,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
     class SelekcjaWektora : ASelekcja
     {
-        private ushort dlugoscGenotypu;
-        private Random losowy = new Random();
-        private AOsobnik rozwiazanie;
-        private String typSelekcji;
-
-        public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, String typSelekcji)
+        public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, string typSelekcji) : base(rozwiazanie, dlugoscGenotypu, typSelekcji)
         {
-            this.dlugoscGenotypu = dlugoscGenotypu;
-            this.rozwiazanie = rozwiazanie;
-            this.typSelekcji = typSelekcji;
         }
 
         public override ushort[] WybierzOsobnika(ArrayList populacja)
