@@ -18,19 +18,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczeni
 
         public void NaprawGeny()
         {
-            //Console.WriteLine("Początek: "+ string.Join(",", geny));
-
             int start = losowy.Next(0, geny.Length / 2),
                 koniec = losowy.Next(start, geny.Length);
-
-            //Console.WriteLine("start: " + start + " koniec: "+ koniec);
 
             for (int i = start; i < koniec; i++)
             {
                 geny[i] = (ushort)((geny[i] == 0) ? 1 : 0);
             }
-
-            //Console.WriteLine("Koniec: " + string.Join(",", geny));
         }
 
         public ushort[] ZwrocGeny()

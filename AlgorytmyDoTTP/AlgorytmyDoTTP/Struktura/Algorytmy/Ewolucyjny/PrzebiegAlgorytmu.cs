@@ -11,15 +11,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
     /// <summary>
     /// Klasa konfiguracyjna.
-    /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmami je rozwiązującymi.
+    /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmem Ewolucyjnym
     /// </summary>
     class PrzebiegAlgorytmu : Algorytm
     {
         /// <summary>
-        /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
+        /// Metoda odpowiedzialna za uruchomienie algorytmu wg wybranego problemu optymalizacyjnego
         /// </summary>
+        /// <param name="parametry">Zdefiniowane przez użytkownika parametry</param>
+        /// <param name="problem">Wybrany przez użytkownika problem optymalizacyjny</param>
+        /// <returns>Dane tekstowe na temat przebiegu algorytmu</returns>
+        /// <exception cref="System.Exception">Zwraca wyjątek gdy algorytm nie rozpatruje wybranego przez użytkownika problemu optymalizacyjnego</exception>
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
+            // Stałe składniki Algorytmu Ewolucyjnego
             ASelekcja selekcja;
             APopulacja populacja;
             IAnalityka analityka;
@@ -29,6 +34,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
+                    // konfiguracja algorytmu pod Problem Plecakowy
                     rozwiazanie = new OsobnikKP(problem);
                     rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
@@ -38,6 +44,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
 
                 case "Problem Komiwojażera":
+                    // konfiguracja algorytmu pod Problem Komiwojażera
                     rozwiazanie = new OsobnikTSP(problem);
                     populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);

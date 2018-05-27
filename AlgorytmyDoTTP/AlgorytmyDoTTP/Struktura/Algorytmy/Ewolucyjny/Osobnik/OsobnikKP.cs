@@ -12,6 +12,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         {
         }
 
+        /// <summary>
+        /// Metoda zwraca wektor osobnika opisanego genotypem
+        /// </summary>
+        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
+        /// <returns>Dziedzinę wartości funkcji celu</returns>
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);

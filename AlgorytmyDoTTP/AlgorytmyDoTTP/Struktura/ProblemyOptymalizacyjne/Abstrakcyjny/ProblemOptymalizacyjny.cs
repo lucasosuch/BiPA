@@ -7,28 +7,28 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
     abstract class ProblemOptymalizacyjny
     {
         protected ushort dlugoscGenotypu = 0;
+        protected bool czyIstniejaOgraniczenia = false;
         protected IPomocniczy[] instancje;
-        protected double[] ZwrocOgraniczenia;
-        protected Boolean CzyIstniejaOgraniczenia = false;
+        protected double[] zwrocOgraniczenia;
 
-        public void UstawFlagePodOgraniczenia(Boolean CzyIstniejaOgraniczenia)
+        public void UstawFlagePodOgraniczenia(bool czyIstniejaOgraniczenia)
         {
-            this.CzyIstniejaOgraniczenia = CzyIstniejaOgraniczenia;
+            this.czyIstniejaOgraniczenia = czyIstniejaOgraniczenia;
         }
 
         public double[] ZwrocOgraniczeniaProblemu()
         {
-            return ZwrocOgraniczenia;
+            return zwrocOgraniczenia;
         }
 
         public void UstawOgraniczeniaProblemu(double ograniczenie)
         {
-            ZwrocOgraniczenia = new double[] { ograniczenie };
+            zwrocOgraniczenia = new double[] { ograniczenie };
         }
 
         public void UstawOgraniczeniaProblemu(double[] ograniczenia)
         {
-            ZwrocOgraniczenia = (double[])ograniczenia.Clone();
+            zwrocOgraniczenia = (double[])ograniczenia.Clone();
         }
 
         public ushort ZwrocDlugoscGenotypu()
@@ -36,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
             return dlugoscGenotypu;
         }
 
-        public abstract Dictionary<String, double[]> ObliczZysk(ArrayList wektor);
+        public abstract Dictionary<string, double[]> ObliczZysk(ArrayList wektor);
 
         public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
     }

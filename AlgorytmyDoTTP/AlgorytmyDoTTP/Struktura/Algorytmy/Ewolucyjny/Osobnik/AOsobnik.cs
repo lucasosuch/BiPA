@@ -14,16 +14,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
             this.problemOptymalizacyjny = problemOptymalizacyjny;
         }
 
-        // Zwraca wektor osobnika opisanego genotypem
+        /// <summary>
+        /// Metoda zwraca wektor osobnika opisanego genotypem
+        /// </summary>
+        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         public abstract ArrayList Fenotyp(ushort[] genotyp);
 
-        // Zwraca wektor osobnika opisanego genotypem
+        /// <summary>
+        /// Metoda zwraca wartość funkcji celu
+        /// </summary>
+        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
+        /// <returns>Wartość / Wartości funkcji celu</returns>
         public Dictionary<String, double[]> FunkcjaDopasowania(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ObliczZysk(Fenotyp(genotyp));
         }
 
-        // Zwraca instancje problemu optymalizacyjnego
+        /// <summary>
+        /// Metoda zwraca instancje problemu optymalizacyjnego
+        /// </summary>
+        /// <returns>Instancję problemu optymalizacyjnego</returns>
         public ProblemOptymalizacyjny ZwrocInstancjeProblemu()
         {
             return problemOptymalizacyjny;
