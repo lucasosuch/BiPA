@@ -1,9 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Losowanie;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
@@ -20,15 +17,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         /// </summary>
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
+            ALosowanie losowanie;
+            ARozwiazanie rozwiazanie;
+
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    
+                    losowanie = new LosowanieBinarne(problem);
+                    rozwiazanie = new RozwiazanieBinarne(problem);
 
-                    return new RLS();
-
+                    return new RLS(losowanie, rozwiazanie);
                 case "Problem Komiwojażera":
-                    
 
                     return new RLS();
             }

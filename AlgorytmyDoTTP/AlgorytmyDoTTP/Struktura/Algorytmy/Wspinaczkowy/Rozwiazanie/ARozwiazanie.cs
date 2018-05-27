@@ -11,8 +11,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
     {
         protected Random losowy = new Random();
 
-        public abstract ushort[] WygenerujRozwiazanie();
+        public abstract ushort[] ZwrocRozwiazanie();
 
-        public abstract Dictionary<string, double[]> ZnajdzOptimum(ushort[] rozwiazanie);
+        public abstract void UstawRozwiazanie(ushort[] rozwiazanie);
+
+        public abstract Dictionary<string, double[]> ZnajdzOptimum();
     }
 }

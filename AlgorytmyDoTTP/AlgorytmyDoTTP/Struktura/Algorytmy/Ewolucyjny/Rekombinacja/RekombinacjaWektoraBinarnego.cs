@@ -49,18 +49,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
-            Console.WriteLine("Startowy: "+ rozwiazanie.FunkcjaDopasowania(geny)["min"][0]);
-
             while (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
             {
                 KP naprawaOgraniczen = new KP(geny);
                 naprawaOgraniczen.NaprawGeny();
                 geny = (ushort[])naprawaOgraniczen.ZwrocGeny().Clone();
-
-                Console.WriteLine("W trakcie: " + rozwiazanie.FunkcjaDopasowania(geny)["min"][0]);
             }
-
-            Console.WriteLine("Końcowy: " + rozwiazanie.FunkcjaDopasowania(geny)["min"][0]);
 
             return geny;
         }

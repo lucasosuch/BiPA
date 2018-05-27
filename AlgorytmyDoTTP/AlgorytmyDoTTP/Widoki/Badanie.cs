@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using System;
@@ -26,23 +27,11 @@ namespace AlgorytmyDoTTP.Widoki
         
         private void Badanie_Load(object sender, EventArgs e)
         {
-            switch (parametry["problem"])
-            {
-                case "Problem Plecakowy":
-                    ProblemOptymalizacyjny problemKP = new ProblemPlecakowy(parametry["dane"]);
-                    problemKP.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
-                    
-                    wyniki.Clear();
-                    wyniki = (new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu()).ZbudujAlgorytm(parametry, problemKP).Start();
-                    break;
+            ProblemOptymalizacyjny problemOptymalizacyjny = ZwrocWybranyProblem();
+            Algorytm algorytm = ZwrocWybranyAlgorytm();
 
-                case "Problem Komiwojażera":
-                    ProblemOptymalizacyjny problemTSP = new ProblemKomiwojazera(parametry["dane"]);
-
-                    wyniki.Clear();
-                    wyniki = (new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu()).ZbudujAlgorytm(parametry, problemTSP).Start();
-                    break;
-            }
+            wyniki.Clear();
+            wyniki = algorytm.ZbudujAlgorytm(parametry, problemOptymalizacyjny).Start();
 
             foreach (KeyValuePair<string, string[]> linia in wyniki)
             {
@@ -94,6 +83,29 @@ namespace AlgorytmyDoTTP.Widoki
 
             xml.Add(badanie);
             xml.Save("../../../../Badania/test.xml");
+        }
+
+        private ProblemOptymalizacyjny ZwrocWybranyProblem()
+        {
+            if (parametry["problem"] == "Problem Plecakowy")
+            {
+                ProblemOptymalizacyjny problemKP = new ProblemPlecakowy(parametry["dane"]);
+                problemKP.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
+
+                return problemKP;
+            }
+            
+            return new ProblemKomiwojazera(parametry["dane"]);
+        }
+
+        private Algorytm ZwrocWybranyAlgorytm()
+        {
+            if(parametry["algorytm"] == "Algorytm Ewolucyjny")
+            {
+                return new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu();
+            }
+
+            return new Struktura.Algorytmy.Wspinaczkowy.PrzebiegAlgorytmu();
         }
     }
 }
