@@ -6,17 +6,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
     class RekombinacjaTSP : ARekombinacja
     {
-        private double pwoMutacji;
-        private AOsobnik rozwiazanie;
-        private String rodzajKrzyzowania;
-        private Random losowy = new Random();
-
-        public RekombinacjaTSP(double pwoMutacji, AOsobnik rozwiazanie, String rodzajKrzyzowania)
-        {
-            this.pwoMutacji = pwoMutacji;
-            this.rozwiazanie = rozwiazanie;
-            this.rodzajKrzyzowania = rodzajKrzyzowania;
-        }
+        public RekombinacjaTSP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania){}
 
         public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
         {
@@ -84,7 +74,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             ushort[] potomek = new ushort[przodek1.Length];
 
-            PMX pmx = new PMX(przodek1, przodek2);
+            AMetodaKrzyzowania pmx = new PMX(przodek1, przodek2);
             potomek = (ushort[])pmx.ZwrocPotomka().Clone();
 
             return potomek;
@@ -94,7 +84,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             ushort[] potomek = new ushort[przodek1.Length];
 
-            OX ox = new OX(przodek1, przodek2);
+            AMetodaKrzyzowania ox = new OX(przodek1, przodek2);
             potomek = (ushort[])ox.ZwrocPotomka().Clone();
 
             return potomek;
@@ -104,7 +94,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             ushort[] potomek = new ushort[przodek1.Length];
 
-            CX cx = new CX(przodek1, przodek2);
+            AMetodaKrzyzowania cx = new CX(przodek1, przodek2);
             potomek = (ushort[])cx.ZwrocPotomka().Clone();
 
             return potomek;

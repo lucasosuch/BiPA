@@ -7,11 +7,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
     abstract class ASelekcja
     {
         protected ushort dlugoscGenotypu;
+        protected string typSelekcji;
         protected Random losowy = new Random();
         protected AOsobnik rozwiazanie;
-        protected String typSelekcji;
 
-        public ASelekcja(AOsobnik rozwiazanie, ushort dlugoscGenotypu, String typSelekcji)
+        public ASelekcja(AOsobnik rozwiazanie, ushort dlugoscGenotypu, string typSelekcji)
         {
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozwiazanie = rozwiazanie;

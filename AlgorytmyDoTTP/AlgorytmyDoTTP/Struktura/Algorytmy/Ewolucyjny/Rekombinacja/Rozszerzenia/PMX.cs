@@ -2,19 +2,11 @@
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia
 {
-    class PMX : IMetodaKrzyzowania
+    class PMX : AMetodaKrzyzowania
     {
-        private ushort[] przodek1;
-        private ushort[] przodek2;
-        private Random losowy = new Random();
+        public PMX(ushort[] przodek1, ushort[] przodek2) : base(przodek1, przodek2){}
 
-        public PMX(ushort[] przodek1, ushort[] przodek2)
-        {
-            this.przodek1 = przodek1;
-            this.przodek2 = przodek2;
-        }
-
-        public ushort[] ZwrocPotomka()
+        public override ushort[] ZwrocPotomka()
         {
             int ciecie1 = losowy.Next(0, przodek1.Length),
                 ciecie2 = losowy.Next(0, przodek1.Length);

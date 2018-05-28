@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia
 {
-    class OX : IMetodaKrzyzowania
+    class OX : AMetodaKrzyzowania
     {
-        private ushort[] przodek1;
-        private ushort[] przodek2;
-        private Random losowy = new Random();
+        public OX(ushort[] przodek1, ushort[] przodek2) : base(przodek1, przodek2){}
 
-        public OX(ushort[] przodek1, ushort[] przodek2)
-        {
-            this.przodek1 = przodek1;
-            this.przodek2 = przodek2;
-        }
-
-        public ushort[] ZwrocPotomka()
+        public override ushort[] ZwrocPotomka()
         {
             int ciecie1 = losowy.Next(0, przodek1.Length),
                 ciecie2 = losowy.Next(0, przodek1.Length);

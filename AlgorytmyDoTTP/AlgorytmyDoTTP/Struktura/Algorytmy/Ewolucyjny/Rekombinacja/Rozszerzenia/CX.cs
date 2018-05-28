@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia
 {
-    class CX : IMetodaKrzyzowania
+    class CX : AMetodaKrzyzowania
     {
-        private ushort[] przodek1;
-        private ushort[] przodek2;
-        private Random losowy = new Random();
+        public CX(ushort[] przodek1, ushort[] przodek2) : base(przodek1, przodek2){}
 
-        public CX(ushort[] przodek1, ushort[] przodek2)
-        {
-            this.przodek1 = przodek1;
-            this.przodek2 = przodek2;
-        }
-
-        public ushort[] ZwrocPotomka()
+        public override ushort[] ZwrocPotomka()
         {
             ushort i = 0;
             ushort[] potomek = new ushort[przodek1.Length];

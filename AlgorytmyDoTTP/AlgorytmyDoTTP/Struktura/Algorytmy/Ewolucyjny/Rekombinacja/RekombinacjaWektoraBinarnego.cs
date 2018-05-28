@@ -1,22 +1,11 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
-using System;
-using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
     class RekombinacjaWektoraBinarnego : ARekombinacja
     {
-        private double pwoMutacji;
-        private AOsobnik rozwiazanie;
-        private Random losowy = new Random();
-
-        public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie)
-        {
-            this.pwoMutacji = pwoMutacji;
-            this.rozwiazanie = rozwiazanie;
-        }
+        public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
         public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
         {
@@ -51,7 +40,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             while (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
             {
-                KP naprawaOgraniczen = new KP(geny);
+                ANaprawaGenotypu naprawaOgraniczen = new KP(geny);
                 naprawaOgraniczen.NaprawGeny();
                 geny = (ushort[])naprawaOgraniczen.ZwrocGeny().Clone();
             }
