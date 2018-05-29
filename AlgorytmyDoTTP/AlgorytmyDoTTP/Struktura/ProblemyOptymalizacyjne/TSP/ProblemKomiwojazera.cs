@@ -78,7 +78,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
         public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
-            throw new NotImplementedException();
+            ArrayList wynik = new ArrayList();
+            wynik.AddRange(wybraneElementy);
+
+            return wynik;
         }
     }
 }

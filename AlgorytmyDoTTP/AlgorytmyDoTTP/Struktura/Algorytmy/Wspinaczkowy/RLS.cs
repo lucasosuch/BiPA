@@ -35,7 +35,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             wynik = (ushort[])(rozwiazanie.ZwrocRozwiazanie().Clone());
 
             zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wynik) };
-            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() +" | "+ znalezioneOptimum["min"][0].ToString() };
 
             return zwracanyTekst;
         }

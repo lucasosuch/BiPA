@@ -11,9 +11,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         protected IPomocniczy[] instancje;
         protected double[] zwrocOgraniczenia;
 
-        public void UstawFlagePodOgraniczenia(bool czyIstniejaOgraniczenia)
+        public bool CzyIstniejaOgraniczenia()
         {
-            this.czyIstniejaOgraniczenia = czyIstniejaOgraniczenia;
+            return czyIstniejaOgraniczenia;
         }
 
         public double[] ZwrocOgraniczeniaProblemu()
@@ -23,11 +23,13 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 
         public void UstawOgraniczeniaProblemu(double ograniczenie)
         {
+            czyIstniejaOgraniczenia = true;
             zwrocOgraniczenia = new double[] { ograniczenie };
         }
 
         public void UstawOgraniczeniaProblemu(double[] ograniczenia)
         {
+            czyIstniejaOgraniczenia = true;
             zwrocOgraniczenia = (double[])ograniczenia.Clone();
         }
 

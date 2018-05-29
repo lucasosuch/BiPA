@@ -19,10 +19,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// <returns>Dziedzinę wartości funkcji celu</returns>
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
-            ArrayList wynik = new ArrayList();
-            wynik.AddRange(genotyp);
-
-            return wynik;
+            return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
     }
 }

@@ -9,11 +9,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
     abstract class ARozwiazanie
     {
+        protected ushort[] rozwiazanie;
         protected Random losowy = new Random();
+        protected ProblemOptymalizacyjny problem;
 
-        public abstract ushort[] ZwrocRozwiazanie();
+        public ARozwiazanie(ProblemOptymalizacyjny problem)
+        {
+            this.problem = problem;
+        }
 
-        public abstract void UstawRozwiazanie(ushort[] rozwiazanie);
+        public ushort[] ZwrocRozwiazanie()
+        {
+            return rozwiazanie;
+        }
+
+        public void UstawRozwiazanie(ushort[] rozwiazanie)
+        {
+            this.rozwiazanie = rozwiazanie;
+        }
 
         public abstract Dictionary<string, double[]> ZnajdzOptimum();
     }

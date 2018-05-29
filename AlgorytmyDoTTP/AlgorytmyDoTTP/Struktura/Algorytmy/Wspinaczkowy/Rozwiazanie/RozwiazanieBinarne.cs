@@ -9,18 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
     class RozwiazanieBinarne : ARozwiazanie
     {
-        private ushort[] rozwiazanie;
-        private ProblemOptymalizacyjny problem;
-
-        public RozwiazanieBinarne(ProblemOptymalizacyjny problem)
-        {
-            this.problem = problem;
-        }
-
-        public override void UstawRozwiazanie(ushort[] rozwiazanie)
-        {
-            this.rozwiazanie = rozwiazanie;
-        }
+        public RozwiazanieBinarne(ProblemOptymalizacyjny problem) : base(problem){}
 
         public override Dictionary<string, double[]> ZnajdzOptimum()
         {
@@ -31,7 +20,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
             do
             {
                 poprawy = 0;
-                int wartosc1 = losowy.Next(problem.ZwrocDlugoscGenotypu()),
+                int wartosc1 = losowy.Next(problem.ZwrocDlugoscGenotypu() / 2),
                     wartosc2 = losowy.Next(problem.ZwrocDlugoscGenotypu()),
                     start = (wartosc1 > wartosc2) ? wartosc2 : wartosc1,
                     koniec = (wartosc1 > wartosc2) ? wartosc1 : wartosc2;
@@ -39,30 +28,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                 for (int i = start; i < koniec; i++)
                 {
                     tmpRozwiazanie[i] = (ushort)((tmpRozwiazanie[i] == 0) ? 1 : 0);
-                }
 
-                Dictionary<string, double[]> tmpWynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(tmpRozwiazanie));
+                    Dictionary<string, double[]> tmpWynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(tmpRozwiazanie));
 
-                if ((tmpWynik["max"][0] > wynik["max"][0]) && (tmpWynik["min"][0] <= problem.ZwrocOgraniczeniaProblemu()[0]))
-                {
-                    Console.WriteLine("Poprawa z "+ wynik["max"][0] +" na "+ tmpWynik["max"][0]);
-
-                    rozwiazanie = (ushort[])tmpRozwiazanie.Clone();
-                    wynik["max"][0] = tmpWynik["max"][0];
-                    wynik["min"][0] = tmpWynik["min"][0];
-                    poprawy++;
-                } else
-                {
-                    tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
+                    if (tmpWynik["max"][0] > wynik["max"][0])
+                    {
+                        if (problem.CzyIstniejaOgraniczenia() && (tmpWynik["min"][0] > problem.ZwrocOgraniczeniaProblemu()[0])) continue;
+                        
+                        rozwiazanie = (ushort[])tmpRozwiazanie.Clone();
+                        wynik["max"][0] = tmpWynik["max"][0];
+                        wynik["min"][0] = tmpWynik["min"][0];
+                        poprawy++;
+                    }
+                    else
+                    {
+                        tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
+                    }
                 }
             } while (poprawy > 0);
 
             return wynik;
-        }
-
-        public override ushort[] ZwrocRozwiazanie()
-        {
-            return rozwiazanie;
         }
     }
 }
