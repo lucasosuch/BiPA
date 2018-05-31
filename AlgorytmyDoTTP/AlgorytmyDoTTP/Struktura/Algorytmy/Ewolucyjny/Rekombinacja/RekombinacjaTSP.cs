@@ -104,5 +104,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             throw new NotImplementedException();
         }
+
+        public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override ushort[][] Mutacja(ushort[][] geny)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

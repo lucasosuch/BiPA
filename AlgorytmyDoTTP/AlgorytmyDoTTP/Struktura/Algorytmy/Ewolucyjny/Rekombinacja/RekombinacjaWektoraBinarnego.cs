@@ -1,5 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
+using System;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
@@ -46,6 +47,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             }
 
             return geny;
+        }
+
+        public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override ushort[][] Mutacja(ushort[][] geny)
+        {
+            throw new NotImplementedException();
         }
     }
 }

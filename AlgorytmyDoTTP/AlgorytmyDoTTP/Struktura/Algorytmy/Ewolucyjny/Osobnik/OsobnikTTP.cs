@@ -7,9 +7,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
     class OsobnikTTP : AOsobnik
     {
-        public OsobnikTTP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny)
-        {
-        }
+        public OsobnikTTP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
 
         public override Dictionary<string, ushort[]> Fenotyp(ushort[][] genotyp)
         {

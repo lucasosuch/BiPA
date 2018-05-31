@@ -73,6 +73,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Ograniczenia\ANaprawaGenotypu.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Ograniczenia\KP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaTSP.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaTTP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Rozszerzenia\AMetodaKrzyzowania.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Rozszerzenia\CX.cs" />

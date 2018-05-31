@@ -52,6 +52,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
+
+                case "Problem Podróżującego Złodzieja":
+                    rozwiazanie = new OsobnikTTP(problem);
+
+                    rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
+                    analityka = new AnalizaPopulacji(rozwiazanie);
+
+                    break;
             }
 
             return new SEA();

@@ -26,7 +26,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         public abstract ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2);
 
+        public abstract ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2);
+
         protected abstract ushort[] Mutacja(ushort[] geny);
+
+        protected abstract ushort[][] Mutacja(ushort[][] geny);
 
         protected abstract ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny);
     }
