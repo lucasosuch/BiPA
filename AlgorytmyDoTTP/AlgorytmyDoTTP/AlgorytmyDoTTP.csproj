@@ -65,6 +65,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\AOsobnik.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikKP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikTSP.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikTTP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\APopulacja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\PopulacjaACykliczna.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\PopulacjaCykliczna.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\Instancja.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\ProblemKomiwojazera.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Instancja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\ProblemPodrozujacegoZlodzieja.cs" />
     <Compile Include="Widoki\Badanie.cs">
       <SubType>Form</SubType>
     </Compile>

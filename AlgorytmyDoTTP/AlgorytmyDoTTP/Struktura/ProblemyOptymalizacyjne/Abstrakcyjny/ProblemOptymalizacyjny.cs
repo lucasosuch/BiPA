@@ -38,8 +38,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
             return dlugoscGenotypu;
         }
 
+        public abstract Dictionary<string, double[]> ObliczZysk(Dictionary<string, double[]> wektor);
+
         public abstract Dictionary<string, double[]> ObliczZysk(ArrayList wektor);
 
         public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
+
+        public abstract Dictionary<string, ushort[]> ZwrocWybraneElementy(ushort[][] wybraneElementy);
     }
 }

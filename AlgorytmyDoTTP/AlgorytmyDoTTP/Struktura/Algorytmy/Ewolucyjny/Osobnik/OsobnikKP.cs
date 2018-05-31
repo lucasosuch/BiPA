@@ -21,5 +21,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
+
+        public override Dictionary<string, ushort[]> Fenotyp(ushort[][] genotyp)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

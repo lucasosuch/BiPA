@@ -57,5 +57,15 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
             return wynik;
         }
+
+        public override Dictionary<string, ushort[]> ZwrocWybraneElementy(ushort[][] wybraneElementy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, double[]> wektor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
