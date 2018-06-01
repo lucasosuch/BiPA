@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
@@ -24,6 +25,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
                 for (int j = 0; j < populacjaTSP.Count; j++)
                 {
                     osobnik[j] = new ushort[dostepnoscPrzedmiotow.Length + 1];
+
+                    Console.WriteLine(populacjaTSP[j].ToString());
                     osobnik[j][0] = (ushort)populacjaTSP[j];
 
                     for (int k = 1; k <= osobnik.Length; k++)

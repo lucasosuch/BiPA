@@ -29,7 +29,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             problemPlecakowy = new ProblemPlecakowy(przypadekKP.InnerText);
             problemKomiwojazera = new ProblemKomiwojazera(przypadekTSP.InnerText);
 
-            XmlNodeList rozmieszczeniePrzedmiotow = dokument.DocumentElement.SelectNodes("/korzen/dostepnePrzedmioty");
+            XmlNodeList rozmieszczeniePrzedmiotow = dokument.DocumentElement.SelectNodes("/korzen/dostepnePrzedmioty/miasto");
 
             dostepnePrzedmioty = new ushort[problemKomiwojazera.ZwrocDlugoscGenotypu()][];
             for(int i = 0; i < problemKomiwojazera.ZwrocDlugoscGenotypu(); i++)

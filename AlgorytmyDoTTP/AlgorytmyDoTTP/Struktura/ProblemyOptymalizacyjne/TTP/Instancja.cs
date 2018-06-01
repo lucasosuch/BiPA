@@ -9,10 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 
         public Instancja(String dostepnePrzedmioty, int iloscPrzedmiotow)
         {
-            dostepnePrzedmioty = dostepnePrzedmioty.Trim();
-
-            Console.WriteLine("dostepnePrzedmioty: " + dostepnePrzedmioty);
-
+            dostepnePrzedmioty = dostepnePrzedmioty.Replace(" ", "").Trim();
             string[] elementy = dostepnePrzedmioty.Split(',');
 
             przedmioty = new ushort[iloscPrzedmiotow];
@@ -20,10 +17,8 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             {
                 for(int j = 0; j < elementy.Length; j++)
                 {
-                    elementy[j] = elementy[j].Trim();
-                    Console.WriteLine("element: "+ elementy[j].Trim());
-
-                    przedmioty[i] = (ushort)(((i+1) == int.Parse(elementy[j])) ? 1 : 0);
+                    elementy[j] = elementy[j].Replace(" ", "").Trim();
+                    przedmioty[i] = (ushort)(((i + 1) == int.Parse(elementy[j])) ? 1 : 0);
                 }
             }
         }
