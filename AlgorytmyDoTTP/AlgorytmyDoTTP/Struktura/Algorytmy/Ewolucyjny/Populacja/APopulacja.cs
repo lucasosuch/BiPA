@@ -11,5 +11,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         protected Random losowy = new Random();
         protected ArrayList populacja = new ArrayList();
         public abstract ArrayList StworzPopulacjeBazowa();
+
+        public APopulacja(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
+        {
+            maxAllel = 2;
+            this.dlugoscGenotypu = dlugoscGenotypu;
+            this.rozmiarPopulacji = rozmiarPopulacji;
+        }
+
+        public APopulacja(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel)
+        {
+            this.maxAllel = maxAllel;
+            this.dlugoscGenotypu = dlugoscGenotypu;
+            this.rozmiarPopulacji = rozmiarPopulacji;
+        }
     }
 }

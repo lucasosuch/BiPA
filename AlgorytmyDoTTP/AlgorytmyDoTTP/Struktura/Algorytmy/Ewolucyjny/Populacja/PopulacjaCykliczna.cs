@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
@@ -11,19 +6,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
     {
         private double zroznicowaniePopulacji;
 
-        public PopulacjaCykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel)
+        public PopulacjaCykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel) : base(rozmiarPopulacji, dlugoscGenotypu, maxAllel)
         {
             zroznicowaniePopulacji = 0.7;
-            this.maxAllel = maxAllel;
-            this.dlugoscGenotypu = dlugoscGenotypu;
-            this.rozmiarPopulacji = rozmiarPopulacji;
         }
 
-        public PopulacjaCykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel, double zroznicowaniePopulacji)
+        public PopulacjaCykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel, double zroznicowaniePopulacji) : base(rozmiarPopulacji, dlugoscGenotypu, maxAllel)
         {
-            this.maxAllel = maxAllel;
-            this.dlugoscGenotypu = dlugoscGenotypu;
-            this.rozmiarPopulacji = rozmiarPopulacji;
             this.zroznicowaniePopulacji = zroznicowaniePopulacji;
         }
 

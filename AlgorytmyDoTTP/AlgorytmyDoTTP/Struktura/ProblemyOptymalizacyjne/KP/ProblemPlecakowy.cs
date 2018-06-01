@@ -67,5 +67,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
         {
             throw new NotImplementedException();
         }
+
+        public override ushort[][] ZwrocDostepnePrzedmioty()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

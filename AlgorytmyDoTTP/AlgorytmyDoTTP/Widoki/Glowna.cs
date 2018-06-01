@@ -41,7 +41,7 @@ namespace AlgorytmyDoTTP
             for (int i = 0; i < pliki.Length; i++)
             {
                 XmlDocument dokument = new XmlDocument();
-                dokument.Load("../../../../Badania/"+pliki[i].Name);
+                dokument.Load("../../../../Badania/"+pliki[i].Name); // jak nie ma to automatycznie niech tworzy
                 XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/dataZapisu");
 
                 string[] wiersz = new string[] { pliki[i].Name, dataZapisu.InnerText };

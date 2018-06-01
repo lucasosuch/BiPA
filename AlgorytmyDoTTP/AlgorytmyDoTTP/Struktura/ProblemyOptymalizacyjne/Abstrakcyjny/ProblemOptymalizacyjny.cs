@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
@@ -37,6 +36,8 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         {
             return dlugoscGenotypu;
         }
+
+        public abstract ushort[][] ZwrocDostepnePrzedmioty();
 
         public abstract Dictionary<string, double[]> ObliczZysk(Dictionary<string, double[]> wektor);
 

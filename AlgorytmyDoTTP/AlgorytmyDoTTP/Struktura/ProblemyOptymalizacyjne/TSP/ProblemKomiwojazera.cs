@@ -93,5 +93,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         {
             throw new NotImplementedException();
         }
+
+        public override ushort[][] ZwrocDostepnePrzedmioty()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

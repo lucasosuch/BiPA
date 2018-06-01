@@ -2,8 +2,8 @@
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -89,10 +89,16 @@ namespace AlgorytmyDoTTP.Widoki
         {
             if (parametry["problem"] == "Problem Plecakowy")
             {
-                ProblemOptymalizacyjny problemKP = new ProblemPlecakowy(parametry["dane"]);
+                ProblemPlecakowy problemKP = new ProblemPlecakowy(parametry["dane"]);
                 problemKP.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
 
                 return problemKP;
+            } else if(parametry["problem"] == "Problem Podróżującego Złodzieja")
+            {
+                ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"]);
+                problemTTP.ZwrocProblemPlecakowy().UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
+
+                return problemTTP;
             }
             
             return new ProblemKomiwojazera(parametry["dane"]);

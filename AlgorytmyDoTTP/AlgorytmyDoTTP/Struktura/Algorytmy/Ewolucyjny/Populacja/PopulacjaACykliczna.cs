@@ -4,19 +4,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
     class PopulacjaACykliczna : APopulacja
     {
-        public PopulacjaACykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
-        {
-            maxAllel = 2;
-            this.dlugoscGenotypu = dlugoscGenotypu;
-            this.rozmiarPopulacji = rozmiarPopulacji;
-        }
+        public PopulacjaACykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu) : base(rozmiarPopulacji, dlugoscGenotypu) { }
 
-        public PopulacjaACykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel)
-        {
-            this.maxAllel = maxAllel;
-            this.dlugoscGenotypu = dlugoscGenotypu;
-            this.rozmiarPopulacji = rozmiarPopulacji;
-        }
+        public PopulacjaACykliczna(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel) : base(rozmiarPopulacji, dlugoscGenotypu, maxAllel) { }
 
         public override ArrayList StworzPopulacjeBazowa()
         {

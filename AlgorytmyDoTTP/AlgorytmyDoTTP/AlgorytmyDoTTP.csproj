@@ -69,6 +69,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\APopulacja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\PopulacjaACykliczna.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\PopulacjaCykliczna.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Populacja\PopulacjaTTP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\ARekombinacja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Ograniczenia\ANaprawaGenotypu.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\Ograniczenia\KP.cs" />
@@ -156,12 +157,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dane\TTP\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dane\KP\kp15.xml" />
+    <Content Include="Dane\KP\kp20.xml" />
     <Content Include="Dane\TSP\tsp15.xml" />
+    <Content Include="Dane\TTP\ttp15.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

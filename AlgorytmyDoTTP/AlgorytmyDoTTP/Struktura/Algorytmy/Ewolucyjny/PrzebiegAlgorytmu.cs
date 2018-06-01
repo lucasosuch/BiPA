@@ -5,6 +5,7 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
@@ -55,9 +56,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
                 case "Problem Podróżującego Złodzieja":
                     rozwiazanie = new OsobnikTTP(problem);
+                    populacja = new PopulacjaTTP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDostepnePrzedmioty());
 
-                    rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
-                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    int i = 1;
+                    foreach(ushort[][] osobnik in populacja.StworzPopulacjeBazowa())
+                    {
+                        Console.WriteLine("Osobnik["+i+"]");
+                        foreach(ushort[] genotyp in osobnik)
+                        {
+                            Console.WriteLine(string.Join(",", genotyp));
+                        }
+
+                        i++;
+
+                        Console.WriteLine("-------------------------------------");
+                    }
+                    
+                    //rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
+                    //analityka = new AnalizaPopulacji(rozwiazanie);
 
                     break;
             }
