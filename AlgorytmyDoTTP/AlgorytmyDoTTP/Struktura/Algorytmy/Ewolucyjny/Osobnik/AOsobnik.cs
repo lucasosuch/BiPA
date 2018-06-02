@@ -20,7 +20,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         public abstract ArrayList Fenotyp(ushort[] genotyp);
 
-        public abstract Dictionary<string, ushort[]> Fenotyp(ushort[][] genotyp);
+        public abstract Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp);
 
         /// <summary>
         /// Metoda zwraca wartość funkcji celu

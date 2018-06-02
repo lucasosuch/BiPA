@@ -18,7 +18,14 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
                 for(int j = 0; j < elementy.Length; j++)
                 {
                     elementy[j] = elementy[j].Replace(" ", "").Trim();
-                    przedmioty[i] = (ushort)(((i + 1) == int.Parse(elementy[j])) ? 1 : 0);
+                    if((i + 1) == int.Parse(elementy[j]))
+                    {
+                        przedmioty[i] = 1;
+                        break;
+                    } else
+                    {
+                        przedmioty[i] = 0;
+                    }
                 }
             }
         }

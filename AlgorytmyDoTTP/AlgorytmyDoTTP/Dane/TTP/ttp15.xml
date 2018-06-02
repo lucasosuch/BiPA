@@ -12,40 +12,40 @@
     <miasto>
       8, 1, 11
     </miasto>
-    <miasto kolejnosc="4">
+    <miasto>
       7, 3, 10
     </miasto>
-    <miasto kolejnosc="5">
+    <miasto>
       2, 5, 12
     </miasto>
-    <miasto kolejnosc="6">
+    <miasto>
       9, 11, 19
     </miasto>
-    <miasto kolejnosc="7">
+    <miasto>
       13, 17, 18
     </miasto>
-    <miasto kolejnosc="8">
+    <miasto>
       15, 17, 19, 20
     </miasto>
-    <miasto kolejnosc="9">
+    <miasto>
       12, 15, 14, 18, 19, 20
     </miasto>
-    <miasto kolejnosc="10">
+    <miasto>
       15, 17, 18
     </miasto>
-    <miasto kolejnosc="11">
+    <miasto>
       11, 6, 7
     </miasto>
-    <miasto kolejnosc="12">
+    <miasto>
       2, 9, 10
     </miasto>
-    <miasto kolejnosc="13">
+    <miasto>
       4
     </miasto>
-    <miasto kolejnosc="14">
+    <miasto>
       1, 3, 6, 9, 12
     </miasto>
-    <miasto kolejnosc="15">
+    <miasto>
       1, 4, 6, 7, 9
     </miasto>
   </dostepnePrzedmioty>

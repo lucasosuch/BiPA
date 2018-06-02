@@ -10,8 +10,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         public RekombinacjaTTP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania)
         {
-            rekombinacjaKP = new RekombinacjaWektoraBinarnego(0, rozwiazanie);
             rekombinacjaTSP = new RekombinacjaTSP(pwoMutacji, rozwiazanie, rodzajKrzyzowania);
+            rekombinacjaKP = new RekombinacjaWektoraBinarnego(0, rozwiazanie);
+            rekombinacjaKP.ZmienSprawdzanieOgraniczen(false);
         }
 
         public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
@@ -19,22 +20,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             ushort[][] potomekTTP = new ushort[przodek1.Length][], 
                        przodkowieTSP = new ushort[2][];
             ushort[][][] przodkowieKP = new ushort[przodek1.Length][][];
-
-            for(int i = 0; i < przodkowieTSP.Length; i++)
+            
+            for (int i = 0; i < przodkowieTSP.Length; i++)
             {
                 przodkowieTSP[i] = new ushort[przodek1.Length];
+                przodkowieKP[i] = new ushort[przodek1.Length][];
 
-                for(int j = 0; j < przodek1.Length; j++)
+                for (int j = 0; j < przodek1.Length; j++)
                 {
-                    przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
-
+                    przodkowieTSP[i][j] = (ushort)(((i == 0) ? przodek1[j][0] : przodek2[j][0]) - 1);
                     przodkowieKP[i][przodkowieTSP[i][j]] = new ushort[przodek1[0].Length - 1];
-                    if (j > 0)
+
+                    for (int k = 1; k <= przodkowieKP[i][przodkowieTSP[i][j]].Length; k++)
                     {
-                        for (int k = 0; k < przodek1[j].Length; k++)
-                        {
-                            przodkowieKP[i][przodkowieTSP[i][j]][k] = przodek1[j][k];
-                        }
+                        przodkowieKP[i][przodkowieTSP[i][j]][k-1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
                     }
                 }
             }
@@ -42,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             ushort[] potomekTSP = (ushort[])(rekombinacjaTSP.Krzyzowanie(przodkowieTSP[0], przodkowieTSP[1]).Clone());
             ushort[][] potomkowieKP = new ushort[przodek1.Length][];
 
-            for(int i = 0; i < przodek1.Length; i++)
+            for (int i = 0; i < przodek1.Length; i++)
             {
                 potomkowieKP[i] = new ushort[przodkowieKP[0].Length];
                 potomkowieKP[i] = rekombinacjaKP.Krzyzowanie(przodkowieKP[0][i], przodkowieKP[1][i]);
@@ -51,7 +50,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             for (int i = 0; i < potomekTSP.Length; i++)
             {
                 potomekTTP[i] = new ushort[potomkowieKP[0].Length + 1];
-                potomekTTP[i][0] = potomekTSP[i];
+                potomekTTP[i][0] = (ushort)(potomekTSP[i] + 1);
 
                 for(int j = 1; j <= potomkowieKP[0].Length; j++)
                 {

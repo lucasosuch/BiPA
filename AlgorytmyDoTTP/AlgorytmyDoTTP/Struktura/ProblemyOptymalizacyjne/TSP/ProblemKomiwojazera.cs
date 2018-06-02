@@ -43,7 +43,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         public override Dictionary<String, double[]> ObliczZysk(ArrayList wektor)
         {
             Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
-            double zysk = ObliczDlugoscTrasy(wektor);
+            double zysk = ZwrocDlugoscTrasy(wektor, false)[0];
 
             wynik["min"] = new double[] { zysk };
             wynik["max"] = new double[] { zysk * -1 };
@@ -51,24 +51,38 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        private double ObliczDlugoscTrasy(ArrayList wektor)
+        public double[] ZwrocDlugoscTrasy(ArrayList wektor, bool zwrocWektor)
         {
-            double wynik = 0;
             int dlugoscWekotra = wektor.Count;
+            double[] wynik = (zwrocWektor) ? new double[dlugoscWekotra] : new double[] { 0 };
 
             for (int i = 0; i < dlugoscWekotra; i++)
             {
                 int j = (i == 0) ? dlugoscWekotra - 1 : i - 1;
 
-                foreach (Instancja instancja in instancje)
+                for(int k = 0; k < instancje.Length; k++)
                 {
-                    if (instancja.ZwrocOd() == (ushort)wektor[j] && instancja.ZwrocDo() == (ushort)wektor[i])
+                    if (instancje[k].ZwrocOd() == (ushort)wektor[j] && instancje[k].ZwrocDo() == (ushort)wektor[i])
                     {
-                        wynik += instancja.ZwrocDlugosc();
+                        if (zwrocWektor)
+                        {
+                            wynik[k] = instancje[k].ZwrocDlugosc();
+                        }
+                        else
+                        {
+                            wynik[0] += instancje[k].ZwrocDlugosc();
+                        }
                     }
-                    else if (instancja.ZwrocDo() == (ushort)wektor[j] && instancja.ZwrocOd() == (ushort)wektor[i])
+                    else if (instancje[k].ZwrocDo() == (ushort)wektor[j] && instancje[k].ZwrocOd() == (ushort)wektor[i])
                     {
-                        wynik += instancja.ZwrocDlugosc();
+                        if (zwrocWektor)
+                        {
+                            wynik[k] = instancje[k].ZwrocDlugosc();
+                        }
+                        else
+                        {
+                            wynik[0] += instancje[k].ZwrocDlugosc();
+                        }
                     }
                 }
             }
@@ -84,12 +98,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public override Dictionary<string, ushort[]> ZwrocWybraneElementy(ushort[][] wybraneElementy)
+        public override Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy)
         {
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, double[]> wektor)
+        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> wektor)
         {
             throw new NotImplementedException();
         }

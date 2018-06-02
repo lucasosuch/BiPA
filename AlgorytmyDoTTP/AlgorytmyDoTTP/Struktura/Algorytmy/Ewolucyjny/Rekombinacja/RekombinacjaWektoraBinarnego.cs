@@ -19,12 +19,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 dzieciak[i] = przodek2[i];
             }
 
-            return SprawdzNaruszenieOgraniczen(Mutacja(dzieciak));
+            if(czySprawdzacOgraniczenia)
+            {
+                return SprawdzNaruszenieOgraniczen(Mutacja(dzieciak));
+            }
+
+            return Mutacja(dzieciak);
         }
 
         protected override ushort[] Mutacja(ushort[] geny)
         {
-            if (losowy.NextDouble() > pwoMutacji)
+            if (losowy.NextDouble() > pwoMutacji || pwoMutacji == 0)
             {
                 return geny;
             }

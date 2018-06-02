@@ -9,6 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         protected AOsobnik rozwiazanie;
         protected string rodzajKrzyzowania;
         protected Random losowy = new Random();
+        protected bool czySprawdzacOgraniczenia = true;
 
         public ARekombinacja(double pwoMutacji, AOsobnik rozwiazanie)
         {
@@ -22,6 +23,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
             this.rodzajKrzyzowania = rodzajKrzyzowania;
+        }
+
+        public void ZmienSprawdzanieOgraniczen(bool wartosc)
+        {
+            czySprawdzacOgraniczenia = wartosc;
         }
 
         public abstract ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2);

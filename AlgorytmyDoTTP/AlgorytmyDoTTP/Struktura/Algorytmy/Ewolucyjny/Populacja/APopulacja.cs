@@ -10,7 +10,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         protected ushort rozmiarPopulacji;
         protected Random losowy = new Random();
         protected ArrayList populacja = new ArrayList();
-        public abstract ArrayList StworzPopulacjeBazowa();
 
         public APopulacja(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {
@@ -25,5 +24,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
             this.dlugoscGenotypu = dlugoscGenotypu;
             this.rozmiarPopulacji = rozmiarPopulacji;
         }
+
+        public abstract ArrayList StworzPopulacjeBazowa();
     }
 }

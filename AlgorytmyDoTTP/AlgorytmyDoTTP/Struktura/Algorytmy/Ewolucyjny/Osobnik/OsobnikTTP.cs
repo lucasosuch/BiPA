@@ -9,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
     {
         public OsobnikTTP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
 
-        public override Dictionary<string, ushort[]> Fenotyp(ushort[][] genotyp)
+        public override Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }

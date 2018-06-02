@@ -39,12 +39,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 
         public abstract ushort[][] ZwrocDostepnePrzedmioty();
 
-        public abstract Dictionary<string, double[]> ObliczZysk(Dictionary<string, double[]> wektor);
+        public abstract Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> wektor);
 
         public abstract Dictionary<string, double[]> ObliczZysk(ArrayList wektor);
 
         public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
 
-        public abstract Dictionary<string, ushort[]> ZwrocWybraneElementy(ushort[][] wybraneElementy);
+        public abstract Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy);
     }
 }

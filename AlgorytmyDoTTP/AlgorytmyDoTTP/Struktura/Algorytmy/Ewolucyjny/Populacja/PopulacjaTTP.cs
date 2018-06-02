@@ -18,22 +18,27 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         {
             ArrayList populacja = new ArrayList();
             ArrayList populacjaTSP = populacjaCykliczna.StworzPopulacjeBazowa();
-
+            
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
-                ushort[][] osobnik = new ushort[populacjaTSP.Count][];
-                for (int j = 0; j < populacjaTSP.Count; j++)
+                ushort[] osobnikTSP = ((ushort[])populacjaTSP[i]);
+                ushort[][] osobnik = new ushort[osobnikTSP.Length][];
+
+                for (int j = 0; j < osobnikTSP.Length; j++)
                 {
-                    osobnik[j] = new ushort[dostepnoscPrzedmiotow.Length + 1];
+                    int index = osobnikTSP[j] - 1;
 
-                    Console.WriteLine(populacjaTSP[j].ToString());
-                    osobnik[j][0] = (ushort)populacjaTSP[j];
+                    osobnik[index] = new ushort[dostepnoscPrzedmiotow[0].Length + 1];
+                    osobnik[index][0] = osobnikTSP[j];
 
-                    for (int k = 1; k <= osobnik.Length; k++)
+                    for (int k = 1; k < osobnik[index].Length; k++)
                     {
-                        if(dostepnoscPrzedmiotow[j][(k - 1)] == 1)
+                        if(dostepnoscPrzedmiotow[index][(k - 1)] == 1)
                         {
-                            osobnik[j][k] = (ushort)losowy.Next(2);
+                            osobnik[index][k] = (ushort)losowy.Next(2);
+                        } else
+                        {
+                            osobnik[index][k] = 0;
                         }
                     }
                 }
