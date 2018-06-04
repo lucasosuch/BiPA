@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -90,9 +91,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override ArrayList ZwrocWybraneElementy(ReprezentacjaGenotypu genotyp)
         {
             ArrayList wynik = new ArrayList();
+            ushort[] wybraneElementy = (ushort[])genotyp.ZwrocGenotyp1Wymiarowy().Clone();
             wynik.AddRange(wybraneElementy);
 
             return wynik;

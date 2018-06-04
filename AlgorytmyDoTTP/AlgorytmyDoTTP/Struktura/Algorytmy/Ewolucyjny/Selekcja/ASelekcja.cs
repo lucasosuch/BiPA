@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
 
@@ -18,8 +19,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             this.typSelekcji = typSelekcji;
         }
 
-        public abstract ushort[] WybierzOsobnika(ArrayList populacja);
-        protected abstract ushort[] Turniej(ArrayList populacja);
-        protected abstract ushort[] MetodaRuletki(ArrayList populacja);
+        public abstract ReprezentacjaGenotypu WybierzOsobnika(ArrayList populacja);
+        protected abstract ReprezentacjaGenotypu Turniej(ArrayList populacja);
+        protected abstract ReprezentacjaGenotypu MetodaRuletki(ArrayList populacja);
     }
 }

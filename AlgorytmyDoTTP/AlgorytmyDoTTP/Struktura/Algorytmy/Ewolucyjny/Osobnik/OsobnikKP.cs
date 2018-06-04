@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using System;
 using System.Collections;
@@ -17,14 +18,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         /// <returns>Dziedzinę wartości funkcji celu</returns>
-        public override ArrayList Fenotyp(ushort[] genotyp)
+        public override ArrayList Fenotyp(ReprezentacjaGenotypu genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
 
-        public override Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp)
-        {
-            throw new NotImplementedException();
-        }
+        //public override Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

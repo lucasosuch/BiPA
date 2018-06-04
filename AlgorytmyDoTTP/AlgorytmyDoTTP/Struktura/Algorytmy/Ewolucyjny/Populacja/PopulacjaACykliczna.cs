@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
@@ -18,7 +19,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
                     genotyp[j] = (ushort)losowy.Next(maxAllel);
                 }
 
-                populacja.Add(genotyp);
+                populacja.Add(new ReprezentacjaGenotypu(genotyp));
             }
 
             return populacja;

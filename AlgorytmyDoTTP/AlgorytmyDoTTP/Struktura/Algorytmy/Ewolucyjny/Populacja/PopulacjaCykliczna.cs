@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
@@ -20,7 +21,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         {
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
-                ushort[] osobnik = new ushort[dlugoscGenotypu];
+                ushort[] genotyp = new ushort[dlugoscGenotypu];
 
                 if (losowy.NextDouble() < zroznicowaniePopulacji)
                 {
@@ -35,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
                             if (wykorzystane.IndexOf(wynik) == -1)
                             {
                                 wykorzystane.Add(wynik);
-                                osobnik[j] = (ushort)wynik;
+                                genotyp[j] = (ushort)wynik;
                                 break;
                             }
                         }
@@ -46,11 +47,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
                 {
                     for(int j = 0; j < dlugoscGenotypu; j++)
                     {
-                        osobnik[j] = (ushort)(j + 1);
+                        genotyp[j] = (ushort)(j + 1);
                     }
                 }
 
-                populacja.Add(osobnik);
+                populacja.Add(new ReprezentacjaGenotypu(genotyp));
             }
 
             return populacja;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
@@ -43,7 +44,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 
         public abstract Dictionary<string, double[]> ObliczZysk(ArrayList wektor);
 
-        public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
+        public abstract ArrayList ZwrocWybraneElementy(ReprezentacjaGenotypu wybraneElementy);
 
         public abstract Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy);
     }

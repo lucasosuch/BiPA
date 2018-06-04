@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
@@ -30,14 +31,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             czySprawdzacOgraniczenia = wartosc;
         }
 
-        public abstract ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2);
+        public abstract ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu przodek1, ReprezentacjaGenotypu przodek2);
 
-        public abstract ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2);
+        protected abstract ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny);
 
-        protected abstract ushort[] Mutacja(ushort[] geny);
-
-        protected abstract ushort[][] Mutacja(ushort[][] geny);
-
-        protected abstract ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny);
+        protected abstract ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny);
     }
 }

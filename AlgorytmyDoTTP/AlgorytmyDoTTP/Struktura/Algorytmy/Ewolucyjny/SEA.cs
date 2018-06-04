@@ -1,5 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
@@ -59,10 +60,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
                         // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
-                        ushort[] mama = selekcja.WybierzOsobnika(populacjaBazowa),
-                                 tata = selekcja.WybierzOsobnika(populacjaBazowa),
-                                 dziecko1 = (ushort[])rekombinacja.Krzyzowanie(mama, tata).Clone(), // tworząc 1 dziecko
-                                 dziecko2 = (ushort[])rekombinacja.Krzyzowanie(tata, mama).Clone(); // oraz 2 dziecko
+                        ReprezentacjaGenotypu mama = selekcja.WybierzOsobnika(populacjaBazowa),
+                                              tata = selekcja.WybierzOsobnika(populacjaBazowa),
+                                              dziecko1 = (ushort[])rekombinacja.Krzyzowanie(mama, tata).Clone(), // tworząc 1 dziecko
+                                              dziecko2 = (ushort[])rekombinacja.Krzyzowanie(tata, mama).Clone(); // oraz 2 dziecko
 
                         // dzieci dodajemy do nowej populacji
                         nowaPopulacja.Add(dziecko1);

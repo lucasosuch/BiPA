@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using System;
 using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
@@ -22,28 +23,28 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
             for (int i = 0; i < rozmiarPopulacji; i++)
             {
                 ushort[] osobnikTSP = ((ushort[])populacjaTSP[i]);
-                ushort[][] osobnik = new ushort[osobnikTSP.Length][];
+                ushort[][] genotyp = new ushort[osobnikTSP.Length][];
 
                 for (int j = 0; j < osobnikTSP.Length; j++)
                 {
                     int index = osobnikTSP[j] - 1;
 
-                    osobnik[index] = new ushort[dostepnoscPrzedmiotow[0].Length + 1];
-                    osobnik[index][0] = osobnikTSP[j];
+                    genotyp[index] = new ushort[dostepnoscPrzedmiotow[0].Length + 1];
+                    genotyp[index][0] = osobnikTSP[j];
 
-                    for (int k = 1; k < osobnik[index].Length; k++)
+                    for (int k = 1; k < genotyp[index].Length; k++)
                     {
                         if(dostepnoscPrzedmiotow[index][(k - 1)] == 1)
                         {
-                            osobnik[index][k] = (ushort)losowy.Next(2);
+                            genotyp[index][k] = (ushort)losowy.Next(2);
                         } else
                         {
-                            osobnik[index][k] = 0;
+                            genotyp[index][k] = 0;
                         }
                     }
                 }
 
-                populacja.Add(osobnik);
+                populacja.Add(new ReprezentacjaGenotypu(genotyp));
             }
 
             return populacja;

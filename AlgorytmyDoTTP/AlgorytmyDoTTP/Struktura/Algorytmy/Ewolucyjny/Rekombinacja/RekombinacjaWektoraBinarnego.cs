@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
 using System;
 
@@ -8,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     {
         public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
-        public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
+        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu przodek1, ReprezentacjaGenotypu przodek2)
         {
             int ciecie = losowy.Next(0, przodek1.Length);
             ushort[] dzieciak = new ushort[przodek1.Length];
@@ -27,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return Mutacja(dzieciak);
         }
 
-        protected override ushort[] Mutacja(ushort[] geny)
+        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny)
         {
             if (losowy.NextDouble() > pwoMutacji || pwoMutacji == 0)
             {
@@ -40,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return geny;
         }
 
-        protected override ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
+        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
         {
             double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
@@ -52,16 +53,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             }
 
             return geny;
-        }
-
-        public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ushort[][] Mutacja(ushort[][] geny)
-        {
-            throw new NotImplementedException();
         }
     }
 }
