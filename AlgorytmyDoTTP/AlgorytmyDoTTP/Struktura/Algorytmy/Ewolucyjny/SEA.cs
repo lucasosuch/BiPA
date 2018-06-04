@@ -62,8 +62,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
                         ReprezentacjaGenotypu mama = selekcja.WybierzOsobnika(populacjaBazowa),
                                               tata = selekcja.WybierzOsobnika(populacjaBazowa),
-                                              dziecko1 = (ushort[])rekombinacja.Krzyzowanie(mama, tata).Clone(), // tworząc 1 dziecko
-                                              dziecko2 = (ushort[])rekombinacja.Krzyzowanie(tata, mama).Clone(); // oraz 2 dziecko
+                                              dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
+                                              dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
 
                         // dzieci dodajemy do nowej populacji
                         nowaPopulacja.Add(dziecko1);
@@ -91,10 +91,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                    mediana = analityka.MedianaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
-            ushort[] wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
+            ReprezentacjaGenotypu wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo) };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo.ZwrocGenotyp1Wymiarowy()) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo()[0], analityka.ZwrocWartoscNiebo()[1] };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };

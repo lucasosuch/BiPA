@@ -26,6 +26,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp
             this.genotyp2Wymiarowy = genotyp2Wymiarowy;
         }
 
+        public void ZmienGenotyp(ushort[] genotyp1Wymiarowy)
+        {
+            this.genotyp1Wymiarowy = (ushort[])genotyp1Wymiarowy.Clone();
+        }
+
+        public void ZmienGenotyp(ushort[][] genotyp2Wymiarowy)
+        {
+            this.genotyp2Wymiarowy = (ushort[][])genotyp2Wymiarowy.Clone();
+        }
+
         public ushort[] ZwrocGenotyp1Wymiarowy()
         {
             return genotyp1Wymiarowy;

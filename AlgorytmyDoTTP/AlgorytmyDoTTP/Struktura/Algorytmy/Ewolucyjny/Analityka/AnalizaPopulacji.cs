@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -8,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
     class AnalizaPopulacji : IAnalityka
     {
         private double najlepszaWartoscFunkcji;
-        private ushort[] najlepszyGenotyp;
+        private ReprezentacjaGenotypu najlepszyGenotyp;
         private Stopwatch pomiarCzasu;
         private AOsobnik rozwiazanie;
 
@@ -16,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         {
             this.rozwiazanie = rozwiazanie;
             najlepszaWartoscFunkcji = -10000;
-            najlepszyGenotyp = new ushort[rozwiazanie.ZwrocInstancjeProblemu().ZwrocDlugoscGenotypu()];
+            najlepszyGenotyp = new ReprezentacjaGenotypu(); ;
             pomiarCzasu = new Stopwatch();
         }
 
@@ -57,7 +58,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
 
             for(int i = 0; i < populacja.Count; i++)
             {
-                wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ushort[])populacja[i])["max"][0];
+                wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ReprezentacjaGenotypu)populacja[i])["max"][0];
             }
 
             // sortowanie wyników rosnąco
@@ -75,7 +76,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         {
             double wynik = 0;
 
-            foreach (ushort[] osobnik in populacja)
+            foreach (ReprezentacjaGenotypu osobnik in populacja)
             {
                 wynik += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
@@ -93,7 +94,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         {
             double sumaKwadratow = 0;
 
-            foreach (ushort[] osobnik in populacja)
+            foreach (ReprezentacjaGenotypu osobnik in populacja)
             {
                 sumaKwadratow += Math.Pow(rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0], 2);
             }
@@ -106,12 +107,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
         /// </summary>
         /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
-        public void ZmienWartoscNiebo(ushort[] geny)
+        public void ZmienWartoscNiebo(ReprezentacjaGenotypu genotyp)
         {
-            if(najlepszaWartoscFunkcji < rozwiazanie.FunkcjaDopasowania(geny)["max"][0])
+            if(najlepszaWartoscFunkcji < rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0])
             {
-                najlepszyGenotyp = (ushort[])geny.Clone();
-                najlepszaWartoscFunkcji = rozwiazanie.FunkcjaDopasowania(geny)["max"][0];
+                najlepszyGenotyp = genotyp;
+                najlepszaWartoscFunkcji = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
             }
         }
 
@@ -119,7 +120,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         /// Metoda zwracająca najlepszą dziedzinę rozwiązania
         /// </summary>
         /// <returns>Dziedzina rozwiązania</returns>
-        public ushort[] ZwrocNajlepszyGenotyp()
+        public ReprezentacjaGenotypu ZwrocNajlepszyGenotyp()
         {
             return najlepszyGenotyp;
         }

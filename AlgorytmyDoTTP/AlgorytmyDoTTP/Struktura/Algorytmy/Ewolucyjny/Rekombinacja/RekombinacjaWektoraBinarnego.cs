@@ -9,10 +9,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     {
         public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
-        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu przodek1, ReprezentacjaGenotypu przodek2)
+        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
         {
+            ushort[] przodek1 = genotyp1.ZwrocGenotyp1Wymiarowy(),
+                     przodek2 = genotyp2.ZwrocGenotyp1Wymiarowy(),
+                     dzieciak = new ushort[przodek1.Length];
+
             int ciecie = losowy.Next(0, przodek1.Length);
-            ushort[] dzieciak = new ushort[przodek1.Length];
 
             dzieciak = (ushort[])przodek1.Clone();
             for (int i = 0; i < ciecie; i++)
@@ -20,39 +23,44 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 dzieciak[i] = przodek2[i];
             }
 
-            if(czySprawdzacOgraniczenia)
+            ReprezentacjaGenotypu genotypDziecka = new ReprezentacjaGenotypu(dzieciak);
+
+            if (czySprawdzacOgraniczenia)
             {
-                return SprawdzNaruszenieOgraniczen(Mutacja(dzieciak));
+                return SprawdzNaruszenieOgraniczen(Mutacja(genotypDziecka));
             }
 
-            return Mutacja(dzieciak);
+            return Mutacja(genotypDziecka);
         }
 
-        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny)
+        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu genotyp)
         {
+            ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             if (losowy.NextDouble() > pwoMutacji || pwoMutacji == 0)
             {
-                return geny;
+                return genotyp;
             }
 
             int bit = losowy.Next(geny.Length);
             geny[bit] = (ushort)((geny[bit] == 0) ? 1 : 0);
 
-            return geny;
+            genotyp.ZmienGenotyp(geny);
+            return genotyp;
         }
 
-        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
+        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu genotyp)
         {
+            ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
-            while (rozwiazanie.FunkcjaDopasowania(geny)["min"][0] > ograniczenie[0])
+            while (rozwiazanie.FunkcjaDopasowania(genotyp)["min"][0] > ograniczenie[0])
             {
                 ANaprawaGenotypu naprawaOgraniczen = new KP(geny);
                 naprawaOgraniczen.NaprawGeny();
-                geny = (ushort[])naprawaOgraniczen.ZwrocGeny().Clone();
+                genotyp.ZmienGenotyp((ushort[])naprawaOgraniczen.ZwrocGeny().Clone());
             }
 
-            return geny;
+            return genotyp;
         }
     }
 }
