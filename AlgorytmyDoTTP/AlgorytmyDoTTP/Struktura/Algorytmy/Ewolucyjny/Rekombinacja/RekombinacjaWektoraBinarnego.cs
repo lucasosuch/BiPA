@@ -1,7 +1,6 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
-using System;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
@@ -9,7 +8,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     {
         public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
-        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
+        public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
             ushort[] przodek1 = genotyp1.ZwrocGenotyp1Wymiarowy(),
                      przodek2 = genotyp2.ZwrocGenotyp1Wymiarowy(),
@@ -23,7 +22,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 dzieciak[i] = przodek2[i];
             }
 
-            ReprezentacjaGenotypu genotypDziecka = new ReprezentacjaGenotypu(dzieciak);
+            ReprezentacjaRozwiazania genotypDziecka = new ReprezentacjaRozwiazania(dzieciak);
 
             if (czySprawdzacOgraniczenia)
             {
@@ -33,7 +32,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return Mutacja(genotypDziecka);
         }
 
-        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu genotyp)
+        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania genotyp)
         {
             ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             if (losowy.NextDouble() > pwoMutacji || pwoMutacji == 0)
@@ -48,7 +47,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return genotyp;
         }
 
-        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu genotyp)
+        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
         {
             ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();

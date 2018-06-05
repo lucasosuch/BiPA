@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
@@ -10,7 +10,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
     {
         public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, string typSelekcji) : base(rozwiazanie, dlugoscGenotypu, typSelekcji){}
 
-        public override ReprezentacjaGenotypu WybierzOsobnika(ArrayList populacja)
+        public override ReprezentacjaRozwiazania WybierzOsobnika(ArrayList populacja)
         {
             if(typSelekcji == "Turniej")
             {
@@ -20,19 +20,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             return MetodaRuletki(populacja);
         }
 
-        protected override ReprezentacjaGenotypu Turniej(ArrayList populacja)
+        protected override ReprezentacjaRozwiazania Turniej(ArrayList populacja)
         {
-            ReprezentacjaGenotypu zwyciezca = (ReprezentacjaGenotypu)populacja[0];
-            Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ReprezentacjaGenotypu)populacja[0]);
+            ReprezentacjaRozwiazania zwyciezca = (ReprezentacjaRozwiazania)populacja[0];
+            Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[0]);
 
             for (int i = 0; i <= 3; i++)
             {
                 int k = losowy.Next(populacja.Count - 1);
-                Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania((ReprezentacjaGenotypu)populacja[k]);
+                Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[k]);
 
                 if (dopasowanieZwyciezcy["max"][0] < dopasowanie["max"][0])
                 {
-                    zwyciezca = (ReprezentacjaGenotypu)populacja[k];
+                    zwyciezca = (ReprezentacjaRozwiazania)populacja[k];
                     dopasowanieZwyciezcy = dopasowanie;
                 }
             }
@@ -40,9 +40,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             return zwyciezca;
         }
 
-        protected override ReprezentacjaGenotypu MetodaRuletki(ArrayList populacja)
+        protected override ReprezentacjaRozwiazania MetodaRuletki(ArrayList populacja)
         {
-            ReprezentacjaGenotypu osobnik = new ReprezentacjaGenotypu();
+            ReprezentacjaRozwiazania osobnik = new ReprezentacjaRozwiazania();
             ArrayList wskazniki = ZwrocWskazniki(populacja);
             double pwo = losowy.NextDouble(),
                    poprzednik = 0;
@@ -51,7 +51,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             {
                 if(poprzednik <= pwo && pwo < (double)wskazniki[i])
                 {
-                    osobnik = (ReprezentacjaGenotypu)populacja[i];
+                    osobnik = (ReprezentacjaRozwiazania)populacja[i];
                     break;
                 }
 
@@ -66,13 +66,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             double suma = 0;
             ArrayList wskazniki = new ArrayList();
 
-            foreach (ReprezentacjaGenotypu osobnik in populacja)
+            foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
                 suma += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
 
             double sumaCzesciowa = 0;
-            foreach (ReprezentacjaGenotypu osobnik in populacja)
+            foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
                 double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
 

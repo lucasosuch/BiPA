@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 
@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             rekombinacjaKP.ZmienSprawdzanieOgraniczen(false);
         }
 
-        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
+        public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
             ushort[][] przodek1 = genotyp1.ZwrocGenotyp2Wymiarowy(),
                        przodek2 = genotyp2.ZwrocGenotyp2Wymiarowy(),
@@ -41,8 +41,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 }
             }
 
-            ReprezentacjaGenotypu przodekTSP1 = new ReprezentacjaGenotypu(przodkowieTSP[0]),
-                                  przodekTSP2 = new ReprezentacjaGenotypu(przodkowieTSP[1]),
+            ReprezentacjaRozwiazania przodekTSP1 = new ReprezentacjaRozwiazania(przodkowieTSP[0]),
+                                  przodekTSP2 = new ReprezentacjaRozwiazania(przodkowieTSP[1]),
                                   genotypPotomkaTSP = rekombinacjaTSP.Krzyzowanie(przodekTSP1, przodekTSP2);
 
             ushort[] potomekTSP = genotypPotomkaTSP.ZwrocGenotyp1Wymiarowy();
@@ -50,11 +50,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             for (int i = 0; i < przodek1.Length; i++)
             {
-                ReprezentacjaGenotypu przodekKP1 = new ReprezentacjaGenotypu(przodkowieKP[0][i]),
-                                      przodekKP2 = new ReprezentacjaGenotypu(przodkowieKP[1][i]);
+                ReprezentacjaRozwiazania przodekKP1 = new ReprezentacjaRozwiazania(przodkowieKP[0][i]),
+                                      przodekKP2 = new ReprezentacjaRozwiazania(przodkowieKP[1][i]);
 
                 potomkowieKP[i] = new ushort[przodkowieKP[0].Length];
-                ReprezentacjaGenotypu genotypPotomkaKP = rekombinacjaKP.Krzyzowanie(przodekKP1, przodekKP2);
+                ReprezentacjaRozwiazania genotypPotomkaKP = rekombinacjaKP.Krzyzowanie(przodekKP1, przodekKP2);
                 potomkowieKP[i] = genotypPotomkaKP.ZwrocGenotyp1Wymiarowy();
             }
 
@@ -69,17 +69,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 }
             }
 
-            ReprezentacjaGenotypu genotypPotomkaTTP = new ReprezentacjaGenotypu(potomekTTP);
+            ReprezentacjaRozwiazania genotypPotomkaTTP = new ReprezentacjaRozwiazania(potomekTTP);
 
             return genotypPotomkaTTP;
         }
 
-        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny)
+        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania geny)
         {
             throw new NotImplementedException();
         }
 
-        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
+        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania geny)
         {
             throw new NotImplementedException();
         }

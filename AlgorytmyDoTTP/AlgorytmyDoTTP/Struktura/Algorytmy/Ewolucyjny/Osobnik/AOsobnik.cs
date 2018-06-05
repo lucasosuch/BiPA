@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections;
@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         /// <returns>Wartość / Wartości funkcji celu</returns>
-        public abstract Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaGenotypu reprezentacjaGenotypu);
+        public abstract Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu);
 
         /// <summary>
         /// Metoda zwraca instancje problemu optymalizacyjnego

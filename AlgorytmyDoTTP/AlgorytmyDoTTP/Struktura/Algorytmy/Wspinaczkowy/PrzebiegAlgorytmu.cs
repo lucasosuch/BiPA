@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
@@ -23,12 +24,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieBinarne(problem);
+                    losowanie = new LosowanieKP(30, 20, 20);
                     rozwiazanie = new RozwiazanieBinarne(problem);
 
                     return new RLS(losowanie, rozwiazanie);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(problem);
+                    losowanie = new LosowanieTSP(30, 20, 20);
                     rozwiazanie = new RozwiazanieTSP(problem);
 
                     return new RLS(losowanie, rozwiazanie);

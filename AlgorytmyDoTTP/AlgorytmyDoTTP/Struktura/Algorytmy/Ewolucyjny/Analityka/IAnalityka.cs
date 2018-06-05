@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
@@ -28,12 +28,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
         /// </summary>
         /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
-        void ZmienWartoscNiebo(ReprezentacjaGenotypu geny);
+        void ZmienWartoscNiebo(ReprezentacjaRozwiazania geny);
 
         /// <summary>
         /// Metoda zwracająca najlepszą dziedzinę rozwiązania
         /// </summary>
-        ReprezentacjaGenotypu ZwrocNajlepszyGenotyp();
+        ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp();
 
         /// <summary>
         /// Metoda zwracająca najlepszą znalezioną wartość

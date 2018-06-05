@@ -41,14 +41,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaPopulacji(rozwiazanie);
-                    populacja = new PopulacjaACykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
+                    populacja = new PopulacjaKP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
 
                 case "Problem Komiwojażera":
                     // konfiguracja algorytmu pod Problem Komiwojażera
                     rozwiazanie = new OsobnikTSP(problem);
-                    populacja = new PopulacjaCykliczna(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
+                    populacja = new PopulacjaTSP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     analityka = new AnalizaPopulacji(rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);

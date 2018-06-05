@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
@@ -60,7 +59,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
                         // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
-                        ReprezentacjaGenotypu mama = selekcja.WybierzOsobnika(populacjaBazowa),
+                        ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(populacjaBazowa),
                                               tata = selekcja.WybierzOsobnika(populacjaBazowa),
                                               dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
                                               dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
@@ -91,10 +90,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                    mediana = analityka.MedianaPopulacji(populacjaBazowa),
                    odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
 
-            ReprezentacjaGenotypu wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
+            ReprezentacjaRozwiazania wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo.ZwrocGenotyp1Wymiarowy()) };
+            //zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo.ZwrocGenotyp2Wymiarowy()) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo()[0], analityka.ZwrocWartoscNiebo()[1] };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };

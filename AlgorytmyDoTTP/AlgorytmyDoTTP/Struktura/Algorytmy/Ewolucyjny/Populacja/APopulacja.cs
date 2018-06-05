@@ -8,8 +8,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         protected ushort maxAllel;
         protected ushort dlugoscGenotypu;
         protected ushort rozmiarPopulacji;
-        protected Random losowy = new Random();
-        protected ArrayList populacja = new ArrayList();
 
         public APopulacja(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {

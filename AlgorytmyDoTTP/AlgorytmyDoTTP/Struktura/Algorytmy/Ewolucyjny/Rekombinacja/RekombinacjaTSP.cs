@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia;
 using System;
@@ -9,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     {
         public RekombinacjaTSP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania){}
 
-        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
+        public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
             ushort[] przodek1 = genotyp1.ZwrocGenotyp1Wymiarowy(),
                      przodek2 = genotyp2.ZwrocGenotyp1Wymiarowy(),
@@ -39,7 +39,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             }
 
-            ReprezentacjaGenotypu potomkowyGenotyp = new ReprezentacjaGenotypu(potomek);
+            ReprezentacjaRozwiazania potomkowyGenotyp = new ReprezentacjaRozwiazania(potomek);
             if (losowy.NextDouble() <= pwoMutacji)
             {
                 return Mutacja(potomkowyGenotyp);
@@ -48,7 +48,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomkowyGenotyp;
         }
 
-        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu genotyp)
+        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania genotyp)
         {
             ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             int los1 = losowy.Next(0, geny.Length),
@@ -106,7 +106,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
-        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
+        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania geny)
         {
             throw new NotImplementedException();
         }

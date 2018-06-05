@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 
@@ -31,10 +31,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             czySprawdzacOgraniczenia = wartosc;
         }
 
-        public abstract ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu przodek1, ReprezentacjaGenotypu przodek2);
+        public abstract ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania przodek1, ReprezentacjaRozwiazania przodek2);
 
-        protected abstract ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny);
+        protected abstract ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania geny);
 
-        protected abstract ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny);
+        protected abstract ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania geny);
     }
 }
