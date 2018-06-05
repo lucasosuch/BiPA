@@ -19,19 +19,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// Metoda zwraca wektor osobnika opisanego genotypem
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
-        public abstract ArrayList Fenotyp(ReprezentacjaGenotypu genotyp);
+        public abstract ArrayList Fenotyp(ushort[] genotyp);
 
-        //public abstract Dictionary<string, ushort[][]> Fenotyp(ReprezentacjaGenotypu genotyp);
+        public abstract Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp);
 
         /// <summary>
         /// Metoda zwraca wartość funkcji celu
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         /// <returns>Wartość / Wartości funkcji celu</returns>
-        public Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaGenotypu genotyp)
-        {
-            return problemOptymalizacyjny.ObliczZysk(Fenotyp(genotyp));
-        }
+        public abstract Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaGenotypu reprezentacjaGenotypu);
 
         /// <summary>
         /// Metoda zwraca instancje problemu optymalizacyjnego

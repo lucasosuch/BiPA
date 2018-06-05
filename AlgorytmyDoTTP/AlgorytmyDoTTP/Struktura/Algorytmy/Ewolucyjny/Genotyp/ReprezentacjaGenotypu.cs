@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp
 {
@@ -11,10 +7,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp
         private ushort[] genotyp1Wymiarowy;
         private ushort[][] genotyp2Wymiarowy;
 
-        public ReprezentacjaGenotypu()
-        {
-            throw new Exception();
-        }
+        public ReprezentacjaGenotypu(){}
 
         public ReprezentacjaGenotypu(ushort[] genotyp1Wymiarowy)
         {

@@ -59,10 +59,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rozwiazanie = new OsobnikTTP(problem);
                     populacja = new PopulacjaTTP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDostepnePrzedmioty());
                     rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
-                    
+                    selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaPopulacji(rozwiazanie);
 
-                    break;
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
             }
 
             return new SEA();

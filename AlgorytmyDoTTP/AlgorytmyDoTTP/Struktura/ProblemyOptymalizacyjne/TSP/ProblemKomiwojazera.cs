@@ -91,10 +91,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public override ArrayList ZwrocWybraneElementy(ReprezentacjaGenotypu genotyp)
+        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
             ArrayList wynik = new ArrayList();
-            ushort[] wybraneElementy = (ushort[])genotyp.ZwrocGenotyp1Wymiarowy().Clone();
             wynik.AddRange(wybraneElementy);
 
             return wynik;

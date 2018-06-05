@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
-            this.rodzajKrzyzowania = "Proste";
+            rodzajKrzyzowania = "Proste";
         }
 
         public ARekombinacja(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania)

@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
@@ -15,9 +16,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             rekombinacjaKP.ZmienSprawdzanieOgraniczen(false);
         }
 
-        public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
+        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
         {
-            ushort[][] potomekTTP = new ushort[przodek1.Length][], 
+            ushort[][] przodek1 = genotyp1.ZwrocGenotyp2Wymiarowy(),
+                       przodek2 = genotyp2.ZwrocGenotyp2Wymiarowy(),
+                       potomekTTP = new ushort[przodek1.Length][], 
                        przodkowieTSP = new ushort[2][];
             ushort[][][] przodkowieKP = new ushort[przodek1.Length][][];
             
@@ -38,13 +41,21 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 }
             }
 
-            ushort[] potomekTSP = (ushort[])(rekombinacjaTSP.Krzyzowanie(przodkowieTSP[0], przodkowieTSP[1]).Clone());
+            ReprezentacjaGenotypu przodekTSP1 = new ReprezentacjaGenotypu(przodkowieTSP[0]),
+                                  przodekTSP2 = new ReprezentacjaGenotypu(przodkowieTSP[1]),
+                                  genotypPotomkaTSP = rekombinacjaTSP.Krzyzowanie(przodekTSP1, przodekTSP2);
+
+            ushort[] potomekTSP = genotypPotomkaTSP.ZwrocGenotyp1Wymiarowy();
             ushort[][] potomkowieKP = new ushort[przodek1.Length][];
 
             for (int i = 0; i < przodek1.Length; i++)
             {
+                ReprezentacjaGenotypu przodekKP1 = new ReprezentacjaGenotypu(przodkowieKP[0][i]),
+                                      przodekKP2 = new ReprezentacjaGenotypu(przodkowieKP[1][i]);
+
                 potomkowieKP[i] = new ushort[przodkowieKP[0].Length];
-                potomkowieKP[i] = rekombinacjaKP.Krzyzowanie(przodkowieKP[0][i], przodkowieKP[1][i]);
+                ReprezentacjaGenotypu genotypPotomkaKP = rekombinacjaKP.Krzyzowanie(przodekKP1, przodekKP2);
+                potomkowieKP[i] = genotypPotomkaKP.ZwrocGenotyp1Wymiarowy();
             }
 
             for (int i = 0; i < potomekTSP.Length; i++)
@@ -58,25 +69,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 }
             }
 
-            return potomekTTP;
+            ReprezentacjaGenotypu genotypPotomkaTTP = new ReprezentacjaGenotypu(potomekTTP);
+
+            return genotypPotomkaTTP;
         }
 
-        protected override ushort[][] Mutacja(ushort[][] geny)
+        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu geny)
         {
             throw new NotImplementedException();
         }
 
-        public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ushort[] Mutacja(ushort[] geny)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
+        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Genotyp;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Rozszerzenia;
 using System;
 
@@ -8,9 +9,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     {
         public RekombinacjaTSP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania){}
 
-        public override ushort[] Krzyzowanie(ushort[] przodek1, ushort[] przodek2)
+        public override ReprezentacjaGenotypu Krzyzowanie(ReprezentacjaGenotypu genotyp1, ReprezentacjaGenotypu genotyp2)
         {
-            ushort[] potomek = new ushort[przodek1.Length];
+            ushort[] przodek1 = genotyp1.ZwrocGenotyp1Wymiarowy(),
+                     przodek2 = genotyp2.ZwrocGenotyp1Wymiarowy(),
+                     potomek = new ushort[przodek1.Length];
 
             switch(rodzajKrzyzowania)
             {
@@ -36,16 +39,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             }
 
+            ReprezentacjaGenotypu potomkowyGenotyp = new ReprezentacjaGenotypu(potomek);
             if (losowy.NextDouble() <= pwoMutacji)
             {
-                return Mutacja(potomek);
+                return Mutacja(potomkowyGenotyp);
             }
 
-            return potomek;
+            return potomkowyGenotyp;
         }
 
-        protected override ushort[] Mutacja(ushort[] geny)
+        protected override ReprezentacjaGenotypu Mutacja(ReprezentacjaGenotypu genotyp)
         {
+            ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             int los1 = losowy.Next(0, geny.Length),
                 los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
           
@@ -53,7 +58,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             geny[los1] = geny[los2];
             geny[los2] = tmp;
 
-            return geny;
+            genotyp.ZmienGenotyp(geny);
+            return genotyp;
         }
 
         private ushort[] NaprzemienneWybieranieKrawedzi(ushort[] przodek1, ushort[] przodek2)
@@ -100,17 +106,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
-        protected override ushort[] SprawdzNaruszenieOgraniczen(ushort[] geny)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override ushort[][] Krzyzowanie(ushort[][] przodek1, ushort[][] przodek2)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ushort[][] Mutacja(ushort[][] geny)
+        protected override ReprezentacjaGenotypu SprawdzNaruszenieOgraniczen(ReprezentacjaGenotypu geny)
         {
             throw new NotImplementedException();
         }
