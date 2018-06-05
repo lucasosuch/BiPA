@@ -22,7 +22,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
         protected override ReprezentacjaGenotypu Turniej(ArrayList populacja)
         {
-            ReprezentacjaGenotypu zwyciezca = new ReprezentacjaGenotypu();
+            ReprezentacjaGenotypu zwyciezca = (ReprezentacjaGenotypu)populacja[0];
             Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ReprezentacjaGenotypu)populacja[0]);
 
             for (int i = 0; i <= 3; i++)
