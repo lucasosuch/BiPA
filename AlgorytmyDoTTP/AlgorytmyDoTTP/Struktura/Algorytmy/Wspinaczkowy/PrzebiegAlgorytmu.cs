@@ -25,7 +25,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             {
                 case "Problem Plecakowy":
                     losowanie = new LosowanieKP(30, 20, 20);
-                    rozwiazanie = new RozwiazanieBinarne(problem);
+                    rozwiazanie = new RozwiazanieKP(problem);
 
                     return new RLS(losowanie, rozwiazanie);
                 case "Problem Komiwojażera":

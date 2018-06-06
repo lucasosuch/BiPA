@@ -28,6 +28,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
             this.rozwiazanie = rozwiazanie;
         }
 
+        public ProblemOptymalizacyjny ZwrocProblemOptymalizacyjny()
+        {
+            return problem;
+        }
+
         public abstract Dictionary<string, double[]> ZnajdzOptimum();
     }
 }

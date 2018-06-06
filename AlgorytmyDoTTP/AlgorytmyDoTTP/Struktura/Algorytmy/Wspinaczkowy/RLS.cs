@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,10 +26,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
         public Dictionary<string, string[]> Start()
         {
+            ArrayList listaRozwiazan = losowanie.LosujRozwiazania();
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
-            ArrayList rozwiazania = losowanie.LosujRozwiazania();
+            ProblemOptymalizacyjny problemOptymalizacyjny = rozwiazanie.ZwrocProblemOptymalizacyjny();
 
+            ReprezentacjaRozwiazania najlepszeRozwiazanie = (ReprezentacjaRozwiazania)listaRozwiazan[0];
+            Dictionary<string, double[]> najlepszyWynik = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()));
 
+            foreach (ReprezentacjaRozwiazania elementy in listaRozwiazan)
+            {
+                if(problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(elementy.ZwrocGenotyp1Wymiarowy()))["max"][0] > najlepszyWynik["max"][0])
+                {
+                    najlepszeRozwiazanie = elementy;
+                }
+            }
 
             rozwiazanie.UstawRozwiazanie(wynik);
             Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();

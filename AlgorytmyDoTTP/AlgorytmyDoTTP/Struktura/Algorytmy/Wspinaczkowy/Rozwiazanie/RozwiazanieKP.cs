@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
-    class RozwiazanieBinarne : ARozwiazanie
+    class RozwiazanieKP : ARozwiazanie
     {
-        public RozwiazanieBinarne(ProblemOptymalizacyjny problem) : base(problem){}
+        public RozwiazanieKP(ProblemOptymalizacyjny problem) : base(problem){}
 
         public override Dictionary<string, double[]> ZnajdzOptimum()
         {

@@ -94,7 +94,7 @@
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\RLS.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\ARozwiazanie.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieBinarne.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieKP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTSP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
