@@ -35,15 +35,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
             foreach (ReprezentacjaRozwiazania elementy in listaRozwiazan)
             {
-                if(problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(elementy.ZwrocGenotyp1Wymiarowy()))["max"][0] > najlepszyWynik["max"][0])
+                Dictionary<string, double[]> wynikElementu = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(elementy.ZwrocGenotyp1Wymiarowy()));
+
+                if (wynikElementu["max"][0] > najlepszyWynik["max"][0])
                 {
+                    if (problemOptymalizacyjny.CzyIstniejaOgraniczenia() && (wynikElementu["min"][0] > problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0])) continue;
+
                     najlepszeRozwiazanie = elementy;
+                    najlepszyWynik = wynikElementu;
                 }
             }
 
-            rozwiazanie.UstawRozwiazanie(wynik);
+            rozwiazanie.UstawRozwiazanie(najlepszeRozwiazanie);
             Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();
-            wynik = (ushort[])(rozwiazanie.ZwrocRozwiazanie().Clone());
+            ushort[] wynik = (ushort[])(rozwiazanie.ZwrocRozwiazanie().ZwrocGenotyp1Wymiarowy().Clone());
 
             zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wynik) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() +" | "+ znalezioneOptimum["min"][0].ToString() };

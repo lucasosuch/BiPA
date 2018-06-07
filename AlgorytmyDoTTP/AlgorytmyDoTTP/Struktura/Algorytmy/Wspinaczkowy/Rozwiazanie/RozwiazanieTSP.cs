@@ -1,9 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
@@ -14,7 +10,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
         public override Dictionary<string, double[]> ZnajdzOptimum()
         {
             int poprawy = 0;
-            ushort[] tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
+            ushort[] rozwiazanie = reprezentacjaRozwiazania.ZwrocGenotyp1Wymiarowy(),
+                     tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
             Dictionary<string, double[]> wynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(rozwiazanie));
 
             do
@@ -39,6 +36,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                         if (problem.CzyIstniejaOgraniczenia() && (tmpWynik["min"][0] > problem.ZwrocOgraniczeniaProblemu()[0])) continue;
 
                         rozwiazanie = (ushort[])tmpRozwiazanie.Clone();
+                        reprezentacjaRozwiazania.ZmienGenotyp(rozwiazanie);
+
                         wynik["max"][0] = tmpWynik["max"][0];
                         wynik["min"][0] = tmpWynik["min"][0];
                         poprawy++;

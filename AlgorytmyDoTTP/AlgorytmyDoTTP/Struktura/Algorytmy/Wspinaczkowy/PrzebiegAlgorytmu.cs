@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
@@ -24,7 +23,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP(30, 20, 20);
+                    losowanie = new LosowanieKP(30, 20, 2);
                     rozwiazanie = new RozwiazanieKP(problem);
 
                     return new RLS(losowanie, rozwiazanie);

@@ -1,31 +1,29 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
     abstract class ARozwiazanie
     {
-        protected ushort[] rozwiazanie;
         protected Random losowy = new Random();
         protected ProblemOptymalizacyjny problem;
+        protected ReprezentacjaRozwiazania reprezentacjaRozwiazania;
 
         public ARozwiazanie(ProblemOptymalizacyjny problem)
         {
             this.problem = problem;
         }
 
-        public ushort[] ZwrocRozwiazanie()
+        public ReprezentacjaRozwiazania ZwrocRozwiazanie()
         {
-            return rozwiazanie;
+            return reprezentacjaRozwiazania;
         }
 
-        public void UstawRozwiazanie(ushort[] rozwiazanie)
+        public void UstawRozwiazanie(ReprezentacjaRozwiazania reprezentacjaRozwiazania)
         {
-            this.rozwiazanie = rozwiazanie;
+            this.reprezentacjaRozwiazania = reprezentacjaRozwiazania;
         }
 
         public ProblemOptymalizacyjny ZwrocProblemOptymalizacyjny()
