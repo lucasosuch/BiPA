@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
@@ -13,6 +14,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
             ushort[] rozwiazanie = reprezentacjaRozwiazania.ZwrocGenotyp1Wymiarowy(),
                      tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
             Dictionary<string, double[]> wynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(rozwiazanie));
+
+            Console.WriteLine(string.Join(",", rozwiazanie));
+            Console.WriteLine("min: " + wynik["min"][0] + " max: " + wynik["max"][0]);
 
             do
             {
@@ -35,6 +39,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                     {
                         if (problem.CzyIstniejaOgraniczenia() && (tmpWynik["min"][0] > problem.ZwrocOgraniczeniaProblemu()[0])) continue;
 
+                        Console.WriteLine("problem.CzyIstniejaOgraniczenia(): "+ problem.CzyIstniejaOgraniczenia());
                         rozwiazanie = (ushort[])tmpRozwiazanie.Clone();
                         reprezentacjaRozwiazania.ZmienGenotyp(rozwiazanie);
 

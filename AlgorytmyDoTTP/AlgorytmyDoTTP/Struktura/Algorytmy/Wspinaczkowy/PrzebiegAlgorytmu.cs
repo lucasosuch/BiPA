@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
                     return new RLS(losowanie, rozwiazanie);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(30, 20, 20);
+                    losowanie = new LosowanieTSP(30, 15, 15);
                     rozwiazanie = new RozwiazanieTSP(problem);
 
                     return new RLS(losowanie, rozwiazanie);

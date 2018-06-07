@@ -36,11 +36,14 @@
             this.panelKP = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.maxWaga = new MetroFramework.Controls.MetroTextBox();
-            this.domyslny = new System.Windows.Forms.Panel();
             this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
             this.ewolucyjny = new MetroFramework.Controls.MetroPanel();
+            this.domyslny = new System.Windows.Forms.Panel();
+            this.wspinaczkowy_losowy = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.iloscRozwiazan = new MetroFramework.Controls.MetroTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.rodzajKrzyzowania = new MetroFramework.Controls.MetroComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,6 +70,7 @@
             this.badanie.SuspendLayout();
             this.panelKP.SuspendLayout();
             this.ewolucyjny.SuspendLayout();
+            this.wspinaczkowy_losowy.SuspendLayout();
             this.historia.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,7 +105,6 @@
             this.badanie.Controls.Add(this.domyslnyProblem);
             this.badanie.Controls.Add(this.label11);
             this.badanie.Controls.Add(this.panelKP);
-            this.badanie.Controls.Add(this.domyslny);
             this.badanie.Controls.Add(this.wybierzDane);
             this.badanie.Controls.Add(this.label7);
             this.badanie.Controls.Add(this.wybierzProblem);
@@ -191,13 +194,6 @@
             this.maxWaga.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.maxWaga.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // domyslny
-            // 
-            this.domyslny.Location = new System.Drawing.Point(46, 199);
-            this.domyslny.Name = "domyslny";
-            this.domyslny.Size = new System.Drawing.Size(829, 196);
-            this.domyslny.TabIndex = 28;
-            // 
             // wybierzDane
             // 
             this.wybierzDane.FormattingEnabled = true;
@@ -232,6 +228,8 @@
             // 
             // ewolucyjny
             // 
+            this.ewolucyjny.Controls.Add(this.domyslny);
+            this.ewolucyjny.Controls.Add(this.wspinaczkowy_losowy);
             this.ewolucyjny.Controls.Add(this.label9);
             this.ewolucyjny.Controls.Add(this.rodzajKrzyzowania);
             this.ewolucyjny.Controls.Add(this.label8);
@@ -255,6 +253,66 @@
             this.ewolucyjny.VerticalScrollbarBarColor = true;
             this.ewolucyjny.VerticalScrollbarHighlightOnWheel = false;
             this.ewolucyjny.VerticalScrollbarSize = 10;
+            // 
+            // domyslny
+            // 
+            this.domyslny.Location = new System.Drawing.Point(0, 0);
+            this.domyslny.Name = "domyslny";
+            this.domyslny.Size = new System.Drawing.Size(829, 196);
+            this.domyslny.TabIndex = 28;
+            // 
+            // wspinaczkowy_losowy
+            // 
+            this.wspinaczkowy_losowy.Controls.Add(this.label12);
+            this.wspinaczkowy_losowy.Controls.Add(this.iloscRozwiazan);
+            this.wspinaczkowy_losowy.Location = new System.Drawing.Point(0, 28);
+            this.wspinaczkowy_losowy.Name = "wspinaczkowy_losowy";
+            this.wspinaczkowy_losowy.Size = new System.Drawing.Size(829, 168);
+            this.wspinaczkowy_losowy.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(-3, 27);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "Ilość rozwiązań";
+            // 
+            // iloscRozwiazan
+            // 
+            // 
+            // 
+            // 
+            this.iloscRozwiazan.CustomButton.Image = null;
+            this.iloscRozwiazan.CustomButton.Location = new System.Drawing.Point(151, 2);
+            this.iloscRozwiazan.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.iloscRozwiazan.CustomButton.Name = "";
+            this.iloscRozwiazan.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.iloscRozwiazan.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.iloscRozwiazan.CustomButton.TabIndex = 1;
+            this.iloscRozwiazan.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.iloscRozwiazan.CustomButton.UseSelectable = true;
+            this.iloscRozwiazan.CustomButton.Visible = false;
+            this.iloscRozwiazan.Lines = new string[] {
+        "20"};
+            this.iloscRozwiazan.Location = new System.Drawing.Point(0, 44);
+            this.iloscRozwiazan.Margin = new System.Windows.Forms.Padding(2);
+            this.iloscRozwiazan.MaxLength = 32767;
+            this.iloscRozwiazan.Name = "iloscRozwiazan";
+            this.iloscRozwiazan.PasswordChar = '\0';
+            this.iloscRozwiazan.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iloscRozwiazan.SelectedText = "";
+            this.iloscRozwiazan.SelectionLength = 0;
+            this.iloscRozwiazan.SelectionStart = 0;
+            this.iloscRozwiazan.ShortcutsEnabled = true;
+            this.iloscRozwiazan.Size = new System.Drawing.Size(169, 20);
+            this.iloscRozwiazan.TabIndex = 33;
+            this.iloscRozwiazan.Text = "20";
+            this.iloscRozwiazan.UseSelectable = true;
+            this.iloscRozwiazan.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.iloscRozwiazan.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label9
             // 
@@ -600,6 +658,8 @@
             this.panelKP.PerformLayout();
             this.ewolucyjny.ResumeLayout(false);
             this.ewolucyjny.PerformLayout();
+            this.wspinaczkowy_losowy.ResumeLayout(false);
+            this.wspinaczkowy_losowy.PerformLayout();
             this.historia.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -641,6 +701,9 @@
         private System.Windows.Forms.ColumnHeader nazwaBadania;
         private System.Windows.Forms.ColumnHeader dataBadania;
         private MetroFramework.Controls.MetroTile porownaj;
+        private System.Windows.Forms.Panel wspinaczkowy_losowy;
+        private System.Windows.Forms.Label label12;
+        private MetroFramework.Controls.MetroTextBox iloscRozwiazan;
     }
 }
 

@@ -70,10 +70,18 @@ namespace AlgorytmyDoTTP
         private void wyborAlgorytmu_SelectedIndexChanged(object sender, EventArgs e)
         {
             domyslny.Visible = false;
+            ewolucyjny.Visible = false;
+            wspinaczkowy_losowy.Visible = false;
 
             switch (wyborAlgorytmu.Text)
             {
                 case "Algorytm Ewolucyjny":
+                    ewolucyjny.Visible = true;
+                    break;
+
+                case "Algorytm Wspinaczkowy":
+                case "Algorytm Losowy":
+                    wspinaczkowy_losowy.Visible = true;
                     ewolucyjny.Visible = true;
                     break;
 
