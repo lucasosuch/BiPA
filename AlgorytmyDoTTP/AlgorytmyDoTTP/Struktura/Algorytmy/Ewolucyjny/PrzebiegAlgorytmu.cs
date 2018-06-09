@@ -5,8 +5,6 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny

@@ -79,6 +79,11 @@ namespace AlgorytmyDoTTP
 
             switch (wybierzProblem.Text)
             {
+                case "Problem Podróżującego Złodzieja":
+                    parametry["ograniczenie1"] = maxWaga.Text;
+                    parametry["wyporzyczeniePlecaka"] = wyporzyczeniePlecaka.Text;
+                    parametry["przypadekTTP"] = przypadekTTP.Text;
+                    break;
                 case "Problem Plecakowy":
                     parametry["ograniczenie1"] = maxWaga.Text;
                     break;

@@ -30,6 +30,7 @@ namespace AlgorytmyDoTTP.Widoki
                 string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv"));
 
                 File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV());
+                MessageBox.Show("Pobrano plik CSV, na pulpit!", "Plik CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(IOException exc)
             {
                 Console.WriteLine(exc);
@@ -39,6 +40,7 @@ namespace AlgorytmyDoTTP.Widoki
         private void zapiszBadanie_Click(object sender, EventArgs e)
         {
             badanie.ZapiszBadanie();
+            MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

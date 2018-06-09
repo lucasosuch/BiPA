@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
-    class FormatkaPorownania
+    class FormatkaPorownania : FormatkaGlowna
     {
     }
 }

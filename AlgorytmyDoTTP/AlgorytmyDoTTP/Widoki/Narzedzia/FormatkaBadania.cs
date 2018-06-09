@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
-    class FormatkaBadania
+    class FormatkaBadania : FormatkaGlowna
     {
         private DateTime data = DateTime.Today;
         private Dictionary<string, string[]> wyniki;

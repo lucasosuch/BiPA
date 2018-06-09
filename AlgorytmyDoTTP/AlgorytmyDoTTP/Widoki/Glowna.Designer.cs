@@ -31,11 +31,16 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
-            this.panelTTP = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panelKP = new System.Windows.Forms.Panel();
+            this.domyslnyProblem = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.maxWaga = new MetroFramework.Controls.MetroTextBox();
+            this.panelTTP = new System.Windows.Forms.Panel();
+            this.przypadekTTP = new MetroFramework.Controls.MetroComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.wyporzyczeniePlecaka = new MetroFramework.Controls.MetroTextBox();
             this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
@@ -65,16 +70,11 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.domyslnyProblem = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.wyporzyczeniePlecaka = new MetroFramework.Controls.MetroTextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.przypadekTTP = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
-            this.panelTTP.SuspendLayout();
             this.panelKP.SuspendLayout();
+            this.panelTTP.SuspendLayout();
             this.ewolucyjny.SuspendLayout();
             this.wspinaczkowy_losowy.SuspendLayout();
             this.historia.SuspendLayout();
@@ -129,17 +129,6 @@
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
             // 
-            // panelTTP
-            // 
-            this.panelTTP.Controls.Add(this.przypadekTTP);
-            this.panelTTP.Controls.Add(this.label14);
-            this.panelTTP.Controls.Add(this.label13);
-            this.panelTTP.Controls.Add(this.wyporzyczeniePlecaka);
-            this.panelTTP.Location = new System.Drawing.Point(139, 0);
-            this.panelTTP.Name = "panelTTP";
-            this.panelTTP.Size = new System.Drawing.Size(315, 68);
-            this.panelTTP.TabIndex = 30;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -160,6 +149,13 @@
             this.panelKP.Name = "panelKP";
             this.panelKP.Size = new System.Drawing.Size(454, 68);
             this.panelKP.TabIndex = 29;
+            // 
+            // domyslnyProblem
+            // 
+            this.domyslnyProblem.Location = new System.Drawing.Point(0, 0);
+            this.domyslnyProblem.Name = "domyslnyProblem";
+            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
+            this.domyslnyProblem.TabIndex = 31;
             // 
             // label10
             // 
@@ -204,6 +200,81 @@
             this.maxWaga.UseSelectable = true;
             this.maxWaga.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.maxWaga.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // panelTTP
+            // 
+            this.panelTTP.Controls.Add(this.przypadekTTP);
+            this.panelTTP.Controls.Add(this.label14);
+            this.panelTTP.Controls.Add(this.label13);
+            this.panelTTP.Controls.Add(this.wyporzyczeniePlecaka);
+            this.panelTTP.Location = new System.Drawing.Point(139, 0);
+            this.panelTTP.Name = "panelTTP";
+            this.panelTTP.Size = new System.Drawing.Size(315, 68);
+            this.panelTTP.TabIndex = 30;
+            // 
+            // przypadekTTP
+            // 
+            this.przypadekTTP.FormattingEnabled = true;
+            this.przypadekTTP.ItemHeight = 23;
+            this.przypadekTTP.Location = new System.Drawing.Point(182, 25);
+            this.przypadekTTP.Name = "przypadekTTP";
+            this.przypadekTTP.Size = new System.Drawing.Size(133, 29);
+            this.przypadekTTP.TabIndex = 38;
+            this.przypadekTTP.UseSelectable = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(179, 0);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "Przypadek TTP";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 0);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(164, 13);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "$ za wyporzyczenie plecaka na h";
+            // 
+            // wyporzyczeniePlecaka
+            // 
+            // 
+            // 
+            // 
+            this.wyporzyczeniePlecaka.CustomButton.Image = null;
+            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(116, 2);
+            this.wyporzyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.wyporzyczeniePlecaka.CustomButton.Name = "";
+            this.wyporzyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.wyporzyczeniePlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.wyporzyczeniePlecaka.CustomButton.TabIndex = 1;
+            this.wyporzyczeniePlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.wyporzyczeniePlecaka.CustomButton.UseSelectable = true;
+            this.wyporzyczeniePlecaka.CustomButton.Visible = false;
+            this.wyporzyczeniePlecaka.Lines = new string[] {
+        "1"};
+            this.wyporzyczeniePlecaka.Location = new System.Drawing.Point(13, 25);
+            this.wyporzyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2);
+            this.wyporzyczeniePlecaka.MaxLength = 32767;
+            this.wyporzyczeniePlecaka.Name = "wyporzyczeniePlecaka";
+            this.wyporzyczeniePlecaka.PasswordChar = '\0';
+            this.wyporzyczeniePlecaka.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.wyporzyczeniePlecaka.SelectedText = "";
+            this.wyporzyczeniePlecaka.SelectionLength = 0;
+            this.wyporzyczeniePlecaka.SelectionStart = 0;
+            this.wyporzyczeniePlecaka.ShortcutsEnabled = true;
+            this.wyporzyczeniePlecaka.Size = new System.Drawing.Size(134, 20);
+            this.wyporzyczeniePlecaka.TabIndex = 35;
+            this.wyporzyczeniePlecaka.Text = "1";
+            this.wyporzyczeniePlecaka.UseSelectable = true;
+            this.wyporzyczeniePlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.wyporzyczeniePlecaka.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // wybierzDane
             // 
@@ -645,77 +716,6 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
-            // domyslnyProblem
-            // 
-            this.domyslnyProblem.Location = new System.Drawing.Point(0, 0);
-            this.domyslnyProblem.Name = "domyslnyProblem";
-            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
-            this.domyslnyProblem.TabIndex = 31;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 0);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 13);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "$ za wyporzyczenie plecaka na h";
-            // 
-            // wyporzyczeniePlecaka
-            // 
-            // 
-            // 
-            // 
-            this.wyporzyczeniePlecaka.CustomButton.Image = null;
-            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(116, 2);
-            this.wyporzyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.wyporzyczeniePlecaka.CustomButton.Name = "";
-            this.wyporzyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.wyporzyczeniePlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.wyporzyczeniePlecaka.CustomButton.TabIndex = 1;
-            this.wyporzyczeniePlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.wyporzyczeniePlecaka.CustomButton.UseSelectable = true;
-            this.wyporzyczeniePlecaka.CustomButton.Visible = false;
-            this.wyporzyczeniePlecaka.Lines = new string[] {
-        "1"};
-            this.wyporzyczeniePlecaka.Location = new System.Drawing.Point(13, 25);
-            this.wyporzyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2);
-            this.wyporzyczeniePlecaka.MaxLength = 32767;
-            this.wyporzyczeniePlecaka.Name = "wyporzyczeniePlecaka";
-            this.wyporzyczeniePlecaka.PasswordChar = '\0';
-            this.wyporzyczeniePlecaka.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.wyporzyczeniePlecaka.SelectedText = "";
-            this.wyporzyczeniePlecaka.SelectionLength = 0;
-            this.wyporzyczeniePlecaka.SelectionStart = 0;
-            this.wyporzyczeniePlecaka.ShortcutsEnabled = true;
-            this.wyporzyczeniePlecaka.Size = new System.Drawing.Size(134, 20);
-            this.wyporzyczeniePlecaka.TabIndex = 35;
-            this.wyporzyczeniePlecaka.Text = "1";
-            this.wyporzyczeniePlecaka.UseSelectable = true;
-            this.wyporzyczeniePlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.wyporzyczeniePlecaka.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(179, 0);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 13);
-            this.label14.TabIndex = 37;
-            this.label14.Text = "Przypadek TTP";
-            // 
-            // przypadekTTP
-            // 
-            this.przypadekTTP.FormattingEnabled = true;
-            this.przypadekTTP.ItemHeight = 23;
-            this.przypadekTTP.Location = new System.Drawing.Point(182, 25);
-            this.przypadekTTP.Name = "przypadekTTP";
-            this.przypadekTTP.Size = new System.Drawing.Size(133, 29);
-            this.przypadekTTP.TabIndex = 38;
-            this.przypadekTTP.UseSelectable = true;
-            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,10 +736,10 @@
             this.metroTabControl1.ResumeLayout(false);
             this.badanie.ResumeLayout(false);
             this.badanie.PerformLayout();
-            this.panelTTP.ResumeLayout(false);
-            this.panelTTP.PerformLayout();
             this.panelKP.ResumeLayout(false);
             this.panelKP.PerformLayout();
+            this.panelTTP.ResumeLayout(false);
+            this.panelTTP.PerformLayout();
             this.ewolucyjny.ResumeLayout(false);
             this.ewolucyjny.PerformLayout();
             this.wspinaczkowy_losowy.ResumeLayout(false);
