@@ -27,7 +27,7 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 string pulpit = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePlikuCSV());
+                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv"));
 
                 File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV());
             } catch(IOException exc)

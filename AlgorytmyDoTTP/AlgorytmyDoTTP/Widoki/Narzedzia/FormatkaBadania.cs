@@ -58,9 +58,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return csv.ToString();
         }
 
-        public string ZwrocNazwePlikuCSV()
+        public string ZwrocNazwePliku(string rozszerzenie)
         {
-            return "(" + data.ToString("d") + ") " + parametry["algorytm"] + "_" + parametry["dane"] + ".csv";
+            return "(" + data.ToString("d") + ") " + parametry["algorytm"] + "_" + parametry["dane"] + "."+ rozszerzenie;
         }
 
         public void ZapiszBadanie()
@@ -78,7 +78,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             badanie.Add(czasDzialania);
 
             xml.Add(badanie);
-            xml.Save("../../../../Badania/test.xml");
+            xml.Save("../../../../Badania/"+ ZwrocNazwePliku("xml"));
         }
 
         private ProblemOptymalizacyjny ZwrocWybranyProblem()

@@ -114,9 +114,11 @@ namespace AlgorytmyDoTTP
         private void wybierzProblem_SelectedIndexChanged(object sender, EventArgs e)
         {
             WczytajPliki();
+            panelKP.Visible = false;
+            panelTTP.Visible = false;
             domyslnyProblem.Visible = false;
 
-            switch(wybierzProblem.Text)
+            switch (wybierzProblem.Text)
             {
                 case "Problem Komiwojażera":
                     UstawRodzajKrzyzowania(glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_TSP);
@@ -125,6 +127,11 @@ namespace AlgorytmyDoTTP
                 case "Problem Plecakowy":
                     UstawRodzajKrzyzowania(glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA);
                     panelKP.Visible = true;
+                    break;
+                case "Problem Podróżującego Złodzieja":
+                    UstawRodzajKrzyzowania(glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_TSP);
+                    panelKP.Visible = true;
+                    panelTTP.Visible = true;
                     break;
             }
         }
