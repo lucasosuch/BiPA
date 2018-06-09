@@ -38,8 +38,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                     if (tmpWynik["max"][0] > wynik["max"][0])
                     {
                         if (problem.CzyIstniejaOgraniczenia() && (tmpWynik["min"][0] > problem.ZwrocOgraniczeniaProblemu()[0])) continue;
-
-                        Console.WriteLine("problem.CzyIstniejaOgraniczenia(): "+ problem.CzyIstniejaOgraniczenia());
+                        
                         rozwiazanie = (ushort[])tmpRozwiazanie.Clone();
                         reprezentacjaRozwiazania.ZmienGenotyp(rozwiazanie);
 

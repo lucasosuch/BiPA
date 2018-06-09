@@ -16,5 +16,15 @@
         {
             "Turniej", "Metoda ruletki", "Ruletka turniejowa"
         };
+
+        public readonly string[] parametryCalkowite = new string[] 
+        {
+            "rozmiarPopulacji", "iloscPokolen"
+        };
+
+        public readonly string[] parametryZmiennoPrzecinkowe = new string[] 
+        {
+            "pwoMutacji", "pwoKrzyzowania", "ograniczenie1"
+        };
     }
 }

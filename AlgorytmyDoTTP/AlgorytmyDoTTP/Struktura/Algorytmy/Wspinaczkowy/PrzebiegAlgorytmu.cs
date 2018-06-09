@@ -20,15 +20,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             ALosowanie losowanie;
             ARozwiazanie rozwiazanie;
 
+            int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
+                iloscElementow = problem.ZwrocDlugoscGenotypu();
+
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP(30, 20, 2);
+                    losowanie = new LosowanieKP(iloscRozwiazan, iloscElementow, 2);
                     rozwiazanie = new RozwiazanieKP(problem);
 
                     return new RLS(losowanie, rozwiazanie);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(30, 15, 15);
+                    losowanie = new LosowanieTSP(iloscRozwiazan, iloscElementow, iloscElementow);
                     rozwiazanie = new RozwiazanieTSP(problem);
 
                     return new RLS(losowanie, rozwiazanie);

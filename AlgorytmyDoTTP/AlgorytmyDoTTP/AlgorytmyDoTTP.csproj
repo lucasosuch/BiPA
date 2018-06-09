@@ -118,6 +118,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Widoki\Narzedzia\FormatkaBadania.cs" />
+    <Compile Include="Widoki\Narzedzia\FormatkaGlowna.cs" />
+    <Compile Include="Widoki\Narzedzia\FormatkaPorownania.cs" />
     <Compile Include="Widoki\Porownanie.cs">
       <SubType>Form</SubType>
     </Compile>
