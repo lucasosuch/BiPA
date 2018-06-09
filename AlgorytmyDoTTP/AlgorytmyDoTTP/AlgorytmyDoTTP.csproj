@@ -91,6 +91,10 @@
     <Compile Include="Struktura\Algorytmy\Losowy\Losowanie\LosowanieTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\Losowanie\LosowanieKP.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\Losowanie\LosowanieTTP.cs" />
+    <Compile Include="Struktura\Algorytmy\Losowy\PrzebiegAlgorytmu.cs" />
+    <Compile Include="Struktura\Algorytmy\Losowy\RS.cs" />
+    <Compile Include="Struktura\Algorytmy\Losowy\Wynik\AWynik.cs" />
+    <Compile Include="Struktura\Algorytmy\Losowy\Wynik\WynikGenotypu1Wymiarowego.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\RLS.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\ARozwiazanie.cs" />

@@ -781,7 +781,7 @@
         private System.Windows.Forms.Label label10;
         private MetroFramework.Controls.MetroTextBox maxWaga;
         private System.Windows.Forms.Label label11;
-        private MetroFramework.Controls.MetroListView daneHistoryczne;
+        protected MetroFramework.Controls.MetroListView daneHistoryczne;
         private System.Windows.Forms.ColumnHeader nazwaBadania;
         private System.Windows.Forms.ColumnHeader dataBadania;
         private MetroFramework.Controls.MetroTile porownaj;

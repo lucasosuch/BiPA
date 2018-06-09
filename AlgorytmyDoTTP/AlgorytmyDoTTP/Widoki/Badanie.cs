@@ -10,6 +10,7 @@ namespace AlgorytmyDoTTP.Widoki
     public partial class Badanie : Form
     {
         private FormatkaBadania badanie;
+        private bool zapisanoBadanie = false;
 
         public Badanie(Dictionary<string, string> parametry)
         {
@@ -41,6 +42,12 @@ namespace AlgorytmyDoTTP.Widoki
         {
             badanie.ZapiszBadanie();
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            zapisanoBadanie = true;
+        }
+
+        public bool CzyZapisanoBadanie()
+        {
+            return zapisanoBadanie;
         }
     }
 }

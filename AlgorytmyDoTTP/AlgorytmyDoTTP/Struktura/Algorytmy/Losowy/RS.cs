@@ -1,24 +1,21 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 {
-    class RLS : IAlgorytm
+    class RS : IAlgorytm
     {
         private AWynik wynik;
-        private ARozwiazanie rozwiazanie;
 
-        public RLS()
+        public RS()
         {
             throw new Exception();
         }
 
-        public RLS(ARozwiazanie rozwiazanie, AWynik wynik)
+        public RS(AWynik wynik)
         {
-            this.rozwiazanie = rozwiazanie;
             this.wynik = wynik;
         }
 
@@ -26,13 +23,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         {
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
             ReprezentacjaRozwiazania najlepszeRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
-            rozwiazanie.UstawRozwiazanie(najlepszeRozwiazanie);
-            Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();
+            Dictionary<string, double[]> najlepszyWynik = wynik.ZwrocNajlepszyWynik();
 
             zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()) };
-            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() +" | "+ znalezioneOptimum["min"][0].ToString() };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", najlepszyWynik["max"][0].ToString() + " | " + najlepszyWynik["min"][0].ToString() };
 
             return zwracanyTekst;
+        }
+
+        public AWynik ZwrocInstancjeWyniku()
+        {
+            return wynik;
         }
     }
 }

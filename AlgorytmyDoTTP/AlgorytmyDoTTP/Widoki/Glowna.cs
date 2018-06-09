@@ -42,6 +42,8 @@ namespace AlgorytmyDoTTP
             {
                 Badanie widokBadania = new Badanie(ZwrocParametry());
                 widokBadania.Show();
+
+                if(widokBadania.CzyZapisanoBadanie()) daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
             } catch(Exception exc)
             {
                 Console.WriteLine(exc);
