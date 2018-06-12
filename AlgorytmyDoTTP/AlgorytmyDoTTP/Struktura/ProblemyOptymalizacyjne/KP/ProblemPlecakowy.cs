@@ -31,7 +31,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
         private void Inicjalizacja(string nazwaPakietu)
         {
             XmlDocument dokument = new XmlDocument();
-            dokument.Load("../../Dane/KP/" + nazwaPakietu + ".xml");
+            dokument.Load("./Dane/KP/" + nazwaPakietu + ".xml");
 
             XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/przedmioty/przedmiot");
             instancje = new Instancja[przedmioty.Count];

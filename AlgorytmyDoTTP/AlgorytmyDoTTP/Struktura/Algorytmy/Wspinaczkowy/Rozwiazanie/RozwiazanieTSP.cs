@@ -15,9 +15,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                      tmpRozwiazanie = (ushort[])rozwiazanie.Clone();
             Dictionary<string, double[]> wynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(rozwiazanie));
 
-            Console.WriteLine(string.Join(",", rozwiazanie));
-            Console.WriteLine("min: " + wynik["min"][0] + " max: " + wynik["max"][0]);
-
             do
             {
                 int start = 0,

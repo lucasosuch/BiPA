@@ -20,12 +20,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             {
                 case "Problem Plecakowy":
                     losowanie = new LosowanieKP(iloscRozwiazan, iloscElementow, 2);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie, problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
 
                     return new RS(wynik);
                 case "Problem Komiwojażera":
                     losowanie = new LosowanieTSP(iloscRozwiazan, iloscElementow, iloscElementow);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie, problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
 
                     return new RS(wynik);
             }

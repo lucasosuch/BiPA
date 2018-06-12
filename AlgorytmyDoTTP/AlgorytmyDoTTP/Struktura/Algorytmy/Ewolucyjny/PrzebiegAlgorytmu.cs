@@ -1,5 +1,4 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
@@ -38,7 +37,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rozwiazanie = new OsobnikKP(problem);
                     rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
-                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    analityka = new AnalizaEwolucyjny(rozwiazanie);
                     populacja = new PopulacjaKP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
@@ -48,7 +47,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rozwiazanie = new OsobnikTSP(problem);
                     populacja = new PopulacjaTSP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
-                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    analityka = new AnalizaEwolucyjny(rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
@@ -58,7 +57,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     populacja = new PopulacjaTTP(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDostepnePrzedmioty());
                     rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
-                    analityka = new AnalizaPopulacji(rozwiazanie);
+                    analityka = new AnalizaEwolucyjny(rozwiazanie);
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
             }

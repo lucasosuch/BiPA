@@ -1,23 +1,22 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
 using System.Diagnostics;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
-    class AnalizaPopulacji : IAnalityka
+    class AnalizaEwolucyjny : IAnalityka
     {
         private double najlepszaWartoscFunkcji;
-        private ReprezentacjaRozwiazania najlepszyGenotyp;
+        private ReprezentacjaRozwiazania najlepszeRozwiazanie;
         private Stopwatch pomiarCzasu;
         private AOsobnik rozwiazanie;
 
-        public AnalizaPopulacji(AOsobnik rozwiazanie)
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie)
         {
             this.rozwiazanie = rozwiazanie;
             najlepszaWartoscFunkcji = -10000;
-            najlepszyGenotyp = new ReprezentacjaRozwiazania(); ;
+            najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
             pomiarCzasu = new Stopwatch();
         }
 
@@ -111,7 +110,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         {
             if(najlepszaWartoscFunkcji < rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0])
             {
-                najlepszyGenotyp = genotyp;
+                najlepszeRozwiazanie = genotyp;
                 najlepszaWartoscFunkcji = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
             }
         }
@@ -122,7 +121,27 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         /// <returns>Dziedzina rozwiązania</returns>
         public ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp()
         {
-            return najlepszyGenotyp;
+            return najlepszeRozwiazanie;
+        }
+
+        public string ZwrocNajlepszeRowziazanie()
+        {
+            string wynik = "";
+
+            if(!(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy().Length == 0))
+            {
+                wynik = string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy());
+            }
+
+            if (!(najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy().Length == 0))
+            {
+                foreach (ushort[] genotyp in najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy())
+                {
+                    wynik += string.Join(",", genotyp) + Environment.NewLine;
+                }
+            }
+
+            return wynik;
         }
 
         /// <summary>
@@ -132,8 +151,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         public string[] ZwrocWartoscNiebo()
         {
             return new string[] {
-                rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["max"][0].ToString(),
-                rozwiazanie.FunkcjaDopasowania(najlepszyGenotyp)["min"][0].ToString()
+                rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie)["max"][0].ToString(),
+                rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie)["min"][0].ToString()
             };
         }
     }

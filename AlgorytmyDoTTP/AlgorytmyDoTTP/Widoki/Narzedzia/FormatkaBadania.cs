@@ -78,7 +78,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             badanie.Add(czasDzialania);
 
             xml.Add(badanie);
-            xml.Save("../../../../Badania/"+ ZwrocNazwePliku("xml"));
+            xml.Save("./Badania/"+ ZwrocNazwePliku("xml"));
         }
 
         private ProblemOptymalizacyjny ZwrocWybranyProblem()

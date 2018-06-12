@@ -60,8 +60,8 @@
   <ItemGroup>
     <Compile Include="Konfiguracja.cs" />
     <Compile Include="KonfiguracjaAlgorytmow\AE.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\AnalizaPopulacji.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Analityka\IAnalityka.cs" />
+    <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaEwolucyjny.cs" />
+    <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\IAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\ReprezentacjaRozwiazania.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\AOsobnik.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Osobnik\OsobnikKP.cs" />

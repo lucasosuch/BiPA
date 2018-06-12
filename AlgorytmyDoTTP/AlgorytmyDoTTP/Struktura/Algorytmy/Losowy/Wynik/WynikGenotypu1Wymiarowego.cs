@@ -1,5 +1,4 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,15 +7,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
 {
     class WynikGenotypu1Wymiarowego : AWynik
     {
-        public WynikGenotypu1Wymiarowego(ALosowanie losowanie, ProblemOptymalizacyjny problemOptymalizacyjny) : base(losowanie, problemOptymalizacyjny)
+        public WynikGenotypu1Wymiarowego(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny) : base(listaRozwiazan, problemOptymalizacyjny)
         {
-            SzukajNajlepszegoRozwiazania(losowanie, problemOptymalizacyjny);
+            SzukajNajlepszegoRozwiazania(listaRozwiazan, problemOptymalizacyjny);
         }
 
-        private void SzukajNajlepszegoRozwiazania(ALosowanie losowanie, ProblemOptymalizacyjny problemOptymalizacyjny)
+        private void SzukajNajlepszegoRozwiazania(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
         {
-            ArrayList listaRozwiazan = losowanie.LosujRozwiazania();
-
             najlepszeRozwiazanie = (ReprezentacjaRozwiazania)listaRozwiazan[0];
             najlepszyWynik = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()));
 

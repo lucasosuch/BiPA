@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         private void Inicjalizacja(string nazwaPakietu)
         {
             XmlDocument dokument = new XmlDocument();
-            dokument.Load("../../Dane/TSP/" + nazwaPakietu + ".xml");
+            dokument.Load("./Dane/TSP/" + nazwaPakietu + ".xml");
 
             XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
             instancje = new Instancja[miasta.Count];

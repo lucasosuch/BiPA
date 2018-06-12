@@ -1,7 +1,6 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using System.Collections;
+﻿using System.Collections;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
     interface IAnalityka
     {
@@ -34,6 +33,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka
         /// Metoda zwracająca najlepszą dziedzinę rozwiązania
         /// </summary>
         ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp();
+
+        string ZwrocNajlepszeRowziazanie();
 
         /// <summary>
         /// Metoda zwracająca najlepszą znalezioną wartość

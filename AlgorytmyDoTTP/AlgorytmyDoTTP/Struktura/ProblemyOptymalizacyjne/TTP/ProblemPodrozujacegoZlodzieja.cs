@@ -22,7 +22,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
         private void Inicjalizacja(string nazwaPakietu)
         {
             XmlDocument dokument = new XmlDocument();
-            dokument.Load("../../Dane/TTP/" + nazwaPakietu + ".xml");
+            dokument.Load("./Dane/TTP/" + nazwaPakietu + ".xml");
             XmlNode przypadekTSP = dokument.DocumentElement.SelectSingleNode("/korzen/tsp");
             XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
 

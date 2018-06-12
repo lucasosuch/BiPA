@@ -1,5 +1,4 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
@@ -93,7 +92,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             ReprezentacjaRozwiazania wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            //zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", wartoscNiebo.ZwrocGenotyp2Wymiarowy()) };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analityka.ZwrocNajlepszeRowziazanie() };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", analityka.ZwrocWartoscNiebo()[0], analityka.ZwrocWartoscNiebo()[1] };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };

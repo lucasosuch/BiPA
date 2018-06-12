@@ -15,14 +15,14 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
         public ListViewItem[] WczytajHistoryczneBadania()
         {
-            DirectoryInfo sciezka = new DirectoryInfo("../../../../Badania");
+            DirectoryInfo sciezka = new DirectoryInfo("./Badania");
             FileInfo[] pliki = sciezka.GetFiles("*.xml");
             ListViewItem[] elementy = new ListViewItem[pliki.Length];
 
             for (int i = 0; i < pliki.Length; i++)
             {
                 XmlDocument dokument = new XmlDocument();
-                dokument.Load("../../../../Badania/" + pliki[i].Name);
+                dokument.Load("./Badania/" + pliki[i].Name);
                 XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/dataZapisu");
 
                 string[] wiersz = new string[] { pliki[i].Name, dataZapisu.InnerText };
@@ -45,7 +45,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 }
             }
 
-            DirectoryInfo d = new DirectoryInfo("../../Dane/" + nazwaFolderu);
+            DirectoryInfo d = new DirectoryInfo("./Dane/" + nazwaFolderu);
             FileInfo[] files = d.GetFiles("*.xml");
             object[] pliki = new object[files.Length];
 
@@ -66,7 +66,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 string nazwa = element.SubItems[0].Text;
 
                 XmlDocument dokument = new XmlDocument();
-                dokument.Load("../../../../Badania/" + nazwa);
+                dokument.Load("./Badania/" + nazwa);
 
                 XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/maxWartosc");
                 XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/czasDzialania");

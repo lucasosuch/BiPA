@@ -30,13 +30,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                 case "Problem Plecakowy":
                     losowanie = new LosowanieKP(iloscRozwiazan, iloscElementow, 2);
                     rozwiazanie = new RozwiazanieKP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie, problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
 
                     return new RLS(rozwiazanie, wynik);
                 case "Problem Komiwojażera":
                     losowanie = new LosowanieTSP(iloscRozwiazan, iloscElementow, iloscElementow);
                     rozwiazanie = new RozwiazanieTSP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie, problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
 
                     return new RLS(rozwiazanie, wynik);
             }
