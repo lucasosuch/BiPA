@@ -1,28 +1,18 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
-    class LosowanieTTP : ALosowanie
+    class LosowanieTTP : ILosowanie
     {
-        private ushort[][] dostepnoscPrzedmiotow;
-        private LosowanieTSP losowanieTSP;
-
-        public LosowanieTTP(int iloscRozwiazan, int iloscElementow, int maxAllel, ushort[][] dostepnoscPrzedmiotow) : base(iloscRozwiazan, iloscElementow, maxAllel)
+        public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow, int maxAllel, ushort[][] dostepnoscPrzedmiotow)
         {
-            this.dostepnoscPrzedmiotow = dostepnoscPrzedmiotow;
-            losowanieTSP = new LosowanieTSP(iloscRozwiazan, iloscElementow, maxAllel);
-        }
-
-        public override ArrayList LosujRozwiazania()
-        {
+            Random losowy = new Random();
             ArrayList rozwiazania = new ArrayList();
-            ArrayList rozwiazaniaTSP = losowanieTSP.LosujRozwiazania();
+
+            LosowanieTSP losowanieTSP = new LosowanieTSP();
+            ArrayList rozwiazaniaTSP = losowanieTSP.LosujRozwiazania(iloscRozwiazan, iloscElementow, maxAllel);
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
@@ -53,6 +43,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             }
 
             return rozwiazania;
+        }
+
+        public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow, int maxAllel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

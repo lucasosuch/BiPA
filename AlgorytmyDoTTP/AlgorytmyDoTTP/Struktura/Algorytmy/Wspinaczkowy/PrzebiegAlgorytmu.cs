@@ -19,7 +19,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
             AWynik wynik;
-            ALosowanie losowanie;
+            ILosowanie losowanie;
             ARozwiazanie rozwiazanie;
 
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
@@ -28,15 +28,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP(iloscRozwiazan, iloscElementow, 2);
+                    losowanie = new LosowanieKP();
                     rozwiazanie = new RozwiazanieKP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow), problem);
 
                     return new RLS(rozwiazanie, wynik);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(iloscRozwiazan, iloscElementow, iloscElementow);
+                    losowanie = new LosowanieTSP();
                     rozwiazanie = new RozwiazanieTSP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow), problem);
 
                     return new RLS(rozwiazanie, wynik);
             }

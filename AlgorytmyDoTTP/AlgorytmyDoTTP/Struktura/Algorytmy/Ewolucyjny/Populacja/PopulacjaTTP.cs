@@ -1,22 +1,24 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using System.Collections;
+using System;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
-    class PopulacjaTTP : APopulacja
+    class PopulacjaTTP : IPopulacja
     {
-        private ushort[][] dostepnoscPrzedmiotow;
-        private PopulacjaTSP populacjaCykliczna;
-
-        public PopulacjaTTP(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel, ushort[][] dostepnoscPrzedmiotow) : base(rozmiarPopulacji, dlugoscGenotypu, maxAllel)
+        public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel, ushort[][] dostepnoscPrzedmiotow)
         {
-            this.dostepnoscPrzedmiotow = dostepnoscPrzedmiotow;
-            populacjaCykliczna = new PopulacjaTSP(rozmiarPopulacji, dlugoscGenotypu, maxAllel);
+            return new LosowanieTTP().LosujRozwiazania(rozmiarPopulacji, dlugoscGenotypu, maxAllel, dostepnoscPrzedmiotow);
         }
 
-        public override ArrayList StworzPopulacjeBazowa()
+        public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {
-            return new LosowanieTTP(rozmiarPopulacji, dlugoscGenotypu, maxAllel, dostepnoscPrzedmiotow).LosujRozwiazania();
+            throw new NotImplementedException();
+        }
+
+        public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

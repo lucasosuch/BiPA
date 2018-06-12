@@ -19,7 +19,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private ARekombinacja rekombinacja; // klasa odpowiedzialna za tworzenie nowych osobników
         private ASelekcja selekcja; // klasa odpowiedzialna za wybieranie najlepszych osobników do krzyżowania
         private IAnalityka analityka; // klasa odpowiedzialna za analizę rozwiązań
-        private APopulacja populacja; // klasa zarządzająca populcją osobników
+        private ArrayList populacjaBazowa; // klasa zarządzająca populcją osobników
         private Random losowy = new Random();
 
         public SEA()
@@ -27,13 +27,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
         }
 
-        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, IAnalityka analityka, APopulacja populacja, short iloscPokolen, double pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, IAnalityka analityka, ArrayList populacjaBazowa, short iloscPokolen, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
             this.analityka = analityka;
             this.iloscPokolen = iloscPokolen;
-            this.populacja = populacja;
+            this.populacjaBazowa = populacjaBazowa;
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
 
@@ -44,7 +44,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         public Dictionary<string, string[]> Start()
         {
             ArrayList nowaPopulacja = new ArrayList();
-            ArrayList populacjaBazowa = populacja.StworzPopulacjeBazowa(); // stworzenie losowej populacji
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu

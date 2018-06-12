@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja.Ograniczenia;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
@@ -54,12 +53,23 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             while (rozwiazanie.FunkcjaDopasowania(genotyp)["min"][0] > ograniczenie[0])
             {
-                ANaprawaGenotypu naprawaOgraniczen = new KP(geny);
-                naprawaOgraniczen.NaprawGeny();
-                genotyp.ZmienGenotyp((ushort[])naprawaOgraniczen.ZwrocGeny().Clone());
+                genotyp.ZmienGenotyp((ushort[])NaprawGenotypKP(geny).Clone());
             }
 
             return genotyp;
+        }
+
+        private ushort[] NaprawGenotypKP(ushort[] geny)
+        {
+            int start = losowy.Next(0, geny.Length / 2),
+                koniec = losowy.Next(start, geny.Length);
+
+            for (int i = start; i < koniec; i++)
+            {
+                geny[i] = (ushort)((geny[i] == 0) ? 1 : 0);
+            }
+
+            return geny;
         }
     }
 }

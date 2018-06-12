@@ -11,7 +11,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
             AWynik wynik;
-            ALosowanie losowanie;
+            ILosowanie losowanie;
 
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
@@ -19,13 +19,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP(iloscRozwiazan, iloscElementow, 2);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
+                    losowanie = new LosowanieKP();
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow), problem);
 
                     return new RS(wynik);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(iloscRozwiazan, iloscElementow, iloscElementow);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(), problem);
+                    losowanie = new LosowanieTSP();
+                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow), problem);
 
                     return new RS(wynik);
             }
