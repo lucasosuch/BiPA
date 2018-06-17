@@ -96,7 +96,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
             zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania +" ms" };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
 
             return zwracanyTekst;
         }

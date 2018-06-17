@@ -28,7 +28,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 
             ArrayList listaRozwiazan = wynik.ZwrocListeRozwiazan();
 
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()) };
+            string text = "";
+
+            foreach(ushort[] genotyp in najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy())
+            {
+                text += string.Join(",", genotyp) + Environment.NewLine;
+            }
+
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", text };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", najlepszyWynik["max"][0].ToString() + " | " + najlepszyWynik["min"][0].ToString() };
 
             return zwracanyTekst;

@@ -7,9 +7,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
     class OsobnikKP : AOsobnik
     {
-        public OsobnikKP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny)
-        {
-        }
+        public OsobnikKP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
 
         /// <summary>
         /// Metoda zwraca wektor osobnika opisanego genotypem

@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,7 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public override Dictionary<string, double[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu)

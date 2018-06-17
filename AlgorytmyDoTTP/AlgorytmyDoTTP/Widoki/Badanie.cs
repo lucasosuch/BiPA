@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki
 {
@@ -28,7 +27,7 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 string pulpit = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv"));
+                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv", ""));
 
                 File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV());
                 MessageBox.Show("Pobrano plik CSV, na pulpit!", "Plik CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);

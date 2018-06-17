@@ -28,6 +28,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
                     wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow), problem);
 
                     return new RS(wynik);
+
+                case "Problem Podróżującego Złodzieja":
+                    losowanie = new LosowanieTTP();
+                    wynik = new WynikGenotypu2Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow, problem.ZwrocDostepnePrzedmioty()), problem);
+
+                    return new RS(wynik);
             }
 
             return new RS();

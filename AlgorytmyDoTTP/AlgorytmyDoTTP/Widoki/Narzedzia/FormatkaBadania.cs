@@ -5,6 +5,7 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
@@ -58,27 +59,39 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return csv.ToString();
         }
 
-        public string ZwrocNazwePliku(string rozszerzenie)
+        public string ZwrocNazwePliku(string rozszerzenie, string iter)
         {
-            return "(" + data.ToString("d") + ") " + parametry["algorytm"] + "_" + parametry["dane"] + "."+ rozszerzenie;
+            return "("+ data.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter +"."+ rozszerzenie;
         }
 
         public void ZapiszBadanie()
         {
+            int iter = 0;
+            string[] znalezionePliki;
+
+            do
+            {
+                iter++;
+                znalezionePliki = Directory.GetFiles(@"./Badania/", ZwrocNazwePliku("xml", "_" + iter));
+            } while (znalezionePliki.Length != 0);
+
             XDocument xml = new XDocument();
             XElement czasDzialania = new XElement("czasDzialania", wyniki["czasDzialania"][1]);
             XElement maxWartosc = new XElement("maxWartosc", wyniki["maxWartosc"][1]);
             XElement dataZapisu = new XElement("dataZapisu", data.ToString("d"));
-            XElement nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"]);
+            XElement nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] +"_"+iter);
+            XElement plikDanych = new XElement("plikDanych", parametry["dane"]);
 
             XElement badanie = new XElement("badanie");
             badanie.Add(nazwaBadania);
             badanie.Add(dataZapisu);
             badanie.Add(maxWartosc);
             badanie.Add(czasDzialania);
+            badanie.Add(plikDanych);
 
             xml.Add(badanie);
-            xml.Save("./Badania/"+ ZwrocNazwePliku("xml"));
+
+            xml.Save("./Badania/"+ ZwrocNazwePliku("xml", "_"+ iter));
         }
 
         private ProblemOptymalizacyjny ZwrocWybranyProblem()
@@ -106,9 +119,12 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             if (parametry["algorytm"] == "Algorytm Ewolucyjny")
             {
                 return new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu();
+            } else if(parametry["algorytm"] == "Algorytm Wspinaczkowy")
+            {
+                return new Struktura.Algorytmy.Wspinaczkowy.PrzebiegAlgorytmu();
             }
 
-            return new Struktura.Algorytmy.Wspinaczkowy.PrzebiegAlgorytmu();
+            return new Struktura.Algorytmy.Losowy.PrzebiegAlgorytmu();
         }
     }
 }
