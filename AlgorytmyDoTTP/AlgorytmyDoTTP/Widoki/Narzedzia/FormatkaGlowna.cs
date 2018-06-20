@@ -89,6 +89,16 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             }
         }
 
+        public void WalidacjaKluczowychParametrow(string parametr)
+        {
+            bool walidacja = new WalidacjaAE().CzyPustePoleTekstowe(parametr);
+
+            if (!walidacja)
+            {
+                throw new Exception("Parametr "+ parametr +" nie może być pusty!");
+            }
+        }
+
         public Konfiguracja ZwrocZmiennaSrodowiskowa()
         {
             return srodowisko;

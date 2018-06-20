@@ -60,7 +60,6 @@
             this.pwoMutacji = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rozmiarPopulacji = new MetroFramework.Controls.MetroTextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.iloscPokolen = new MetroFramework.Controls.MetroTextBox();
             this.start = new MetroFramework.Controls.MetroTile();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,6 +69,8 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label15 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -88,7 +89,7 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(12, 12);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(886, 527);
+            this.metroPanel1.Size = new System.Drawing.Size(984, 705);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -101,13 +102,14 @@
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(886, 527);
+            this.metroTabControl1.Size = new System.Drawing.Size(984, 705);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
             // 
             // badanie
             // 
             this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.domyslny);
             this.badanie.Controls.Add(this.label11);
             this.badanie.Controls.Add(this.panelKP);
             this.badanie.Controls.Add(this.wybierzDane);
@@ -122,7 +124,7 @@
             this.badanie.HorizontalScrollbarSize = 10;
             this.badanie.Location = new System.Drawing.Point(4, 38);
             this.badanie.Name = "badanie";
-            this.badanie.Size = new System.Drawing.Size(878, 485);
+            this.badanie.Size = new System.Drawing.Size(976, 663);
             this.badanie.TabIndex = 0;
             this.badanie.Text = "Badanie Algorytmu";
             this.badanie.VerticalScrollbarBarColor = true;
@@ -132,7 +134,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(674, 68);
+            this.label11.Location = new System.Drawing.Point(273, 60);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(105, 13);
@@ -142,25 +144,26 @@
             // panelKP
             // 
             this.panelKP.Controls.Add(this.domyslnyProblem);
+            this.panelKP.Controls.Add(this.label15);
             this.panelKP.Controls.Add(this.label10);
             this.panelKP.Controls.Add(this.maxWaga);
             this.panelKP.Controls.Add(this.panelTTP);
-            this.panelKP.Location = new System.Drawing.Point(420, 125);
+            this.panelKP.Location = new System.Drawing.Point(0, 194);
             this.panelKP.Name = "panelKP";
-            this.panelKP.Size = new System.Drawing.Size(454, 68);
+            this.panelKP.Size = new System.Drawing.Size(486, 402);
             this.panelKP.TabIndex = 29;
             // 
             // domyslnyProblem
             // 
             this.domyslnyProblem.Location = new System.Drawing.Point(0, 0);
             this.domyslnyProblem.Name = "domyslnyProblem";
-            this.domyslnyProblem.Size = new System.Drawing.Size(454, 68);
+            this.domyslnyProblem.Size = new System.Drawing.Size(486, 402);
             this.domyslnyProblem.TabIndex = 31;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(-2, 0);
+            this.label10.Location = new System.Drawing.Point(2, 55);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(136, 13);
@@ -173,7 +176,7 @@
             // 
             // 
             this.maxWaga.CustomButton.Image = null;
-            this.maxWaga.CustomButton.Location = new System.Drawing.Point(116, 2);
+            this.maxWaga.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.maxWaga.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.maxWaga.CustomButton.Name = "";
             this.maxWaga.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -184,7 +187,7 @@
             this.maxWaga.CustomButton.Visible = false;
             this.maxWaga.Lines = new string[] {
         "7"};
-            this.maxWaga.Location = new System.Drawing.Point(0, 25);
+            this.maxWaga.Location = new System.Drawing.Point(5, 81);
             this.maxWaga.Margin = new System.Windows.Forms.Padding(2);
             this.maxWaga.MaxLength = 32767;
             this.maxWaga.Name = "maxWaga";
@@ -194,8 +197,8 @@
             this.maxWaga.SelectionLength = 0;
             this.maxWaga.SelectionStart = 0;
             this.maxWaga.ShortcutsEnabled = true;
-            this.maxWaga.Size = new System.Drawing.Size(134, 20);
-            this.maxWaga.TabIndex = 33;
+            this.maxWaga.Size = new System.Drawing.Size(96, 20);
+            this.maxWaga.TabIndex = 4;
             this.maxWaga.Text = "7";
             this.maxWaga.UseSelectable = true;
             this.maxWaga.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -207,25 +210,25 @@
             this.panelTTP.Controls.Add(this.label14);
             this.panelTTP.Controls.Add(this.label13);
             this.panelTTP.Controls.Add(this.wyporzyczeniePlecaka);
-            this.panelTTP.Location = new System.Drawing.Point(139, 0);
+            this.panelTTP.Location = new System.Drawing.Point(0, 151);
             this.panelTTP.Name = "panelTTP";
-            this.panelTTP.Size = new System.Drawing.Size(315, 68);
+            this.panelTTP.Size = new System.Drawing.Size(486, 251);
             this.panelTTP.TabIndex = 30;
             // 
             // przypadekTTP
             // 
             this.przypadekTTP.FormattingEnabled = true;
             this.przypadekTTP.ItemHeight = 23;
-            this.przypadekTTP.Location = new System.Drawing.Point(182, 25);
+            this.przypadekTTP.Location = new System.Drawing.Point(5, 116);
             this.przypadekTTP.Name = "przypadekTTP";
-            this.przypadekTTP.Size = new System.Drawing.Size(133, 29);
-            this.przypadekTTP.TabIndex = 38;
+            this.przypadekTTP.Size = new System.Drawing.Size(256, 29);
+            this.przypadekTTP.TabIndex = 6;
             this.przypadekTTP.UseSelectable = true;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(179, 0);
+            this.label14.Location = new System.Drawing.Point(2, 91);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 13);
@@ -235,7 +238,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 0);
+            this.label13.Location = new System.Drawing.Point(2, 7);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(164, 13);
@@ -248,7 +251,7 @@
             // 
             // 
             this.wyporzyczeniePlecaka.CustomButton.Image = null;
-            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(116, 2);
+            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.wyporzyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.wyporzyczeniePlecaka.CustomButton.Name = "";
             this.wyporzyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -259,7 +262,7 @@
             this.wyporzyczeniePlecaka.CustomButton.Visible = false;
             this.wyporzyczeniePlecaka.Lines = new string[] {
         "1"};
-            this.wyporzyczeniePlecaka.Location = new System.Drawing.Point(13, 25);
+            this.wyporzyczeniePlecaka.Location = new System.Drawing.Point(4, 32);
             this.wyporzyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2);
             this.wyporzyczeniePlecaka.MaxLength = 32767;
             this.wyporzyczeniePlecaka.Name = "wyporzyczeniePlecaka";
@@ -269,8 +272,8 @@
             this.wyporzyczeniePlecaka.SelectionLength = 0;
             this.wyporzyczeniePlecaka.SelectionStart = 0;
             this.wyporzyczeniePlecaka.ShortcutsEnabled = true;
-            this.wyporzyczeniePlecaka.Size = new System.Drawing.Size(134, 20);
-            this.wyporzyczeniePlecaka.TabIndex = 35;
+            this.wyporzyczeniePlecaka.Size = new System.Drawing.Size(96, 20);
+            this.wyporzyczeniePlecaka.TabIndex = 5;
             this.wyporzyczeniePlecaka.Text = "1";
             this.wyporzyczeniePlecaka.UseSelectable = true;
             this.wyporzyczeniePlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -280,16 +283,16 @@
             // 
             this.wybierzDane.FormattingEnabled = true;
             this.wybierzDane.ItemHeight = 23;
-            this.wybierzDane.Location = new System.Drawing.Point(677, 87);
+            this.wybierzDane.Location = new System.Drawing.Point(276, 79);
             this.wybierzDane.Name = "wybierzDane";
-            this.wybierzDane.Size = new System.Drawing.Size(198, 29);
-            this.wybierzDane.TabIndex = 16;
+            this.wybierzDane.Size = new System.Drawing.Size(128, 29);
+            this.wybierzDane.TabIndex = 2;
             this.wybierzDane.UseSelectable = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(418, 68);
+            this.label7.Location = new System.Drawing.Point(-3, 60);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 13);
@@ -300,37 +303,36 @@
             // 
             this.wybierzProblem.FormattingEnabled = true;
             this.wybierzProblem.ItemHeight = 23;
-            this.wybierzProblem.Location = new System.Drawing.Point(421, 87);
+            this.wybierzProblem.Location = new System.Drawing.Point(0, 79);
             this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzProblem.Name = "wybierzProblem";
-            this.wybierzProblem.Size = new System.Drawing.Size(251, 29);
-            this.wybierzProblem.TabIndex = 14;
+            this.wybierzProblem.Size = new System.Drawing.Size(256, 29);
+            this.wybierzProblem.TabIndex = 1;
             this.wybierzProblem.UseSelectable = true;
             this.wybierzProblem.SelectionChangeCommitted += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged);
             // 
             // ewolucyjny
             // 
-            this.ewolucyjny.Controls.Add(this.domyslny);
             this.ewolucyjny.Controls.Add(this.wspinaczkowy_losowy);
+            this.ewolucyjny.Controls.Add(this.pwoMutacji);
+            this.ewolucyjny.Controls.Add(this.iloscPokolen);
             this.ewolucyjny.Controls.Add(this.label9);
+            this.ewolucyjny.Controls.Add(this.label5);
             this.ewolucyjny.Controls.Add(this.rodzajKrzyzowania);
             this.ewolucyjny.Controls.Add(this.label8);
             this.ewolucyjny.Controls.Add(this.metodaSelekcji);
             this.ewolucyjny.Controls.Add(this.label4);
             this.ewolucyjny.Controls.Add(this.pwoKrzyzowania);
-            this.ewolucyjny.Controls.Add(this.label5);
             this.ewolucyjny.Controls.Add(this.label1);
-            this.ewolucyjny.Controls.Add(this.pwoMutacji);
             this.ewolucyjny.Controls.Add(this.label3);
             this.ewolucyjny.Controls.Add(this.rozmiarPopulacji);
             this.ewolucyjny.Controls.Add(this.label2);
-            this.ewolucyjny.Controls.Add(this.iloscPokolen);
             this.ewolucyjny.HorizontalScrollbarBarColor = true;
             this.ewolucyjny.HorizontalScrollbarHighlightOnWheel = false;
             this.ewolucyjny.HorizontalScrollbarSize = 10;
-            this.ewolucyjny.Location = new System.Drawing.Point(46, 199);
+            this.ewolucyjny.Location = new System.Drawing.Point(494, 194);
             this.ewolucyjny.Name = "ewolucyjny";
-            this.ewolucyjny.Size = new System.Drawing.Size(829, 196);
+            this.ewolucyjny.Size = new System.Drawing.Size(486, 402);
             this.ewolucyjny.TabIndex = 13;
             this.ewolucyjny.VerticalScrollbarBarColor = true;
             this.ewolucyjny.VerticalScrollbarHighlightOnWheel = false;
@@ -338,9 +340,9 @@
             // 
             // domyslny
             // 
-            this.domyslny.Location = new System.Drawing.Point(0, 0);
+            this.domyslny.Location = new System.Drawing.Point(494, 194);
             this.domyslny.Name = "domyslny";
-            this.domyslny.Size = new System.Drawing.Size(829, 196);
+            this.domyslny.Size = new System.Drawing.Size(482, 402);
             this.domyslny.TabIndex = 28;
             // 
             // wspinaczkowy_losowy
@@ -349,13 +351,13 @@
             this.wspinaczkowy_losowy.Controls.Add(this.iloscRozwiazan);
             this.wspinaczkowy_losowy.Location = new System.Drawing.Point(0, 28);
             this.wspinaczkowy_losowy.Name = "wspinaczkowy_losowy";
-            this.wspinaczkowy_losowy.Size = new System.Drawing.Size(829, 168);
+            this.wspinaczkowy_losowy.Size = new System.Drawing.Size(482, 374);
             this.wspinaczkowy_losowy.TabIndex = 29;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(-3, 27);
+            this.label12.Location = new System.Drawing.Point(4, 27);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 13);
@@ -368,7 +370,7 @@
             // 
             // 
             this.iloscRozwiazan.CustomButton.Image = null;
-            this.iloscRozwiazan.CustomButton.Location = new System.Drawing.Point(151, 2);
+            this.iloscRozwiazan.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.iloscRozwiazan.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.iloscRozwiazan.CustomButton.Name = "";
             this.iloscRozwiazan.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -379,7 +381,7 @@
             this.iloscRozwiazan.CustomButton.Visible = false;
             this.iloscRozwiazan.Lines = new string[] {
         "20"};
-            this.iloscRozwiazan.Location = new System.Drawing.Point(0, 44);
+            this.iloscRozwiazan.Location = new System.Drawing.Point(7, 44);
             this.iloscRozwiazan.Margin = new System.Windows.Forms.Padding(2);
             this.iloscRozwiazan.MaxLength = 32767;
             this.iloscRozwiazan.Name = "iloscRozwiazan";
@@ -389,7 +391,7 @@
             this.iloscRozwiazan.SelectionLength = 0;
             this.iloscRozwiazan.SelectionStart = 0;
             this.iloscRozwiazan.ShortcutsEnabled = true;
-            this.iloscRozwiazan.Size = new System.Drawing.Size(169, 20);
+            this.iloscRozwiazan.Size = new System.Drawing.Size(96, 20);
             this.iloscRozwiazan.TabIndex = 33;
             this.iloscRozwiazan.Text = "20";
             this.iloscRozwiazan.UseSelectable = true;
@@ -399,7 +401,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(-3, 123);
+            this.label9.Location = new System.Drawing.Point(4, 158);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 13);
@@ -410,16 +412,16 @@
             // 
             this.rodzajKrzyzowania.FormattingEnabled = true;
             this.rodzajKrzyzowania.ItemHeight = 23;
-            this.rodzajKrzyzowania.Location = new System.Drawing.Point(0, 140);
+            this.rodzajKrzyzowania.Location = new System.Drawing.Point(7, 183);
             this.rodzajKrzyzowania.Name = "rodzajKrzyzowania";
-            this.rodzajKrzyzowania.Size = new System.Drawing.Size(251, 29);
-            this.rodzajKrzyzowania.TabIndex = 31;
+            this.rodzajKrzyzowania.Size = new System.Drawing.Size(128, 29);
+            this.rodzajKrzyzowania.TabIndex = 9;
             this.rodzajKrzyzowania.UseSelectable = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-3, 55);
+            this.label8.Location = new System.Drawing.Point(4, 55);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 13);
@@ -430,16 +432,16 @@
             // 
             this.metodaSelekcji.FormattingEnabled = true;
             this.metodaSelekcji.ItemHeight = 23;
-            this.metodaSelekcji.Location = new System.Drawing.Point(0, 72);
+            this.metodaSelekcji.Location = new System.Drawing.Point(7, 72);
             this.metodaSelekcji.Name = "metodaSelekcji";
-            this.metodaSelekcji.Size = new System.Drawing.Size(251, 29);
-            this.metodaSelekcji.TabIndex = 29;
+            this.metodaSelekcji.Size = new System.Drawing.Size(128, 29);
+            this.metodaSelekcji.TabIndex = 7;
             this.metodaSelekcji.UseSelectable = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(371, 123);
+            this.label4.Location = new System.Drawing.Point(4, 242);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(170, 13);
@@ -452,7 +454,7 @@
             // 
             // 
             this.pwoKrzyzowania.CustomButton.Image = null;
-            this.pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(152, 2);
+            this.pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.pwoKrzyzowania.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.pwoKrzyzowania.CustomButton.Name = "";
             this.pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -463,7 +465,7 @@
             this.pwoKrzyzowania.CustomButton.Visible = false;
             this.pwoKrzyzowania.Lines = new string[] {
         "0,7"};
-            this.pwoKrzyzowania.Location = new System.Drawing.Point(374, 149);
+            this.pwoKrzyzowania.Location = new System.Drawing.Point(7, 267);
             this.pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2);
             this.pwoKrzyzowania.MaxLength = 32767;
             this.pwoKrzyzowania.Name = "pwoKrzyzowania";
@@ -473,8 +475,8 @@
             this.pwoKrzyzowania.SelectionLength = 0;
             this.pwoKrzyzowania.SelectionStart = 0;
             this.pwoKrzyzowania.ShortcutsEnabled = true;
-            this.pwoKrzyzowania.Size = new System.Drawing.Size(170, 20);
-            this.pwoKrzyzowania.TabIndex = 22;
+            this.pwoKrzyzowania.Size = new System.Drawing.Size(96, 20);
+            this.pwoKrzyzowania.TabIndex = 11;
             this.pwoKrzyzowania.Text = "0,7";
             this.pwoKrzyzowania.UseSelectable = true;
             this.pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -483,7 +485,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(628, 123);
+            this.label5.Location = new System.Drawing.Point(288, 242);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 13);
@@ -494,7 +496,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(-5, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 25);
@@ -507,7 +509,7 @@
             // 
             // 
             this.pwoMutacji.CustomButton.Image = null;
-            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(152, 2);
+            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.pwoMutacji.CustomButton.Name = "";
             this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -518,7 +520,7 @@
             this.pwoMutacji.CustomButton.Visible = false;
             this.pwoMutacji.Lines = new string[] {
         "0,1"};
-            this.pwoMutacji.Location = new System.Drawing.Point(631, 149);
+            this.pwoMutacji.Location = new System.Drawing.Point(291, 267);
             this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
             this.pwoMutacji.MaxLength = 32767;
             this.pwoMutacji.Name = "pwoMutacji";
@@ -528,8 +530,8 @@
             this.pwoMutacji.SelectionLength = 0;
             this.pwoMutacji.SelectionStart = 0;
             this.pwoMutacji.ShortcutsEnabled = true;
-            this.pwoMutacji.Size = new System.Drawing.Size(170, 20);
-            this.pwoMutacji.TabIndex = 23;
+            this.pwoMutacji.Size = new System.Drawing.Size(96, 20);
+            this.pwoMutacji.TabIndex = 12;
             this.pwoMutacji.Text = "0,1";
             this.pwoMutacji.UseSelectable = true;
             this.pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -538,7 +540,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(371, 55);
+            this.label3.Location = new System.Drawing.Point(288, 55);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
@@ -551,7 +553,7 @@
             // 
             // 
             this.rozmiarPopulacji.CustomButton.Image = null;
-            this.rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(151, 2);
+            this.rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.rozmiarPopulacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.rozmiarPopulacji.CustomButton.Name = "";
             this.rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -562,7 +564,7 @@
             this.rozmiarPopulacji.CustomButton.Visible = false;
             this.rozmiarPopulacji.Lines = new string[] {
         "20"};
-            this.rozmiarPopulacji.Location = new System.Drawing.Point(375, 81);
+            this.rozmiarPopulacji.Location = new System.Drawing.Point(291, 72);
             this.rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2);
             this.rozmiarPopulacji.MaxLength = 32767;
             this.rozmiarPopulacji.Name = "rozmiarPopulacji";
@@ -572,22 +574,12 @@
             this.rozmiarPopulacji.SelectionLength = 0;
             this.rozmiarPopulacji.SelectionStart = 0;
             this.rozmiarPopulacji.ShortcutsEnabled = true;
-            this.rozmiarPopulacji.Size = new System.Drawing.Size(169, 20);
-            this.rozmiarPopulacji.TabIndex = 20;
+            this.rozmiarPopulacji.Size = new System.Drawing.Size(96, 20);
+            this.rozmiarPopulacji.TabIndex = 8;
             this.rozmiarPopulacji.Text = "20";
             this.rozmiarPopulacji.UseSelectable = true;
             this.rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.rozmiarPopulacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(628, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Ilość pokoleń";
             // 
             // iloscPokolen
             // 
@@ -595,7 +587,7 @@
             // 
             // 
             this.iloscPokolen.CustomButton.Image = null;
-            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(152, 2);
+            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(78, 2);
             this.iloscPokolen.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.iloscPokolen.CustomButton.Name = "";
             this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(15, 15);
@@ -606,7 +598,7 @@
             this.iloscPokolen.CustomButton.Visible = false;
             this.iloscPokolen.Lines = new string[] {
         "15"};
-            this.iloscPokolen.Location = new System.Drawing.Point(631, 81);
+            this.iloscPokolen.Location = new System.Drawing.Point(291, 183);
             this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2);
             this.iloscPokolen.MaxLength = 32767;
             this.iloscPokolen.Name = "iloscPokolen";
@@ -616,8 +608,8 @@
             this.iloscPokolen.SelectionLength = 0;
             this.iloscPokolen.SelectionStart = 0;
             this.iloscPokolen.ShortcutsEnabled = true;
-            this.iloscPokolen.Size = new System.Drawing.Size(170, 20);
-            this.iloscPokolen.TabIndex = 21;
+            this.iloscPokolen.Size = new System.Drawing.Size(96, 20);
+            this.iloscPokolen.TabIndex = 10;
             this.iloscPokolen.Text = "15";
             this.iloscPokolen.UseSelectable = true;
             this.iloscPokolen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -626,7 +618,7 @@
             // start
             // 
             this.start.ActiveControl = null;
-            this.start.Location = new System.Drawing.Point(677, 430);
+            this.start.Location = new System.Drawing.Point(778, 601);
             this.start.Margin = new System.Windows.Forms.Padding(2);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(198, 60);
@@ -639,7 +631,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 68);
+            this.label6.Location = new System.Drawing.Point(491, 60);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 13);
@@ -650,11 +642,11 @@
             // 
             this.wyborAlgorytmu.FormattingEnabled = true;
             this.wyborAlgorytmu.ItemHeight = 23;
-            this.wyborAlgorytmu.Location = new System.Drawing.Point(46, 87);
+            this.wyborAlgorytmu.Location = new System.Drawing.Point(494, 79);
             this.wyborAlgorytmu.Margin = new System.Windows.Forms.Padding(2);
             this.wyborAlgorytmu.Name = "wyborAlgorytmu";
-            this.wyborAlgorytmu.Size = new System.Drawing.Size(251, 29);
-            this.wyborAlgorytmu.TabIndex = 1;
+            this.wyborAlgorytmu.Size = new System.Drawing.Size(256, 29);
+            this.wyborAlgorytmu.TabIndex = 3;
             this.wyborAlgorytmu.UseSelectable = true;
             this.wyborAlgorytmu.SelectionChangeCommitted += new System.EventHandler(this.wyborAlgorytmu_SelectedIndexChanged);
             // 
@@ -668,7 +660,7 @@
             this.historia.HorizontalScrollbarSize = 10;
             this.historia.Location = new System.Drawing.Point(4, 38);
             this.historia.Name = "historia";
-            this.historia.Size = new System.Drawing.Size(878, 485);
+            this.historia.Size = new System.Drawing.Size(976, 663);
             this.historia.TabIndex = 1;
             this.historia.Text = "Historia Badań";
             this.historia.VerticalScrollbarBarColor = true;
@@ -678,10 +670,10 @@
             // porownaj
             // 
             this.porownaj.ActiveControl = null;
-            this.porownaj.Location = new System.Drawing.Point(677, 430);
+            this.porownaj.Location = new System.Drawing.Point(778, 601);
             this.porownaj.Margin = new System.Windows.Forms.Padding(2);
             this.porownaj.Name = "porownaj";
-            this.porownaj.Size = new System.Drawing.Size(198, 60);
+            this.porownaj.Size = new System.Drawing.Size(200, 60);
             this.porownaj.TabIndex = 7;
             this.porownaj.Text = "Porównaj";
             this.porownaj.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -697,10 +689,10 @@
             this.dataBadania});
             this.daneHistoryczne.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.daneHistoryczne.FullRowSelect = true;
-            this.daneHistoryczne.Location = new System.Drawing.Point(50, 3);
+            this.daneHistoryczne.Location = new System.Drawing.Point(0, 55);
             this.daneHistoryczne.Name = "daneHistoryczne";
             this.daneHistoryczne.OwnerDraw = true;
-            this.daneHistoryczne.Size = new System.Drawing.Size(580, 480);
+            this.daneHistoryczne.Size = new System.Drawing.Size(580, 605);
             this.daneHistoryczne.TabIndex = 2;
             this.daneHistoryczne.UseCompatibleStateImageBehavior = false;
             this.daneHistoryczne.UseSelectable = true;
@@ -716,18 +708,39 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.Location = new System.Drawing.Point(0, 0);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(417, 25);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Konfiguracja Problemu Optymalizacyjnego";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(288, 158);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Ilość pokoleń";
+            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(910, 551);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.metroPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(926, 590);
-            this.MinimumSize = new System.Drawing.Size(926, 590);
+            this.MaximumSize = new System.Drawing.Size(1024, 768);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Glowna";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Glowna";
@@ -766,7 +779,6 @@
         private MetroFramework.Controls.MetroTextBox pwoMutacji;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox rozmiarPopulacji;
-        private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTextBox iloscPokolen;
         private System.Windows.Forms.Panel domyslny;
         private System.Windows.Forms.Label label7;
@@ -793,6 +805,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private MetroFramework.Controls.MetroTextBox wyporzyczeniePlecaka;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label2;
     }
 }
 

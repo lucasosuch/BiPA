@@ -46,8 +46,8 @@ namespace AlgorytmyDoTTP
                 if(widokBadania.CzyZapisanoBadanie()) daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
             } catch(Exception exc)
             {
-                Console.WriteLine(exc);
-                MessageBox.Show("Wystąpił błąd w formularzu, sprawdź go jeszcze raz!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string wiadomosc = "Wystąpił błąd w formularzu, sprawdź go jeszcze raz!" + Environment.NewLine  + exc;
+                MessageBox.Show(wiadomosc, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -110,11 +110,15 @@ namespace AlgorytmyDoTTP
                     parametry["iloscRozwiazan"] = iloscRozwiazan.Text;
                     break;
             }
+            
+            glowna.WalidacjaKluczowychParametrow(wybierzDane.Text);
+            glowna.WalidacjaKluczowychParametrow(wybierzProblem.Text);
+            glowna.WalidacjaKluczowychParametrow(wyborAlgorytmu.Text);
 
             parametry["dane"] = wybierzDane.Text;
             parametry["problem"] = wybierzProblem.Text;
             parametry["algorytm"] = wyborAlgorytmu.Text;
-
+            
             return parametry;
         }
         
