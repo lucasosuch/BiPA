@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
@@ -120,12 +121,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// Metoda zwracająca najlepszą znalezioną wartość
         /// </summary>
         /// <returns>Wartość funkcji celu</returns>
-        public string[] ZwrocWartoscNiebo()
+        public Dictionary<string, double[]> ZwrocWartoscNiebo()
         {
-            return new string[] {
-                rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie)["max"][0].ToString(),
-                rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie)["min"][0].ToString()
-            };
+            return rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie);
         }
     }
 }

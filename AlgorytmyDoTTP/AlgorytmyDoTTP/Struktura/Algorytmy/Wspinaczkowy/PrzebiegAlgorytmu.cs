@@ -39,6 +39,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                     wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow), problem);
 
                     return new RLS(rozwiazanie, wynik);
+                case "Problem Podróżującego Złodzieja":
+                    losowanie = new LosowanieTTP();
+                    rozwiazanie = new RozwiazanieTTP(problem);
+                    wynik = new WynikGenotypu2Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow, iloscElementow, problem.ZwrocDostepnePrzedmioty()), problem);
+
+                    return new RLS(rozwiazanie, wynik);
             }
 
             return new RLS();

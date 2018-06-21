@@ -29,14 +29,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analiza.RozpocznijPomiarCzasu();
-            ReprezentacjaRozwiazania najlepszeRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
-            rozwiazanie.UstawRozwiazanie(najlepszeRozwiazanie);
+            ReprezentacjaRozwiazania tymczasoweRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
+            rozwiazanie.UstawRozwiazanie(tymczasoweRozwiazanie);
             Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();
             analiza.ZakonczPomiarCzasu();
 
+            ReprezentacjaRozwiazania najlepszeRozwiazanie = rozwiazanie.ZwrocRozwiazanie();
+
             double czasDzialania = analiza.ZwrocCzasDzialaniaAlgorytmu();
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()) };
-            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() +" | "+ znalezioneOptimum["min"][0].ToString() };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analiza.ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", znalezioneOptimum["max"][0].ToString() };
+            zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", znalezioneOptimum["min"][0].ToString() };
             zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
 
             return zwracanyTekst;

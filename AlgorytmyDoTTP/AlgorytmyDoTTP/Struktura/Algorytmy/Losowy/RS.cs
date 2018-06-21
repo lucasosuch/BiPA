@@ -31,8 +31,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             analiza.ZakonczPomiarCzasu();
 
             double czasDzialania = analiza.ZwrocCzasDzialaniaAlgorytmu();
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp",  };
-            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", najlepszyWynik["max"][0].ToString() + " | " + najlepszyWynik["min"][0].ToString() };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analiza.ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max) ", najlepszyWynik["max"][0].ToString() };
+            zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min) ", najlepszyWynik["min"][0].ToString() };
             zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
 
             return zwracanyTekst;
