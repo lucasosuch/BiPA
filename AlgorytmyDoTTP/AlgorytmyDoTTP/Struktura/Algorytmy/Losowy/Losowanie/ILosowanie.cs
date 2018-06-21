@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
@@ -6,8 +7,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     {
         ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow);
 
-        ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow, int maxAllel);
-
-        ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow, int maxAllel, ushort[][] dostepnoscPrzedmiotow);
+        ArrayList LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan);
     }
 }

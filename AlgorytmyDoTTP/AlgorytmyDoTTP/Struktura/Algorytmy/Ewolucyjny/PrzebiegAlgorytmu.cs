@@ -40,14 +40,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rekombinacja = new RekombinacjaWektoraBinarnego(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
-                    populacja = new PopulacjaKP().StworzPopulacjeBazowa(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
+                    populacja = new PopulacjaKP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]));
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
 
                 case "Problem Komiwojażera":
                     // konfiguracja algorytmu pod Problem Komiwojażera
                     rozwiazanie = new OsobnikTSP(problem);
-                    populacja = new PopulacjaTSP().StworzPopulacjeBazowa(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu());
+                    populacja = new PopulacjaTSP().StworzPopulacjeBazowa(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
@@ -56,7 +56,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
                 case "Problem Podróżującego Złodzieja":
                     rozwiazanie = new OsobnikTTP(problem);
-                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDlugoscGenotypu(), problem.ZwrocDostepnePrzedmioty());
+                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]));
                     rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaEwolucyjny(rozwiazanie);

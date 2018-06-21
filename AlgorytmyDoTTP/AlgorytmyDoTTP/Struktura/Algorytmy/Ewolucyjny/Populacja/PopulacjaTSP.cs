@@ -1,22 +1,18 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using System.Collections;
 using System;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
     class PopulacjaTSP : IPopulacja
     {
-        public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel)
-        {
-            return new LosowanieTSP().LosujRozwiazania(rozmiarPopulacji, dlugoscGenotypu, maxAllel);
-        }
-
         public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu)
         {
-            throw new NotImplementedException();
+            return new LosowanieTSP().LosujRozwiazania(rozmiarPopulacji, dlugoscGenotypu);
         }
 
-        public ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu, ushort maxAllel, ushort[][] dostepnoscPrzedmiotow)
+        public ArrayList StworzPopulacjeBazowa(ProblemOptymalizacyjny problemOptymalizacyjny, ushort rozmiarPopulacji)
         {
             throw new NotImplementedException();
         }
