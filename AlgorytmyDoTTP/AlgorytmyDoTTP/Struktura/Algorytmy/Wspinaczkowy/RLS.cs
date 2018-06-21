@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
 using System;
@@ -24,13 +25,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
         public Dictionary<string, string[]> Start()
         {
+            AnalizaRLS_RS analiza = new AnalizaRLS_RS();
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
+
+            analiza.RozpocznijPomiarCzasu();
             ReprezentacjaRozwiazania najlepszeRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
             rozwiazanie.UstawRozwiazanie(najlepszeRozwiazanie);
             Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();
+            analiza.ZakonczPomiarCzasu();
 
+            double czasDzialania = analiza.ZwrocCzasDzialaniaAlgorytmu();
             zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", znalezioneOptimum["max"][0].ToString() +" | "+ znalezioneOptimum["min"][0].ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
 
             return zwracanyTekst;
         }

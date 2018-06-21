@@ -1,7 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
@@ -22,21 +22,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 
         public Dictionary<string, string[]> Start()
         {
+            AnalizaRLS_RS analiza = new AnalizaRLS_RS();
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
+
+            analiza.RozpocznijPomiarCzasu();
             ReprezentacjaRozwiazania najlepszeRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
             Dictionary<string, double[]> najlepszyWynik = wynik.ZwrocNajlepszyWynik();
+            analiza.ZakonczPomiarCzasu();
 
-            ArrayList listaRozwiazan = wynik.ZwrocListeRozwiazan();
-
-            string text = "";
-
-            foreach(ushort[] genotyp in najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy())
-            {
-                text += string.Join(",", genotyp) + Environment.NewLine;
-            }
-
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", text };
+            double czasDzialania = analiza.ZwrocCzasDzialaniaAlgorytmu();
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp",  };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania", najlepszyWynik["max"][0].ToString() + " | " + najlepszyWynik["min"][0].ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
 
             return zwracanyTekst;
         }

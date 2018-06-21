@@ -40,20 +40,5 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
         /// Metoda zwracająca najlepszą znalezioną wartość
         /// </summary>
         string[] ZwrocWartoscNiebo();
-
-        /// <summary>
-        /// Metoda rozpoczynająca odliczanie czasu
-        /// </summary>
-        void RozpocznijPomiarCzasu();
-
-        /// <summary>
-        /// Metoda zakańczająca odliczanie czasu
-        /// </summary>
-        void ZakonczPomiarCzasu();
-
-        /// <summary>
-        /// Metoda zwracająca czas działania algorytmu
-        /// </summary>
-        double ZwrocCzasDzialaniaAlgorytmu();
     }
 }

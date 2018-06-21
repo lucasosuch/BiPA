@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
@@ -27,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             // Stałe składniki Algorytmu Ewolucyjnego
             ASelekcja selekcja;
             ArrayList populacja;
-            IAnalityka analityka;
+            AnalizaEwolucyjny analityka;
             AOsobnik rozwiazanie;
             ARekombinacja rekombinacja;
 

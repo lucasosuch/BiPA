@@ -1,48 +1,20 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections;
-using System.Diagnostics;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
-    class AnalizaEwolucyjny : IAnalityka
+    class AnalizaEwolucyjny : AnalizaRLS_RS
     {
+        private AOsobnik rozwiazanie;
         private double najlepszaWartoscFunkcji;
         private ReprezentacjaRozwiazania najlepszeRozwiazanie;
-        private Stopwatch pomiarCzasu;
-        private AOsobnik rozwiazanie;
 
         public AnalizaEwolucyjny(AOsobnik rozwiazanie)
         {
             this.rozwiazanie = rozwiazanie;
             najlepszaWartoscFunkcji = -10000;
             najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
-            pomiarCzasu = new Stopwatch();
-        }
-
-        /// <summary>
-        /// Metoda rozpoczynająca odliczanie czasu
-        /// </summary>
-        public void RozpocznijPomiarCzasu()
-        {
-            pomiarCzasu.Start();
-        }
-
-        /// <summary>
-        /// Metoda zakańczająca odliczanie czasu
-        /// </summary>
-        public void ZakonczPomiarCzasu()
-        {
-            pomiarCzasu.Stop();
-        }
-
-        /// <summary>
-        /// Metoda zwracająca czas działania algorytmu
-        /// </summary>
-        /// <returns>Zwraca czas przebiegu w milisekundach</returns>
-        public double ZwrocCzasDzialaniaAlgorytmu()
-        {
-            return pomiarCzasu.Elapsed.TotalMilliseconds;
         }
 
         /// <summary>

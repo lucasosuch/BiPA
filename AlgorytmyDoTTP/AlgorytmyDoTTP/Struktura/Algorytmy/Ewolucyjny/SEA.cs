@@ -1,5 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using System;
@@ -18,7 +18,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         private double pwoKrzyzowania; // prawdopodobieństwo, że zostanie stworzony nowy osobnik
         private ARekombinacja rekombinacja; // klasa odpowiedzialna za tworzenie nowych osobników
         private ASelekcja selekcja; // klasa odpowiedzialna za wybieranie najlepszych osobników do krzyżowania
-        private IAnalityka analityka; // klasa odpowiedzialna za analizę rozwiązań
+        private AnalizaEwolucyjny analityka; // klasa odpowiedzialna za analizę rozwiązań
         private ArrayList populacjaBazowa; // klasa zarządzająca populcją osobników
         private Random losowy = new Random();
 
@@ -27,7 +27,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
         }
 
-        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, IAnalityka analityka, ArrayList populacjaBazowa, short iloscPokolen, double pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AnalizaEwolucyjny analityka, ArrayList populacjaBazowa, short iloscPokolen, double pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
