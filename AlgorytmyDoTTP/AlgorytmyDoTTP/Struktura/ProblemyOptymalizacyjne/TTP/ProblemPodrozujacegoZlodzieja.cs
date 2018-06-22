@@ -76,7 +76,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
                 sumarycznaWaga += wynikCzesciowy["min"][0];
                 sumarycznaWartosc += wynikCzesciowy["max"][0];
 
-                double predkosc = 1 - sumarycznaWaga * (1 - 0.1) / problemPlecakowy.ZwrocOgraniczeniaProblemu()[0];
+                double predkosc = 1 - sumarycznaWaga * (1 - 0.1) / ZwrocOgraniczeniaProblemu()[0];
                 predkosc = (predkosc < 0.1) ? 0.1 : predkosc;
 
                 czasPodrozy += dlugosciTrasy[i] * predkosc;

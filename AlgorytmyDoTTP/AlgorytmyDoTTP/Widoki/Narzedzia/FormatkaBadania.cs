@@ -106,7 +106,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             else if (parametry["problem"] == "Problem Podróżującego Złodzieja")
             {
                 ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"]);
-                problemTTP.ZwrocProblemPlecakowy().UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
+                problemTTP.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
 
                 return problemTTP;
             }
