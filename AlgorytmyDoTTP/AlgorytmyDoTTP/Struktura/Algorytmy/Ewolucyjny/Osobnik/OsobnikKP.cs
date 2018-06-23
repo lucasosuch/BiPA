@@ -5,15 +5,13 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca osobnika Problemu Plecakowego
+    /// </summary>
     class OsobnikKP : AOsobnik
     {
         public OsobnikKP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
-
-        /// <summary>
-        /// Metoda zwraca wektor osobnika opisanego genotypem
-        /// </summary>
-        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
-        /// <returns>Dziedzinę wartości funkcji celu</returns>
+        
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);

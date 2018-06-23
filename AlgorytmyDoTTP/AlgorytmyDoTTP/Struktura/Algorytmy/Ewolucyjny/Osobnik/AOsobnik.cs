@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
+    /// <summary>
+    /// Klasa abstrakcyjna reprezentująca osobnika w poluacji rozwiązań.
+    /// Klasa zawiera szereg metod odpowiedzialnych za działanie na osobniku.
+    /// </summary>
     abstract class AOsobnik
     {
         protected ProblemOptymalizacyjny problemOptymalizacyjny;
@@ -19,8 +23,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// Metoda zwraca wektor osobnika opisanego genotypem
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
+        /// <returns>Dziedzinę wartości funkcji celu</returns>
         public abstract ArrayList Fenotyp(ushort[] genotyp);
 
+        /// <summary>
+        /// Metoda zwraca wektor osobnika opisanego genotypem
+        /// </summary>
+        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
+        /// <returns>Dziedzinę wartości funkcji celu</returns>
         public abstract Dictionary<string, ushort[][]> Fenotyp(ushort[][] genotyp);
 
         /// <summary>

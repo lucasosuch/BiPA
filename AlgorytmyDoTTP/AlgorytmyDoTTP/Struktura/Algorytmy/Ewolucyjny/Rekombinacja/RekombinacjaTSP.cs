@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za wymianę materiału genetycznego pomiędzy osobnikami - rozwiązaniami Problemu Komiwojażera
+    /// </summary>
     class RekombinacjaTSP : ARekombinacja
     {
         public RekombinacjaTSP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania){}

@@ -74,7 +74,7 @@
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\ARekombinacja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaTTP.cs" />
-    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaWektoraBinarnego.cs" />
+    <Compile Include="Struktura\Algorytmy\Ewolucyjny\Rekombinacja\RekombinacjaKP.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\ASelekcja.cs" />
     <Compile Include="Struktura\Algorytmy\Ewolucyjny\Selekcja\SelekcjaWektora.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Algorytm.cs" />

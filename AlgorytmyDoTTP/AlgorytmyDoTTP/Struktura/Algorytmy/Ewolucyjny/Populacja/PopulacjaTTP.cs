@@ -5,6 +5,9 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za stworzenie populacji osobników pod Problem Podróżującego Złodzieja
+    /// </summary>
     class PopulacjaTTP : IPopulacja
     {
         public ArrayList StworzPopulacjeBazowa(ProblemOptymalizacyjny problemOptymalizacyjny, ushort rozmiarPopulacji)

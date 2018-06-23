@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca osobnika Problemu Podróżującego Złodzieja
+    /// </summary>
     class OsobnikTTP : AOsobnik
     {
         public OsobnikTTP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}

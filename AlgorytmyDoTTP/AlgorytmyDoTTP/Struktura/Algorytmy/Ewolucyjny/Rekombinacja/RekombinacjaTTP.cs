@@ -5,15 +5,18 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za wymianę materiału genetycznego pomiędzy osobnikami - rozwiązaniami Problemu Podróżującego Złodzieja
+    /// </summary>
     class RekombinacjaTTP : ARekombinacja
     {
         private RekombinacjaTSP rekombinacjaTSP;
-        private RekombinacjaWektoraBinarnego rekombinacjaKP;
+        private RekombinacjaKP rekombinacjaKP;
 
         public RekombinacjaTTP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania)
         {
             rekombinacjaTSP = new RekombinacjaTSP(pwoMutacji, rozwiazanie, rodzajKrzyzowania);
-            rekombinacjaKP = new RekombinacjaWektoraBinarnego(0, rozwiazanie);
+            rekombinacjaKP = new RekombinacjaKP(0, rozwiazanie);
             rekombinacjaKP.ZmienSprawdzanieOgraniczen(false);
         }
 

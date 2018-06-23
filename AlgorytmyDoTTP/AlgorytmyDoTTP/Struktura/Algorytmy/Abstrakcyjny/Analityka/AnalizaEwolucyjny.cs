@@ -77,9 +77,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <summary>
         /// Metoda obliczająca odchylenie standardowe funkcji celu z populacji rozwiązań
         /// </summary>
-        /// <returns>Zwraca odchylenie standardowe</returns>
         /// <param name="populacja">Lista rozwiązań</param>
         /// <param name="srednia">Średnia z listy rozwiązań</param>
+        /// <returns>Zwraca odchylenie standardowe</returns>
         public double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
         {
             double sumaKwadratow = 0;
@@ -115,6 +115,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return najlepszeRozwiazanie;
         }
 
+        /// <summary>
+        /// Metoda zwracająca najlepsze rozwiązanie danego problemu optymalizacyjnego, w zależności od wybranego kodowania.
+        /// </summary>
+        /// <returns>Zwraca najlepsze rozwiązanie dla wybranego problemu optymalizacyjnego</returns>
         public string ZwrocNajlepszeRowziazanie()
         {
             return DekodujRozwiazanie(najlepszeRozwiazanie);

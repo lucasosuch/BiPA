@@ -3,9 +3,12 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
-    class RekombinacjaWektoraBinarnego : ARekombinacja
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za wymianę materiału genetycznego pomiędzy osobnikami - rozwiązaniami Problemu Plecakowego
+    /// </summary>
+    class RekombinacjaKP : ARekombinacja
     {
-        public RekombinacjaWektoraBinarnego(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
+        public RekombinacjaKP(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
         public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {

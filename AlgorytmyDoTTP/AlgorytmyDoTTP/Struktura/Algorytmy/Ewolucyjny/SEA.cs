@@ -36,11 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.populacjaBazowa = populacjaBazowa;
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
-
-        /// <summary>
-        /// Metoda uruchamiająca Algorytm Ewolucyjny
-        /// </summary>
-        /// <returns>Zwraca raport z badania czytelny dla człowieka</returns>
+        
         public Dictionary<string, string[]> Start()
         {
             ArrayList nowaPopulacja = new ArrayList();

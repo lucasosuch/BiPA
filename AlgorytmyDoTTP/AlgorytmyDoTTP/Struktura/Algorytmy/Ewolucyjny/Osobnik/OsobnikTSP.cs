@@ -5,17 +5,13 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca osobnika Problemu Komiwojażera
+    /// </summary>
     class OsobnikTSP : AOsobnik
     {
-        public OsobnikTSP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny)
-        {
-        }
-
-        /// <summary>
-        /// Metoda zwraca wektor osobnika opisanego genotypem
-        /// </summary>
-        /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
-        /// <returns>Dziedzinę wartości funkcji celu</returns>
+        public OsobnikTSP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
+        
         public override ArrayList Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
