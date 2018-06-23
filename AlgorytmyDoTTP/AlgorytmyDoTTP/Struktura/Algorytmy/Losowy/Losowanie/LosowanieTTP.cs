@@ -12,8 +12,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         {
             Random losowy = new Random();
             ArrayList rozwiazania = new ArrayList();
-
-            double[] ograniczenia = problemOptymalizacyjny.ZwrocOgraniczeniaProblemu();
+            
             ushort[][] dostepnoscPrzedmiotow = problemOptymalizacyjny.ZwrocDostepnePrzedmioty();
             LosowanieTSP losowanieTSP = new LosowanieTSP();
             ArrayList rozwiazaniaTSP = losowanieTSP.LosujRozwiazania(iloscRozwiazan, problemOptymalizacyjny.ZwrocDlugoscGenotypu());
