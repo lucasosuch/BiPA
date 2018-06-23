@@ -31,36 +31,36 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.domyslny = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panelKP = new System.Windows.Forms.Panel();
             this.domyslnyProblem = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.maxWaga = new MetroFramework.Controls.MetroTextBox();
             this.panelTTP = new System.Windows.Forms.Panel();
-            this.przypadekTTP = new MetroFramework.Controls.MetroComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.wyporzyczeniePlecaka = new MetroFramework.Controls.MetroTextBox();
             this.wybierzDane = new MetroFramework.Controls.MetroComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
             this.ewolucyjny = new MetroFramework.Controls.MetroPanel();
-            this.domyslny = new System.Windows.Forms.Panel();
             this.wspinaczkowy_losowy = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.iloscRozwiazan = new MetroFramework.Controls.MetroTextBox();
+            this.pwoMutacji = new MetroFramework.Controls.MetroTextBox();
+            this.iloscPokolen = new MetroFramework.Controls.MetroTextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.rodzajKrzyzowania = new MetroFramework.Controls.MetroComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.metodaSelekcji = new MetroFramework.Controls.MetroComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pwoKrzyzowania = new MetroFramework.Controls.MetroTextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pwoMutacji = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rozmiarPopulacji = new MetroFramework.Controls.MetroTextBox();
-            this.iloscPokolen = new MetroFramework.Controls.MetroTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.start = new MetroFramework.Controls.MetroTile();
             this.label6 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
@@ -69,8 +69,6 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label15 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -105,6 +103,7 @@
             this.metroTabControl1.Size = new System.Drawing.Size(984, 705);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
+            this.metroTabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.zmienKarte);
             // 
             // badanie
             // 
@@ -130,6 +129,13 @@
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
+            // 
+            // domyslny
+            // 
+            this.domyslny.Location = new System.Drawing.Point(494, 194);
+            this.domyslny.Name = "domyslny";
+            this.domyslny.Size = new System.Drawing.Size(482, 402);
+            this.domyslny.TabIndex = 28;
             // 
             // label11
             // 
@@ -159,6 +165,17 @@
             this.domyslnyProblem.Name = "domyslnyProblem";
             this.domyslnyProblem.Size = new System.Drawing.Size(486, 402);
             this.domyslnyProblem.TabIndex = 31;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.Location = new System.Drawing.Point(0, 0);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(417, 25);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Konfiguracja Problemu Optymalizacyjnego";
             // 
             // label10
             // 
@@ -206,34 +223,12 @@
             // 
             // panelTTP
             // 
-            this.panelTTP.Controls.Add(this.przypadekTTP);
-            this.panelTTP.Controls.Add(this.label14);
             this.panelTTP.Controls.Add(this.label13);
             this.panelTTP.Controls.Add(this.wyporzyczeniePlecaka);
             this.panelTTP.Location = new System.Drawing.Point(0, 151);
             this.panelTTP.Name = "panelTTP";
             this.panelTTP.Size = new System.Drawing.Size(486, 251);
             this.panelTTP.TabIndex = 30;
-            // 
-            // przypadekTTP
-            // 
-            this.przypadekTTP.FormattingEnabled = true;
-            this.przypadekTTP.ItemHeight = 23;
-            this.przypadekTTP.Location = new System.Drawing.Point(5, 116);
-            this.przypadekTTP.Name = "przypadekTTP";
-            this.przypadekTTP.Size = new System.Drawing.Size(256, 29);
-            this.przypadekTTP.TabIndex = 6;
-            this.przypadekTTP.UseSelectable = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(2, 91);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 13);
-            this.label14.TabIndex = 37;
-            this.label14.Text = "Przypadek TTP";
             // 
             // label13
             // 
@@ -338,13 +333,6 @@
             this.ewolucyjny.VerticalScrollbarHighlightOnWheel = false;
             this.ewolucyjny.VerticalScrollbarSize = 10;
             // 
-            // domyslny
-            // 
-            this.domyslny.Location = new System.Drawing.Point(494, 194);
-            this.domyslny.Name = "domyslny";
-            this.domyslny.Size = new System.Drawing.Size(482, 402);
-            this.domyslny.TabIndex = 28;
-            // 
             // wspinaczkowy_losowy
             // 
             this.wspinaczkowy_losowy.Controls.Add(this.label12);
@@ -398,6 +386,74 @@
             this.iloscRozwiazan.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iloscRozwiazan.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // pwoMutacji
+            // 
+            // 
+            // 
+            // 
+            this.pwoMutacji.CustomButton.Image = null;
+            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.pwoMutacji.CustomButton.Name = "";
+            this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.pwoMutacji.CustomButton.TabIndex = 1;
+            this.pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.pwoMutacji.CustomButton.UseSelectable = true;
+            this.pwoMutacji.CustomButton.Visible = false;
+            this.pwoMutacji.Lines = new string[] {
+        "0,1"};
+            this.pwoMutacji.Location = new System.Drawing.Point(291, 267);
+            this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
+            this.pwoMutacji.MaxLength = 32767;
+            this.pwoMutacji.Name = "pwoMutacji";
+            this.pwoMutacji.PasswordChar = '\0';
+            this.pwoMutacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pwoMutacji.SelectedText = "";
+            this.pwoMutacji.SelectionLength = 0;
+            this.pwoMutacji.SelectionStart = 0;
+            this.pwoMutacji.ShortcutsEnabled = true;
+            this.pwoMutacji.Size = new System.Drawing.Size(96, 20);
+            this.pwoMutacji.TabIndex = 12;
+            this.pwoMutacji.Text = "0,1";
+            this.pwoMutacji.UseSelectable = true;
+            this.pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.pwoMutacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // iloscPokolen
+            // 
+            // 
+            // 
+            // 
+            this.iloscPokolen.CustomButton.Image = null;
+            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.iloscPokolen.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.iloscPokolen.CustomButton.Name = "";
+            this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.iloscPokolen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.iloscPokolen.CustomButton.TabIndex = 1;
+            this.iloscPokolen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.iloscPokolen.CustomButton.UseSelectable = true;
+            this.iloscPokolen.CustomButton.Visible = false;
+            this.iloscPokolen.Lines = new string[] {
+        "15"};
+            this.iloscPokolen.Location = new System.Drawing.Point(291, 183);
+            this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2);
+            this.iloscPokolen.MaxLength = 32767;
+            this.iloscPokolen.Name = "iloscPokolen";
+            this.iloscPokolen.PasswordChar = '\0';
+            this.iloscPokolen.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iloscPokolen.SelectedText = "";
+            this.iloscPokolen.SelectionLength = 0;
+            this.iloscPokolen.SelectionStart = 0;
+            this.iloscPokolen.ShortcutsEnabled = true;
+            this.iloscPokolen.Size = new System.Drawing.Size(96, 20);
+            this.iloscPokolen.TabIndex = 10;
+            this.iloscPokolen.Text = "15";
+            this.iloscPokolen.UseSelectable = true;
+            this.iloscPokolen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.iloscPokolen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -407,6 +463,16 @@
             this.label9.Size = new System.Drawing.Size(101, 13);
             this.label9.TabIndex = 32;
             this.label9.Text = "Rodzaj krzyżowania";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(288, 242);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(145, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Prawdopodobieństwo mutacji";
             // 
             // rodzajKrzyzowania
             // 
@@ -482,16 +548,6 @@
             this.pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.pwoKrzyzowania.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(288, 242);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Prawdopodobieństwo mutacji";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -502,40 +558,6 @@
             this.label1.Size = new System.Drawing.Size(234, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Konfiguracja Algorytmu";
-            // 
-            // pwoMutacji
-            // 
-            // 
-            // 
-            // 
-            this.pwoMutacji.CustomButton.Image = null;
-            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(78, 2);
-            this.pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.pwoMutacji.CustomButton.Name = "";
-            this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.pwoMutacji.CustomButton.TabIndex = 1;
-            this.pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.pwoMutacji.CustomButton.UseSelectable = true;
-            this.pwoMutacji.CustomButton.Visible = false;
-            this.pwoMutacji.Lines = new string[] {
-        "0,1"};
-            this.pwoMutacji.Location = new System.Drawing.Point(291, 267);
-            this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
-            this.pwoMutacji.MaxLength = 32767;
-            this.pwoMutacji.Name = "pwoMutacji";
-            this.pwoMutacji.PasswordChar = '\0';
-            this.pwoMutacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pwoMutacji.SelectedText = "";
-            this.pwoMutacji.SelectionLength = 0;
-            this.pwoMutacji.SelectionStart = 0;
-            this.pwoMutacji.ShortcutsEnabled = true;
-            this.pwoMutacji.Size = new System.Drawing.Size(96, 20);
-            this.pwoMutacji.TabIndex = 12;
-            this.pwoMutacji.Text = "0,1";
-            this.pwoMutacji.UseSelectable = true;
-            this.pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.pwoMutacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label3
             // 
@@ -581,39 +603,15 @@
             this.rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.rozmiarPopulacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // iloscPokolen
+            // label2
             // 
-            // 
-            // 
-            // 
-            this.iloscPokolen.CustomButton.Image = null;
-            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(78, 2);
-            this.iloscPokolen.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.iloscPokolen.CustomButton.Name = "";
-            this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.iloscPokolen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.iloscPokolen.CustomButton.TabIndex = 1;
-            this.iloscPokolen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.iloscPokolen.CustomButton.UseSelectable = true;
-            this.iloscPokolen.CustomButton.Visible = false;
-            this.iloscPokolen.Lines = new string[] {
-        "15"};
-            this.iloscPokolen.Location = new System.Drawing.Point(291, 183);
-            this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2);
-            this.iloscPokolen.MaxLength = 32767;
-            this.iloscPokolen.Name = "iloscPokolen";
-            this.iloscPokolen.PasswordChar = '\0';
-            this.iloscPokolen.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.iloscPokolen.SelectedText = "";
-            this.iloscPokolen.SelectionLength = 0;
-            this.iloscPokolen.SelectionStart = 0;
-            this.iloscPokolen.ShortcutsEnabled = true;
-            this.iloscPokolen.Size = new System.Drawing.Size(96, 20);
-            this.iloscPokolen.TabIndex = 10;
-            this.iloscPokolen.Text = "15";
-            this.iloscPokolen.UseSelectable = true;
-            this.iloscPokolen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.iloscPokolen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(288, 158);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Liczba pokoleń";
             // 
             // start
             // 
@@ -708,27 +706,6 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(0, 0);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(417, 25);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Konfiguracja Problemu Optymalizacyjnego";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(288, 158);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Ilość pokoleń";
-            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -801,8 +778,6 @@
         private System.Windows.Forms.Label label12;
         private MetroFramework.Controls.MetroTextBox iloscRozwiazan;
         private System.Windows.Forms.Panel domyslnyProblem;
-        private MetroFramework.Controls.MetroComboBox przypadekTTP;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private MetroFramework.Controls.MetroTextBox wyporzyczeniePlecaka;
         private System.Windows.Forms.Label label15;

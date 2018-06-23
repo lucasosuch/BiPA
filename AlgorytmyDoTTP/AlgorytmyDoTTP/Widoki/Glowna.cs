@@ -29,7 +29,6 @@ namespace AlgorytmyDoTTP
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -84,7 +83,6 @@ namespace AlgorytmyDoTTP
                 case "Problem Podróżującego Złodzieja":
                     parametry["ograniczenie1"] = maxWaga.Text;
                     parametry["wyporzyczeniePlecaka"] = wyporzyczeniePlecaka.Text;
-                    parametry["przypadekTTP"] = przypadekTTP.Text;
                     break;
                 case "Problem Plecakowy":
                     parametry["ograniczenie1"] = maxWaga.Text;
@@ -177,6 +175,12 @@ namespace AlgorytmyDoTTP
             rodzajKrzyzowania.Items.Clear();
             rodzajKrzyzowania.Items.AddRange(dane);
             rodzajKrzyzowania.Text = (string)dane[0];
+        }
+
+        private void zmienKarte(object sender, TabControlCancelEventArgs e)
+        {
+            daneHistoryczne.Items.Clear();
+            daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
         }
     }
 }

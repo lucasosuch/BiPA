@@ -42,6 +42,8 @@ namespace AlgorytmyDoTTP.Widoki
             badanie.ZapiszBadanie();
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
             zapisanoBadanie = true;
+            zapiszBadanie.Enabled = false;
+            zapiszBadanie.Text = "Zapisano Badanie";
         }
 
         public bool CzyZapisanoBadanie()

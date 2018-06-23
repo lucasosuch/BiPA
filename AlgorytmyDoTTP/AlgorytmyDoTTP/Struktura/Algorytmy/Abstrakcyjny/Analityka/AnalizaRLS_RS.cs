@@ -3,6 +3,10 @@ using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
+    /// <summary>
+    /// Klasa analityczna.
+    /// Podstawowa klasa pod analizę dla algorytmu wspinaczkowego oraz algorytmu losowego.
+    /// </summary>
     class AnalizaRLS_RS
     {
         private Stopwatch pomiarCzasu;
@@ -37,18 +41,35 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return pomiarCzasu.Elapsed.TotalMilliseconds;
         }
 
+        /// <summary>
+        /// Metoda zwracająca najlepsze rozwiązanie danego problemu optymalizacyjnego, w zależności od wybranego kodowania.
+        /// </summary>
+        /// <param name="najlepszeRozwiazanie">Najlepsze znalezione rozwiązanie</param>
+        /// <returns>Zwraca najlepsze rozwiązanie dla wybranego problemu optymalizacyjnego</returns>
         public string ZwrocNajlepszeRozwiazanie(ReprezentacjaRozwiazania najlepszeRozwiazanie)
+        {
+            return DekodujRozwiazanie(najlepszeRozwiazanie);
+        }
+
+        /// <summary>
+        /// Metoda rozkodowująca rozwiązanie danego problemu optymalizacyjnego.
+        /// </summary>
+        /// <param name="rozwiazanie">Zakodowane rozwiązanie problemu optymalizacyjnego</param>
+        /// <returns>Zwraca rozkodowane rozwiązanie problemu optymalizacyjnego</returns>
+        protected string DekodujRozwiazanie(ReprezentacjaRozwiazania rozwiazanie)
         {
             string wynik = "";
 
-            if (!(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy().Length == 0))
+            // kodowanie dla ushort[]
+            if (!(rozwiazanie.ZwrocGenotyp1Wymiarowy() == null || rozwiazanie.ZwrocGenotyp1Wymiarowy().Length == 0))
             {
-                wynik = string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy());
+                wynik = string.Join(",", rozwiazanie.ZwrocGenotyp1Wymiarowy());
             }
 
-            if (!(najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy().Length == 0))
+            // kodowanie dla ushort[][]
+            if (!(rozwiazanie.ZwrocGenotyp2Wymiarowy() == null || rozwiazanie.ZwrocGenotyp2Wymiarowy().Length == 0))
             {
-                foreach (ushort[] genotyp in najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy())
+                foreach (ushort[] genotyp in rozwiazanie.ZwrocGenotyp2Wymiarowy())
                 {
                     wynik += string.Join(",", genotyp) + Environment.NewLine;
                 }

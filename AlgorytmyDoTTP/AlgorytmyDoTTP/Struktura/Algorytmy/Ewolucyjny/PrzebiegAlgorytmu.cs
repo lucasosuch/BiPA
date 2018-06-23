@@ -57,7 +57,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 case "Problem Podróżującego Złodzieja":
                     rozwiazanie = new OsobnikTTP(problem);
                     populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]));
-                    rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, "PMX");
+                    rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
 

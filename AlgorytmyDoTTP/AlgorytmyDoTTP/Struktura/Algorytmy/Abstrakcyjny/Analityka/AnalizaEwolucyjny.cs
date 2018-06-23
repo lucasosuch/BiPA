@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
+    /// <summary>
+    /// Klasa analityczna.
+    /// Rozszerzenie podstawowej klasy analitycznej, dla Algorytmu Ewolucyjnego.
+    /// </summary>
     class AnalizaEwolucyjny : AnalizaRLS_RS
     {
         private AOsobnik rozwiazanie;
@@ -17,6 +21,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             najlepszaWartoscFunkcji = -10000;
             najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
         }
+
+        //public double DominantaPopulacji(ArrayList populacja)
+        //{
+        //    double wynik = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[0])["max"][0];
+
+        //    Dictionary<double, int> wartosci = new Dictionary<double, int>();
+
+        //    for (int i = 0; i < populacja.Count; i++)
+        //    {
+        //        wartosci[rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[i])["max"][0]] =
+        //    }
+
+        //    return wynik;
+        //}
 
         /// <summary>
         /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
@@ -99,22 +117,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
         public string ZwrocNajlepszeRowziazanie()
         {
-            string wynik = "";
-
-            if(!(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy().Length == 0))
-            {
-                wynik = string.Join(",", najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy());
-            }
-
-            if (!(najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy() == null || najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy().Length == 0))
-            {
-                foreach (ushort[] genotyp in najlepszeRozwiazanie.ZwrocGenotyp2Wymiarowy())
-                {
-                    wynik += string.Join(",", genotyp) + Environment.NewLine;
-                }
-            }
-
-            return wynik;
+            return DekodujRozwiazanie(najlepszeRozwiazanie);
         }
 
         /// <summary>
