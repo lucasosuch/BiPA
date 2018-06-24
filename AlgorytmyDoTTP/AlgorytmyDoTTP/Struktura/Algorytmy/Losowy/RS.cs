@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 {
+    /// <summary>
+    /// Klasa konkretna Algorytmu Losowego.
+    /// Pozwala na wyszukanie rozwiązania optymalnego danego problemu wg zasad działania Algorytmów Losowego
+    /// </summary>
     class RS : IAlgorytm
     {
         private AWynik wynik;

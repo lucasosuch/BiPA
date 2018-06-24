@@ -24,29 +24,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 dzieciak[i] = przodek2[i];
             }
 
-            ReprezentacjaRozwiazania genotypDziecka = new ReprezentacjaRozwiazania(dzieciak);
+            ReprezentacjaRozwiazania genotypDziecka = new ReprezentacjaRozwiazania((ushort[])Mutacja(dzieciak).Clone());
 
             if (czySprawdzacOgraniczenia)
             {
-                return SprawdzNaruszenieOgraniczen(Mutacja(genotypDziecka));
+                return SprawdzNaruszenieOgraniczen(genotypDziecka);
             }
 
-            return Mutacja(genotypDziecka);
+            return genotypDziecka;
         }
 
-        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania genotyp)
+        protected override ushort[] Mutacja(ushort[] geny)
         {
-            ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
             if (losowy.NextDouble() > pwoMutacji || pwoMutacji == 0)
             {
-                return genotyp;
+                return geny;
             }
 
             int bit = losowy.Next(geny.Length);
             geny[bit] = (ushort)((geny[bit] == 0) ? 1 : 0);
+            
+            return geny;
+        }
 
-            genotyp.ZmienGenotyp(geny);
-            return genotyp;
+        protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
+        {
+            throw new System.NotImplementedException();
         }
 
         protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
@@ -62,6 +65,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return genotyp;
         }
 
+        /// <summary>
+        /// Metoda naprawiająca losowy ciąg genów w genotypie
+        /// </summary>
+        /// <param name="geny">Tablica reprezentująca geny osobnika</param>
         private ushort[] NaprawGenotypKP(ushort[] geny)
         {
             int start = losowy.Next(0, geny.Length / 2),

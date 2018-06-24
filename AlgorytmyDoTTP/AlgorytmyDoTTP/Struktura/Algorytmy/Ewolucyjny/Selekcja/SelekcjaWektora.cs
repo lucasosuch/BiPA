@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za wybór osobników z populacji na podstawie ich przystosowania
+    /// </summary>
     class SelekcjaWektora : ASelekcja
     {
         public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, string typSelekcji) : base(rozwiazanie, dlugoscGenotypu, typSelekcji){}
@@ -25,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             ReprezentacjaRozwiazania zwyciezca = (ReprezentacjaRozwiazania)populacja[0];
             Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[0]);
 
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= 5; i++)
             {
                 int k = losowy.Next(populacja.Count - 1);
                 Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[k]);
@@ -61,6 +64,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             return osobnik;
         }
 
+        /// <summary>
+        /// Metoda nadająca wskaźniki dla całej populacji osobników
+        /// </summary>
+        /// <param name="populacja">Populacja osobników - rozwiązań</param>
         private ArrayList ZwrocWskazniki(ArrayList populacja)
         {
             double suma = 0;

@@ -1,5 +1,4 @@
-﻿using System;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
@@ -33,12 +32,17 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
         public double ZwrocWage()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public double ZwrocWartosc()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
+        }
+
+        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, int iloscPrzedmiotow)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

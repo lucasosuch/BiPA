@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za losowanie rozwiązań pod Problem Podróżującego Złodzieja
+    /// </summary>
     class LosowanieTTP : ILosowanie
     {
         public ArrayList LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)

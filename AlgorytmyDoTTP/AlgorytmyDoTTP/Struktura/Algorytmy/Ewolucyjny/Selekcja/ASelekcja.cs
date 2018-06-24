@@ -5,6 +5,9 @@ using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
+    /// <summary>
+    /// Klasa abstrakcyjna udostępniająca metody służące do wyboru najlepiej przystosowanych osobników
+    /// </summary>
     abstract class ASelekcja
     {
         protected ushort dlugoscGenotypu;
@@ -19,8 +22,25 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             this.typSelekcji = typSelekcji;
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą dostępnych metod selekcyjnych
+        /// </summary>
+        /// <param name="populacja">Populacja osobników - rozwiązań</param>
+        /// <returns>Osobnik - rozwiązanie</returns>
         public abstract ReprezentacjaRozwiazania WybierzOsobnika(ArrayList populacja);
+
+        /// <summary>
+        /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą turnieju - czyli "najlepszego" osobnika z pewnej pod populacji
+        /// </summary>
+        /// <param name="populacja">Populacja osobników - rozwiązań</param>
+        /// <returns>Osobnik - rozwiązanie</returns>
         protected abstract ReprezentacjaRozwiazania Turniej(ArrayList populacja);
+
+        /// <summary>
+        /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą ruletki - czyli nadania współczynników całej populacji i wyboru za pomocą tych współczynników najlepiej przystosowanych osobników
+        /// </summary>
+        /// <param name="populacja">Populacja osobników - rozwiązań</param>
+        /// <returns>Osobnik - rozwiązanie</returns>
         protected abstract ReprezentacjaRozwiazania MetodaRuletki(ArrayList populacja);
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego pod Problem Podróżującego Złodzieja
+    /// </summary>
     class RozwiazanieTTP : ARozwiazanie
     {
         public RozwiazanieTTP(ProblemOptymalizacyjny problem) : base(problem){ }

@@ -41,30 +41,33 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     break;
 
             }
-
-            ReprezentacjaRozwiazania potomkowyGenotyp = new ReprezentacjaRozwiazania(potomek);
-            if (losowy.NextDouble() <= pwoMutacji)
-            {
-                return Mutacja(potomkowyGenotyp);
-            }
-
-            return potomkowyGenotyp;
+            
+            return new ReprezentacjaRozwiazania((ushort[])Mutacja(potomek).Clone());
         }
 
-        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania genotyp)
+        protected override ushort[] Mutacja(ushort[] geny)
         {
-            ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
+            if (losowy.NextDouble() <= pwoMutacji)
+            {
+                return geny;
+            }
+
             int los1 = losowy.Next(0, geny.Length),
                 los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
           
             ushort tmp = geny[los1];
             geny[los1] = geny[los2];
             geny[los2] = tmp;
-
-            genotyp.ZmienGenotyp(geny);
-            return genotyp;
+            
+            return geny;
         }
 
+        /// <summary>
+        /// Metoda krzyżuje genotypy za pomocą naprzemiennej wymiany krawędzi 
+        /// </summary>
+        /// <param name="przodek1">1 przodek do krzyżowania</param>
+        /// <param name="przodek2">2 przodek do krzyżowania</param>
+        /// <seealso cref="Math.Subtract(int, int)"/>
         private ushort[] NaprzemienneWybieranieKrawedzi(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
@@ -72,6 +75,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
+        /// <summary>
+        /// Metoda krzyżuje genotypy za pomocą wymiany podtras
+        /// </summary>
+        /// <param name="przodek1">1 przodek do krzyżowania</param>
+        /// <param name="przodek2">2 przodek do krzyżowania</param>
         private ushort[] WymianaPodtras(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
@@ -79,6 +87,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
+        /// <summary>
+        /// Metoda krzyżuje genotypy funkcją PMX
+        /// </summary>
+        /// <param name="przodek1">1 przodek do krzyżowania</param>
+        /// <param name="przodek2">2 przodek do krzyżowania</param>
+        /// <seealso cref="http://algorytmy-genetyczne.eprace.edu.pl/664,Implementacja.html"/>
         private ushort[] PMX(ushort[] przodek1, ushort[] przodek2)
         {
             int ciecie1 = losowy.Next(0, przodek1.Length),
@@ -123,6 +137,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
+        /// <summary>
+        /// Metoda krzyżuje genotypy funkcją OX
+        /// </summary>
+        /// <param name="przodek1">1 przodek do krzyżowania</param>
+        /// <param name="przodek2">2 przodek do krzyżowania</param>
+        /// <seealso cref="https://www.researchgate.net/figure/The-order-based-crossover-OX-a-and-the-insertion-mutation-b-operators_fig2_224330103"/>
         private ushort[] OX(ushort[] przodek1, ushort[] przodek2)
         {
             int ciecie1 = losowy.Next(0, przodek1.Length),
@@ -166,6 +186,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
+        /// <summary>
+        /// Metoda krzyżuje genotypy funkcją CX
+        /// </summary>
+        /// <param name="przodek1">1 przodek do krzyżowania</param>
+        /// <param name="przodek2">2 przodek do krzyżowania</param>
+        /// <seealso cref="https://www.youtube.com/watch?v=85pIA2TYsUs"/>
         private ushort[] CX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort i = 0;
@@ -194,7 +220,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return potomek;
         }
 
-        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania geny)
+        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
         {
             throw new NotImplementedException();
         }

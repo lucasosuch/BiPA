@@ -96,7 +96,6 @@
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieKP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTTP.cs" />
-    <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />

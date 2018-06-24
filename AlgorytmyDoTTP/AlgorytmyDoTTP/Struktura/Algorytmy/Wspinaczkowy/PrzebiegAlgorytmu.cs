@@ -7,15 +7,8 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 {
-    /// <summary>
-    /// Klasa konfiguracyjna.
-    /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmami je rozwiązującymi.
-    /// </summary>
     class PrzebiegAlgorytmu : Algorytm
     {
-        /// <summary>
-        /// Metoda odpowiada za ustawienie parametrów pod algorytm, problem optymalizacyjny.
-        /// </summary>
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
             AWynik wynik;

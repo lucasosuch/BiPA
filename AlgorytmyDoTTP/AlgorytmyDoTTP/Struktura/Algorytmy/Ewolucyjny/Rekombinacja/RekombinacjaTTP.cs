@@ -77,13 +77,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 potomekTTP[i] = (ushort[])(Mutacja(potomekTTP[i], dostepnoscPrzedmiotow[potomekTSP[i]]).Clone());
             }
 
-            potomekTTP = (ushort[][])SprawdzNaruszenieOgraniczen(potomekTTP).Clone();
-            ReprezentacjaRozwiazania genotypPotomkaTTP = new ReprezentacjaRozwiazania(potomekTTP);
-
-            return genotypPotomkaTTP;
+            return SprawdzNaruszenieOgraniczen(new ReprezentacjaRozwiazania(potomekTTP));
         }
 
-        private ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
+        protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
         {
             double test = losowy.NextDouble();
             if (test > pwoMutacji) return genotyp;
@@ -101,9 +98,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return genotyp;
         }
 
-        private ushort[][] SprawdzNaruszenieOgraniczen(ushort[][] genotyp)
+        protected override ushort[] Mutacja(ushort[] geny)
         {
-            Dictionary<string, double[]> zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(genotyp));
+            throw new NotImplementedException();
+        }
+
+        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
+        {
+            ushort[][] geny = genotyp.ZwrocGenotyp2Wymiarowy();
+            Dictionary<string, double[]> zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(geny));
 
             if (zysk["min"][0] > rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu()[0])
             {
@@ -111,41 +114,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 {
                     int wspolczynnik = (int)(zysk["min"][0] / rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu()[0]);
 
-                    for (int i = 0; i < genotyp.Length; i++)
+                    for (int i = 0; i < geny.Length; i++)
                     {
-                        for(int j = 1; j < genotyp[i].Length; j++)
+                        for(int j = 1; j < geny[i].Length; j++)
                         {
-                            if(genotyp[i][j] == 1)
+                            if(geny[i][j] == 1)
                             {
                                 if(wspolczynnik > 1)
                                 {
-                                    if (losowy.Next(wspolczynnik) != 0) genotyp[i][j] = 0;
+                                    if (losowy.Next(wspolczynnik) != 0) geny[i][j] = 0;
                                 } else
                                 {
-                                    genotyp[i][j] = 0;
+                                    geny[i][j] = 0;
                                     break;
                                 }
                             }
                         }
                     }
 
-                    zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(genotyp));
+                    zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(geny));
                     
                     if (zysk["min"][0] <= rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu()[0]) break;
                 }
             }
 
+            genotyp.ZmienGenotyp(geny);
             return genotyp;
-        }
-
-        protected override ReprezentacjaRozwiazania Mutacja(ReprezentacjaRozwiazania geny)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania geny)
-        {
-            throw new NotImplementedException();
         }
     }
 }

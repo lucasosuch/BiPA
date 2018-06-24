@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
 {
+    /// <summary>
+    /// Klasa konkretna szukająca najlepszego rozwiązania w liście rozwiązań dla 1 wymiarowej tablicy
+    /// </summary>
     class WynikGenotypu1Wymiarowego : AWynik
     {
         public WynikGenotypu1Wymiarowego(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny) : base(listaRozwiazan, problemOptymalizacyjny)
@@ -12,6 +15,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
             SzukajNajlepszegoRozwiazania(listaRozwiazan, problemOptymalizacyjny);
         }
 
+        /// <summary>
+        /// Metoda przeszukuje przestrzeń w celu znalezienia najlepszego rozwiązania dla tablicy 1 wymiarowej
+        /// </summary>
+        /// <param name="listaRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
+        /// <param name="problemOptymalizacyjny">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         private void SzukajNajlepszegoRozwiazania(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
         {
             najlepszeRozwiazanie = (ReprezentacjaRozwiazania)listaRozwiazan[0];

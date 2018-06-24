@@ -5,6 +5,9 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
+    /// <summary>
+    /// Klasa konkretna odpowiedzialna za losowanie rozwiązań pod Problem Komiwojażera
+    /// </summary>
     class LosowanieTSP : ILosowanie
     {
         public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow)

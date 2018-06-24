@@ -7,6 +7,10 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 {
+    /// <summary>
+    /// Klasa konkretna Algorytmu Wspinaczkowego.
+    /// Pozwala na wyszukanie rozwiązania optymalnego danego problemu wg zasad działania Algorytmów Wspinaczkowych
+    /// </summary>
     class RLS : IAlgorytm
     {
         private AWynik wynik;

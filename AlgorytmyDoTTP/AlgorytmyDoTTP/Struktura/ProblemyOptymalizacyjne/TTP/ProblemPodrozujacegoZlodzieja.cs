@@ -36,9 +36,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             for(int i = 0; i < problemKomiwojazera.ZwrocDlugoscGenotypu(); i++)
             {
                 dostepnePrzedmioty[i] = new ushort[problemPlecakowy.ZwrocDlugoscGenotypu()];
-                Instancja obiektTTP = new Instancja(rozmieszczeniePrzedmiotow[i].InnerText, problemPlecakowy.ZwrocDlugoscGenotypu());
+                Instancja obiektTTP = new Instancja();
 
-                dostepnePrzedmioty[i] = (ushort[])(obiektTTP.ZwrocPrzedmioty().Clone());
+                dostepnePrzedmioty[i] = (ushort[])(obiektTTP.ZwrocPrzedmioty(rozmieszczeniePrzedmiotow[i].InnerText, problemPlecakowy.ZwrocDlugoscGenotypu()).Clone());
             }
         }
 

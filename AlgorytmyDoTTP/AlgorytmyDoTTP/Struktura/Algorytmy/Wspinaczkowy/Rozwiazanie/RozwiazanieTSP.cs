@@ -1,9 +1,11 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego pod Problem Komiwojażera
+    /// </summary>
     class RozwiazanieTSP : ARozwiazanie
     {
         public RozwiazanieTSP(ProblemOptymalizacyjny problem) : base(problem){}

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego pod Problem Plecakowy
+    /// </summary>
     class RozwiazanieKP : ARozwiazanie
     {
         public RozwiazanieKP(ProblemOptymalizacyjny problem) : base(problem){}

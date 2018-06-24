@@ -1,9 +1,4 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
@@ -20,27 +15,32 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
         public double ZwrocDlugosc()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public short ZwrocDo()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public short ZwrocOd()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
+        }
+
+        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, int iloscPrzedmiotow)
+        {
+            throw new System.NotImplementedException();
         }
 
         public double ZwrocWage()
         {
-            return this.waga;
+            return waga;
         }
 
         public double ZwrocWartosc()
         {
-            return this.wartosc;
+            return wartosc;
         }
     }
 }
