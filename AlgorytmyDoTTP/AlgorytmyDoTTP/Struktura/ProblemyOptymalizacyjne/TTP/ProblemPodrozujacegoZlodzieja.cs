@@ -8,6 +8,9 @@ using System.Xml;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca Problem Podróżującego Złodzieja
+    /// </summary>
     class ProblemPodrozujacegoZlodzieja : ProblemOptymalizacyjny
     {
         private ushort[][] dostepnePrzedmioty;
@@ -19,6 +22,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             Inicjalizacja(nazwaPakietu);
         }
 
+        /// <summary>
+        /// Metoda konwertuje dane w pliku XML pod struktury dla C#
+        /// </summary>
+        /// <param name="nazwaPakietu">Nazwa pliku xml zawierającego dane</param>
         private void Inicjalizacja(string nazwaPakietu)
         {
             XmlDocument dokument = new XmlDocument();

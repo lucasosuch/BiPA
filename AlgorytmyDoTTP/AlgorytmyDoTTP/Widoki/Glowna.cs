@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
 {
+    /// <summary>
+    /// Klasa widoku głownego
+    /// </summary>
     public partial class Glowna : Form
     {
         private FormatkaGlowna glowna = new FormatkaGlowna();
@@ -17,6 +20,9 @@ namespace AlgorytmyDoTTP
             UstawWartosciDomyslne();
         }
 
+        /// <summary>
+        /// Metoda ustawia wartości domyślne aplikacji
+        /// </summary>
         private void UstawWartosciDomyslne()
         {
             wyborAlgorytmu.Items.AddRange(glowna.ZwrocZmiennaSrodowiskowa().ALGORYTMY);
@@ -35,14 +41,15 @@ namespace AlgorytmyDoTTP
         {
         }
 
+        /// <summary>
+        /// Metoda uruchamia badanie
+        /// </summary>
         private void start_Click(object sender, EventArgs e)
         {
             try
             {
                 Badanie widokBadania = new Badanie(ZwrocParametry());
                 widokBadania.Show();
-
-                if(widokBadania.CzyZapisanoBadanie()) daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
             } catch(Exception exc)
             {
                 string wiadomosc = "Wystąpił błąd w formularzu, sprawdź go jeszcze raz!" + Environment.NewLine  + exc;
@@ -50,6 +57,9 @@ namespace AlgorytmyDoTTP
             }
         }
 
+        /// <summary>
+        /// Metoda zmienia panela w widoku głównym pod Algorytm
+        /// </summary>
         private void wyborAlgorytmu_SelectedIndexChanged(object sender, EventArgs e)
         {
             domyslny.Visible = false;
@@ -74,6 +84,10 @@ namespace AlgorytmyDoTTP
             }
         }
 
+        /// <summary>
+        /// Metoda zwraca parametry Algorytmu oraz Problemu Optymalizacyjnego
+        /// </summary>
+        /// <returns>Parametry Algorytmu oraz Problemu Optymalizacyjnego</returns>
         private Dictionary<string, string> ZwrocParametry()
         {
             Dictionary<string, string> parametry = new Dictionary<string, string>();
@@ -119,7 +133,10 @@ namespace AlgorytmyDoTTP
             
             return parametry;
         }
-        
+
+        /// <summary>
+        /// Metoda zmienia panela w widoku głównym pod Problem Optymalizacyjny
+        /// </summary>
         private void wybierzProblem_SelectedIndexChanged(object sender, EventArgs e)
         {
             WczytajPliki();
@@ -145,12 +162,18 @@ namespace AlgorytmyDoTTP
             }
         }
 
+        /// <summary>
+        /// Metoda wczytuje pliki danych pod wybrany Problem Optymalizacyjny
+        /// </summary>
         private void WczytajPliki()
         {
             wybierzDane.Items.Clear();
             wybierzDane.Items.AddRange(glowna.WczytajPlikiDanych(wybierzProblem.Text));
         }
 
+        /// <summary>
+        /// Metoda wywołuje porównywanie wybranych badań
+        /// </summary>
         private void porownaj_Click(object sender, EventArgs e)
         {
             int ilosc = daneHistoryczne.CheckedItems.Count;
@@ -170,6 +193,10 @@ namespace AlgorytmyDoTTP
             }
         }
 
+        /// <summary>
+        /// Metoda ustawia wartości parametrów w zależności od wybranego Problemu Optymalizacyjnego
+        /// </summary>
+        /// <param name="dane"></param>
         private void UstawRodzajKrzyzowania(object[] dane)
         {
             rodzajKrzyzowania.Items.Clear();
@@ -177,6 +204,9 @@ namespace AlgorytmyDoTTP
             rodzajKrzyzowania.Text = (string)dane[0];
         }
 
+        /// <summary>
+        /// Metoda wczytuje historyczne badania po zmianie karty
+        /// </summary>
         private void zmienKarte(object sender, TabControlCancelEventArgs e)
         {
             daneHistoryczne.Items.Clear();

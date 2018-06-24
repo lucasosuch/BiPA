@@ -2,6 +2,9 @@
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
+    /// <summary>
+    /// Klasa reprezentująca przedmiot dla KP
+    /// </summary>
     class Instancja : IPomocniczy
     {
         private double waga;

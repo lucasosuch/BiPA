@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+﻿namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
+    /// <summary>
+    /// Klasa narzędziowa widoku porównywania
+    /// </summary>
     class FormatkaPorownania : FormatkaGlowna
     {
     }

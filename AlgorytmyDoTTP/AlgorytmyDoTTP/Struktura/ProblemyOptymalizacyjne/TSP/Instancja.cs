@@ -2,6 +2,9 @@
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 {
+    /// <summary>
+    /// Klasa reprezentująca krawędź na grafie dla TSP
+    /// </summary>
     class Instancja : IPomocniczy
     {
         private short prowadziOd;

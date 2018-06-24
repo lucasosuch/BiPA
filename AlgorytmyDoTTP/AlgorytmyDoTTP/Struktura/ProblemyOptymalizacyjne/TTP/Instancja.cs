@@ -3,7 +3,7 @@
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 {
     /// <summary>
-    /// Klasa konkretna reprezentująca 
+    /// Klasa reprezentująca dostępność przedmiotów w danych miastach
     /// </summary>
     class Instancja : IPomocniczy
     {

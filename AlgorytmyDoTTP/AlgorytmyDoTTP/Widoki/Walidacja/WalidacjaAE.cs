@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgorytmyDoTTP.Widoki.Walidacja
+﻿namespace AlgorytmyDoTTP.Widoki.Walidacja
 {
+    /// <summary>
+    /// Klasa odpowiada za walidację danych pod Algorytm Ewolucyjny
+    /// </summary>
     class WalidacjaAE : AWalidacja
     {
     }

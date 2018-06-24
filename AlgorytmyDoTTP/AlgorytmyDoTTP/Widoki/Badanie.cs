@@ -6,10 +6,12 @@ using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP.Widoki
 {
+    /// <summary>
+    /// Klasa widoku badania
+    /// </summary>
     public partial class Badanie : Form
     {
         private FormatkaBadania badanie;
-        private bool zapisanoBadanie = false;
 
         public Badanie(Dictionary<string, string> parametry)
         {
@@ -22,6 +24,9 @@ namespace AlgorytmyDoTTP.Widoki
             wynikiBadania.Text = badanie.UruchomBadanie();
         }
 
+        /// <summary>
+        /// Metoda odpowiada za pobranie pliku CSV na pulpit
+        /// </summary>
         private void pobierzCSV_Click(object sender, EventArgs e)
         {
             try
@@ -37,18 +42,15 @@ namespace AlgorytmyDoTTP.Widoki
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiada za zapis pliku badania na dysku
+        /// </summary>
         private void zapiszBadanie_Click(object sender, EventArgs e)
         {
             badanie.ZapiszBadanie();
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            zapisanoBadanie = true;
             zapiszBadanie.Enabled = false;
             zapiszBadanie.Text = "Zapisano Badanie";
-        }
-
-        public bool CzyZapisanoBadanie()
-        {
-            return zapisanoBadanie;
         }
     }
 }

@@ -11,6 +11,9 @@ using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
+    /// <summary>
+    /// Klasa narzędziowa widoku badania
+    /// </summary>
     class FormatkaBadania : FormatkaGlowna
     {
         private DateTime data = DateTime.Today;
@@ -23,6 +26,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             wyniki = new Dictionary<string, string[]>();
         }
 
+        /// <summary>
+        /// Metoda uruchamiająca badanie, tzn. rozpoczęcie rozwiązania wybranego Problemu Optymalizacyjnego za pomocą wybranego Algorytmu
+        /// </summary>
+        /// <returns>Wyniki czytelne dla człowieka</returns>
         public string UruchomBadanie()
         {
             string wynikiBadania = "";
@@ -40,7 +47,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return wynikiBadania;
         }
 
-        public String ZwrocDaneDoCSV()
+        /// <summary>
+        /// Metoda formatuje odpowiedź z badania dla pliku CSV
+        /// </summary>
+        /// <returns>Zwraca sformatowaną odpowiedź z badania</returns>
+        public string ZwrocDaneDoCSV()
         {
             StringBuilder csv = new StringBuilder();
 
@@ -59,11 +70,20 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return csv.ToString();
         }
 
+        /// <summary>
+        /// Metoda zwraca nazwę pliku
+        /// </summary>
+        /// <param name="rozszerzenie">Rozszerzenie pliku</param>
+        /// <param name="iter">Liczba mówiąca, które jest to badanie Problemu Optymalizacyjnego pod Algorytm tego dnia</param>
+        /// <returns>Nazwę pliku</returns>
         public string ZwrocNazwePliku(string rozszerzenie, string iter)
         {
             return "("+ data.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter +"."+ rozszerzenie;
         }
 
+        /// <summary>
+        /// Metoda zapisuje badanie do pliku XML na dysku
+        /// </summary>
         public void ZapiszBadanie()
         {
             int iter = 0;
@@ -94,6 +114,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             xml.Save("./Badania/"+ ZwrocNazwePliku("xml", "_"+ iter));
         }
 
+        /// <summary>
+        /// Metoda zwraca instancję wybranego Problemu Optymalizacyjnego
+        /// </summary>
+        /// <returns>Instancję Problemu Optymalizacyjnego</returns>
         private ProblemOptymalizacyjny ZwrocWybranyProblem()
         {
             if (parametry["problem"] == "Problem Plecakowy")
@@ -114,6 +138,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return new ProblemKomiwojazera(parametry["dane"]);
         }
 
+        /// <summary>
+        /// Metoda zwraca instancję wybranego Algorytmu
+        /// </summary>
+        /// <returns>Instancję Algorytmu</returns>
         private Algorytm ZwrocWybranyAlgorytm()
         {
             if (parametry["algorytm"] == "Algorytm Ewolucyjny")

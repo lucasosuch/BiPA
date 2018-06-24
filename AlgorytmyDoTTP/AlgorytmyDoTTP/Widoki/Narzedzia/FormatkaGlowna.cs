@@ -8,11 +8,18 @@ using System.Xml;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
+    /// <summary>
+    /// Klasa narzędziowa widoku głownego aplikacji
+    /// </summary>
     class FormatkaGlowna
     {
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
 
+        /// <summary>
+        /// Metoda odpowiada za wczytanie wszystkich badań z folderu zawierającego zapisane badania
+        /// </summary>
+        /// <returns>Elementy historycznych zapisów badań</returns>
         public ListViewItem[] WczytajHistoryczneBadania()
         {
             DirectoryInfo sciezka = new DirectoryInfo("./Badania");
@@ -32,6 +39,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return elementy;
         }
 
+        /// <summary>
+        /// Metoda odpowiada za wczytanie plików odpowiadających za konfigurację Problemów Optymalizacyjnych
+        /// </summary>
+        /// <param name="wybranyProblem">Nazwa Problemu Optymalizacyjnego</param>
+        /// <returns>Nazwy plików danych pod wybrany Problem Optymalizacyjny</returns>
         public object[] WczytajPlikiDanych(string wybranyProblem)
         {
             string nazwaFolderu = "";
@@ -57,6 +69,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return pliki;
         }
 
+        /// <summary>
+        /// Metoda odpowiada za wczytanie badań i ich parametrów
+        /// </summary>
+        /// <param name="zaznaczoneElementy">Nazwy badań wybranych do porównania</param>
+        /// <returns>Parametry z badań potrzebne do porównania</returns>
         public Dictionary<string, string[]> ZbierzDaneDoPorownania(ListView.CheckedListViewItemCollection zaznaczoneElementy)
         {
             Dictionary<string, string[]> paramentry = new Dictionary<string, string[]>();
@@ -79,6 +96,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return paramentry;
         }
 
+        /// <summary>
+        /// Metoda odpowiada za walidację danych z formatki
+        /// </summary>
+        /// <param name="parametry">Parametry badania</param>
+        /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
         public void WalidacjaFormatki(Dictionary<string, string> parametry)
         {
             bool walidacja = new WalidacjaAE().CzyPoprawneCalkowite(parametry, algorytmEwolucyjny.parametryCalkowite) && new WalidacjaAE().CzyPoprawneZmiennoPrzecinkowe(parametry, algorytmEwolucyjny.parametryZmiennoPrzecinkowe);
@@ -89,6 +111,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiada za walidację podstawowych parametrów odpowiadających za badania
+        /// </summary>
+        /// <param name="parametry">Parametr badania</param>
+        /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
         public void WalidacjaKluczowychParametrow(string parametr)
         {
             bool walidacja = new WalidacjaAE().CzyPustePoleTekstowe(parametr);
@@ -99,11 +126,19 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             }
         }
 
+        /// <summary>
+        /// Metoda zwraca instancję konfiguracji środowiskowej
+        /// </summary>
+        /// <returns>Zwraca instancję konfiguracji środowiska aplikacji</returns>
         public Konfiguracja ZwrocZmiennaSrodowiskowa()
         {
             return srodowisko;
         }
 
+        /// <summary>
+        /// Metoda zwraca instancję konfiguracji Algorytmu Ewolucyjnego
+        /// </summary>
+        /// <returns>Zwraca instancję konfiguracji Algorytmu Ewolucyjnego</returns>
         public AE ZwrocKonfiguracjeAE()
         {
             return algorytmEwolucyjny;

@@ -5,6 +5,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlgorytmyDoTTP.Widoki
 {
+    /// <summary>
+    /// Klasa widoku porównywania
+    /// </summary>
     public partial class Porownanie : Form
     {
         private Dictionary<string, string[]> paramentry;

@@ -6,6 +6,9 @@ using System.Xml;
 
 namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 {
+    /// <summary>
+    /// Klasa konkretna reprezentująca Problem Plecakowy
+    /// </summary>
     class ProblemPlecakowy : ProblemOptymalizacyjny
     {
         public ProblemPlecakowy(string nazwaPakietu)
@@ -28,6 +31,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             return listaElementow;
         }
 
+        /// <summary>
+        /// Metoda konwertuje dane w pliku XML pod struktury dla C#
+        /// </summary>
+        /// <param name="nazwaPakietu">Nazwa pliku xml zawierającego dane</param>
         private void Inicjalizacja(string nazwaPakietu)
         {
             XmlDocument dokument = new XmlDocument();
