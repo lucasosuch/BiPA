@@ -53,11 +53,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     if (losowy.NextDouble() <= pwoKrzyzowania)
                     {
                         // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
-                        ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(populacjaBazowa),
-                                              tata = selekcja.WybierzOsobnika(populacjaBazowa),
+                        ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(populacjaBazowa, iloscPokolen),
+                                              tata = selekcja.WybierzOsobnika(populacjaBazowa, iloscPokolen),
                                               dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
                                               dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
-
+                        
                         // dzieci dodajemy do nowej populacji
                         nowaPopulacja.Add(dziecko1);
                         nowaPopulacja.Add(dziecko2);

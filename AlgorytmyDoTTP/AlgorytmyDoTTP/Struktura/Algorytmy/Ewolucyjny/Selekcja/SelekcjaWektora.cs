@@ -13,14 +13,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
     {
         public SelekcjaWektora(AOsobnik rozwiazanie, ushort dlugoscGenotypu, string typSelekcji) : base(rozwiazanie, dlugoscGenotypu, typSelekcji){}
 
-        public override ReprezentacjaRozwiazania WybierzOsobnika(ArrayList populacja)
+        public override ReprezentacjaRozwiazania WybierzOsobnika(ArrayList populacja, int pokolenie)
         {
-            if(typSelekcji == "Turniej")
+            if(typSelekcji == "Metoda ruletki")
             {
-                return Turniej(populacja);
+                if(this.pokolenie != pokolenie)
+                {
+                    wskazniki = ZwrocWskazniki(populacja);
+                }
+
+                this.pokolenie = pokolenie;
+                return MetodaRuletki(populacja);
             }
 
-            return MetodaRuletki(populacja);
+            return Turniej(populacja);
         }
 
         protected override ReprezentacjaRozwiazania Turniej(ArrayList populacja)
@@ -46,10 +52,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         protected override ReprezentacjaRozwiazania MetodaRuletki(ArrayList populacja)
         {
             ReprezentacjaRozwiazania osobnik = new ReprezentacjaRozwiazania();
-            ArrayList wskazniki = ZwrocWskazniki(populacja);
             double pwo = losowy.NextDouble(),
                    poprzednik = 0;
-
+            
             for(int i = 0; i < populacja.Count; i++)
             {
                 if(poprzednik <= pwo && pwo < (double)wskazniki[i])
@@ -64,11 +69,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             return osobnik;
         }
 
-        /// <summary>
-        /// Metoda nadająca wskaźniki dla całej populacji osobników
-        /// </summary>
-        /// <param name="populacja">Populacja osobników - rozwiązań</param>
-        private ArrayList ZwrocWskazniki(ArrayList populacja)
+        protected override ArrayList ZwrocWskazniki(ArrayList populacja)
         {
             double suma = 0;
             ArrayList wskazniki = new ArrayList();
