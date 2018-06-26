@@ -35,12 +35,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
                 for (int j = 0; j < przodek1.Length; j++)
                 {
-                    przodkowieTSP[i][j] = (ushort)(((i == 0) ? przodek1[j][0] : przodek2[j][0]) - 1);
-                    przodkowieKP[i][przodkowieTSP[i][j]] = new ushort[przodek1[0].Length - 1];
+                    przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
 
-                    for (int k = 1; k <= przodkowieKP[i][przodkowieTSP[i][j]].Length; k++)
+                    int index = przodkowieTSP[i][j] - 1;
+                    przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
+
+                    for (int k = 1; k <= przodkowieKP[i][index].Length; k++)
                     {
-                        przodkowieKP[i][przodkowieTSP[i][j]][k-1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
+                        przodkowieKP[i][index][k-1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
                     }
                 }
             }
@@ -66,15 +68,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             for (int i = 0; i < potomekTSP.Length; i++)
             {
+                int index = potomekTSP[i] - 1;
                 potomekTTP[i] = new ushort[potomkowieKP[0].Length + 1];
-                potomekTTP[i][0] = (ushort)(potomekTSP[i] + 1);
+                potomekTTP[i][0] = potomekTSP[i];
 
                 for (int j = 1; j <= potomkowieKP[0].Length; j++)
                 {
-                    potomekTTP[i][j] = potomkowieKP[potomekTSP[i]][(j - 1)];
+                    potomekTTP[i][j] = potomkowieKP[index][(j - 1)];
                 }
 
-                potomekTTP[i] = (ushort[])(Mutacja(potomekTTP[i], dostepnoscPrzedmiotow[potomekTSP[i]]).Clone());
+                potomekTTP[i] = (ushort[])(Mutacja(potomekTTP[i], dostepnoscPrzedmiotow[index]).Clone());
             }
 
             return SprawdzNaruszenieOgraniczen(new ReprezentacjaRozwiazania(potomekTTP));

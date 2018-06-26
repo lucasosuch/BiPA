@@ -202,9 +202,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 potomek[k] = 0;
             }
 
-            while (!potomek.Contains(przodek2[i]))
+            while (potomek.Contains(przodek2[i]))
             {
                 ushort j = (ushort)(przodek2[i] - 1);
+
+                Console.WriteLine("j: "+ j +" i: "+ i +" val: "+ przodek2[i]);
                 potomek[j] = przodek1[j];
                 i = j;
             }

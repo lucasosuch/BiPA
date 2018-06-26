@@ -46,7 +46,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             int srodek = populacja.Count / 2;
             double[] wynikiPopulacji = new double[populacja.Count]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
 
-            for(int i = 0; i < populacja.Count; i++)
+            if (srodek == 0) throw new IndexOutOfRangeException();
+
+            for (int i = 0; i < populacja.Count; i++)
             {
                 wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[i])["max"][0];
             }
