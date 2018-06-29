@@ -17,8 +17,8 @@ namespace AlgorytmyDoTTP.Widoki
             InitializeComponent();
             this.paramentry = paramentry;
 
-            Series[] serie = new Series[paramentry.Count];
-            DataPoint[][] punkty = new DataPoint[paramentry.Count][];
+            Series[] seria1 = new Series[paramentry.Count],
+                     seria2 = new Series[paramentry.Count];
 
             int i = 0;
             string plikDanych = "";
@@ -35,17 +35,22 @@ namespace AlgorytmyDoTTP.Widoki
                     }
                 }
 
-                serie[i] = new Series();
-                serie[i].Name = linia.Value[2];
-                serie[i].Points.Add(new DataPoint(1, linia.Value[0]));
-                serie[i].Points.Add(new DataPoint(2, linia.Value[1]));
+                seria1[i] = new Series();
+                seria1[i].Name = linia.Value[2];
+
+                seria2[i] = new Series();
+                seria2[i].Name = linia.Value[2];
+
+                seria1[i].Points.Add(new DataPoint(1, linia.Value[0]));
+                seria2[i].Points.Add(new DataPoint(1, linia.Value[1]));
 
                 i++;
             }
             
             for(int j = 0; j < paramentry.Count; j++)
             {
-                wykresPorownan.Series.Add(serie[j]);
+                wykresPorownanCzas.Series.Add(seria1[j]);
+                wykresPorownanWynik.Series.Add(seria2[j]);
             }
         }
     }

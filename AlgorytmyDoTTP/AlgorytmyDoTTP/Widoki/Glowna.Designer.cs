@@ -69,6 +69,7 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.podglad = new System.Windows.Forms.TextBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -99,7 +100,7 @@
             this.metroTabControl1.Controls.Add(this.historia);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(984, 705);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -651,6 +652,7 @@
             // historia
             // 
             this.historia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.historia.Controls.Add(this.podglad);
             this.historia.Controls.Add(this.porownaj);
             this.historia.Controls.Add(this.daneHistoryczne);
             this.historia.HorizontalScrollbarBarColor = true;
@@ -706,6 +708,17 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
+            // podglad
+            // 
+            this.podglad.BackColor = System.Drawing.SystemColors.Window;
+            this.podglad.Enabled = false;
+            this.podglad.Location = new System.Drawing.Point(586, 55);
+            this.podglad.Multiline = true;
+            this.podglad.Name = "podglad";
+            this.podglad.ReadOnly = true;
+            this.podglad.Size = new System.Drawing.Size(390, 519);
+            this.podglad.TabIndex = 8;
+            // 
             // Glowna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -735,6 +748,7 @@
             this.wspinaczkowy_losowy.ResumeLayout(false);
             this.wspinaczkowy_losowy.PerformLayout();
             this.historia.ResumeLayout(false);
+            this.historia.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -782,6 +796,7 @@
         private MetroFramework.Controls.MetroTextBox wyporzyczeniePlecaka;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox podglad;
     }
 }
 
