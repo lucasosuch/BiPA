@@ -65,11 +65,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.wyborAlgorytmu = new MetroFramework.Controls.MetroComboBox();
             this.historia = new MetroFramework.Controls.MetroTabPage();
+            this.usuniecieBadania = new MetroFramework.Controls.MetroButton();
+            this.podglad = new System.Windows.Forms.TextBox();
             this.porownaj = new MetroFramework.Controls.MetroTile();
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.podglad = new System.Windows.Forms.TextBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -652,6 +653,7 @@
             // historia
             // 
             this.historia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.historia.Controls.Add(this.usuniecieBadania);
             this.historia.Controls.Add(this.podglad);
             this.historia.Controls.Add(this.porownaj);
             this.historia.Controls.Add(this.daneHistoryczne);
@@ -666,6 +668,27 @@
             this.historia.VerticalScrollbarBarColor = true;
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
+            // 
+            // usuniecieBadania
+            // 
+            this.usuniecieBadania.Location = new System.Drawing.Point(0, 22);
+            this.usuniecieBadania.Name = "usuniecieBadania";
+            this.usuniecieBadania.Size = new System.Drawing.Size(90, 23);
+            this.usuniecieBadania.TabIndex = 9;
+            this.usuniecieBadania.Text = "Usuń Badanie";
+            this.usuniecieBadania.UseSelectable = true;
+            this.usuniecieBadania.Click += new System.EventHandler(this.usuniecieBadania_Click);
+            // 
+            // podglad
+            // 
+            this.podglad.BackColor = System.Drawing.SystemColors.Window;
+            this.podglad.Enabled = false;
+            this.podglad.Location = new System.Drawing.Point(586, 55);
+            this.podglad.Multiline = true;
+            this.podglad.Name = "podglad";
+            this.podglad.ReadOnly = true;
+            this.podglad.Size = new System.Drawing.Size(390, 519);
+            this.podglad.TabIndex = 8;
             // 
             // porownaj
             // 
@@ -697,6 +720,7 @@
             this.daneHistoryczne.UseCompatibleStateImageBehavior = false;
             this.daneHistoryczne.UseSelectable = true;
             this.daneHistoryczne.View = System.Windows.Forms.View.Details;
+            this.daneHistoryczne.SelectedIndexChanged += new System.EventHandler(this.podgladBadania);
             // 
             // nazwaBadania
             // 
@@ -707,17 +731,6 @@
             // 
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
-            // 
-            // podglad
-            // 
-            this.podglad.BackColor = System.Drawing.SystemColors.Window;
-            this.podglad.Enabled = false;
-            this.podglad.Location = new System.Drawing.Point(586, 55);
-            this.podglad.Multiline = true;
-            this.podglad.Name = "podglad";
-            this.podglad.ReadOnly = true;
-            this.podglad.Size = new System.Drawing.Size(390, 519);
-            this.podglad.TabIndex = 8;
             // 
             // Glowna
             // 
@@ -797,6 +810,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox podglad;
+        private MetroFramework.Controls.MetroButton usuniecieBadania;
     }
 }
 

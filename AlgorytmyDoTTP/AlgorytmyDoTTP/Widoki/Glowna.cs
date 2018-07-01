@@ -35,6 +35,7 @@ namespace AlgorytmyDoTTP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            WczytajPlikiBadan();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -178,7 +179,7 @@ namespace AlgorytmyDoTTP
         {
             int ilosc = daneHistoryczne.CheckedItems.Count;
 
-            if (ilosc <= 5 && ilosc > 0)
+            if (ilosc <= 10 && ilosc > 0)
             {
                 Porownanie porownanieTemp = new Porownanie(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems));
                 porownanieTemp.Show();
@@ -208,6 +209,25 @@ namespace AlgorytmyDoTTP
         /// Metoda wczytuje historyczne badania po zmianie karty
         /// </summary>
         private void zmienKarte(object sender, TabControlCancelEventArgs e)
+        {
+            WczytajPlikiBadan();
+        }
+
+        private void podgladBadania(object sender, EventArgs e)
+        {
+            podglad.Text = glowna.ZwrocDanePodgladanegoBadania(daneHistoryczne.SelectedItems);
+        }
+
+        private void usuniecieBadania_Click(object sender, EventArgs e)
+        {
+            if(daneHistoryczne.CheckedItems.Count > 0)
+            {
+                glowna.UsunWybraneBadania(daneHistoryczne.CheckedItems);
+                WczytajPlikiBadan();
+            }
+        }
+
+        private void WczytajPlikiBadan()
         {
             daneHistoryczne.Items.Clear();
             daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());

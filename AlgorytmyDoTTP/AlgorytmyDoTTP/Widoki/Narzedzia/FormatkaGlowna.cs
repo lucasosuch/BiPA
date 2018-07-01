@@ -96,6 +96,44 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return paramentry;
         }
 
+        public void UsunWybraneBadania(ListView.CheckedListViewItemCollection zaznaczoneElementy)
+        {
+            foreach (ListViewItem element in zaznaczoneElementy)
+            {
+                string nazwa = element.SubItems[0].Text;
+
+                if (File.Exists(@"./Badania/"+ nazwa))
+                {
+                    File.Delete(@"./Badania/"+ nazwa);
+                }
+            }
+        }
+
+        public string ZwrocDanePodgladanegoBadania(ListView.SelectedListViewItemCollection wybraneElementy)
+        {
+            string odpowiedz = "";
+
+            foreach (ListViewItem element in wybraneElementy)
+            {
+                string nazwa = element.SubItems[0].Text;
+                XmlDocument dokument = new XmlDocument();
+                dokument.Load("./Badania/" + nazwa);
+
+                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/maxWartosc");
+                XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/czasDzialania");
+                XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/nazwaBadania");
+                XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/plikDanych");
+
+                odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
+                            "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
+                            "Wartość: " + maxWartosc.InnerText + Environment.NewLine +
+                            "Czas działania: " + czasDzialania.InnerText + " ms";
+                            
+            }
+
+            return odpowiedz;
+        }
+
         /// <summary>
         /// Metoda odpowiada za walidację danych z formatki
         /// </summary>
