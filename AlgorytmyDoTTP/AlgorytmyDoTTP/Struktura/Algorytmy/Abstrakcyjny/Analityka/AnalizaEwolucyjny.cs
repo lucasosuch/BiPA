@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
@@ -41,14 +40,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         /// <param name="populacja">Lista rozwiązań</param>
         /// <returns>Zwraca medianę</returns>
-        public double MedianaPopulacji(ArrayList populacja)
+        public double MedianaPopulacji(ReprezentacjaRozwiazania[] populacja)
         {
-            int srodek = populacja.Count / 2;
-            double[] wynikiPopulacji = new double[populacja.Count]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
+            int srodek = populacja.Length / 2;
+            double[] wynikiPopulacji = new double[populacja.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
 
             if (srodek == 0) throw new IndexOutOfRangeException();
 
-            for (int i = 0; i < populacja.Count; i++)
+            for (int i = 0; i < populacja.Length; i++)
             {
                 wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[i])["max"][0];
             }
@@ -64,7 +63,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         /// <param name="populacja">Lista rozwiązań</param>
         /// <returns>Zwraca wartość średnią</returns>
-        public double SredniaPopulacji(ArrayList populacja)
+        public double SredniaPopulacji(ReprezentacjaRozwiazania[] populacja)
         {
             double wynik = 0;
 
@@ -73,7 +72,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 wynik += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
 
-            return wynik / populacja.Count;
+            return wynik / populacja.Length;
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <param name="populacja">Lista rozwiązań</param>
         /// <param name="srednia">Średnia z listy rozwiązań</param>
         /// <returns>Zwraca odchylenie standardowe</returns>
-        public double OdchylenieStandardowePopulacji(ArrayList populacja, double srednia)
+        public double OdchylenieStandardowePopulacji(ReprezentacjaRozwiazania[] populacja, double srednia)
         {
             double sumaKwadratow = 0;
 
@@ -91,7 +90,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 sumaKwadratow += Math.Pow(rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0], 2);
             }
 
-            double sredniaSumaKwadratow = sumaKwadratow / (populacja.Count - 1);
+            double sredniaSumaKwadratow = sumaKwadratow / (populacja.Length - 1);
             return Math.Sqrt(sredniaSumaKwadratow - (Math.Pow(srednia, 2)));
         }
 

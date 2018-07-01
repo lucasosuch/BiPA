@@ -1,5 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
@@ -11,7 +11,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         /// <param name="rozmiarPopulacji">Liczba osobników w populacji</param>
         /// <param name="dlugoscGenotypu">Informacja o wielkości dziedziny</param>
         /// <returns>Populacja osobników - rozwiązań</returns>
-        ArrayList StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu);
+        ReprezentacjaRozwiazania[] StworzPopulacjeBazowa(ushort rozmiarPopulacji, ushort dlugoscGenotypu);
 
         /// <summary>
         /// Metoda populację osobników dla Algorytmu Ewolucyjnego
@@ -19,6 +19,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
         /// <param name="rozmiarPopulacji">Liczba osobników w populacji</param>
         /// <param name="dlugoscGenotypu">Informacja o wielkości dziedziny</param>
         /// <returns>Populacja osobników - rozwiązań</returns>
-        ArrayList StworzPopulacjeBazowa(ProblemOptymalizacyjny problemOptymalizacyjny, ushort rozmiarPopulacji);
+        ReprezentacjaRozwiazania[] StworzPopulacjeBazowa(ProblemOptymalizacyjny problemOptymalizacyjny, ushort rozmiarPopulacji);
     }
 }

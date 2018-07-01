@@ -1,5 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
@@ -11,7 +11,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         /// <param name="iloscRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <param name="iloscElementow">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <returns>Lista osobników - rozwiązań</returns>
-        ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow);
+        ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow);
 
         /// <summary>
         /// Metoda odpowiedzialna za wylosowanie rozwiązań, z uwzględnieniem problemu optymalizacyjnego
@@ -19,6 +19,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         /// <param name="problemOptymalizacyjny">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <param name="iloscRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <returns>Lista osobników - rozwiązań</returns>
-        ArrayList LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan);
+        ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan);
     }
 }

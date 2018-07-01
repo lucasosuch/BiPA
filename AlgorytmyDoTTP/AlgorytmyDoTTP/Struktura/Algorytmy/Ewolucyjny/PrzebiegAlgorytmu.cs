@@ -5,7 +5,6 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
@@ -16,7 +15,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
         {
             // Stałe składniki Algorytmu Ewolucyjnego
             ASelekcja selekcja;
-            ArrayList populacja;
+            ReprezentacjaRozwiazania[] populacja;
             AOsobnik rozwiazanie;
             ARekombinacja rekombinacja;
             AnalizaEwolucyjny analityka;

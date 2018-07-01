@@ -1,7 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
@@ -11,18 +10,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     /// </summary>
     class LosowanieTTP : ILosowanie
     {
-        public ArrayList LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
+        public ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
         {
             Random losowy = new Random();
-            ArrayList rozwiazania = new ArrayList();
+            ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
             
             ushort[][] dostepnoscPrzedmiotow = problemOptymalizacyjny.ZwrocDostepnePrzedmioty();
             LosowanieTSP losowanieTSP = new LosowanieTSP();
-            ArrayList rozwiazaniaTSP = losowanieTSP.LosujRozwiazania(iloscRozwiazan, problemOptymalizacyjny.ZwrocDlugoscGenotypu());
+            ReprezentacjaRozwiazania[] rozwiazaniaTSP = losowanieTSP.LosujRozwiazania(iloscRozwiazan, problemOptymalizacyjny.ZwrocDlugoscGenotypu());
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
-                ushort[] wektorTSP = ((ReprezentacjaRozwiazania)rozwiazaniaTSP[i]).ZwrocGenotyp1Wymiarowy();
+                ushort[] wektorTSP = rozwiazaniaTSP[i].ZwrocGenotyp1Wymiarowy();
                 ushort[][] macierzTTP = new ushort[wektorTSP.Length][];
 
                 double rozpietosc = Math.Abs(100 - i * 100 / iloscRozwiazan);
@@ -50,13 +49,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
                 Dictionary<string, double[]> zysk = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(macierzTTP));
 
-                rozwiazania.Add(new ReprezentacjaRozwiazania(macierzTTP));
+                rozwiazania[i] = new ReprezentacjaRozwiazania(macierzTTP);
             }
 
             return rozwiazania;
         }
 
-        public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        public ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
             throw new NotImplementedException();
         }

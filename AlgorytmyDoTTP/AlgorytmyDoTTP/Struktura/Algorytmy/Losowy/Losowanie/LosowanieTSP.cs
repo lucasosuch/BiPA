@@ -1,7 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using System.Collections;
-using System;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
+using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 {
@@ -10,11 +10,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     /// </summary>
     class LosowanieTSP : ILosowanie
     {
-        public ArrayList LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        public ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
             Random losowy = new Random();
-            double zroznicowaniePopulacji = 0.7;
-            ArrayList rozwiazania = new ArrayList();
+            double zroznicowaniePopulacji = 0.5;
+            ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
@@ -49,13 +49,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                     }
                 }
 
-                rozwiazania.Add(new ReprezentacjaRozwiazania(genotyp));
+                rozwiazania[i] = new ReprezentacjaRozwiazania(genotyp);
             }
 
             return rozwiazania;
         }
 
-        public ArrayList LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
+        public ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
         {
             throw new NotImplementedException();
         }

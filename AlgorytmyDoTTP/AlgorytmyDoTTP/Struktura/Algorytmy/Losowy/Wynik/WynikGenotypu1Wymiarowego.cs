@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
@@ -10,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
     /// </summary>
     class WynikGenotypu1Wymiarowego : AWynik
     {
-        public WynikGenotypu1Wymiarowego(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny) : base(listaRozwiazan, problemOptymalizacyjny)
+        public WynikGenotypu1Wymiarowego(ReprezentacjaRozwiazania[] listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny) : base(listaRozwiazan, problemOptymalizacyjny)
         {
             SzukajNajlepszegoRozwiazania(listaRozwiazan, problemOptymalizacyjny);
         }
@@ -20,15 +19,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
         /// </summary>
         /// <param name="listaRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <param name="problemOptymalizacyjny">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
-        private void SzukajNajlepszegoRozwiazania(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
+        private void SzukajNajlepszegoRozwiazania(ReprezentacjaRozwiazania[] listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
         {
-            najlepszeRozwiazanie = (ReprezentacjaRozwiazania)listaRozwiazan[0];
+            najlepszeRozwiazanie = listaRozwiazan[0];
             najlepszyWynik = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()));
 
             int iterator = 1;
             while (problemOptymalizacyjny.CzyIstniejaOgraniczenia() && (najlepszyWynik["min"][0] > problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0]))
             {
-                najlepszeRozwiazanie = (ReprezentacjaRozwiazania)listaRozwiazan[iterator];
+                najlepszeRozwiazanie = listaRozwiazan[iterator];
                 najlepszyWynik = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(najlepszeRozwiazanie.ZwrocGenotyp1Wymiarowy()));
                 iterator++;
             }

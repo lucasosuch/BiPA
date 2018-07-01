@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
@@ -10,11 +9,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
     /// </summary>
     abstract class AWynik
     {
-        protected ArrayList listaRozwiazan;
+        protected ReprezentacjaRozwiazania[] listaRozwiazan;
         protected ReprezentacjaRozwiazania najlepszeRozwiazanie;
         protected Dictionary<string, double[]> najlepszyWynik;
 
-        public AWynik(ArrayList listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
+        public AWynik(ReprezentacjaRozwiazania[] listaRozwiazan, ProblemOptymalizacyjny problemOptymalizacyjny)
         {
             this.listaRozwiazan = listaRozwiazan;
             najlepszyWynik = new Dictionary<string, double[]>();
@@ -42,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik
         /// Metoda zwraca listę osobników - rozwiązań
         /// </summary>
         /// <returns>Lista osobników - rozwiązań</returns>
-        public ArrayList ZwrocListeRozwiazan()
+        public ReprezentacjaRozwiazania[] ZwrocListeRozwiazan()
         {
             return listaRozwiazan;
         }

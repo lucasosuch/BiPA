@@ -29,34 +29,34 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>
         /// <returns>Osobnik - rozwiązanie</returns>
-        public abstract ReprezentacjaRozwiazania WybierzOsobnika(ArrayList populacja, int pokolenie);
+        public abstract ReprezentacjaRozwiazania WybierzOsobnika(ReprezentacjaRozwiazania[] populacja, int pokolenie);
 
         /// <summary>
         /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą turnieju - czyli "najlepszego" osobnika z pewnej pod populacji
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>
         /// <returns>Osobnik - rozwiązanie</returns>
-        protected abstract ReprezentacjaRozwiazania Turniej(ArrayList populacja);
+        protected abstract ReprezentacjaRozwiazania Turniej(ReprezentacjaRozwiazania[] populacja);
 
         /// <summary>
         /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą ruletki - czyli nadania współczynników całej populacji i wyboru za pomocą tych współczynników najlepiej przystosowanych osobników
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>
         /// <returns>Osobnik - rozwiązanie</returns>
-        protected abstract ReprezentacjaRozwiazania MetodaRuletki(ArrayList populacja);
+        protected abstract ReprezentacjaRozwiazania MetodaRuletki(ReprezentacjaRozwiazania[] populacja);
 
         /// <summary>
         /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą ruletki turniejowej - czyli proporcjonalnemu nadaniu współczynników całej populacji i wyboru za pomocą tych współczynników najlepiej przystosowanych osobników
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>
         /// <returns>Osobnik - rozwiązanie</returns>
-        protected abstract ReprezentacjaRozwiazania RuletkaTurniejowa(ArrayList populacja);
+        protected abstract ReprezentacjaRozwiazania RuletkaTurniejowa(ReprezentacjaRozwiazania[] populacja);
 
         /// <summary>
         /// Metoda nadająca wskaźniki dla całej populacji osobników
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>
         /// <returns>Lista wskaźników osobników w populacji</returns>
-        protected abstract ArrayList ZwrocWskazniki(ArrayList populacja);
+        protected abstract ArrayList ZwrocWskazniki(ReprezentacjaRozwiazania[] populacja);
     }
 }
