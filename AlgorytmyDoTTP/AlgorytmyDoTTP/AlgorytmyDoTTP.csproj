@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Konfiguracja.cs" />
     <Compile Include="KonfiguracjaAlgorytmow\AE.cs" />
+    <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaEwolucyjny.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaRLS_RS.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\ReprezentacjaRozwiazania.cs" />

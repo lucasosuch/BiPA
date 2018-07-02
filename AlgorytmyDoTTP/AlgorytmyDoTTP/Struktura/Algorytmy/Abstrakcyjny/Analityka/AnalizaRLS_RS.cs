@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
@@ -49,6 +50,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         public string ZwrocNajlepszeRozwiazanie(ReprezentacjaRozwiazania najlepszeRozwiazanie)
         {
             return DekodujRozwiazanie(najlepszeRozwiazanie);
+        }
+
+        public Dictionary<string, string[]> ZwrocOdpowiedz(ReprezentacjaRozwiazania najlepszeRozwiazanie, Dictionary<string, double[]> znalezioneOptimum)
+        {
+            Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
+
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analiza.ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", znalezioneOptimum["max"][0].ToString() };
+            zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", znalezioneOptimum["min"][0].ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
+
+            return zwracanyTekst;
         }
 
         /// <summary>
