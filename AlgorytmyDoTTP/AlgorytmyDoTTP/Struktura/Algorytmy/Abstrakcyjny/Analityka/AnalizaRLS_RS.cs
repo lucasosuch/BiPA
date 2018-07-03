@@ -56,10 +56,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         {
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analiza.ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", znalezioneOptimum["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", znalezioneOptimum["min"][0].ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu().ToString() };
 
             return zwracanyTekst;
         }
