@@ -72,24 +72,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 
             analityka.ZakonczPomiarCzasu(); // zakończenie pomiaru czasu
 
-            // pobieramy wartości statystyczne / analityczne z naszego badania
-            double czasDzialania = analityka.ZwrocCzasDzialaniaAlgorytmu(),
-                   srednia = analityka.SredniaPopulacji(populacjaBazowa),
-                   mediana = analityka.MedianaPopulacji(populacjaBazowa),
-                   odchylenieStadowe = analityka.OdchylenieStandardowePopulacji(populacjaBazowa, srednia);
-
-            ReprezentacjaRozwiazania wartoscNiebo = analityka.ZwrocNajlepszyGenotyp();
-
-            // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", analityka.ZwrocNajlepszeRowziazanie() };
-            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", analityka.ZwrocWartoscNiebo()["max"][0].ToString() };
-            zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", analityka.ZwrocWartoscNiebo()["min"][0].ToString() };
-            zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
-            zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
-            zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", czasDzialania.ToString() };
-
-            return zwracanyTekst;
+            return analityka.ZwrocOdpowiedz(populacjaBazowa);
         }
     }
 }

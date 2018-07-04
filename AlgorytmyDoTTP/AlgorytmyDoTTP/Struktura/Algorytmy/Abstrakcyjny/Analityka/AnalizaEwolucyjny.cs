@@ -35,6 +35,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         //    return wynik;
         //}
 
+        public Dictionary<string, string[]> ZwrocOdpowiedz(ReprezentacjaRozwiazania[] populacja)
+        {
+            // pobieramy wartości statystyczne / analityczne z naszego badania
+            double srednia = SredniaPopulacji(populacja),
+                   mediana = MedianaPopulacji(populacja),
+                   odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
+            Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
+
+            // zwracamy raport z badań w formie czytelnej dla człowieka
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRowziazanie() };
+            zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", ZwrocWartoscNiebo()["max"][0].ToString() };
+            zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", ZwrocWartoscNiebo()["min"][0].ToString() };
+            zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
+            zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
+            zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu().ToString() };
+
+            return zwracanyTekst;
+        }
+
         /// <summary>
         /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
         /// </summary>
