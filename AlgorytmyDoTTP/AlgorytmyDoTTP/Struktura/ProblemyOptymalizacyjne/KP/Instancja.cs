@@ -7,41 +7,41 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
     /// </summary>
     class Instancja : IPomocniczy
     {
-        private double waga;
-        private double wartosc;
+        private float waga;
+        private float wartosc;
 
-        public Instancja(double waga, double wartosc)
+        public Instancja(float waga, float wartosc)
         {
             this.waga = waga;
             this.wartosc = wartosc;
         }
 
-        public double ZwrocDlugosc()
+        public float ZwrocDlugosc()
         {
             throw new System.NotImplementedException();
         }
 
-        public short ZwrocDo()
+        public ushort ZwrocDo()
         {
             throw new System.NotImplementedException();
         }
 
-        public short ZwrocOd()
+        public ushort ZwrocOd()
         {
             throw new System.NotImplementedException();
         }
 
-        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, int iloscPrzedmiotow)
+        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, ushort iloscPrzedmiotow)
         {
             throw new System.NotImplementedException();
         }
 
-        public double ZwrocWage()
+        public float ZwrocWage()
         {
             return waga;
         }
 
-        public double ZwrocWartosc()
+        public float ZwrocWartosc()
         {
             return wartosc;
         }

@@ -2,7 +2,6 @@
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -123,12 +122,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             return wynik;
         }
 
-        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(ArrayList wektor)
+        public override Dictionary<string, double[]> ObliczZysk(IPomocniczy[] wektor)
         {
             throw new NotImplementedException();
         }

@@ -7,43 +7,43 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
     /// </summary>
     class Instancja : IPomocniczy
     {
-        private short prowadziOd;
-        private short prowadziDo;
-        private double dlugosc;
+        private ushort prowadziOd;
+        private ushort prowadziDo;
+        private float dlugosc;
 
-        public Instancja(short prowadziOd, short prowadziDo, double dlugosc)
+        public Instancja(ushort prowadziOd, ushort prowadziDo, float dlugosc)
         {
             this.prowadziOd = prowadziOd;
             this.prowadziDo = prowadziDo;
             this.dlugosc = dlugosc;
         }
 
-        public short ZwrocOd()
+        public ushort ZwrocOd()
         {
             return prowadziOd;
         }
 
-        public short ZwrocDo()
+        public ushort ZwrocDo()
         {
             return prowadziDo;
         }
 
-        public double ZwrocDlugosc()
+        public float ZwrocDlugosc()
         {
             return dlugosc;
         }
 
-        public double ZwrocWage()
+        public float ZwrocWage()
         {
             throw new System.NotImplementedException();
         }
 
-        public double ZwrocWartosc()
+        public float ZwrocWartosc()
         {
             throw new System.NotImplementedException();
         }
 
-        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, int iloscPrzedmiotow)
+        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, ushort iloscPrzedmiotow)
         {
             throw new System.NotImplementedException();
         }

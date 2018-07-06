@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -24,30 +23,39 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         {
             XmlDocument dokument = new XmlDocument();
             dokument.Load("./Dane/TSP/" + nazwaPakietu + ".xml");
-
             XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
-            instancje = new Instancja[miasta.Count];
+            
             dlugoscGenotypu = (ushort)miasta.Count;
 
-            for (short i = 0; i < miasta.Count; i++)
+            int liczbaPermutacji = dlugoscGenotypu;
+            for(ushort i = (ushort)(dlugoscGenotypu - 1); i > 0; i--)
             {
-                for (short j = (short)(miasta.Count - 1); j > 0; j--)
-                {
-                    if (i != j)
-                    {
-                        double x1 = double.Parse(miasta[i]["x"].InnerText),
-                               y1 = double.Parse(miasta[i]["y"].InnerText),
-                               x2 = double.Parse(miasta[j]["x"].InnerText),
-                               y2 = double.Parse(miasta[j]["y"].InnerText),
-                               dystans = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+                liczbaPermutacji += i;
+            }
+            
+            instancje = new Instancja[liczbaPermutacji];
 
-                        instancje[i] = new Instancja((short)(i + 1), (short)(j + 1), dystans);
+            int iter = 0;
+            for (ushort i = 0; i < miasta.Count; i++)
+            {
+                for (ushort j = 0; j < miasta.Count; j++)
+                {
+                    if (i < j)
+                    {
+                        float x1 = float.Parse(miasta[i]["x"].InnerText),
+                              y1 = float.Parse(miasta[i]["y"].InnerText),
+                              x2 = float.Parse(miasta[j]["x"].InnerText),
+                              y2 = float.Parse(miasta[j]["y"].InnerText),
+                              dystans = (float)Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+
+                        instancje[iter] = new Instancja((ushort)(i + 1), (ushort)(j + 1), dystans);
+                        iter++;
                     }
                 }
             }
         }
 
-        public override Dictionary<String, double[]> ObliczZysk(ArrayList wektor)
+        public override Dictionary<String, double[]> ObliczZysk(IPomocniczy[] wektor)
         {
             Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
             double zysk = ZwrocDlugoscTrasy(wektor, false)[0];
@@ -58,51 +66,47 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public double[] ZwrocDlugoscTrasy(ArrayList wektor, bool zwrocWektor)
+        public double[] ZwrocDlugoscTrasy(IPomocniczy[] wektor, bool zwrocWektor)
         {
-            int dlugoscWekotra = wektor.Count;
+            int dlugoscWekotra = wektor.Length;
             double[] wynik = (zwrocWektor) ? new double[dlugoscWekotra] : new double[] { 0 };
 
             for (int i = 0; i < dlugoscWekotra; i++)
             {
-                int j = (i == 0) ? dlugoscWekotra - 1 : i - 1;
-
-                for(int k = 0; k < instancje.Length; k++)
+                if (zwrocWektor)
                 {
-                    if (instancje[k].ZwrocOd() == (ushort)wektor[j] && instancje[k].ZwrocDo() == (ushort)wektor[i])
-                    {
-                        if (zwrocWektor)
-                        {
-                            wynik[k] = instancje[k].ZwrocDlugosc();
-                        }
-                        else
-                        {
-                            wynik[0] += instancje[k].ZwrocDlugosc();
-                        }
-                    }
-                    else if (instancje[k].ZwrocDo() == (ushort)wektor[j] && instancje[k].ZwrocOd() == (ushort)wektor[i])
-                    {
-                        if (zwrocWektor)
-                        {
-                            wynik[k] = instancje[k].ZwrocDlugosc();
-                        }
-                        else
-                        {
-                            wynik[0] += instancje[k].ZwrocDlugosc();
-                        }
-                    }
+                    wynik[i] = wektor[i].ZwrocDlugosc();
+                }
+                else
+                {
+                    wynik[0] += wektor[i].ZwrocDlugosc();
                 }
             }
 
             return wynik;
         }
 
-        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] elementy)
         {
-            ArrayList wynik = new ArrayList();
-            wynik.AddRange(wybraneElementy);
+            IPomocniczy[] wybraneElementy = new IPomocniczy[elementy.Length];
+            for(int i = 0; i < elementy.Length; i++)
+            {
+                int j = (i == elementy.Length - 1) ? 0 : i + 1;
 
-            return wynik;
+                for (int k = 0; k < instancje.Length; k++)
+                {
+                    int start = (elementy[j] < elementy[i]) ? elementy[j] : elementy[i],
+                        koniec = (elementy[i] < elementy[j]) ? elementy[j] : elementy[i];
+
+                    if (start == instancje[k].ZwrocOd() && koniec == instancje[k].ZwrocDo())
+                    {
+                        wybraneElementy[i] = instancje[k];
+                        break;
+                    }
+                }
+            }
+
+            return wybraneElementy;
         }
 
         public override Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy)

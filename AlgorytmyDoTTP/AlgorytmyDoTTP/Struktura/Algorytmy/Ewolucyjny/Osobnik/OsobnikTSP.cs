@@ -12,7 +12,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
     {
         public OsobnikTSP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
         
-        public override ArrayList Fenotyp(ushort[] genotyp)
+        public override IPomocniczy[] Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }

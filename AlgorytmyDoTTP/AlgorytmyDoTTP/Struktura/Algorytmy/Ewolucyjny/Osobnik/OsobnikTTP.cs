@@ -17,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
 
-        public override ArrayList Fenotyp(ushort[] genotyp)
+        public override IPomocniczy[] Fenotyp(ushort[] genotyp)
         {
             throw new System.NotImplementedException();
         }

@@ -7,33 +7,33 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
     /// </summary>
     class Instancja : IPomocniczy
     {
-        public double ZwrocDlugosc()
+        public float ZwrocDlugosc()
         {
             throw new System.NotImplementedException();
         }
 
-        public short ZwrocDo()
+        public ushort ZwrocDo()
         {
             throw new System.NotImplementedException();
         }
 
-        public short ZwrocOd()
+        public ushort ZwrocOd()
         {
             throw new System.NotImplementedException();
         }
 
-        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, int iloscPrzedmiotow)
+        public ushort[] ZwrocPrzedmioty(string dostepnePrzedmioty, ushort iloscPrzedmiotow)
         {
             dostepnePrzedmioty = dostepnePrzedmioty.Replace(" ", "").Trim();
             string[] elementy = dostepnePrzedmioty.Split(',');
 
             ushort[] przedmioty = new ushort[iloscPrzedmiotow];
-            for (int i = 0; i < iloscPrzedmiotow; i++)
+            for (ushort i = 0; i < iloscPrzedmiotow; i++)
             {
-                for (int j = 0; j < elementy.Length; j++)
+                for (ushort j = 0; j < elementy.Length; j++)
                 {
                     elementy[j] = elementy[j].Replace(" ", "").Trim();
-                    if ((i + 1) == int.Parse(elementy[j]))
+                    if ((i + 1) == ushort.Parse(elementy[j]))
                     {
                         przedmioty[i] = 1;
                         break;
@@ -48,12 +48,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             return przedmioty;
         }
 
-        public double ZwrocWage()
+        public float ZwrocWage()
         {
             throw new System.NotImplementedException();
         }
 
-        public double ZwrocWartosc()
+        public float ZwrocWartosc()
         {
             throw new System.NotImplementedException();
         }

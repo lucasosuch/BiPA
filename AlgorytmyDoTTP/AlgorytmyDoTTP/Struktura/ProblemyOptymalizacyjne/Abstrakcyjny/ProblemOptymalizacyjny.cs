@@ -78,14 +78,14 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         /// </summary>
         /// <param name="wektor">Dziedzina problemu</param>
         /// <returns>Zwraca obliczoną wartość funkcji celu</returns>
-        public abstract Dictionary<string, double[]> ObliczZysk(ArrayList wektor);
+        public abstract Dictionary<string, double[]> ObliczZysk(IPomocniczy[] wektor);
 
         /// <summary>
         /// Metoda zwraca wybrane elementy w reprezentacji listowej
         /// </summary>
         /// <param name="wybraneElementy">Dziedzina problemu</param>
         /// <returns>Zwraca wybrane elementy</returns>
-        public abstract ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy);
+        public abstract IPomocniczy[] ZwrocWybraneElementy(ushort[] wybraneElementy);
 
         /// <summary>
         /// Metoda zwraca wybrane elementy w reprezentacji słownikowej

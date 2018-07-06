@@ -16,19 +16,29 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             Inicjalizacja(nazwaPakietu);
         }
 
-        public override ArrayList ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] elementy)
         {
-            ArrayList listaElementow = new ArrayList();
-
-            for (int i = 0; i < wybraneElementy.Length; i++)
+            int liczbaElementow = 0;
+            for(int i = 0; i < elementy.Length; i++)
             {
-                if(wybraneElementy[i] == 1)
+                if (elementy[i] == 1)
                 {
-                    listaElementow.Add(instancje[i]);
+                    liczbaElementow++;
+                }
+            }
+
+            int j = 0;
+            IPomocniczy[] wybraneElementy = new IPomocniczy[liczbaElementow];
+            for (int i = 0; i < elementy.Length; i++)
+            {
+                if(elementy[i] == 1)
+                {
+                    wybraneElementy[j] = instancje[i];
+                    j++;
                 } 
             }
 
-            return listaElementow;
+            return wybraneElementy;
         }
 
         /// <summary>
@@ -46,11 +56,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
             for (int i = 0; i < przedmioty.Count; i++)
             {
-                instancje[i] = new Instancja(double.Parse(przedmioty[i]["waga"].InnerText), double.Parse(przedmioty[i]["wartosc"].InnerText));
+                instancje[i] = new Instancja(float.Parse(przedmioty[i]["waga"].InnerText), float.Parse(przedmioty[i]["wartosc"].InnerText));
             }
         }
 
-        public override Dictionary<String, double[]> ObliczZysk(ArrayList wektor)
+        public override Dictionary<String, double[]> ObliczZysk(IPomocniczy[] wektor)
         {
             Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
             wynik["min"] = new double[] { 0 };

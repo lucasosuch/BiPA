@@ -13,14 +13,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         public ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
             Random losowy = new Random();
-            double zroznicowaniePopulacji = 0.5;
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
+
+            int losoweElementy = 0,
+                zroznicowaniePopulacji = (int)(0.7 * iloscRozwiazan);
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
                 ushort[] genotyp = new ushort[iloscElementow];
 
-                if (losowy.NextDouble() < zroznicowaniePopulacji)
+                if (losoweElementy < zroznicowaniePopulacji)
                 {
                     ArrayList wykorzystane = new ArrayList();
 
@@ -39,6 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                         }
                     }
 
+                    losoweElementy++;
                     wykorzystane.Clear();
                 }
                 else
