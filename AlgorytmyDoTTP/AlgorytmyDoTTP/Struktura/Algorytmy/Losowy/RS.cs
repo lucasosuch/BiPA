@@ -1,7 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
-using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
@@ -12,34 +12,28 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
     /// </summary>
     class RS : IAlgorytm
     {
-        private AWynik wynik;
+        private int iloscRozwiazan;
+        private int iloscElementow;
+        private ALosowanie losowanie;
 
-        public RS()
+        public RS(ALosowanie losowanie, int iloscRozwiazan, int iloscElementow)
         {
-            throw new Exception();
-        }
-
-        public RS(AWynik wynik)
-        {
-            this.wynik = wynik;
+            this.losowanie = losowanie;
+            this.iloscRozwiazan = iloscRozwiazan;
+            this.iloscElementow = iloscElementow;
         }
 
         public Dictionary<string, string[]> Start()
         {
             AnalizaRLS_RS analiza = new AnalizaRLS_RS();
-            Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analiza.RozpocznijPomiarCzasu();
-            ReprezentacjaRozwiazania najlepszeRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
-            Dictionary<string, double[]> najlepszyWynik = wynik.ZwrocNajlepszyWynik();
+            losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
+            ReprezentacjaRozwiazania najlepszeRozwiazanie = losowanie.ZwrocNajlepszeRozwiazanie();
+            Dictionary<string, double[]> najlepszyWynik = losowanie.ZwrocNajlepszyWynik();
             analiza.ZakonczPomiarCzasu();
             
             return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, najlepszyWynik);
-        }
-
-        public AWynik ZwrocInstancjeWyniku()
-        {
-            return wynik;
         }
     }
 }

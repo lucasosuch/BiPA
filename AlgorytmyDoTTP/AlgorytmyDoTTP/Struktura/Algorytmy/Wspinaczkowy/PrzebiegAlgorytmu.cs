@@ -11,9 +11,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
-            AWynik wynik;
-            ILosowanie losowanie;
+            ALosowanie losowanie;
             ARozwiazanie rozwiazanie;
+            SzukajNajlepszegoRozwiazania wynik;
 
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
                 iloscElementow = problem.ZwrocDlugoscGenotypu();

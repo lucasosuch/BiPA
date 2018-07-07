@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections;
@@ -8,9 +9,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     /// <summary>
     /// Klasa konkretna odpowiedzialna za losowanie rozwiązań pod Problem Komiwojażera
     /// </summary>
-    class LosowanieTSP : ILosowanie
+    class LosowanieTSP : ALosowanie
     {
-        public ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        public LosowanieTSP() { }
+
+        public LosowanieTSP(AOsobnik osobnik) : base(osobnik) { }
+
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
@@ -58,7 +63,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             return rozwiazania;
         }
 
-        public ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     /// <summary>
     /// Klasa konkretna odpowiedzialna za losowanie rozwiązań pod Problem Podróżującego Złodzieja
     /// </summary>
-    class LosowanieTTP : ILosowanie
+    class LosowanieTTP : ALosowanie
     {
-        public ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
+        public LosowanieTTP() { }
+
+        public LosowanieTTP(AOsobnik osobnik) : base(osobnik) { }
+
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
         {
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
@@ -55,7 +60,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             return rozwiazania;
         }
 
-        public ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
             throw new NotImplementedException();
         }

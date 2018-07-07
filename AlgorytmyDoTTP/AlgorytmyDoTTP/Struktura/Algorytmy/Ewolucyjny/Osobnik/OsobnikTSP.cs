@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik

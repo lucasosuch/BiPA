@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     /// </summary>
     class RLS : IAlgorytm
     {
-        private AWynik wynik;
+        private SzukajNajlepszegoRozwiazania wynik;
         private ARozwiazanie rozwiazanie;
 
         public RLS()
@@ -21,7 +21,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             throw new Exception();
         }
 
-        public RLS(ARozwiazanie rozwiazanie, AWynik wynik)
+        public RLS(ARozwiazanie rozwiazanie, SzukajNajlepszegoRozwiazania wynik)
         {
             this.rozwiazanie = rozwiazanie;
             this.wynik = wynik;

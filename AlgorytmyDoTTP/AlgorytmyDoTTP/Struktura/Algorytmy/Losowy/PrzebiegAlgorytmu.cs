@@ -1,7 +1,9 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
@@ -10,33 +12,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
-            AWynik wynik;
-            ILosowanie losowanie;
-
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
 
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP();
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(problem, iloscRozwiazan), problem);
-
-                    return new RS(wynik);
+                    return new RS(new LosowanieKP(new OsobnikKP(problem)), iloscRozwiazan, iloscElementow);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP();
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow), problem);
-
-                    return new RS(wynik);
-
+                    return new RS(new LosowanieTSP(new OsobnikTSP(problem)), iloscRozwiazan, iloscElementow);
                 case "Problem Podróżującego Złodzieja":
-                    losowanie = new LosowanieTTP();
-                    wynik = new WynikGenotypu2Wymiarowego(losowanie.LosujRozwiazania(problem, iloscRozwiazan), problem);
-
-                    return new RS(wynik);
+                    return new RS(new LosowanieTTP(new OsobnikTTP(problem)), iloscRozwiazan, iloscElementow);
             }
 
-            return new RS();
+            throw new Exception();
         }
     }
 }
