@@ -1,28 +1,34 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 {
     /// <summary>
     /// Klasa konkretna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego pod Problem Podróżującego Złodzieja
     /// </summary>
-    class RozwiazanieTTP : ARozwiazanie
+    class WspinaczkaTTP : AWspinaczka
     {
-        public RozwiazanieTTP(ProblemOptymalizacyjny problem) : base(problem){ }
+        public WspinaczkaTTP(ALosowanie losowanie) : base(losowanie) { }
 
         public override Dictionary<string, double[]> ZnajdzOptimum()
         {
-            ushort[][] dostepnePrzedmioty = (ushort[][])problem.ZwrocDostepnePrzedmioty().Clone();
-
             int poprawy = 0;
-            ushort[][] rozwiazanie = reprezentacjaRozwiazania.ZwrocGenotyp2Wymiarowy(),
-                       tmpRozwiazanie = (ushort[][])rozwiazanie.Clone();
-            Dictionary<string, double[]> tmpWynik, wynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(rozwiazanie));
+            ushort[] genotyp = reprezentacjaRozwiazania.ZwrocGenotyp1Wymiarowy(),
+                     tmpGenotyp = (ushort[])genotyp.Clone();
+
+            AOsobnik osobnik = losowanie.ZwrocOsobnika();
+            ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
+            Dictionary<string, double[]> wynik = osobnik.FunkcjaDopasowania(reprezentacjaRozwiazania);
+            ReprezentacjaRozwiazania tmpReprezentacjaRozwiazanie = new ReprezentacjaRozwiazania(tmpGenotyp);
+            ushort[][] dostepnePrzedmioty = (ushort[][])problemOptymalizacyjny.ZwrocDostepnePrzedmioty().Clone();
 
             do
             {
                 poprawy = 0;
-                double wspolczynnik = wynik["min"][0] / problem.ZwrocOgraniczeniaProblemu()[0];
+                double wspolczynnik = wynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
 
                 // problem plecakowy
                 for(int i = 0; i < tmpRozwiazanie.Length; i++)
@@ -39,8 +45,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
                                 tmpRozwiazanie[i][j] = 0;
                             }
 
-                            tmpWynik = problem.ObliczZysk(problem.ZwrocWybraneElementy(tmpRozwiazanie));
-                            wspolczynnik = tmpWynik["min"][0] / problem.ZwrocOgraniczeniaProblemu()[0];
+                            tmpWynik = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(tmpRozwiazanie));
+                            wspolczynnik = tmpWynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
                         }
                     }
                 }

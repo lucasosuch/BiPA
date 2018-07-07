@@ -1,22 +1,23 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 {
     /// <summary>
     /// Klasa abstrakcyjna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego
     /// </summary>
-    abstract class ARozwiazanie
+    abstract class AWspinaczka
     {
+        protected ALosowanie losowanie;
         protected Random losowy = new Random();
-        protected ProblemOptymalizacyjny problem;
         protected ReprezentacjaRozwiazania reprezentacjaRozwiazania;
 
-        public ARozwiazanie(ProblemOptymalizacyjny problem)
+        public AWspinaczka(ALosowanie losowanie)
         {
-            this.problem = problem;
+            this.losowanie = losowanie;
+            reprezentacjaRozwiazania = losowanie.ZwrocNajlepszeRozwiazanie();
         }
 
         /// <summary>
@@ -38,12 +39,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie
         }
 
         /// <summary>
-        /// Metoda zwraca wybrany Problem Optymalizacyjny
+        /// Metoda zwraca instancję odpowiedzialną za losowanie rozwiązań wg wybranego Problemu Optymalizacyjnego
         /// </summary>
-        /// <returns>Instancję problemu optymalizacyjnego</returns>
-        public ProblemOptymalizacyjny ZwrocProblemOptymalizacyjny()
+        /// <returns>Instancję populacji rozwiązań</returns>
+        public ALosowanie ZwrocInstancjeLosowania()
         {
-            return problem;
+            return losowanie;
         }
 
         /// <summary>

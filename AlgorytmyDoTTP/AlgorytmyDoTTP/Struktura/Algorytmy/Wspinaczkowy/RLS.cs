@@ -1,8 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
-using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
@@ -13,18 +10,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     /// </summary>
     class RLS : IAlgorytm
     {
-        private SzukajNajlepszegoRozwiazania wynik;
         private ARozwiazanie rozwiazanie;
 
-        public RLS()
-        {
-            throw new Exception();
-        }
-
-        public RLS(ARozwiazanie rozwiazanie, SzukajNajlepszegoRozwiazania wynik)
+        public RLS(ARozwiazanie rozwiazanie)
         {
             this.rozwiazanie = rozwiazanie;
-            this.wynik = wynik;
         }
 
         public Dictionary<string, string[]> Start()

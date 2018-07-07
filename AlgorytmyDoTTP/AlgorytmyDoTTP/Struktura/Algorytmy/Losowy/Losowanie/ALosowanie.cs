@@ -19,6 +19,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         }
 
         /// <summary>
+        /// Metoda zwraca instancję osobnika / rozwiązania Problemu Optymalizacyjnego
+        /// </summary>
+        /// <returns>Instancję osobnika</returns>
+        public AOsobnik ZwrocOsobnika()
+        {
+            return osobnik;
+        }
+
+        /// <summary>
         /// Metoda zwraca najlepsze znalezione rozwiązanie
         /// </summary>
         /// <returns>Najlepsze rozwiązanie</returns>

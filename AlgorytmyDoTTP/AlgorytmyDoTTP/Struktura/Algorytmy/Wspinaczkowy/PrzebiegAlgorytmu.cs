@@ -1,8 +1,9 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Rozwiazanie;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
@@ -12,8 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
             ALosowanie losowanie;
-            ARozwiazanie rozwiazanie;
-            SzukajNajlepszegoRozwiazania wynik;
+            AWspinaczka przeszukiwanieLokalne;
 
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
@@ -21,26 +21,29 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP();
-                    rozwiazanie = new RozwiazanieKP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(problem, iloscRozwiazan), problem);
+                    losowanie = new LosowanieKP(new OsobnikKP(problem));
+                    losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
-                    return new RLS(rozwiazanie, wynik);
+                    przeszukiwanieLokalne = new WspinaczkaKP(losowanie);
+
+                    return new RLS(przeszukiwanieLokalne);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP();
-                    rozwiazanie = new RozwiazanieTSP(problem);
-                    wynik = new WynikGenotypu1Wymiarowego(losowanie.LosujRozwiazania(iloscRozwiazan, iloscElementow), problem);
+                    losowanie = new LosowanieTSP(new OsobnikKP(problem));
+                    losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
-                    return new RLS(rozwiazanie, wynik);
+                    przeszukiwanieLokalne = new WspinaczkaTSP(losowanie);
+
+                    return new RLS(przeszukiwanieLokalne);
                 case "Problem Podróżującego Złodzieja":
-                    losowanie = new LosowanieTTP();
-                    rozwiazanie = new RozwiazanieTTP(problem);
-                    wynik = new WynikGenotypu2Wymiarowego(losowanie.LosujRozwiazania(problem, iloscRozwiazan), problem);
+                    losowanie = new LosowanieTTP(new OsobnikKP(problem));
+                    losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
-                    return new RLS(rozwiazanie, wynik);
+                    przeszukiwanieLokalne = new WspinaczkaTTP(losowanie);
+
+                    return new RLS(przeszukiwanieLokalne);
             }
 
-            return new RLS();
+            throw new Exception();
         }
     }
 }

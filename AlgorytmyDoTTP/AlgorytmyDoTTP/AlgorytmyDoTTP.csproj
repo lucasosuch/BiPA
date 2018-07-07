@@ -88,13 +88,12 @@
     <Compile Include="Struktura\Algorytmy\Losowy\Losowanie\LosowanieTTP.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\RS.cs" />
-    <Compile Include="Struktura\Algorytmy\Losowy\Wynik\SzukajNajlepszegoRozwiazania.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\PrzebiegAlgorytmu.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\RLS.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\ARozwiazanie.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieKP.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTSP.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Rozwiazanie\RozwiazanieTTP.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\AWspinaczka.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaKP.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaTSP.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaTTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
