@@ -29,8 +29,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
             ushort[][] dostepnePrzedmioty = (ushort[][])problemOptymalizacyjny.ZwrocDostepnePrzedmioty().Clone();
 
             Dictionary<string, double[]> tmpWynik = new Dictionary<string, double[]>();
-            
-            System.Console.WriteLine(wynik["max"][0] +" "+ wynik["min"][0]);
 
             do
             {
@@ -90,7 +88,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     {
                         poprawy++;
                         marginesBledu--;
-                        System.Console.WriteLine("Poza skalę!");
                     }
                 }
                 else
@@ -99,35 +96,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     {
                         wynik = tmpWynik;
                         genotyp = (ushort[][])tmpGenotyp.Clone();
+                        reprezentacjaRozwiazania.ZmienGenotyp(genotyp);
                         poprawy++;
                         marginesBledu = 50;
-
-                        System.Console.WriteLine("Poprawa!!!");
-                        foreach (ushort[] geny in genotyp)
-                        {
-                            System.Console.WriteLine(string.Join(",", geny));
-                        }
-
-                        System.Console.WriteLine(wynik["max"][0] + " " + wynik["min"][0]);
                     } else
                     {
                         if (marginesBledu > 0)
                         {
                             poprawy++;
                             marginesBledu--;
-                            System.Console.WriteLine("Brak poprawy!");
                         }
                     }
                 }
             } while (poprawy > 0);
-
-            System.Console.WriteLine("Wynik!!!");
-            foreach (ushort[] geny in genotyp)
-            {
-                System.Console.WriteLine(string.Join(",", geny));
-            }
-
-            System.Console.WriteLine(wynik["max"][0] + " " + wynik["min"][0]);
 
             return wynik;
         }

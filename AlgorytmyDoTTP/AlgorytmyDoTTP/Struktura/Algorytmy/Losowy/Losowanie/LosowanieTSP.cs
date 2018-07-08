@@ -21,13 +21,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
 
             int losoweElementy = 0,
-                zroznicowaniePopulacji = (int)(0.7 * iloscRozwiazan);
+                zroznicowaniePopulacji = (int)(0.1 * iloscRozwiazan);
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
                 ushort[] genotyp = new ushort[iloscElementow];
 
-                if (losoweElementy < zroznicowaniePopulacji)
+                if ((losoweElementy > zroznicowaniePopulacji) && (losowy.Next(100) > 50))
                 {
                     ArrayList wykorzystane = new ArrayList();
 
@@ -55,6 +55,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                     {
                         genotyp[j] = (ushort)(j + 1);
                     }
+
+                    losoweElementy++;
                 }
 
                 rozwiazania[i] = new ReprezentacjaRozwiazania(genotyp);
