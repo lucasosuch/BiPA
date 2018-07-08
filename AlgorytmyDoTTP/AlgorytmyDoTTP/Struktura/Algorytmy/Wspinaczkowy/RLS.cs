@@ -1,5 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
@@ -10,11 +11,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     /// </summary>
     class RLS : IAlgorytm
     {
-        private ARozwiazanie rozwiazanie;
+        private AWspinaczka przeszukiwanieLokalne;
 
-        public RLS(ARozwiazanie rozwiazanie)
+        public RLS(AWspinaczka przeszukiwanieLokalne)
         {
-            this.rozwiazanie = rozwiazanie;
+            this.przeszukiwanieLokalne = przeszukiwanieLokalne;
         }
 
         public Dictionary<string, string[]> Start()
@@ -23,11 +24,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analiza.RozpocznijPomiarCzasu();
-            ReprezentacjaRozwiazania tymczasoweRozwiazanie = wynik.ZwrocNajlepszeRozwiazanie();
-            rozwiazanie.UstawRozwiazanie(tymczasoweRozwiazanie);
-            Dictionary<string, double[]> znalezioneOptimum = rozwiazanie.ZnajdzOptimum();
+            Dictionary<string, double[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
             analiza.ZakonczPomiarCzasu();
-            ReprezentacjaRozwiazania najlepszeRozwiazanie = rozwiazanie.ZwrocRozwiazanie();
+            ReprezentacjaRozwiazania najlepszeRozwiazanie = przeszukiwanieLokalne.ZwrocRozwiazanie();
 
             return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);
         }

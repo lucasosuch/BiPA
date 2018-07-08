@@ -27,7 +27,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
             do
             {
                 int start = 0,
-                    koniec = problemOptymalizacyjny.ZwrocDlugoscGenotypu() / 2;
+                    koniec = problemOptymalizacyjny.ZwrocDlugoscGenotypu();
 
                 poprawy = 0;
                 for (int i = start; i < koniec; i++)

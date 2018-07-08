@@ -15,7 +15,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
         public LosowanieTSP(AOsobnik osobnik) : base(osobnik) { }
 
-        public override ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan, int iloscElementow)
         {
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
@@ -61,11 +61,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             }
 
             return rozwiazania;
-        }
-
-        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
-        {
-            throw new NotImplementedException();
         }
     }
 }

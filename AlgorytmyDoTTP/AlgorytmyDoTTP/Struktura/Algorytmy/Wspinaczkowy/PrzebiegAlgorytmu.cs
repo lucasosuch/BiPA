@@ -35,7 +35,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
                     return new RLS(przeszukiwanieLokalne);
                 case "Problem Podróżującego Złodzieja":
-                    losowanie = new LosowanieTTP(new OsobnikKP(problem));
+                    losowanie = new LosowanieTTP(new OsobnikTTP(problem));
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaTTP(losowanie);

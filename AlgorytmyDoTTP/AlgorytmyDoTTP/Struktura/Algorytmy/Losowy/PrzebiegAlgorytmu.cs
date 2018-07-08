@@ -1,7 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;

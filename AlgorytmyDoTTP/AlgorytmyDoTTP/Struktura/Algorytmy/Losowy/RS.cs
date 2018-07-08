@@ -1,7 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Wynik;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy

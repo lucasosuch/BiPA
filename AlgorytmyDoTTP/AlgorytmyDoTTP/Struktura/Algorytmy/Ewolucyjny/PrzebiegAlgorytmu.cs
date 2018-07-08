@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
                     rekombinacja = new RekombinacjaKP(double.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
-                    populacja = new PopulacjaKP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]));
+                    populacja = new PopulacjaKP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
 
@@ -38,7 +38,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     rekombinacja = new RekombinacjaTSP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
-                    populacja = new PopulacjaTSP().StworzPopulacjeBazowa(ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
+                    populacja = new PopulacjaTSP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));
 
@@ -47,7 +47,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rozwiazanie = new OsobnikTTP(problem);
                     analityka = new AnalizaEwolucyjny(rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
-                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]));
+                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTTP(double.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     
                     return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["iloscPokolen"]), double.Parse(parametry["pwoKrzyzowania"]));

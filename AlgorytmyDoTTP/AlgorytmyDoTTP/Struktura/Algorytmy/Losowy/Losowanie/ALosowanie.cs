@@ -51,11 +51,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         /// <param name="listaRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         public void SzukajNajlepszegoRozwiazania(int iloscRozwiazan, int iloscElementow)
         {
-            ReprezentacjaRozwiazania[] listaRozwiazan = LosujRozwiazania(iloscRozwiazan, iloscElementow);
+            ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
+            ReprezentacjaRozwiazania[] listaRozwiazan = LosujRozwiazania(problemOptymalizacyjny, iloscRozwiazan, iloscElementow);
 
             najlepszeRozwiazanie = listaRozwiazan[0];
             najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[0]);
-            ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
 
             int iterator = 1;
             while (problemOptymalizacyjny.CzyIstniejaOgraniczenia() && (najlepszyWynik["min"][0] > problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0]))
@@ -80,19 +80,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         }
 
         /// <summary>
-        /// Metoda odpowiedzialna za wylosowanie rozwiązań, bez uwzględnienia problemu optymalizacyjnego
-        /// </summary>
-        /// <param name="iloscRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
-        /// <param name="iloscElementow">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
-        /// <returns>Lista osobników - rozwiązań</returns>
-        public abstract ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow);
-
-        /// <summary>
         /// Metoda odpowiedzialna za wylosowanie rozwiązań, z uwzględnieniem problemu optymalizacyjnego
         /// </summary>
         /// <param name="problemOptymalizacyjny">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <param name="iloscRozwiazan">Wartość pozwalająca ustalić, czy sprawdzamy ograniczenia</param>
         /// <returns>Lista osobników - rozwiązań</returns>
-        public abstract ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan);
+        public abstract ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan, int iloscElementow);
     }
 }

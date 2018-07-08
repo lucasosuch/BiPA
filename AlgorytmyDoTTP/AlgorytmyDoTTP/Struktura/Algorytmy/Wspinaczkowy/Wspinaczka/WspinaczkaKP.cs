@@ -57,7 +57,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     }
                 }
             } while (poprawy > 0);
-
+            
             return wynik;
         }
     }

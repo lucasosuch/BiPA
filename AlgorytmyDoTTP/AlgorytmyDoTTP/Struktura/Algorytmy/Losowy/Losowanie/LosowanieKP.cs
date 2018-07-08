@@ -15,11 +15,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
         public LosowanieKP(AOsobnik osobnik) : base(osobnik) { }
 
-        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan)
+        public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan, int iloscElementow)
         {
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
-            int iloscElementow = problemOptymalizacyjny.ZwrocDlugoscGenotypu();
             double[] ograniczeniaProblemu = problemOptymalizacyjny.ZwrocOgraniczeniaProblemu();
 
             for (int i = 0; i < iloscRozwiazan; i++)
@@ -38,11 +37,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             }
 
             return rozwiazania;
-        }
-
-        public override ReprezentacjaRozwiazania[] LosujRozwiazania(int iloscRozwiazan, int iloscElementow)
-        {
-            throw new NotImplementedException();
         }
     }
 }
