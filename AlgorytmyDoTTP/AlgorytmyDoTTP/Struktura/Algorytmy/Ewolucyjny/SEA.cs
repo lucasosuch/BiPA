@@ -40,7 +40,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             int iloscOsobnikowPopulacji = (int)(populacjaBazowa.Length * 2 * pwoKrzyzowania);
             ReprezentacjaRozwiazania[] nowaPopulacja = new ReprezentacjaRozwiazania[iloscOsobnikowPopulacji];
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
-            
+
+            Console.WriteLine("tst: "+ iloscOsobnikowPopulacji);
             analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
             // iterując przez wszystkie pokolenia
             while (iloscPokolen >= 0)
@@ -57,11 +58,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         
                     // dzieci dodajemy do nowej populacji
                     nowaPopulacja[i] = dziecko1;
-                    nowaPopulacja[i+1] = dziecko2;
-
                     // sprawdzając czy nie stworzyliśmy najlepszego rozwiązania do tej pory
                     analityka.ZmienWartoscNiebo(dziecko1);
-                    analityka.ZmienWartoscNiebo(dziecko2);
+
+                    if (i+1 < iloscOsobnikowPopulacji)
+                    {
+                        nowaPopulacja[i + 1] = dziecko2;
+                        analityka.ZmienWartoscNiebo(dziecko2);
+                    }
                 }
 
                 // wymieniamy starą populację na nową populację
