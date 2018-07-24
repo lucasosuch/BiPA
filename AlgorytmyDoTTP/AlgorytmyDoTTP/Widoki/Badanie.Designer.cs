@@ -45,7 +45,7 @@
             // zapiszBadanie
             // 
             this.zapiszBadanie.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.zapiszBadanie.Location = new System.Drawing.Point(54, 187);
+            this.zapiszBadanie.Location = new System.Drawing.Point(54, 94);
             this.zapiszBadanie.Margin = new System.Windows.Forms.Padding(4);
             this.zapiszBadanie.Name = "zapiszBadanie";
             this.zapiszBadanie.Size = new System.Drawing.Size(167, 28);
@@ -57,7 +57,7 @@
             // pobierzCSV
             // 
             this.pobierzCSV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pobierzCSV.Location = new System.Drawing.Point(29, 187);
+            this.pobierzCSV.Location = new System.Drawing.Point(29, 94);
             this.pobierzCSV.Margin = new System.Windows.Forms.Padding(4);
             this.pobierzCSV.Name = "pobierzCSV";
             this.pobierzCSV.Size = new System.Drawing.Size(169, 28);
@@ -80,28 +80,28 @@
             // wynikiBadania
             // 
             this.wynikiBadania.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wynikiBadania.Location = new System.Drawing.Point(3, 233);
+            this.wynikiBadania.Location = new System.Drawing.Point(3, 140);
             this.wynikiBadania.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wynikiBadania.Multiline = true;
             this.wynikiBadania.Name = "wynikiBadania";
             this.wynikiBadania.ReadOnly = true;
             this.wynikiBadania.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.wynikiBadania.Size = new System.Drawing.Size(1031, 228);
+            this.wynikiBadania.Size = new System.Drawing.Size(1031, 321);
             this.wynikiBadania.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.wynikiBadania, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1037, 463);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -119,7 +119,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1031, 225);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1031, 132);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -134,7 +134,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(251, 219);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(251, 126);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // tableLayoutPanel4
@@ -149,7 +149,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(253, 219);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(253, 126);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // Badanie
