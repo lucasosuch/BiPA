@@ -46,13 +46,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         protected abstract ReprezentacjaRozwiazania MetodaRuletki(ReprezentacjaRozwiazania[] populacja);
 
         /// <summary>
-        /// Metoda odpowiedzialna wybór osobnika z populacji za pomocą ruletki turniejowej - czyli proporcjonalnemu nadaniu współczynników całej populacji i wyboru za pomocą tych współczynników najlepiej przystosowanych osobników
-        /// </summary>
-        /// <param name="populacja">Populacja osobników - rozwiązań</param>
-        /// <returns>Osobnik - rozwiązanie</returns>
-        protected abstract ReprezentacjaRozwiazania RuletkaTurniejowa(ReprezentacjaRozwiazania[] populacja);
-
-        /// <summary>
         /// Metoda nadająca wskaźniki dla całej populacji osobników
         /// </summary>
         /// <param name="populacja">Populacja osobników - rozwiązań</param>

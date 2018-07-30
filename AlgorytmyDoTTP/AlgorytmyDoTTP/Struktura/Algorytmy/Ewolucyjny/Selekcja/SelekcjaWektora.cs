@@ -15,7 +15,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
         public override ReprezentacjaRozwiazania WybierzOsobnika(ReprezentacjaRozwiazania[] populacja, int pokolenie)
         {
-            if(typSelekcji == "Metoda ruletki" || typSelekcji == "Ruletka turniejowa")
+            if(typSelekcji == "Metoda ruletki")
             {
                 if(this.pokolenie != pokolenie)
                 {
@@ -23,14 +23,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 }
 
                 this.pokolenie = pokolenie;
-                
-                if(typSelekcji == "Metoda ruletki")
-                {
-                    return MetodaRuletki(populacja);
-                } else
-                {
-
-                }
+                return MetodaRuletki(populacja);
             }
 
             return Turniej(populacja);
@@ -74,11 +67,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             }
 
             return osobnik;
-        }
-
-        protected override ReprezentacjaRozwiazania RuletkaTurniejowa(ReprezentacjaRozwiazania[] populacja)
-        {
-            throw new NotImplementedException();
         }
 
         protected override ArrayList ZwrocWskazniki(ReprezentacjaRozwiazania[] populacja)

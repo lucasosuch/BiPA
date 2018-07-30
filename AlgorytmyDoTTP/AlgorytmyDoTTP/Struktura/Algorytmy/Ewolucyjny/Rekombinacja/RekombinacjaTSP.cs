@@ -20,10 +20,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             switch(rodzajKrzyzowania)
             {
-                case "Wymiana podtras":
-                    potomek = WymianaPodtras(przodek1, przodek2);
-                    break;
-
                 case "PMX":
                     potomek = (ushort[])PMX(przodek1, przodek2).Clone();
                     break;
@@ -37,8 +33,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     break;
 
                 default:
-                    potomek = NaprzemienneWybieranieKrawedzi(przodek1, przodek2);
-                    break;
+                    throw new Exception();
 
             }
             
@@ -60,31 +55,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             geny[los2] = tmp;
             
             return geny;
-        }
-
-        /// <summary>
-        /// Metoda krzyżuje genotypy za pomocą naprzemiennej wymiany krawędzi 
-        /// </summary>
-        /// <param name="przodek1">1 przodek do krzyżowania</param>
-        /// <param name="przodek2">2 przodek do krzyżowania</param>
-        /// <seealso cref="Math.Subtract(int, int)"/>
-        private ushort[] NaprzemienneWybieranieKrawedzi(ushort[] przodek1, ushort[] przodek2)
-        {
-            ushort[] potomek = new ushort[przodek1.Length];
-
-            return potomek;
-        }
-
-        /// <summary>
-        /// Metoda krzyżuje genotypy za pomocą wymiany podtras
-        /// </summary>
-        /// <param name="przodek1">1 przodek do krzyżowania</param>
-        /// <param name="przodek2">2 przodek do krzyżowania</param>
-        private ushort[] WymianaPodtras(ushort[] przodek1, ushort[] przodek2)
-        {
-            ushort[] potomek = new ushort[przodek1.Length];
-
-            return potomek;
         }
 
         /// <summary>

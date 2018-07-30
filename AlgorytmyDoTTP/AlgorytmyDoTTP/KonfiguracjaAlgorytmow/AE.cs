@@ -9,12 +9,12 @@
 
         public readonly object[] KRZYZOWANIE_TSP = new object[]
         {
-            "PMX", "OX", "CX", "Wymiana podtras"
+            "PMX", "OX", "CX"
         };
 
         public readonly object[] SELEKCJA = new object[]
         {
-            "Turniej", "Metoda ruletki", "Ruletka turniejowa"
+            "Turniej", "Metoda ruletki"
         };
 
         public readonly string[] parametryCalkowite = new string[] 
