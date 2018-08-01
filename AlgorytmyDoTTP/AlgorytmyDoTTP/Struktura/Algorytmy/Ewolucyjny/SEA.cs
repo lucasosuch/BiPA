@@ -40,8 +40,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             int iloscOsobnikowPopulacji = (int)(populacjaBazowa.Length * 2 * pwoKrzyzowania);
             ReprezentacjaRozwiazania[] nowaPopulacja = new ReprezentacjaRozwiazania[iloscOsobnikowPopulacji];
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
-
-            Console.WriteLine("tst: "+ iloscOsobnikowPopulacji);
+            
             analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
             // iterując przez wszystkie pokolenia
             while (iloscPokolen >= 0)
