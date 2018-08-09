@@ -40,6 +40,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         public abstract Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu);
 
         /// <summary>
+        /// Metoda rozkodowująca rozwiązanie danego problemu optymalizacyjnego.
+        /// </summary>
+        /// <param name="rozwiazanie">Zakodowane rozwiązanie problemu optymalizacyjnego</param>
+        /// <returns>Zwraca rozkodowane rozwiązanie problemu optymalizacyjnego</returns>
+        public abstract string DekodujRozwiazanie(ReprezentacjaRozwiazania reprezentacjaGenotypu);
+
+        /// <summary>
         /// Metoda zwraca instancje problemu optymalizacyjnego
         /// </summary>
         /// <returns>Instancję problemu optymalizacyjnego</returns>

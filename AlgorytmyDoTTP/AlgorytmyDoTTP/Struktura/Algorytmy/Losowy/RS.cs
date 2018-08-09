@@ -14,18 +14,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
         private int iloscRozwiazan;
         private int iloscElementow;
         private ALosowanie losowanie;
+        private AnalizaRLS_RS analiza;
 
-        public RS(ALosowanie losowanie, int iloscRozwiazan, int iloscElementow)
+        public RS(ALosowanie losowanie, int iloscRozwiazan, int iloscElementow, AnalizaRLS_RS analiza)
         {
             this.losowanie = losowanie;
             this.iloscRozwiazan = iloscRozwiazan;
             this.iloscElementow = iloscElementow;
+            this.analiza = analiza;
         }
 
         public Dictionary<string, string[]> Start()
         {
-            AnalizaRLS_RS analiza = new AnalizaRLS_RS();
-
             analiza.RozpocznijPomiarCzasu();
             losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
             ReprezentacjaRozwiazania najlepszeRozwiazanie = losowanie.ZwrocNajlepszeRozwiazanie();

@@ -11,16 +11,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     /// </summary>
     class RLS : IAlgorytm
     {
+        private AnalizaRLS_RS analiza;
         private AWspinaczka przeszukiwanieLokalne;
 
-        public RLS(AWspinaczka przeszukiwanieLokalne)
+        public RLS(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analiza)
         {
+            this.analiza = analiza;
             this.przeszukiwanieLokalne = przeszukiwanieLokalne;
         }
 
         public Dictionary<string, string[]> Start()
         {
-            AnalizaRLS_RS analiza = new AnalizaRLS_RS();
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             analiza.RozpocznijPomiarCzasu();

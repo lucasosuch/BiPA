@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
@@ -14,14 +15,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
 
+            AOsobnik osobnik;
+            AnalizaRLS_RS analiza;
+
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    return new RS(new LosowanieKP(new OsobnikKP(problem)), iloscRozwiazan, iloscElementow);
+                    osobnik = new OsobnikKP(problem);
+                    analiza = new AnalizaRLS_RS(osobnik);
+
+                    return new RS(new LosowanieKP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Komiwojażera":
-                    return new RS(new LosowanieTSP(new OsobnikTSP(problem)), iloscRozwiazan, iloscElementow);
+                    osobnik = new OsobnikTSP(problem);
+                    analiza = new AnalizaRLS_RS(osobnik);
+
+                    return new RS(new LosowanieTSP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Podróżującego Złodzieja":
-                    return new RS(new LosowanieTTP(new OsobnikTTP(problem)), iloscRozwiazan, iloscElementow);
+                    osobnik = new OsobnikTTP(problem);
+                    analiza = new AnalizaRLS_RS(osobnik);
+
+                    return new RS(new LosowanieTTP(osobnik), iloscRozwiazan, iloscElementow, analiza);
             }
 
             throw new Exception();

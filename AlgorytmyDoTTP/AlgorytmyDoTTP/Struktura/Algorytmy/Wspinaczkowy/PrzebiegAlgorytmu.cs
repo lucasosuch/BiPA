@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
@@ -12,7 +13,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
+            AOsobnik osobnik;
             ALosowanie losowanie;
+            AnalizaRLS_RS analiza;
             AWspinaczka przeszukiwanieLokalne;
 
             int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
@@ -21,26 +24,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             switch (parametry["problem"])
             {
                 case "Problem Plecakowy":
-                    losowanie = new LosowanieKP(new OsobnikKP(problem));
+                    osobnik = new OsobnikKP(problem);
+                    losowanie = new LosowanieKP(osobnik);
+                    analiza = new AnalizaRLS_RS(osobnik);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaKP(losowanie);
 
-                    return new RLS(przeszukiwanieLokalne);
+                    return new RLS(przeszukiwanieLokalne, analiza);
                 case "Problem Komiwojażera":
-                    losowanie = new LosowanieTSP(new OsobnikKP(problem));
+                    osobnik = new OsobnikTSP(problem);
+                    losowanie = new LosowanieTSP(osobnik);
+                    analiza = new AnalizaRLS_RS(osobnik);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaTSP(losowanie);
 
-                    return new RLS(przeszukiwanieLokalne);
+                    return new RLS(przeszukiwanieLokalne, analiza);
                 case "Problem Podróżującego Złodzieja":
-                    losowanie = new LosowanieTTP(new OsobnikTTP(problem));
+                    osobnik = new OsobnikTTP(problem);
+                    losowanie = new LosowanieTTP(osobnik);
+                    analiza = new AnalizaRLS_RS(osobnik);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaTTP(losowanie);
 
-                    return new RLS(przeszukiwanieLokalne);
+                    return new RLS(przeszukiwanieLokalne, analiza);
             }
 
             throw new Exception();

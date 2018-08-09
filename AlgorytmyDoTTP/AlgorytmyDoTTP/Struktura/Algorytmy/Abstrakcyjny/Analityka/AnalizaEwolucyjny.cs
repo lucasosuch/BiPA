@@ -8,15 +8,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     /// Klasa analityczna.
     /// Rozszerzenie podstawowej klasy analitycznej, dla Algorytmu Ewolucyjnego.
     /// </summary>
-    class AnalizaEwolucyjny : AnalizaRLS_RS
+    class AnalizaEwolucyjny : AAnalityka
     {
-        private AOsobnik rozwiazanie;
         private double najlepszaWartoscFunkcji;
         private ReprezentacjaRozwiazania najlepszeRozwiazanie;
 
-        public AnalizaEwolucyjny(AOsobnik rozwiazanie)
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie) : base(rozwiazanie)
         {
-            this.rozwiazanie = rozwiazanie;
             najlepszaWartoscFunkcji = -10000;
             najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
         }
@@ -44,7 +42,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRowziazanie() };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", ZwrocWartoscNiebo()["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", ZwrocWartoscNiebo()["min"][0].ToString() };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
@@ -134,15 +132,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         public ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp()
         {
             return najlepszeRozwiazanie;
-        }
-
-        /// <summary>
-        /// Metoda zwracająca najlepsze rozwiązanie danego problemu optymalizacyjnego, w zależności od wybranego kodowania.
-        /// </summary>
-        /// <returns>Zwraca najlepsze rozwiązanie dla wybranego problemu optymalizacyjnego</returns>
-        public string ZwrocNajlepszeRowziazanie()
-        {
-            return DekodujRozwiazanie(najlepszeRozwiazanie);
         }
 
         /// <summary>

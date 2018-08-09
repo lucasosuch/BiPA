@@ -10,7 +10,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
     class OsobnikKP : AOsobnik
     {
         public OsobnikKP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
-        
+
+        public override string DekodujRozwiazanie(ReprezentacjaRozwiazania reprezentacjaGenotypu)
+        {
+            string wynik = "";
+            ushort[] genotyp = reprezentacjaGenotypu.ZwrocGenotyp1Wymiarowy();
+
+            for(int i = 1; i <= genotyp.Length; i++)
+            {
+                if (genotyp[i-1] == 1) wynik += (i +" ");
+            }
+
+            return wynik;
+        }
+
         public override IPomocniczy[] Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);

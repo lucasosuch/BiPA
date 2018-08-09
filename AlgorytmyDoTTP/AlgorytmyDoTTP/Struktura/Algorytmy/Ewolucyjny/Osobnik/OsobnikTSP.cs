@@ -10,7 +10,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
     class OsobnikTSP : AOsobnik
     {
         public OsobnikTSP(ProblemOptymalizacyjny problemOptymalizacyjny) : base(problemOptymalizacyjny){}
-        
+
+        public override string DekodujRozwiazanie(ReprezentacjaRozwiazania reprezentacjaGenotypu)
+        {
+            return string.Join(" ", reprezentacjaGenotypu.ZwrocGenotyp1Wymiarowy());
+        }
+
         public override IPomocniczy[] Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
