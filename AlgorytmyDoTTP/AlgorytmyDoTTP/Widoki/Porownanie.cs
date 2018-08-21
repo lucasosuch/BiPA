@@ -24,8 +24,8 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void ZwrocRaport()
         {
-            Series[] seria1 = formatka.ZwrocDaneDlaWykresow(paramentry, 0),
-                     seria2 = formatka.ZwrocDaneDlaWykresow(paramentry, 1);
+            Series[] seria1 = formatka.ZwrocDaneDlaWykresow(paramentry, 0, "desc"),
+                     seria2 = formatka.ZwrocDaneDlaWykresow(paramentry, 1, "asc");
 
             for (int j = 0; j < paramentry.Count; j++)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
@@ -9,31 +10,66 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaPorownania : FormatkaGlowna
     {
-        public Series[] ZwrocDaneDlaWykresow(Dictionary<string, string[]> paramentry, int indexDanych)
+        public Series[] ZwrocDaneDlaWykresow(Dictionary<string, string[]> paramentry, int indexDanych, string sortowanie)
         {
             int i = 0;
             string plikDanych = "";
             Series[] seria = new Series[paramentry.Count];
 
-            foreach (KeyValuePair<string, string[]> linia in paramentry)
+            double[] wartosci = new double[paramentry.Count];
+            string[] nazwyBadan = new string[paramentry.Count];
+            foreach (KeyValuePair<string, string[]> linia1 in paramentry)
             {
                 if (i == 0)
                 {
-                    plikDanych = linia.Value[3];
+                    plikDanych = linia1.Value[3];
                 }
                 else
                 {
-                    if (plikDanych != linia.Value[3])
+                    if (plikDanych != linia1.Value[3])
                     {
                         throw new Exception();
                     }
                 }
 
-                seria[i] = new Series();
-                seria[i].Name = linia.Value[2];
-                seria[i].Points.Add(new DataPoint(1, linia.Value[indexDanych]));
+                string nazwa = (nazwyBadan.Contains(linia1.Key)) ? "" : linia1.Key;
+                double wartosc = (nazwyBadan.Contains(linia1.Key)) ? 0 : double.Parse(linia1.Value[indexDanych]);
+
+                foreach (KeyValuePair<string, string[]> linia2 in paramentry)
+                {
+                    if(linia1.Key != linia2.Key && !nazwyBadan.Contains(linia2.Key))
+                    {
+                        double tmpWartosc = double.Parse(linia2.Value[indexDanych]);
+
+                        if (sortowanie == "asc")
+                        {
+                            if (wartosc <= tmpWartosc)
+                            {
+                                wartosc = tmpWartosc;
+                                nazwa = linia2.Key;
+                            }
+                        } else
+                        {
+                            if (wartosc >= tmpWartosc || wartosc == 0)
+                            {
+                                wartosc = tmpWartosc;
+                                nazwa = linia2.Key;
+                            }
+                        }
+                    }
+                }
+
+                wartosci[i] = wartosc;
+                nazwyBadan[i] = nazwa;
 
                 i++;
+            }
+
+            for(int j = 0; j < nazwyBadan.Length; j++)
+            {
+                seria[j] = new Series();
+                seria[j].Name = nazwyBadan[j];
+                seria[j].Points.Add(new DataPoint(1, wartosci[j]));
             }
 
             return seria;
@@ -44,7 +80,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             string wynik = "";
             double sredniCzas = 0,
                    sredniaWartosc = 0;
-
+            
             foreach (KeyValuePair<string, string[]> linia in paramentry)
             {
                 sredniCzas += double.Parse(linia.Value[0]);
