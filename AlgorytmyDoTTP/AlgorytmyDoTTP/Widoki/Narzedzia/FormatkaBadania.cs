@@ -96,19 +96,26 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             } while (znalezionePliki.Length != 0);
 
             XDocument xml = new XDocument();
-            XElement czasDzialania = new XElement("czasDzialania", wyniki["czasDzialania"][1]);
-            XElement maxWartosc = new XElement("maxWartosc", wyniki["maxWartosc"][1]);
-            XElement dataZapisu = new XElement("dataZapisu", data.ToString("d"));
-            XElement nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] +"_"+iter);
-            XElement plikDanych = new XElement("plikDanych", parametry["dane"]);
+            XElement czasDzialania = new XElement("czasDzialania", wyniki["czasDzialania"][1]),
+                     maxWartosc = new XElement("maxWartosc", wyniki["maxWartosc"][1]),
+                     dataZapisu = new XElement("dataZapisu", data.ToString("d")),
+                     nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
+                     plikDanych = new XElement("plikDanych", parametry["dane"]),
+                     dziedzina = new XElement("dziedzina", wyniki["dziedzina"][1]);
 
-            XElement badanie = new XElement("badanie");
-            badanie.Add(nazwaBadania);
-            badanie.Add(dataZapisu);
-            badanie.Add(maxWartosc);
-            badanie.Add(czasDzialania);
-            badanie.Add(plikDanych);
+            XElement badanie = new XElement("badanie"),
+                     podstawoweDane = new XElement("podstawoweDane"),
+                     rozwiazanie = new XElement("rozwiazanie");
 
+            podstawoweDane.Add(nazwaBadania);
+            podstawoweDane.Add(dataZapisu);
+            podstawoweDane.Add(maxWartosc);
+            podstawoweDane.Add(czasDzialania);
+            podstawoweDane.Add(plikDanych);
+            rozwiazanie.Add(dziedzina);
+
+            badanie.Add(podstawoweDane);
+            badanie.Add(rozwiazanie);
             xml.Add(badanie);
 
             xml.Save("./Badania/"+ ZwrocNazwePliku("xml", "_"+ iter));

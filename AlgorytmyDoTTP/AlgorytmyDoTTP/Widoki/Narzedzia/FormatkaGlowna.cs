@@ -30,7 +30,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             {
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Badania/" + pliki[i].Name);
-                XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/dataZapisu");
+                XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/dataZapisu");
 
                 string[] wiersz = new string[] { pliki[i].Name, dataZapisu.InnerText };
                 elementy[i] = new ListViewItem(wiersz);
@@ -85,10 +85,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Badania/" + nazwa);
 
-                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/maxWartosc");
-                XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/czasDzialania");
-                XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/nazwaBadania");
-                XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/plikDanych");
+                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc");
+                XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania");
+                XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania");
+                XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych");
 
                 paramentry[nazwa] = new string[] { czasDzialania.InnerText, maxWartosc.InnerText, nazwaBadania.InnerText, plikDanych.InnerText };
             }
@@ -119,16 +119,19 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Badania/" + nazwa);
 
-                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/maxWartosc");
-                XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/czasDzialania");
-                XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/nazwaBadania");
-                XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/plikDanych");
+                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc"),
+                        czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania"),
+                        nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania"),
+                        plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych"),
+                        dziedzina = dokument.DocumentElement.SelectSingleNode("/badanie/rozwiazanie/dziedzina");
 
                 odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
                             "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
                             "Wartość: " + maxWartosc.InnerText + Environment.NewLine +
-                            "Czas działania: " + czasDzialania.InnerText + " ms";
-                            
+                            "Czas działania: " + czasDzialania.InnerText + " ms" + Environment.NewLine +
+                            "Rozwiązanie: " + dziedzina.InnerText;
+
+
             }
 
             return odpowiedz;
