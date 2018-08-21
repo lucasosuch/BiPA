@@ -32,7 +32,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 dokument.Load("./Badania/" + pliki[i].Name);
                 XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/dataZapisu");
 
-                string[] wiersz = new string[] { pliki[i].Name, dataZapisu.InnerText };
+                string[] wiersz = new string[] { pliki[i].Name.Replace(".xml", ""), dataZapisu.InnerText };
                 elementy[i] = new ListViewItem(wiersz);
             }
 
@@ -83,7 +83,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 string nazwa = element.SubItems[0].Text;
 
                 XmlDocument dokument = new XmlDocument();
-                dokument.Load("./Badania/" + nazwa);
+                dokument.Load("./Badania/" + nazwa + ".xml");
 
                 XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc");
                 XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania");
@@ -117,7 +117,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             {
                 string nazwa = element.SubItems[0].Text;
                 XmlDocument dokument = new XmlDocument();
-                dokument.Load("./Badania/" + nazwa);
+                dokument.Load("./Badania/" + nazwa + ".xml");
 
                 XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc"),
                         czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania"),

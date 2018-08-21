@@ -179,14 +179,14 @@ namespace AlgorytmyDoTTP
         {
             int ilosc = daneHistoryczne.CheckedItems.Count;
 
-            if (ilosc <= 10 && ilosc > 0)
+            if (ilosc <= 10 && ilosc > 1)
             {
                 Porownanie porownanieTemp = new Porownanie(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems));
                 porownanieTemp.Show();
             }
-            else if(ilosc == 0)
+            else if(ilosc < 2)
             {
-                MessageBox.Show("Nie wybrano żadnego elementu!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nie wybrano żadnego badania lub wybrano tylko jedno!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
