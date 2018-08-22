@@ -21,7 +21,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", znalezioneOptimum["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", znalezioneOptimum["min"][0].ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu().ToString() };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu().ToString() + " ms" };
 
             return zwracanyTekst;
         }

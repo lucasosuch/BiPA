@@ -144,6 +144,7 @@ namespace AlgorytmyDoTTP
             panelKP.Visible = false;
             panelTTP.Visible = false;
             domyslnyProblem.Visible = false;
+            wybierzDane.Enabled = true;
 
             switch (wybierzProblem.Text)
             {

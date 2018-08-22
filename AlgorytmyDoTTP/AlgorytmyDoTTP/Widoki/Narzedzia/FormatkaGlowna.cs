@@ -125,13 +125,22 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                         plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych"),
                         dziedzina = dokument.DocumentElement.SelectSingleNode("/badanie/rozwiazanie/dziedzina");
 
+                XmlNodeList dodatkoweDane = dokument.DocumentElement.SelectNodes("/badanie/dodatkoweDane");
+
                 odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
                             "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
                             "Wartość: " + maxWartosc.InnerText + Environment.NewLine +
                             "Czas działania: " + czasDzialania.InnerText + " ms" + Environment.NewLine +
-                            "Rozwiązanie: " + dziedzina.InnerText;
+                            "Rozwiązanie: " + dziedzina.InnerText + Environment.NewLine + Environment.NewLine +
+                            "Dane dodatkowe: " + Environment.NewLine;
 
-
+                foreach (XmlNode dane in dodatkoweDane)
+                {
+                    foreach (XmlNode atrybut in dane.ChildNodes)
+                    {
+                        odpowiedz += atrybut.Name +": " + atrybut.InnerText + Environment.NewLine;
+                    }
+                }
             }
 
             return odpowiedz;

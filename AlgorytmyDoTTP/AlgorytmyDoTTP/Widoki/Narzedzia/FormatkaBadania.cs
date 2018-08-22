@@ -105,8 +105,22 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             XElement badanie = new XElement("badanie"),
                      podstawoweDane = new XElement("podstawoweDane"),
-                     rozwiazanie = new XElement("rozwiazanie");
+                     rozwiazanie = new XElement("rozwiazanie"),
+                     dodatkoweDane = new XElement("dodatkoweDane");
 
+            XElement[] dodatki = new XElement[parametry.Count - 2];
+
+            int i = 0;
+            foreach (KeyValuePair<string, string> parametr in parametry)
+            {
+                if (parametr.Key != "algorytm" && parametr.Key != "dane")
+                {
+                    dodatki[i] = new XElement(parametr.Key, parametr.Value);
+                    i++;
+                }
+            }
+
+            dodatkoweDane.Add(dodatki);
             podstawoweDane.Add(nazwaBadania);
             podstawoweDane.Add(dataZapisu);
             podstawoweDane.Add(maxWartosc);
@@ -116,6 +130,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             badanie.Add(podstawoweDane);
             badanie.Add(rozwiazanie);
+            badanie.Add(dodatkoweDane);
             xml.Add(badanie);
 
             xml.Save("./Badania/"+ ZwrocNazwePliku("xml", "_"+ iter));

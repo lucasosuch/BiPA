@@ -281,6 +281,7 @@
             // 
             // wybierzDane
             // 
+            this.wybierzDane.Enabled = false;
             this.wybierzDane.FormattingEnabled = true;
             this.wybierzDane.ItemHeight = 24;
             this.wybierzDane.Location = new System.Drawing.Point(368, 97);
