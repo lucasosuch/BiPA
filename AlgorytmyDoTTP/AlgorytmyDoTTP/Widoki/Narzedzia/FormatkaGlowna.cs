@@ -100,7 +100,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         {
             foreach (ListViewItem element in zaznaczoneElementy)
             {
-                string nazwa = element.SubItems[0].Text;
+                string nazwa = element.SubItems[0].Text + ".xml";
 
                 if (File.Exists(@"./Badania/"+ nazwa))
                 {

@@ -34,7 +34,7 @@ namespace AlgorytmyDoTTP.Widoki
                 string pulpit = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv", ""));
 
-                File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV());
+                File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV(), System.Text.Encoding.UTF8);
                 MessageBox.Show("Pobrano plik CSV, na pulpit!", "Plik CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(IOException exc)
             {
