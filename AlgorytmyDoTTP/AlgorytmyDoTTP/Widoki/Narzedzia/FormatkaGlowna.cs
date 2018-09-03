@@ -90,7 +90,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania");
                 XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych");
 
-                paramentry[nazwa] = new string[] { czasDzialania.InnerText, maxWartosc.InnerText, nazwaBadania.InnerText, plikDanych.InnerText };
+                paramentry[nazwa] = new string[] { czasDzialania.InnerText.Replace(" ms", ""), maxWartosc.InnerText, nazwaBadania.InnerText, plikDanych.InnerText };
             }
 
             return paramentry;
