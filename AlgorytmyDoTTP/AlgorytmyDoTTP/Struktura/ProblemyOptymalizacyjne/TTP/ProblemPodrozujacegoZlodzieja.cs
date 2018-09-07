@@ -90,7 +90,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 
             wynik["min"][0] = sumarycznaWaga;
             wynik["min"][1] = czasPodrozy;
-            wynik["max"][0] = sumarycznaWartosc - 10 * czasPodrozy;
+            wynik["max"][0] = sumarycznaWartosc - ZwrocOgraniczeniaProblemu()[1] * czasPodrozy;
             wynik["max"][1] = sumarycznaWartosc;
 
             return wynik;

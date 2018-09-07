@@ -56,7 +56,10 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
 
             for (int i = 0; i < przedmioty.Count; i++)
             {
-                instancje[i] = new Instancja(float.Parse(przedmioty[i]["waga"].InnerText), float.Parse(przedmioty[i]["wartosc"].InnerText));
+                float waga = float.Parse(przedmioty[i]["waga"].InnerText),
+                      wartosc = float.Parse(przedmioty[i]["wartosc"].InnerText);
+
+                instancje[i] = new Instancja(waga, wartosc);
             }
         }
 
