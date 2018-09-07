@@ -47,12 +47,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 return geny;
             }
 
-            int los1 = losowy.Next(0, geny.Length),
-                los2 = (los1 + 1 > geny.Length - 1) ? 0 : los1 + 1;
+            int koniec = losowy.Next(2, geny.Length - 2),
+                poczatek = koniec - 1;
           
-            ushort tmp = geny[los1];
-            geny[los1] = geny[los2];
-            geny[los2] = tmp;
+            ushort tmp = geny[koniec];
+            geny[koniec] = geny[poczatek];
+            geny[poczatek] = tmp;
             
             return geny;
         }
@@ -65,17 +65,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         /// <seealso cref="http://algorytmy-genetyczne.eprace.edu.pl/664,Implementacja.html"/>
         private ushort[] PMX(ushort[] przodek1, ushort[] przodek2)
         {
-            int ciecie1 = losowy.Next(0, przodek1.Length),
-                ciecie2 = losowy.Next(0, przodek1.Length);
-
             ushort[] potomek = new ushort[przodek1.Length];
-
-            while (ciecie1 == ciecie2)
-            {
-                ciecie2 = losowy.Next(0, przodek1.Length);
-            }
-
-            int start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
+            int ciecie1 = losowy.Next(1, przodek1.Length - 1),
+                ciecie2 = losowy.Next(ciecie1, przodek1.Length - 1),
+                start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
                 koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
 
             potomek = (ushort[])przodek1.Clone();
@@ -84,22 +77,31 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 potomek[i] = przodek2[i];
             }
 
-            for (int i = 0; i < potomek.Length; i++)
+            for (int i = 1; i < potomek.Length - 1; i++)
             {
-                for (int j = potomek.Length - 1; j > 0; j--)
+                for (int j = potomek.Length - 2; j > 0; j--)
                 {
                     if ((potomek[i] == potomek[j]) && (j != i))
                     {
-                        for (int k = 0; k < przodek2.Length; k++)
+                        for (int k = 1; k < przodek2.Length - 1; k++)
                         {
-                            Boolean zawiera = false;
-                            for (int l = 0; l < potomek.Length; l++)
+                            bool zawiera = false;
+                            for (int l = 1; l < potomek.Length - 1; l++)
                             {
-                                if (przodek2[k] == potomek[l]) zawiera = true;
+                                if (przodek2[k] == potomek[l])
+                                {
+                                    zawiera = true;
+                                    break;
+                                }
                             }
 
-                            if (!zawiera) potomek[j] = przodek2[k];
+                            if (!zawiera)
+                            {
+                                potomek[j] = przodek2[k];
+                            }
                         }
+
+                        break;
                     }
                 }
             }
@@ -115,34 +117,30 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         /// <seealso cref="https://www.researchgate.net/figure/The-order-based-crossover-OX-a-and-the-insertion-mutation-b-operators_fig2_224330103"/>
         private ushort[] OX(ushort[] przodek1, ushort[] przodek2)
         {
-            int ciecie1 = losowy.Next(0, przodek1.Length),
-                ciecie2 = losowy.Next(0, przodek1.Length);
-
             ushort[] potomek = new ushort[przodek1.Length];
+            int ciecie1 = losowy.Next(1, przodek1.Length - 1),
+                ciecie2 = losowy.Next(ciecie1, przodek1.Length - 1),
+                start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
+                koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
 
-            for (int k = 0; k < potomek.Length; k++)
+            potomek[0] = 1;
+            potomek[potomek.Length - 1] = 1;
+
+            for (int k = 1; k < potomek.Length - 1; k++)
             {
                 potomek[k] = 0;
             }
-
-            while (ciecie1 == ciecie2)
-            {
-                ciecie2 = losowy.Next(0, przodek1.Length);
-            }
-
-            int start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
-                koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
 
             for (int i = start; i <= koniec; i++)
             {
                 potomek[i] = przodek1[i];
             }
 
-            for (int i = 0; i < przodek2.Length; i++)
+            for (int i = 1; i < przodek2.Length - 1; i++)
             {
                 if (!potomek.Contains(przodek2[i]))
                 {
-                    for (int j = 0; j < potomek.Length; j++)
+                    for (int j = 1; j < potomek.Length - 1; j++)
                     {
                         if (potomek[j] == 0)
                         {
@@ -152,7 +150,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                     }
                 }
             }
-
+            
             return potomek;
         }
 
@@ -164,10 +162,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         /// <seealso cref="https://www.youtube.com/watch?v=85pIA2TYsUs"/>
         private ushort[] CX(ushort[] przodek1, ushort[] przodek2)
         {
-            ushort i = 0;
+            ushort i = 1;
             ushort[] potomek = new ushort[przodek1.Length];
 
-            for (int k = 0; k < potomek.Length; k++)
+            potomek[0] = 1;
+            potomek[potomek.Length - 1] = 1;
+
+            for (int k = 1; k < potomek.Length - 1; k++)
             {
                 potomek[k] = 0;
             }
@@ -179,7 +180,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 i = j;
             }
 
-            for (int k = 0; k < potomek.Length; k++)
+            for (int k = 1; k < potomek.Length - 1; k++)
             {
                 if (potomek[k] == 0)
                 {

@@ -26,14 +26,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 
             do
             {
-                int start = 0,
-                    koniec = problemOptymalizacyjny.ZwrocDlugoscGenotypu();
+                int start = 1,
+                    koniec = problemOptymalizacyjny.ZwrocDlugoscGenotypu() - 1;
 
                 poprawy = 0;
                 for (int i = start; i < koniec; i++)
                 {
-                    int liczba1 = losowy.Next(problemOptymalizacyjny.ZwrocDlugoscGenotypu()),
-                        liczba2 = losowy.Next(problemOptymalizacyjny.ZwrocDlugoscGenotypu());
+                    int liczba1 = losowy.Next(2, problemOptymalizacyjny.ZwrocDlugoscGenotypu()),
+                        liczba2 = losowy.Next(2, problemOptymalizacyjny.ZwrocDlugoscGenotypu());
 
                     ushort tmpWartosc = tmpGenotyp[liczba1];
                     tmpGenotyp[liczba1] = tmpGenotyp[liczba2];

@@ -25,9 +25,9 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             dokument.Load("./Dane/TSP/" + nazwaPakietu + ".xml");
             XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
             
-            dlugoscGenotypu = (ushort)miasta.Count;
+            dlugoscGenotypu = (ushort)(miasta.Count);
 
-            int liczbaPermutacji = dlugoscGenotypu;
+            int liczbaPermutacji = 0;
             for(ushort i = (ushort)(dlugoscGenotypu - 1); i > 0; i--)
             {
                 liczbaPermutacji += i;
@@ -47,7 +47,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
                               x2 = float.Parse(miasta[j]["x"].InnerText),
                               y2 = float.Parse(miasta[j]["y"].InnerText),
                               dystans = (float)Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
-
+                        
                         instancje[iter] = new Instancja((ushort)(i + 1), (ushort)(j + 1), dystans);
                         iter++;
                     }
@@ -70,7 +70,6 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         {
             int dlugoscWekotra = wektor.Length;
             double[] wynik = (zwrocWektor) ? new double[dlugoscWekotra] : new double[] { 0 };
-
             for (int i = 0; i < dlugoscWekotra; i++)
             {
                 if (zwrocWektor)
@@ -88,10 +87,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
 
         public override IPomocniczy[] ZwrocWybraneElementy(ushort[] elementy)
         {
-            IPomocniczy[] wybraneElementy = new IPomocniczy[elementy.Length];
-            for(int i = 0; i < elementy.Length; i++)
+            int liczbaMiast = elementy.Length - 1;
+            IPomocniczy[] wybraneElementy = new IPomocniczy[liczbaMiast];
+
+            for (int i = 0; i < liczbaMiast; i++)
             {
-                int j = (i == elementy.Length - 1) ? 0 : i + 1;
+                int j = (i == liczbaMiast - 1) ? 0 : i + 1;
 
                 for (int k = 0; k < instancje.Length; k++)
                 {
