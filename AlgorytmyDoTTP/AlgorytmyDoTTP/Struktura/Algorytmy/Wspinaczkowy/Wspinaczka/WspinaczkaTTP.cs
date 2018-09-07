@@ -39,8 +39,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     double wspolczynnik = wynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
 
                     // problem plecakowy
-                    for (int i = 0; i < tmpGenotyp.Length; i++)
+                    for (int i = 1; i < tmpGenotyp.Length - 1; i++)
                     {
+                        System.Console.WriteLine("- "+ string.Join(",", tmpGenotyp[i]));
+                        System.Console.WriteLine("+ " + string.Join(",", dostepnePrzedmioty[i]));
                         for (int j = 1; j < tmpGenotyp[i].Length; j++)
                         {
                             if (dostepnePrzedmioty[i][j - 1] == 1)
@@ -65,9 +67,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                 } else
                 {
                     // problem komiwojażera
-                    for (int i = 0; i < tmpGenotyp.Length; i++)
+                    for (int i = 1; i < tmpGenotyp.Length - 1; i++)
                     {
-                        int los = losowy.Next(tmpGenotyp.Length);
+                        int los = losowy.Next(2, tmpGenotyp.Length - 2);
 
                         ushort[] tmp = (ushort[])tmpGenotyp[i].Clone();
                         tmpGenotyp[i] = (ushort[])tmpGenotyp[los].Clone();
