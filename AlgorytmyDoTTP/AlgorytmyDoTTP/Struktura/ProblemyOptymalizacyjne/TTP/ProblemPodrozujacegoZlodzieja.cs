@@ -43,7 +43,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             {
                 dostepnePrzedmioty[i] = new ushort[problemPlecakowy.ZwrocDlugoscGenotypu()];
                 Instancja obiektTTP = new Instancja();
-
+                
                 dostepnePrzedmioty[i] = (ushort[])(obiektTTP.ZwrocPrzedmioty(rozmieszczeniePrzedmiotow[i].InnerText, problemPlecakowy.ZwrocDlugoscGenotypu()).Clone());
             }
         }
@@ -75,7 +75,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 
             double[] dlugosciTrasy = (double[])(problemKomiwojazera.ZwrocDlugoscTrasy(problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]), true).Clone());
 
-            for(int i = 0; i < macierz["kp"].Length; i++)
+            for (int i = 0, j = -1; i < macierz["kp"].Length; i++, j++)
             {
                 Dictionary<String, double[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(problemPlecakowy.ZwrocWybraneElementy(macierz["kp"][i]));
 
@@ -85,7 +85,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
                 double predkosc = 1 - sumarycznaWaga * (1 - 0.1) / ZwrocOgraniczeniaProblemu()[0];
                 predkosc = (predkosc < 0.1) ? 0.1 : predkosc;
 
-                czasPodrozy += dlugosciTrasy[i] * predkosc;
+                if(j != -1) czasPodrozy += dlugosciTrasy[j] * predkosc;
             }
 
             wynik["min"][0] = sumarycznaWaga;

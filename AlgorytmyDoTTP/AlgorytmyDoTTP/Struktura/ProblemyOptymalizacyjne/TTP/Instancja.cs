@@ -33,14 +33,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
                 for (ushort j = 0; j < elementy.Length; j++)
                 {
                     elementy[j] = elementy[j].Replace(" ", "").Trim();
-                    if ((i + 1) == ushort.Parse(elementy[j]))
+                    przedmioty[i] = 0;
+
+                    if ((elementy[j] != "") && ((i + 1) == ushort.Parse(elementy[j])))
                     {
                         przedmioty[i] = 1;
                         break;
-                    }
-                    else
-                    {
-                        przedmioty[i] = 0;
                     }
                 }
             }

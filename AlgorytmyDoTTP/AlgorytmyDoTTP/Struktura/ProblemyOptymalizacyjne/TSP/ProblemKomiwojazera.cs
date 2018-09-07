@@ -70,6 +70,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         {
             int dlugoscWekotra = wektor.Length;
             double[] wynik = (zwrocWektor) ? new double[dlugoscWekotra] : new double[] { 0 };
+
             for (int i = 0; i < dlugoscWekotra; i++)
             {
                 if (zwrocWektor)

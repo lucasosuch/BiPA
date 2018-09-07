@@ -27,9 +27,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             {
                 ushort[] wektorTSP = rozwiazaniaTSP[i].ZwrocGenotyp1Wymiarowy();
                 ushort[][] macierzTTP = new ushort[wektorTSP.Length][];
+
                 double polowa = (Math.Pow(iloscRozwiazan, 2) / 2),
                        rozpietosc = Math.Abs(Math.Pow(iloscRozwiazan, 2) - (i + losowy.Next(iloscRozwiazan)) * iloscRozwiazan);
-
+                
                 for (int j = 0; j < wektorTSP.Length; j++)
                 {
                     int index = wektorTSP[j] - 1,
