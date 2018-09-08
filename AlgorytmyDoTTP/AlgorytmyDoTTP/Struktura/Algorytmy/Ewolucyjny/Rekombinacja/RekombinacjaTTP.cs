@@ -37,7 +37,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 {
                     przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
 
-                    int index = przodkowieTSP[i][j] - 1;
+                    int index = ((przodkowieTSP[i][j] - 1) == 0 && j != 0) ? przodek1.Length - 1 : przodkowieTSP[i][j] - 1;
                     przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
 
                     for (int k = 1; k <= przodkowieKP[i][index].Length; k++)

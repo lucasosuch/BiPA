@@ -41,8 +41,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     // problem plecakowy
                     for (int i = 1; i < tmpGenotyp.Length - 1; i++)
                     {
-                        System.Console.WriteLine("- "+ string.Join(",", tmpGenotyp[i]));
-                        System.Console.WriteLine("+ " + string.Join(",", dostepnePrzedmioty[i]));
                         for (int j = 1; j < tmpGenotyp[i].Length; j++)
                         {
                             if (dostepnePrzedmioty[i][j - 1] == 1)
