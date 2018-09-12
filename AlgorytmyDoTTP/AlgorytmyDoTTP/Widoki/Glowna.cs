@@ -183,7 +183,10 @@ namespace AlgorytmyDoTTP
             if (ilosc <= 10 && ilosc > 1)
             {
                 Porownanie porownanieTemp = new Porownanie(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems));
-                porownanieTemp.Show();
+                if(!porownanieTemp.ZwrocBladPlikuDanych())
+                {
+                    porownanieTemp.Show();
+                }
             }
             else if(ilosc < 2)
             {

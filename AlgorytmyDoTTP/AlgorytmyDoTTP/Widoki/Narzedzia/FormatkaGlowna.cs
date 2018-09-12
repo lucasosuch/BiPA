@@ -16,7 +16,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
 
-        /// <summary>
+        /// <summary> 
         /// Metoda odpowiada za wczytanie wszystkich badań z folderu zawierającego zapisane badania
         /// </summary>
         /// <returns>Elementy historycznych zapisów badań</returns>

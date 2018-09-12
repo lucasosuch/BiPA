@@ -163,9 +163,15 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dane\KP\kp20.xml" />
-    <Content Include="Dane\TSP\tsp15.xml" />
-    <Content Include="Dane\TTP\ttp15.xml" />
+    <Content Include="Dane\KP\kp20.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dane\TSP\tsp15.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dane\TTP\ttp15.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

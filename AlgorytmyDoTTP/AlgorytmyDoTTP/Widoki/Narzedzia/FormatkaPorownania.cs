@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 {
                     if (plikDanych != linia1.Value[3])
                     {
-                        throw new Exception();
+                        throw new Exception("Różne pliki danych");
                     }
                 }
 

@@ -11,6 +11,7 @@ namespace AlgorytmyDoTTP.Widoki
     /// </summary>
     public partial class Porownanie : Form
     {
+        private bool bladPlikuDanych = false;
         private FormatkaPorownania formatka;
         private Dictionary<string, string[]> paramentry;
 
@@ -24,16 +25,28 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void ZwrocRaport()
         {
-            Series[] seria1 = formatka.ZwrocDaneDlaWykresow(paramentry, 0, "desc"),
+            try
+            {
+                Series[] seria1 = formatka.ZwrocDaneDlaWykresow(paramentry, 0, "desc"),
                      seria2 = formatka.ZwrocDaneDlaWykresow(paramentry, 1, "asc");
 
-            for (int j = 0; j < paramentry.Count; j++)
-            {
-                wykresPorownanCzas.Series.Add(seria1[j]);
-                wykresPorownanWynik.Series.Add(seria2[j]);
-            }
+                for (int j = 0; j < paramentry.Count; j++)
+                {
+                    wykresPorownanCzas.Series.Add(seria1[j]);
+                    wykresPorownanWynik.Series.Add(seria2[j]);
+                }
 
-            tekstPorownania.Text = formatka.ZwrocDaneTekstowe(paramentry);
+                tekstPorownania.Text = formatka.ZwrocDaneTekstowe(paramentry);
+            } catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bladPlikuDanych = true;
+            }
+        }
+
+        public bool ZwrocBladPlikuDanych()
+        {
+            return bladPlikuDanych;
         }
     }
 }
