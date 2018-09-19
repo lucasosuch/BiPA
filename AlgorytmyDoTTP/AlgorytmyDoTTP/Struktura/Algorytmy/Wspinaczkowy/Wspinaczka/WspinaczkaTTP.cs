@@ -28,7 +28,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
             ReprezentacjaRozwiazania tmpReprezentacjaRozwiazanie = new ReprezentacjaRozwiazania(tmpGenotyp);
             ushort[][] dostepnePrzedmioty = (ushort[][])problemOptymalizacyjny.ZwrocDostepnePrzedmioty().Clone();
 
-            Dictionary<string, double[]> tmpWynik = new Dictionary<string, double[]>();
+            Dictionary<string, double[]> tmpWynik = wynik;
+            double wspolczynnik = wynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
 
             do
             {
@@ -36,8 +37,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 
                 if(stan == "kp")
                 {
-                    double wspolczynnik = wynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
-
                     // problem plecakowy
                     for (int i = 1; i < tmpGenotyp.Length - 1; i++)
                     {
@@ -62,7 +61,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     }
 
                     stan = "tsp";
-                } else
+                }
+
+                if (stan == "tsp")
                 {
                     // problem komiwojażera
                     for (int i = 1; i < tmpGenotyp.Length - 1; i++)

@@ -19,20 +19,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
         }
 
-        //public double DominantaPopulacji(ArrayList populacja)
-        //{
-        //    double wynik = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[0])["max"][0];
-
-        //    Dictionary<double, int> wartosci = new Dictionary<double, int>();
-
-        //    for (int i = 0; i < populacja.Count; i++)
-        //    {
-        //        wartosci[rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[i])["max"][0]] =
-        //    }
-
-        //    return wynik;
-        //}
-
+        /// <summary>
+        /// Metoda zwracająca wyniki przeprowadzonego badania
+        /// </summary>
+        /// <param name="populacja">Lista rozwiązań</param>
+        /// <returns>Zwraca raport z wynikami</returns>
         public Dictionary<string, string[]> ZwrocOdpowiedz(ReprezentacjaRozwiazania[] populacja)
         {
             // pobieramy wartości statystyczne / analityczne z naszego badania
