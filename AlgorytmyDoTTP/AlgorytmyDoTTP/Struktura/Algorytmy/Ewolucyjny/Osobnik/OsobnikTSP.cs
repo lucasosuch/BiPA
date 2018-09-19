@@ -13,6 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 
         public override string DekodujRozwiazanie(ReprezentacjaRozwiazania reprezentacjaGenotypu)
         {
+            // kolejność wyboru miast zapisywana jest po spacjach
             return string.Join(" ", reprezentacjaGenotypu.ZwrocGenotyp1Wymiarowy());
         }
 

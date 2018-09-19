@@ -17,20 +17,24 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
             string wynik = "";
             ushort[][] genotyp = reprezentacjaGenotypu.ZwrocGenotyp2Wymiarowy();
 
+            // przechodząc po całej macierzy
             for(int i = 0; i < genotyp.Length; i++)
             {
+                // w pierwszej kolejności wypisujemy numer miasta
                 wynik += Environment.NewLine + " - Miasto " + genotyp[i][0] +", przedmioty: ";
 
                 bool brakPrzedmiotow = true;
                 for(int j = 1; j < genotyp[i].Length; j++)
                 {
+                    // jeżeli zebraliśmy przedmioty z danego miasta to
                     if(genotyp[i][j] == 1)
                     {
-                        wynik += (j + " ");
+                        wynik += (j + " "); // wypisujemy je po spacji, przy danym mieście
                         if (brakPrzedmiotow) brakPrzedmiotow = false;
                     }
                 }
 
+                // w innym wypadku wypisujemy, ze nie pobieramy przedmiotów z `i-tego` miasta
                 if (brakPrzedmiotow) wynik += "brak";
             }
 
@@ -44,7 +48,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
 
         public override IPomocniczy[] Fenotyp(ushort[] genotyp)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override Dictionary<string, double[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu)

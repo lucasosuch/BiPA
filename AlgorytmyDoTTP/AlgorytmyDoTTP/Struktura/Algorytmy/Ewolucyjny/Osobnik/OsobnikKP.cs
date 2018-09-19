@@ -16,8 +16,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
             string wynik = "";
             ushort[] genotyp = reprezentacjaGenotypu.ZwrocGenotyp1Wymiarowy();
 
+            // każdy z wybranych przedmiotów jest zapisywany w rozwiązaniu po spacji
             for(int i = 1; i <= genotyp.Length; i++)
             {
+                // tylko wybrane przedmioty
                 if (genotyp[i-1] == 1) wynik += (i +" ");
             }
 
