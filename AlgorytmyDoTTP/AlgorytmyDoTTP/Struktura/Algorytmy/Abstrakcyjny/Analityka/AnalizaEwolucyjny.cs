@@ -96,11 +96,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
-                sumaKwadratow += Math.Pow(rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0], 2);
+                Dictionary<string, double[]> wartosc = rozwiazanie.FunkcjaDopasowania(osobnik);
+                sumaKwadratow += (wartosc["max"][0] - srednia) * (wartosc["max"][0] - srednia);
             }
 
             double sredniaSumaKwadratow = sumaKwadratow / (populacja.Length - 1);
-            return Math.Sqrt(sredniaSumaKwadratow - (Math.Pow(srednia, 2)));
+            return Math.Sqrt(sredniaSumaKwadratow);
         }
 
         /// <summary>
