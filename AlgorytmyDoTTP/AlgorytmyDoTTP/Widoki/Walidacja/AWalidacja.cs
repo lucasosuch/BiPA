@@ -17,14 +17,17 @@ namespace AlgorytmyDoTTP.Widoki.Walidacja
         {
             bool wynik = true;
 
-            foreach(string klucz in klucze)
+            foreach (string klucz in klucze)
             {
-                double wartosc;
-                
-                if (!double.TryParse(parametry[klucz], out wartosc))
+                if (parametry.ContainsKey(klucz))
                 {
-                    wynik = false;
-                    break;
+                    double wartosc;
+
+                    if (!double.TryParse(parametry[klucz], out wartosc))
+                    {
+                        wynik = false;
+                        break;
+                    }
                 }
             }
 
@@ -43,12 +46,15 @@ namespace AlgorytmyDoTTP.Widoki.Walidacja
 
             foreach (string klucz in klucze)
             {
-                int wartosc;
-
-                if(!int.TryParse(parametry[klucz], out wartosc))
+                if (parametry.ContainsKey(klucz))
                 {
-                    wynik = false;
-                    break;
+                    int wartosc;
+
+                    if (!int.TryParse(parametry[klucz], out wartosc))
+                    {
+                        wynik = false;
+                        break;
+                    }
                 }
             }
 

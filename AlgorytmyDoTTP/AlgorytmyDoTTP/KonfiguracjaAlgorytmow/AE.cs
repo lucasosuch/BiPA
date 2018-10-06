@@ -23,7 +23,7 @@
         // parametry do walidacji
         public readonly string[] parametryCalkowite = new string[] 
         {
-            "rozmiarPopulacji", "iloscPokolen"
+            "rozmiarPopulacji", "iloscPokolen", "iloscRozwiazan", "liczbaIteracji"
         };
 
         public readonly string[] parametryZmiennoPrzecinkowe = new string[] 

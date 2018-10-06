@@ -116,7 +116,6 @@ namespace AlgorytmyDoTTP
                     parametry["iloscPokolen"] = iloscPokolen.Text;
                     parametry["metodaSelekcji"] = metodaSelekcji.Text;
                     parametry["rodzajKrzyzowania"] = rodzajKrzyzowania.Text;
-                    glowna.WalidacjaFormatki(parametry);
                     break;
                 case "Algorytm Wspinaczkowy":
                 case "Algorytm Losowy":
@@ -127,11 +126,15 @@ namespace AlgorytmyDoTTP
             glowna.WalidacjaKluczowychParametrow(wybierzDane.Text);
             glowna.WalidacjaKluczowychParametrow(wybierzProblem.Text);
             glowna.WalidacjaKluczowychParametrow(wyborAlgorytmu.Text);
+            glowna.WalidacjaKluczowychParametrow(liczbaIteracji.Text);
 
             parametry["dane"] = wybierzDane.Text;
             parametry["problem"] = wybierzProblem.Text;
             parametry["algorytm"] = wyborAlgorytmu.Text;
-            
+            parametry["liczbaIteracji"] = liczbaIteracji.Text;
+
+            glowna.WalidacjaFormatki(parametry);
+
             return parametry;
         }
 

@@ -33,13 +33,14 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public string UruchomBadanie()
         {
             string wynikiBadania = "";
-            double[] zbiorWynikowMax = new double[10];
-            double[] zbiorWynikowMin = new double[10];
+            int liczbaIteracji = int.Parse(parametry["liczbaIteracji"]);
+            double[] zbiorWynikowMax = new double[liczbaIteracji];
+            double[] zbiorWynikowMin = new double[liczbaIteracji];
 
             Dictionary<string, string[]> najlepszeWyniki = new Dictionary<string, string[]>();
             najlepszeWyniki["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", (-100000).ToString() };
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < liczbaIteracji; i++)
             {
                 wyniki.Clear();
                 wyniki = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem()).Start();
@@ -57,19 +58,21 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             {
                 wynikiBadania += linia.Value[0] + ": " + linia.Value[1] + Environment.NewLine;
             }
-            
-            double srednia = Srednia(zbiorWynikowMax);
-            wynikiBadania += "----------------------------"+ Environment.NewLine;
-            wynikiBadania += "Średnia wartość maks z badań: " + srednia + Environment.NewLine;
-            wynikiBadania += "Mediana wartości maks z badań: " + Mediana(zbiorWynikowMax) + Environment.NewLine;
-            wynikiBadania += "Odchylenie standardowe wartości maks z badań: " + OdchylenieStandardowe(zbiorWynikowMax, srednia) + Environment.NewLine;
 
-            srednia = Srednia(zbiorWynikowMin);
-            wynikiBadania += "---" + Environment.NewLine;
-            wynikiBadania += "Średnia wartość min z badań: " + srednia + Environment.NewLine;
-            wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
-            wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
+            if (liczbaIteracji > 1)
+            {
+                double srednia = Srednia(zbiorWynikowMax);
+                wynikiBadania += "----------------------------" + Environment.NewLine;
+                wynikiBadania += "Średnia wartość maks z badań: " + srednia + Environment.NewLine;
+                wynikiBadania += "Mediana wartości maks z badań: " + Mediana(zbiorWynikowMax) + Environment.NewLine;
+                wynikiBadania += "Odchylenie standardowe wartości maks z badań: " + OdchylenieStandardowe(zbiorWynikowMax, srednia) + Environment.NewLine;
 
+                srednia = Srednia(zbiorWynikowMin);
+                wynikiBadania += "---" + Environment.NewLine;
+                wynikiBadania += "Średnia wartość min z badań: " + srednia + Environment.NewLine;
+                wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
+                wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
+            }
             return wynikiBadania;
         }
 
