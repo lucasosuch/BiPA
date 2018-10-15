@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.KonfiguracjaAlgorytmow;
+﻿using AlgorytmyDoTTP.Widoki.KonfiguracjaAlgorytmow;
 using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;

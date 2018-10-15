@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.KonfiguracjaAlgorytmow
+﻿namespace AlgorytmyDoTTP.Widoki.KonfiguracjaAlgorytmow
 {
     /// <summary>
     /// Klasa konkretna reprezentująca opcje podstawowych parametrów konfiguracyjnych Algorytmu Ewolucyjnego
