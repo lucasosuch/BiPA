@@ -31,6 +31,8 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.liczbaIteracji = new MetroFramework.Controls.MetroTextBox();
             this.domyslny = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panelKP = new System.Windows.Forms.Panel();
@@ -71,8 +73,7 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.liczbaIteracji = new MetroFramework.Controls.MetroTextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.trwaBadanie = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -112,6 +113,7 @@
             // badanie
             // 
             this.badanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.badanie.Controls.Add(this.trwaBadanie);
             this.badanie.Controls.Add(this.label14);
             this.badanie.Controls.Add(this.liczbaIteracji);
             this.badanie.Controls.Add(this.domyslny);
@@ -135,6 +137,50 @@
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(775, 60);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(120, 13);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Liczba iteracji Algorytmu";
+            // 
+            // liczbaIteracji
+            // 
+            // 
+            // 
+            // 
+            this.liczbaIteracji.CustomButton.Image = null;
+            this.liczbaIteracji.CustomButton.Location = new System.Drawing.Point(85, 2);
+            this.liczbaIteracji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.liczbaIteracji.CustomButton.Name = "";
+            this.liczbaIteracji.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.liczbaIteracji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.liczbaIteracji.CustomButton.TabIndex = 1;
+            this.liczbaIteracji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.liczbaIteracji.CustomButton.UseSelectable = true;
+            this.liczbaIteracji.CustomButton.Visible = false;
+            this.liczbaIteracji.Lines = new string[] {
+        "1"};
+            this.liczbaIteracji.Location = new System.Drawing.Point(778, 79);
+            this.liczbaIteracji.Margin = new System.Windows.Forms.Padding(2);
+            this.liczbaIteracji.MaxLength = 32767;
+            this.liczbaIteracji.Name = "liczbaIteracji";
+            this.liczbaIteracji.PasswordChar = '\0';
+            this.liczbaIteracji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.liczbaIteracji.SelectedText = "";
+            this.liczbaIteracji.SelectionLength = 0;
+            this.liczbaIteracji.SelectionStart = 0;
+            this.liczbaIteracji.ShortcutsEnabled = true;
+            this.liczbaIteracji.Size = new System.Drawing.Size(103, 20);
+            this.liczbaIteracji.TabIndex = 5;
+            this.liczbaIteracji.Text = "1";
+            this.liczbaIteracji.UseSelectable = true;
+            this.liczbaIteracji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.liczbaIteracji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // domyslny
             // 
@@ -199,10 +245,10 @@
             // 
             // 
             this.maxWaga.CustomButton.Image = null;
-            this.maxWaga.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.maxWaga.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxWaga.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.maxWaga.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.maxWaga.CustomButton.Name = "";
-            this.maxWaga.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.maxWaga.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.maxWaga.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.maxWaga.CustomButton.TabIndex = 1;
             this.maxWaga.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -211,7 +257,7 @@
             this.maxWaga.Lines = new string[] {
         "7"};
             this.maxWaga.Location = new System.Drawing.Point(5, 81);
-            this.maxWaga.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxWaga.Margin = new System.Windows.Forms.Padding(2);
             this.maxWaga.MaxLength = 32767;
             this.maxWaga.Name = "maxWaga";
             this.maxWaga.PasswordChar = '\0';
@@ -252,10 +298,10 @@
             // 
             // 
             this.wyporzyczeniePlecaka.CustomButton.Image = null;
-            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.wyporzyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wyporzyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.wyporzyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.wyporzyczeniePlecaka.CustomButton.Name = "";
-            this.wyporzyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.wyporzyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.wyporzyczeniePlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wyporzyczeniePlecaka.CustomButton.TabIndex = 1;
             this.wyporzyczeniePlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -264,7 +310,7 @@
             this.wyporzyczeniePlecaka.Lines = new string[] {
         "1"};
             this.wyporzyczeniePlecaka.Location = new System.Drawing.Point(4, 32);
-            this.wyporzyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wyporzyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2);
             this.wyporzyczeniePlecaka.MaxLength = 32767;
             this.wyporzyczeniePlecaka.Name = "wyporzyczeniePlecaka";
             this.wyporzyczeniePlecaka.PasswordChar = '\0';
@@ -306,7 +352,7 @@
             this.wybierzProblem.FormattingEnabled = true;
             this.wybierzProblem.ItemHeight = 23;
             this.wybierzProblem.Location = new System.Drawing.Point(0, 79);
-            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzProblem.Name = "wybierzProblem";
             this.wybierzProblem.Size = new System.Drawing.Size(256, 29);
             this.wybierzProblem.TabIndex = 1;
@@ -365,10 +411,10 @@
             // 
             // 
             this.iloscRozwiazan.CustomButton.Image = null;
-            this.iloscRozwiazan.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.iloscRozwiazan.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iloscRozwiazan.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.iloscRozwiazan.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.iloscRozwiazan.CustomButton.Name = "";
-            this.iloscRozwiazan.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.iloscRozwiazan.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.iloscRozwiazan.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.iloscRozwiazan.CustomButton.TabIndex = 1;
             this.iloscRozwiazan.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -377,7 +423,7 @@
             this.iloscRozwiazan.Lines = new string[] {
         "200"};
             this.iloscRozwiazan.Location = new System.Drawing.Point(7, 44);
-            this.iloscRozwiazan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iloscRozwiazan.Margin = new System.Windows.Forms.Padding(2);
             this.iloscRozwiazan.MaxLength = 32767;
             this.iloscRozwiazan.Name = "iloscRozwiazan";
             this.iloscRozwiazan.PasswordChar = '\0';
@@ -399,10 +445,10 @@
             // 
             // 
             this.pwoMutacji.CustomButton.Image = null;
-            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pwoMutacji.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.pwoMutacji.CustomButton.Name = "";
-            this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.pwoMutacji.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.pwoMutacji.CustomButton.TabIndex = 1;
             this.pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -411,7 +457,7 @@
             this.pwoMutacji.Lines = new string[] {
         "0,1"};
             this.pwoMutacji.Location = new System.Drawing.Point(291, 267);
-            this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
             this.pwoMutacji.MaxLength = 32767;
             this.pwoMutacji.Name = "pwoMutacji";
             this.pwoMutacji.PasswordChar = '\0';
@@ -433,10 +479,10 @@
             // 
             // 
             this.iloscPokolen.CustomButton.Image = null;
-            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.iloscPokolen.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iloscPokolen.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.iloscPokolen.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.iloscPokolen.CustomButton.Name = "";
-            this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.iloscPokolen.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.iloscPokolen.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.iloscPokolen.CustomButton.TabIndex = 1;
             this.iloscPokolen.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -445,7 +491,7 @@
             this.iloscPokolen.Lines = new string[] {
         "150"};
             this.iloscPokolen.Location = new System.Drawing.Point(291, 183);
-            this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iloscPokolen.Margin = new System.Windows.Forms.Padding(2);
             this.iloscPokolen.MaxLength = 32767;
             this.iloscPokolen.Name = "iloscPokolen";
             this.iloscPokolen.PasswordChar = '\0';
@@ -527,10 +573,10 @@
             // 
             // 
             this.pwoKrzyzowania.CustomButton.Image = null;
-            this.pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.pwoKrzyzowania.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.pwoKrzyzowania.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.pwoKrzyzowania.CustomButton.Name = "";
-            this.pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.pwoKrzyzowania.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.pwoKrzyzowania.CustomButton.TabIndex = 1;
             this.pwoKrzyzowania.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -539,7 +585,7 @@
             this.pwoKrzyzowania.Lines = new string[] {
         "0,55"};
             this.pwoKrzyzowania.Location = new System.Drawing.Point(7, 267);
-            this.pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2);
             this.pwoKrzyzowania.MaxLength = 32767;
             this.pwoKrzyzowania.Name = "pwoKrzyzowania";
             this.pwoKrzyzowania.PasswordChar = '\0';
@@ -582,10 +628,10 @@
             // 
             // 
             this.rozmiarPopulacji.CustomButton.Image = null;
-            this.rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(58, 2);
-            this.rozmiarPopulacji.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(78, 2);
+            this.rozmiarPopulacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.rozmiarPopulacji.CustomButton.Name = "";
-            this.rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.rozmiarPopulacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.rozmiarPopulacji.CustomButton.TabIndex = 1;
             this.rozmiarPopulacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -594,7 +640,7 @@
             this.rozmiarPopulacji.Lines = new string[] {
         "200"};
             this.rozmiarPopulacji.Location = new System.Drawing.Point(291, 72);
-            this.rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2);
             this.rozmiarPopulacji.MaxLength = 32767;
             this.rozmiarPopulacji.Name = "rozmiarPopulacji";
             this.rozmiarPopulacji.PasswordChar = '\0';
@@ -623,8 +669,9 @@
             // start
             // 
             this.start.ActiveControl = null;
+            this.start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.start.Location = new System.Drawing.Point(778, 601);
-            this.start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.start.Margin = new System.Windows.Forms.Padding(2);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(198, 60);
             this.start.TabIndex = 6;
@@ -648,7 +695,7 @@
             this.wyborAlgorytmu.FormattingEnabled = true;
             this.wyborAlgorytmu.ItemHeight = 23;
             this.wyborAlgorytmu.Location = new System.Drawing.Point(494, 79);
-            this.wyborAlgorytmu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wyborAlgorytmu.Margin = new System.Windows.Forms.Padding(2);
             this.wyborAlgorytmu.Name = "wyborAlgorytmu";
             this.wyborAlgorytmu.Size = new System.Drawing.Size(256, 29);
             this.wyborAlgorytmu.TabIndex = 3;
@@ -698,8 +745,9 @@
             // porownaj
             // 
             this.porownaj.ActiveControl = null;
+            this.porownaj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.porownaj.Location = new System.Drawing.Point(778, 601);
-            this.porownaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.porownaj.Margin = new System.Windows.Forms.Padding(2);
             this.porownaj.Name = "porownaj";
             this.porownaj.Size = new System.Drawing.Size(200, 60);
             this.porownaj.TabIndex = 7;
@@ -737,49 +785,15 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
-            // liczbaIteracji
+            // trwaBadanie
             // 
-            // 
-            // 
-            // 
-            this.liczbaIteracji.CustomButton.Image = null;
-            this.liczbaIteracji.CustomButton.Location = new System.Drawing.Point(85, 2);
-            this.liczbaIteracji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.liczbaIteracji.CustomButton.Name = "";
-            this.liczbaIteracji.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.liczbaIteracji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.liczbaIteracji.CustomButton.TabIndex = 1;
-            this.liczbaIteracji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.liczbaIteracji.CustomButton.UseSelectable = true;
-            this.liczbaIteracji.CustomButton.Visible = false;
-            this.liczbaIteracji.Lines = new string[] {
-        "1"};
-            this.liczbaIteracji.Location = new System.Drawing.Point(778, 79);
-            this.liczbaIteracji.Margin = new System.Windows.Forms.Padding(2);
-            this.liczbaIteracji.MaxLength = 32767;
-            this.liczbaIteracji.Name = "liczbaIteracji";
-            this.liczbaIteracji.PasswordChar = '\0';
-            this.liczbaIteracji.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.liczbaIteracji.SelectedText = "";
-            this.liczbaIteracji.SelectionLength = 0;
-            this.liczbaIteracji.SelectionStart = 0;
-            this.liczbaIteracji.ShortcutsEnabled = true;
-            this.liczbaIteracji.Size = new System.Drawing.Size(103, 20);
-            this.liczbaIteracji.TabIndex = 5;
-            this.liczbaIteracji.Text = "1";
-            this.liczbaIteracji.UseSelectable = true;
-            this.liczbaIteracji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.liczbaIteracji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(775, 60);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(120, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Liczba iteracji Algorytmu";
+            this.trwaBadanie.AutoSize = true;
+            this.trwaBadanie.Location = new System.Drawing.Point(654, 623);
+            this.trwaBadanie.Name = "trwaBadanie";
+            this.trwaBadanie.Size = new System.Drawing.Size(96, 19);
+            this.trwaBadanie.TabIndex = 33;
+            this.trwaBadanie.Text = "Trwa Badanie...";
+            this.trwaBadanie.Visible = false;
             // 
             // Glowna
             // 
@@ -789,7 +803,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1007, 727);
             this.Controls.Add(this.metroPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1023, 766);
             this.MinimumSize = new System.Drawing.Size(1023, 766);
@@ -862,6 +876,7 @@
         private MetroFramework.Controls.MetroButton usuniecieBadania;
         private MetroFramework.Controls.MetroTextBox liczbaIteracji;
         private System.Windows.Forms.Label label14;
+        private MetroFramework.Controls.MetroLabel trwaBadanie;
     }
 }
 

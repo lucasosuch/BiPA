@@ -51,11 +51,15 @@ namespace AlgorytmyDoTTP
             {
                 Badanie widokBadania = new Badanie(ZwrocParametry());
                 widokBadania.Show();
+                
             } catch(Exception exc)
             {
                 string wiadomosc = "Wystąpił błąd w formularzu, sprawdź go jeszcze raz!" + Environment.NewLine  + exc;
                 MessageBox.Show(wiadomosc, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            start.Text = "Uruchom";
+            start.Enabled = true;
         }
 
         /// <summary>
@@ -91,6 +95,8 @@ namespace AlgorytmyDoTTP
         /// <returns>Parametry Algorytmu oraz Problemu Optymalizacyjnego</returns>
         private Dictionary<string, string> ZwrocParametry()
         {
+            start.Text = "Trwa Badanie...";
+            start.Enabled = false;
             Dictionary<string, string> parametry = new Dictionary<string, string>();
 
             switch (wybierzProblem.Text)

@@ -22,8 +22,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
         public Dictionary<string, string[]> Start()
         {
-            Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
-
             analiza.RozpocznijPomiarCzasu();
             Dictionary<string, double[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
             analiza.ZakonczPomiarCzasu();

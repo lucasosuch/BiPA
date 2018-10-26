@@ -11,9 +11,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     {
         public AnalizaRLS_RS(AOsobnik rozwiazanie) : base(rozwiazanie)
         {}
-
         
-
         public Dictionary<string, string[]> ZwrocOdpowiedz(ReprezentacjaRozwiazania najlepszeRozwiazanie, Dictionary<string, double[]> znalezioneOptimum)
         {
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
