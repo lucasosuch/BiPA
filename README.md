@@ -1,5 +1,5 @@
 # Oprogramowanie do rozwiązywania zadań optymalizacyjnych
----
+
 # Aplikacja zawiera:
 
 Problemy Optymalizacyjne:
