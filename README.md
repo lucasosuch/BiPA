@@ -1,6 +1,6 @@
 # Oprogramowanie do rozwiązywania zadań optymalizacyjnych
 
-# Aplikacja zawiera:
+### Aplikacja zawiera:
 
 Problemy Optymalizacyjne:
   - Problem Plecakowy (Knapsack Problem [KP])
@@ -14,7 +14,7 @@ Algorytmy heurystyczne:
 
 Każdy z zaimplementowanych problemów optymalizacyjnych może zostać przebadany wybranym algorytmem.
 
-# Funkcjonalności
+### Funkcjonalności
   - Wyświetlanie okienka z analityką badania (czasu trwania poszukiwań rozwiązania, znalezionych wyników itp.)
   - Pobieranie wyników do pliku CSV
   - Zapis wyników badania na dysku (do specjalnego pliku XML)
