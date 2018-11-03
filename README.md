@@ -32,7 +32,7 @@ Wystarczy pobrać aplikację w formacie .rar z tego repozytorium (zakładka `rel
 ### Development
 
 Chcesz wspomóc tworzenie aplikacji? Super!
-Licencja Githuba na to pozwala, więc nie krępuj się!
+Wystarczy pobrać kod źródłowy do projektu i zaimportować do Microsoft Visual Studio
 
 Licencja
 ----
