@@ -16,8 +16,9 @@ Każdy z zaimplementowanych problemów optymalizacyjnych może zostać przebadan
 
 ### Funkcjonalności
   - Wyświetlanie okienka z analityką badania (czasu trwania poszukiwań rozwiązania, znalezionych wyników itp.)
-  - Pobieranie wyników do pliku CSV
-  - Zapis wyników badania na dysku (do specjalnego pliku XML)
+  - Pobieranie wyników badania do pliku CSV
+  - Zapis wyników badania na dysku (do pliku XML)
+  - Tworzenie histori badań, na podstawie zapisanych badań
   - Zarządzanie historią badań
   - Porównywanie badań pomiędzy sobą za pomocą dedykowanej analityki
 
