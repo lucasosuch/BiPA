@@ -27,6 +27,7 @@ namespace AlgorytmyDoTTP
         {
             wyborAlgorytmu.Items.AddRange(glowna.ZwrocZmiennaSrodowiskowa().ALGORYTMY);
             wybierzProblem.Items.AddRange(glowna.ZwrocZmiennaSrodowiskowa().PROBLEMY_OPTYMALIZACYJNE);
+            wybierzProblemDoKonfiguracji.Items.AddRange(glowna.ZwrocZmiennaSrodowiskowa().PROBLEMY_OPTYMALIZACYJNE);
             rodzajKrzyzowania.Items.AddRange(glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA);
             metodaSelekcji.Items.AddRange(glowna.ZwrocKonfiguracjeAE().SELEKCJA);
             metodaSelekcji.Text = (string)glowna.ZwrocKonfiguracjeAE().SELEKCJA[0];
@@ -244,6 +245,67 @@ namespace AlgorytmyDoTTP
         {
             daneHistoryczne.Items.Clear();
             daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
+        }
+
+        private void wybierzProblemDoKonfiguracji_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            konfiguracjaTSP.Visible = false;
+            konfiguracjaKP.Visible = false;
+            konfiguracjaTTP.Visible = false;
+            domyslnaKonfiguracja.Visible = false;
+
+            switch(wybierzProblemDoKonfiguracji.Text)
+            {
+                case "Problem Komiwojażera":
+                    konfiguracjaTSP.Visible = true;
+                    break;
+                case "Problem Plecakowy":
+                    konfiguracjaKP.Visible = true;
+                    break;
+                case "Problem Podróżującego Złodzieja":
+                    konfiguracjaTTP.Visible = true;
+                    break;
+            }
+        }
+
+        private void zapiszKonfigurację_Click(object sender, EventArgs e)
+        {
+            int liczbaMiast = 0,
+                liczbaPrzedmiotow = 0,
+                procentRozrzutuWartosci = 0;
+
+            double sumaDlugosciTras = 0,
+                   sumaWagPrzedmiotow = 0,
+                   sumaWartosciPrzedmiotow = 0;
+
+            switch (wybierzProblemDoKonfiguracji.Text)
+            {
+                case "Problem Komiwojażera":
+                    liczbaMiast = int.Parse(tsp_liczbaMiast.Text);
+                    sumaDlugosciTras = double.Parse(tsp_sumaDlugosci.Text);
+                    procentRozrzutuWartosci = int.Parse(tsp_procentRozrzutu.Text);
+
+                    glowna.generujDanePodTSP(liczbaMiast, sumaDlugosciTras, procentRozrzutuWartosci);
+                    break;
+                case "Problem Plecakowy":
+                    liczbaPrzedmiotow = int.Parse(kp_liczbaPrzedmiotow.Text);
+                    sumaWagPrzedmiotow = double.Parse(kp_sumaWag.Text);
+                    sumaWartosciPrzedmiotow = double.Parse(kp_sumaWartosci.Text);
+                    procentRozrzutuWartosci = int.Parse(kp_procentRozrzutu.Text);
+
+                    glowna.generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci);
+                    break;
+                case "Problem Podróżującego Złodzieja":
+                    liczbaMiast = int.Parse(ttp_liczbaMiast.Text);
+                    sumaDlugosciTras = double.Parse(ttp_sumaDlugosci.Text);
+                    liczbaPrzedmiotow = int.Parse(ttp_liczbaPrzedmiotow.Text);
+                    sumaWagPrzedmiotow = double.Parse(ttp_sumaWag.Text);
+                    sumaWartosciPrzedmiotow = double.Parse(ttp_sumaWartosci.Text);
+                    procentRozrzutuWartosci = int.Parse(ttp_procentRozrzutu.Text);
+
+                    glowna.generujDanePodTTP(liczbaMiast, sumaDlugosciTras, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci);
+                    break;
+            }
         }
     }
 }

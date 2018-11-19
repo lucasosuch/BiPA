@@ -31,6 +31,7 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.badanie = new MetroFramework.Controls.MetroTabPage();
+            this.trwaBadanie = new MetroFramework.Controls.MetroLabel();
             this.label14 = new System.Windows.Forms.Label();
             this.liczbaIteracji = new MetroFramework.Controls.MetroTextBox();
             this.domyslny = new System.Windows.Forms.Panel();
@@ -73,7 +74,41 @@
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();
             this.nazwaBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataBadania = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.trwaBadanie = new MetroFramework.Controls.MetroLabel();
+            this.plikidanych = new MetroFramework.Controls.MetroTabPage();
+            this.domyslnaKonfiguracja = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.wybierzProblemDoKonfiguracji = new MetroFramework.Controls.MetroComboBox();
+            this.zapiszKonfigurację = new MetroFramework.Controls.MetroButton();
+            this.konfiguracjaKP = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.kp_procentRozrzutu = new MetroFramework.Controls.MetroComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.kp_liczbaPrzedmiotow = new MetroFramework.Controls.MetroComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.konfiguracjaTSP = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tsp_procentRozrzutu = new MetroFramework.Controls.MetroComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.tsp_liczbaMiast = new MetroFramework.Controls.MetroComboBox();
+            this.konfiguracjaTTP = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.ttp_procentRozrzutu = new MetroFramework.Controls.MetroComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ttp_liczbaPrzedmiotow = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_liczbaMiast = new MetroFramework.Controls.MetroComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.kp_sumaWag = new MetroFramework.Controls.MetroComboBox();
+            this.kp_sumaWartosci = new MetroFramework.Controls.MetroComboBox();
+            this.tsp_sumaDlugosci = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_sumaWag = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_sumaWartosci = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_sumaDlugosci = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.badanie.SuspendLayout();
@@ -82,6 +117,10 @@
             this.ewolucyjny.SuspendLayout();
             this.wspinaczkowy_losowy.SuspendLayout();
             this.historia.SuspendLayout();
+            this.plikidanych.SuspendLayout();
+            this.konfiguracjaKP.SuspendLayout();
+            this.konfiguracjaTSP.SuspendLayout();
+            this.konfiguracjaTTP.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -102,9 +141,10 @@
             // 
             this.metroTabControl1.Controls.Add(this.badanie);
             this.metroTabControl1.Controls.Add(this.historia);
+            this.metroTabControl1.Controls.Add(this.plikidanych);
             this.metroTabControl1.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(984, 705);
             this.metroTabControl1.TabIndex = 2;
             this.metroTabControl1.UseSelectable = true;
@@ -133,10 +173,20 @@
             this.badanie.Name = "badanie";
             this.badanie.Size = new System.Drawing.Size(976, 663);
             this.badanie.TabIndex = 0;
-            this.badanie.Text = "Badanie Algorytmu";
+            this.badanie.Text = "Badanie algorytmu";
             this.badanie.VerticalScrollbarBarColor = true;
             this.badanie.VerticalScrollbarHighlightOnWheel = false;
             this.badanie.VerticalScrollbarSize = 10;
+            // 
+            // trwaBadanie
+            // 
+            this.trwaBadanie.AutoSize = true;
+            this.trwaBadanie.Location = new System.Drawing.Point(654, 623);
+            this.trwaBadanie.Name = "trwaBadanie";
+            this.trwaBadanie.Size = new System.Drawing.Size(96, 19);
+            this.trwaBadanie.TabIndex = 33;
+            this.trwaBadanie.Text = "Trwa Badanie...";
+            this.trwaBadanie.Visible = false;
             // 
             // label14
             // 
@@ -716,7 +766,7 @@
             this.historia.Name = "historia";
             this.historia.Size = new System.Drawing.Size(976, 663);
             this.historia.TabIndex = 1;
-            this.historia.Text = "Historia Badań";
+            this.historia.Text = "Historia badań";
             this.historia.VerticalScrollbarBarColor = true;
             this.historia.VerticalScrollbarHighlightOnWheel = false;
             this.historia.VerticalScrollbarSize = 10;
@@ -785,15 +835,504 @@
             this.dataBadania.Text = "Data Badania";
             this.dataBadania.Width = 163;
             // 
-            // trwaBadanie
+            // plikidanych
             // 
-            this.trwaBadanie.AutoSize = true;
-            this.trwaBadanie.Location = new System.Drawing.Point(654, 623);
-            this.trwaBadanie.Name = "trwaBadanie";
-            this.trwaBadanie.Size = new System.Drawing.Size(96, 19);
-            this.trwaBadanie.TabIndex = 33;
-            this.trwaBadanie.Text = "Trwa Badanie...";
-            this.trwaBadanie.Visible = false;
+            this.plikidanych.Controls.Add(this.label20);
+            this.plikidanych.Controls.Add(this.label16);
+            this.plikidanych.Controls.Add(this.wybierzProblemDoKonfiguracji);
+            this.plikidanych.Controls.Add(this.zapiszKonfigurację);
+            this.plikidanych.Controls.Add(this.konfiguracjaTTP);
+            this.plikidanych.Controls.Add(this.konfiguracjaKP);
+            this.plikidanych.Controls.Add(this.konfiguracjaTSP);
+            this.plikidanych.Controls.Add(this.domyslnaKonfiguracja);
+            this.plikidanych.HorizontalScrollbarBarColor = true;
+            this.plikidanych.HorizontalScrollbarHighlightOnWheel = false;
+            this.plikidanych.HorizontalScrollbarSize = 8;
+            this.plikidanych.Location = new System.Drawing.Point(4, 38);
+            this.plikidanych.Margin = new System.Windows.Forms.Padding(2);
+            this.plikidanych.Name = "plikidanych";
+            this.plikidanych.Size = new System.Drawing.Size(976, 663);
+            this.plikidanych.TabIndex = 2;
+            this.plikidanych.Text = "Tworzenie plików danych";
+            this.plikidanych.VerticalScrollbarBarColor = true;
+            this.plikidanych.VerticalScrollbarHighlightOnWheel = false;
+            this.plikidanych.VerticalScrollbarSize = 8;
+            // 
+            // domyslnaKonfiguracja
+            // 
+            this.domyslnaKonfiguracja.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.domyslnaKonfiguracja.Location = new System.Drawing.Point(0, 191);
+            this.domyslnaKonfiguracja.Name = "domyslnaKonfiguracja";
+            this.domyslnaKonfiguracja.Size = new System.Drawing.Size(486, 289);
+            this.domyslnaKonfiguracja.TabIndex = 32;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label20.Location = new System.Drawing.Point(2, 191);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(259, 25);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Konfiguracja pliku danych";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label16.Location = new System.Drawing.Point(-3, 60);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(164, 13);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Wybierz Problem Optymalizacyjny";
+            // 
+            // wybierzProblemDoKonfiguracji
+            // 
+            this.wybierzProblemDoKonfiguracji.FormattingEnabled = true;
+            this.wybierzProblemDoKonfiguracji.ItemHeight = 23;
+            this.wybierzProblemDoKonfiguracji.Location = new System.Drawing.Point(0, 79);
+            this.wybierzProblemDoKonfiguracji.Margin = new System.Windows.Forms.Padding(2);
+            this.wybierzProblemDoKonfiguracji.Name = "wybierzProblemDoKonfiguracji";
+            this.wybierzProblemDoKonfiguracji.Size = new System.Drawing.Size(256, 29);
+            this.wybierzProblemDoKonfiguracji.TabIndex = 16;
+            this.wybierzProblemDoKonfiguracji.UseSelectable = true;
+            this.wybierzProblemDoKonfiguracji.SelectedIndexChanged += new System.EventHandler(this.wybierzProblemDoKonfiguracji_SelectedIndexChanged);
+            // 
+            // zapiszKonfigurację
+            // 
+            this.zapiszKonfigurację.Location = new System.Drawing.Point(0, 457);
+            this.zapiszKonfigurację.Name = "zapiszKonfigurację";
+            this.zapiszKonfigurację.Size = new System.Drawing.Size(121, 23);
+            this.zapiszKonfigurację.TabIndex = 43;
+            this.zapiszKonfigurację.Text = "Zapisz";
+            this.zapiszKonfigurację.UseSelectable = true;
+            this.zapiszKonfigurację.Click += new System.EventHandler(this.zapiszKonfigurację_Click);
+            // 
+            // konfiguracjaKP
+            // 
+            this.konfiguracjaKP.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.konfiguracjaKP.Controls.Add(this.kp_sumaWartosci);
+            this.konfiguracjaKP.Controls.Add(this.label29);
+            this.konfiguracjaKP.Controls.Add(this.kp_sumaWag);
+            this.konfiguracjaKP.Controls.Add(this.kp_procentRozrzutu);
+            this.konfiguracjaKP.Controls.Add(this.label19);
+            this.konfiguracjaKP.Controls.Add(this.kp_liczbaPrzedmiotow);
+            this.konfiguracjaKP.Controls.Add(this.label18);
+            this.konfiguracjaKP.Controls.Add(this.label17);
+            this.konfiguracjaKP.Location = new System.Drawing.Point(0, 235);
+            this.konfiguracjaKP.Name = "konfiguracjaKP";
+            this.konfiguracjaKP.Size = new System.Drawing.Size(486, 216);
+            this.konfiguracjaKP.TabIndex = 33;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(260, 28);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(126, 13);
+            this.label29.TabIndex = 45;
+            this.label29.Text = "Procent rozrzutu wartości";
+            // 
+            // kp_procentRozrzutu
+            // 
+            this.kp_procentRozrzutu.FormattingEnabled = true;
+            this.kp_procentRozrzutu.ItemHeight = 23;
+            this.kp_procentRozrzutu.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50"});
+            this.kp_procentRozrzutu.Location = new System.Drawing.Point(263, 44);
+            this.kp_procentRozrzutu.Name = "kp_procentRozrzutu";
+            this.kp_procentRozrzutu.Size = new System.Drawing.Size(121, 29);
+            this.kp_procentRozrzutu.TabIndex = 44;
+            this.kp_procentRozrzutu.UseSelectable = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(-3, 152);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(100, 13);
+            this.label19.TabIndex = 39;
+            this.label19.Text = "Liczba przedmiotów";
+            // 
+            // kp_liczbaPrzedmiotow
+            // 
+            this.kp_liczbaPrzedmiotow.FormattingEnabled = true;
+            this.kp_liczbaPrzedmiotow.ItemHeight = 23;
+            this.kp_liczbaPrzedmiotow.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
+            this.kp_liczbaPrzedmiotow.Location = new System.Drawing.Point(0, 168);
+            this.kp_liczbaPrzedmiotow.Name = "kp_liczbaPrzedmiotow";
+            this.kp_liczbaPrzedmiotow.Size = new System.Drawing.Size(121, 29);
+            this.kp_liczbaPrzedmiotow.TabIndex = 38;
+            this.kp_liczbaPrzedmiotow.UseSelectable = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(-3, 89);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(138, 13);
+            this.label18.TabIndex = 37;
+            this.label18.Text = "Suma wartości przedmiotów";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(-3, 28);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(119, 13);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "Suma wag przedmiotów";
+            // 
+            // konfiguracjaTSP
+            // 
+            this.konfiguracjaTSP.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.konfiguracjaTSP.Controls.Add(this.tsp_sumaDlugosci);
+            this.konfiguracjaTSP.Controls.Add(this.label30);
+            this.konfiguracjaTSP.Controls.Add(this.tsp_procentRozrzutu);
+            this.konfiguracjaTSP.Controls.Add(this.label22);
+            this.konfiguracjaTSP.Controls.Add(this.label23);
+            this.konfiguracjaTSP.Controls.Add(this.tsp_liczbaMiast);
+            this.konfiguracjaTSP.Location = new System.Drawing.Point(0, 235);
+            this.konfiguracjaTSP.Name = "konfiguracjaTSP";
+            this.konfiguracjaTSP.Size = new System.Drawing.Size(486, 216);
+            this.konfiguracjaTSP.TabIndex = 42;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(-3, 152);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(126, 13);
+            this.label30.TabIndex = 45;
+            this.label30.Text = "Procent rozrzutu wartości";
+            // 
+            // tsp_procentRozrzutu
+            // 
+            this.tsp_procentRozrzutu.FormattingEnabled = true;
+            this.tsp_procentRozrzutu.ItemHeight = 23;
+            this.tsp_procentRozrzutu.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50"});
+            this.tsp_procentRozrzutu.Location = new System.Drawing.Point(0, 168);
+            this.tsp_procentRozrzutu.Name = "tsp_procentRozrzutu";
+            this.tsp_procentRozrzutu.Size = new System.Drawing.Size(121, 29);
+            this.tsp_procentRozrzutu.TabIndex = 44;
+            this.tsp_procentRozrzutu.UseSelectable = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(-3, 89);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 13);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "Liczba miast";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(-3, 28);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(52, 13);
+            this.label23.TabIndex = 37;
+            this.label23.Text = "Typ siatki";
+            // 
+            // tsp_liczbaMiast
+            // 
+            this.tsp_liczbaMiast.FormattingEnabled = true;
+            this.tsp_liczbaMiast.ItemHeight = 23;
+            this.tsp_liczbaMiast.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
+            this.tsp_liczbaMiast.Location = new System.Drawing.Point(0, 105);
+            this.tsp_liczbaMiast.Name = "tsp_liczbaMiast";
+            this.tsp_liczbaMiast.Size = new System.Drawing.Size(121, 29);
+            this.tsp_liczbaMiast.TabIndex = 38;
+            this.tsp_liczbaMiast.UseSelectable = true;
+            // 
+            // konfiguracjaTTP
+            // 
+            this.konfiguracjaTTP.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.konfiguracjaTTP.Controls.Add(this.ttp_sumaDlugosci);
+            this.konfiguracjaTTP.Controls.Add(this.label28);
+            this.konfiguracjaTTP.Controls.Add(this.ttp_sumaWartosci);
+            this.konfiguracjaTTP.Controls.Add(this.ttp_procentRozrzutu);
+            this.konfiguracjaTTP.Controls.Add(this.ttp_sumaWag);
+            this.konfiguracjaTTP.Controls.Add(this.label25);
+            this.konfiguracjaTTP.Controls.Add(this.label21);
+            this.konfiguracjaTTP.Controls.Add(this.ttp_liczbaPrzedmiotow);
+            this.konfiguracjaTTP.Controls.Add(this.ttp_liczbaMiast);
+            this.konfiguracjaTTP.Controls.Add(this.label26);
+            this.konfiguracjaTTP.Controls.Add(this.label24);
+            this.konfiguracjaTTP.Controls.Add(this.label27);
+            this.konfiguracjaTTP.Location = new System.Drawing.Point(0, 235);
+            this.konfiguracjaTTP.Name = "konfiguracjaTTP";
+            this.konfiguracjaTTP.Size = new System.Drawing.Size(486, 216);
+            this.konfiguracjaTTP.TabIndex = 42;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(281, 152);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(126, 13);
+            this.label28.TabIndex = 46;
+            this.label28.Text = "Procent rozrzutu wartości";
+            // 
+            // ttp_procentRozrzutu
+            // 
+            this.ttp_procentRozrzutu.FormattingEnabled = true;
+            this.ttp_procentRozrzutu.ItemHeight = 23;
+            this.ttp_procentRozrzutu.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50"});
+            this.ttp_procentRozrzutu.Location = new System.Drawing.Point(284, 168);
+            this.ttp_procentRozrzutu.Name = "ttp_procentRozrzutu";
+            this.ttp_procentRozrzutu.Size = new System.Drawing.Size(121, 29);
+            this.ttp_procentRozrzutu.TabIndex = 44;
+            this.ttp_procentRozrzutu.UseSelectable = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(-3, 152);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 13);
+            this.label25.TabIndex = 45;
+            this.label25.Text = "Liczba przedmiotów";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(281, 89);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 13);
+            this.label21.TabIndex = 39;
+            this.label21.Text = "Liczba miast";
+            // 
+            // ttp_liczbaPrzedmiotow
+            // 
+            this.ttp_liczbaPrzedmiotow.FormattingEnabled = true;
+            this.ttp_liczbaPrzedmiotow.ItemHeight = 23;
+            this.ttp_liczbaPrzedmiotow.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
+            this.ttp_liczbaPrzedmiotow.Location = new System.Drawing.Point(0, 168);
+            this.ttp_liczbaPrzedmiotow.Name = "ttp_liczbaPrzedmiotow";
+            this.ttp_liczbaPrzedmiotow.Size = new System.Drawing.Size(121, 29);
+            this.ttp_liczbaPrzedmiotow.TabIndex = 44;
+            this.ttp_liczbaPrzedmiotow.UseSelectable = true;
+            // 
+            // ttp_liczbaMiast
+            // 
+            this.ttp_liczbaMiast.FormattingEnabled = true;
+            this.ttp_liczbaMiast.ItemHeight = 23;
+            this.ttp_liczbaMiast.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
+            this.ttp_liczbaMiast.Location = new System.Drawing.Point(284, 105);
+            this.ttp_liczbaMiast.Name = "ttp_liczbaMiast";
+            this.ttp_liczbaMiast.Size = new System.Drawing.Size(121, 29);
+            this.ttp_liczbaMiast.TabIndex = 38;
+            this.ttp_liczbaMiast.UseSelectable = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(-3, 89);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(138, 13);
+            this.label26.TabIndex = 43;
+            this.label26.Text = "Suma wartości przedmiotów";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(281, 28);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(52, 13);
+            this.label24.TabIndex = 37;
+            this.label24.Text = "Typ siatki";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(-3, 28);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(119, 13);
+            this.label27.TabIndex = 41;
+            this.label27.Text = "Suma wag przedmiotów";
+            // 
+            // kp_sumaWag
+            // 
+            this.kp_sumaWag.FormattingEnabled = true;
+            this.kp_sumaWag.ItemHeight = 23;
+            this.kp_sumaWag.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"});
+            this.kp_sumaWag.Location = new System.Drawing.Point(0, 44);
+            this.kp_sumaWag.Name = "kp_sumaWag";
+            this.kp_sumaWag.Size = new System.Drawing.Size(121, 29);
+            this.kp_sumaWag.TabIndex = 44;
+            this.kp_sumaWag.UseSelectable = true;
+            // 
+            // kp_sumaWartosci
+            // 
+            this.kp_sumaWartosci.FormattingEnabled = true;
+            this.kp_sumaWartosci.ItemHeight = 23;
+            this.kp_sumaWartosci.Items.AddRange(new object[] {
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000"});
+            this.kp_sumaWartosci.Location = new System.Drawing.Point(0, 105);
+            this.kp_sumaWartosci.Name = "kp_sumaWartosci";
+            this.kp_sumaWartosci.Size = new System.Drawing.Size(121, 29);
+            this.kp_sumaWartosci.TabIndex = 45;
+            this.kp_sumaWartosci.UseSelectable = true;
+            // 
+            // tsp_sumaDlugosci
+            // 
+            this.tsp_sumaDlugosci.FormattingEnabled = true;
+            this.tsp_sumaDlugosci.ItemHeight = 23;
+            this.tsp_sumaDlugosci.Items.AddRange(new object[] {
+            "10x10",
+            "10x15",
+            "15x10",
+            "15x15",
+            "20x20"});
+            this.tsp_sumaDlugosci.Location = new System.Drawing.Point(0, 44);
+            this.tsp_sumaDlugosci.Name = "tsp_sumaDlugosci";
+            this.tsp_sumaDlugosci.Size = new System.Drawing.Size(121, 29);
+            this.tsp_sumaDlugosci.TabIndex = 46;
+            this.tsp_sumaDlugosci.UseSelectable = true;
+            // 
+            // ttp_sumaWag
+            // 
+            this.ttp_sumaWag.FormattingEnabled = true;
+            this.ttp_sumaWag.ItemHeight = 23;
+            this.ttp_sumaWag.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"});
+            this.ttp_sumaWag.Location = new System.Drawing.Point(0, 44);
+            this.ttp_sumaWag.Name = "ttp_sumaWag";
+            this.ttp_sumaWag.Size = new System.Drawing.Size(121, 29);
+            this.ttp_sumaWag.TabIndex = 47;
+            this.ttp_sumaWag.UseSelectable = true;
+            // 
+            // ttp_sumaWartosci
+            // 
+            this.ttp_sumaWartosci.FormattingEnabled = true;
+            this.ttp_sumaWartosci.ItemHeight = 23;
+            this.ttp_sumaWartosci.Items.AddRange(new object[] {
+            "100",
+            "200",
+            "300",
+            "400",
+            "500",
+            "600",
+            "700",
+            "800",
+            "900",
+            "1000"});
+            this.ttp_sumaWartosci.Location = new System.Drawing.Point(0, 105);
+            this.ttp_sumaWartosci.Name = "ttp_sumaWartosci";
+            this.ttp_sumaWartosci.Size = new System.Drawing.Size(121, 29);
+            this.ttp_sumaWartosci.TabIndex = 48;
+            this.ttp_sumaWartosci.UseSelectable = true;
+            // 
+            // ttp_sumaDlugosci
+            // 
+            this.ttp_sumaDlugosci.FormattingEnabled = true;
+            this.ttp_sumaDlugosci.ItemHeight = 23;
+            this.ttp_sumaDlugosci.Items.AddRange(new object[] {
+            "10x10",
+            "10x15",
+            "15x10",
+            "15x15",
+            "20x20"});
+            this.ttp_sumaDlugosci.Location = new System.Drawing.Point(284, 44);
+            this.ttp_sumaDlugosci.Name = "ttp_sumaDlugosci";
+            this.ttp_sumaDlugosci.Size = new System.Drawing.Size(121, 29);
+            this.ttp_sumaDlugosci.TabIndex = 49;
+            this.ttp_sumaDlugosci.UseSelectable = true;
             // 
             // Glowna
             // 
@@ -801,12 +1340,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1007, 727);
+            this.ClientSize = new System.Drawing.Size(1006, 719);
             this.Controls.Add(this.metroPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1023, 766);
-            this.MinimumSize = new System.Drawing.Size(1023, 766);
+            this.MaximumSize = new System.Drawing.Size(1022, 765);
+            this.MinimumSize = new System.Drawing.Size(1022, 675);
             this.Name = "Glowna";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Glowna";
@@ -825,6 +1364,14 @@
             this.wspinaczkowy_losowy.PerformLayout();
             this.historia.ResumeLayout(false);
             this.historia.PerformLayout();
+            this.plikidanych.ResumeLayout(false);
+            this.plikidanych.PerformLayout();
+            this.konfiguracjaKP.ResumeLayout(false);
+            this.konfiguracjaKP.PerformLayout();
+            this.konfiguracjaTSP.ResumeLayout(false);
+            this.konfiguracjaTSP.PerformLayout();
+            this.konfiguracjaTTP.ResumeLayout(false);
+            this.konfiguracjaTTP.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -877,6 +1424,41 @@
         private MetroFramework.Controls.MetroTextBox liczbaIteracji;
         private System.Windows.Forms.Label label14;
         private MetroFramework.Controls.MetroLabel trwaBadanie;
+        private MetroFramework.Controls.MetroTabPage plikidanych;
+        private System.Windows.Forms.Panel konfiguracjaKP;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel domyslnaKonfiguracja;
+        private System.Windows.Forms.Label label16;
+        private MetroFramework.Controls.MetroComboBox wybierzProblemDoKonfiguracji;
+        private System.Windows.Forms.Label label19;
+        private MetroFramework.Controls.MetroComboBox kp_liczbaPrzedmiotow;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel konfiguracjaTTP;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label21;
+        private MetroFramework.Controls.MetroComboBox ttp_liczbaPrzedmiotow;
+        private MetroFramework.Controls.MetroComboBox ttp_liczbaMiast;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label22;
+        private MetroFramework.Controls.MetroComboBox tsp_liczbaMiast;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Panel konfiguracjaTSP;
+        private MetroFramework.Controls.MetroButton zapiszKonfigurację;
+        private System.Windows.Forms.Label label30;
+        private MetroFramework.Controls.MetroComboBox tsp_procentRozrzutu;
+        private System.Windows.Forms.Label label28;
+        private MetroFramework.Controls.MetroComboBox ttp_procentRozrzutu;
+        private System.Windows.Forms.Label label29;
+        private MetroFramework.Controls.MetroComboBox kp_procentRozrzutu;
+        private MetroFramework.Controls.MetroComboBox ttp_sumaDlugosci;
+        private MetroFramework.Controls.MetroComboBox ttp_sumaWartosci;
+        private MetroFramework.Controls.MetroComboBox ttp_sumaWag;
+        private MetroFramework.Controls.MetroComboBox kp_sumaWartosci;
+        private MetroFramework.Controls.MetroComboBox kp_sumaWag;
+        private MetroFramework.Controls.MetroComboBox tsp_sumaDlugosci;
     }
 }
 

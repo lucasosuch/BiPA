@@ -73,6 +73,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
                 wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
             }
+
+            wyniki = new Dictionary<string, string[]>(najlepszeWyniki);
+
             return wynikiBadania;
         }
 

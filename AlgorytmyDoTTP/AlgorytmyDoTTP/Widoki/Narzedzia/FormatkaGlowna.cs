@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
@@ -13,6 +14,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaGlowna
     {
+        private Random losowy = new Random();
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
 
@@ -192,6 +194,80 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public AE ZwrocKonfiguracjeAE()
         {
             return algorytmEwolucyjny;
+        }
+
+        public string generujDanePodTSP(int liczbaMiast, double mapa, int procentRozrzutuWartosci)
+        {
+            string nazwa = "";
+
+            return nazwa;
+        }
+
+        public string generujDanePodKP(double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        {
+            int tmpLiczbaPrzedmiotow = liczbaPrzedmiotow;
+            string nazwa = "kp" + liczbaPrzedmiotow + "_" + sumaWagPrzedmiotow + "_" + sumaWartosciPrzedmiotow;
+
+            XDocument xml = new XDocument();
+            XElement przedmioty = new XElement("przedmioty");
+            
+            for (int i = 0; i < liczbaPrzedmiotow; i++)
+            {
+                XElement przedmiot = new XElement("przedmiot");
+
+                if (i == (liczbaPrzedmiotow - 1))
+                {
+                    XElement waga = new XElement("waga", sumaWagPrzedmiotow.ToString()),
+                             wartosc = new XElement("wartosc", sumaWartosciPrzedmiotow.ToString());
+
+                    przedmiot.Add(waga);
+                    przedmiot.Add(wartosc);
+                } else
+                {
+                    double liczba = ObliczLiczbeZPrzedzialu(sumaWagPrzedmiotow, tmpLiczbaPrzedmiotow, procentRozrzutuWartosci);
+
+                    XElement waga = new XElement("waga", liczba.ToString());
+                    sumaWagPrzedmiotow -= liczba;
+
+                    liczba = ObliczLiczbeZPrzedzialu(sumaWartosciPrzedmiotow, tmpLiczbaPrzedmiotow, procentRozrzutuWartosci);
+
+                    XElement wartosc = new XElement("wartosc", liczba.ToString());
+                    sumaWartosciPrzedmiotow -= liczba;
+
+                    tmpLiczbaPrzedmiotow--;
+
+                    przedmiot.Add(waga);
+                    przedmiot.Add(wartosc);
+                }
+
+                przedmioty.Add(przedmiot);
+            }
+
+            xml.Add(przedmioty);
+            xml.Save("./Dane/KP/"+nazwa+".xml");
+
+            Console.WriteLine(xml.ToString());
+                
+            return nazwa;
+        }
+
+        public string generujDanePodTTP(int liczbaMiast, double mapa, double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        {
+            string nazwa = "",
+                   nazwaKP = generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
+                   nazwaTSP = generujDanePodTSP(liczbaMiast, dlugoscTras, procentRozrzutuWartosci);
+
+
+            return nazwa;
+        }
+
+        private double ObliczLiczbeZPrzedzialu(double suma, int liczba, int procentRozrzutuWartosci)
+        {
+            double srednia = suma / liczba,
+                   lewaStrona = srednia * ((double)(100 - procentRozrzutuWartosci) / 100),
+                   prawaStrona = srednia * ((double)(100 + procentRozrzutuWartosci) / 100);
+            
+            return losowy.NextDouble() * (prawaStrona - lewaStrona) + lewaStrona;
         }
     }
 }
