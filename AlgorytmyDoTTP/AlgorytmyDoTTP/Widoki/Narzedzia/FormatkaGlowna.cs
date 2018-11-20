@@ -3,6 +3,7 @@ using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -196,9 +197,58 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return algorytmEwolucyjny;
         }
 
-        public string generujDanePodTSP(int liczbaMiast, double mapa, int procentRozrzutuWartosci)
+        public string generujDanePodTSP(int liczbaMiast, string mapa)
         {
-            string nazwa = "";
+            string nazwa = "tsp"+ liczbaMiast +"_"+ mapa;
+            string[] punkty = mapa.Split("x".ToCharArray());
+
+            XDocument xml = new XDocument();
+            XElement xmlMapa = new XElement("mapa");
+
+            int maxX = int.Parse(punkty[0]),
+                maxY = int.Parse(punkty[1]);
+
+            List<int[]> wykorzystaneMiasta = new List<int[]>();
+            for(int i = 0; i < liczbaMiast; i++)
+            {
+                int wspX = 0,
+                    wspY = 0;
+
+                bool znalezionoMiasto = false;
+                XElement miasto = new XElement("miasto");
+
+                do
+                {
+                    znalezionoMiasto = false;
+
+                    wspX = losowy.Next(maxX);
+                    wspY = losowy.Next(maxY);
+
+                    for(int j = 0; j < wykorzystaneMiasta.Count; j++)
+                    {
+                        if(wykorzystaneMiasta[j][0] == wspX && wykorzystaneMiasta[j][1] == wspY)
+                        {
+                            znalezionoMiasto = true;
+                            break;
+                        }
+                    }
+                } while (znalezionoMiasto) ;
+
+                wykorzystaneMiasta.Add(new int[] { wspX, wspY});
+
+                XElement x = new XElement("x", wspX),
+                         y = new XElement("y", wspY);
+
+                miasto.Add(x);
+                miasto.Add(y);
+
+                xmlMapa.Add(miasto);
+            }
+
+            xml.Add(xmlMapa);
+            xml.Save("./Dane/TSP/" + nazwa + ".xml");
+
+            Console.WriteLine(xml.ToString());
 
             return nazwa;
         }
@@ -209,8 +259,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             string nazwa = "kp" + liczbaPrzedmiotow + "_" + sumaWagPrzedmiotow + "_" + sumaWartosciPrzedmiotow;
 
             XDocument xml = new XDocument();
-            XElement przedmioty = new XElement("przedmioty");
-            
+            XElement korzen = new XElement("korzen"),
+                     przedmioty = new XElement("przedmioty"),
+                     sumaWag = new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow.ToString()),
+                     sumaWartosci = new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow.ToString());
+
             for (int i = 0; i < liczbaPrzedmiotow; i++)
             {
                 XElement przedmiot = new XElement("przedmiot");
@@ -243,20 +296,55 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 przedmioty.Add(przedmiot);
             }
 
-            xml.Add(przedmioty);
-            xml.Save("./Dane/KP/"+nazwa+".xml");
+            korzen.Add(przedmioty);
+            korzen.Add(sumaWag);
+            korzen.Add(sumaWartosci);
 
-            Console.WriteLine(xml.ToString());
+            xml.Add(korzen);
+            xml.Save("./Dane/KP/"+nazwa+".xml");
                 
             return nazwa;
         }
 
-        public string generujDanePodTTP(int liczbaMiast, double mapa, double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        public string generujDanePodTTP(int liczbaMiast, string mapa, double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
         {
-            string nazwa = "",
-                   nazwaKP = generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
-                   nazwaTSP = generujDanePodTSP(liczbaMiast, dlugoscTras, procentRozrzutuWartosci);
+            string nazwaKP = generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
+                   nazwaTSP = generujDanePodTSP(liczbaMiast, mapa),
+                   nazwa = "ttp_"+ nazwaKP +"_"+ nazwaTSP;
 
+            XDocument xml = new XDocument();
+            XElement korzen = new XElement("korzen"),
+                     dostepnePrzedmioty = new XElement("dostepnePrzedmioty"),
+                     kp = new XElement("kp", nazwaKP),
+                     tsp = new XElement("tsp", nazwaTSP);
+
+            korzen.Add(kp);
+            korzen.Add(tsp);
+
+            for(int i = 0; i < liczbaMiast; i++)
+            {
+                int losowaDostepnosc = losowy.Next(liczbaPrzedmiotow);
+                int[] dostepnosc = new int[losowaDostepnosc];
+                
+                for (int j = 0; j < losowaDostepnosc; j++)
+                {
+                    int losowaWartosc = losowy.Next(liczbaPrzedmiotow) + 1;
+
+                    if(!dostepnosc.Contains(losowaWartosc))
+                    {
+                        dostepnosc[j] = losowaWartosc;
+                    }
+
+                    if ((i == losowaDostepnosc - 1) && (dostepnosc.Length == 0)) losowaDostepnosc++;
+                }
+
+                XElement miasto = new XElement("miasto", string.Join(",", dostepnosc));
+                dostepnePrzedmioty.Add(miasto);
+            }
+
+            korzen.Add(dostepnePrzedmioty);
+            xml.Add(korzen);
+            xml.Save("./Dane/TTP/" + nazwa + ".xml");
 
             return nazwa;
         }

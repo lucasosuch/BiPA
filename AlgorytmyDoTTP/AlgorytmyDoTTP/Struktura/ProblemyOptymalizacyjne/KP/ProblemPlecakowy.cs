@@ -50,7 +50,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             XmlDocument dokument = new XmlDocument();
             dokument.Load("./Dane/KP/" + nazwaPakietu + ".xml");
 
-            XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/przedmioty/przedmiot");
+            XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/korzen/przedmioty/przedmiot");
             instancje = new Instancja[przedmioty.Count];
             dlugoscGenotypu = (ushort)przedmioty.Count;
 
