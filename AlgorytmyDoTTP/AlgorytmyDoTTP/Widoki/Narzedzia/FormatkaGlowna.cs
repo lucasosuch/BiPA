@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.Widoki.KonfiguracjaAlgorytmow;
 using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -245,10 +246,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 xmlMapa.Add(miasto);
             }
 
+            xmlMapa.Add(new XElement("hash", xmlMapa.GetHashCode()));
             xml.Add(xmlMapa);
             xml.Save("./Dane/TSP/" + nazwa + ".xml");
-
-            Console.WriteLine(xml.ToString());
 
             return nazwa;
         }
@@ -299,6 +299,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             korzen.Add(przedmioty);
             korzen.Add(sumaWag);
             korzen.Add(sumaWartosci);
+            korzen.Add(new XElement("hash", korzen.GetHashCode()));
 
             xml.Add(korzen);
             xml.Save("./Dane/KP/"+nazwa+".xml");
@@ -324,25 +325,24 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             for(int i = 0; i < liczbaMiast; i++)
             {
                 int losowaDostepnosc = losowy.Next(liczbaPrzedmiotow);
-                int[] dostepnosc = new int[losowaDostepnosc];
+                ArrayList dostepnosc = new ArrayList();
                 
                 for (int j = 0; j < losowaDostepnosc; j++)
                 {
                     int losowaWartosc = losowy.Next(liczbaPrzedmiotow) + 1;
-
-                    if(!dostepnosc.Contains(losowaWartosc))
+                    
+                    if (!dostepnosc.Contains(losowaWartosc))
                     {
-                        dostepnosc[j] = losowaWartosc;
+                        dostepnosc.Add(losowaWartosc);
                     }
-
-                    if ((i == losowaDostepnosc - 1) && (dostepnosc.Length == 0)) losowaDostepnosc++;
                 }
 
-                XElement miasto = new XElement("miasto", string.Join(",", dostepnosc));
+                XElement miasto = new XElement("miasto", string.Join(",", dostepnosc.ToArray()));
                 dostepnePrzedmioty.Add(miasto);
             }
 
             korzen.Add(dostepnePrzedmioty);
+            korzen.Add(new XElement("hash", korzen.GetHashCode()));
             xml.Add(korzen);
             xml.Save("./Dane/TTP/" + nazwa + ".xml");
 

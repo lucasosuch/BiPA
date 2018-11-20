@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace AlgorytmyDoTTP
 {
@@ -301,6 +302,35 @@ namespace AlgorytmyDoTTP
 
                     glowna.generujDanePodTTP(liczbaMiast, ttp_typSiatki.Text, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci);
                     break;
+            }
+        }
+
+        private void wybierzDane_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool pobierzSumeWag = false;
+            string nazwaPliku = "";
+            XmlDocument dokument = new XmlDocument();
+
+            if (wybierzProblem.Text == "Problem Plecakowy")
+            {
+                nazwaPliku = "./Dane/KP/" + wybierzDane.Text + ".xml";
+                pobierzSumeWag = true;
+            }
+
+            if(wybierzProblem.Text == "Problem Podróżującego Złodzieja")
+            {   
+                dokument.Load("./Dane/TTP/" + wybierzDane.Text + ".xml");
+                XmlNode kp = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
+
+                nazwaPliku = "./Dane/KP/" + kp.InnerText + ".xml";
+                pobierzSumeWag = true;
+            }
+
+            if(pobierzSumeWag)
+            {
+                dokument.Load(nazwaPliku);
+                XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
+                maxWaga.Text = ((double)(int.Parse(sumaWag.InnerText) * 0.5)).ToString();
             }
         }
     }

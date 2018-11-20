@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Konfiguracja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
     <Compile Include="Widoki\KonfiguracjaAlgorytmow\AE.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaEwolucyjny.cs" />

@@ -1,6 +1,7 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
+using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model;
 using System;
 using System.Collections.Generic;
 using System.Xml;
@@ -72,46 +73,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 
         public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> macierz)
         {
-            double sumarycznaWartosc = 0,
-                   sumarycznaWaga = 0,
-                   czasPodrozy = 0;
-
             // pobranie planu podróży przez miasta
             IPomocniczy[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
             double[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
 
-            for (int i = 0, j = -1; i < macierz["kp"].Length; i++, j++)
-            {
-                // zebrane przedmioty dla i-tego miasta
-                IPomocniczy[] zebranePrzedmioty = problemPlecakowy.ZwrocWybraneElementy(macierz["kp"][i]);
-                // obliczenie zysku z pobranych przedmiotów dla i-tego miasta
-                Dictionary<String, double[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(zebranePrzedmioty);
-
-                sumarycznaWaga += wynikCzesciowy["min"][0]; // całkowita waga
-                sumarycznaWartosc += wynikCzesciowy["max"][0]; // całkowita wartość
-
-                // obliczenie prędkości złodzieja, gdzie maksymalna prędkość = 1, minimalna prękość = 0.1
-                double predkosc = 1 - sumarycznaWaga * (1 - 0.1) / ZwrocOgraniczeniaProblemu()[0];
-                // jeżeli prędkość mniejsza od minimalnej, wtedy przypisz minimalną prędkość
-                predkosc = (predkosc < 0.1) ? 0.1 : predkosc;
-
-                // przy mieście nr. 1 czas podróży wynosi 0 jednostek
-                if(j != -1) czasPodrozy += dlugosciTrasy[j] * predkosc;
-            }
-
-            Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
-            wynik["min"] = new double[] { 0, 0 };
-            wynik["max"] = new double[] { 0, 0 };
-
-            // ustawienie parametrów do minimalizacji
-            wynik["min"][0] = sumarycznaWaga;
-            wynik["min"][1] = czasPodrozy;
-            // obliczenie funkcji zysku dla TTP
-            wynik["max"][0] = sumarycznaWartosc - ZwrocOgraniczeniaProblemu()[1] * czasPodrozy;
-            wynik["max"][1] = sumarycznaWartosc;
-
-            return wynik;
+            return new TTP1().ObliczWartoscFunkcjiCelu(dlugosciTrasy, macierz["kp"], ZwrocOgraniczeniaProblemu(), problemPlecakowy);
         }
 
         public override Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy)
