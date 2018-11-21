@@ -20,6 +20,11 @@
             "Turniej", "Metoda ruletki"
         };
 
+        public readonly object[] MODELE_TTP = new object[]
+        {
+            "TTP1", "TTP2"
+        };
+
         // parametry do walidacji
         public readonly string[] parametryCalkowite = new string[] 
         {

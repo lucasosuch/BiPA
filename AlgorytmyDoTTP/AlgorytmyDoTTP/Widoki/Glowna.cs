@@ -32,6 +32,8 @@ namespace AlgorytmyDoTTP
             rodzajKrzyzowania.Items.AddRange(glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA);
             metodaSelekcji.Items.AddRange(glowna.ZwrocKonfiguracjeAE().SELEKCJA);
             metodaSelekcji.Text = (string)glowna.ZwrocKonfiguracjeAE().SELEKCJA[0];
+            modeleTTP.Items.AddRange(glowna.ZwrocKonfiguracjeAE().MODELE_TTP);
+            modeleTTP.Text = (string)glowna.ZwrocKonfiguracjeAE().MODELE_TTP[0];
             rodzajKrzyzowania.Text = (string)glowna.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA[0];
         }
 
@@ -104,6 +106,7 @@ namespace AlgorytmyDoTTP
             switch (wybierzProblem.Text)
             {
                 case "Problem Podróżującego Złodzieja":
+                    parametry["modelTTP"] = badaniePorownanie.Text;
                     parametry["ograniczenie1"] = maxWaga.Text;
                     parametry["wyporzyczeniePlecaka"] = wyporzyczeniePlecaka.Text;
                     break;
@@ -330,7 +333,7 @@ namespace AlgorytmyDoTTP
             {
                 dokument.Load(nazwaPliku);
                 XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
-                maxWaga.Text = ((double)(int.Parse(sumaWag.InnerText) * 0.5)).ToString();
+                maxWaga.Text = (int.Parse(sumaWag.InnerText) * 0.5).ToString();
             }
         }
     }

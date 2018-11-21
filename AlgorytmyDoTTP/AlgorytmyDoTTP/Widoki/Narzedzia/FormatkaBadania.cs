@@ -183,7 +183,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             }
             else if (parametry["problem"] == "Problem Podróżującego Złodzieja")
             {
-                ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"]);
+                ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"], parametry["modelTTP"]);
                 problemTTP.UstawOgraniczeniaProblemu(new double[] { double.Parse(parametry["ograniczenie1"]), double.Parse(parametry["wyporzyczeniePlecaka"]) });
 
                 return problemTTP;

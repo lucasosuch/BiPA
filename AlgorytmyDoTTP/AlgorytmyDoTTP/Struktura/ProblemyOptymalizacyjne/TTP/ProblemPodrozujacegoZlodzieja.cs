@@ -13,12 +13,14 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
     /// </summary>
     class ProblemPodrozujacegoZlodzieja : ProblemOptymalizacyjny
     {
+        private string modelTTP;
         private ushort[][] dostepnePrzedmioty;
         private ProblemPlecakowy problemPlecakowy;
         private ProblemKomiwojazera problemKomiwojazera;
 
-        public ProblemPodrozujacegoZlodzieja(string nazwaPakietu)
+        public ProblemPodrozujacegoZlodzieja(string nazwaPakietu, string modelTTP)
         {
+            this.modelTTP = modelTTP;
             Inicjalizacja(nazwaPakietu);
         }
 
@@ -77,6 +79,8 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             IPomocniczy[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
             double[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
+
+            Console.WriteLine("modelTTP: "+ modelTTP);
 
             return new TTP1().ObliczWartoscFunkcjiCelu(dlugosciTrasy, macierz["kp"], ZwrocOgraniczeniaProblemu(), problemPlecakowy);
         }
