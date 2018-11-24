@@ -5,6 +5,16 @@
     /// </summary>
     class AE
     {
+        public readonly object[] ALGORYTMY = new object[]
+        {
+            "Algorytm Losowy", "Algorytm Wspinaczkowy", "Algorytm Ewolucyjny"
+        };
+
+        public readonly object[] PROBLEMY_OPTYMALIZACYJNE = new object[]
+        {
+            "Problem Plecakowy", "Problem Komiwojażera", "Problem Podróżującego Złodzieja"
+        };
+
         public readonly object[] KRZYZOWANIE_WEKTORA = new object[]
         {
             "Proste"
@@ -28,7 +38,7 @@
         // parametry do walidacji
         public readonly string[] parametryCalkowite = new string[] 
         {
-            "rozmiarPopulacji", "iloscPokolen", "iloscRozwiazan", "liczbaIteracji"
+            "rozmiarPopulacji", "liczbaIteracji"
         };
 
         public readonly string[] parametryZmiennoPrzecinkowe = new string[] 

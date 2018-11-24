@@ -3,6 +3,8 @@ using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP;
+using AlgorytmyDoTTP.Widoki.KonfiguracjaAlgorytmow;
+using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,11 +21,17 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         private DateTime data = DateTime.Today;
         private Dictionary<string, string[]> wyniki;
         private Dictionary<string, string> parametry;
+        private AE algorytmEwolucyjny = new AE();
+        private Konfiguracja srodowisko = new Konfiguracja();
 
-        public FormatkaBadania(Dictionary<string, string> parametry)
+        public FormatkaBadania()
+        {
+            wyniki = new Dictionary<string, string[]>();
+        }
+
+        public void UstawParametryBadania(Dictionary<string, string> parametry)
         {
             this.parametry = parametry;
-            wyniki = new Dictionary<string, string[]>();
         }
 
         /// <summary>
@@ -267,6 +275,84 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             double sredniaSumaKwadratow = sumaKwadratow / (zbior.Length - 1);
 
             return Math.Sqrt(sredniaSumaKwadratow);
+        }
+
+        /// <summary>
+        /// Metoda odpowiada za wczytanie plików odpowiadających za konfigurację Problemów Optymalizacyjnych
+        /// </summary>
+        /// <param name="wybranyProblem">Nazwa Problemu Optymalizacyjnego</param>
+        /// <returns>Nazwy plików danych pod wybrany Problem Optymalizacyjny</returns>
+        public object[] WczytajPlikiDanych(string wybranyProblem)
+        {
+            string nazwaFolderu = "";
+
+            for (int i = 0; i < srodowisko.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
+            {
+                if ((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybranyProblem)
+                {
+                    nazwaFolderu = srodowisko.FOLDERY_Z_DANYMI[i];
+                    break;
+                }
+            }
+
+            DirectoryInfo d = new DirectoryInfo("./Dane/" + nazwaFolderu);
+            FileInfo[] files = d.GetFiles("*.xml");
+            object[] pliki = new object[files.Length];
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                pliki[i] = files[i].Name.Replace(".xml", "");
+            }
+
+            return pliki;
+        }
+
+        /// <summary>
+        /// Metoda odpowiada za walidację danych z formatki
+        /// </summary>
+        /// <param name="parametry">Parametry badania</param>
+        /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
+        public void WalidacjaFormatki(Dictionary<string, string> parametry)
+        {
+            bool walidacja = new WalidacjaAE().CzyPoprawneCalkowite(parametry, algorytmEwolucyjny.parametryCalkowite) && new WalidacjaAE().CzyPoprawneZmiennoPrzecinkowe(parametry, algorytmEwolucyjny.parametryZmiennoPrzecinkowe);
+
+            if (!walidacja)
+            {
+                throw new Exception();
+            }
+        }
+
+        /// <summary>
+        /// Metoda odpowiada za walidację podstawowych parametrów odpowiadających za badania
+        /// </summary>
+        /// <param name="parametry">Parametr badania</param>
+        /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
+        public void WalidacjaKluczowychParametrow(string parametr)
+        {
+            bool walidacja = new WalidacjaAE().CzyPustePoleTekstowe(parametr);
+
+            if (!walidacja)
+            {
+                throw new Exception("Parametr " + parametr + " nie może być pusty!");
+            }
+        }
+
+        /// <summary>
+        /// Metoda zwraca instancję konfiguracji środowiskowej
+        /// </summary>
+        /// <returns>Zwraca instancję konfiguracji środowiska aplikacji</returns>
+        public Konfiguracja ZwrocZmiennaSrodowiskowa()
+        {
+            return srodowisko;
+        }
+
+        /// <summary>
+        /// Metoda zwraca instancję konfiguracji Algorytmu Ewolucyjnego
+        /// </summary>
+        /// <returns>Zwraca instancję konfiguracji Algorytmu Ewolucyjnego</returns>
+        public AE ZwrocKonfiguracjeAE()
+        {
+            return algorytmEwolucyjny;
         }
     }
 }
