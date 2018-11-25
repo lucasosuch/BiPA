@@ -254,10 +254,10 @@
             // 
             this.metroPanel1.Controls.Add(this.wygenerujPlikDanych);
             this.metroPanel1.Controls.Add(this.metroLabel2);
+            this.metroPanel1.Controls.Add(this.ttp_panel);
             this.metroPanel1.Controls.Add(this.wybierzPlikDanych);
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.Controls.Add(this.wybierzProblem);
-            this.metroPanel1.Controls.Add(this.ttp_panel);
             this.metroPanel1.Controls.Add(this.kp_panel);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
@@ -332,7 +332,7 @@
             this.kp_maxWagaPlecaka.SelectionLength = 0;
             this.kp_maxWagaPlecaka.SelectionStart = 0;
             this.kp_maxWagaPlecaka.ShortcutsEnabled = true;
-            this.kp_maxWagaPlecaka.Size = new System.Drawing.Size(176, 23);
+            this.kp_maxWagaPlecaka.Size = new System.Drawing.Size(176, 30);
             this.kp_maxWagaPlecaka.TabIndex = 8;
             this.kp_maxWagaPlecaka.UseSelectable = true;
             this.kp_maxWagaPlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -526,7 +526,7 @@
             this.ae_pwoMutacji.SelectionLength = 0;
             this.ae_pwoMutacji.SelectionStart = 0;
             this.ae_pwoMutacji.ShortcutsEnabled = true;
-            this.ae_pwoMutacji.Size = new System.Drawing.Size(172, 23);
+            this.ae_pwoMutacji.Size = new System.Drawing.Size(172, 30);
             this.ae_pwoMutacji.TabIndex = 21;
             this.ae_pwoMutacji.UseSelectable = true;
             this.ae_pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -565,7 +565,7 @@
             this.ae_pwoKrzyzowania.SelectionLength = 0;
             this.ae_pwoKrzyzowania.SelectionStart = 0;
             this.ae_pwoKrzyzowania.ShortcutsEnabled = true;
-            this.ae_pwoKrzyzowania.Size = new System.Drawing.Size(172, 23);
+            this.ae_pwoKrzyzowania.Size = new System.Drawing.Size(172, 30);
             this.ae_pwoKrzyzowania.TabIndex = 19;
             this.ae_pwoKrzyzowania.UseSelectable = true;
             this.ae_pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -604,7 +604,7 @@
             this.ae_rozmiarPopulacji.SelectionLength = 0;
             this.ae_rozmiarPopulacji.SelectionStart = 0;
             this.ae_rozmiarPopulacji.ShortcutsEnabled = true;
-            this.ae_rozmiarPopulacji.Size = new System.Drawing.Size(172, 23);
+            this.ae_rozmiarPopulacji.Size = new System.Drawing.Size(172, 30);
             this.ae_rozmiarPopulacji.TabIndex = 15;
             this.ae_rozmiarPopulacji.UseSelectable = true;
             this.ae_rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -808,7 +808,7 @@
             this.aw_parametrP.SelectionLength = 0;
             this.aw_parametrP.SelectionStart = 0;
             this.aw_parametrP.ShortcutsEnabled = true;
-            this.aw_parametrP.Size = new System.Drawing.Size(172, 23);
+            this.aw_parametrP.Size = new System.Drawing.Size(172, 30);
             this.aw_parametrP.TabIndex = 15;
             this.aw_parametrP.UseSelectable = true;
             this.aw_parametrP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -817,7 +817,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 88);
+            this.metroLabel5.Location = new System.Drawing.Point(3, 86);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(189, 20);
             this.metroLabel5.TabIndex = 17;
@@ -847,7 +847,7 @@
             this.wypozyczeniePlecaka.SelectionLength = 0;
             this.wypozyczeniePlecaka.SelectionStart = 0;
             this.wypozyczeniePlecaka.ShortcutsEnabled = true;
-            this.wypozyczeniePlecaka.Size = new System.Drawing.Size(172, 23);
+            this.wypozyczeniePlecaka.Size = new System.Drawing.Size(172, 30);
             this.wypozyczeniePlecaka.TabIndex = 16;
             this.wypozyczeniePlecaka.UseSelectable = true;
             this.wypozyczeniePlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -905,7 +905,7 @@
             this.ttp_maxWagaPlecaka.SelectionLength = 0;
             this.ttp_maxWagaPlecaka.SelectionStart = 0;
             this.ttp_maxWagaPlecaka.ShortcutsEnabled = true;
-            this.ttp_maxWagaPlecaka.Size = new System.Drawing.Size(172, 23);
+            this.ttp_maxWagaPlecaka.Size = new System.Drawing.Size(172, 30);
             this.ttp_maxWagaPlecaka.TabIndex = 14;
             this.ttp_maxWagaPlecaka.UseSelectable = true;
             this.ttp_maxWagaPlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
