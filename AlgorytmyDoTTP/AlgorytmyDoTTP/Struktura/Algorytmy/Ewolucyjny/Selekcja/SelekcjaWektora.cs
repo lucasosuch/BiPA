@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -32,12 +31,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         protected override ReprezentacjaRozwiazania Turniej(ReprezentacjaRozwiazania[] populacja)
         {
             ReprezentacjaRozwiazania zwyciezca = populacja[0];
-            Dictionary<String, double[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(populacja[0]);
+            Dictionary<string, float[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(populacja[0]);
 
             for (int i = 0; i <= 5; i++)
             {
                 int k = losowy.Next(populacja.Length - 1);
-                Dictionary<String, double[]> dopasowanie = rozwiazanie.FunkcjaDopasowania(populacja[k]);
+                Dictionary<string, float[]> dopasowanie = rozwiazanie.FunkcjaDopasowania(populacja[k]);
 
                 if (dopasowanieZwyciezcy["max"][0] < dopasowanie["max"][0])
                 {
@@ -52,18 +51,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         protected override ReprezentacjaRozwiazania MetodaRuletki(ReprezentacjaRozwiazania[] populacja)
         {
             ReprezentacjaRozwiazania osobnik = new ReprezentacjaRozwiazania();
-            double pwo = losowy.NextDouble(),
+            float pwo = (float)losowy.NextDouble(),
                    poprzednik = 0;
             
             for(int i = 0; i < populacja.Length; i++)
             {
-                if(poprzednik <= pwo && pwo < (double)wskazniki[i])
+                if(poprzednik <= pwo && pwo < (float)wskazniki[i])
                 {
                     osobnik = populacja[i];
                     break;
                 }
 
-                poprzednik = (double)wskazniki[i];
+                poprzednik = (float)wskazniki[i];
             }
 
             return osobnik;
@@ -71,7 +70,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
         protected override ArrayList ZwrocWskazniki(ReprezentacjaRozwiazania[] populacja)
         {
-            double suma = 0;
+            float suma = 0;
             ArrayList wskazniki = new ArrayList();
 
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
@@ -79,10 +78,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 suma += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
 
-            double sumaCzesciowa = 0;
+            float sumaCzesciowa = 0;
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
-                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
+                float wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
 
                 sumaCzesciowa += wskaznik;
                 wskazniki.Add(sumaCzesciowa);

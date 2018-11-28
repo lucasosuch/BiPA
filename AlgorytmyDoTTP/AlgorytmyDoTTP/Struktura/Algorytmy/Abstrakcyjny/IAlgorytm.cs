@@ -7,7 +7,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
         /// <summary>
         /// Metoda uruchamiająca Algorytm Ewolucyjny
         /// </summary>
-        /// <returns>Zwraca raport z badania czytelny dla człowieka</returns>
-        Dictionary<string, string[]> Start();
+        void Start();
     }
 }

@@ -40,51 +40,52 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Wyniki czytelne dla człowieka</returns>
         public string UruchomBadanie()
         {
-            string wynikiBadania = "";
-            int liczbaIteracji = int.Parse(parametry["liczbaIteracji"]);
-            double[] zbiorWynikowMax = new double[liczbaIteracji];
-            double[] zbiorWynikowMin = new double[liczbaIteracji];
+            //int liczbaIteracji = int.Parse(parametry["liczbaIteracji"]);
+            //float[] zbiorWynikowMax = new float[liczbaIteracji];
+            //float[] zbiorWynikowMin = new float[liczbaIteracji];
 
-            Dictionary<string, string[]> najlepszeWyniki = new Dictionary<string, string[]>();
-            najlepszeWyniki["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", (-100000).ToString() };
+            //Dictionary<string, string[]> najlepszeWyniki = new Dictionary<string, string[]>();
+            //najlepszeWyniki["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", (-100000).ToString() };
 
-            for (int i = 0; i < liczbaIteracji; i++)
-            {
-                wyniki.Clear();
-                wyniki = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem()).Start();
+            ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem()).Start();
 
-                zbiorWynikowMax[i] = double.Parse(wyniki["maxWartosc"][1]);
-                zbiorWynikowMin[i] = double.Parse(wyniki["minWartosc"][1]);
-                if (double.Parse(najlepszeWyniki["maxWartosc"][1]) < double.Parse(wyniki["maxWartosc"][1]))
-                {
-                    najlepszeWyniki = new Dictionary<string, string[]>(wyniki);
-                }
-            }
+            //for (int i = 0; i < liczbaIteracji; i++)
+            //{
+            //    wyniki.Clear();
 
-            wynikiBadania += "Najlepsze znalezione badanie: " + Environment.NewLine;
-            foreach (KeyValuePair<string, string[]> linia in najlepszeWyniki)
-            {
-                wynikiBadania += linia.Value[0] + ": " + linia.Value[1] + Environment.NewLine;
-            }
 
-            if (liczbaIteracji > 1)
-            {
-                double srednia = Srednia(zbiorWynikowMax);
-                wynikiBadania += "----------------------------" + Environment.NewLine;
-                wynikiBadania += "Średnia wartość maks z badań: " + srednia + Environment.NewLine;
-                wynikiBadania += "Mediana wartości maks z badań: " + Mediana(zbiorWynikowMax) + Environment.NewLine;
-                wynikiBadania += "Odchylenie standardowe wartości maks z badań: " + OdchylenieStandardowe(zbiorWynikowMax, srednia) + Environment.NewLine;
+            //    zbiorWynikowMax[i] = float.Parse(wyniki["maxWartosc"][1]);
+            //    zbiorWynikowMin[i] = float.Parse(wyniki["minWartosc"][1]);
+            //    if (float.Parse(najlepszeWyniki["maxWartosc"][1]) < float.Parse(wyniki["maxWartosc"][1]))
+            //    {
+            //        najlepszeWyniki = new Dictionary<string, string[]>(wyniki);
+            //    }
+            //}
 
-                srednia = Srednia(zbiorWynikowMin);
-                wynikiBadania += "---" + Environment.NewLine;
-                wynikiBadania += "Średnia wartość min z badań: " + srednia + Environment.NewLine;
-                wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
-                wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
-            }
+            //wynikiBadania += "Najlepsze znalezione badanie: " + Environment.NewLine;
+            //foreach (KeyValuePair<string, string[]> linia in najlepszeWyniki)
+            //{
+            //    wynikiBadania += linia.Value[0] + ": " + linia.Value[1] + Environment.NewLine;
+            //}
 
-            wyniki = new Dictionary<string, string[]>(najlepszeWyniki);
+            //if (liczbaIteracji > 1)
+            //{
+            //    float srednia = Srednia(zbiorWynikowMax);
+            //    wynikiBadania += "----------------------------" + Environment.NewLine;
+            //    wynikiBadania += "Średnia wartość maks z badań: " + srednia + Environment.NewLine;
+            //    wynikiBadania += "Mediana wartości maks z badań: " + Mediana(zbiorWynikowMax) + Environment.NewLine;
+            //    wynikiBadania += "Odchylenie standardowe wartości maks z badań: " + OdchylenieStandardowe(zbiorWynikowMax, srednia) + Environment.NewLine;
 
-            return wynikiBadania;
+            //    srednia = Srednia(zbiorWynikowMin);
+            //    wynikiBadania += "---" + Environment.NewLine;
+            //    wynikiBadania += "Średnia wartość min z badań: " + srednia + Environment.NewLine;
+            //    wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
+            //    wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
+            //}
+
+            //wyniki = new Dictionary<string, string[]>(najlepszeWyniki);
+
+            return "Poszło!!!";
         }
 
         /// <summary>
@@ -185,14 +186,14 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             if (parametry["problem"] == "Problem Plecakowy")
             {
                 ProblemPlecakowy problemKP = new ProblemPlecakowy(parametry["dane"]);
-                problemKP.UstawOgraniczeniaProblemu(double.Parse(parametry["ograniczenie1"]));
+                problemKP.UstawOgraniczeniaProblemu(float.Parse(parametry["ograniczenie1"]));
 
                 return problemKP;
             }
             else if (parametry["problem"] == "Problem Podróżującego Złodzieja")
             {
                 ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"], parametry["modelTTP"]);
-                problemTTP.UstawOgraniczeniaProblemu(new double[] { double.Parse(parametry["ograniczenie1"]), double.Parse(parametry["wyporzyczeniePlecaka"]) });
+                problemTTP.UstawOgraniczeniaProblemu(new float[] { float.Parse(parametry["ograniczenie1"]), float.Parse(parametry["wyporzyczeniePlecaka"]) });
 
                 return problemTTP;
             }
@@ -215,66 +216,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             }
 
             return new Struktura.Algorytmy.Losowy.PrzebiegAlgorytmu();
-        }
-
-        /// <summary>
-        /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <returns>Zwraca medianę</returns>
-        private double Mediana(double[] zbior)
-        {
-            int srodek = zbior.Length / 2;
-            double[] wynikiPopulacji = new double[zbior.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
-
-            if (srodek == 0) throw new IndexOutOfRangeException();
-
-            for (int i = 0; i < zbior.Length; i++)
-            {
-                wynikiPopulacji[i] = zbior[i];
-            }
-
-            // sortowanie wyników rosnąco
-            Array.Sort(wynikiPopulacji);
-
-            return wynikiPopulacji[srodek];
-        }
-
-        /// <summary>
-        /// Metoda obliczająca średnią wartość funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <returns>Zwraca wartość średnią</returns>
-        private double Srednia(double[] zbior)
-        {
-            double wynik = 0;
-
-            foreach (double wartosc in zbior)
-            {
-                wynik += wartosc;
-            }
-
-            return wynik / zbior.Length;
-        }
-
-        /// <summary>
-        /// Metoda obliczająca odchylenie standardowe funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <param name="srednia">Średnia z listy rozwiązań</param>
-        /// <returns>Zwraca odchylenie standardowe</returns>
-        private double OdchylenieStandardowe(double[] zbior, double srednia)
-        {
-            double sumaKwadratow = 0;
-
-            foreach (double wartosc in zbior)
-            {
-                sumaKwadratow += (wartosc - srednia) * (wartosc - srednia);
-            }
-
-            double sredniaSumaKwadratow = sumaKwadratow / (zbior.Length - 1);
-
-            return Math.Sqrt(sredniaSumaKwadratow);
         }
 
         /// <summary>
@@ -353,6 +294,66 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public AE ZwrocKonfiguracjeAE()
         {
             return algorytmEwolucyjny;
+        }
+
+        /// <summary>
+        /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
+        /// </summary>
+        /// <param name="populacja">Lista rozwiązań</param>
+        /// <returns>Zwraca medianę</returns>
+        private float Mediana(float[] zbior)
+        {
+            int srodek = zbior.Length / 2;
+            float[] wynikiPopulacji = new float[zbior.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
+
+            if (srodek == 0) throw new IndexOutOfRangeException();
+
+            for (int i = 0; i < zbior.Length; i++)
+            {
+                wynikiPopulacji[i] = zbior[i];
+            }
+
+            // sortowanie wyników rosnąco
+            Array.Sort(wynikiPopulacji);
+
+            return wynikiPopulacji[srodek];
+        }
+
+        /// <summary>
+        /// Metoda obliczająca średnią wartość funkcji celu z populacji rozwiązań
+        /// </summary>
+        /// <param name="populacja">Lista rozwiązań</param>
+        /// <returns>Zwraca wartość średnią</returns>
+        private float Srednia(float[] zbior)
+        {
+            float wynik = 0;
+
+            foreach (float wartosc in zbior)
+            {
+                wynik += wartosc;
+            }
+
+            return wynik / zbior.Length;
+        }
+
+        /// <summary>
+        /// Metoda obliczająca odchylenie standardowe funkcji celu z populacji rozwiązań
+        /// </summary>
+        /// <param name="populacja">Lista rozwiązań</param>
+        /// <param name="srednia">Średnia z listy rozwiązań</param>
+        /// <returns>Zwraca odchylenie standardowe</returns>
+        private float OdchylenieStandardowe(float[] zbior, float srednia)
+        {
+            float sumaKwadratow = 0;
+
+            foreach (float wartosc in zbior)
+            {
+                sumaKwadratow += (wartosc - srednia) * (wartosc - srednia);
+            }
+
+            float sredniaSumaKwadratow = sumaKwadratow / (zbior.Length - 1);
+
+            return (float)Math.Sqrt(sredniaSumaKwadratow);
         }
     }
 }

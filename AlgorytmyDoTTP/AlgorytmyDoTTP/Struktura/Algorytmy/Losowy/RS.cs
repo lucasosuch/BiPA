@@ -24,15 +24,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             this.analiza = analiza;
         }
 
-        public Dictionary<string, string[]> Start()
+        public void Start()
         {
             analiza.RozpocznijPomiarCzasu();
             losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
             ReprezentacjaRozwiazania najlepszeRozwiazanie = losowanie.ZwrocNajlepszeRozwiazanie();
-            Dictionary<string, double[]> najlepszyWynik = losowanie.ZwrocNajlepszyWynik();
+            Dictionary<string, float[]> najlepszyWynik = losowanie.ZwrocNajlepszyWynik();
             analiza.ZakonczPomiarCzasu();
             
-            return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, najlepszyWynik);
+            //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, najlepszyWynik);
         }
     }
 }

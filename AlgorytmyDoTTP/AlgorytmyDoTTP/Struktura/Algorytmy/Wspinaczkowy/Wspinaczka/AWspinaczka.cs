@@ -51,6 +51,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
         /// Metoda przeszukuje przestrzeń rozwiązań szukając optymalnej wartości funkcji celu
         /// </summary>
         /// <returns>Znalezioną optymalną wartość funkcji celu</returns>
-        public abstract Dictionary<string, double[]> ZnajdzOptimum();
+        public abstract Dictionary<string, float[]> ZnajdzOptimum();
     }
 }

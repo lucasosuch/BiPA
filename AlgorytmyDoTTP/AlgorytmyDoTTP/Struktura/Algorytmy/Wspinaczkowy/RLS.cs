@@ -20,14 +20,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             this.przeszukiwanieLokalne = przeszukiwanieLokalne;
         }
 
-        public Dictionary<string, string[]> Start()
+        public void Start()
         {
             analiza.RozpocznijPomiarCzasu();
-            Dictionary<string, double[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
+            Dictionary<string, float[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
             analiza.ZakonczPomiarCzasu();
             ReprezentacjaRozwiazania najlepszeRozwiazanie = przeszukiwanieLokalne.ZwrocRozwiazanie();
 
-            return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);
+            //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);
         }
     }
 }

@@ -64,7 +64,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return nazwa;
         }
 
-        public string generujDanePodKP(double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        public string generujDanePodKP(float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
         {
             int tmpLiczbaPrzedmiotow = liczbaPrzedmiotow;
             string nazwa = "kp" + liczbaPrzedmiotow + "_" + sumaWagPrzedmiotow + "_" + sumaWartosciPrzedmiotow;
@@ -89,7 +89,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 }
                 else
                 {
-                    double liczba = ObliczLiczbeZPrzedzialu(sumaWagPrzedmiotow, tmpLiczbaPrzedmiotow, procentRozrzutuWartosci);
+                    float liczba = ObliczLiczbeZPrzedzialu(sumaWagPrzedmiotow, tmpLiczbaPrzedmiotow, procentRozrzutuWartosci);
 
                     XElement waga = new XElement("waga", liczba.ToString());
                     sumaWagPrzedmiotow -= liczba;
@@ -119,7 +119,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return nazwa;
         }
 
-        public string generujDanePodTTP(int liczbaMiast, string mapa, double sumaWagPrzedmiotow, double sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        public string generujDanePodTTP(int liczbaMiast, string mapa, float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
         {
             string nazwaKP = generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
                    nazwaTSP = generujDanePodTSP(liczbaMiast, mapa),
@@ -161,13 +161,13 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return nazwa;
         }
 
-        private double ObliczLiczbeZPrzedzialu(double suma, int liczba, int procentRozrzutuWartosci)
+        private float ObliczLiczbeZPrzedzialu(float suma, int liczba, int procentRozrzutuWartosci)
         {
-            double srednia = suma / liczba,
-                   lewaStrona = srednia * ((double)(100 - procentRozrzutuWartosci) / 100),
-                   prawaStrona = srednia * ((double)(100 + procentRozrzutuWartosci) / 100);
+            float srednia = suma / liczba,
+                   lewaStrona = srednia * ((float)(100 - procentRozrzutuWartosci) / 100),
+                   prawaStrona = srednia * ((float)(100 + procentRozrzutuWartosci) / 100);
 
-            return losowy.NextDouble() * (prawaStrona - lewaStrona) + lewaStrona;
+            return (float)(losowy.NextDouble() * (prawaStrona - lewaStrona) + lewaStrona);
         }
 
         private void zapiszKonfigurację_Click(object sender, EventArgs e)

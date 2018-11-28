@@ -73,12 +73,12 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             return problemKomiwojazera;
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> macierz)
+        public override Dictionary<string, float[]> ObliczZysk(Dictionary<string, ushort[][]> macierz)
         {
             // pobranie planu podróży przez miasta
             IPomocniczy[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
-            double[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
+            float[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
 
             Console.WriteLine("modelTTP: "+ modelTTP);
 
@@ -121,7 +121,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
         {
             throw new NotImplementedException();
         }

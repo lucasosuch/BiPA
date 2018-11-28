@@ -9,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
     {
         protected AOsobnik osobnik;
         protected ReprezentacjaRozwiazania najlepszeRozwiazanie;
-        protected Dictionary<string, double[]> najlepszyWynik;
+        protected Dictionary<string, float[]> najlepszyWynik;
 
         public ALosowanie() { }
 
@@ -40,7 +40,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         /// Metoda zwraca najlepszy wynik
         /// </summary>
         /// <returns>Najlepszy wynik funkcji</returns>
-        public Dictionary<string, double[]> ZwrocNajlepszyWynik()
+        public Dictionary<string, float[]> ZwrocNajlepszyWynik()
         {
             return najlepszyWynik;
         }
@@ -67,7 +67,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
             foreach (ReprezentacjaRozwiazania rozwiazanie in listaRozwiazan)
             {
-                Dictionary<string, double[]> wynikElementu = osobnik.FunkcjaDopasowania(rozwiazanie);
+                Dictionary<string, float[]> wynikElementu = osobnik.FunkcjaDopasowania(rozwiazanie);
 
                 if (wynikElementu["max"][0] > najlepszyWynik["max"][0])
                 {

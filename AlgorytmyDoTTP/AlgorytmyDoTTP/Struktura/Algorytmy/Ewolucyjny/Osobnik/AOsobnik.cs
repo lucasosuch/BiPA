@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using System;
 using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
@@ -37,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         /// <returns>Wartość / Wartości funkcji celu</returns>
-        public abstract Dictionary<String, double[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu);
+        public abstract Dictionary<string, float[]> FunkcjaDopasowania(ReprezentacjaRozwiazania reprezentacjaGenotypu);
 
         /// <summary>
         /// Metoda rozkodowująca rozwiązanie danego problemu optymalizacyjnego.

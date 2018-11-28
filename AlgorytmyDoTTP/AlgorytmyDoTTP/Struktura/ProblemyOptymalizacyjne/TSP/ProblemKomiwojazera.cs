@@ -55,21 +55,21 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             }
         }
 
-        public override Dictionary<String, double[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
         {
-            Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
-            double zysk = ZwrocDlugoscTrasy(wektor, false)[0];
+            Dictionary<string, float[]> wynik = new Dictionary<string, float[]>();
+            float zysk = ZwrocDlugoscTrasy(wektor, false)[0];
 
-            wynik["min"] = new double[] { zysk };
-            wynik["max"] = new double[] { zysk * -1 };
+            wynik["min"] = new float[] { zysk };
+            wynik["max"] = new float[] { zysk * -1 };
 
             return wynik;
         }
 
-        public double[] ZwrocDlugoscTrasy(IPomocniczy[] wektor, bool zwrocWektor)
+        public float[] ZwrocDlugoscTrasy(IPomocniczy[] wektor, bool zwrocWektor)
         {
             int dlugoscWekotra = wektor.Length;
-            double[] wynik = (zwrocWektor) ? new double[dlugoscWekotra] : new double[] { 0 };
+            float[] wynik = (zwrocWektor) ? new float[dlugoscWekotra] : new float[] { 0 };
 
             for (int i = 0; i < dlugoscWekotra; i++)
             {
@@ -116,7 +116,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> wektor)
+        public override Dictionary<string, float[]> ObliczZysk(Dictionary<string, ushort[][]> wektor)
         {
             throw new NotImplementedException();
         }

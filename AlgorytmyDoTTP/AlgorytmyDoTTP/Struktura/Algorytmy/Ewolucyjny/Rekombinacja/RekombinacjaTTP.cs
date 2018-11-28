@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         private RekombinacjaTSP rekombinacjaTSP;
         private RekombinacjaKP rekombinacjaKP;
 
-        public RekombinacjaTTP(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania)
+        public RekombinacjaTTP(float pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania) : base(pwoMutacji, rozwiazanie, rodzajKrzyzowania)
         {
             rekombinacjaTSP = new RekombinacjaTSP(pwoMutacji, rozwiazanie, rodzajKrzyzowania);
             rekombinacjaKP = new RekombinacjaKP(0, rozwiazanie);
@@ -85,7 +85,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
         {
-            double test = losowy.NextDouble();
+            float test = (float)losowy.NextDouble();
             if (test > pwoMutacji) return genotyp;
             
             for(int i = 1; i < genotyp.Length; i++)
@@ -109,7 +109,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
         {
             ushort[][] geny = genotyp.ZwrocGenotyp2Wymiarowy();
-            Dictionary<string, double[]> zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(geny));
+            Dictionary<string, float[]> zysk = rozwiazanie.ZwrocInstancjeProblemu().ObliczZysk(rozwiazanie.ZwrocInstancjeProblemu().ZwrocWybraneElementy(geny));
 
             if (zysk["min"][0] > rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu()[0])
             {

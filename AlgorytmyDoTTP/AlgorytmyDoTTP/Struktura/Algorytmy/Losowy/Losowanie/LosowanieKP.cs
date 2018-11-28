@@ -19,7 +19,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
         {
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
-            double[] ograniczeniaProblemu = problemOptymalizacyjny.ZwrocOgraniczeniaProblemu();
+            float[] ograniczeniaProblemu = problemOptymalizacyjny.ZwrocOgraniczeniaProblemu();
 
             for (int i = 0; i < iloscRozwiazan; i++)
             {
@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                 for (int j = 0; j < iloscElementow; j++)
                 {
                     elementy[j] = (ushort)losowy.Next(2);
-                    Dictionary<string, double[]> zysk = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(elementy));
+                    Dictionary<string, float[]> zysk = problemOptymalizacyjny.ObliczZysk(problemOptymalizacyjny.ZwrocWybraneElementy(elementy));
 
                     if (zysk["min"][0] > ograniczeniaProblemu[0]) elementy[j] = 0;
                 }

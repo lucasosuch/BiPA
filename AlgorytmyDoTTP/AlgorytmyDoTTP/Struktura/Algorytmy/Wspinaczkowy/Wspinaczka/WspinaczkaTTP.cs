@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
     {
         public WspinaczkaTTP(ALosowanie losowanie) : base(losowanie) { }
 
-        public override Dictionary<string, double[]> ZnajdzOptimum()
+        public override Dictionary<string, float[]> ZnajdzOptimum()
         {
             int poprawy = 0,
                 marginesBledu = 50;
@@ -24,11 +24,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
             string stan = "kp";
             AOsobnik osobnik = losowanie.ZwrocOsobnika();
             ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
-            Dictionary<string, double[]> wynik = osobnik.FunkcjaDopasowania(reprezentacjaRozwiazania);
+            Dictionary<string, float[]> wynik = osobnik.FunkcjaDopasowania(reprezentacjaRozwiazania);
             ReprezentacjaRozwiazania tmpReprezentacjaRozwiazanie = new ReprezentacjaRozwiazania(tmpGenotyp);
             ushort[][] dostepnePrzedmioty = (ushort[][])problemOptymalizacyjny.ZwrocDostepnePrzedmioty().Clone();
 
-            Dictionary<string, double[]> tmpWynik = wynik;
+            Dictionary<string, float[]> tmpWynik = wynik;
             double wspolczynnik = wynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
 
             do

@@ -86,6 +86,7 @@ namespace AlgorytmyDoTTP.Widoki
             parametry["problem"] = wybierzProblem.Text;
             parametry["algorytm"] = wybierzAlgorytm.Text;
             parametry["liczbaIteracji"] = liczbaIteracjiAlgorytmu.Text;
+            parametry["czasPoszukiwania"] = czasDzialaniaAlgorytmu.Text;
 
             badanie.WalidacjaFormatki(parametry);
 

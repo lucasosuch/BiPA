@@ -11,7 +11,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         protected ushort dlugoscGenotypu = 0;
         protected bool czyIstniejaOgraniczenia = false;
         protected IPomocniczy[] instancje;
-        protected double[] zwrocOgraniczenia;
+        protected float[] zwrocOgraniczenia;
 
         /// <summary>
         /// Metoda zwraca wartość prawda, jeżeli problem ma ograniczenia zwenętrzne
@@ -26,7 +26,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         /// Metoda zwraca wartości liczbowe ograniczeń
         /// </summary>
         /// <returns>Wartości ograniczeń</returns>
-        public double[] ZwrocOgraniczeniaProblemu()
+        public float[] ZwrocOgraniczeniaProblemu()
         {
             return zwrocOgraniczenia;
         }
@@ -35,20 +35,20 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         /// Metoda ustawia ograniczenia dla Porblemu Optymalizacyjnego
         /// </summary>
         /// <param name="ograniczenie">Wartość ograniczenia</param>
-        public void UstawOgraniczeniaProblemu(double ograniczenie)
+        public void UstawOgraniczeniaProblemu(float ograniczenie)
         {
             czyIstniejaOgraniczenia = true;
-            zwrocOgraniczenia = new double[] { ograniczenie };
+            zwrocOgraniczenia = new float[] { ograniczenie };
         }
 
         /// <summary>
         /// Metoda ustawia ograniczenia dla Porblemu Optymalizacyjnego
         /// </summary>
         /// <param name="ograniczenie">Wartości ograniczenia</param>
-        public void UstawOgraniczeniaProblemu(double[] ograniczenia)
+        public void UstawOgraniczeniaProblemu(float[] ograniczenia)
         {
             czyIstniejaOgraniczenia = true;
-            zwrocOgraniczenia = (double[])ograniczenia.Clone();
+            zwrocOgraniczenia = (float[])ograniczenia.Clone();
         }
 
         /// <summary>
@@ -71,14 +71,14 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         /// </summary>
         /// <param name="wektor">Dziedzina problemu</param>
         /// <returns>Zwraca obliczoną wartość funkcji celu</returns>
-        public abstract Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> wektor);
+        public abstract Dictionary<string, float[]> ObliczZysk(Dictionary<string, ushort[][]> wektor);
 
         /// <summary>
         /// Metoda oblicza wartość funkcji celu
         /// </summary>
         /// <param name="wektor">Dziedzina problemu</param>
         /// <returns>Zwraca obliczoną wartość funkcji celu</returns>
-        public abstract Dictionary<string, double[]> ObliczZysk(IPomocniczy[] wektor);
+        public abstract Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor);
 
         /// <summary>
         /// Metoda zwraca wybrane elementy w reprezentacji listowej

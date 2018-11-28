@@ -8,7 +8,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     /// </summary>
     class RekombinacjaKP : ARekombinacja
     {
-        public RekombinacjaKP(double pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
+        public RekombinacjaKP(float pwoMutacji, AOsobnik rozwiazanie) : base(pwoMutacji, rozwiazanie){}
 
         public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
@@ -55,7 +55,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
         {
             ushort[] geny = genotyp.ZwrocGenotyp1Wymiarowy();
-            double[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
+            float[] ograniczenie = rozwiazanie.ZwrocInstancjeProblemu().ZwrocOgraniczeniaProblemu();
 
             while (rozwiazanie.FunkcjaDopasowania(genotyp)["min"][0] > ograniczenie[0])
             {

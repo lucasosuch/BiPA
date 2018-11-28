@@ -9,20 +9,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
     /// </summary>
     abstract class ARekombinacja
     {
-        protected double pwoMutacji;
+        protected float pwoMutacji;
         protected AOsobnik rozwiazanie;
         protected string rodzajKrzyzowania;
         protected Random losowy = new Random();
         protected bool czySprawdzacOgraniczenia = true;
 
-        public ARekombinacja(double pwoMutacji, AOsobnik rozwiazanie)
+        public ARekombinacja(float pwoMutacji, AOsobnik rozwiazanie)
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;
             rodzajKrzyzowania = "Proste";
         }
 
-        public ARekombinacja(double pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania)
+        public ARekombinacja(float pwoMutacji, AOsobnik rozwiazanie, string rodzajKrzyzowania)
         {
             this.pwoMutacji = pwoMutacji;
             this.rozwiazanie = rozwiazanie;

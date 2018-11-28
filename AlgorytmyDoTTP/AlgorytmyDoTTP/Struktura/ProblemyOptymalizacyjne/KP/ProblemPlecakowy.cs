@@ -63,11 +63,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             }
         }
 
-        public override Dictionary<String, double[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
         {
-            Dictionary<String, double[]> wynik = new Dictionary<String, double[]>();
-            wynik["min"] = new double[] { 0 };
-            wynik["max"] = new double[] { 0 };
+            Dictionary<string, float[]> wynik = new Dictionary<string, float[]>();
+            wynik["min"] = new float[] { 0 };
+            wynik["max"] = new float[] { 0 };
 
             foreach (Instancja przedmiot in wektor)
             {
@@ -83,7 +83,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, double[]> ObliczZysk(Dictionary<string, ushort[][]> wektor)
+        public override Dictionary<string, float[]> ObliczZysk(Dictionary<string, ushort[][]> wektor)
         {
             throw new NotImplementedException();
         }

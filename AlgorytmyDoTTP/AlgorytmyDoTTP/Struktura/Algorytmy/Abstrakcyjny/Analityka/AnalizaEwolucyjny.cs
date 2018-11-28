@@ -10,13 +10,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     /// </summary>
     class AnalizaEwolucyjny : AAnalityka
     {
-        private double najlepszaWartoscFunkcji;
-        private ReprezentacjaRozwiazania najlepszeRozwiazanie;
+        private float[] najlepszaWartoscFunkcji;
+        private ReprezentacjaRozwiazania[] najlepszeRozwiazanie;
 
-        public AnalizaEwolucyjny(AOsobnik rozwiazanie) : base(rozwiazanie)
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji) : base(rozwiazanie, liczbaIteracji)
         {
-            najlepszaWartoscFunkcji = -10000;
-            najlepszeRozwiazanie = new ReprezentacjaRozwiazania();
+            najlepszaWartoscFunkcji = new float[liczbaIteracji];
+            najlepszeRozwiazanie = new ReprezentacjaRozwiazania[liczbaIteracji];
+
+            for(short i = 0; i < liczbaIteracji; i++)
+            {
+                najlepszaWartoscFunkcji[i] = -10000;
+            }
         }
 
         /// <summary>
@@ -27,19 +32,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         public Dictionary<string, string[]> ZwrocOdpowiedz(ReprezentacjaRozwiazania[] populacja)
         {
             // pobieramy wartości statystyczne / analityczne z naszego badania
-            double srednia = SredniaPopulacji(populacja),
+            float srednia = SredniaPopulacji(populacja),
                    mediana = MedianaPopulacji(populacja),
                    odchylenieStadowe = OdchylenieStandardowePopulacji(populacja, srednia);
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie[0]) }; // bajpas
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", ZwrocWartoscNiebo()["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", ZwrocWartoscNiebo()["min"][0].ToString() };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
             zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu().ToString() + " ms" };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu("ms").ToString() + " ms" };
 
             return zwracanyTekst;
         }
@@ -49,16 +54,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         /// <param name="populacja">Lista rozwiązań</param>
         /// <returns>Zwraca medianę</returns>
-        public double MedianaPopulacji(ReprezentacjaRozwiazania[] populacja)
+        public float MedianaPopulacji(ReprezentacjaRozwiazania[] populacja)
         {
             int srodek = populacja.Length / 2;
-            double[] wynikiPopulacji = new double[populacja.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
+            float[] wynikiPopulacji = new float[populacja.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
 
             if (srodek == 0) throw new IndexOutOfRangeException();
 
             for (int i = 0; i < populacja.Length; i++)
             {
-                wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania((ReprezentacjaRozwiazania)populacja[i])["max"][0];
+                wynikiPopulacji[i] = rozwiazanie.FunkcjaDopasowania(populacja[i])["max"][0];
             }
 
             // sortowanie wyników rosnąco
@@ -72,9 +77,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         /// <param name="populacja">Lista rozwiązań</param>
         /// <returns>Zwraca wartość średnią</returns>
-        public double SredniaPopulacji(ReprezentacjaRozwiazania[] populacja)
+        public float SredniaPopulacji(ReprezentacjaRozwiazania[] populacja)
         {
-            double wynik = 0;
+            float wynik = 0;
 
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
@@ -90,31 +95,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <param name="populacja">Lista rozwiązań</param>
         /// <param name="srednia">Średnia z listy rozwiązań</param>
         /// <returns>Zwraca odchylenie standardowe</returns>
-        public double OdchylenieStandardowePopulacji(ReprezentacjaRozwiazania[] populacja, double srednia)
+        public float OdchylenieStandardowePopulacji(ReprezentacjaRozwiazania[] populacja, float srednia)
         {
-            double sumaKwadratow = 0;
+            float sumaKwadratow = 0;
 
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
-                Dictionary<string, double[]> wartosc = rozwiazanie.FunkcjaDopasowania(osobnik);
+                Dictionary<string, float[]> wartosc = rozwiazanie.FunkcjaDopasowania(osobnik);
                 sumaKwadratow += (wartosc["max"][0] - srednia) * (wartosc["max"][0] - srednia);
             }
 
-            double sredniaSumaKwadratow = sumaKwadratow / (populacja.Length - 1);
-            return Math.Sqrt(sredniaSumaKwadratow);
-        }
-
-        /// <summary>
-        /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
-        /// </summary>
-        /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
-        public void ZmienWartoscNiebo(ReprezentacjaRozwiazania genotyp)
-        {
-            if(najlepszaWartoscFunkcji < rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0])
-            {
-                najlepszeRozwiazanie = genotyp;
-                najlepszaWartoscFunkcji = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
-            }
+            float sredniaSumaKwadratow = sumaKwadratow / (populacja.Length - 1);
+            return (float)Math.Sqrt(sredniaSumaKwadratow);
         }
 
         /// <summary>
@@ -123,16 +115,34 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <returns>Dziedzina rozwiązania</returns>
         public ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp()
         {
-            return najlepszeRozwiazanie;
+            return najlepszeRozwiazanie[0];
         }
 
         /// <summary>
         /// Metoda zwracająca najlepszą znalezioną wartość
         /// </summary>
         /// <returns>Wartość funkcji celu</returns>
-        public Dictionary<string, double[]> ZwrocWartoscNiebo()
+        public Dictionary<string, float[]> ZwrocWartoscNiebo()
         {
-            return rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie);
+            return rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie[0]);
+        }
+
+        /// <summary>
+        /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
+        /// </summary>
+        /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
+        public override void DopiszWartoscProcesu(short index, float czas, ReprezentacjaRozwiazania genotyp)
+        {
+            float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
+            Console.WriteLine(index + " " + czas + " " + wartosc);
+
+            if (najlepszaWartoscFunkcji[index] < wartosc)
+            {
+                najlepszeRozwiazanie[index] = genotyp;
+                najlepszaWartoscFunkcji[index] = wartosc;
+
+                wartosciProcesuPoszukiwan[index].Add(new float[] { czas, wartosc });
+            }
         }
     }
 }

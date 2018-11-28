@@ -1,17 +1,31 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using System.Collections;
 using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
-    class AAnalityka
+    abstract class AAnalityka
     {
+        protected Stopwatch pomiarCzasu = new Stopwatch();
+        protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
-        protected Stopwatch pomiarCzasu;
+        protected ArrayList[] wartosciProcesuPoszukiwan;
 
-        public AAnalityka(AOsobnik rozwiazanie)
+        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji)
         {
             this.rozwiazanie = rozwiazanie;
-            pomiarCzasu = new Stopwatch();
+            this.liczbaIteracji = liczbaIteracji;
+            wartosciProcesuPoszukiwan = new ArrayList[liczbaIteracji];
+
+            for(short i = 0; i < liczbaIteracji; i++)
+            {
+                wartosciProcesuPoszukiwan[i] = new ArrayList();
+            }
+        }
+
+        public ArrayList[] ZwrocWartosciProcesuPoszukiwan()
+        {
+            return wartosciProcesuPoszukiwan;
         }
 
         /// <summary>
@@ -27,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         public void ZakonczPomiarCzasu()
         {
-            pomiarCzasu.Stop();
+            pomiarCzasu.Reset();
         }
 
         /// <summary>
@@ -44,9 +58,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// Metoda zwracająca czas działania algorytmu
         /// </summary>
         /// <returns>Zwraca czas przebiegu w milisekundach</returns>
-        public double ZwrocCzasDzialaniaAlgorytmu()
+        public double ZwrocCzasDzialaniaAlgorytmu(string rodzaj)
         {
-            return pomiarCzasu.Elapsed.TotalMilliseconds;
+            if(rodzaj == "s") return pomiarCzasu.Elapsed.TotalSeconds;
+            else return pomiarCzasu.Elapsed.TotalMilliseconds;
         }
+
+        public short ZwrocLiczbeIteracji()
+        {
+            return liczbaIteracji;
+        }
+
+        public abstract void DopiszWartoscProcesu(short index, float czas, ReprezentacjaRozwiazania genotyp);
     }
 }

@@ -39,20 +39,29 @@
             this.zapiszBadanie = new MetroFramework.Controls.MetroButton();
             this.rysujWykes = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.ttp_panel = new MetroFramework.Controls.MetroPanel();
-            this.kp_panel = new MetroFramework.Controls.MetroPanel();
-            this.kp_maxWagaPlecaka = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.wygenerujPlikDanych = new MetroFramework.Controls.MetroButton();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.ttp_panel = new MetroFramework.Controls.MetroPanel();
+            this.domyslnyProblemPanel = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.wypozyczeniePlecaka = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.modelTTP = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.ttp_maxWagaPlecaka = new MetroFramework.Controls.MetroTextBox();
             this.wybierzPlikDanych = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
+            this.kp_panel = new MetroFramework.Controls.MetroPanel();
+            this.kp_maxWagaPlecaka = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.czasDzialaniaAlgorytmu = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.liczbaIteracjiAlgorytmu = new MetroFramework.Controls.MetroTextBox();
             this.ae_panel = new MetroFramework.Controls.MetroPanel();
+            this.aw_panel = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.aw_parametrP = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.ae_pwoMutacji = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
@@ -63,23 +72,14 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.ae_rodzajKrzyzowania = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.wybierzAlgorytm = new MetroFramework.Controls.MetroComboBox();
-            this.liczbaIteracjiAlgorytmu = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.uruchomBadanie = new MetroFramework.Controls.MetroButton();
-            this.domyslnyProblemPanel = new MetroFramework.Controls.MetroPanel();
             this.domyslnyAlgorytmPanel = new MetroFramework.Controls.MetroPanel();
-            this.aw_panel = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.aw_parametrP = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.wypozyczeniePlecaka = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.modelTTP = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.ttp_maxWagaPlecaka = new MetroFramework.Controls.MetroTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -89,8 +89,8 @@
             this.kp_panel.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.ae_panel.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.aw_panel.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // wynikiBadania
@@ -273,6 +273,25 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // wygenerujPlikDanych
+            // 
+            this.wygenerujPlikDanych.Location = new System.Drawing.Point(375, 90);
+            this.wygenerujPlikDanych.Name = "wygenerujPlikDanych";
+            this.wygenerujPlikDanych.Size = new System.Drawing.Size(182, 30);
+            this.wygenerujPlikDanych.TabIndex = 6;
+            this.wygenerujPlikDanych.Text = "Dodaj plik danych";
+            this.wygenerujPlikDanych.UseSelectable = true;
+            this.wygenerujPlikDanych.Click += new System.EventHandler(this.wygenerujPlikDanych_Click);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 67);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(136, 20);
+            this.metroLabel2.TabIndex = 5;
+            this.metroLabel2.Text = "Wybierz Plik Danych";
+            // 
             // ttp_panel
             // 
             this.ttp_panel.Controls.Add(this.domyslnyProblemPanel);
@@ -293,446 +312,6 @@
             this.ttp_panel.VerticalScrollbarHighlightOnWheel = false;
             this.ttp_panel.VerticalScrollbarSize = 10;
             // 
-            // kp_panel
-            // 
-            this.kp_panel.Controls.Add(this.kp_maxWagaPlecaka);
-            this.kp_panel.Controls.Add(this.metroLabel3);
-            this.kp_panel.HorizontalScrollbarBarColor = true;
-            this.kp_panel.HorizontalScrollbarHighlightOnWheel = false;
-            this.kp_panel.HorizontalScrollbarSize = 10;
-            this.kp_panel.Location = new System.Drawing.Point(3, 131);
-            this.kp_panel.Name = "kp_panel";
-            this.kp_panel.Size = new System.Drawing.Size(557, 248);
-            this.kp_panel.TabIndex = 9;
-            this.kp_panel.VerticalScrollbarBarColor = true;
-            this.kp_panel.VerticalScrollbarHighlightOnWheel = false;
-            this.kp_panel.VerticalScrollbarSize = 10;
-            // 
-            // kp_maxWagaPlecaka
-            // 
-            // 
-            // 
-            // 
-            this.kp_maxWagaPlecaka.CustomButton.Image = null;
-            this.kp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(154, 1);
-            this.kp_maxWagaPlecaka.CustomButton.Name = "";
-            this.kp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.kp_maxWagaPlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.kp_maxWagaPlecaka.CustomButton.TabIndex = 1;
-            this.kp_maxWagaPlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.kp_maxWagaPlecaka.CustomButton.UseSelectable = true;
-            this.kp_maxWagaPlecaka.CustomButton.Visible = false;
-            this.kp_maxWagaPlecaka.Lines = new string[0];
-            this.kp_maxWagaPlecaka.Location = new System.Drawing.Point(0, 23);
-            this.kp_maxWagaPlecaka.MaxLength = 32767;
-            this.kp_maxWagaPlecaka.Name = "kp_maxWagaPlecaka";
-            this.kp_maxWagaPlecaka.PasswordChar = '\0';
-            this.kp_maxWagaPlecaka.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.kp_maxWagaPlecaka.SelectedText = "";
-            this.kp_maxWagaPlecaka.SelectionLength = 0;
-            this.kp_maxWagaPlecaka.SelectionStart = 0;
-            this.kp_maxWagaPlecaka.ShortcutsEnabled = true;
-            this.kp_maxWagaPlecaka.Size = new System.Drawing.Size(176, 30);
-            this.kp_maxWagaPlecaka.TabIndex = 8;
-            this.kp_maxWagaPlecaka.UseSelectable = true;
-            this.kp_maxWagaPlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.kp_maxWagaPlecaka.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(0, 0);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(172, 20);
-            this.metroLabel3.TabIndex = 7;
-            this.metroLabel3.Text = "Maksymalna waga plecaka";
-            // 
-            // wygenerujPlikDanych
-            // 
-            this.wygenerujPlikDanych.Location = new System.Drawing.Point(375, 90);
-            this.wygenerujPlikDanych.Name = "wygenerujPlikDanych";
-            this.wygenerujPlikDanych.Size = new System.Drawing.Size(182, 30);
-            this.wygenerujPlikDanych.TabIndex = 6;
-            this.wygenerujPlikDanych.Text = "Dodaj plik danych";
-            this.wygenerujPlikDanych.UseSelectable = true;
-            this.wygenerujPlikDanych.Click += new System.EventHandler(this.wygenerujPlikDanych_Click);
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 67);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(136, 20);
-            this.metroLabel2.TabIndex = 5;
-            this.metroLabel2.Text = "Wybierz Plik Danych";
-            // 
-            // wybierzPlikDanych
-            // 
-            this.wybierzPlikDanych.FormattingEnabled = true;
-            this.wybierzPlikDanych.ItemHeight = 24;
-            this.wybierzPlikDanych.Location = new System.Drawing.Point(3, 90);
-            this.wybierzPlikDanych.Name = "wybierzPlikDanych";
-            this.wybierzPlikDanych.Size = new System.Drawing.Size(366, 30);
-            this.wybierzPlikDanych.TabIndex = 4;
-            this.wybierzPlikDanych.UseSelectable = true;
-            this.wybierzPlikDanych.SelectedIndexChanged += new System.EventHandler(this.wybierzPlikDanych_SelectedIndexChanged);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(221, 20);
-            this.metroLabel1.TabIndex = 3;
-            this.metroLabel1.Text = "Wybierz Problem Optymalizacyjny";
-            // 
-            // wybierzProblem
-            // 
-            this.wybierzProblem.FormattingEnabled = true;
-            this.wybierzProblem.ItemHeight = 24;
-            this.wybierzProblem.Location = new System.Drawing.Point(0, 23);
-            this.wybierzProblem.Name = "wybierzProblem";
-            this.wybierzProblem.Size = new System.Drawing.Size(554, 30);
-            this.wybierzProblem.TabIndex = 2;
-            this.wybierzProblem.UseSelectable = true;
-            this.wybierzProblem.SelectedIndexChanged += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged_1);
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.Controls.Add(this.czasDzialaniaAlgorytmu);
-            this.metroPanel2.Controls.Add(this.liczbaIteracjiAlgorytmu);
-            this.metroPanel2.Controls.Add(this.ae_panel);
-            this.metroPanel2.Controls.Add(this.metroLabel16);
-            this.metroPanel2.Controls.Add(this.metroLabel15);
-            this.metroPanel2.Controls.Add(this.metroLabel7);
-            this.metroPanel2.Controls.Add(this.wybierzAlgorytm);
-            this.metroPanel2.Controls.Add(this.metroLabel9);
-            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(569, 3);
-            this.metroPanel2.MaximumSize = new System.Drawing.Size(560, 380);
-            this.metroPanel2.MinimumSize = new System.Drawing.Size(560, 380);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(560, 380);
-            this.metroPanel2.TabIndex = 2;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
-            // metroLabel16
-            // 
-            this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(540, 90);
-            this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(15, 20);
-            this.metroLabel16.TabIndex = 17;
-            this.metroLabel16.Text = "s";
-            // 
-            // czasDzialaniaAlgorytmu
-            // 
-            // 
-            // 
-            // 
-            this.czasDzialaniaAlgorytmu.CustomButton.Image = null;
-            this.czasDzialaniaAlgorytmu.CustomButton.Location = new System.Drawing.Point(223, 2);
-            this.czasDzialaniaAlgorytmu.CustomButton.Name = "";
-            this.czasDzialaniaAlgorytmu.CustomButton.Size = new System.Drawing.Size(25, 25);
-            this.czasDzialaniaAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.czasDzialaniaAlgorytmu.CustomButton.TabIndex = 1;
-            this.czasDzialaniaAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.czasDzialaniaAlgorytmu.CustomButton.UseSelectable = true;
-            this.czasDzialaniaAlgorytmu.CustomButton.Visible = false;
-            this.czasDzialaniaAlgorytmu.Lines = new string[0];
-            this.czasDzialaniaAlgorytmu.Location = new System.Drawing.Point(283, 90);
-            this.czasDzialaniaAlgorytmu.MaxLength = 32767;
-            this.czasDzialaniaAlgorytmu.Name = "czasDzialaniaAlgorytmu";
-            this.czasDzialaniaAlgorytmu.PasswordChar = '\0';
-            this.czasDzialaniaAlgorytmu.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.czasDzialaniaAlgorytmu.SelectedText = "";
-            this.czasDzialaniaAlgorytmu.SelectionLength = 0;
-            this.czasDzialaniaAlgorytmu.SelectionStart = 0;
-            this.czasDzialaniaAlgorytmu.ShortcutsEnabled = true;
-            this.czasDzialaniaAlgorytmu.Size = new System.Drawing.Size(251, 30);
-            this.czasDzialaniaAlgorytmu.TabIndex = 15;
-            this.czasDzialaniaAlgorytmu.UseSelectable = true;
-            this.czasDzialaniaAlgorytmu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.czasDzialaniaAlgorytmu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel15
-            // 
-            this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(283, 67);
-            this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(163, 20);
-            this.metroLabel15.TabIndex = 16;
-            this.metroLabel15.Text = "Czas działania algorytmu";
-            // 
-            // ae_panel
-            // 
-            this.ae_panel.Controls.Add(this.aw_panel);
-            this.ae_panel.Controls.Add(this.metroLabel14);
-            this.ae_panel.Controls.Add(this.ae_pwoMutacji);
-            this.ae_panel.Controls.Add(this.metroLabel13);
-            this.ae_panel.Controls.Add(this.ae_pwoKrzyzowania);
-            this.ae_panel.Controls.Add(this.metroLabel11);
-            this.ae_panel.Controls.Add(this.ae_rozmiarPopulacji);
-            this.ae_panel.Controls.Add(this.ae_metodaSelekcji);
-            this.ae_panel.Controls.Add(this.metroLabel10);
-            this.ae_panel.Controls.Add(this.ae_rodzajKrzyzowania);
-            this.ae_panel.Controls.Add(this.metroLabel8);
-            this.ae_panel.HorizontalScrollbarBarColor = true;
-            this.ae_panel.HorizontalScrollbarHighlightOnWheel = false;
-            this.ae_panel.HorizontalScrollbarSize = 10;
-            this.ae_panel.Location = new System.Drawing.Point(0, 131);
-            this.ae_panel.Name = "ae_panel";
-            this.ae_panel.Size = new System.Drawing.Size(561, 251);
-            this.ae_panel.TabIndex = 14;
-            this.ae_panel.VerticalScrollbarBarColor = true;
-            this.ae_panel.VerticalScrollbarHighlightOnWheel = false;
-            this.ae_panel.VerticalScrollbarSize = 10;
-            // 
-            // metroLabel14
-            // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(3, 138);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(190, 20);
-            this.metroLabel14.TabIndex = 20;
-            this.metroLabel14.Text = "Prawdopodobieństwo mutacji";
-            // 
-            // ae_pwoMutacji
-            // 
-            // 
-            // 
-            // 
-            this.ae_pwoMutacji.CustomButton.Image = null;
-            this.ae_pwoMutacji.CustomButton.Location = new System.Drawing.Point(150, 1);
-            this.ae_pwoMutacji.CustomButton.Name = "";
-            this.ae_pwoMutacji.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.ae_pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ae_pwoMutacji.CustomButton.TabIndex = 1;
-            this.ae_pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ae_pwoMutacji.CustomButton.UseSelectable = true;
-            this.ae_pwoMutacji.CustomButton.Visible = false;
-            this.ae_pwoMutacji.Lines = new string[0];
-            this.ae_pwoMutacji.Location = new System.Drawing.Point(3, 161);
-            this.ae_pwoMutacji.MaxLength = 32767;
-            this.ae_pwoMutacji.Name = "ae_pwoMutacji";
-            this.ae_pwoMutacji.PasswordChar = '\0';
-            this.ae_pwoMutacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ae_pwoMutacji.SelectedText = "";
-            this.ae_pwoMutacji.SelectionLength = 0;
-            this.ae_pwoMutacji.SelectionStart = 0;
-            this.ae_pwoMutacji.ShortcutsEnabled = true;
-            this.ae_pwoMutacji.Size = new System.Drawing.Size(172, 30);
-            this.ae_pwoMutacji.TabIndex = 21;
-            this.ae_pwoMutacji.UseSelectable = true;
-            this.ae_pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ae_pwoMutacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel13
-            // 
-            this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(3, 65);
-            this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(222, 20);
-            this.metroLabel13.TabIndex = 18;
-            this.metroLabel13.Text = "Prawdopodobieństwo krzyżowania";
-            // 
-            // ae_pwoKrzyzowania
-            // 
-            // 
-            // 
-            // 
-            this.ae_pwoKrzyzowania.CustomButton.Image = null;
-            this.ae_pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(150, 1);
-            this.ae_pwoKrzyzowania.CustomButton.Name = "";
-            this.ae_pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.ae_pwoKrzyzowania.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ae_pwoKrzyzowania.CustomButton.TabIndex = 1;
-            this.ae_pwoKrzyzowania.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ae_pwoKrzyzowania.CustomButton.UseSelectable = true;
-            this.ae_pwoKrzyzowania.CustomButton.Visible = false;
-            this.ae_pwoKrzyzowania.Lines = new string[0];
-            this.ae_pwoKrzyzowania.Location = new System.Drawing.Point(3, 88);
-            this.ae_pwoKrzyzowania.MaxLength = 32767;
-            this.ae_pwoKrzyzowania.Name = "ae_pwoKrzyzowania";
-            this.ae_pwoKrzyzowania.PasswordChar = '\0';
-            this.ae_pwoKrzyzowania.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ae_pwoKrzyzowania.SelectedText = "";
-            this.ae_pwoKrzyzowania.SelectionLength = 0;
-            this.ae_pwoKrzyzowania.SelectionStart = 0;
-            this.ae_pwoKrzyzowania.ShortcutsEnabled = true;
-            this.ae_pwoKrzyzowania.Size = new System.Drawing.Size(172, 30);
-            this.ae_pwoKrzyzowania.TabIndex = 19;
-            this.ae_pwoKrzyzowania.UseSelectable = true;
-            this.ae_pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ae_pwoKrzyzowania.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel11
-            // 
-            this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(199, 20);
-            this.metroLabel11.TabIndex = 15;
-            this.metroLabel11.Text = "Rozmiar populacji początkowej";
-            // 
-            // ae_rozmiarPopulacji
-            // 
-            // 
-            // 
-            // 
-            this.ae_rozmiarPopulacji.CustomButton.Image = null;
-            this.ae_rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(150, 1);
-            this.ae_rozmiarPopulacji.CustomButton.Name = "";
-            this.ae_rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.ae_rozmiarPopulacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ae_rozmiarPopulacji.CustomButton.TabIndex = 1;
-            this.ae_rozmiarPopulacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ae_rozmiarPopulacji.CustomButton.UseSelectable = true;
-            this.ae_rozmiarPopulacji.CustomButton.Visible = false;
-            this.ae_rozmiarPopulacji.Lines = new string[0];
-            this.ae_rozmiarPopulacji.Location = new System.Drawing.Point(3, 23);
-            this.ae_rozmiarPopulacji.MaxLength = 32767;
-            this.ae_rozmiarPopulacji.Name = "ae_rozmiarPopulacji";
-            this.ae_rozmiarPopulacji.PasswordChar = '\0';
-            this.ae_rozmiarPopulacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ae_rozmiarPopulacji.SelectedText = "";
-            this.ae_rozmiarPopulacji.SelectionLength = 0;
-            this.ae_rozmiarPopulacji.SelectionStart = 0;
-            this.ae_rozmiarPopulacji.ShortcutsEnabled = true;
-            this.ae_rozmiarPopulacji.Size = new System.Drawing.Size(172, 30);
-            this.ae_rozmiarPopulacji.TabIndex = 15;
-            this.ae_rozmiarPopulacji.UseSelectable = true;
-            this.ae_rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ae_rozmiarPopulacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // ae_metodaSelekcji
-            // 
-            this.ae_metodaSelekcji.FormattingEnabled = true;
-            this.ae_metodaSelekcji.ItemHeight = 24;
-            this.ae_metodaSelekcji.Location = new System.Drawing.Point(314, 23);
-            this.ae_metodaSelekcji.Name = "ae_metodaSelekcji";
-            this.ae_metodaSelekcji.Size = new System.Drawing.Size(172, 30);
-            this.ae_metodaSelekcji.TabIndex = 14;
-            this.ae_metodaSelekcji.UseSelectable = true;
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(314, 0);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(106, 20);
-            this.metroLabel10.TabIndex = 9;
-            this.metroLabel10.Text = "Metoda Selekcji";
-            // 
-            // ae_rodzajKrzyzowania
-            // 
-            this.ae_rodzajKrzyzowania.FormattingEnabled = true;
-            this.ae_rodzajKrzyzowania.ItemHeight = 24;
-            this.ae_rodzajKrzyzowania.Location = new System.Drawing.Point(314, 88);
-            this.ae_rodzajKrzyzowania.Name = "ae_rodzajKrzyzowania";
-            this.ae_rodzajKrzyzowania.Size = new System.Drawing.Size(172, 30);
-            this.ae_rodzajKrzyzowania.TabIndex = 12;
-            this.ae_rodzajKrzyzowania.UseSelectable = true;
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(314, 65);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(130, 20);
-            this.metroLabel8.TabIndex = 13;
-            this.metroLabel8.Text = "Rodzaj krzyżowania";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(121, 20);
-            this.metroLabel7.TabIndex = 11;
-            this.metroLabel7.Text = "Wybierz Algorytm";
-            // 
-            // wybierzAlgorytm
-            // 
-            this.wybierzAlgorytm.FormattingEnabled = true;
-            this.wybierzAlgorytm.ItemHeight = 24;
-            this.wybierzAlgorytm.Location = new System.Drawing.Point(3, 23);
-            this.wybierzAlgorytm.Name = "wybierzAlgorytm";
-            this.wybierzAlgorytm.Size = new System.Drawing.Size(552, 30);
-            this.wybierzAlgorytm.TabIndex = 11;
-            this.wybierzAlgorytm.UseSelectable = true;
-            this.wybierzAlgorytm.SelectedIndexChanged += new System.EventHandler(this.wybierzAlgorytm_SelectedIndexChanged);
-            // 
-            // liczbaIteracjiAlgorytmu
-            // 
-            // 
-            // 
-            // 
-            this.liczbaIteracjiAlgorytmu.CustomButton.Image = null;
-            this.liczbaIteracjiAlgorytmu.CustomButton.Location = new System.Drawing.Point(246, 2);
-            this.liczbaIteracjiAlgorytmu.CustomButton.Name = "";
-            this.liczbaIteracjiAlgorytmu.CustomButton.Size = new System.Drawing.Size(25, 25);
-            this.liczbaIteracjiAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.liczbaIteracjiAlgorytmu.CustomButton.TabIndex = 1;
-            this.liczbaIteracjiAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.liczbaIteracjiAlgorytmu.CustomButton.UseSelectable = true;
-            this.liczbaIteracjiAlgorytmu.CustomButton.Visible = false;
-            this.liczbaIteracjiAlgorytmu.Lines = new string[0];
-            this.liczbaIteracjiAlgorytmu.Location = new System.Drawing.Point(3, 90);
-            this.liczbaIteracjiAlgorytmu.MaxLength = 32767;
-            this.liczbaIteracjiAlgorytmu.Name = "liczbaIteracjiAlgorytmu";
-            this.liczbaIteracjiAlgorytmu.PasswordChar = '\0';
-            this.liczbaIteracjiAlgorytmu.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.liczbaIteracjiAlgorytmu.SelectedText = "";
-            this.liczbaIteracjiAlgorytmu.SelectionLength = 0;
-            this.liczbaIteracjiAlgorytmu.SelectionStart = 0;
-            this.liczbaIteracjiAlgorytmu.ShortcutsEnabled = true;
-            this.liczbaIteracjiAlgorytmu.Size = new System.Drawing.Size(274, 30);
-            this.liczbaIteracjiAlgorytmu.TabIndex = 10;
-            this.liczbaIteracjiAlgorytmu.UseSelectable = true;
-            this.liczbaIteracjiAlgorytmu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.liczbaIteracjiAlgorytmu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 67);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(159, 20);
-            this.metroLabel9.TabIndex = 11;
-            this.metroLabel9.Text = "Liczba iteracji algorytmu";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.uruchomBadanie, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(569, 389);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(561, 37);
-            this.tableLayoutPanel5.TabIndex = 3;
-            // 
-            // uruchomBadanie
-            // 
-            this.uruchomBadanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uruchomBadanie.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uruchomBadanie.Location = new System.Drawing.Point(283, 3);
-            this.uruchomBadanie.Name = "uruchomBadanie";
-            this.uruchomBadanie.Size = new System.Drawing.Size(275, 31);
-            this.uruchomBadanie.TabIndex = 0;
-            this.uruchomBadanie.Text = "Uruchom Badanie";
-            this.uruchomBadanie.UseSelectable = true;
-            this.uruchomBadanie.Click += new System.EventHandler(this.uruchomBadanie_Click);
-            // 
             // domyslnyProblemPanel
             // 
             this.domyslnyProblemPanel.HorizontalScrollbarBarColor = true;
@@ -745,74 +324,6 @@
             this.domyslnyProblemPanel.VerticalScrollbarBarColor = true;
             this.domyslnyProblemPanel.VerticalScrollbarHighlightOnWheel = false;
             this.domyslnyProblemPanel.VerticalScrollbarSize = 10;
-            // 
-            // domyslnyAlgorytmPanel
-            // 
-            this.domyslnyAlgorytmPanel.HorizontalScrollbarBarColor = true;
-            this.domyslnyAlgorytmPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.domyslnyAlgorytmPanel.HorizontalScrollbarSize = 10;
-            this.domyslnyAlgorytmPanel.Location = new System.Drawing.Point(0, 0);
-            this.domyslnyAlgorytmPanel.Name = "domyslnyAlgorytmPanel";
-            this.domyslnyAlgorytmPanel.Size = new System.Drawing.Size(561, 252);
-            this.domyslnyAlgorytmPanel.TabIndex = 22;
-            this.domyslnyAlgorytmPanel.VerticalScrollbarBarColor = true;
-            this.domyslnyAlgorytmPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.domyslnyAlgorytmPanel.VerticalScrollbarSize = 10;
-            // 
-            // aw_panel
-            // 
-            this.aw_panel.Controls.Add(this.domyslnyAlgorytmPanel);
-            this.aw_panel.Controls.Add(this.metroLabel12);
-            this.aw_panel.Controls.Add(this.aw_parametrP);
-            this.aw_panel.HorizontalScrollbarBarColor = true;
-            this.aw_panel.HorizontalScrollbarHighlightOnWheel = false;
-            this.aw_panel.HorizontalScrollbarSize = 10;
-            this.aw_panel.Location = new System.Drawing.Point(0, 0);
-            this.aw_panel.Name = "aw_panel";
-            this.aw_panel.Size = new System.Drawing.Size(561, 252);
-            this.aw_panel.TabIndex = 23;
-            this.aw_panel.VerticalScrollbarBarColor = true;
-            this.aw_panel.VerticalScrollbarHighlightOnWheel = false;
-            this.aw_panel.VerticalScrollbarSize = 10;
-            // 
-            // metroLabel12
-            // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(76, 20);
-            this.metroLabel12.TabIndex = 15;
-            this.metroLabel12.Text = "Parametr P";
-            // 
-            // aw_parametrP
-            // 
-            // 
-            // 
-            // 
-            this.aw_parametrP.CustomButton.Image = null;
-            this.aw_parametrP.CustomButton.Location = new System.Drawing.Point(150, 1);
-            this.aw_parametrP.CustomButton.Name = "";
-            this.aw_parametrP.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.aw_parametrP.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.aw_parametrP.CustomButton.TabIndex = 1;
-            this.aw_parametrP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.aw_parametrP.CustomButton.UseSelectable = true;
-            this.aw_parametrP.CustomButton.Visible = false;
-            this.aw_parametrP.Lines = new string[0];
-            this.aw_parametrP.Location = new System.Drawing.Point(3, 23);
-            this.aw_parametrP.MaxLength = 32767;
-            this.aw_parametrP.Name = "aw_parametrP";
-            this.aw_parametrP.PasswordChar = '\0';
-            this.aw_parametrP.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.aw_parametrP.SelectedText = "";
-            this.aw_parametrP.SelectionLength = 0;
-            this.aw_parametrP.SelectionStart = 0;
-            this.aw_parametrP.ShortcutsEnabled = true;
-            this.aw_parametrP.Size = new System.Drawing.Size(172, 30);
-            this.aw_parametrP.TabIndex = 15;
-            this.aw_parametrP.UseSelectable = true;
-            this.aw_parametrP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.aw_parametrP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel5
             // 
@@ -829,9 +340,9 @@
             // 
             // 
             this.wypozyczeniePlecaka.CustomButton.Image = null;
-            this.wypozyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.wypozyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(144, 2);
             this.wypozyczeniePlecaka.CustomButton.Name = "";
-            this.wypozyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.wypozyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.wypozyczeniePlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wypozyczeniePlecaka.CustomButton.TabIndex = 1;
             this.wypozyczeniePlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -887,9 +398,9 @@
             // 
             // 
             this.ttp_maxWagaPlecaka.CustomButton.Image = null;
-            this.ttp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.ttp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(144, 2);
             this.ttp_maxWagaPlecaka.CustomButton.Name = "";
-            this.ttp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.ttp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.ttp_maxWagaPlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ttp_maxWagaPlecaka.CustomButton.TabIndex = 1;
             this.ttp_maxWagaPlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -910,6 +421,506 @@
             this.ttp_maxWagaPlecaka.UseSelectable = true;
             this.ttp_maxWagaPlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.ttp_maxWagaPlecaka.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // wybierzPlikDanych
+            // 
+            this.wybierzPlikDanych.Enabled = false;
+            this.wybierzPlikDanych.FormattingEnabled = true;
+            this.wybierzPlikDanych.ItemHeight = 24;
+            this.wybierzPlikDanych.Location = new System.Drawing.Point(3, 90);
+            this.wybierzPlikDanych.Name = "wybierzPlikDanych";
+            this.wybierzPlikDanych.Size = new System.Drawing.Size(366, 30);
+            this.wybierzPlikDanych.TabIndex = 4;
+            this.wybierzPlikDanych.UseSelectable = true;
+            this.wybierzPlikDanych.SelectedIndexChanged += new System.EventHandler(this.wybierzPlikDanych_SelectedIndexChanged);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(221, 20);
+            this.metroLabel1.TabIndex = 3;
+            this.metroLabel1.Text = "Wybierz Problem Optymalizacyjny";
+            // 
+            // wybierzProblem
+            // 
+            this.wybierzProblem.FormattingEnabled = true;
+            this.wybierzProblem.ItemHeight = 24;
+            this.wybierzProblem.Location = new System.Drawing.Point(0, 23);
+            this.wybierzProblem.Name = "wybierzProblem";
+            this.wybierzProblem.Size = new System.Drawing.Size(554, 30);
+            this.wybierzProblem.TabIndex = 2;
+            this.wybierzProblem.UseSelectable = true;
+            this.wybierzProblem.SelectedIndexChanged += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged_1);
+            // 
+            // kp_panel
+            // 
+            this.kp_panel.Controls.Add(this.kp_maxWagaPlecaka);
+            this.kp_panel.Controls.Add(this.metroLabel3);
+            this.kp_panel.HorizontalScrollbarBarColor = true;
+            this.kp_panel.HorizontalScrollbarHighlightOnWheel = false;
+            this.kp_panel.HorizontalScrollbarSize = 10;
+            this.kp_panel.Location = new System.Drawing.Point(3, 131);
+            this.kp_panel.Name = "kp_panel";
+            this.kp_panel.Size = new System.Drawing.Size(557, 248);
+            this.kp_panel.TabIndex = 9;
+            this.kp_panel.VerticalScrollbarBarColor = true;
+            this.kp_panel.VerticalScrollbarHighlightOnWheel = false;
+            this.kp_panel.VerticalScrollbarSize = 10;
+            // 
+            // kp_maxWagaPlecaka
+            // 
+            // 
+            // 
+            // 
+            this.kp_maxWagaPlecaka.CustomButton.Image = null;
+            this.kp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(148, 2);
+            this.kp_maxWagaPlecaka.CustomButton.Name = "";
+            this.kp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.kp_maxWagaPlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.kp_maxWagaPlecaka.CustomButton.TabIndex = 1;
+            this.kp_maxWagaPlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.kp_maxWagaPlecaka.CustomButton.UseSelectable = true;
+            this.kp_maxWagaPlecaka.CustomButton.Visible = false;
+            this.kp_maxWagaPlecaka.Lines = new string[0];
+            this.kp_maxWagaPlecaka.Location = new System.Drawing.Point(0, 23);
+            this.kp_maxWagaPlecaka.MaxLength = 32767;
+            this.kp_maxWagaPlecaka.Name = "kp_maxWagaPlecaka";
+            this.kp_maxWagaPlecaka.PasswordChar = '\0';
+            this.kp_maxWagaPlecaka.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.kp_maxWagaPlecaka.SelectedText = "";
+            this.kp_maxWagaPlecaka.SelectionLength = 0;
+            this.kp_maxWagaPlecaka.SelectionStart = 0;
+            this.kp_maxWagaPlecaka.ShortcutsEnabled = true;
+            this.kp_maxWagaPlecaka.Size = new System.Drawing.Size(176, 30);
+            this.kp_maxWagaPlecaka.TabIndex = 8;
+            this.kp_maxWagaPlecaka.UseSelectable = true;
+            this.kp_maxWagaPlecaka.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.kp_maxWagaPlecaka.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(0, 0);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(172, 20);
+            this.metroLabel3.TabIndex = 7;
+            this.metroLabel3.Text = "Maksymalna waga plecaka";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.czasDzialaniaAlgorytmu);
+            this.metroPanel2.Controls.Add(this.liczbaIteracjiAlgorytmu);
+            this.metroPanel2.Controls.Add(this.ae_panel);
+            this.metroPanel2.Controls.Add(this.metroLabel16);
+            this.metroPanel2.Controls.Add(this.metroLabel15);
+            this.metroPanel2.Controls.Add(this.metroLabel7);
+            this.metroPanel2.Controls.Add(this.wybierzAlgorytm);
+            this.metroPanel2.Controls.Add(this.metroLabel9);
+            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(569, 3);
+            this.metroPanel2.MaximumSize = new System.Drawing.Size(560, 380);
+            this.metroPanel2.MinimumSize = new System.Drawing.Size(560, 380);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(560, 380);
+            this.metroPanel2.TabIndex = 2;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // czasDzialaniaAlgorytmu
+            // 
+            // 
+            // 
+            // 
+            this.czasDzialaniaAlgorytmu.CustomButton.Image = null;
+            this.czasDzialaniaAlgorytmu.CustomButton.Location = new System.Drawing.Point(223, 2);
+            this.czasDzialaniaAlgorytmu.CustomButton.Name = "";
+            this.czasDzialaniaAlgorytmu.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.czasDzialaniaAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.czasDzialaniaAlgorytmu.CustomButton.TabIndex = 1;
+            this.czasDzialaniaAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.czasDzialaniaAlgorytmu.CustomButton.UseSelectable = true;
+            this.czasDzialaniaAlgorytmu.CustomButton.Visible = false;
+            this.czasDzialaniaAlgorytmu.Lines = new string[] {
+        "30"};
+            this.czasDzialaniaAlgorytmu.Location = new System.Drawing.Point(283, 90);
+            this.czasDzialaniaAlgorytmu.MaxLength = 32767;
+            this.czasDzialaniaAlgorytmu.Name = "czasDzialaniaAlgorytmu";
+            this.czasDzialaniaAlgorytmu.PasswordChar = '\0';
+            this.czasDzialaniaAlgorytmu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.czasDzialaniaAlgorytmu.SelectedText = "";
+            this.czasDzialaniaAlgorytmu.SelectionLength = 0;
+            this.czasDzialaniaAlgorytmu.SelectionStart = 0;
+            this.czasDzialaniaAlgorytmu.ShortcutsEnabled = true;
+            this.czasDzialaniaAlgorytmu.Size = new System.Drawing.Size(251, 30);
+            this.czasDzialaniaAlgorytmu.TabIndex = 15;
+            this.czasDzialaniaAlgorytmu.Text = "30";
+            this.czasDzialaniaAlgorytmu.UseSelectable = true;
+            this.czasDzialaniaAlgorytmu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.czasDzialaniaAlgorytmu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // liczbaIteracjiAlgorytmu
+            // 
+            // 
+            // 
+            // 
+            this.liczbaIteracjiAlgorytmu.CustomButton.Image = null;
+            this.liczbaIteracjiAlgorytmu.CustomButton.Location = new System.Drawing.Point(246, 2);
+            this.liczbaIteracjiAlgorytmu.CustomButton.Name = "";
+            this.liczbaIteracjiAlgorytmu.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.liczbaIteracjiAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.liczbaIteracjiAlgorytmu.CustomButton.TabIndex = 1;
+            this.liczbaIteracjiAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.liczbaIteracjiAlgorytmu.CustomButton.UseSelectable = true;
+            this.liczbaIteracjiAlgorytmu.CustomButton.Visible = false;
+            this.liczbaIteracjiAlgorytmu.Lines = new string[] {
+        "2"};
+            this.liczbaIteracjiAlgorytmu.Location = new System.Drawing.Point(3, 90);
+            this.liczbaIteracjiAlgorytmu.MaxLength = 32767;
+            this.liczbaIteracjiAlgorytmu.Name = "liczbaIteracjiAlgorytmu";
+            this.liczbaIteracjiAlgorytmu.PasswordChar = '\0';
+            this.liczbaIteracjiAlgorytmu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.liczbaIteracjiAlgorytmu.SelectedText = "";
+            this.liczbaIteracjiAlgorytmu.SelectionLength = 0;
+            this.liczbaIteracjiAlgorytmu.SelectionStart = 0;
+            this.liczbaIteracjiAlgorytmu.ShortcutsEnabled = true;
+            this.liczbaIteracjiAlgorytmu.Size = new System.Drawing.Size(274, 30);
+            this.liczbaIteracjiAlgorytmu.TabIndex = 10;
+            this.liczbaIteracjiAlgorytmu.Text = "2";
+            this.liczbaIteracjiAlgorytmu.UseSelectable = true;
+            this.liczbaIteracjiAlgorytmu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.liczbaIteracjiAlgorytmu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // ae_panel
+            // 
+            this.ae_panel.Controls.Add(this.aw_panel);
+            this.ae_panel.Controls.Add(this.metroLabel14);
+            this.ae_panel.Controls.Add(this.ae_pwoMutacji);
+            this.ae_panel.Controls.Add(this.metroLabel13);
+            this.ae_panel.Controls.Add(this.ae_pwoKrzyzowania);
+            this.ae_panel.Controls.Add(this.metroLabel11);
+            this.ae_panel.Controls.Add(this.ae_rozmiarPopulacji);
+            this.ae_panel.Controls.Add(this.ae_metodaSelekcji);
+            this.ae_panel.Controls.Add(this.metroLabel10);
+            this.ae_panel.Controls.Add(this.ae_rodzajKrzyzowania);
+            this.ae_panel.Controls.Add(this.metroLabel8);
+            this.ae_panel.HorizontalScrollbarBarColor = true;
+            this.ae_panel.HorizontalScrollbarHighlightOnWheel = false;
+            this.ae_panel.HorizontalScrollbarSize = 10;
+            this.ae_panel.Location = new System.Drawing.Point(0, 131);
+            this.ae_panel.Name = "ae_panel";
+            this.ae_panel.Size = new System.Drawing.Size(561, 251);
+            this.ae_panel.TabIndex = 14;
+            this.ae_panel.VerticalScrollbarBarColor = true;
+            this.ae_panel.VerticalScrollbarHighlightOnWheel = false;
+            this.ae_panel.VerticalScrollbarSize = 10;
+            // 
+            // aw_panel
+            // 
+            this.aw_panel.Controls.Add(this.domyslnyAlgorytmPanel);
+            this.aw_panel.Controls.Add(this.metroLabel12);
+            this.aw_panel.Controls.Add(this.aw_parametrP);
+            this.aw_panel.HorizontalScrollbarBarColor = true;
+            this.aw_panel.HorizontalScrollbarHighlightOnWheel = false;
+            this.aw_panel.HorizontalScrollbarSize = 10;
+            this.aw_panel.Location = new System.Drawing.Point(0, 0);
+            this.aw_panel.Name = "aw_panel";
+            this.aw_panel.Size = new System.Drawing.Size(561, 252);
+            this.aw_panel.TabIndex = 23;
+            this.aw_panel.VerticalScrollbarBarColor = true;
+            this.aw_panel.VerticalScrollbarHighlightOnWheel = false;
+            this.aw_panel.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(76, 20);
+            this.metroLabel12.TabIndex = 15;
+            this.metroLabel12.Text = "Parametr P";
+            // 
+            // aw_parametrP
+            // 
+            // 
+            // 
+            // 
+            this.aw_parametrP.CustomButton.Image = null;
+            this.aw_parametrP.CustomButton.Location = new System.Drawing.Point(144, 2);
+            this.aw_parametrP.CustomButton.Name = "";
+            this.aw_parametrP.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.aw_parametrP.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.aw_parametrP.CustomButton.TabIndex = 1;
+            this.aw_parametrP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.aw_parametrP.CustomButton.UseSelectable = true;
+            this.aw_parametrP.CustomButton.Visible = false;
+            this.aw_parametrP.Lines = new string[0];
+            this.aw_parametrP.Location = new System.Drawing.Point(3, 23);
+            this.aw_parametrP.MaxLength = 32767;
+            this.aw_parametrP.Name = "aw_parametrP";
+            this.aw_parametrP.PasswordChar = '\0';
+            this.aw_parametrP.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.aw_parametrP.SelectedText = "";
+            this.aw_parametrP.SelectionLength = 0;
+            this.aw_parametrP.SelectionStart = 0;
+            this.aw_parametrP.ShortcutsEnabled = true;
+            this.aw_parametrP.Size = new System.Drawing.Size(172, 30);
+            this.aw_parametrP.TabIndex = 15;
+            this.aw_parametrP.UseSelectable = true;
+            this.aw_parametrP.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.aw_parametrP.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(3, 138);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(190, 20);
+            this.metroLabel14.TabIndex = 20;
+            this.metroLabel14.Text = "Prawdopodobieństwo mutacji";
+            // 
+            // ae_pwoMutacji
+            // 
+            // 
+            // 
+            // 
+            this.ae_pwoMutacji.CustomButton.Image = null;
+            this.ae_pwoMutacji.CustomButton.Location = new System.Drawing.Point(144, 2);
+            this.ae_pwoMutacji.CustomButton.Name = "";
+            this.ae_pwoMutacji.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.ae_pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ae_pwoMutacji.CustomButton.TabIndex = 1;
+            this.ae_pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ae_pwoMutacji.CustomButton.UseSelectable = true;
+            this.ae_pwoMutacji.CustomButton.Visible = false;
+            this.ae_pwoMutacji.Lines = new string[] {
+        "0,1"};
+            this.ae_pwoMutacji.Location = new System.Drawing.Point(3, 161);
+            this.ae_pwoMutacji.MaxLength = 32767;
+            this.ae_pwoMutacji.Name = "ae_pwoMutacji";
+            this.ae_pwoMutacji.PasswordChar = '\0';
+            this.ae_pwoMutacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ae_pwoMutacji.SelectedText = "";
+            this.ae_pwoMutacji.SelectionLength = 0;
+            this.ae_pwoMutacji.SelectionStart = 0;
+            this.ae_pwoMutacji.ShortcutsEnabled = true;
+            this.ae_pwoMutacji.Size = new System.Drawing.Size(172, 30);
+            this.ae_pwoMutacji.TabIndex = 21;
+            this.ae_pwoMutacji.Text = "0,1";
+            this.ae_pwoMutacji.UseSelectable = true;
+            this.ae_pwoMutacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ae_pwoMutacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(3, 65);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(222, 20);
+            this.metroLabel13.TabIndex = 18;
+            this.metroLabel13.Text = "Prawdopodobieństwo krzyżowania";
+            // 
+            // ae_pwoKrzyzowania
+            // 
+            // 
+            // 
+            // 
+            this.ae_pwoKrzyzowania.CustomButton.Image = null;
+            this.ae_pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(144, 2);
+            this.ae_pwoKrzyzowania.CustomButton.Name = "";
+            this.ae_pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.ae_pwoKrzyzowania.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ae_pwoKrzyzowania.CustomButton.TabIndex = 1;
+            this.ae_pwoKrzyzowania.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ae_pwoKrzyzowania.CustomButton.UseSelectable = true;
+            this.ae_pwoKrzyzowania.CustomButton.Visible = false;
+            this.ae_pwoKrzyzowania.Lines = new string[] {
+        "0,56"};
+            this.ae_pwoKrzyzowania.Location = new System.Drawing.Point(3, 88);
+            this.ae_pwoKrzyzowania.MaxLength = 32767;
+            this.ae_pwoKrzyzowania.Name = "ae_pwoKrzyzowania";
+            this.ae_pwoKrzyzowania.PasswordChar = '\0';
+            this.ae_pwoKrzyzowania.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ae_pwoKrzyzowania.SelectedText = "";
+            this.ae_pwoKrzyzowania.SelectionLength = 0;
+            this.ae_pwoKrzyzowania.SelectionStart = 0;
+            this.ae_pwoKrzyzowania.ShortcutsEnabled = true;
+            this.ae_pwoKrzyzowania.Size = new System.Drawing.Size(172, 30);
+            this.ae_pwoKrzyzowania.TabIndex = 19;
+            this.ae_pwoKrzyzowania.Text = "0,56";
+            this.ae_pwoKrzyzowania.UseSelectable = true;
+            this.ae_pwoKrzyzowania.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ae_pwoKrzyzowania.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(199, 20);
+            this.metroLabel11.TabIndex = 15;
+            this.metroLabel11.Text = "Rozmiar populacji początkowej";
+            // 
+            // ae_rozmiarPopulacji
+            // 
+            // 
+            // 
+            // 
+            this.ae_rozmiarPopulacji.CustomButton.Image = null;
+            this.ae_rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(144, 2);
+            this.ae_rozmiarPopulacji.CustomButton.Name = "";
+            this.ae_rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.ae_rozmiarPopulacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ae_rozmiarPopulacji.CustomButton.TabIndex = 1;
+            this.ae_rozmiarPopulacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ae_rozmiarPopulacji.CustomButton.UseSelectable = true;
+            this.ae_rozmiarPopulacji.CustomButton.Visible = false;
+            this.ae_rozmiarPopulacji.Lines = new string[] {
+        "20"};
+            this.ae_rozmiarPopulacji.Location = new System.Drawing.Point(3, 23);
+            this.ae_rozmiarPopulacji.MaxLength = 32767;
+            this.ae_rozmiarPopulacji.Name = "ae_rozmiarPopulacji";
+            this.ae_rozmiarPopulacji.PasswordChar = '\0';
+            this.ae_rozmiarPopulacji.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ae_rozmiarPopulacji.SelectedText = "";
+            this.ae_rozmiarPopulacji.SelectionLength = 0;
+            this.ae_rozmiarPopulacji.SelectionStart = 0;
+            this.ae_rozmiarPopulacji.ShortcutsEnabled = true;
+            this.ae_rozmiarPopulacji.Size = new System.Drawing.Size(172, 30);
+            this.ae_rozmiarPopulacji.TabIndex = 15;
+            this.ae_rozmiarPopulacji.Text = "20";
+            this.ae_rozmiarPopulacji.UseSelectable = true;
+            this.ae_rozmiarPopulacji.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ae_rozmiarPopulacji.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // ae_metodaSelekcji
+            // 
+            this.ae_metodaSelekcji.FormattingEnabled = true;
+            this.ae_metodaSelekcji.ItemHeight = 24;
+            this.ae_metodaSelekcji.Location = new System.Drawing.Point(314, 23);
+            this.ae_metodaSelekcji.Name = "ae_metodaSelekcji";
+            this.ae_metodaSelekcji.Size = new System.Drawing.Size(172, 30);
+            this.ae_metodaSelekcji.TabIndex = 14;
+            this.ae_metodaSelekcji.UseSelectable = true;
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(314, 0);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(106, 20);
+            this.metroLabel10.TabIndex = 9;
+            this.metroLabel10.Text = "Metoda Selekcji";
+            // 
+            // ae_rodzajKrzyzowania
+            // 
+            this.ae_rodzajKrzyzowania.FormattingEnabled = true;
+            this.ae_rodzajKrzyzowania.ItemHeight = 24;
+            this.ae_rodzajKrzyzowania.Location = new System.Drawing.Point(314, 88);
+            this.ae_rodzajKrzyzowania.Name = "ae_rodzajKrzyzowania";
+            this.ae_rodzajKrzyzowania.Size = new System.Drawing.Size(172, 30);
+            this.ae_rodzajKrzyzowania.TabIndex = 12;
+            this.ae_rodzajKrzyzowania.UseSelectable = true;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(314, 65);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(130, 20);
+            this.metroLabel8.TabIndex = 13;
+            this.metroLabel8.Text = "Rodzaj krzyżowania";
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(540, 90);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(15, 20);
+            this.metroLabel16.TabIndex = 17;
+            this.metroLabel16.Text = "s";
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(283, 67);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(163, 20);
+            this.metroLabel15.TabIndex = 16;
+            this.metroLabel15.Text = "Czas działania algorytmu";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(121, 20);
+            this.metroLabel7.TabIndex = 11;
+            this.metroLabel7.Text = "Wybierz Algorytm";
+            // 
+            // wybierzAlgorytm
+            // 
+            this.wybierzAlgorytm.FormattingEnabled = true;
+            this.wybierzAlgorytm.ItemHeight = 24;
+            this.wybierzAlgorytm.Location = new System.Drawing.Point(3, 23);
+            this.wybierzAlgorytm.Name = "wybierzAlgorytm";
+            this.wybierzAlgorytm.Size = new System.Drawing.Size(552, 30);
+            this.wybierzAlgorytm.TabIndex = 11;
+            this.wybierzAlgorytm.UseSelectable = true;
+            this.wybierzAlgorytm.SelectedIndexChanged += new System.EventHandler(this.wybierzAlgorytm_SelectedIndexChanged);
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(3, 67);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(159, 20);
+            this.metroLabel9.TabIndex = 11;
+            this.metroLabel9.Text = "Liczba iteracji algorytmu";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.uruchomBadanie, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(569, 389);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(561, 37);
+            this.tableLayoutPanel5.TabIndex = 3;
+            // 
+            // uruchomBadanie
+            // 
+            this.uruchomBadanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uruchomBadanie.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uruchomBadanie.Location = new System.Drawing.Point(283, 3);
+            this.uruchomBadanie.Name = "uruchomBadanie";
+            this.uruchomBadanie.Size = new System.Drawing.Size(275, 31);
+            this.uruchomBadanie.TabIndex = 0;
+            this.uruchomBadanie.Text = "Uruchom Badanie";
+            this.uruchomBadanie.UseSelectable = true;
+            this.uruchomBadanie.Click += new System.EventHandler(this.uruchomBadanie_Click);
+            // 
+            // domyslnyAlgorytmPanel
+            // 
+            this.domyslnyAlgorytmPanel.HorizontalScrollbarBarColor = true;
+            this.domyslnyAlgorytmPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.domyslnyAlgorytmPanel.HorizontalScrollbarSize = 10;
+            this.domyslnyAlgorytmPanel.Location = new System.Drawing.Point(0, 0);
+            this.domyslnyAlgorytmPanel.Name = "domyslnyAlgorytmPanel";
+            this.domyslnyAlgorytmPanel.Size = new System.Drawing.Size(561, 252);
+            this.domyslnyAlgorytmPanel.TabIndex = 22;
+            this.domyslnyAlgorytmPanel.VerticalScrollbarBarColor = true;
+            this.domyslnyAlgorytmPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.domyslnyAlgorytmPanel.VerticalScrollbarSize = 10;
             // 
             // Badanie
             // 
@@ -937,9 +948,9 @@
             this.metroPanel2.PerformLayout();
             this.ae_panel.ResumeLayout(false);
             this.ae_panel.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
             this.aw_panel.ResumeLayout(false);
             this.aw_panel.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -987,7 +998,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroButton rysujWykes;
         private MetroFramework.Controls.MetroPanel domyslnyProblemPanel;
-        private MetroFramework.Controls.MetroPanel domyslnyAlgorytmPanel;
         private MetroFramework.Controls.MetroPanel aw_panel;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroTextBox aw_parametrP;
@@ -997,5 +1007,6 @@
         private MetroFramework.Controls.MetroComboBox modelTTP;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox ttp_maxWagaPlecaka;
+        private MetroFramework.Controls.MetroPanel domyslnyAlgorytmPanel;
     }
 }

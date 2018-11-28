@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
     {
         public WspinaczkaTSP(ALosowanie losowanie) : base(losowanie) { }
 
-        public override Dictionary<string, double[]> ZnajdzOptimum()
+        public override Dictionary<string, float[]> ZnajdzOptimum()
         {
             int poprawy = 0;
             ushort[] genotyp = reprezentacjaRozwiazania.ZwrocGenotyp1Wymiarowy(),
@@ -21,7 +21,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 
             AOsobnik osobnik = losowanie.ZwrocOsobnika();
             ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
-            Dictionary<string, double[]> wynik = osobnik.FunkcjaDopasowania(reprezentacjaRozwiazania);
+            Dictionary<string, float[]> wynik = osobnik.FunkcjaDopasowania(reprezentacjaRozwiazania);
             ReprezentacjaRozwiazania tmpReprezentacjaRozwiazanie = new ReprezentacjaRozwiazania(tmpGenotyp);
 
             do
@@ -41,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 
                     tmpReprezentacjaRozwiazanie.ZmienGenotyp(tmpGenotyp);
 
-                    Dictionary<string, double[]> tmpWynik = osobnik.FunkcjaDopasowania(tmpReprezentacjaRozwiazanie);
+                    Dictionary<string, float[]> tmpWynik = osobnik.FunkcjaDopasowania(tmpReprezentacjaRozwiazanie);
 
                     if (tmpWynik["max"][0] > wynik["max"][0])
                     {

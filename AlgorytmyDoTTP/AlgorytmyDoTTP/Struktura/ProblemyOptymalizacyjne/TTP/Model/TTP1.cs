@@ -6,20 +6,20 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model
 {
     class TTP1 : ITTP
     {
-        public Dictionary<string, double[]> ObliczWartoscFunkcjiCelu(double[] dlugosciTrasy, ushort[][] mapaPrzedmiotow, double[] ograniczeniaProblemu, ProblemPlecakowy problemPlecakowy)
+        public Dictionary<string, float[]> ObliczWartoscFunkcjiCelu(float[] dlugosciTrasy, ushort[][] mapaPrzedmiotow, float[] ograniczeniaProblemu, ProblemPlecakowy problemPlecakowy)
         {
-            double sumarycznaWartosc = 0,
+            float sumarycznaWartosc = 0,
                    sumarycznaWaga = 0,
                    czasPodrozy = 0;
 
-            Dictionary<string, double[]> wynik = new Dictionary<string, double[]>();
+            Dictionary<string, float[]> wynik = new Dictionary<string, float[]>();
 
             for (int i = 0, j = -1; i < mapaPrzedmiotow.Length; i++, j++)
             {
                 // zebrane przedmioty dla i-tego miasta
                 IPomocniczy[] zebranePrzedmioty = problemPlecakowy.ZwrocWybraneElementy(mapaPrzedmiotow[i]);
                 // obliczenie zysku z pobranych przedmiotów dla i-tego miasta
-                Dictionary<string, double[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(zebranePrzedmioty);
+                Dictionary<string, float[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(zebranePrzedmioty);
 
                 sumarycznaWaga += wynikCzesciowy["min"][0]; // całkowita waga
                 sumarycznaWartosc += wynikCzesciowy["max"][0]; // całkowita wartość
@@ -30,11 +30,11 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model
                 predkosc = (predkosc < 0.1) ? 0.1 : predkosc;
 
                 // przy mieście nr. 1 czas podróży wynosi 0 jednostek
-                if (j != -1) czasPodrozy += dlugosciTrasy[j] * predkosc;
+                if (j != -1) czasPodrozy += (float)(dlugosciTrasy[j] * predkosc);
             }
 
-            wynik["min"] = new double[] { 0, 0 };
-            wynik["max"] = new double[] { 0, 0 };
+            wynik["min"] = new float[] { 0, 0 };
+            wynik["max"] = new float[] { 0, 0 };
 
             // ustawienie parametrów do minimalizacji
             wynik["min"][0] = sumarycznaWaga;
