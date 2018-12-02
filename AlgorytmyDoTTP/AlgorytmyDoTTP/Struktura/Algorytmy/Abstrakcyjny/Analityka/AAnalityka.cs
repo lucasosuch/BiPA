@@ -1,31 +1,38 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using System.Collections;
 using System.Diagnostics;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
     abstract class AAnalityka
     {
-        protected Stopwatch pomiarCzasu = new Stopwatch();
+        protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
-        protected ArrayList[] wartosciProcesuPoszukiwan;
+        protected double[][] minWartoscProcesuPoszukiwan;
+        protected double[][] maxWartoscProcesuPoszukiwan;
+        protected double[][] sredniaWartoscProcesuPoszukiwan;
+        private Stopwatch pomiarCzasu = new Stopwatch();
 
-        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji)
+        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu)
         {
             this.rozwiazanie = rozwiazanie;
             this.liczbaIteracji = liczbaIteracji;
-            wartosciProcesuPoszukiwan = new ArrayList[liczbaIteracji];
+            this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
+            minWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
+            maxWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
+            sredniaWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
 
-            for(short i = 0; i < liczbaIteracji; i++)
+            for (short i = 0; i < liczbaIteracji; i++)
             {
-                wartosciProcesuPoszukiwan[i] = new ArrayList();
+                minWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
+                maxWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
+                sredniaWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
             }
         }
 
-        public ArrayList[] ZwrocWartosciProcesuPoszukiwan()
+        public double[][] ZwrocSredniaWartosciProcesuPoszukiwan()
         {
-            return wartosciProcesuPoszukiwan;
+            return sredniaWartoscProcesuPoszukiwan;
         }
 
         /// <summary>
@@ -39,7 +46,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <summary>
         /// Metoda zakańczająca odliczanie czasu
         /// </summary>
-        public void ZakonczPomiarCzasu()
+        public void ResetPomiaruCzasu()
         {
             pomiarCzasu.Reset();
         }
@@ -49,7 +56,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// </summary>
         /// <param name="najlepszeRozwiazanie">Najlepsze znalezione rozwiązanie</param>
         /// <returns>Zwraca najlepsze rozwiązanie dla wybranego problemu optymalizacyjnego</returns>
-        public string ZwrocNajlepszeRozwiazanie(ReprezentacjaRozwiazania najlepszeRozwiazanie)
+        public string ZwrocNajlepszeZnalezioneRozwiazanie(ReprezentacjaRozwiazania najlepszeRozwiazanie)
         {
             return rozwiazanie.DekodujRozwiazanie(najlepszeRozwiazanie);
         }
@@ -58,7 +65,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// Metoda zwracająca czas działania algorytmu
         /// </summary>
         /// <returns>Zwraca czas przebiegu w milisekundach</returns>
-        public double ZwrocCzasDzialaniaAlgorytmu(string rodzaj)
+        public double IleCzasuDzialaAlgorytm(string rodzaj)
         {
             if(rodzaj == "s") return pomiarCzasu.Elapsed.TotalSeconds;
             else return pomiarCzasu.Elapsed.TotalMilliseconds;
@@ -69,6 +76,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return liczbaIteracji;
         }
 
-        public abstract void DopiszWartoscProcesu(short index, float czas, ReprezentacjaRozwiazania genotyp);
+        public short ZwrocCzasDzialaniaAlgorytmu()
+        {
+            return czasDzialaniaAlgorytmu;
+        }
+
+        public abstract void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp);
+
+        public abstract void StworzWykresGNUplot();
     }
 }

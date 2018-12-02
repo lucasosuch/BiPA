@@ -30,7 +30,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
             ReprezentacjaRozwiazania najlepszeRozwiazanie = losowanie.ZwrocNajlepszeRozwiazanie();
             Dictionary<string, float[]> najlepszyWynik = losowanie.ZwrocNajlepszyWynik();
-            analiza.ZakonczPomiarCzasu();
+            analiza.ResetPomiaruCzasu();
             
             //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, najlepszyWynik);
         }

@@ -26,7 +26,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                 case "Problem Plecakowy":
                     osobnik = new OsobnikKP(problem);
                     losowanie = new LosowanieKP(osobnik);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]));
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaKP(losowanie);
@@ -35,7 +35,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                 case "Problem Komiwojażera":
                     osobnik = new OsobnikTSP(problem);
                     losowanie = new LosowanieTSP(osobnik);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]));
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaTSP(losowanie);
@@ -44,7 +44,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                 case "Problem Podróżującego Złodzieja":
                     osobnik = new OsobnikTTP(problem);
                     losowanie = new LosowanieTTP(osobnik);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]));
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0);
                     losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
 
                     przeszukiwanieLokalne = new WspinaczkaTTP(losowanie);

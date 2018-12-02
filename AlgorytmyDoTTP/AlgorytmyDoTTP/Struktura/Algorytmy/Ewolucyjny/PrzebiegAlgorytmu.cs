@@ -25,32 +25,32 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 case "Problem Plecakowy":
                     // konfiguracja algorytmu pod Problem Plecakowy
                     rozwiazanie = new OsobnikKP(problem);
-                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]));
+                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
                     rekombinacja = new RekombinacjaKP(float.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     populacja = new PopulacjaKP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
-                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["czasPoszukiwania"]), float.Parse(parametry["pwoKrzyzowania"]));
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, float.Parse(parametry["pwoKrzyzowania"]));
 
                 case "Problem Komiwojażera":
                     // konfiguracja algorytmu pod Problem Komiwojażera
                     rozwiazanie = new OsobnikTSP(problem);
-                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]));
+                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     rekombinacja = new RekombinacjaTSP(float.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     populacja = new PopulacjaTSP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
-                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["czasPoszukiwania"]), float.Parse(parametry["pwoKrzyzowania"]));
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, float.Parse(parametry["pwoKrzyzowania"]));
 
                 case "Problem Podróżującego Złodzieja":
                     // konfiguracja algorytmu pod Problem Podróżującego Złodzieja
                     rozwiazanie = new OsobnikTTP(problem);
-                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]));
+                    analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
                     populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTTP(float.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
                     
-                    return new SEA(selekcja, rekombinacja, analityka, populacja, short.Parse(parametry["czasPoszukiwania"]), float.Parse(parametry["pwoKrzyzowania"]));
+                    return new SEA(selekcja, rekombinacja, analityka, populacja, float.Parse(parametry["pwoKrzyzowania"]));
             }
 
             return new SEA();

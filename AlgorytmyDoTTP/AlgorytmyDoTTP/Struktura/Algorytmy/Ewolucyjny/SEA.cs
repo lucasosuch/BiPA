@@ -3,7 +3,6 @@ using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
 using System;
-using System.Collections;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -13,7 +12,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
     /// </summary>
     class SEA : IAlgorytm
     {
-        private readonly short czasPoszukiwania; // zas działania algorytmu
         private readonly float pwoKrzyzowania; // prawdopodobieństwo, że zostanie stworzony nowy osobnik
         private ARekombinacja rekombinacja; // klasa odpowiedzialna za tworzenie nowych osobników
         private ASelekcja selekcja; // klasa odpowiedzialna za wybieranie najlepszych osobników do krzyżowania
@@ -25,12 +23,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
         }
 
-        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AnalizaEwolucyjny analityka, ReprezentacjaRozwiazania[] populacjaBazowa, short czasPoszukiwania, float pwoKrzyzowania)
+        public SEA(ASelekcja selekcja, ARekombinacja rekombinacja, AnalizaEwolucyjny analityka, ReprezentacjaRozwiazania[] populacjaBazowa, float pwoKrzyzowania)
         {
             this.selekcja = selekcja;
             this.rekombinacja = rekombinacja;
             this.analityka = analityka;
-            this.czasPoszukiwania = czasPoszukiwania;
             this.populacjaBazowa = populacjaBazowa;
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
@@ -47,7 +44,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                 ReprezentacjaRozwiazania[]  tmpPopulacja = (ReprezentacjaRozwiazania[])populacjaBazowa.Clone();
 
                 // iterując przez wszystkie pokolenia
-                while (analityka.ZwrocCzasDzialaniaAlgorytmu("s") < czasPoszukiwania)
+                while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
                 {
                     // wczytujemy pewną liczbę osobników z populacji
                     for (short j = 0; j < liczbaOsobnikowPopulacji; j += 2)
@@ -62,12 +59,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                         // dzieci dodajemy do nowej populacji
                         nowaPopulacja[j] = dziecko1;
                         // sprawdzając czy nie stworzyliśmy najlepszego rozwiązania do tej pory
-                        analityka.DopiszWartoscProcesu(i, (float)analityka.ZwrocCzasDzialaniaAlgorytmu("s"), dziecko1);
+                        analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko1);
 
                         if (j + 1 < liczbaOsobnikowPopulacji)
                         {
                             nowaPopulacja[j + 1] = dziecko2;
-                            analityka.DopiszWartoscProcesu(i, (float)analityka.ZwrocCzasDzialaniaAlgorytmu("s"), dziecko2);
+                            analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko2);
                         }
                     }
 
@@ -77,13 +74,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     liczbaPokolen++; // zwiększając liczbę pokoleń
                 }
 
-                analityka.ZakonczPomiarCzasu(); // zakończenie pomiaru czasu
+                analityka.ResetPomiaruCzasu(); // zakończenie pomiaru czasu
             }
-        }
 
-        public ArrayList[] ZwrocWartosciProcesuPoszukiwan()
-        {
-            return analityka.ZwrocWartosciProcesuPoszukiwan();
+            analityka.ObliczSrednieWartosciProcesu();
         }
     }
 }

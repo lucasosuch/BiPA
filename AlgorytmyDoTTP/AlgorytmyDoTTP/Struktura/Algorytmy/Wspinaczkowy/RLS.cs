@@ -24,7 +24,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         {
             analiza.RozpocznijPomiarCzasu();
             Dictionary<string, float[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
-            analiza.ZakonczPomiarCzasu();
+            analiza.ResetPomiaruCzasu();
             ReprezentacjaRozwiazania najlepszeRozwiazanie = przeszukiwanieLokalne.ZwrocRozwiazanie();
 
             //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);

@@ -9,10 +9,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     /// </summary>
     class AnalizaRLS_RS: AAnalityka
     {
-        public AnalizaRLS_RS(AOsobnik rozwiazanie, short liczbaIteracji) : base(rozwiazanie, liczbaIteracji)
+        public AnalizaRLS_RS(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania) : base(rozwiazanie, liczbaIteracji, czasDzialania)
         { }
 
-        public override void DopiszWartoscProcesu(short index, float czas, ReprezentacjaRozwiazania genotyp)
+        public override void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void StworzWykresGNUplot()
         {
             throw new System.NotImplementedException();
         }
@@ -21,10 +26,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         {
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie) };
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeZnalezioneRozwiazanie(najlepszeRozwiazanie) };
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", znalezioneOptimum["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", znalezioneOptimum["min"][0].ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu("ms").ToString() + " ms" };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", IleCzasuDzialaAlgorytm("ms").ToString() + " ms" };
 
             return zwracanyTekst;
         }

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Konfiguracja.cs" />
+    <Compile Include="Rozszerzenia\GnuPlot.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
     <Compile Include="Widoki\GenerowaniePlikow.cs">

@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AwokeKnowing.GnuplotCSharp;
 using System;
 using System.Collections.Generic;
 
@@ -11,16 +12,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     class AnalizaEwolucyjny : AAnalityka
     {
         private float[] najlepszaWartoscFunkcji;
+        private readonly short[][] liczbaWCzasie;
         private ReprezentacjaRozwiazania[] najlepszeRozwiazanie;
 
-        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji) : base(rozwiazanie, liczbaIteracji)
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania) : base(rozwiazanie, liczbaIteracji, czasDzialania)
         {
+            liczbaWCzasie = new short[liczbaIteracji][];
             najlepszaWartoscFunkcji = new float[liczbaIteracji];
             najlepszeRozwiazanie = new ReprezentacjaRozwiazania[liczbaIteracji];
 
             for(short i = 0; i < liczbaIteracji; i++)
             {
                 najlepszaWartoscFunkcji[i] = -10000;
+                liczbaWCzasie[i] = new short[czasDzialania + 1];
             }
         }
 
@@ -38,13 +42,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             Dictionary<string, string[]> zwracanyTekst = new Dictionary<string, string[]>();
 
             // zwracamy raport z badań w formie czytelnej dla człowieka
-            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeRozwiazanie(najlepszeRozwiazanie[0]) }; // bajpas
+            zwracanyTekst["dziedzina"] = new string[] { "Najlepszy genotyp", ZwrocNajlepszeZnalezioneRozwiazanie(najlepszeRozwiazanie[0]) }; // bajpas
             zwracanyTekst["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", ZwrocWartoscNiebo()["max"][0].ToString() };
             zwracanyTekst["minWartosc"] = new string[] { "Najlepsza funkcja przystosowania (min)", ZwrocWartoscNiebo()["min"][0].ToString() };
             zwracanyTekst["sredniaWartosc"] = new string[] { "Średnia funkcji przystosowania z populacji", srednia.ToString() };
             zwracanyTekst["medianaWartosci"] = new string[] { "Mediana funkcji przystosowania z populacji", mediana.ToString() };
             zwracanyTekst["odchstdWartosci"] = new string[] { "Odchylenie standardowe funkcji przystosowania z populacji", odchylenieStadowe.ToString() };
-            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", ZwrocCzasDzialaniaAlgorytmu("ms").ToString() + " ms" };
+            zwracanyTekst["czasDzialania"] = new string[] { "Czas dzialania algorytmu", IleCzasuDzialaAlgorytm("ms").ToString() + " ms" };
 
             return zwracanyTekst;
         }
@@ -131,18 +135,48 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
         /// </summary>
         /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
-        public override void DopiszWartoscProcesu(short index, float czas, ReprezentacjaRozwiazania genotyp)
+        public override void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp)
         {
             float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
-            Console.WriteLine(index + " " + czas + " " + wartosc);
 
             if (najlepszaWartoscFunkcji[index] < wartosc)
             {
                 najlepszeRozwiazanie[index] = genotyp;
                 najlepszaWartoscFunkcji[index] = wartosc;
-
-                wartosciProcesuPoszukiwan[index].Add(new float[] { czas, wartosc });
             }
+
+            if(minWartoscProcesuPoszukiwan[index][czas] > wartosc)
+            {
+                minWartoscProcesuPoszukiwan[index][czas] = wartosc;
+            }
+            if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+            {
+                maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
+            }
+
+            liczbaWCzasie[index][czas]++;
+            sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc;
+        }
+
+        public void ObliczSrednieWartosciProcesu()
+        {
+            for(short i = 0; i < liczbaIteracji; i++)
+            {
+                for(short j = 0; j < czasDzialaniaAlgorytmu; j++)
+                {
+                    sredniaWartoscProcesuPoszukiwan[i][j] /= liczbaWCzasie[i][j];
+                }
+            }
+
+            GnuPlot.HoldOn();
+            GnuPlot.Plot(minWartoscProcesuPoszukiwan[0], "title 'Min'");
+            GnuPlot.Plot(sredniaWartoscProcesuPoszukiwan[0], "title 'Średnia'");
+            GnuPlot.Plot(maxWartoscProcesuPoszukiwan[0], "title 'Max'");
+        }
+
+        public override void StworzWykresGNUplot()
+        {
+            throw new NotImplementedException();
         }
     }
 }
