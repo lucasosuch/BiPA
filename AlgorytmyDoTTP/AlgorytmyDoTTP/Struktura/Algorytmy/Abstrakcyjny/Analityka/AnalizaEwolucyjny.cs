@@ -1,5 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using AwokeKnowing.GnuplotCSharp;
+﻿using AlgorytmyDoTTP.Rozszerzenia;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections.Generic;
 
@@ -167,16 +167,21 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                     sredniaWartoscProcesuPoszukiwan[i][j] /= liczbaWCzasie[i][j];
                 }
             }
-
-            GnuPlot.HoldOn();
-            GnuPlot.Plot(minWartoscProcesuPoszukiwan[0], "title 'Min'");
-            GnuPlot.Plot(sredniaWartoscProcesuPoszukiwan[0], "title 'Średnia'");
-            GnuPlot.Plot(maxWartoscProcesuPoszukiwan[0], "title 'Max'");
         }
 
         public override void StworzWykresGNUplot()
         {
-            throw new NotImplementedException();
+            GNUPlot gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
+            gnuplot.RysujWykres(sredniaWartoscProcesuPoszukiwan, "srednia_algorytm", 700, 500);
+            gnuplot.ZakonczProcesGNUPlot();
+
+            gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
+            gnuplot.RysujWykres(maxWartoscProcesuPoszukiwan, "max_algorytm", 700, 500);
+            gnuplot.ZakonczProcesGNUPlot();
+
+            gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
+            gnuplot.RysujWykres(minWartoscProcesuPoszukiwan, "min_algorytm", 700, 500);
+            gnuplot.ZakonczProcesGNUPlot();
         }
     }
 }

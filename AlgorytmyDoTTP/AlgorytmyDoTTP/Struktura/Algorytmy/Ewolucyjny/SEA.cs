@@ -78,6 +78,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             }
 
             analityka.ObliczSrednieWartosciProcesu();
+            analityka.StworzWykresGNUplot();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -144,7 +146,29 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void rysujWykes_Click(object sender, EventArgs e)
         {
+            string Path = @"C:\Program Files\gnuplot\bin\gnuplot.exe";
+            Process GnuplotProcess = new Process();
+            GnuplotProcess.StartInfo.FileName = Path;
+            GnuplotProcess.StartInfo.UseShellExecute = false;
+            GnuplotProcess.StartInfo.RedirectStandardInput = true;
+            GnuplotProcess.StartInfo.RedirectStandardOutput = true;
+            GnuplotProcess.Start();
+            StreamWriter SW = GnuplotProcess.StandardInput;
+            StreamReader SR = GnuplotProcess.StandardOutput;
 
+            double[] A = new double[] { 2, 3, 4, 5, 5, 5, 5, 6, 7, 8, 9, 9, 10 };
+            double[] B = new double[] { 1, 2, 3, 3, 3, 4, 5, 5, 5, 5, 6, 11, 10 };
+
+            SW.WriteLine("set terminal pngcairo size 1300,1200");
+            SW.WriteLine("array A["+ A.Length +"] = ["+ string.Join(", ", A) +"]");
+            SW.WriteLine("array B["+ B.Length +"] = ["+ string.Join(", ", B) +"]");
+            SW.WriteLine("plot A w lines, B w lines");
+            SW.WriteLine("exit");
+
+            Image png = Image.FromStream(SR.BaseStream);
+            png.Save(@".\try3a.png");
+
+            GnuplotProcess.Close();
         }
 
         private void uruchomBadanie_Click(object sender, EventArgs e)
