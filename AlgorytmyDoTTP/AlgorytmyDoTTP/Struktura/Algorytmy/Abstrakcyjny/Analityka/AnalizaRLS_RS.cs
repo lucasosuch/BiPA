@@ -17,7 +17,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             throw new System.NotImplementedException();
         }
 
-        public override void StworzWykresGNUplot()
+        public override void StworzWykresyGNUplot(int szerokosc, int wysokosc)
         {
             throw new System.NotImplementedException();
         }

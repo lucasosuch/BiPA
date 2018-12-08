@@ -33,22 +33,22 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.zapiszPlik = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.ttp_liczbaMiast = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.ttp_liczbaPrzedmiotow = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_typSiatki = new MetroFramework.Controls.MetroComboBox();
             this.ttp_sumaWag = new MetroFramework.Controls.MetroComboBox();
             this.ttp_sumaWartoci = new MetroFramework.Controls.MetroComboBox();
             this.ttp_procentRozrzutu = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.wybierzProblem = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.ttp_typSiatki = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.metroPanel1.SuspendLayout();
@@ -127,6 +127,76 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // metroPanel3
+            // 
+            this.metroPanel3.Controls.Add(this.metroLabel7);
+            this.metroPanel3.Controls.Add(this.metroLabel5);
+            this.metroPanel3.Controls.Add(this.metroLabel6);
+            this.metroPanel3.Controls.Add(this.metroLabel1);
+            this.metroPanel3.Controls.Add(this.metroLabel4);
+            this.metroPanel3.Controls.Add(this.ttp_liczbaMiast);
+            this.metroPanel3.Controls.Add(this.metroLabel3);
+            this.metroPanel3.Controls.Add(this.ttp_liczbaPrzedmiotow);
+            this.metroPanel3.Controls.Add(this.ttp_typSiatki);
+            this.metroPanel3.Controls.Add(this.ttp_sumaWag);
+            this.metroPanel3.Controls.Add(this.ttp_sumaWartoci);
+            this.metroPanel3.Controls.Add(this.ttp_procentRozrzutu);
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(0, 82);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(474, 260);
+            this.metroPanel3.TabIndex = 2;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(208, 197);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(211, 20);
+            this.metroLabel7.TabIndex = 16;
+            this.metroLabel7.Text = "Procent rozrzutu parametrów KP";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(208, 0);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(185, 20);
+            this.metroLabel5.TabIndex = 14;
+            this.metroLabel5.Text = "Suma Wartości Przedmiotów";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(208, 98);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(114, 20);
+            this.metroLabel6.TabIndex = 15;
+            this.metroLabel6.Text = "Typ siatki dla TSP";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(84, 20);
+            this.metroLabel1.TabIndex = 7;
+            this.metroLabel1.Text = "Liczba Miast";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 197);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(159, 20);
+            this.metroLabel4.TabIndex = 13;
+            this.metroLabel4.Text = "Suma Wag Przedmiotów";
+            // 
             // ttp_liczbaMiast
             // 
             this.ttp_liczbaMiast.FormattingEnabled = true;
@@ -137,6 +207,15 @@
             this.ttp_liczbaMiast.TabIndex = 2;
             this.ttp_liczbaMiast.UseSelectable = true;
             // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 98);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(133, 20);
+            this.metroLabel3.TabIndex = 12;
+            this.metroLabel3.Text = "Liczba Przedmiotów";
+            // 
             // ttp_liczbaPrzedmiotow
             // 
             this.ttp_liczbaPrzedmiotow.FormattingEnabled = true;
@@ -146,6 +225,16 @@
             this.ttp_liczbaPrzedmiotow.Size = new System.Drawing.Size(159, 30);
             this.ttp_liczbaPrzedmiotow.TabIndex = 3;
             this.ttp_liczbaPrzedmiotow.UseSelectable = true;
+            // 
+            // ttp_typSiatki
+            // 
+            this.ttp_typSiatki.FormattingEnabled = true;
+            this.ttp_typSiatki.ItemHeight = 24;
+            this.ttp_typSiatki.Location = new System.Drawing.Point(208, 121);
+            this.ttp_typSiatki.Name = "ttp_typSiatki";
+            this.ttp_typSiatki.Size = new System.Drawing.Size(159, 30);
+            this.ttp_typSiatki.TabIndex = 11;
+            this.ttp_typSiatki.UseSelectable = true;
             // 
             // ttp_sumaWag
             // 
@@ -177,24 +266,6 @@
             this.ttp_procentRozrzutu.TabIndex = 6;
             this.ttp_procentRozrzutu.UseSelectable = true;
             // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(84, 20);
-            this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Liczba Miast";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(209, 20);
-            this.metroLabel2.TabIndex = 9;
-            this.metroLabel2.Text = "Wybierz Proble Optymalizacyjny";
-            // 
             // wybierzProblem
             // 
             this.wybierzProblem.FormattingEnabled = true;
@@ -204,6 +275,15 @@
             this.wybierzProblem.Size = new System.Drawing.Size(271, 30);
             this.wybierzProblem.TabIndex = 10;
             this.wybierzProblem.UseSelectable = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(209, 20);
+            this.metroLabel2.TabIndex = 9;
+            this.metroLabel2.Text = "Wybierz Proble Optymalizacyjny";
             // 
             // metroPanel2
             // 
@@ -219,92 +299,13 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // ttp_typSiatki
-            // 
-            this.ttp_typSiatki.FormattingEnabled = true;
-            this.ttp_typSiatki.ItemHeight = 24;
-            this.ttp_typSiatki.Location = new System.Drawing.Point(208, 121);
-            this.ttp_typSiatki.Name = "ttp_typSiatki";
-            this.ttp_typSiatki.Size = new System.Drawing.Size(159, 30);
-            this.ttp_typSiatki.TabIndex = 11;
-            this.ttp_typSiatki.UseSelectable = true;
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 98);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(133, 20);
-            this.metroLabel3.TabIndex = 12;
-            this.metroLabel3.Text = "Liczba Przedmiotów";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 197);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(159, 20);
-            this.metroLabel4.TabIndex = 13;
-            this.metroLabel4.Text = "Suma Wag Przedmiotów";
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(208, 0);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(185, 20);
-            this.metroLabel5.TabIndex = 14;
-            this.metroLabel5.Text = "Suma Wartości Przedmiotów";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(208, 98);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(114, 20);
-            this.metroLabel6.TabIndex = 15;
-            this.metroLabel6.Text = "Typ siatki dla TSP";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(208, 197);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(211, 20);
-            this.metroLabel7.TabIndex = 16;
-            this.metroLabel7.Text = "Procent rozrzutu parametrów KP";
-            // 
-            // metroPanel3
-            // 
-            this.metroPanel3.Controls.Add(this.metroLabel7);
-            this.metroPanel3.Controls.Add(this.metroLabel5);
-            this.metroPanel3.Controls.Add(this.metroLabel6);
-            this.metroPanel3.Controls.Add(this.metroLabel1);
-            this.metroPanel3.Controls.Add(this.metroLabel4);
-            this.metroPanel3.Controls.Add(this.ttp_liczbaMiast);
-            this.metroPanel3.Controls.Add(this.metroLabel3);
-            this.metroPanel3.Controls.Add(this.ttp_liczbaPrzedmiotow);
-            this.metroPanel3.Controls.Add(this.ttp_typSiatki);
-            this.metroPanel3.Controls.Add(this.ttp_sumaWag);
-            this.metroPanel3.Controls.Add(this.ttp_sumaWartoci);
-            this.metroPanel3.Controls.Add(this.ttp_procentRozrzutu);
-            this.metroPanel3.HorizontalScrollbarBarColor = true;
-            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(0, 82);
-            this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(474, 260);
-            this.metroPanel3.TabIndex = 2;
-            this.metroPanel3.VerticalScrollbarBarColor = true;
-            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.VerticalScrollbarSize = 10;
-            // 
             // GenerowaniePlikow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "GenerowaniePlikow";
             this.Text = "GenerowaniePlikow";
             this.tableLayoutPanel1.ResumeLayout(false);

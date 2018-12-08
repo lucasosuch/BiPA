@@ -34,5 +34,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             
             //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, najlepszyWynik);
         }
+
+        public AAnalityka ZwrocAnalityke()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

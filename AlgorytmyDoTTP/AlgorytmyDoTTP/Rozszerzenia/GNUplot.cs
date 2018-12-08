@@ -23,7 +23,7 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             procesGnuplot.Start();
         }
 
-        public void RysujWykres(double[][] wartosci, string nazwa, int szerokosc, int wysokosc)
+        public void RysujWykres(double[][] wartosci, int szerokosc, int wysokosc, string tytul)
         {
             StreamWriter SW = procesGnuplot.StandardInput;
             StreamReader SR = procesGnuplot.StandardOutput;
@@ -32,7 +32,7 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             string[] nazwyPol = new string[liczbaIteracji];
 
             SW.WriteLine("set grid");
-            SW.WriteLine("set title 'Badanie algorytmu '");
+            SW.WriteLine("set title '"+ tytul + "'");
             SW.WriteLine("set terminal pngcairo size "+ szerokosc + ", "+ wysokosc);
 
             for (short i = 0; i < liczbaIteracji; i++)
@@ -43,15 +43,15 @@ namespace AlgorytmyDoTTP.Rozszerzenia
                     tablicaWartosci[i] += wartosci[i][j].ToString().Replace(",", ".") + ",";
                 }
 
-                SW.WriteLine("array "+ nazwa +"" + (i + 1) + "[" + czasDzialaniaAlgorytmu + "] = [" + tablicaWartosci[i] + "]");
-                nazwyPol[i] = nazwa+"" + (i + 1) + " w linespoints";
+                SW.WriteLine("array iteracja"+ (i + 1) + "[" + czasDzialaniaAlgorytmu + "] = [" + tablicaWartosci[i] + "]");
+                nazwyPol[i] = "iteracja" + (i + 1) + " w linespoints";
             }
 
             SW.WriteLine("plot " + string.Join(", ", nazwyPol));
             SW.WriteLine("exit");
 
             Image png = Image.FromStream(SR.BaseStream);
-            png.Save(@".\"+ nazwa + ".png");
+            png.Save(@".\"+ tytul + ".png");
         }
 
         public void ZakonczProcesGNUPlot()

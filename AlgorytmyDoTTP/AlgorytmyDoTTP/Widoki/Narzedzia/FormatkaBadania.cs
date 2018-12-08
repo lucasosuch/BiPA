@@ -1,4 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
@@ -18,6 +19,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaBadania : FormatkaGlowna
     {
+        private AAnalityka analityka = null;
         private DateTime data = DateTime.Today;
         private Dictionary<string, string[]> wyniki;
         private Dictionary<string, string> parametry;
@@ -47,8 +49,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             //Dictionary<string, string[]> najlepszeWyniki = new Dictionary<string, string[]>();
             //najlepszeWyniki["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", (-100000).ToString() };
 
-            ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem()).Start();
+            IAlgorytm algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem());
+            algorytm.Start();
 
+            analityka = algorytm.ZwrocAnalityke();
             //for (int i = 0; i < liczbaIteracji; i++)
             //{
             //    wyniki.Clear();
@@ -86,6 +90,13 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             //wyniki = new Dictionary<string, string[]>(najlepszeWyniki);
 
             return "Poszło!!!";
+        }
+
+        public AAnalityka ZwrocAnalityke()
+        {
+            if (analityka == null) throw new Exception("Nie wykonano badania");
+
+            return analityka;
         }
 
         /// <summary>

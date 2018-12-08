@@ -83,6 +83,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
         public abstract void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp);
 
-        public abstract void StworzWykresGNUplot();
+        public abstract void StworzWykresyGNUplot(int szerokosc, int wysokosc);
     }
 }

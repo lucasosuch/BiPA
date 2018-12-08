@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -146,35 +146,30 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void rysujWykes_Click(object sender, EventArgs e)
         {
-            string Path = @"C:\Program Files\gnuplot\bin\gnuplot.exe";
-            Process GnuplotProcess = new Process();
-            GnuplotProcess.StartInfo.FileName = Path;
-            GnuplotProcess.StartInfo.UseShellExecute = false;
-            GnuplotProcess.StartInfo.RedirectStandardInput = true;
-            GnuplotProcess.StartInfo.RedirectStandardOutput = true;
-            GnuplotProcess.Start();
-            StreamWriter SW = GnuplotProcess.StandardInput;
-            StreamReader SR = GnuplotProcess.StandardOutput;
+            Rectangle ekran = Screen.FromControl(this).Bounds;
+            int szerokosc = ekran.Width / 2,
+                wysokosc = (ekran.Height / 2) - 30;
 
-            double[] A = new double[] { 2, 3, 4, 5, 5, 5, 5, 6, 7, 8, 9, 9, 10 };
-            double[] B = new double[] { 1, 2, 3, 3, 3, 4, 5, 5, 5, 5, 6, 11, 10 };
+            try
+            {
+                AAnalityka analityka = badanie.ZwrocAnalityke();
+                analityka.StworzWykresyGNUplot(szerokosc, wysokosc);
 
-            SW.WriteLine("set terminal pngcairo size 1300,1200");
-            SW.WriteLine("array A["+ A.Length +"] = ["+ string.Join(", ", A) +"]");
-            SW.WriteLine("array B["+ B.Length +"] = ["+ string.Join(", ", B) +"]");
-            SW.WriteLine("plot A w lines, B w lines");
-            SW.WriteLine("exit");
-
-            Image png = Image.FromStream(SR.BaseStream);
-            png.Save(@".\try3a.png");
-
-            GnuplotProcess.Close();
+                RezultatBadania rezultatBadania = new RezultatBadania();
+                rezultatBadania.Show();
+            } catch( Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void uruchomBadanie_Click(object sender, EventArgs e)
         {
             badanie.UstawParametryBadania(ZwrocParametry());
             wynikiBadania.Text = badanie.UruchomBadanie();
+            zapiszBadanie.Enabled = true;
+            pobierzPlikCSV.Enabled = true;
+            rysujWykes.Enabled = true;
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)

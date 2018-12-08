@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
@@ -8,5 +8,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
         /// Metoda uruchamiająca Algorytm Ewolucyjny
         /// </summary>
         void Start();
+
+        AAnalityka ZwrocAnalityke();
     }
 }

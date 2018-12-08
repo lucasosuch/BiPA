@@ -136,6 +136,12 @@
     <Compile Include="Widoki\Porownanie.Designer.cs">
       <DependentUpon>Porownanie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widoki\RezultatBadania.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Widoki\RezultatBadania.Designer.cs">
+      <DependentUpon>RezultatBadania.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widoki\Walidacja\AWalidacja.cs" />
     <Compile Include="Widoki\Walidacja\WalidacjaAE.cs" />
     <EmbeddedResource Include="Widoki\Badanie.resx">
@@ -158,6 +164,9 @@
     </Compile>
     <EmbeddedResource Include="Widoki\Porownanie.resx">
       <DependentUpon>Porownanie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widoki\RezultatBadania.resx">
+      <DependentUpon>RezultatBadania.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

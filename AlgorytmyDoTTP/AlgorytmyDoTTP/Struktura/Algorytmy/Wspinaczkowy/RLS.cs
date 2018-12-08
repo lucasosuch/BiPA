@@ -29,5 +29,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
 
             //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);
         }
+
+        public AAnalityka ZwrocAnalityke()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
