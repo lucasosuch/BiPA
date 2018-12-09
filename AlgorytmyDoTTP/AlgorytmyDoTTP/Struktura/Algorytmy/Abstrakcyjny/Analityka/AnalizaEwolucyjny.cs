@@ -132,12 +132,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie[0]);
         }
 
-        public void ZwrocNajlepszaIteracje()
+        public int ZwrocNajlepszaIteracje()
         {
-            float[] punkty = new float[liczbaIteracji];
-            ArrayList srednieMin = new ArrayList(liczbaIteracji);
-            ArrayList srednieAvg = new ArrayList(liczbaIteracji);
-            ArrayList srednieMax = new ArrayList(liczbaIteracji);
+            float[] punkty = new float[liczbaIteracji],
+                    srednieMin = new float[liczbaIteracji],
+                    srednieAvg = new float[liczbaIteracji],
+                    srednieMax = new float[liczbaIteracji];
 
             for (short i = 0; i < liczbaIteracji; i++)
             {
@@ -146,24 +146,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 srednieMax[i] = Srednia(maxWartoscProcesuPoszukiwan[i]);
             }
 
-            //for(short i = 0; i < liczbaIteracji; i++)
-            //{
-            //    float[] maxMax = ZnajdzMax(srednieMax);
-            //    punkty[(int)maxMax[0]] += srednieMax.Count;
-            //    srednieMax.RemoveAt((int)maxMax[0]);
+            for (short i = 0; i < liczbaIteracji; i++)
+            {   
+                float[] maxMax = ZnajdzMax(srednieMax);
+                punkty[(int)maxMax[0]] += srednieMax.Length - i;
+                srednieMax[(int)maxMax[0]] = -100000;
 
-            //    float[] maxMin = ZnajdzMax(srednieMin);
-            //    punkty[(int)maxMax[0]] += srednieMin.Count;
-            //    srednieMin.RemoveAt((int)maxMax[0]);
+                float[] maxMin = ZnajdzMax(srednieMin);
+                punkty[(int)maxMax[0]] += (float)(srednieMin.Length - (i * 0.5));
+                srednieMin[(int)maxMax[0]] = -100000;
 
-            //    float[] maxAvg = ZnajdzMax(srednieAvg);
-            //    punkty[(int)maxMax[0]] += srednieAvg.Count;
-            //    srednieAvg.RemoveAt((int)maxMax[0]);
-            //}
+                float[] maxAvg = ZnajdzMax(srednieAvg);
+                punkty[(int)maxMax[0]] += (float)(srednieAvg.Length - (i * 0.75));
+                srednieAvg[(int)maxMax[0]] = -100000;
+            }
 
-            Console.WriteLine(string.Join(", ", srednieMin));
-            Console.WriteLine(string.Join(", ", srednieMax));
-            Console.WriteLine(string.Join(", ", srednieAvg));
+            return (int)ZnajdzMax(punkty)[0];
         }
 
         /// <summary>
@@ -218,13 +216,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             gnuplot.RysujWykres(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "MIN AE");
             gnuplot.ZakonczProcesGNUPlot();
 
-            //ZwrocNajlepszaIteracje();
+            ZwrocNajlepszaIteracje();
         }
 
         public float Srednia(double[] wartosci)
         {
             float wynik = 0;
-            for(short i = 0; i < wartosci.Length; i++)
+            for (short i = 0; i < wartosci.Length; i++)
             {
                 wynik += (float)wartosci[i];
             }
@@ -234,15 +232,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return wynik;
         }
 
-        private float[] ZnajdzMax(ArrayList lista)
+        private float[] ZnajdzMax(float[] tablica)
         {
-            float[] wynik = new float[] { 0, (float)lista[0] };
-            for(short i = 1; i < lista.Count; i++)
+            float[] wynik = new float[] { 0, tablica[0] };
+            for(short i = 1; i < tablica.Length; i++)
             {
-                if((float)lista[i] > wynik[1])
+                if(tablica[i] > wynik[1])
                 {
                     wynik[0] = i;
-                    wynik[1] = (float)lista[i];
+                    wynik[1] = tablica[i];
                 }
             }
 
