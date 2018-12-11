@@ -42,54 +42,12 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Wyniki czytelne dla człowieka</returns>
         public string UruchomBadanie()
         {
-            //int liczbaIteracji = int.Parse(parametry["liczbaIteracji"]);
-            //float[] zbiorWynikowMax = new float[liczbaIteracji];
-            //float[] zbiorWynikowMin = new float[liczbaIteracji];
-
-            //Dictionary<string, string[]> najlepszeWyniki = new Dictionary<string, string[]>();
-            //najlepszeWyniki["maxWartosc"] = new string[] { "Najlepsza funkcja przystosowania (max)", (-100000).ToString() };
-
             IAlgorytm algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem());
             algorytm.Start();
 
             analityka = algorytm.ZwrocAnalityke();
-            //for (int i = 0; i < liczbaIteracji; i++)
-            //{
-            //    wyniki.Clear();
-
-
-            //    zbiorWynikowMax[i] = float.Parse(wyniki["maxWartosc"][1]);
-            //    zbiorWynikowMin[i] = float.Parse(wyniki["minWartosc"][1]);
-            //    if (float.Parse(najlepszeWyniki["maxWartosc"][1]) < float.Parse(wyniki["maxWartosc"][1]))
-            //    {
-            //        najlepszeWyniki = new Dictionary<string, string[]>(wyniki);
-            //    }
-            //}
-
-            //wynikiBadania += "Najlepsze znalezione badanie: " + Environment.NewLine;
-            //foreach (KeyValuePair<string, string[]> linia in najlepszeWyniki)
-            //{
-            //    wynikiBadania += linia.Value[0] + ": " + linia.Value[1] + Environment.NewLine;
-            //}
-
-            //if (liczbaIteracji > 1)
-            //{
-            //    float srednia = Srednia(zbiorWynikowMax);
-            //    wynikiBadania += "----------------------------" + Environment.NewLine;
-            //    wynikiBadania += "Średnia wartość maks z badań: " + srednia + Environment.NewLine;
-            //    wynikiBadania += "Mediana wartości maks z badań: " + Mediana(zbiorWynikowMax) + Environment.NewLine;
-            //    wynikiBadania += "Odchylenie standardowe wartości maks z badań: " + OdchylenieStandardowe(zbiorWynikowMax, srednia) + Environment.NewLine;
-
-            //    srednia = Srednia(zbiorWynikowMin);
-            //    wynikiBadania += "---" + Environment.NewLine;
-            //    wynikiBadania += "Średnia wartość min z badań: " + srednia + Environment.NewLine;
-            //    wynikiBadania += "Mediana wartości min z badań: " + Mediana(zbiorWynikowMin) + Environment.NewLine;
-            //    wynikiBadania += "Odchylenie standardowe wartości min z badań: " + OdchylenieStandardowe(zbiorWynikowMin, srednia) + Environment.NewLine;
-            //}
-
-            //wyniki = new Dictionary<string, string[]>(najlepszeWyniki);
-
-            return "Poszło!!!";
+            return "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
+                   "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() +", o wartości (F(x)) "+ analityka.ZwrocWartoscNiebo()["max"][0];
         }
 
         public AAnalityka ZwrocAnalityke()
@@ -305,66 +263,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public AE ZwrocKonfiguracjeAE()
         {
             return algorytmEwolucyjny;
-        }
-
-        /// <summary>
-        /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <returns>Zwraca medianę</returns>
-        private float Mediana(float[] zbior)
-        {
-            int srodek = zbior.Length / 2;
-            float[] wynikiPopulacji = new float[zbior.Length]; // tablica zawierająca wartości funkcji celu z listy rozwiązań
-
-            if (srodek == 0) throw new IndexOutOfRangeException();
-
-            for (int i = 0; i < zbior.Length; i++)
-            {
-                wynikiPopulacji[i] = zbior[i];
-            }
-
-            // sortowanie wyników rosnąco
-            Array.Sort(wynikiPopulacji);
-
-            return wynikiPopulacji[srodek];
-        }
-
-        /// <summary>
-        /// Metoda obliczająca średnią wartość funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <returns>Zwraca wartość średnią</returns>
-        private float Srednia(float[] zbior)
-        {
-            float wynik = 0;
-
-            foreach (float wartosc in zbior)
-            {
-                wynik += wartosc;
-            }
-
-            return wynik / zbior.Length;
-        }
-
-        /// <summary>
-        /// Metoda obliczająca odchylenie standardowe funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="populacja">Lista rozwiązań</param>
-        /// <param name="srednia">Średnia z listy rozwiązań</param>
-        /// <returns>Zwraca odchylenie standardowe</returns>
-        private float OdchylenieStandardowe(float[] zbior, float srednia)
-        {
-            float sumaKwadratow = 0;
-
-            foreach (float wartosc in zbior)
-            {
-                sumaKwadratow += (wartosc - srednia) * (wartosc - srednia);
-            }
-
-            float sredniaSumaKwadratow = sumaKwadratow / (zbior.Length - 1);
-
-            return (float)Math.Sqrt(sredniaSumaKwadratow);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace AlgorytmyDoTTP.Widoki
     /// </summary>
     public partial class Badanie : Form
     {
+        private bool narysowanoWykres = false;
         private FormatkaBadania badanie = new FormatkaBadania();
 
         public Badanie()
@@ -153,9 +154,25 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 AAnalityka analityka = badanie.ZwrocAnalityke();
-                analityka.StworzWykresyGNUplot(szerokosc, wysokosc);
+                int iteracja = analityka.ZwrocNajlepszaIteracje();
+                double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
+                           wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
+                           wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
+
+                float[] tmpSrednie = new float[] { analityka.Srednia(wartosciSrednie[iteracja]), analityka.Srednia(wartosciMin[iteracja]), analityka.Srednia(wartosciMax[iteracja]) },
+                        srednie = new float[] { tmpSrednie[0], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[0]) },
+                        minima = new float[] { tmpSrednie[1], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[1]) },
+                        maxima = new float[] { tmpSrednie[2], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[2]) };
+
+                if (!narysowanoWykres)
+                {
+                    analityka.StworzWykresyGNUplot(szerokosc, wysokosc);
+                    narysowanoWykres = true;
+                }
 
                 RezultatBadania rezultatBadania = new RezultatBadania();
+                rezultatBadania.PokazWykresy();
+                rezultatBadania.WyswietlInformacjeZwrotna(iteracja, srednie, minima, maxima);
                 rezultatBadania.Show();
             } catch( Exception exc)
             {
