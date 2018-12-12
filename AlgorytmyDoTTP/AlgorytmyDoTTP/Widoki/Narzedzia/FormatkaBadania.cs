@@ -40,9 +40,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// Metoda uruchamiająca badanie, tzn. rozpoczęcie rozwiązania wybranego Problemu Optymalizacyjnego za pomocą wybranego Algorytmu
         /// </summary>
         /// <returns>Wyniki czytelne dla człowieka</returns>
-        public string UruchomBadanie()
+        public string UruchomBadanie(string[] nazwyPlikow)
         {
-            IAlgorytm algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem());
+            IAlgorytm algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem(), nazwyPlikow);
             algorytm.Start();
 
             analityka = algorytm.ZwrocAnalityke();

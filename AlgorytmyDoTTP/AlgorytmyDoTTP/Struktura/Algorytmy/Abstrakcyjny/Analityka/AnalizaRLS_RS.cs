@@ -9,7 +9,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     /// </summary>
     class AnalizaRLS_RS: AAnalityka
     {
-        public AnalizaRLS_RS(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania) : base(rozwiazanie, liczbaIteracji, czasDzialania)
+        public AnalizaRLS_RS(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania, string[] nazwyPlikow) : base(rozwiazanie, liczbaIteracji, czasDzialania, nazwyPlikow)
         { }
 
         public override void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp)

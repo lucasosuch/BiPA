@@ -97,12 +97,12 @@
             // nazwaBadania
             // 
             this.nazwaBadania.Text = "Nazwa Badania";
-            this.nazwaBadania.Width = 427;
+            this.nazwaBadania.Width = 375;
             // 
             // dataBadania
             // 
             this.dataBadania.Text = "Data Badania";
-            this.dataBadania.Width = 344;
+            this.dataBadania.Width = 299;
             // 
             // usuniecieBadania
             // 

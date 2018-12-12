@@ -16,6 +16,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
         /// <param name="problem">Wybrany przez użytkownika problem optymalizacyjny</param>
         /// <returns>Dane tekstowe na temat przebiegu algorytmu</returns>
         /// <exception cref="System.Exception">Zwraca wyjątek gdy algorytm nie rozpatruje wybranego przez użytkownika problemu optymalizacyjnego</exception>
-        public abstract IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem);
+        public abstract IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem, string[] nazwyPlikow);
     }
 }

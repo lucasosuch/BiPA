@@ -23,7 +23,7 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             procesGnuplot.Start();
         }
 
-        public void RysujWykres(double[][] wartosci, int szerokosc, int wysokosc, string tytul)
+        public void RysujWykres(double[][] wartosci, int szerokosc, int wysokosc, string tytul, string nazwaPliku)
         {
             StreamWriter SW = procesGnuplot.StandardInput;
             StreamReader SR = procesGnuplot.StandardOutput;
@@ -51,7 +51,7 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             SW.WriteLine("exit");
 
             Image png = Image.FromStream(SR.BaseStream);
-            png.Save(@".\"+ tytul + ".png");
+            png.Save(@".\"+ nazwaPliku + ".png");
         }
 
         public void ZakonczProcesGNUPlot()

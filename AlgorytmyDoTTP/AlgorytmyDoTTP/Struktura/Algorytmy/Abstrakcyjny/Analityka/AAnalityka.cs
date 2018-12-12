@@ -8,7 +8,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     abstract class AAnalityka
     {
         private Stopwatch pomiarCzasu = new Stopwatch();
-
+        protected string[] nazwyPlikow;
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
@@ -18,9 +18,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         protected double[][] sredniaWartoscProcesuPoszukiwan;
         protected ReprezentacjaRozwiazania[] najlepszeRozwiazanie;
 
-        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu)
+        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu, string[] nazwyPlikow)
         {
             this.rozwiazanie = rozwiazanie;
+            this.nazwyPlikow = nazwyPlikow;
             this.liczbaIteracji = liczbaIteracji;
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 

@@ -12,21 +12,21 @@ namespace AlgorytmyDoTTP.Widoki
             InitializeComponent();
         }
 
-        public void PokazWykresy()
+        public void PokazWykresy(string[] nazwyPlikow)
         {
-            Image obraz = Image.FromFile("AVG AE.png");
+            Image obraz = Image.FromFile(nazwyPlikow[0] + ".png");
 
             wykresSrednia.Image = obraz;
             wykresSrednia.Height = obraz.Height;
             wykresSrednia.Width = obraz.Width;
 
-            obraz = Image.FromFile("MIN AE.png");
+            obraz = Image.FromFile(nazwyPlikow[1] + ".png");
 
             wykresMin.Image = obraz;
             wykresMin.Height = obraz.Height;
             wykresMin.Width = obraz.Width;
 
-            obraz = Image.FromFile("MAX AE.png");
+            obraz = Image.FromFile(nazwyPlikow[2] + ".png");
 
             wykresMax.Image = obraz;
             wykresMax.Height = obraz.Height;

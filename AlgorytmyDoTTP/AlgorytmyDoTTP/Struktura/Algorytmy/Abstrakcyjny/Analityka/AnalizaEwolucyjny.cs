@@ -11,28 +11,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     {
         private readonly short[][] liczbaWCzasie;
 
-        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania) : base(rozwiazanie, liczbaIteracji, czasDzialania)
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania, string[] nazwyPlikow) : base(rozwiazanie, liczbaIteracji, czasDzialania, nazwyPlikow)
         {
             liczbaWCzasie = new short[liczbaIteracji][];
             for(short i = 0; i < liczbaIteracji; i++)
             {
                 liczbaWCzasie[i] = new short[czasDzialania + 1];
             }
-        }
-
-        
-
-        
-        public float SredniaPopulacji(ReprezentacjaRozwiazania[] populacja)
-        {
-            float wynik = 0;
-
-            foreach (ReprezentacjaRozwiazania osobnik in populacja)
-            {
-                wynik += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
-            }
-
-            return wynik / populacja.Length;
         }
 
         public override int ZwrocNajlepszaIteracje()
@@ -108,17 +93,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         public override void StworzWykresyGNUplot(int szerokosc, int wysokosc)
         {
             GNUPlot gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "AVG AE");
+            gnuplot.RysujWykres(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
             gnuplot.ZakonczProcesGNUPlot();
 
             gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "MAX AE");
+            gnuplot.RysujWykres(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
             gnuplot.ZakonczProcesGNUPlot();
 
             gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "MIN AE");
+            gnuplot.RysujWykres(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
             gnuplot.ZakonczProcesGNUPlot();
-
+            
             ZwrocNajlepszaIteracje();
         }
 

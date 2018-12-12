@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -14,6 +15,8 @@ namespace AlgorytmyDoTTP.Widoki
     /// </summary>
     public partial class Badanie : Form
     {
+        private string[] nazwyPlikow;
+        private Random losowy = new Random();
         private bool narysowanoWykres = false;
         private FormatkaBadania badanie = new FormatkaBadania();
 
@@ -171,7 +174,7 @@ namespace AlgorytmyDoTTP.Widoki
                 }
 
                 RezultatBadania rezultatBadania = new RezultatBadania();
-                rezultatBadania.PokazWykresy();
+                rezultatBadania.PokazWykresy(nazwyPlikow);
                 rezultatBadania.WyswietlInformacjeZwrotna(iteracja, srednie, minima, maxima);
                 rezultatBadania.Show();
             } catch( Exception exc)
@@ -182,8 +185,14 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void uruchomBadanie_Click(object sender, EventArgs e)
         {
+            zapiszBadanie.Enabled = false;
+            pobierzPlikCSV.Enabled = false;
+            rysujWykes.Enabled = false;
+            narysowanoWykres = false;
+
+            nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
             badanie.UstawParametryBadania(ZwrocParametry());
-            wynikiBadania.Text = badanie.UruchomBadanie();
+            wynikiBadania.Text = badanie.UruchomBadanie(nazwyPlikow);
             zapiszBadanie.Enabled = true;
             pobierzPlikCSV.Enabled = true;
             rysujWykes.Enabled = true;
@@ -277,6 +286,12 @@ namespace AlgorytmyDoTTP.Widoki
                 XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
                 ttp_maxWagaPlecaka.Text = (int.Parse(sumaWag.InnerText) * 0.5).ToString();
             }
+        }
+
+        private string LosowyTekst(int dlugosc)
+        {
+            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
         }
     }
 }
