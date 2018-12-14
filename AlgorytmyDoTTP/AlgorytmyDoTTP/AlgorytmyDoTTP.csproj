@@ -63,6 +63,12 @@
     <Compile Include="Rozszerzenia\OldGnuPlot.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
+    <Compile Include="Widoki\DodaniePlikowDanych.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Widoki\DodaniePlikowDanych.Designer.cs">
+      <DependentUpon>DodaniePlikowDanych.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widoki\GenerowaniePlikow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="Widoki\Walidacja\WalidacjaAE.cs" />
     <EmbeddedResource Include="Widoki\Badanie.resx">
       <DependentUpon>Badanie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widoki\DodaniePlikowDanych.resx">
+      <DependentUpon>DodaniePlikowDanych.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widoki\GenerowaniePlikow.resx">
       <DependentUpon>GenerowaniePlikow.cs</DependentUpon>

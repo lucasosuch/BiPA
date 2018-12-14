@@ -200,7 +200,8 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
         {
-
+            DodaniePlikowDanych dodaniePlikowDanych = new DodaniePlikowDanych();
+            dodaniePlikowDanych.Show();
         }
 
         /// <summary>
