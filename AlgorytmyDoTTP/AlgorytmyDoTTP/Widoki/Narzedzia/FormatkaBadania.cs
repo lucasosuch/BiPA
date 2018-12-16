@@ -20,7 +20,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     class FormatkaBadania : FormatkaGlowna
     {
         private AAnalityka analityka = null;
-        private DateTime data = DateTime.Today;
+        private DateTime data = DateTime.Now;
         private Dictionary<string, string[]> wyniki;
         private Dictionary<string, string> parametry;
         private AE algorytmEwolucyjny = new AE();
@@ -81,7 +81,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             {
                 for (int j = 0; j < wartosciSrednie[i].Length; j++)
                 {
-                    string newLine = string.Format("{0}; {1}; {2}; {3}; {4}", i, j, wartosciSrednie[i][j], wartosciMin[i][j], wartosciMax[i][j]);
+                    string newLine = string.Format("{0}; {1}; {2}; {3}; {4}", (i+1), j, wartosciSrednie[i][j], wartosciMin[i][j], wartosciMax[i][j]);
                     csv.AppendLine(newLine);
                 }
             }
@@ -105,7 +105,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// </summary>
         public void ZapiszBadanie()
         {
-            int iter = 0;
+            int iter = 0,
+                najlepszaIteracjaBadania = analityka.ZwrocNajlepszaIteracje();
             string[] znalezionePliki;
 
             do
@@ -115,16 +116,17 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             } while (znalezionePliki.Length != 0);
 
             XDocument xml = new XDocument();
-            XElement czasDzialania = new XElement("czasDzialania", wyniki["czasDzialania"][1]),
-                     maxWartosc = new XElement("maxWartosc", wyniki["maxWartosc"][1]),
-                     dataZapisu = new XElement("dataZapisu", data.ToString("d")),
+            XElement czasDzialania = new XElement("czasDzialania", (analityka.ZwrocCzasDzialaniaAlgorytmu() * analityka.ZwrocLiczbeIteracji())),
+                     maxWartosc = new XElement("maxWartosc", analityka.ZwrocWartoscNiebo()["max"][0]),
+                     dataZapisu = new XElement("dataZapisu", data.ToString("dd.MM.yyyy HH:mm:ss")),
                      nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
                      plikDanych = new XElement("plikDanych", parametry["dane"]),
-                     dziedzina = new XElement("dziedzina", wyniki["dziedzina"][1]);
+                     dziedzina = new XElement("dziedzina", analityka.ZwrocNajlepszeZnalezioneRozwiazanie());
 
             XElement badanie = new XElement("badanie"),
                      podstawoweDane = new XElement("podstawoweDane"),
                      rozwiazanie = new XElement("rozwiazanie"),
+                     przebiegBadania = new XElement("przebiegBadania"),
                      dodatkoweDane = new XElement("dodatkoweDane");
 
             XElement[] dodatki = new XElement[parametry.Count - 2];
@@ -139,13 +141,34 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 }
             }
 
+            double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
+                       wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
+                       wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
+
+            XElement srednia = new XElement("srednia"),
+                     min = new XElement("minimum"),
+                     max = new XElement("maksimum");
+
+            for (int j = 0; j < wartosciSrednie[najlepszaIteracjaBadania].Length; j++)
+            {
+                srednia.Add(new XElement("x", wartosciSrednie[najlepszaIteracjaBadania][j]));
+                min.Add(new XElement("x", wartosciMin[najlepszaIteracjaBadania][j]));
+                max.Add(new XElement("x", wartosciMax[najlepszaIteracjaBadania][j]));
+            }
+
+            przebiegBadania.Add(srednia);
+            przebiegBadania.Add(min);
+            przebiegBadania.Add(max);
+
             dodatkoweDane.Add(dodatki);
             podstawoweDane.Add(nazwaBadania);
             podstawoweDane.Add(dataZapisu);
             podstawoweDane.Add(maxWartosc);
             podstawoweDane.Add(czasDzialania);
             podstawoweDane.Add(plikDanych);
+
             rozwiazanie.Add(dziedzina);
+            rozwiazanie.Add(przebiegBadania);
 
             badanie.Add(podstawoweDane);
             badanie.Add(rozwiazanie);

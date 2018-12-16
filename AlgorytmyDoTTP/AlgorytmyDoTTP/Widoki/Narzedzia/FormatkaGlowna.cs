@@ -95,7 +95,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
                             "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
                             "Wartość: " + maxWartosc.InnerText + Environment.NewLine +
-                            "Czas działania: " + czasDzialania.InnerText + " ms" + Environment.NewLine +
+                            "Czas działania: " + czasDzialania.InnerText + " s" + Environment.NewLine +
                             "Rozwiązanie: " + dziedzina.InnerText + Environment.NewLine + Environment.NewLine +
                             "Dane dodatkowe: " + Environment.NewLine;
 
