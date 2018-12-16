@@ -29,11 +29,22 @@
         private void InitializeComponent()
         {
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.min = new System.Windows.Forms.TabPage();
-            this.max = new System.Windows.Forms.TabPage();
-            this.podsumowanie = new System.Windows.Forms.TabPage();
-            this.srednia = new System.Windows.Forms.TabPage();
+            this.srednia = new MetroFramework.Controls.MetroTabPage();
+            this.min = new MetroFramework.Controls.MetroTabPage();
+            this.max = new MetroFramework.Controls.MetroTabPage();
+            this.podsumowanie = new MetroFramework.Controls.MetroTabPage();
+            this.wykresSrednia = new System.Windows.Forms.PictureBox();
+            this.wykresMin = new System.Windows.Forms.PictureBox();
+            this.wykresMax = new System.Windows.Forms.PictureBox();
+            this.wynikiBadnia = new System.Windows.Forms.TextBox();
             this.metroTabControl1.SuspendLayout();
+            this.srednia.SuspendLayout();
+            this.min.SuspendLayout();
+            this.max.SuspendLayout();
+            this.podsumowanie.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresSrednia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresMax)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -50,37 +61,101 @@
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
+            // srednia
+            // 
+            this.srednia.Controls.Add(this.wykresSrednia);
+            this.srednia.HorizontalScrollbarBarColor = true;
+            this.srednia.HorizontalScrollbarHighlightOnWheel = false;
+            this.srednia.HorizontalScrollbarSize = 10;
+            this.srednia.Location = new System.Drawing.Point(4, 38);
+            this.srednia.Name = "srednia";
+            this.srednia.Size = new System.Drawing.Size(822, 474);
+            this.srednia.TabIndex = 0;
+            this.srednia.Text = "Średnie wartości z badania";
+            this.srednia.VerticalScrollbarBarColor = true;
+            this.srednia.VerticalScrollbarHighlightOnWheel = false;
+            this.srednia.VerticalScrollbarSize = 10;
+            // 
             // min
             // 
+            this.min.Controls.Add(this.wykresMin);
+            this.min.HorizontalScrollbarBarColor = true;
+            this.min.HorizontalScrollbarHighlightOnWheel = false;
+            this.min.HorizontalScrollbarSize = 10;
             this.min.Location = new System.Drawing.Point(4, 38);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(822, 474);
             this.min.TabIndex = 1;
-            this.min.Text = "Minimalne wyniki";
+            this.min.Text = "Minimalne wartości z badania";
+            this.min.VerticalScrollbarBarColor = true;
+            this.min.VerticalScrollbarHighlightOnWheel = false;
+            this.min.VerticalScrollbarSize = 10;
             // 
             // max
             // 
+            this.max.Controls.Add(this.wykresMax);
+            this.max.HorizontalScrollbarBarColor = true;
+            this.max.HorizontalScrollbarHighlightOnWheel = false;
+            this.max.HorizontalScrollbarSize = 10;
             this.max.Location = new System.Drawing.Point(4, 38);
             this.max.Name = "max";
             this.max.Size = new System.Drawing.Size(822, 474);
             this.max.TabIndex = 2;
-            this.max.Text = "Maksymalne wyniki";
+            this.max.Text = "Maksymalne wartości z badania";
+            this.max.VerticalScrollbarBarColor = true;
+            this.max.VerticalScrollbarHighlightOnWheel = false;
+            this.max.VerticalScrollbarSize = 10;
             // 
             // podsumowanie
             // 
+            this.podsumowanie.Controls.Add(this.wynikiBadnia);
+            this.podsumowanie.HorizontalScrollbarBarColor = true;
+            this.podsumowanie.HorizontalScrollbarHighlightOnWheel = false;
+            this.podsumowanie.HorizontalScrollbarSize = 10;
             this.podsumowanie.Location = new System.Drawing.Point(4, 38);
             this.podsumowanie.Name = "podsumowanie";
             this.podsumowanie.Size = new System.Drawing.Size(822, 474);
             this.podsumowanie.TabIndex = 3;
             this.podsumowanie.Text = "Podsumowanie badania";
+            this.podsumowanie.VerticalScrollbarBarColor = true;
+            this.podsumowanie.VerticalScrollbarHighlightOnWheel = false;
+            this.podsumowanie.VerticalScrollbarSize = 10;
             // 
-            // srednia
+            // wykresSrednia
             // 
-            this.srednia.Location = new System.Drawing.Point(4, 38);
-            this.srednia.Name = "srednia";
-            this.srednia.Size = new System.Drawing.Size(822, 474);
-            this.srednia.TabIndex = 0;
-            this.srednia.Text = "Średnie wyniki";
+            this.wykresSrednia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wykresSrednia.Location = new System.Drawing.Point(0, 0);
+            this.wykresSrednia.Name = "wykresSrednia";
+            this.wykresSrednia.Size = new System.Drawing.Size(822, 474);
+            this.wykresSrednia.TabIndex = 2;
+            this.wykresSrednia.TabStop = false;
+            // 
+            // wykresMin
+            // 
+            this.wykresMin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wykresMin.Location = new System.Drawing.Point(0, 0);
+            this.wykresMin.Name = "wykresMin";
+            this.wykresMin.Size = new System.Drawing.Size(822, 474);
+            this.wykresMin.TabIndex = 3;
+            this.wykresMin.TabStop = false;
+            // 
+            // wykresMax
+            // 
+            this.wykresMax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wykresMax.Location = new System.Drawing.Point(0, 0);
+            this.wykresMax.Name = "wykresMax";
+            this.wykresMax.Size = new System.Drawing.Size(822, 474);
+            this.wykresMax.TabIndex = 3;
+            this.wykresMax.TabStop = false;
+            // 
+            // wynikiBadnia
+            // 
+            this.wynikiBadnia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wynikiBadnia.Location = new System.Drawing.Point(0, 0);
+            this.wynikiBadnia.Multiline = true;
+            this.wynikiBadnia.Name = "wynikiBadnia";
+            this.wynikiBadnia.Size = new System.Drawing.Size(822, 474);
+            this.wynikiBadnia.TabIndex = 2;
             // 
             // RezultatBadania
             // 
@@ -88,10 +163,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 516);
             this.Controls.Add(this.metroTabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RezultatBadania";
             this.Text = "RezultatBadania";
             this.metroTabControl1.ResumeLayout(false);
+            this.srednia.ResumeLayout(false);
+            this.min.ResumeLayout(false);
+            this.max.ResumeLayout(false);
+            this.podsumowanie.ResumeLayout(false);
+            this.podsumowanie.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresSrednia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykresMax)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -99,9 +182,13 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
-        private System.Windows.Forms.TabPage srednia;
-        private System.Windows.Forms.TabPage min;
-        private System.Windows.Forms.TabPage max;
-        private System.Windows.Forms.TabPage podsumowanie;
+        private MetroFramework.Controls.MetroTabPage srednia;
+        private System.Windows.Forms.PictureBox wykresSrednia;
+        private MetroFramework.Controls.MetroTabPage min;
+        private System.Windows.Forms.PictureBox wykresMin;
+        private MetroFramework.Controls.MetroTabPage max;
+        private System.Windows.Forms.PictureBox wykresMax;
+        private MetroFramework.Controls.MetroTabPage podsumowanie;
+        private System.Windows.Forms.TextBox wynikiBadnia;
     }
 }

@@ -151,8 +151,8 @@ namespace AlgorytmyDoTTP.Widoki
         private void rysujWykes_Click(object sender, EventArgs e)
         {
             Rectangle ekran = Screen.FromControl(this).Bounds;
-            int szerokosc = ekran.Width / 2,
-                wysokosc = (ekran.Height / 2) - 30;
+            int szerokosc = ekran.Width,
+                wysokosc = ekran.Height - 100;
 
             try
             {

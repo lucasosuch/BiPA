@@ -94,7 +94,7 @@
             this.tabela.Location = new System.Drawing.Point(8, 88);
             this.tabela.Margin = new System.Windows.Forms.Padding(2);
             this.tabela.Name = "tabela";
-            this.tabela.SelectedIndex = 1;
+            this.tabela.SelectedIndex = 0;
             this.tabela.Size = new System.Drawing.Size(764, 481);
             this.tabela.TabIndex = 116;
             this.tabela.UseSelectable = true;
@@ -348,6 +348,7 @@
             // 
             // stworzPlikDanych
             // 
+            this.stworzPlikDanych.Enabled = false;
             this.stworzPlikDanych.Location = new System.Drawing.Point(623, 381);
             this.stworzPlikDanych.Margin = new System.Windows.Forms.Padding(2);
             this.stworzPlikDanych.Name = "stworzPlikDanych";
@@ -355,6 +356,7 @@
             this.stworzPlikDanych.TabIndex = 123;
             this.stworzPlikDanych.Text = "Stwórz plik danch";
             this.stworzPlikDanych.UseSelectable = true;
+            this.stworzPlikDanych.Click += new System.EventHandler(this.stworzPlikDanych_Click);
             // 
             // dodajMiasto
             // 

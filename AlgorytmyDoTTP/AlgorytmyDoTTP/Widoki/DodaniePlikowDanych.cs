@@ -1,7 +1,9 @@
 ﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki
 {
@@ -18,6 +20,7 @@ namespace AlgorytmyDoTTP.Widoki
             plikiDanych.Items.Clear();
             plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
             plikiDanych.Items.Add("< Nowy plik >");
+            plikiDanych.Text = "< Nowy plik >";
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
@@ -28,12 +31,113 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void stworzPlikDanych_Click(object sender, EventArgs e)
         {
-            if(plikiDanych.Text == "< Nowy plik >")
+            if (listaMiast.Items.Count != 0 && listaPrzedmiotow.Items.Count != 0)
             {
+                if (plikiDanych.Text != "< Nowy plik >")
+                {
+                    // pobranie pliku z danymi z dysku
+                    XmlDocument dokument = new XmlDocument();
+                    dokument.Load("./Dane/TTP/" + plikiDanych.Text + ".xml");
 
+                    XmlNode przypadekTSP = dokument.DocumentElement.SelectSingleNode("/korzen/tsp");
+                    XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
+
+                    if (File.Exists(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml"))
+                    {
+                        File.Delete(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
+                    }
+
+                    if (File.Exists(@"./Dane/KP/" + przypadekKP.InnerText + ".xml"))
+                    {
+                        File.Delete(@"./Dane/KP/" + przypadekKP.InnerText + ".xml");
+                    }
+
+                    if (File.Exists(@"./Dane/TTP/" + plikiDanych.Text + ".xml"))
+                    {
+                        File.Delete(@"./Dane/TTP/" + plikiDanych.Text + ".xml");
+                    }
+                }
+
+                XDocument xml = new XDocument();
+                XElement korzen = new XElement("korzen"),
+                         przedmioty = new XElement("przedmioty");
+
+                float sumaWagPrzedmiotow = 0,
+                      sumaWartosciPrzedmiotow = 0;
+                foreach (ListViewItem p in listaPrzedmiotow.Items)
+                {
+                    XElement przedmiot = new XElement("przedmiot");
+
+                    przedmiot.Add(new XElement("waga", p.SubItems[2].Text));
+                    przedmiot.Add(new XElement("wartosc", p.SubItems[1].Text));
+                    przedmioty.Add(przedmiot);
+
+                    sumaWagPrzedmiotow += float.Parse(p.SubItems[2].Text);
+                    sumaWartosciPrzedmiotow += float.Parse(p.SubItems[1].Text);
+                }
+
+                XElement sumaWag = new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow.ToString()),
+                         sumaWartosci = new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow.ToString());
+
+                korzen.Add(przedmioty);
+                korzen.Add(sumaWag);
+                korzen.Add(sumaWartosci);
+                korzen.Add(new XElement("hash", korzen.GetHashCode()));
+                xml.Add(korzen);
+
+                string nazwaKP = "kp" + listaPrzedmiotow.Items.Count + "_" + sumaWagPrzedmiotow + "_" + sumaWartosciPrzedmiotow;
+                xml.Save("./Dane/KP/" + nazwaKP + ".xml");
+
+                xml = new XDocument();
+                short maxX = -1,
+                      maxY = -1;
+                XElement xmlMapa = new XElement("mapa");
+
+                foreach (ListViewItem m in listaMiast.Items)
+                {
+                    XElement miasto = new XElement("miasto");
+
+                    miasto.Add(new XElement("x", m.SubItems[1].Text));
+                    miasto.Add(new XElement("y", m.SubItems[2].Text));
+                    xmlMapa.Add(miasto);
+
+                    if (maxX < short.Parse(m.SubItems[1].Text)) maxX = short.Parse(m.SubItems[1].Text);
+                    if (maxY < short.Parse(m.SubItems[2].Text)) maxY = short.Parse(m.SubItems[2].Text);
+                }
+
+                xmlMapa.Add(new XElement("hash", xmlMapa.GetHashCode()));
+                xml.Add(xmlMapa);
+
+                string nazwaTSP = "tsp" + listaMiast.Items.Count + "_" + maxX + "x" + maxY;
+                xml.Save("./Dane/TSP/" + nazwaTSP + ".xml");
+
+                xml = new XDocument();
+                XElement dostepnePrzedmioty = new XElement("dostepnePrzedmioty"),
+                         kp = new XElement("kp", nazwaKP),
+                         tsp = new XElement("tsp", nazwaTSP);
+
+                korzen = new XElement("korzen");
+                korzen.Add(kp);
+                korzen.Add(tsp);
+
+                foreach (ListViewItem m in listaMiast.Items)
+                {
+                    dostepnePrzedmioty.Add(new XElement("miasto", m.SubItems[3].Text));
+                }
+
+                korzen.Add(dostepnePrzedmioty);
+                korzen.Add(new XElement("hash", korzen.GetHashCode()));
+                xml.Add(korzen);
+                xml.Save("./Dane/TTP/ttp_" + nazwaKP + "_" + nazwaTSP + ".xml");
+
+                stworzPlikDanych.Enabled = false;
+
+                MessageBox.Show("Dodano plik danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-
+            else
+            {
+                MessageBox.Show("Błędnie wypełniona formatka pod tworzenie plików danych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dodajPrzedmiot_Click(object sender, EventArgs e)
@@ -52,26 +156,67 @@ namespace AlgorytmyDoTTP.Widoki
                 waga.Text = "";
                 wartosc.Text = "";
             }
+
+            stworzPlikDanych.Enabled = true;
         }
 
         private void dodajMiasto_Click(object sender, EventArgs e)
         {
-            if (edycjaMiasta != -1)
-            {
-                string[] wiersz = new string[] { (edycjaMiasta + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
-                listaMiast.Items.Insert(edycjaMiasta, new ListViewItem(wiersz));
+            bool bledneWspolrzedne = false,
+                 bledneDostepnosciPrzedmiotow = false;
 
-                listaMiast.Items.RemoveAt(edycjaMiasta + 1);
+            if (listaMiast.Items.Count > 0)
+            {
+                foreach (ListViewItem m in listaMiast.Items)
+                {
+                    if(m.SubItems[1].Text == wsp_x.Text && m.SubItems[2].Text == wsp_y.Text)
+                    {
+                        bledneWspolrzedne = true;
+                        break;
+                    }
+                }
+
+                if (dostepnePrzedmioty.Text != "")
+                {
+                    string[] przedmioty = dostepnePrzedmioty.Text.Split(',');
+                    foreach (string p in przedmioty)
+                    {
+                        int przedmiot = int.Parse(p);
+
+                        if (przedmiot < 0 || przedmiot > listaPrzedmiotow.Items.Count)
+                        {
+                            bledneDostepnosciPrzedmiotow = true;
+                            break;
+                        }
+                    }
+                }
             }
-            else
-            {
-                string[] wiersz = new string[] { (listaMiast.Items.Count + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
-                listaMiast.Items.Add(new ListViewItem(wiersz));
 
-                wsp_x.Text = "";
-                wsp_y.Text = "";
-                dostepnePrzedmioty.Text = "";
-                dostepnePrzedmioty.Enabled = true;
+            if (!bledneWspolrzedne && !bledneDostepnosciPrzedmiotow)
+            {
+                if (edycjaMiasta != -1)
+                {
+                    string[] wiersz = new string[] { (edycjaMiasta + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
+                    listaMiast.Items.Insert(edycjaMiasta, new ListViewItem(wiersz));
+
+                    listaMiast.Items.RemoveAt(edycjaMiasta + 1);
+                }
+                else
+                {
+                    string[] wiersz = new string[] { (listaMiast.Items.Count + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
+                    listaMiast.Items.Add(new ListViewItem(wiersz));
+
+                    wsp_x.Text = "";
+                    wsp_y.Text = "";
+                    dostepnePrzedmioty.Text = "";
+                    dostepnePrzedmioty.Enabled = true;
+                }
+
+                stworzPlikDanych.Enabled = true;
+            } else
+            {
+                if (bledneWspolrzedne) MessageBox.Show("Istniej już miasto o takich współrzędnych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (bledneDostepnosciPrzedmiotow) MessageBox.Show("Chcesz przydzielić nieistniejący przedmiot do miasta!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
