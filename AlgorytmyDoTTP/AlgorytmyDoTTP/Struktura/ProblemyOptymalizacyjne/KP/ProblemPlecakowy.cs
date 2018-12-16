@@ -1,6 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 

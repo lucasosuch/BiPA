@@ -14,19 +14,19 @@ namespace AlgorytmyDoTTP.Widoki
 
         public void PokazWykresy(string[] nazwyPlikow)
         {
-            Image obraz = Image.FromFile(nazwyPlikow[0] + ".png");
+            Image obraz = Image.FromFile(@".\Wykresy\" + nazwyPlikow[0] + ".png");
 
             wykresSrednia.Image = obraz;
             wykresSrednia.Height = obraz.Height;
             wykresSrednia.Width = obraz.Width;
 
-            obraz = Image.FromFile(nazwyPlikow[1] + ".png");
+            obraz = Image.FromFile(@".\Wykresy\" + nazwyPlikow[1] + ".png");
 
             wykresMin.Image = obraz;
             wykresMin.Height = obraz.Height;
             wykresMin.Width = obraz.Width;
 
-            obraz = Image.FromFile(nazwyPlikow[2] + ".png");
+            obraz = Image.FromFile(@".\Wykresy\" + nazwyPlikow[2] + ".png");
 
             wykresMax.Image = obraz;
             wykresMax.Height = obraz.Height;

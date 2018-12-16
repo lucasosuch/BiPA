@@ -151,9 +151,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             for (int j = 0; j < wartosciSrednie[najlepszaIteracjaBadania].Length; j++)
             {
-                srednia.Add(new XElement("x", wartosciSrednie[najlepszaIteracjaBadania][j]));
-                min.Add(new XElement("x", wartosciMin[najlepszaIteracjaBadania][j]));
-                max.Add(new XElement("x", wartosciMax[najlepszaIteracjaBadania][j]));
+                srednia.Add(new XElement("x", wartosciSrednie[najlepszaIteracjaBadania][j].ToString()));
+                min.Add(new XElement("x", wartosciMin[najlepszaIteracjaBadania][j].ToString()));
+                max.Add(new XElement("x", wartosciMax[najlepszaIteracjaBadania][j].ToString()));
             }
 
             przebiegBadania.Add(srednia);

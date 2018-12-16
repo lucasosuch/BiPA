@@ -2,6 +2,7 @@
 using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
@@ -36,10 +37,14 @@ namespace AlgorytmyDoTTP
 
             if (ilosc <= 10 && ilosc > 1)
             {
-                Porownanie porownanieTemp = new Porownanie(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems));
+                Rectangle ekran = Screen.FromControl(this).Bounds;
+                int szerokosc = ekran.Width,
+                    wysokosc = ekran.Height - 100;
+
+                FormatkaPorownania porownanieTemp = new FormatkaPorownania();
                 if(!porownanieTemp.ZwrocBladPlikuDanych())
                 {
-                    porownanieTemp.Show();
+                    porownanieTemp.ZwrocRaport(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems), szerokosc, wysokosc);
                 }
             }
             else if(ilosc < 2)

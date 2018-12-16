@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Rozszerzenia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
@@ -10,6 +12,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaPorownania : FormatkaGlowna
     {
+        private bool bladPlikuDanych = false;
+        private Random losowy = new Random();
+
         public Series[] ZwrocDaneDlaWykresow(Dictionary<string, string[]> paramentry, int indexDanych, string sortowanie)
         {
             int i = 0;
@@ -138,6 +143,62 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                      " - znaleziona wartość dla badania: " + paramentry[maxBadanie][1];
             
             return wynik;
+        }
+
+        public void ZwrocRaport(Dictionary<string, double[][]> paramentry, int szerokosc, int wysokosc)
+        {
+            try
+            {
+                FormatkaPorownania formatka = new FormatkaPorownania();
+                string[] nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
+
+                double[][] wartosciSrednie = new double[paramentry.Count][],
+                           wartosciMin = new double[paramentry.Count][],
+                           wartosciMax = new double[paramentry.Count][];
+
+                int i = 0;
+                string[] nazwyBadan = new string[paramentry.Count];
+                foreach (KeyValuePair<string, double[][]> linia in paramentry)
+                {
+                    nazwyBadan[i] = linia.Key;
+                    wartosciSrednie[i] = linia.Value[0];
+                    wartosciMin[i] = linia.Value[1];
+                    wartosciMax[i] = linia.Value[2];
+                    i++;
+                }
+
+                GNUPlot gnuplot = new GNUPlot();
+                gnuplot.RysujWykresPorownania(wartosciSrednie, nazwyBadan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
+                gnuplot.ZakonczProcesGNUPlot();
+
+                gnuplot = new GNUPlot();
+                gnuplot.RysujWykresPorownania(wartosciMin, nazwyBadan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
+                gnuplot.ZakonczProcesGNUPlot();
+
+                gnuplot = new GNUPlot();
+                gnuplot.RysujWykresPorownania(wartosciMax, nazwyBadan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
+                gnuplot.ZakonczProcesGNUPlot();
+
+                RezultatBadania rezultatBadania = new RezultatBadania();
+                rezultatBadania.PokazWykresy(nazwyPlikow);
+                rezultatBadania.Show();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bladPlikuDanych = true;
+            }
+        }
+
+        public bool ZwrocBladPlikuDanych()
+        {
+            return bladPlikuDanych;
+        }
+
+        private string LosowyTekst(int dlugosc)
+        {
+            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
         }
     }
 }

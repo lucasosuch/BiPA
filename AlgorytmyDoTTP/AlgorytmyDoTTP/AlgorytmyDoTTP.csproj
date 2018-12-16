@@ -136,12 +136,6 @@
     <Compile Include="Widoki\Narzedzia\FormatkaDanych.cs" />
     <Compile Include="Widoki\Narzedzia\FormatkaGlowna.cs" />
     <Compile Include="Widoki\Narzedzia\FormatkaPorownania.cs" />
-    <Compile Include="Widoki\Porownanie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Widoki\Porownanie.Designer.cs">
-      <DependentUpon>Porownanie.cs</DependentUpon>
-    </Compile>
     <Compile Include="Widoki\RezultatBadania.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,9 +165,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Widoki\Porownanie.resx">
-      <DependentUpon>Porownanie.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Widoki\RezultatBadania.resx">
       <DependentUpon>RezultatBadania.cs</DependentUpon>
     </EmbeddedResource>

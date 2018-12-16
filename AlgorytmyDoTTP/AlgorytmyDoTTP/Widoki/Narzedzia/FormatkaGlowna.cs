@@ -39,23 +39,66 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// </summary>
         /// <param name="zaznaczoneElementy">Nazwy badań wybranych do porównania</param>
         /// <returns>Parametry z badań potrzebne do porównania</returns>
-        public Dictionary<string, string[]> ZbierzDaneDoPorownania(ListView.CheckedListViewItemCollection zaznaczoneElementy)
+        public Dictionary<string, double[][]> ZbierzDaneDoPorownania(ListView.CheckedListViewItemCollection zaznaczoneElementy)
         {
-            Dictionary<string, string[]> paramentry = new Dictionary<string, string[]>();
+            //int iter = 0;
+            //string hash = "";
+            Dictionary<string, double[][]> paramentry = new Dictionary<string, double[][]>();
 
             foreach (ListViewItem element in zaznaczoneElementy)
             {
+                //XmlDocument plikDanych = new XmlDocument();
+                //plikDanych.Load("./Dane/" + nazwa + ".xml");
+
+                //if (iter == 0)
+                //{
+                //    hash = linia1.Value[3];
+                //}
+                //else
+                //{
+                //    if (hash != linia1.Value[3])
+                //    {
+                //        throw new Exception("Różne pliki danych");
+                //    }
+                //}
+
                 string nazwa = element.SubItems[0].Text;
 
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Badania/" + nazwa + ".xml");
 
-                XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc");
-                XmlNode czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania");
-                XmlNode nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania");
-                XmlNode plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych");
+                XmlNodeList srednia = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/srednia/x"),
+                            minimum = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/minimum/x"),
+                            maksimum = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/maksimum/x");
+                
+                int i = 0;
+                double[] avg = new double[srednia.Count];
+                foreach (XmlNode dane in srednia)
+                {
+                    avg[i] = double.Parse(dane.InnerText);
+                    i++;
+                }
+                
+                i = 0;
+                double[] min = new double[minimum.Count];
+                foreach (XmlNode dane in minimum)
+                {
+                    min[i] = double.Parse(dane.InnerText);
+                    i++;
+                }
+                
+                i = 0;
+                double[] max = new double[maksimum.Count];
+                foreach (XmlNode dane in maksimum)
+                {
+                    max[i] = double.Parse(dane.InnerText);
+                    i++;
+                }
 
-                paramentry[nazwa] = new string[] { czasDzialania.InnerText.Replace(" ms", ""), maxWartosc.InnerText, nazwaBadania.InnerText, plikDanych.InnerText };
+                string nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania").InnerText.Replace(" ", "").Trim();
+                paramentry[nazwaBadania] = new double[][] { avg, min, max };
+
+                //iter++;
             }
 
             return paramentry;

@@ -92,16 +92,16 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
         public override void StworzWykresyGNUplot(int szerokosc, int wysokosc)
         {
-            GNUPlot gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
+            GNUPlot gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
             gnuplot.ZakonczProcesGNUPlot();
 
-            gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
+            gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
             gnuplot.ZakonczProcesGNUPlot();
 
-            gnuplot = new GNUPlot(liczbaIteracji, czasDzialaniaAlgorytmu);
-            gnuplot.RysujWykres(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
+            gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
             gnuplot.ZakonczProcesGNUPlot();
             
             ZwrocNajlepszaIteracje();
