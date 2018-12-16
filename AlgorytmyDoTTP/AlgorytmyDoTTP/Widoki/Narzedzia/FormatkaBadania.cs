@@ -64,17 +64,26 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public string ZwrocDaneDoCSV()
         {
             StringBuilder csv = new StringBuilder();
+            double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
+                       wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
+                       wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
 
             foreach (KeyValuePair<string, string> parametr in parametry)
             {
                 string newLine = string.Format("{0}; {1}", parametr.Key, parametr.Value);
                 csv.AppendLine(newLine);
             }
+            
+            csv.AppendLine(string.Format(";"));
+            csv.AppendLine(string.Format("Iteracja; Czas; Średnia wartość; Minimalna wartość; Maksymalna wartość"));
 
-            foreach (KeyValuePair<string, string[]> linia in wyniki)
+            for (int i = 0; i < wartosciSrednie.Length; i++)
             {
-                string newLine = string.Format("{0}; {1}", linia.Value[0], linia.Value[1]);
-                csv.AppendLine(newLine);
+                for (int j = 0; j < wartosciSrednie[i].Length; j++)
+                {
+                    string newLine = string.Format("{0}; {1}; {2}; {3}; {4}", i, j, wartosciSrednie[i][j], wartosciMin[i][j], wartosciMax[i][j]);
+                    csv.AppendLine(newLine);
+                }
             }
 
             return csv.ToString();

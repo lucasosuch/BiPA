@@ -83,7 +83,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         {
             for(short i = 0; i < liczbaIteracji; i++)
             {
-                for(short j = 0; j < czasDzialaniaAlgorytmu; j++)
+                for(short j = 0; j < liczbaWCzasie[i].Length; j++)
                 {
                     sredniaWartoscProcesuPoszukiwan[i][j] /= liczbaWCzasie[i][j];
                 }

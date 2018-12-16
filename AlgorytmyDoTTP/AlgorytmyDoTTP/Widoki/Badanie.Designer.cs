@@ -237,6 +237,7 @@
             this.pobierzPlikCSV.TabIndex = 1;
             this.pobierzPlikCSV.Text = "Pobierz plik CSV";
             this.pobierzPlikCSV.UseSelectable = true;
+            this.pobierzPlikCSV.Click += new System.EventHandler(this.pobierzCSV_Click);
             // 
             // zapiszBadanie
             // 
@@ -249,6 +250,7 @@
             this.zapiszBadanie.TabIndex = 0;
             this.zapiszBadanie.Text = "Zapisz Badanie";
             this.zapiszBadanie.UseSelectable = true;
+            this.zapiszBadanie.Click += new System.EventHandler(this.zapiszBadanie_Click);
             // 
             // rysujWykes
             // 
