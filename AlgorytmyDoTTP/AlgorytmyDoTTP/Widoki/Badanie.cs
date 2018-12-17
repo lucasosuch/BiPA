@@ -285,7 +285,7 @@ namespace AlgorytmyDoTTP.Widoki
             {
                 dokument.Load(nazwaPliku);
                 XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
-                ttp_maxWagaPlecaka.Text = (int.Parse(sumaWag.InnerText) * 0.5).ToString();
+                ttp_maxWagaPlecaka.Text = (double.Parse(sumaWag.InnerText) * 0.5).ToString();
             }
         }
 

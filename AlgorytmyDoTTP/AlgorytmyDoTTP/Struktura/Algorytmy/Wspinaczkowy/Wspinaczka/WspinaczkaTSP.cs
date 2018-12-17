@@ -11,9 +11,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
     /// </summary>
     class WspinaczkaTSP : AWspinaczka
     {
-        public WspinaczkaTSP(ALosowanie losowanie) : base(losowanie) { }
+        public WspinaczkaTSP(ALosowanie losowanie, int parametrP) : base(losowanie, parametrP) { }
 
-        public override Dictionary<string, float[]> ZnajdzOptimum()
+        public override void ZnajdzOptimum()
         {
             int poprawy = 0;
             ushort[] genotyp = reprezentacjaRozwiazania.ZwrocGenotyp1Wymiarowy(),
@@ -61,8 +61,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     }
                 }
             } while (poprawy > 0);
-
-            return wynik;
         }
     }
 }

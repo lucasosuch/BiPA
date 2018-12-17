@@ -1,4 +1,5 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Rozszerzenia;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +10,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     {
         private Stopwatch pomiarCzasu = new Stopwatch();
         protected string[] nazwyPlikow;
+        protected readonly short[][] liczbaWCzasie;
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
@@ -25,6 +27,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             this.liczbaIteracji = liczbaIteracji;
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 
+            liczbaWCzasie = new short[liczbaIteracji][];
             najlepszaWartoscFunkcji = new float[liczbaIteracji];
             minWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             maxWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
@@ -33,6 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
             for (short i = 0; i < liczbaIteracji; i++)
             {
+                liczbaWCzasie[i] = new short[czasDzialaniaAlgorytmu + 1];
                 najlepszaWartoscFunkcji[i] = -10000;
                 minWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
                 maxWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
@@ -181,10 +185,106 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return (float)Math.Sqrt(sredniaSumaKwadratow);
         }
 
-        public abstract void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp);
+        /// <summary>
+        /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
+        /// </summary>
+        /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
+        public void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp)
+        {
+            float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
 
-        public abstract void StworzWykresyGNUplot(int szerokosc, int wysokosc);
+            if (najlepszaWartoscFunkcji[index] < wartosc)
+            {
+                najlepszeRozwiazanie[index] = genotyp;
+                najlepszaWartoscFunkcji[index] = wartosc;
+            }
 
-        public abstract int ZwrocNajlepszaIteracje();
+            if(minWartoscProcesuPoszukiwan[index][czas] > wartosc)
+            {
+                minWartoscProcesuPoszukiwan[index][czas] = wartosc;
+            }
+            if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+            {
+                maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
+            }
+
+            liczbaWCzasie[index][czas]++;
+            sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc;
+        }
+
+        public int ZwrocNajlepszaIteracje()
+        {
+            float[] punkty = new float[liczbaIteracji],
+                    srednieMin = new float[liczbaIteracji],
+                    srednieAvg = new float[liczbaIteracji],
+                    srednieMax = new float[liczbaIteracji];
+
+            for (short i = 0; i < liczbaIteracji; i++)
+            {
+                srednieMin[i] = Srednia(minWartoscProcesuPoszukiwan[i]);
+                srednieAvg[i] = Srednia(sredniaWartoscProcesuPoszukiwan[i]);
+                srednieMax[i] = Srednia(maxWartoscProcesuPoszukiwan[i]);
+            }
+
+            for (short i = 0; i < liczbaIteracji; i++)
+            {
+                float[] maxMax = ZnajdzMax(srednieMax);
+                punkty[(int)maxMax[0]] += srednieMax.Length - i;
+                srednieMax[(int)maxMax[0]] = -100000;
+
+                float[] maxMin = ZnajdzMax(srednieMin);
+                punkty[(int)maxMax[0]] += (float)(srednieMin.Length - (i * 0.5));
+                srednieMin[(int)maxMax[0]] = -100000;
+
+                float[] maxAvg = ZnajdzMax(srednieAvg);
+                punkty[(int)maxMax[0]] += (float)(srednieAvg.Length - (i * 0.75));
+                srednieAvg[(int)maxMax[0]] = -100000;
+            }
+
+            return (int)ZnajdzMax(punkty)[0];
+        }
+
+        public void ObliczSrednieWartosciProcesu()
+        {
+            for (short i = 0; i < liczbaIteracji; i++)
+            {
+                for (short j = 0; j < liczbaWCzasie[i].Length; j++)
+                {
+                    sredniaWartoscProcesuPoszukiwan[i][j] /= liczbaWCzasie[i][j];
+                }
+            }
+        }
+
+        public void StworzWykresyGNUplot(int szerokosc, int wysokosc)
+        {
+            GNUPlot gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
+            gnuplot.ZakonczProcesGNUPlot();
+
+            gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
+            gnuplot.ZakonczProcesGNUPlot();
+
+            gnuplot = new GNUPlot();
+            gnuplot.RysujWykresBadania(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
+            gnuplot.ZakonczProcesGNUPlot();
+
+            ZwrocNajlepszaIteracje();
+        }
+
+        private float[] ZnajdzMax(float[] tablica)
+        {
+            float[] wynik = new float[] { 0, tablica[0] };
+            for (short i = 1; i < tablica.Length; i++)
+            {
+                if (tablica[i] > wynik[1])
+                {
+                    wynik[0] = i;
+                    wynik[1] = tablica[i];
+                }
+            }
+
+            return wynik;
+        }
     }
 }

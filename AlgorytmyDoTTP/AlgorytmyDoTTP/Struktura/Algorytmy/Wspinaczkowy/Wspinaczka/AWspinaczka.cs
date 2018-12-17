@@ -1,7 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
 using System;
-using System.Collections.Generic;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 {
@@ -10,14 +9,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
     /// </summary>
     abstract class AWspinaczka
     {
+        protected int parametrP;
         protected ALosowanie losowanie;
         protected Random losowy = new Random();
         protected ReprezentacjaRozwiazania reprezentacjaRozwiazania;
 
-        public AWspinaczka(ALosowanie losowanie)
+        public AWspinaczka(ALosowanie losowanie, int parametrP)
         {
             this.losowanie = losowanie;
-            reprezentacjaRozwiazania = losowanie.ZwrocNajlepszeRozwiazanie();
+            this.parametrP = parametrP;
         }
 
         /// <summary>
@@ -51,6 +51,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
         /// Metoda przeszukuje przestrzeń rozwiązań szukając optymalnej wartości funkcji celu
         /// </summary>
         /// <returns>Znalezioną optymalną wartość funkcji celu</returns>
-        public abstract Dictionary<string, float[]> ZnajdzOptimum();
+        public abstract void ZnajdzOptimum();
     }
 }

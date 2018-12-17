@@ -11,28 +11,37 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
     /// </summary>
     class RLS : IAlgorytm
     {
-        private AnalizaRLS_RS analiza;
+        private AnalizaRLS_RS analityka;
         private AWspinaczka przeszukiwanieLokalne;
 
-        public RLS(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analiza)
+        public RLS(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analityka)
         {
-            this.analiza = analiza;
+            this.analityka = analityka;
             this.przeszukiwanieLokalne = przeszukiwanieLokalne;
         }
 
         public void Start()
         {
-            analiza.RozpocznijPomiarCzasu();
-            Dictionary<string, float[]> znalezioneOptimum = przeszukiwanieLokalne.ZnajdzOptimum();
-            analiza.ResetPomiaruCzasu();
-            ReprezentacjaRozwiazania najlepszeRozwiazanie = przeszukiwanieLokalne.ZwrocRozwiazanie();
+            for (short i = 0; i < analityka.ZwrocLiczbeIteracji(); i++)
+            {
+                analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
 
-            //return analiza.ZwrocOdpowiedz(najlepszeRozwiazanie, znalezioneOptimum);
+                while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
+                {
+                    przeszukiwanieLokalne.UstawRozwiazanie(przeszukiwanieLokalne.ZwrocInstancjeLosowania().ZwrocNajlepszeRozwiazanie());
+                    przeszukiwanieLokalne.ZnajdzOptimum();
+                    analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), przeszukiwanieLokalne.ZwrocRozwiazanie());
+                }
+
+                analityka.ResetPomiaruCzasu(); // zakończenie pomiaru czasu
+            }
+
+            analityka.ObliczSrednieWartosciProcesu();
         }
 
         public AAnalityka ZwrocAnalityke()
         {
-            throw new System.NotImplementedException();
+            return analityka;
         }
     }
 }

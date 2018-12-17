@@ -12,7 +12,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem, string[] nazwyPlikow)
         {
-            int iloscRozwiazan = int.Parse(parametry["iloscRozwiazan"]),
+            int iloscRozwiazan = 100,
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
 
             AOsobnik osobnik;
@@ -22,17 +22,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             {
                 case "Problem Plecakowy":
                     osobnik = new OsobnikKP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0, nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
 
                     return new RS(new LosowanieKP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Komiwojażera":
                     osobnik = new OsobnikTSP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0, nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
 
                     return new RS(new LosowanieTSP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Podróżującego Złodzieja":
                     osobnik = new OsobnikTTP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), 0, nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
 
                     return new RS(new LosowanieTTP(osobnik), iloscRozwiazan, iloscElementow, analiza);
             }

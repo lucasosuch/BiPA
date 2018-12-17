@@ -125,6 +125,8 @@ namespace AlgorytmyDoTTP.Widoki
                     dostepnePrzedmioty.Add(new XElement("miasto", m.SubItems[3].Text));
                 }
 
+                korzen.Add(sumaWag);
+                korzen.Add(sumaWartosci);
                 korzen.Add(dostepnePrzedmioty);
                 korzen.Add(new XElement("hash", korzen.GetHashCode()));
                 xml.Add(korzen);

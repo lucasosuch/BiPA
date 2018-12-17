@@ -11,12 +11,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
     /// </summary>
     class WspinaczkaTTP : AWspinaczka
     {
-        public WspinaczkaTTP(ALosowanie losowanie) : base(losowanie) { }
+        public WspinaczkaTTP(ALosowanie losowanie, int parametrP) : base(losowanie, parametrP) { }
 
-        public override Dictionary<string, float[]> ZnajdzOptimum()
+        public override void ZnajdzOptimum()
         {
             int poprawy = 0,
-                marginesBledu = 50;
+                marginesBledu = parametrP;
 
             ushort[][] genotyp = reprezentacjaRozwiazania.ZwrocGenotyp2Wymiarowy(),
                        tmpGenotyp = (ushort[][])genotyp.Clone();
@@ -110,8 +110,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                     }
                 }
             } while (poprawy > 0);
-
-            return wynik;
         }
     }
 }
