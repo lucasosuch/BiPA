@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
@@ -25,6 +26,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         private Dictionary<string, string> parametry;
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
+        private string nazwaFolderu = "";
 
         public FormatkaBadania()
         {
@@ -116,11 +118,17 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             } while (znalezionePliki.Length != 0);
 
             XDocument xml = new XDocument();
+
+            XmlDocument dokument = new XmlDocument();
+            dokument.Load("./Dane/"+ nazwaFolderu +"/" + parametry["dane"] +".xml");
+            XmlNode hashPlikuDanych = dokument.DocumentElement.SelectSingleNode("/korzen/hash");
+
             XElement czasDzialania = new XElement("czasDzialania", (analityka.ZwrocCzasDzialaniaAlgorytmu() * analityka.ZwrocLiczbeIteracji())),
                      maxWartosc = new XElement("maxWartosc", analityka.ZwrocWartoscNiebo()["max"][0]),
                      dataZapisu = new XElement("dataZapisu", data.ToString("dd.MM.yyyy HH:mm:ss")),
                      nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
                      plikDanych = new XElement("plikDanych", parametry["dane"]),
+                     hash = new XElement("hash", hashPlikuDanych.InnerText),
                      dziedzina = new XElement("dziedzina", analityka.ZwrocNajlepszeZnalezioneRozwiazanie());
 
             XElement badanie = new XElement("badanie"),
@@ -166,6 +174,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             podstawoweDane.Add(maxWartosc);
             podstawoweDane.Add(czasDzialania);
             podstawoweDane.Add(plikDanych);
+            podstawoweDane.Add(hash);
 
             rozwiazanie.Add(dziedzina);
             rozwiazanie.Add(przebiegBadania);
@@ -226,8 +235,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Nazwy plików danych pod wybrany Problem Optymalizacyjny</returns>
         public object[] WczytajPlikiDanych(string wybranyProblem)
         {
-            string nazwaFolderu = "";
-
             for (int i = 0; i < srodowisko.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
             {
                 if ((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybranyProblem)

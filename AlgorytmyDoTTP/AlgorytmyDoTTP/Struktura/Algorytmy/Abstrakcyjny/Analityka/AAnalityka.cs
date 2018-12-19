@@ -93,6 +93,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 }
             }
 
+            Console.WriteLine("Najlepszy index: " + najlepszyIndex + ", maxWartosc: " + maxWartosc);
+            Console.WriteLine("test1: " + rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie[najlepszyIndex])["max"][0]);
             return najlepszeRozwiazanie[najlepszyIndex];
         }
 
@@ -112,6 +114,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <returns>Wartość funkcji celu</returns>
         public Dictionary<string, float[]> ZwrocWartoscNiebo()
         {
+            Console.WriteLine("test2: "+ rozwiazanie.FunkcjaDopasowania(ZwrocNajlepszyGenotyp())["max"][0]);
             return rozwiazanie.FunkcjaDopasowania(ZwrocNajlepszyGenotyp());
         }
 
@@ -199,7 +202,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 najlepszaWartoscFunkcji[index] = wartosc;
             }
 
-            if(minWartoscProcesuPoszukiwan[index][czas] > wartosc)
+            if(minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
             {
                 minWartoscProcesuPoszukiwan[index][czas] = wartosc;
             }

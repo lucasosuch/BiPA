@@ -23,7 +23,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
         {
             XmlDocument dokument = new XmlDocument();
             dokument.Load("./Dane/TSP/" + nazwaPakietu + ".xml");
-            XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
+            XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/korzen/mapa/miasto");
             
             dlugoscGenotypu = (ushort)(miasta.Count);
 

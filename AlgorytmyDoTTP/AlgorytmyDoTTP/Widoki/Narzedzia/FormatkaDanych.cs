@@ -15,7 +15,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             string[] punkty = mapa.Split("x".ToCharArray());
 
             XDocument xml = new XDocument();
-            XElement xmlMapa = new XElement("mapa");
+            XElement korzen = new XElement("korzen"),
+                     xmlMapa = new XElement("mapa");
 
             int maxX = int.Parse(punkty[0]),
                 maxY = int.Parse(punkty[1]);
@@ -57,8 +58,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 xmlMapa.Add(miasto);
             }
 
-            xmlMapa.Add(new XElement("hash", xmlMapa.GetHashCode()));
-            xml.Add(xmlMapa);
+            korzen.Add(xmlMapa);
+            korzen.Add(new XElement("hash", korzen.GetHashCode()));
+            xml.Add(korzen);
             xml.Save("./Dane/TSP/" + nazwa + ".xml");
 
             return nazwa;

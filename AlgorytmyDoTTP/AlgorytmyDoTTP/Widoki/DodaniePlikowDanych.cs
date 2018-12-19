@@ -91,6 +91,7 @@ namespace AlgorytmyDoTTP.Widoki
                 xml = new XDocument();
                 short maxX = -1,
                       maxY = -1;
+                korzen = new XElement("korzen");
                 XElement xmlMapa = new XElement("mapa");
 
                 foreach (ListViewItem m in listaMiast.Items)
@@ -105,8 +106,9 @@ namespace AlgorytmyDoTTP.Widoki
                     if (maxY < short.Parse(m.SubItems[2].Text)) maxY = short.Parse(m.SubItems[2].Text);
                 }
 
-                xmlMapa.Add(new XElement("hash", xmlMapa.GetHashCode()));
-                xml.Add(xmlMapa);
+                korzen.Add(xmlMapa);
+                korzen.Add(new XElement("hash", korzen.GetHashCode()));
+                xml.Add(korzen);
 
                 string nazwaTSP = "tsp" + listaMiast.Items.Count + "_" + maxX + "x" + maxY;
                 xml.Save("./Dane/TSP/" + nazwaTSP + ".xml");

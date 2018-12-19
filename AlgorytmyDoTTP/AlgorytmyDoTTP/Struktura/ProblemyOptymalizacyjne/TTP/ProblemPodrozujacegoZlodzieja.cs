@@ -80,7 +80,7 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
             float[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
 
-            Console.WriteLine("modelTTP: "+ modelTTP);
+            //Console.WriteLine("modelTTP: "+ modelTTP);
 
             return new TTP1().ObliczWartoscFunkcjiCelu(dlugosciTrasy, macierz["kp"], ZwrocOgraniczeniaProblemu(), problemPlecakowy);
         }
