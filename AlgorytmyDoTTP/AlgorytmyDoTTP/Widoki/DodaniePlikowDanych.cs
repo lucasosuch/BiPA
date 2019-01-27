@@ -16,15 +16,19 @@ namespace AlgorytmyDoTTP.Widoki
         {
             InitializeComponent();
 
+            // wczytanie plików danych dla TTP
             FormatkaBadania badanie = new FormatkaBadania();
             plikiDanych.Items.Clear();
             plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
+            
+            // domyślnie tworzymy nowy plik danych
             plikiDanych.Items.Add("< Nowy plik >");
             plikiDanych.Text = "< Nowy plik >";
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
         {
+            // stworzenie losowej plików danych dla TTP, TSP, KP
             GenerowaniePlikow generowaniePlikow = new GenerowaniePlikow();
             generowaniePlikow.Show();
         }
@@ -42,6 +46,8 @@ namespace AlgorytmyDoTTP.Widoki
                     XmlNode przypadekTSP = dokument.DocumentElement.SelectSingleNode("/korzen/tsp");
                     XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
 
+                    // jeżeli istnieją już dane do problemów optymalizacyjnych o wybranej konfiguracji - wtedy następuje usunięcie starych danych
+                    // i zastąpienie ich nowymi
                     if (File.Exists(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml"))
                     {
                         File.Delete(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
@@ -58,6 +64,7 @@ namespace AlgorytmyDoTTP.Widoki
                     }
                 }
 
+                // wygenerowanie 3 plików XML na podstawie zadanej konfiguracji
                 XDocument xml = new XDocument();
                 XElement korzen = new XElement("korzen"),
                          przedmioty = new XElement("przedmioty");
@@ -124,6 +131,13 @@ namespace AlgorytmyDoTTP.Widoki
 
                 foreach (ListViewItem m in listaMiast.Items)
                 {
+                    //string zwalidowaneDostepnePrzedmioty = "";
+                    //foreach (string p in m.SubItems[3].Text.Split(','))
+                    //{
+                    //    int indeks = int.Parse(p.Trim());
+                    //    Console.WriteLine("tst: "+ listaPrzedmiotow.Items[indeks]);
+                    //}
+
                     dostepnePrzedmioty.Add(new XElement("miasto", m.SubItems[3].Text));
                 }
 
@@ -146,81 +160,112 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void dodajPrzedmiot_Click(object sender, EventArgs e)
         {
-            if(edycjaPrzedmiotu != -1)
-            {
-                string[] wiersz = new string[] { (edycjaPrzedmiotu + 1) + "", wartosc.Text, waga.Text };
-                listaPrzedmiotow.Items.Insert(edycjaPrzedmiotu, new ListViewItem(wiersz));
+            string tmpWartosc = wartosc.Text.Replace('.', ','),
+                   tmpWaga = waga.Text.Replace('.', ',');
 
-                listaPrzedmiotow.Items.RemoveAt(edycjaPrzedmiotu+1);
-            } else
+            if (float.TryParse(tmpWartosc, out float n1) && float.TryParse(tmpWaga, out float n2))
             {
-                string[] wiersz = new string[] { (listaPrzedmiotow.Items.Count + 1) + "", wartosc.Text, waga.Text };
-                listaPrzedmiotow.Items.Add(new ListViewItem(wiersz));
+                if (edycjaPrzedmiotu != -1)
+                {
+                    string[] wiersz = new string[] { (edycjaPrzedmiotu + 1) + "", tmpWartosc, tmpWaga };
+                    listaPrzedmiotow.Items.Insert(edycjaPrzedmiotu, new ListViewItem(wiersz));
 
-                waga.Text = "";
-                wartosc.Text = "";
+                    listaPrzedmiotow.Items.RemoveAt(edycjaPrzedmiotu + 1);
+                }
+                else
+                {
+                    string[] wiersz = new string[] { (listaPrzedmiotow.Items.Count + 1) + "", tmpWartosc, tmpWaga };
+                    listaPrzedmiotow.Items.Add(new ListViewItem(wiersz));
+
+                    waga.Text = "";
+                    wartosc.Text = "";
+                }
+
+                ObliczSumeParametrowKP();
+
+                stworzPlikDanych.Enabled = true;
             }
-
-            stworzPlikDanych.Enabled = true;
+            else
+            {
+                MessageBox.Show("Podaj wartości liczbowe!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dodajMiasto_Click(object sender, EventArgs e)
         {
             bool bledneWspolrzedne = false,
-                 bledneDostepnosciPrzedmiotow = false;
+                 bledneDostepnosciPrzedmiotow = false,
+                 blednaWartoscDostepnosciPrzedmiotow = false;
 
-            if (listaMiast.Items.Count > 0)
+            if (int.TryParse(wsp_x.Text, out int n1) && int.TryParse(wsp_y.Text, out int n2))
             {
-                foreach (ListViewItem m in listaMiast.Items)
+                if (listaMiast.Items.Count > 0)
                 {
-                    if(m.SubItems[1].Text == wsp_x.Text && m.SubItems[2].Text == wsp_y.Text)
+                    if (edycjaMiasta == -1)
                     {
-                        bledneWspolrzedne = true;
-                        break;
-                    }
-                }
-
-                if (dostepnePrzedmioty.Text != "")
-                {
-                    string[] przedmioty = dostepnePrzedmioty.Text.Split(',');
-                    foreach (string p in przedmioty)
-                    {
-                        int przedmiot = int.Parse(p);
-
-                        if (przedmiot < 0 || przedmiot > listaPrzedmiotow.Items.Count)
+                        foreach (ListViewItem m in listaMiast.Items)
                         {
-                            bledneDostepnosciPrzedmiotow = true;
-                            break;
+                            if (m.SubItems[1].Text == wsp_x.Text && m.SubItems[2].Text == wsp_y.Text)
+                            {
+                                bledneWspolrzedne = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (dostepnePrzedmioty.Text != "")
+                    {
+                        string[] przedmioty = dostepnePrzedmioty.Text.Split(',');
+                        foreach (string p in przedmioty)
+                        {
+                            if (int.TryParse(p, out int przedmiot))
+                            {
+                                if (przedmiot < 0 || przedmiot > listaPrzedmiotow.Items.Count)
+                                {
+                                    bledneDostepnosciPrzedmiotow = true;
+                                    break;
+                                }
+                            } else
+                            {
+                                blednaWartoscDostepnosciPrzedmiotow = true;
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            if (!bledneWspolrzedne && !bledneDostepnosciPrzedmiotow)
-            {
-                if (edycjaMiasta != -1)
+                if (!bledneWspolrzedne && !bledneDostepnosciPrzedmiotow && !blednaWartoscDostepnosciPrzedmiotow)
                 {
-                    string[] wiersz = new string[] { (edycjaMiasta + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
-                    listaMiast.Items.Insert(edycjaMiasta, new ListViewItem(wiersz));
+                    if (edycjaMiasta != -1)
+                    {
+                        string[] wiersz = new string[] { (edycjaMiasta + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
+                        listaMiast.Items.Insert(edycjaMiasta, new ListViewItem(wiersz));
 
-                    listaMiast.Items.RemoveAt(edycjaMiasta + 1);
+                        listaMiast.Items.RemoveAt(edycjaMiasta + 1);
+                    }
+                    else
+                    {
+                        string[] wiersz = new string[] { (listaMiast.Items.Count + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
+                        listaMiast.Items.Add(new ListViewItem(wiersz));
+
+                        wsp_x.Text = "";
+                        wsp_y.Text = "";
+                        dostepnePrzedmioty.Text = "";
+                        dostepnePrzedmioty.Enabled = true;
+                    }
+
+                    stworzPlikDanych.Enabled = true;
                 }
                 else
                 {
-                    string[] wiersz = new string[] { (listaMiast.Items.Count + 1) + "", wsp_x.Text, wsp_y.Text, dostepnePrzedmioty.Text };
-                    listaMiast.Items.Add(new ListViewItem(wiersz));
-
-                    wsp_x.Text = "";
-                    wsp_y.Text = "";
-                    dostepnePrzedmioty.Text = "";
-                    dostepnePrzedmioty.Enabled = true;
+                    if (bledneWspolrzedne) MessageBox.Show("Istniej już miasto o takich współrzędnych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (bledneDostepnosciPrzedmiotow) MessageBox.Show("Chcesz przydzielić nieistniejący przedmiot do miasta!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (blednaWartoscDostepnosciPrzedmiotow) MessageBox.Show("Podano złą wartość w polu: Dostępne przedmioty!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                stworzPlikDanych.Enabled = true;
-            } else
+            }
+            else
             {
-                if (bledneWspolrzedne) MessageBox.Show("Istniej już miasto o takich współrzędnych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (bledneDostepnosciPrzedmiotow) MessageBox.Show("Chcesz przydzielić nieistniejący przedmiot do miasta!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Podaj wartości całkowite!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -264,7 +309,7 @@ namespace AlgorytmyDoTTP.Widoki
             }
         }
 
-        private void usunPredmiot_Click(object sender, EventArgs e)
+        private void usunPrzedmiot_Click(object sender, EventArgs e)
         {
             if (listaPrzedmiotow.CheckedItems.Count > 0)
             {
@@ -272,6 +317,9 @@ namespace AlgorytmyDoTTP.Widoki
                 {
                     listaPrzedmiotow.Items.RemoveAt(przedmiot.Index);
                 }
+
+                if (listaPrzedmiotow.Items.Count > 0) stworzPlikDanych.Enabled = true;
+                ObliczSumeParametrowKP();
             }
         }
 
@@ -283,6 +331,8 @@ namespace AlgorytmyDoTTP.Widoki
                 {
                     listaMiast.Items.RemoveAt(miasto.Index);
                 }
+
+                if (listaMiast.Items.Count > 0) stworzPlikDanych.Enabled = true;
             }
 
             if(listaMiast.Items.Count == 0) dostepnePrzedmioty.Enabled = false;
@@ -313,7 +363,9 @@ namespace AlgorytmyDoTTP.Widoki
                 XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
 
                 dokument.Load("./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
-                XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/mapa/miasto");
+                XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/korzen/mapa/miasto");
+
+                Console.WriteLine("tsp: "+ miasta[0]["x"] +" " + miasta[0]["y"]);
 
                 for (int i = 0; i < miasta.Count; i++)
                 {
@@ -323,10 +375,18 @@ namespace AlgorytmyDoTTP.Widoki
                 dokument.Load("./Dane/KP/" + przypadekKP.InnerText + ".xml");
                 XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/korzen/przedmioty/przedmiot");
 
+                float sumaWag = 0,
+                    sumaWartosci = 0;
                 for (int i = 0; i < przedmioty.Count; i++)
                 {
                     listaPrzedmiotow.Items.Add(new ListViewItem(new string[] { (i + 1) + "", przedmioty[i]["wartosc"].InnerText, przedmioty[i]["waga"].InnerText }));
+
+                    sumaWag += float.Parse(przedmioty[i]["waga"].InnerText);
+                    sumaWartosci += float.Parse(przedmioty[i]["wartosc"].InnerText);
                 }
+
+                kp_sumaWag.Text = ""+ sumaWag;
+                kp_sumaWartosci.Text = ""+ sumaWartosci;
 
                 if (listaMiast.Items.Count == 0) this.dostepnePrzedmioty.Enabled = false;
                 else this.dostepnePrzedmioty.Enabled = true;
@@ -343,6 +403,12 @@ namespace AlgorytmyDoTTP.Widoki
             WyczyscWyborElementow(listaPrzedmiotow);
         }
 
+        private void metroPanel1_Click(object sender, EventArgs e)
+        {
+            WyczyscWyborElementow(listaPrzedmiotow);
+            WyczyscWyborElementow(listaMiast);
+        }
+
         private void WyczyscWyborElementow(MetroFramework.Controls.MetroListView lista)
         {
             if (lista.SelectedIndices.Count > 0)
@@ -354,10 +420,19 @@ namespace AlgorytmyDoTTP.Widoki
             }
         }
 
-        private void metroPanel1_Click(object sender, EventArgs e)
+        private void ObliczSumeParametrowKP()
         {
-            WyczyscWyborElementow(listaPrzedmiotow);
-            WyczyscWyborElementow(listaMiast);
+            float sumaWag = 0,
+                  sumaWartosci = 0;
+
+            foreach (ListViewItem p in listaPrzedmiotow.Items)
+            {
+                sumaWag += float.Parse(p.SubItems[2].Text);
+                sumaWartosci += float.Parse(p.SubItems[1].Text);
+            }
+
+            kp_sumaWag.Text = "" + sumaWag;
+            kp_sumaWartosci.Text = "" + sumaWartosci;
         }
     }
 }
