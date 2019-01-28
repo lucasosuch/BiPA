@@ -131,14 +131,25 @@ namespace AlgorytmyDoTTP.Widoki
 
                 foreach (ListViewItem m in listaMiast.Items)
                 {
-                    //string zwalidowaneDostepnePrzedmioty = "";
-                    //foreach (string p in m.SubItems[3].Text.Split(','))
-                    //{
-                    //    int indeks = int.Parse(p.Trim());
-                    //    Console.WriteLine("tst: "+ listaPrzedmiotow.Items[indeks]);
-                    //}
+                    string zwalidowaneDostepnePrzedmioty = "";
+                    if (m.SubItems[3].Text != "")
+                    {
+                        foreach (string p in m.SubItems[3].Text.Split(','))
+                        {
+                            int indeks = int.Parse(p.Trim());
 
-                    dostepnePrzedmioty.Add(new XElement("miasto", m.SubItems[3].Text));
+                            try
+                            {
+                                zwalidowaneDostepnePrzedmioty += listaPrzedmiotow.Items[(indeks - 1)].SubItems[0].Text + ", ";
+                            } catch (Exception)
+                            { }
+                        }
+
+                        zwalidowaneDostepnePrzedmioty = (zwalidowaneDostepnePrzedmioty.Trim());
+                        zwalidowaneDostepnePrzedmioty = zwalidowaneDostepnePrzedmioty.TrimEnd(',');
+                    }
+
+                    dostepnePrzedmioty.Add(new XElement("miasto", zwalidowaneDostepnePrzedmioty));
                 }
 
                 korzen.Add(sumaWag);
