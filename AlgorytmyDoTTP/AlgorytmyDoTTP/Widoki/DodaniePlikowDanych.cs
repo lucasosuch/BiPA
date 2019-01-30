@@ -11,13 +11,13 @@ namespace AlgorytmyDoTTP.Widoki
     {
         private int edycjaMiasta = -1;
         private int edycjaPrzedmiotu = -1;
+        private FormatkaBadania badanie = new FormatkaBadania();
 
         public DodaniePlikowDanych()
         {
             InitializeComponent();
 
             // wczytanie plików danych dla TTP
-            FormatkaBadania badanie = new FormatkaBadania();
             plikiDanych.Items.Clear();
             plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
             
@@ -83,8 +83,8 @@ namespace AlgorytmyDoTTP.Widoki
                     sumaWartosciPrzedmiotow += float.Parse(p.SubItems[1].Text);
                 }
 
-                XElement sumaWag = new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow.ToString()),
-                         sumaWartosci = new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow.ToString());
+                XElement sumaWag = new XElement("sumaWagPrzedmiotow", Math.Round(sumaWagPrzedmiotow).ToString()),
+                         sumaWartosci = new XElement("sumaWartosciPrzedmiotow", Math.Round(sumaWartosciPrzedmiotow).ToString());
 
                 korzen.Add(przedmioty);
                 korzen.Add(sumaWag);
@@ -162,6 +162,11 @@ namespace AlgorytmyDoTTP.Widoki
                 stworzPlikDanych.Enabled = false;
 
                 MessageBox.Show("Dodano plik danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                plikiDanych.Items.Clear();
+                plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
+                plikiDanych.Items.Add("< Nowy plik >");
+                plikiDanych.Text = "ttp_" + nazwaKP + "_" + nazwaTSP;
             }
             else
             {
