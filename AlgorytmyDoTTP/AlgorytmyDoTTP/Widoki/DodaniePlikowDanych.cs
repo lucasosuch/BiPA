@@ -12,10 +12,12 @@ namespace AlgorytmyDoTTP.Widoki
         private int edycjaMiasta = -1;
         private int edycjaPrzedmiotu = -1;
         private FormatkaBadania badanie = new FormatkaBadania();
+        private Badanie widokBadania;
 
-        public DodaniePlikowDanych()
+        public DodaniePlikowDanych(Badanie widokBadania)
         {
             InitializeComponent();
+            this.widokBadania = widokBadania;
 
             // wczytanie plików danych dla TTP
             plikiDanych.Items.Clear();
@@ -167,6 +169,22 @@ namespace AlgorytmyDoTTP.Widoki
                 plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
                 plikiDanych.Items.Add("< Nowy plik >");
                 plikiDanych.Text = "ttp_" + nazwaKP + "_" + nazwaTSP;
+                
+                if (widokBadania.wybierzProblem.Text != "")
+                {
+                    if (widokBadania.wybierzProblem.Text == "Problem Podróżującego Złodzieja")
+                    {
+                        widokBadania.wybierzPlikDanych.Items.Add("ttp_" + nazwaKP + "_" + nazwaTSP);
+                    }
+                    else if (widokBadania.wybierzProblem.Text == "Problem Plecakowy")
+                    {
+                        widokBadania.wybierzPlikDanych.Items.Add(nazwaKP);
+                    }
+                    else
+                    {
+                        widokBadania.wybierzPlikDanych.Items.Add(nazwaTSP);
+                    }
+                }
             }
             else
             {

@@ -31,6 +31,11 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tabela = new MetroFramework.Controls.MetroTabControl();
             this.przedmioty = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.kp_sumaWag = new MetroFramework.Controls.MetroTextBox();
+            this.kp_sumaWartosci = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.usunPredmiot = new MetroFramework.Controls.MetroButton();
             this.dodajPrzedmiot = new MetroFramework.Controls.MetroButton();
             this.listaPrzedmiotow = new MetroFramework.Controls.MetroListView();
@@ -60,11 +65,6 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.plikiDanych = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.kp_sumaWartosci = new MetroFramework.Controls.MetroTextBox();
-            this.kp_sumaWag = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             this.tabela.SuspendLayout();
             this.przedmioty.SuspendLayout();
@@ -132,6 +132,104 @@
             this.przedmioty.VerticalScrollbarSize = 11;
             this.przedmioty.Click += new System.EventHandler(this.przedmioty_Click);
             // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(277, 480);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(75, 20);
+            this.metroLabel9.TabIndex = 129;
+            this.metroLabel9.Text = "Suma wag:";
+            // 
+            // kp_sumaWag
+            // 
+            // 
+            // 
+            // 
+            this.kp_sumaWag.CustomButton.Image = null;
+            this.kp_sumaWag.CustomButton.Location = new System.Drawing.Point(102, 1);
+            this.kp_sumaWag.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kp_sumaWag.CustomButton.Name = "";
+            this.kp_sumaWag.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.kp_sumaWag.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.kp_sumaWag.CustomButton.TabIndex = 1;
+            this.kp_sumaWag.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.kp_sumaWag.CustomButton.UseSelectable = true;
+            this.kp_sumaWag.CustomButton.Visible = false;
+            this.kp_sumaWag.Enabled = false;
+            this.kp_sumaWag.Lines = new string[] {
+        "0"};
+            this.kp_sumaWag.Location = new System.Drawing.Point(381, 477);
+            this.kp_sumaWag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kp_sumaWag.MaxLength = 32767;
+            this.kp_sumaWag.Multiline = true;
+            this.kp_sumaWag.Name = "kp_sumaWag";
+            this.kp_sumaWag.PasswordChar = '\0';
+            this.kp_sumaWag.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.kp_sumaWag.SelectedText = "";
+            this.kp_sumaWag.SelectionLength = 0;
+            this.kp_sumaWag.SelectionStart = 0;
+            this.kp_sumaWag.ShortcutsEnabled = true;
+            this.kp_sumaWag.Size = new System.Drawing.Size(124, 23);
+            this.kp_sumaWag.TabIndex = 128;
+            this.kp_sumaWag.Text = "0";
+            this.kp_sumaWag.UseSelectable = true;
+            this.kp_sumaWag.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.kp_sumaWag.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // kp_sumaWartosci
+            // 
+            // 
+            // 
+            // 
+            this.kp_sumaWartosci.CustomButton.Image = null;
+            this.kp_sumaWartosci.CustomButton.Location = new System.Drawing.Point(102, 1);
+            this.kp_sumaWartosci.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kp_sumaWartosci.CustomButton.Name = "";
+            this.kp_sumaWartosci.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.kp_sumaWartosci.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.kp_sumaWartosci.CustomButton.TabIndex = 1;
+            this.kp_sumaWartosci.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.kp_sumaWartosci.CustomButton.UseSelectable = true;
+            this.kp_sumaWartosci.CustomButton.Visible = false;
+            this.kp_sumaWartosci.Enabled = false;
+            this.kp_sumaWartosci.Lines = new string[] {
+        "0"};
+            this.kp_sumaWartosci.Location = new System.Drawing.Point(129, 477);
+            this.kp_sumaWartosci.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kp_sumaWartosci.MaxLength = 32767;
+            this.kp_sumaWartosci.Multiline = true;
+            this.kp_sumaWartosci.Name = "kp_sumaWartosci";
+            this.kp_sumaWartosci.PasswordChar = '\0';
+            this.kp_sumaWartosci.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.kp_sumaWartosci.SelectedText = "";
+            this.kp_sumaWartosci.SelectionLength = 0;
+            this.kp_sumaWartosci.SelectionStart = 0;
+            this.kp_sumaWartosci.ShortcutsEnabled = true;
+            this.kp_sumaWartosci.Size = new System.Drawing.Size(124, 23);
+            this.kp_sumaWartosci.TabIndex = 127;
+            this.kp_sumaWartosci.Text = "0";
+            this.kp_sumaWartosci.UseSelectable = true;
+            this.kp_sumaWartosci.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.kp_sumaWartosci.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(148, 480);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(0, 0);
+            this.metroLabel8.TabIndex = 126;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(-3, 480);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(101, 20);
+            this.metroLabel7.TabIndex = 118;
+            this.metroLabel7.Text = "Suma wartości:";
+            // 
             // usunPredmiot
             // 
             this.usunPredmiot.Location = new System.Drawing.Point(1, 28);
@@ -165,7 +263,7 @@
             this.listaPrzedmiotow.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listaPrzedmiotow.FullRowSelect = true;
             this.listaPrzedmiotow.Location = new System.Drawing.Point(0, 62);
-            this.listaPrzedmiotow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listaPrzedmiotow.Margin = new System.Windows.Forms.Padding(4);
             this.listaPrzedmiotow.Name = "listaPrzedmiotow";
             this.listaPrzedmiotow.OwnerDraw = true;
             this.listaPrzedmiotow.Size = new System.Drawing.Size(1009, 400);
@@ -196,10 +294,10 @@
             // 
             // 
             this.waga.CustomButton.Image = null;
-            this.waga.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.waga.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.waga.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waga.CustomButton.Name = "";
-            this.waga.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.waga.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.waga.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.waga.CustomButton.TabIndex = 1;
             this.waga.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -247,10 +345,10 @@
             // 
             // 
             this.wartosc.CustomButton.Image = null;
-            this.wartosc.CustomButton.Location = new System.Drawing.Point(147, 1);
+            this.wartosc.CustomButton.Location = new System.Drawing.Point(110, 1);
             this.wartosc.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wartosc.CustomButton.Name = "";
-            this.wartosc.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wartosc.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wartosc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wartosc.CustomButton.TabIndex = 1;
             this.wartosc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -315,10 +413,10 @@
             // 
             // 
             this.dostepnePrzedmioty.CustomButton.Image = null;
-            this.dostepnePrzedmioty.CustomButton.Location = new System.Drawing.Point(292, 1);
+            this.dostepnePrzedmioty.CustomButton.Location = new System.Drawing.Point(219, 1);
             this.dostepnePrzedmioty.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dostepnePrzedmioty.CustomButton.Name = "";
-            this.dostepnePrzedmioty.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.dostepnePrzedmioty.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.dostepnePrzedmioty.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.dostepnePrzedmioty.CustomButton.TabIndex = 1;
             this.dostepnePrzedmioty.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -389,7 +487,7 @@
             this.listaMiast.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listaMiast.FullRowSelect = true;
             this.listaMiast.Location = new System.Drawing.Point(0, 62);
-            this.listaMiast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listaMiast.Margin = new System.Windows.Forms.Padding(4);
             this.listaMiast.Name = "listaMiast";
             this.listaMiast.OwnerDraw = true;
             this.listaMiast.Size = new System.Drawing.Size(1009, 400);
@@ -425,10 +523,10 @@
             // 
             // 
             this.wsp_y.CustomButton.Image = null;
-            this.wsp_y.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.wsp_y.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.wsp_y.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wsp_y.CustomButton.Name = "";
-            this.wsp_y.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wsp_y.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wsp_y.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wsp_y.CustomButton.TabIndex = 1;
             this.wsp_y.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -476,10 +574,10 @@
             // 
             // 
             this.wsp_x.CustomButton.Image = null;
-            this.wsp_x.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.wsp_x.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.wsp_x.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wsp_x.CustomButton.Name = "";
-            this.wsp_x.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wsp_x.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wsp_x.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wsp_x.CustomButton.TabIndex = 1;
             this.wsp_x.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -546,104 +644,6 @@
             this.plikiDanych.UseSelectable = true;
             this.plikiDanych.SelectedIndexChanged += new System.EventHandler(this.plikiDanych_SelectedIndexChanged);
             // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(-3, 480);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(101, 20);
-            this.metroLabel7.TabIndex = 118;
-            this.metroLabel7.Text = "Suma wartości:";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(148, 480);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(0, 0);
-            this.metroLabel8.TabIndex = 126;
-            // 
-            // kp_sumaWartosci
-            // 
-            // 
-            // 
-            // 
-            this.kp_sumaWartosci.CustomButton.Image = null;
-            this.kp_sumaWartosci.CustomButton.Location = new System.Drawing.Point(102, 1);
-            this.kp_sumaWartosci.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.kp_sumaWartosci.CustomButton.Name = "";
-            this.kp_sumaWartosci.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.kp_sumaWartosci.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.kp_sumaWartosci.CustomButton.TabIndex = 1;
-            this.kp_sumaWartosci.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.kp_sumaWartosci.CustomButton.UseSelectable = true;
-            this.kp_sumaWartosci.CustomButton.Visible = false;
-            this.kp_sumaWartosci.Enabled = false;
-            this.kp_sumaWartosci.Lines = new string[] {
-        "0"};
-            this.kp_sumaWartosci.Location = new System.Drawing.Point(129, 477);
-            this.kp_sumaWartosci.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.kp_sumaWartosci.MaxLength = 32767;
-            this.kp_sumaWartosci.Multiline = true;
-            this.kp_sumaWartosci.Name = "kp_sumaWartosci";
-            this.kp_sumaWartosci.PasswordChar = '\0';
-            this.kp_sumaWartosci.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.kp_sumaWartosci.SelectedText = "";
-            this.kp_sumaWartosci.SelectionLength = 0;
-            this.kp_sumaWartosci.SelectionStart = 0;
-            this.kp_sumaWartosci.ShortcutsEnabled = true;
-            this.kp_sumaWartosci.Size = new System.Drawing.Size(124, 23);
-            this.kp_sumaWartosci.TabIndex = 127;
-            this.kp_sumaWartosci.Text = "0";
-            this.kp_sumaWartosci.UseSelectable = true;
-            this.kp_sumaWartosci.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.kp_sumaWartosci.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // kp_sumaWag
-            // 
-            // 
-            // 
-            // 
-            this.kp_sumaWag.CustomButton.Image = null;
-            this.kp_sumaWag.CustomButton.Location = new System.Drawing.Point(102, 1);
-            this.kp_sumaWag.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.kp_sumaWag.CustomButton.Name = "";
-            this.kp_sumaWag.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.kp_sumaWag.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.kp_sumaWag.CustomButton.TabIndex = 1;
-            this.kp_sumaWag.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.kp_sumaWag.CustomButton.UseSelectable = true;
-            this.kp_sumaWag.CustomButton.Visible = false;
-            this.kp_sumaWag.Enabled = false;
-            this.kp_sumaWag.Lines = new string[] {
-        "0"};
-            this.kp_sumaWag.Location = new System.Drawing.Point(381, 477);
-            this.kp_sumaWag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.kp_sumaWag.MaxLength = 32767;
-            this.kp_sumaWag.Multiline = true;
-            this.kp_sumaWag.Name = "kp_sumaWag";
-            this.kp_sumaWag.PasswordChar = '\0';
-            this.kp_sumaWag.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.kp_sumaWag.SelectedText = "";
-            this.kp_sumaWag.SelectionLength = 0;
-            this.kp_sumaWag.SelectionStart = 0;
-            this.kp_sumaWag.ShortcutsEnabled = true;
-            this.kp_sumaWag.Size = new System.Drawing.Size(124, 23);
-            this.kp_sumaWag.TabIndex = 128;
-            this.kp_sumaWag.Text = "0";
-            this.kp_sumaWag.UseSelectable = true;
-            this.kp_sumaWag.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.kp_sumaWag.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(277, 480);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(75, 20);
-            this.metroLabel9.TabIndex = 129;
-            this.metroLabel9.Text = "Suma wag:";
-            // 
             // DodaniePlikowDanych
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -682,7 +682,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox wartosc;
         private MetroFramework.Controls.MetroTabPage miasta;
-        private MetroFramework.Controls.MetroComboBox plikiDanych;
         private MetroFramework.Controls.MetroButton stworzPlikDanych;
         private MetroFramework.Controls.MetroTabPage przedmioty;
         private MetroFramework.Controls.MetroButton usunPredmiot;
@@ -705,5 +704,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroComboBox plikiDanych;
     }
 }
