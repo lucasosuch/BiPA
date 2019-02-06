@@ -294,7 +294,7 @@
             this.wygenerujPlikDanych.Location = new System.Drawing.Point(281, 73);
             this.wygenerujPlikDanych.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.wygenerujPlikDanych.Name = "wygenerujPlikDanych";
-            this.wygenerujPlikDanych.Size = new System.Drawing.Size(136, 24);
+            this.wygenerujPlikDanych.Size = new System.Drawing.Size(136, 29);
             this.wygenerujPlikDanych.TabIndex = 6;
             this.wygenerujPlikDanych.Text = "Dodaj plik danych";
             this.wygenerujPlikDanych.UseSelectable = true;
