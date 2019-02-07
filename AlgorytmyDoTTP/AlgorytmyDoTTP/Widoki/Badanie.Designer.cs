@@ -97,7 +97,7 @@
             // 
             this.wynikiBadania.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wynikiBadania.Location = new System.Drawing.Point(2, 423);
-            this.wynikiBadania.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wynikiBadania.Margin = new System.Windows.Forms.Padding(2);
             this.wynikiBadania.Multiline = true;
             this.wynikiBadania.Name = "wynikiBadania";
             this.wynikiBadania.ReadOnly = true;
@@ -115,7 +115,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.01512F));
@@ -134,7 +134,7 @@
             this.tableLayoutPanel2.Controls.Add(this.metroTextBox1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -161,7 +161,7 @@
             // 
             this.metroTextBox1.CustomButton.Image = null;
             this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(368, 2);
-            this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.metroTextBox1.CustomButton.Name = "";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(51, 51);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -173,7 +173,7 @@
             this.metroTextBox1.Enabled = false;
             this.metroTextBox1.Lines = new string[0];
             this.metroTextBox1.Location = new System.Drawing.Point(428, 2);
-            this.metroTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Multiline = true;
             this.metroTextBox1.Name = "metroTextBox1";
@@ -200,7 +200,7 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 66);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.0463F));
@@ -219,7 +219,7 @@
             this.tableLayoutPanel4.Controls.Add(this.rysujWykes, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 319);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -231,7 +231,7 @@
             this.pobierzPlikCSV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pobierzPlikCSV.Enabled = false;
             this.pobierzPlikCSV.Location = new System.Drawing.Point(128, 2);
-            this.pobierzPlikCSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pobierzPlikCSV.Margin = new System.Windows.Forms.Padding(2);
             this.pobierzPlikCSV.Name = "pobierzPlikCSV";
             this.pobierzPlikCSV.Size = new System.Drawing.Size(122, 28);
             this.pobierzPlikCSV.TabIndex = 1;
@@ -244,7 +244,7 @@
             this.zapiszBadanie.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zapiszBadanie.Enabled = false;
             this.zapiszBadanie.Location = new System.Drawing.Point(2, 2);
-            this.zapiszBadanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.zapiszBadanie.Margin = new System.Windows.Forms.Padding(2);
             this.zapiszBadanie.Name = "zapiszBadanie";
             this.zapiszBadanie.Size = new System.Drawing.Size(122, 28);
             this.zapiszBadanie.TabIndex = 0;
@@ -257,7 +257,7 @@
             this.rysujWykes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rysujWykes.Enabled = false;
             this.rysujWykes.Location = new System.Drawing.Point(254, 2);
-            this.rysujWykes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rysujWykes.Margin = new System.Windows.Forms.Padding(2);
             this.rysujWykes.Name = "rysujWykes";
             this.rysujWykes.Size = new System.Drawing.Size(166, 28);
             this.rysujWykes.TabIndex = 2;
@@ -279,7 +279,7 @@
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 8;
             this.metroPanel1.Location = new System.Drawing.Point(2, 2);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel1.MaximumSize = new System.Drawing.Size(420, 309);
             this.metroPanel1.MinimumSize = new System.Drawing.Size(420, 309);
             this.metroPanel1.Name = "metroPanel1";
@@ -292,7 +292,7 @@
             // wygenerujPlikDanych
             // 
             this.wygenerujPlikDanych.Location = new System.Drawing.Point(281, 73);
-            this.wygenerujPlikDanych.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wygenerujPlikDanych.Margin = new System.Windows.Forms.Padding(2);
             this.wygenerujPlikDanych.Name = "wygenerujPlikDanych";
             this.wygenerujPlikDanych.Size = new System.Drawing.Size(136, 29);
             this.wygenerujPlikDanych.TabIndex = 6;
@@ -323,7 +323,7 @@
             this.ttp_panel.HorizontalScrollbarHighlightOnWheel = false;
             this.ttp_panel.HorizontalScrollbarSize = 8;
             this.ttp_panel.Location = new System.Drawing.Point(0, 106);
-            this.ttp_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ttp_panel.Margin = new System.Windows.Forms.Padding(2);
             this.ttp_panel.Name = "ttp_panel";
             this.ttp_panel.Size = new System.Drawing.Size(420, 204);
             this.ttp_panel.TabIndex = 10;
@@ -337,7 +337,7 @@
             this.domyslnyProblemPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.domyslnyProblemPanel.HorizontalScrollbarSize = 8;
             this.domyslnyProblemPanel.Location = new System.Drawing.Point(0, 0);
-            this.domyslnyProblemPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.domyslnyProblemPanel.Margin = new System.Windows.Forms.Padding(2);
             this.domyslnyProblemPanel.Name = "domyslnyProblemPanel";
             this.domyslnyProblemPanel.Size = new System.Drawing.Size(420, 204);
             this.domyslnyProblemPanel.TabIndex = 14;
@@ -361,10 +361,10 @@
             // 
             // 
             this.wypozyczeniePlecaka.CustomButton.Image = null;
-            this.wypozyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.wypozyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wypozyczeniePlecaka.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.wypozyczeniePlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.wypozyczeniePlecaka.CustomButton.Name = "";
-            this.wypozyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.wypozyczeniePlecaka.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.wypozyczeniePlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wypozyczeniePlecaka.CustomButton.TabIndex = 1;
             this.wypozyczeniePlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -372,7 +372,7 @@
             this.wypozyczeniePlecaka.CustomButton.Visible = false;
             this.wypozyczeniePlecaka.Lines = new string[0];
             this.wypozyczeniePlecaka.Location = new System.Drawing.Point(2, 90);
-            this.wypozyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wypozyczeniePlecaka.Margin = new System.Windows.Forms.Padding(2);
             this.wypozyczeniePlecaka.MaxLength = 32767;
             this.wypozyczeniePlecaka.Name = "wypozyczeniePlecaka";
             this.wypozyczeniePlecaka.PasswordChar = '\0';
@@ -402,7 +402,7 @@
             this.modelTTP.FormattingEnabled = true;
             this.modelTTP.ItemHeight = 24;
             this.modelTTP.Location = new System.Drawing.Point(2, 152);
-            this.modelTTP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modelTTP.Margin = new System.Windows.Forms.Padding(2);
             this.modelTTP.Name = "modelTTP";
             this.modelTTP.Size = new System.Drawing.Size(130, 30);
             this.modelTTP.TabIndex = 18;
@@ -424,10 +424,10 @@
             // 
             // 
             this.ttp_maxWagaPlecaka.CustomButton.Image = null;
-            this.ttp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.ttp_maxWagaPlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ttp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.ttp_maxWagaPlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.ttp_maxWagaPlecaka.CustomButton.Name = "";
-            this.ttp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.ttp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.ttp_maxWagaPlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ttp_maxWagaPlecaka.CustomButton.TabIndex = 1;
             this.ttp_maxWagaPlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -435,7 +435,7 @@
             this.ttp_maxWagaPlecaka.CustomButton.Visible = false;
             this.ttp_maxWagaPlecaka.Lines = new string[0];
             this.ttp_maxWagaPlecaka.Location = new System.Drawing.Point(2, 19);
-            this.ttp_maxWagaPlecaka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ttp_maxWagaPlecaka.Margin = new System.Windows.Forms.Padding(2);
             this.ttp_maxWagaPlecaka.MaxLength = 32767;
             this.ttp_maxWagaPlecaka.Name = "ttp_maxWagaPlecaka";
             this.ttp_maxWagaPlecaka.PasswordChar = '\0';
@@ -456,7 +456,7 @@
             this.wybierzPlikDanych.FormattingEnabled = true;
             this.wybierzPlikDanych.ItemHeight = 23;
             this.wybierzPlikDanych.Location = new System.Drawing.Point(2, 73);
-            this.wybierzPlikDanych.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wybierzPlikDanych.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzPlikDanych.Name = "wybierzPlikDanych";
             this.wybierzPlikDanych.Size = new System.Drawing.Size(276, 29);
             this.wybierzPlikDanych.TabIndex = 4;
@@ -478,7 +478,7 @@
             this.wybierzProblem.FormattingEnabled = true;
             this.wybierzProblem.ItemHeight = 23;
             this.wybierzProblem.Location = new System.Drawing.Point(0, 19);
-            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wybierzProblem.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzProblem.Name = "wybierzProblem";
             this.wybierzProblem.Size = new System.Drawing.Size(416, 29);
             this.wybierzProblem.TabIndex = 2;
@@ -493,7 +493,7 @@
             this.kp_panel.HorizontalScrollbarHighlightOnWheel = false;
             this.kp_panel.HorizontalScrollbarSize = 8;
             this.kp_panel.Location = new System.Drawing.Point(2, 106);
-            this.kp_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kp_panel.Margin = new System.Windows.Forms.Padding(2);
             this.kp_panel.Name = "kp_panel";
             this.kp_panel.Size = new System.Drawing.Size(418, 202);
             this.kp_panel.TabIndex = 9;
@@ -507,10 +507,10 @@
             // 
             // 
             this.kp_maxWagaPlecaka.CustomButton.Image = null;
-            this.kp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(82, 2);
-            this.kp_maxWagaPlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kp_maxWagaPlecaka.CustomButton.Location = new System.Drawing.Point(110, 2);
+            this.kp_maxWagaPlecaka.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.kp_maxWagaPlecaka.CustomButton.Name = "";
-            this.kp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.kp_maxWagaPlecaka.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.kp_maxWagaPlecaka.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.kp_maxWagaPlecaka.CustomButton.TabIndex = 1;
             this.kp_maxWagaPlecaka.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -518,7 +518,7 @@
             this.kp_maxWagaPlecaka.CustomButton.Visible = false;
             this.kp_maxWagaPlecaka.Lines = new string[0];
             this.kp_maxWagaPlecaka.Location = new System.Drawing.Point(0, 19);
-            this.kp_maxWagaPlecaka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kp_maxWagaPlecaka.Margin = new System.Windows.Forms.Padding(2);
             this.kp_maxWagaPlecaka.MaxLength = 32767;
             this.kp_maxWagaPlecaka.Name = "kp_maxWagaPlecaka";
             this.kp_maxWagaPlecaka.PasswordChar = '\0';
@@ -558,7 +558,7 @@
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 8;
             this.metroPanel2.Location = new System.Drawing.Point(428, 2);
-            this.metroPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel2.MaximumSize = new System.Drawing.Size(420, 309);
             this.metroPanel2.MinimumSize = new System.Drawing.Size(420, 309);
             this.metroPanel2.Name = "metroPanel2";
@@ -574,10 +574,10 @@
             // 
             // 
             this.czasDzialaniaAlgorytmu.CustomButton.Image = null;
-            this.czasDzialaniaAlgorytmu.CustomButton.Location = new System.Drawing.Point(124, 2);
-            this.czasDzialaniaAlgorytmu.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.czasDzialaniaAlgorytmu.CustomButton.Location = new System.Drawing.Point(166, 2);
+            this.czasDzialaniaAlgorytmu.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.czasDzialaniaAlgorytmu.CustomButton.Name = "";
-            this.czasDzialaniaAlgorytmu.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.czasDzialaniaAlgorytmu.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.czasDzialaniaAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.czasDzialaniaAlgorytmu.CustomButton.TabIndex = 1;
             this.czasDzialaniaAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -586,7 +586,7 @@
             this.czasDzialaniaAlgorytmu.Lines = new string[] {
         "30"};
             this.czasDzialaniaAlgorytmu.Location = new System.Drawing.Point(212, 73);
-            this.czasDzialaniaAlgorytmu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.czasDzialaniaAlgorytmu.Margin = new System.Windows.Forms.Padding(2);
             this.czasDzialaniaAlgorytmu.MaxLength = 32767;
             this.czasDzialaniaAlgorytmu.Name = "czasDzialaniaAlgorytmu";
             this.czasDzialaniaAlgorytmu.PasswordChar = '\0';
@@ -608,10 +608,10 @@
             // 
             // 
             this.liczbaIteracjiAlgorytmu.CustomButton.Image = null;
-            this.liczbaIteracjiAlgorytmu.CustomButton.Location = new System.Drawing.Point(138, 2);
-            this.liczbaIteracjiAlgorytmu.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liczbaIteracjiAlgorytmu.CustomButton.Location = new System.Drawing.Point(184, 2);
+            this.liczbaIteracjiAlgorytmu.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.liczbaIteracjiAlgorytmu.CustomButton.Name = "";
-            this.liczbaIteracjiAlgorytmu.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.liczbaIteracjiAlgorytmu.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.liczbaIteracjiAlgorytmu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.liczbaIteracjiAlgorytmu.CustomButton.TabIndex = 1;
             this.liczbaIteracjiAlgorytmu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -620,7 +620,7 @@
             this.liczbaIteracjiAlgorytmu.Lines = new string[] {
         "2"};
             this.liczbaIteracjiAlgorytmu.Location = new System.Drawing.Point(2, 73);
-            this.liczbaIteracjiAlgorytmu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.liczbaIteracjiAlgorytmu.Margin = new System.Windows.Forms.Padding(2);
             this.liczbaIteracjiAlgorytmu.MaxLength = 32767;
             this.liczbaIteracjiAlgorytmu.Name = "liczbaIteracjiAlgorytmu";
             this.liczbaIteracjiAlgorytmu.PasswordChar = '\0';
@@ -653,7 +653,7 @@
             this.ae_panel.HorizontalScrollbarHighlightOnWheel = false;
             this.ae_panel.HorizontalScrollbarSize = 8;
             this.ae_panel.Location = new System.Drawing.Point(0, 106);
-            this.ae_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_panel.Margin = new System.Windows.Forms.Padding(2);
             this.ae_panel.Name = "ae_panel";
             this.ae_panel.Size = new System.Drawing.Size(421, 204);
             this.ae_panel.TabIndex = 14;
@@ -670,7 +670,7 @@
             this.aw_panel.HorizontalScrollbarHighlightOnWheel = false;
             this.aw_panel.HorizontalScrollbarSize = 8;
             this.aw_panel.Location = new System.Drawing.Point(0, 0);
-            this.aw_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.aw_panel.Margin = new System.Windows.Forms.Padding(2);
             this.aw_panel.Name = "aw_panel";
             this.aw_panel.Size = new System.Drawing.Size(421, 205);
             this.aw_panel.TabIndex = 23;
@@ -684,7 +684,7 @@
             this.domyslnyAlgorytmPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.domyslnyAlgorytmPanel.HorizontalScrollbarSize = 8;
             this.domyslnyAlgorytmPanel.Location = new System.Drawing.Point(0, 0);
-            this.domyslnyAlgorytmPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.domyslnyAlgorytmPanel.Margin = new System.Windows.Forms.Padding(2);
             this.domyslnyAlgorytmPanel.Name = "domyslnyAlgorytmPanel";
             this.domyslnyAlgorytmPanel.Size = new System.Drawing.Size(421, 205);
             this.domyslnyAlgorytmPanel.TabIndex = 22;
@@ -708,10 +708,10 @@
             // 
             // 
             this.aw_parametrP.CustomButton.Image = null;
-            this.aw_parametrP.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.aw_parametrP.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.aw_parametrP.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.aw_parametrP.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.aw_parametrP.CustomButton.Name = "";
-            this.aw_parametrP.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.aw_parametrP.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.aw_parametrP.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.aw_parametrP.CustomButton.TabIndex = 1;
             this.aw_parametrP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -719,7 +719,7 @@
             this.aw_parametrP.CustomButton.Visible = false;
             this.aw_parametrP.Lines = new string[0];
             this.aw_parametrP.Location = new System.Drawing.Point(2, 19);
-            this.aw_parametrP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.aw_parametrP.Margin = new System.Windows.Forms.Padding(2);
             this.aw_parametrP.MaxLength = 32767;
             this.aw_parametrP.Name = "aw_parametrP";
             this.aw_parametrP.PasswordChar = '\0';
@@ -750,10 +750,10 @@
             // 
             // 
             this.ae_pwoMutacji.CustomButton.Image = null;
-            this.ae_pwoMutacji.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.ae_pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_pwoMutacji.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.ae_pwoMutacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.ae_pwoMutacji.CustomButton.Name = "";
-            this.ae_pwoMutacji.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.ae_pwoMutacji.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.ae_pwoMutacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ae_pwoMutacji.CustomButton.TabIndex = 1;
             this.ae_pwoMutacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -762,7 +762,7 @@
             this.ae_pwoMutacji.Lines = new string[] {
         "0,1"};
             this.ae_pwoMutacji.Location = new System.Drawing.Point(2, 131);
-            this.ae_pwoMutacji.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_pwoMutacji.Margin = new System.Windows.Forms.Padding(2);
             this.ae_pwoMutacji.MaxLength = 32767;
             this.ae_pwoMutacji.Name = "ae_pwoMutacji";
             this.ae_pwoMutacji.PasswordChar = '\0';
@@ -794,10 +794,10 @@
             // 
             // 
             this.ae_pwoKrzyzowania.CustomButton.Image = null;
-            this.ae_pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.ae_pwoKrzyzowania.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_pwoKrzyzowania.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.ae_pwoKrzyzowania.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.ae_pwoKrzyzowania.CustomButton.Name = "";
-            this.ae_pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.ae_pwoKrzyzowania.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.ae_pwoKrzyzowania.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ae_pwoKrzyzowania.CustomButton.TabIndex = 1;
             this.ae_pwoKrzyzowania.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -806,7 +806,7 @@
             this.ae_pwoKrzyzowania.Lines = new string[] {
         "0,56"};
             this.ae_pwoKrzyzowania.Location = new System.Drawing.Point(2, 72);
-            this.ae_pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_pwoKrzyzowania.Margin = new System.Windows.Forms.Padding(2);
             this.ae_pwoKrzyzowania.MaxLength = 32767;
             this.ae_pwoKrzyzowania.Name = "ae_pwoKrzyzowania";
             this.ae_pwoKrzyzowania.PasswordChar = '\0';
@@ -838,10 +838,10 @@
             // 
             // 
             this.ae_rozmiarPopulacji.CustomButton.Image = null;
-            this.ae_rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(80, 2);
-            this.ae_rozmiarPopulacji.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_rozmiarPopulacji.CustomButton.Location = new System.Drawing.Point(107, 2);
+            this.ae_rozmiarPopulacji.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.ae_rozmiarPopulacji.CustomButton.Name = "";
-            this.ae_rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(14, 15);
+            this.ae_rozmiarPopulacji.CustomButton.Size = new System.Drawing.Size(19, 19);
             this.ae_rozmiarPopulacji.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ae_rozmiarPopulacji.CustomButton.TabIndex = 1;
             this.ae_rozmiarPopulacji.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -850,7 +850,7 @@
             this.ae_rozmiarPopulacji.Lines = new string[] {
         "20"};
             this.ae_rozmiarPopulacji.Location = new System.Drawing.Point(2, 19);
-            this.ae_rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_rozmiarPopulacji.Margin = new System.Windows.Forms.Padding(2);
             this.ae_rozmiarPopulacji.MaxLength = 32767;
             this.ae_rozmiarPopulacji.Name = "ae_rozmiarPopulacji";
             this.ae_rozmiarPopulacji.PasswordChar = '\0';
@@ -871,7 +871,7 @@
             this.ae_metodaSelekcji.FormattingEnabled = true;
             this.ae_metodaSelekcji.ItemHeight = 24;
             this.ae_metodaSelekcji.Location = new System.Drawing.Point(236, 19);
-            this.ae_metodaSelekcji.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_metodaSelekcji.Margin = new System.Windows.Forms.Padding(2);
             this.ae_metodaSelekcji.Name = "ae_metodaSelekcji";
             this.ae_metodaSelekcji.Size = new System.Drawing.Size(130, 30);
             this.ae_metodaSelekcji.TabIndex = 14;
@@ -892,7 +892,7 @@
             this.ae_rodzajKrzyzowania.FormattingEnabled = true;
             this.ae_rodzajKrzyzowania.ItemHeight = 24;
             this.ae_rodzajKrzyzowania.Location = new System.Drawing.Point(236, 72);
-            this.ae_rodzajKrzyzowania.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ae_rodzajKrzyzowania.Margin = new System.Windows.Forms.Padding(2);
             this.ae_rodzajKrzyzowania.Name = "ae_rodzajKrzyzowania";
             this.ae_rodzajKrzyzowania.Size = new System.Drawing.Size(130, 30);
             this.ae_rodzajKrzyzowania.TabIndex = 12;
@@ -943,7 +943,7 @@
             this.wybierzAlgorytm.FormattingEnabled = true;
             this.wybierzAlgorytm.ItemHeight = 23;
             this.wybierzAlgorytm.Location = new System.Drawing.Point(2, 19);
-            this.wybierzAlgorytm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wybierzAlgorytm.Margin = new System.Windows.Forms.Padding(2);
             this.wybierzAlgorytm.Name = "wybierzAlgorytm";
             this.wybierzAlgorytm.Size = new System.Drawing.Size(415, 29);
             this.wybierzAlgorytm.TabIndex = 11;
@@ -968,7 +968,7 @@
             this.tableLayoutPanel5.Controls.Add(this.uruchomBadanie, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(428, 319);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -980,7 +980,7 @@
             this.uruchomBadanie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uruchomBadanie.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uruchomBadanie.Location = new System.Drawing.Point(213, 2);
-            this.uruchomBadanie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uruchomBadanie.Margin = new System.Windows.Forms.Padding(2);
             this.uruchomBadanie.Name = "uruchomBadanie";
             this.uruchomBadanie.Size = new System.Drawing.Size(207, 28);
             this.uruchomBadanie.TabIndex = 0;
@@ -994,7 +994,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 590);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(872, 627);
             this.Name = "Badanie";
             this.Text = "Badanie";

@@ -16,7 +16,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         {
             if(typSelekcji == "Metoda ruletki")
             {
-                if(this.pokolenie != pokolenie)
+                System.Console.WriteLine("Pokolenie: " + this.pokolenie +" != "+ pokolenie);
+
+                if (this.pokolenie != pokolenie || this.pokolenie == 0)
                 {
                     wskazniki = ZwrocWskazniki(populacja);
                 }
@@ -27,36 +29,20 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
             return Turniej(populacja);
         }
-
-        protected override ReprezentacjaRozwiazania Turniej(ReprezentacjaRozwiazania[] populacja)
-        {
-            ReprezentacjaRozwiazania zwyciezca = populacja[0];
-            Dictionary<string, float[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(populacja[0]);
-
-            for (int i = 0; i <= 5; i++)
-            {
-                int k = losowy.Next(populacja.Length - 1);
-                Dictionary<string, float[]> dopasowanie = rozwiazanie.FunkcjaDopasowania(populacja[k]);
-
-                if (dopasowanieZwyciezcy["max"][0] < dopasowanie["max"][0])
-                {
-                    zwyciezca = populacja[k];
-                    dopasowanieZwyciezcy = dopasowanie;
-                }
-            }
-
-            return zwyciezca;
-        }
-
+        
         protected override ReprezentacjaRozwiazania MetodaRuletki(ReprezentacjaRozwiazania[] populacja)
         {
             ReprezentacjaRozwiazania osobnik = new ReprezentacjaRozwiazania();
             float pwo = (float)losowy.NextDouble(),
                    poprzednik = 0;
-            
+
+            System.Console.WriteLine("Wskaźniki: "+ string.Join(",", wskazniki.ToArray()));
+
             for(int i = 0; i < populacja.Length; i++)
             {
-                if(poprzednik <= pwo && pwo < (float)wskazniki[i])
+                System.Console.WriteLine("Test: "+ poprzednik +" : "+ pwo + " : " + (float)wskazniki[i]);
+
+                if (poprzednik <= pwo && pwo < (float)wskazniki[i])
                 {
                     osobnik = populacja[i];
                     break;
@@ -65,6 +51,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 poprzednik = (float)wskazniki[i];
             }
 
+            System.Console.WriteLine(osobnik.ZwrocGenotyp2Wymiarowy());
             return osobnik;
         }
 
@@ -88,6 +75,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             }
 
             return wskazniki;
+        }
+
+        protected override ReprezentacjaRozwiazania Turniej(ReprezentacjaRozwiazania[] populacja)
+        {
+            ReprezentacjaRozwiazania zwyciezca = populacja[0];
+            Dictionary<string, float[]> dopasowanieZwyciezcy = rozwiazanie.FunkcjaDopasowania(populacja[0]);
+
+            for (int i = 0; i <= 5; i++)
+            {
+                int k = losowy.Next(populacja.Length - 1);
+                Dictionary<string, float[]> dopasowanie = rozwiazanie.FunkcjaDopasowania(populacja[k]);
+
+                if (dopasowanieZwyciezcy["max"][0] < dopasowanie["max"][0])
+                {
+                    zwyciezca = populacja[k];
+                    dopasowanieZwyciezcy = dopasowanie;
+                }
+            }
+
+            return zwyciezca;
         }
     }
 }
