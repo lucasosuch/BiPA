@@ -30,8 +30,6 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.zapiszPlik = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -44,12 +42,14 @@
             this.ttp_liczbaPrzedmiotow = new MetroFramework.Controls.MetroComboBox();
             this.ttp_typSiatki = new MetroFramework.Controls.MetroComboBox();
             this.ttp_sumaWag = new MetroFramework.Controls.MetroComboBox();
-            this.ttp_sumaWartoci = new MetroFramework.Controls.MetroComboBox();
+            this.ttp_sumaWartosci = new MetroFramework.Controls.MetroComboBox();
             this.ttp_procentRozrzutu = new MetroFramework.Controls.MetroComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.zapiszPlik = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.metroPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -82,30 +82,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Generowanie plików danych";
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.zapiszPlik, 2, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 337);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(553, 35);
-            this.tableLayoutPanel2.TabIndex = 5;
-            // 
-            // zapiszPlik
-            // 
-            this.zapiszPlik.Location = new System.Drawing.Point(445, 3);
-            this.zapiszPlik.Name = "zapiszPlik";
-            this.zapiszPlik.Size = new System.Drawing.Size(105, 29);
-            this.zapiszPlik.TabIndex = 0;
-            this.zapiszPlik.Text = "Zapisz";
-            this.zapiszPlik.UseSelectable = true;
-            // 
             // metroPanel1
             // 
             this.metroPanel1.Controls.Add(this.metroPanel3);
@@ -133,7 +109,7 @@
             this.metroPanel3.Controls.Add(this.ttp_liczbaPrzedmiotow);
             this.metroPanel3.Controls.Add(this.ttp_typSiatki);
             this.metroPanel3.Controls.Add(this.ttp_sumaWag);
-            this.metroPanel3.Controls.Add(this.ttp_sumaWartoci);
+            this.metroPanel3.Controls.Add(this.ttp_sumaWartosci);
             this.metroPanel3.Controls.Add(this.ttp_procentRozrzutu);
             this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel3.HorizontalScrollbarBarColor = true;
@@ -196,6 +172,13 @@
             // 
             this.ttp_liczbaMiast.FormattingEnabled = true;
             this.ttp_liczbaMiast.ItemHeight = 24;
+            this.ttp_liczbaMiast.Items.AddRange(new object[] {
+            "5",
+            "7",
+            "10",
+            "15",
+            "18",
+            "21"});
             this.ttp_liczbaMiast.Location = new System.Drawing.Point(3, 24);
             this.ttp_liczbaMiast.Name = "ttp_liczbaMiast";
             this.ttp_liczbaMiast.Size = new System.Drawing.Size(159, 30);
@@ -215,6 +198,15 @@
             // 
             this.ttp_liczbaPrzedmiotow.FormattingEnabled = true;
             this.ttp_liczbaPrzedmiotow.ItemHeight = 24;
+            this.ttp_liczbaPrzedmiotow.Items.AddRange(new object[] {
+            "5",
+            "7",
+            "10",
+            "13",
+            "15",
+            "18",
+            "21",
+            "25"});
             this.ttp_liczbaPrzedmiotow.Location = new System.Drawing.Point(3, 122);
             this.ttp_liczbaPrzedmiotow.Name = "ttp_liczbaPrzedmiotow";
             this.ttp_liczbaPrzedmiotow.Size = new System.Drawing.Size(159, 30);
@@ -225,6 +217,12 @@
             // 
             this.ttp_typSiatki.FormattingEnabled = true;
             this.ttp_typSiatki.ItemHeight = 24;
+            this.ttp_typSiatki.Items.AddRange(new object[] {
+            "7x7",
+            "8x8",
+            "10x10",
+            "12x12",
+            "15x15"});
             this.ttp_typSiatki.Location = new System.Drawing.Point(243, 122);
             this.ttp_typSiatki.Name = "ttp_typSiatki";
             this.ttp_typSiatki.Size = new System.Drawing.Size(159, 30);
@@ -235,31 +233,76 @@
             // 
             this.ttp_sumaWag.FormattingEnabled = true;
             this.ttp_sumaWag.ItemHeight = 24;
+            this.ttp_sumaWag.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30"});
             this.ttp_sumaWag.Location = new System.Drawing.Point(3, 221);
             this.ttp_sumaWag.Name = "ttp_sumaWag";
             this.ttp_sumaWag.Size = new System.Drawing.Size(159, 30);
             this.ttp_sumaWag.TabIndex = 4;
             this.ttp_sumaWag.UseSelectable = true;
             // 
-            // ttp_sumaWartoci
+            // ttp_sumaWartosci
             // 
-            this.ttp_sumaWartoci.FormattingEnabled = true;
-            this.ttp_sumaWartoci.ItemHeight = 24;
-            this.ttp_sumaWartoci.Location = new System.Drawing.Point(243, 24);
-            this.ttp_sumaWartoci.Name = "ttp_sumaWartoci";
-            this.ttp_sumaWartoci.Size = new System.Drawing.Size(159, 30);
-            this.ttp_sumaWartoci.TabIndex = 5;
-            this.ttp_sumaWartoci.UseSelectable = true;
+            this.ttp_sumaWartosci.FormattingEnabled = true;
+            this.ttp_sumaWartosci.ItemHeight = 24;
+            this.ttp_sumaWartosci.Items.AddRange(new object[] {
+            "50",
+            "100",
+            "150",
+            "200",
+            "250",
+            "300"});
+            this.ttp_sumaWartosci.Location = new System.Drawing.Point(243, 24);
+            this.ttp_sumaWartosci.Name = "ttp_sumaWartosci";
+            this.ttp_sumaWartosci.Size = new System.Drawing.Size(159, 30);
+            this.ttp_sumaWartosci.TabIndex = 5;
+            this.ttp_sumaWartosci.UseSelectable = true;
             // 
             // ttp_procentRozrzutu
             // 
             this.ttp_procentRozrzutu.FormattingEnabled = true;
             this.ttp_procentRozrzutu.ItemHeight = 24;
+            this.ttp_procentRozrzutu.Items.AddRange(new object[] {
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"});
             this.ttp_procentRozrzutu.Location = new System.Drawing.Point(243, 221);
             this.ttp_procentRozrzutu.Name = "ttp_procentRozrzutu";
             this.ttp_procentRozrzutu.Size = new System.Drawing.Size(159, 30);
             this.ttp_procentRozrzutu.TabIndex = 6;
             this.ttp_procentRozrzutu.UseSelectable = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.zapiszPlik, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 337);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(553, 35);
+            this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // zapiszPlik
+            // 
+            this.zapiszPlik.Location = new System.Drawing.Point(445, 3);
+            this.zapiszPlik.Name = "zapiszPlik";
+            this.zapiszPlik.Size = new System.Drawing.Size(105, 29);
+            this.zapiszPlik.TabIndex = 0;
+            this.zapiszPlik.Text = "Zapisz";
+            this.zapiszPlik.UseSelectable = true;
+            this.zapiszPlik.Click += new System.EventHandler(this.zapiszPlik_Click);
             // 
             // GenerowaniePlikow
             // 
@@ -273,10 +316,10 @@
             this.Text = "GenerowaniePlikow";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
             this.metroPanel3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -293,7 +336,7 @@
         private MetroFramework.Controls.MetroComboBox ttp_liczbaMiast;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox ttp_procentRozrzutu;
-        private MetroFramework.Controls.MetroComboBox ttp_sumaWartoci;
+        private MetroFramework.Controls.MetroComboBox ttp_sumaWartosci;
         private MetroFramework.Controls.MetroComboBox ttp_typSiatki;
         private MetroFramework.Controls.MetroPanel metroPanel3;
         private MetroFramework.Controls.MetroLabel metroLabel7;

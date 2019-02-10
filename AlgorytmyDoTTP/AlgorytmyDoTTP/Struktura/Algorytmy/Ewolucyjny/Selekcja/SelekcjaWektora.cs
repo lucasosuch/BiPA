@@ -36,12 +36,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
             float pwo = (float)losowy.NextDouble(),
                    poprzednik = 0;
 
-            System.Console.WriteLine("Wskaźniki: "+ string.Join(",", wskazniki.ToArray()));
-
             for(int i = 0; i < populacja.Length; i++)
             {
-                System.Console.WriteLine("Test: "+ poprzednik +" : "+ pwo + " : " + (float)wskazniki[i]);
-
                 if (poprzednik <= pwo && pwo < (float)wskazniki[i])
                 {
                     osobnik = populacja[i];
@@ -50,8 +46,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
                 poprzednik = (float)wskazniki[i];
             }
-
-            System.Console.WriteLine(osobnik.ZwrocGenotyp2Wymiarowy());
+            
             return osobnik;
         }
 

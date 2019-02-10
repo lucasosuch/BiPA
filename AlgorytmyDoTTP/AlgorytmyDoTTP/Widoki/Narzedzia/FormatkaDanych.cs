@@ -141,15 +141,19 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 int losowaDostepnosc = losowy.Next(liczbaPrzedmiotow);
                 ArrayList dostepnosc = new ArrayList();
 
-                for (int j = 0; j < losowaDostepnosc; j++)
+                if (i != 0)
                 {
-                    int losowaWartosc = losowy.Next(liczbaPrzedmiotow) + 1;
-
-                    if (!dostepnosc.Contains(losowaWartosc))
+                    for (int j = 0; j < losowaDostepnosc; j++)
                     {
-                        dostepnosc.Add(losowaWartosc);
+                        int losowaWartosc = losowy.Next(liczbaPrzedmiotow) + 1;
+
+                        if (!dostepnosc.Contains(losowaWartosc))
+                        {
+                            dostepnosc.Add(losowaWartosc);
+                        }
                     }
                 }
+                else dostepnosc.Add("");
 
                 XElement miasto = new XElement("miasto", string.Join(",", dostepnosc.ToArray()));
                 dostepnePrzedmioty.Add(miasto);
@@ -157,6 +161,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             korzen.Add(dostepnePrzedmioty);
             korzen.Add(new XElement("hash", korzen.GetHashCode()));
+            korzen.Add(new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow));
+            korzen.Add(new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow));
             xml.Add(korzen);
             xml.Save("./Dane/TTP/" + nazwa + ".xml");
 
@@ -170,42 +176,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                    prawaStrona = srednia * ((float)(100 + procentRozrzutuWartosci) / 100);
 
             return (float)(losowy.NextDouble() * (prawaStrona - lewaStrona) + lewaStrona);
-        }
-
-        private void zapiszKonfigurację_Click(object sender, EventArgs e)
-        {
-            //int liczbaMiast = 0,
-            //    liczbaPrzedmiotow = 0,
-            //    procentRozrzutuWartosci = 0;
-
-            //double sumaWagPrzedmiotow = 0,
-            //       sumaWartosciPrzedmiotow = 0;
-
-            //switch (wybierzProblemDoKonfiguracji.Text)
-            //{
-            //    case "Problem Komiwojażera":
-            //        liczbaMiast = int.Parse(tsp_liczbaMiast.Text);
-
-            //        glowna.generujDanePodTSP(liczbaMiast, tsp_typSiatki.Text);
-            //        break;
-            //    case "Problem Plecakowy":
-            //        liczbaPrzedmiotow = int.Parse(kp_liczbaPrzedmiotow.Text);
-            //        sumaWagPrzedmiotow = double.Parse(kp_sumaWag.Text);
-            //        sumaWartosciPrzedmiotow = double.Parse(kp_sumaWartosci.Text);
-            //        procentRozrzutuWartosci = int.Parse(kp_procentRozrzutu.Text);
-
-            //        glowna.generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci);
-            //        break;
-            //    case "Problem Podróżującego Złodzieja":
-            //        liczbaMiast = int.Parse(ttp_liczbaMiast.Text);
-            //        liczbaPrzedmiotow = int.Parse(ttp_liczbaPrzedmiotow.Text);
-            //        sumaWagPrzedmiotow = double.Parse(ttp_sumaWag.Text);
-            //        sumaWartosciPrzedmiotow = double.Parse(ttp_sumaWartosci.Text);
-            //        procentRozrzutuWartosci = int.Parse(ttp_procentRozrzutu.Text);
-
-            //        glowna.generujDanePodTTP(liczbaMiast, ttp_typSiatki.Text, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci);
-            //        break;
-            //}
         }
     }
 }

@@ -31,7 +31,7 @@ namespace AlgorytmyDoTTP.Widoki
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
         {
             // stworzenie losowej plików danych dla TTP, TSP, KP
-            GenerowaniePlikow generowaniePlikow = new GenerowaniePlikow();
+            GenerowaniePlikow generowaniePlikow = new GenerowaniePlikow(this);
             generowaniePlikow.Show();
         }
 
