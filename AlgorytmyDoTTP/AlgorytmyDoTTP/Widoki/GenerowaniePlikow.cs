@@ -28,7 +28,8 @@ namespace AlgorytmyDoTTP.Widoki
             sumaWartosciPrzedmiotow = float.Parse(ttp_sumaWartosci.Text);
             procentRozrzutuWartosci = int.Parse(ttp_procentRozrzutu.Text);
 
-            widokDodawaniaPlikow.plikiDanych.Items.Insert(0, (new FormatkaDanych()).generujDanePodTTP(liczbaMiast, ttp_typSiatki.Text, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci));     
+            widokDodawaniaPlikow.plikiDanych.Items.Insert(0, (new FormatkaDanych()).generujDanePodTTP(liczbaMiast, ttp_typSiatki.Text, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci));
+            MessageBox.Show("Wygenerowno plik danych!", "Nowy plik danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

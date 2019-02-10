@@ -63,6 +63,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                 najlepszeRozwiazanie = listaRozwiazan[iterator];
                 najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[iterator]);
                 iterator++;
+
+                if (listaRozwiazan.Length == iterator) break;
             }
 
             foreach (ReprezentacjaRozwiazania rozwiazanie in listaRozwiazan)

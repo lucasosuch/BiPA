@@ -73,7 +73,7 @@ namespace AlgorytmyDoTTP
 
         private void dodajBadanie_Click(object sender, EventArgs e)
         {
-            Badanie widokBadania = new Badanie();
+            Badanie widokBadania = new Badanie(this);
             widokBadania.Show();
         }
 

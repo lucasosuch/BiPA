@@ -18,12 +18,14 @@ namespace AlgorytmyDoTTP.Widoki
         private string[] nazwyPlikow;
         private Random losowy = new Random();
         private bool narysowanoWykres = false;
+        private Glowna widokFormatkiGlownej;
         private FormatkaBadania badanie = new FormatkaBadania();
 
-        public Badanie()
+        public Badanie(Glowna widokFormatkiGlownej)
         {
             InitializeComponent();
             UstawWartosciDomyslne();
+            this.widokFormatkiGlownej = widokFormatkiGlownej;
         }
 
         /// <summary>
@@ -127,7 +129,7 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 string pulpit = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku("csv", ""));
+                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku(".csv", ""));
 
                 File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV(), System.Text.Encoding.UTF8);
                 MessageBox.Show("Pobrano plik CSV, na pulpit!", "Plik CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -142,7 +144,7 @@ namespace AlgorytmyDoTTP.Widoki
         /// </summary>
         private void zapiszBadanie_Click(object sender, EventArgs e)
         {
-            badanie.ZapiszBadanie();
+            widokFormatkiGlownej.daneHistoryczne.Items.Add(badanie.ZapiszBadanie());
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
             zapiszBadanie.Enabled = false;
             zapiszBadanie.Text = "Zapisano Badanie";
@@ -196,6 +198,7 @@ namespace AlgorytmyDoTTP.Widoki
             zapiszBadanie.Enabled = true;
             pobierzPlikCSV.Enabled = true;
             rysujWykes.Enabled = true;
+            zapiszBadanie.Text = "Zapisz Badanie";
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)

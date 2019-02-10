@@ -99,13 +99,13 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Nazwę pliku</returns>
         public string ZwrocNazwePliku(string rozszerzenie, string iter)
         {
-            return "("+ data.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter +"."+ rozszerzenie;
+            return "("+ data.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter + rozszerzenie;
         }
 
         /// <summary>
         /// Metoda zapisuje badanie do pliku XML na dysku
         /// </summary>
-        public void ZapiszBadanie()
+        public string ZapiszBadanie()
         {
             int iter = 0,
                 najlepszaIteracjaBadania = analityka.ZwrocNajlepszaIteracje();
@@ -114,7 +114,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             do
             {
                 iter++;
-                znalezionePliki = Directory.GetFiles(@"./Badania/", ZwrocNazwePliku("xml", "_" + iter));
+                znalezionePliki = Directory.GetFiles(@"./Badania/", ZwrocNazwePliku(".xml", "_" + iter));
             } while (znalezionePliki.Length != 0);
 
             XDocument xml = new XDocument();
@@ -184,7 +184,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             badanie.Add(dodatkoweDane);
             xml.Add(badanie);
 
-            xml.Save("./Badania/"+ ZwrocNazwePliku("xml", "_"+ iter));
+            xml.Save("./Badania/"+ ZwrocNazwePliku(".xml", "_"+ iter));
+
+            return ZwrocNazwePliku("", "_" + iter);
         }
 
         /// <summary>
