@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+﻿namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
 {
     /// <summary>
     /// Klasa pełniąca rolę genotypu / zakodowanego rozwiązania w dowolnej strukturze danych

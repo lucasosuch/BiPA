@@ -2,7 +2,9 @@
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
+using AlgorytmyDoTTP.Widoki;
 using System;
+using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
 {
@@ -32,52 +34,72 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
         
-        public void Start()
+        public Task Start(IProgress<ProgressReport> progress)
         {
+            int czas = 0,
+                poprzedniaSekunda = -1,
+                totalProgress = analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu();
+
+            ProgressReport progressReport = new ProgressReport();
             short liczbaOsobnikowPopulacji = (short)(populacjaBazowa.Length * 2 * pwoKrzyzowania);
 
-            for (short i = 0; i < analityka.ZwrocLiczbeIteracji(); i++)
+            return Task.Run(() =>
             {
-                int liczbaPokolen = 0;
-                ReprezentacjaRozwiazania[] nowaPopulacja = new ReprezentacjaRozwiazania[liczbaOsobnikowPopulacji];
-                analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
-                ReprezentacjaRozwiazania[]  tmpPopulacja = (ReprezentacjaRozwiazania[])populacjaBazowa.Clone();
-
-                // iterując przez wszystkie pokolenia
-                while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
+                for (short i = 0; i < analityka.ZwrocLiczbeIteracji(); i++)
                 {
-                    // wczytujemy pewną liczbę osobników z populacji
-                    for (short j = 0; j < liczbaOsobnikowPopulacji; j += 2)
+                    int liczbaPokolen = 0;
+                    ReprezentacjaRozwiazania[] nowaPopulacja = new ReprezentacjaRozwiazania[liczbaOsobnikowPopulacji];
+                    analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
+                    ReprezentacjaRozwiazania[] tmpPopulacja = (ReprezentacjaRozwiazania[])populacjaBazowa.Clone();
+                    
+                    // iterując przez wszystkie pokolenia
+                    while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
                     {
-                        // zależną od prawdopodobieństwa kzyżowania
-                        // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
-                        ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
-                                                tata = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
-                                                dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
-                                                dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
-
-                        // dzieci dodajemy do nowej populacji
-                        nowaPopulacja[j] = dziecko1;
-                        // sprawdzając czy nie stworzyliśmy najlepszego rozwiązania do tej pory
-                        analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko1);
-
-                        if (j + 1 < liczbaOsobnikowPopulacji)
+                        // wczytujemy pewną liczbę osobników z populacji
+                        for (short j = 0; j < liczbaOsobnikowPopulacji; j += 2)
                         {
-                            nowaPopulacja[j + 1] = dziecko2;
-                            analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko2);
+                            // zależną od prawdopodobieństwa kzyżowania
+                            // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
+                            ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
+                                                    tata = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
+                                                    dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
+                                                    dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
+
+                            // dzieci dodajemy do nowej populacji
+                            nowaPopulacja[j] = dziecko1;
+                            // sprawdzając czy nie stworzyliśmy najlepszego rozwiązania do tej pory
+                            analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko1);
+
+                            if (j + 1 < liczbaOsobnikowPopulacji)
+                            {
+                                nowaPopulacja[j + 1] = dziecko2;
+                                analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko2);
+                            }
                         }
+
+                        // wymieniamy starą populację na nową populację
+                        tmpPopulacja = (ReprezentacjaRozwiazania[])nowaPopulacja.Clone();
+
+                        liczbaPokolen++; // zwiększając liczbę pokoleń
+
+                        if (poprzedniaSekunda == -1 || poprzedniaSekunda != (int)analityka.IleCzasuDzialaAlgorytm("s"))
+                        {
+                            czas++;
+                            poprzedniaSekunda = (int)analityka.IleCzasuDzialaAlgorytm("s");
+                        }
+
+                        progressReport.PercentComplete = czas * 100 / totalProgress;
+                        if (progressReport.PercentComplete > 100) progressReport.PercentComplete = 100;
+                        progress.Report(progressReport);
                     }
 
-                    // wymieniamy starą populację na nową populację
-                    tmpPopulacja = (ReprezentacjaRozwiazania[])nowaPopulacja.Clone();
-
-                    liczbaPokolen++; // zwiększając liczbę pokoleń
+                    // reset pomiaru czasu
+                    analityka.ResetPomiaruCzasu();
+                    poprzedniaSekunda = -1;
                 }
 
-                analityka.ResetPomiaruCzasu(); // zakończenie pomiaru czasu
-            }
-
-            analityka.ObliczSrednieWartosciProcesu();
+                analityka.ObliczSrednieWartosciProcesu();
+            });
         }
 
         public AAnalityka ZwrocAnalityke()

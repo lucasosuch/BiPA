@@ -1,6 +1,9 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+﻿using System;
+using System.Threading.Tasks;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
+using AlgorytmyDoTTP.Widoki;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 {
@@ -39,6 +42,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             }
             
             analityka.ObliczSrednieWartosciProcesu();
+        }
+
+        public Task Start(IProgress<ProgressReport> progress)
+        {
+            throw new NotImplementedException();
         }
 
         public AAnalityka ZwrocAnalityke()

@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -27,6 +29,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
         private string nazwaFolderu = "";
+        private IAlgorytm algorytm;
 
         public FormatkaBadania()
         {
@@ -42,14 +45,17 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// Metoda uruchamiająca badanie, tzn. rozpoczęcie rozwiązania wybranego Problemu Optymalizacyjnego za pomocą wybranego Algorytmu
         /// </summary>
         /// <returns>Wyniki czytelne dla człowieka</returns>
-        public string UruchomBadanie(string[] nazwyPlikow)
+        public Task UruchomBadanie(string[] nazwyPlikow, Progress<ProgressReport> progressReport)
         {
-            IAlgorytm algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem(), nazwyPlikow);
-            algorytm.Start();
+            algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem(), nazwyPlikow);
+            return algorytm.Start(progressReport);
+        }
 
+        public string wynikiBadania()
+        {
             analityka = algorytm.ZwrocAnalityke();
             return "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
-                   "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() +", o wartości (F(x)) "+ analityka.ZwrocWartoscNiebo()["max"][0];
+                            "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości (F(x)) " + analityka.ZwrocWartoscNiebo()["max"][0];
         }
 
         public AAnalityka ZwrocAnalityke()
