@@ -10,7 +10,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     {
         private Stopwatch pomiarCzasu = new Stopwatch();
         protected string[] nazwyPlikow;
-        protected readonly short[][] liczbaWCzasie;
+        protected readonly int[][] liczbaWCzasie;
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
@@ -27,7 +27,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             this.liczbaIteracji = liczbaIteracji;
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 
-            liczbaWCzasie = new short[liczbaIteracji][];
+            liczbaWCzasie = new int[liczbaIteracji][];
             najlepszaWartoscFunkcji = new float[liczbaIteracji];
             minWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             maxWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
@@ -36,7 +36,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
             for (short i = 0; i < liczbaIteracji; i++)
             {
-                liczbaWCzasie[i] = new short[czasDzialaniaAlgorytmu + 1];
+                liczbaWCzasie[i] = new int[czasDzialaniaAlgorytmu + 1];
                 najlepszaWartoscFunkcji[i] = -10000;
                 minWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
                 maxWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
@@ -191,40 +191,29 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
         public void DopiszWartoscProcesu(short index, int czas, ReprezentacjaRozwiazania genotyp)
         {
-            float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
-
-            if (najlepszaWartoscFunkcji[index] < wartosc)
+            if (czas <= czasDzialaniaAlgorytmu)
             {
-                najlepszeRozwiazanie[index] = genotyp;
-                najlepszaWartoscFunkcji[index] = wartosc;
-            }
+                float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
 
-            try
-            {
+                if (najlepszaWartoscFunkcji[index] < wartosc)
+                {
+                    najlepszeRozwiazanie[index] = genotyp;
+                    najlepszaWartoscFunkcji[index] = wartosc;
+                }
+                
                 if (minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
                 {
                     minWartoscProcesuPoszukiwan[index][czas] = wartosc;
                 }
+
                 if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
                 {
                     maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
                 }
-            } catch(Exception e)
-            {
-                Console.WriteLine(e);
-                Console.WriteLine(index + " " + czas);
-                Console.WriteLine(maxWartoscProcesuPoszukiwan[index]);
-                Console.WriteLine(minWartoscProcesuPoszukiwan[index]);
-
-                for(int i = 0; i < czas; i++)
-                {
-                    Console.WriteLine("i: " + i + ", max: " + maxWartoscProcesuPoszukiwan[index][i]);
-                    Console.WriteLine("i: " + i + ", min: " + minWartoscProcesuPoszukiwan[index][i]);
-                }
+                
+                liczbaWCzasie[index][czas]++;
+                sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc;
             }
-
-            liczbaWCzasie[index][czas]++;
-            sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc;
         }
 
         public int ZwrocNajlepszaIteracje()
