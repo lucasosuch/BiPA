@@ -93,8 +93,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 }
             }
 
-            Console.WriteLine("Najlepszy index: " + najlepszyIndex + ", maxWartosc: " + maxWartosc);
-            Console.WriteLine("test1: " + rozwiazanie.FunkcjaDopasowania(najlepszeRozwiazanie[najlepszyIndex])["max"][0]);
             return najlepszeRozwiazanie[najlepszyIndex];
         }
 
@@ -114,7 +112,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// <returns>Wartość funkcji celu</returns>
         public Dictionary<string, float[]> ZwrocWartoscNiebo()
         {
-            Console.WriteLine("test2: "+ rozwiazanie.FunkcjaDopasowania(ZwrocNajlepszyGenotyp())["max"][0]);
             return rozwiazanie.FunkcjaDopasowania(ZwrocNajlepszyGenotyp());
         }
 
@@ -202,13 +199,28 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 najlepszaWartoscFunkcji[index] = wartosc;
             }
 
-            if(minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+            try
             {
-                minWartoscProcesuPoszukiwan[index][czas] = wartosc;
-            }
-            if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+                if (minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+                {
+                    minWartoscProcesuPoszukiwan[index][czas] = wartosc;
+                }
+                if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+                {
+                    maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
+                }
+            } catch(Exception e)
             {
-                maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
+                Console.WriteLine(e);
+                Console.WriteLine(index + " " + czas);
+                Console.WriteLine(maxWartoscProcesuPoszukiwan[index]);
+                Console.WriteLine(minWartoscProcesuPoszukiwan[index]);
+
+                for(int i = 0; i < czas; i++)
+                {
+                    Console.WriteLine("i: " + i + ", max: " + maxWartoscProcesuPoszukiwan[index][i]);
+                    Console.WriteLine("i: " + i + ", min: " + minWartoscProcesuPoszukiwan[index][i]);
+                }
             }
 
             liczbaWCzasie[index][czas]++;

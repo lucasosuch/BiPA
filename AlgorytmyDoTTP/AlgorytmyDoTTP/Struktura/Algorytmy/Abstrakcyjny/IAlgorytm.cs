@@ -1,5 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Widoki;
+using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
@@ -10,7 +10,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
         /// <summary>
         /// Metoda uruchamiająca Algorytm Ewolucyjny
         /// </summary>
-        Task Start(IProgress<ProgressReport> progress);
+        Task Start(IProgress<PostepBadania> postep);
 
         AAnalityka ZwrocAnalityke();
     }

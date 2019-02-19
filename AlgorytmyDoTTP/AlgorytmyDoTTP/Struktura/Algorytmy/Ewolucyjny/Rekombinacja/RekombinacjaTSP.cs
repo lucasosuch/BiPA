@@ -14,10 +14,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
+            // zwrócenie rozwiązań dla wektora rozwiązania Problemu Komiwojażera
             ushort[] przodek1 = genotyp1.ZwrocGenotyp1Wymiarowy(),
                      przodek2 = genotyp2.ZwrocGenotyp1Wymiarowy(),
                      potomek = new ushort[przodek1.Length];
 
+            // określenie rodzaju krzyżowania dla Problemu Komiwojażera
             switch(rodzajKrzyzowania)
             {
                 case "PMX":
@@ -47,6 +49,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 return geny;
             }
 
+            // mutacja polega na zamianie miejscami indeksów miast w wektorze
             int koniec = losowy.Next(2, geny.Length - 2),
                 poczatek = koniec - 1;
           
@@ -62,7 +65,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         /// </summary>
         /// <param name="przodek1">1 przodek do krzyżowania</param>
         /// <param name="przodek2">2 przodek do krzyżowania</param>
-        /// <seealso cref="http://algorytmy-genetyczne.eprace.edu.pl/664,Implementacja.html"/>
+        /// <seealso cref="https://blog.x5ff.xyz/blog/ai-rust-javascript-pmx/"/>
         private ushort[] PMX(ushort[] przodek1, ushort[] przodek2)
         {
             ushort[] potomek = new ushort[przodek1.Length];
@@ -71,6 +74,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 start = (ciecie1 < ciecie2) ? ciecie1 : ciecie2,
                 koniec = (ciecie1 < ciecie2) ? ciecie2 : ciecie1;
 
+            
             potomek = (ushort[])przodek1.Clone();
             for (int i = start; i < koniec; i++)
             {
@@ -131,6 +135,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 potomek[k] = 0;
             }
 
+            // od pewnego punktu `start` do punktu `koniec` przepisanie wartosci wektora
             for (int i = start; i <= koniec; i++)
             {
                 potomek[i] = przodek1[i];
@@ -138,12 +143,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             for (int i = 1; i < przodek2.Length - 1; i++)
             {
+                // jeżeli potomny wektor nie zawiera miasta o zadanym numerze
                 if (!potomek.Contains(przodek2[i]))
                 {
                     for (int j = 1; j < potomek.Length - 1; j++)
                     {
+                        // wyszukanie indeksu, gdzie mozna dopisać miasto
                         if (potomek[j] == 0)
                         {
+                            // dopisz miasto, które nie zostało jeszcze użyte
                             potomek[j] = przodek2[i];
                             break;
                         }
@@ -173,6 +181,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 potomek[k] = 0;
             }
 
+            // wykonanie najdłuższego zamknietego cyklu
             while (potomek.Contains(przodek2[i]))
             {
                 ushort j = (ushort)(przodek2[i] - 1);
@@ -180,6 +189,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
                 i = j;
             }
 
+            // dopisanie reszty miast
             for (int k = 1; k < potomek.Length - 1; k++)
             {
                 if (potomek[k] == 0)
@@ -192,11 +202,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         }
 
         protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
         {
             throw new NotImplementedException();
         }

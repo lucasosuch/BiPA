@@ -22,12 +22,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
+            try
+            {
+                int test = genotyp1.ZwrocGenotyp2Wymiarowy().Length;
+            } catch(Exception e)
+            {
+                Console.WriteLine(e);
+                Console.WriteLine(genotyp1.ZwrocGenotyp2Wymiarowy());
+            }
+
+            // 
             ushort[][] przodek1 = genotyp1.ZwrocGenotyp2Wymiarowy(),
                        przodek2 = genotyp2.ZwrocGenotyp2Wymiarowy(),
-                       potomekTTP = new ushort[przodek1.Length][], 
+                       potomekTTP = new ushort[przodek1.Length][],
                        przodkowieTSP = new ushort[2][];
             ushort[][][] przodkowieKP = new ushort[przodek1.Length][][];
-            
+
             for (int i = 0; i < przodkowieTSP.Length; i++)
             {
                 przodkowieTSP[i] = new ushort[przodek1.Length];
@@ -35,14 +45,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
                 for (int j = 0; j < przodek1.Length; j++)
                 {
-                    przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
-
-                    int index = ((przodkowieTSP[i][j] - 1) == 0 && j != 0) ? przodek1.Length - 1 : przodkowieTSP[i][j] - 1;
-                    przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
-
-                    for (int k = 1; k <= przodkowieKP[i][index].Length; k++)
+                    try
                     {
-                        przodkowieKP[i][index][k-1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
+                        przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
+
+                        int index = ((przodkowieTSP[i][j] - 1) == 0 && j != 0) ? przodek1.Length - 1 : przodkowieTSP[i][j] - 1;
+                        przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
+
+                        for (int k = 1; k <= przodkowieKP[i][index].Length; k++)
+                        {
+                            przodkowieKP[i][index][k - 1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
+                        }
+                    } catch(Exception e)
+                    {
+                        Console.WriteLine(e);
+                        Console.WriteLine("przodek1[j][0]: " + przodek1[j][0]);
+                        Console.WriteLine("przodek1[j][0]: " + przodek1[j][0]);
                     }
                 }
             }
@@ -83,7 +101,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             return SprawdzNaruszenieOgraniczen(new ReprezentacjaRozwiazania(potomekTTP));
         }
 
-        protected override ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
+        /// <summary>
+        /// Metoda zmieniająca losowo wybrany gen w genotypie
+        /// </summary>
+        /// <param name="genotyp">Genotyp do wykonania na nim operacji mutacji</param>
+        /// <param name="dostepnoscPrzedmiotow">Tablica określająca które z przedmiotów są dostępne</param>
+        /// <returns>Zmieniony lub nie osobnik - rozwiązanie</returns> 
+        protected ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow)
         {
             float test = (float)losowy.NextDouble();
             if (test > pwoMutacji) return genotyp;
@@ -99,11 +123,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
             }
             
             return genotyp;
-        }
-
-        protected override ushort[] Mutacja(ushort[] geny)
-        {
-            throw new NotImplementedException();
         }
 
         protected override ReprezentacjaRozwiazania SprawdzNaruszenieOgraniczen(ReprezentacjaRozwiazania genotyp)
@@ -143,6 +162,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
             genotyp.ZmienGenotyp(geny);
             return genotyp;
+        }
+
+        protected override ushort[] Mutacja(ushort[] geny)
+        {
+            throw new NotImplementedException();
         }
     }
 }

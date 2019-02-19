@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -195,19 +193,19 @@ namespace AlgorytmyDoTTP.Widoki
             narysowanoWykres = false;
             uruchomBadanie.Enabled = false;
 
-            Progress<ProgressReport> progressReport = new Progress<ProgressReport>();
-            progressReport.ProgressChanged += (o, report) =>
+            Progress<PostepBadania> postep = new Progress<PostepBadania>();
+            postep.ProgressChanged += (o, report) =>
             {
                 //Update your percentage
-                uruchomBadanie.Text = string.Format("Postęp...{0}%", report.PercentComplete);
-                czasDzialaniaBadania.Value = report.PercentComplete;
+                uruchomBadanie.Text = string.Format("Postęp...{0}%", report.ProcentUkonczenia);
+                czasDzialaniaBadania.Value = report.ProcentUkonczenia;
                 czasDzialaniaBadania.Update();
             };
 
             nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
             badanie.UstawParametryBadania(ZwrocParametry());
             //Process import data
-            await badanie.UruchomBadanie(nazwyPlikow, progressReport);
+            await badanie.UruchomBadanie(nazwyPlikow, postep);
             wynikiBadania.Text = badanie.wynikiBadania();
             zapiszBadanie.Enabled = true;
             pobierzPlikCSV.Enabled = true;
@@ -215,6 +213,7 @@ namespace AlgorytmyDoTTP.Widoki
             uruchomBadanie.Enabled = true;
             zapiszBadanie.Text = "Zapisz Badanie";
             uruchomBadanie.Text = "Uruchom Badanie";
+            czasDzialaniaBadania.Value = 100;
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)

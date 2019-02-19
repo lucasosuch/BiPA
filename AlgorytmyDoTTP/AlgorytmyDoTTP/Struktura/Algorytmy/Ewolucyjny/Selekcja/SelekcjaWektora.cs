@@ -16,8 +16,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         {
             if(typSelekcji == "Metoda ruletki")
             {
-                System.Console.WriteLine("Pokolenie: " + this.pokolenie +" != "+ pokolenie);
-
                 if (this.pokolenie != pokolenie || this.pokolenie == 0)
                 {
                     wskazniki = ZwrocWskazniki(populacja);

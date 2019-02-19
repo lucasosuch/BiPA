@@ -1,9 +1,8 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
-using AlgorytmyDoTTP.Widoki;
+using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
@@ -42,7 +41,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             analityka.ObliczSrednieWartosciProcesu();
         }
 
-        public Task Start(IProgress<ProgressReport> progress)
+        public Task Start(IProgress<PostepBadania> postep)
         {
             throw new NotImplementedException();
         }

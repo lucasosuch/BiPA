@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Widoki;
+using AlgorytmyDoTTP.Widoki.Narzedzia;
+using System;
+using System.Threading.Tasks;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 {
@@ -44,7 +44,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             analityka.ObliczSrednieWartosciProcesu();
         }
 
-        public Task Start(IProgress<ProgressReport> progress)
+        public Task Start(IProgress<PostepBadania> postep)
         {
             throw new NotImplementedException();
         }

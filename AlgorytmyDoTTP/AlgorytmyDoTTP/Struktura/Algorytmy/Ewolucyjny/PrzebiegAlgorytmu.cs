@@ -26,8 +26,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     // konfiguracja algorytmu pod Problem Plecakowy
                     rozwiazanie = new OsobnikKP(problem);
                     analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
-                    rekombinacja = new RekombinacjaKP(float.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
+                    rekombinacja = new RekombinacjaKP(float.Parse(parametry["pwoMutacji"]), rozwiazanie);
                     populacja = new PopulacjaKP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
 
                     return new SEA(selekcja, rekombinacja, analityka, populacja, float.Parse(parametry["pwoKrzyzowania"]));
@@ -47,8 +47,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                     rozwiazanie = new OsobnikTTP(problem);
                     analityka = new AnalizaEwolucyjny(rozwiazanie, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
                     selekcja = new SelekcjaWektora(rozwiazanie, problem.ZwrocDlugoscGenotypu(), parametry["metodaSelekcji"]);
-                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
                     rekombinacja = new RekombinacjaTTP(float.Parse(parametry["pwoMutacji"]), rozwiazanie, parametry["rodzajKrzyzowania"]);
+                    populacja = new PopulacjaTTP().StworzPopulacjeBazowa(problem, ushort.Parse(parametry["rozmiarPopulacji"]), problem.ZwrocDlugoscGenotypu());
                     
                     return new SEA(selekcja, rekombinacja, analityka, populacja, float.Parse(parametry["pwoKrzyzowania"]));
             }

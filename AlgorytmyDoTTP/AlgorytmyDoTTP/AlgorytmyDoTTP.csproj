@@ -136,7 +136,7 @@
     <Compile Include="Widoki\Narzedzia\FormatkaDanych.cs" />
     <Compile Include="Widoki\Narzedzia\FormatkaGlowna.cs" />
     <Compile Include="Widoki\Narzedzia\FormatkaPorownania.cs" />
-    <Compile Include="Widoki\ProgressReport.cs" />
+    <Compile Include="Widoki\Narzedzia\PostepBadania.cs" />
     <Compile Include="Widoki\RezultatBadania.cs">
       <SubType>Form</SubType>
     </Compile>

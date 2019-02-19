@@ -54,14 +54,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
         protected abstract ushort[] Mutacja(ushort[] genotyp);
 
         /// <summary>
-        /// Metoda zmieniająca losowo wybrany gen w genotypie
-        /// </summary>
-        /// <param name="genotyp">Genotyp do wykonania na nim operacji mutacji</param>
-        /// <param name="dostepnoscPrzedmiotow">Tablica określająca które z przedmiotów są dostępne</param>
-        /// <returns>Zmieniony lub nie osobnik - rozwiązanie</returns> 
-        protected abstract ushort[] Mutacja(ushort[] genotyp, ushort[] dostepnoscPrzedmiotow);
-
-        /// <summary>
         /// Metoda odpowiedzialna za naprawę osobników naruszających ograniczenia problemu
         /// </summary>
         /// <param name="genotyp">Genotyp osobnika, sprawdzany pod naruszeń ograniczeń</param>

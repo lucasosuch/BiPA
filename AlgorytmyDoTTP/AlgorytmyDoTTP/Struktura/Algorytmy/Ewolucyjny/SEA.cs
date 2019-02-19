@@ -2,7 +2,7 @@
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
-using AlgorytmyDoTTP.Widoki;
+using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
@@ -34,13 +34,13 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
             this.pwoKrzyzowania = pwoKrzyzowania;
         }
         
-        public Task Start(IProgress<ProgressReport> progress)
+        public Task Start(IProgress<PostepBadania> postep)
         {
             int czas = 0,
                 poprzedniaSekunda = -1,
-                totalProgress = analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu();
+                calkowityCzas = analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu();
 
-            ProgressReport progressReport = new ProgressReport();
+            PostepBadania postepBadania = new PostepBadania();
             short liczbaOsobnikowPopulacji = (short)(populacjaBazowa.Length * 2 * pwoKrzyzowania);
 
             return Task.Run(() =>
@@ -68,12 +68,12 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                             // dzieci dodajemy do nowej populacji
                             nowaPopulacja[j] = dziecko1;
                             // sprawdzając czy nie stworzyliśmy najlepszego rozwiązania do tej pory
-                            analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko1);
+                            analityka.DopiszWartoscProcesu(i, (int)analityka.IleCzasuDzialaAlgorytm("s"), dziecko1);
 
                             if (j + 1 < liczbaOsobnikowPopulacji)
                             {
                                 nowaPopulacja[j + 1] = dziecko2;
-                                analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), dziecko2);
+                                analityka.DopiszWartoscProcesu(i, (int)analityka.IleCzasuDzialaAlgorytm("s"), dziecko2);
                             }
                         }
 
@@ -88,9 +88,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                             poprzedniaSekunda = (int)analityka.IleCzasuDzialaAlgorytm("s");
                         }
 
-                        progressReport.PercentComplete = czas * 100 / totalProgress;
-                        if (progressReport.PercentComplete > 100) progressReport.PercentComplete = 100;
-                        progress.Report(progressReport);
+                        postepBadania.ProcentUkonczenia = (czas * 100 / calkowityCzas) - 1;
+                        if (postepBadania.ProcentUkonczenia < 0) postepBadania.ProcentUkonczenia = 0;
+                        if (postepBadania.ProcentUkonczenia > 100) postepBadania.ProcentUkonczenia = 100;
+                        postep.Report(postepBadania);
                     }
 
                     // reset pomiaru czasu
