@@ -30,19 +30,19 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
         
         protected override ReprezentacjaRozwiazania MetodaRuletki(ReprezentacjaRozwiazania[] populacja)
         {
-            ReprezentacjaRozwiazania osobnik = new ReprezentacjaRozwiazania();
-            float pwo = (float)losowy.NextDouble(),
+            double pwo = losowy.NextDouble(),
                    poprzednik = 0;
+            ReprezentacjaRozwiazania osobnik = populacja[0];
 
-            for(int i = 0; i < populacja.Length; i++)
+            for (int i = 0; i < populacja.Length; i++)
             {
-                if (poprzednik <= pwo && pwo < (float)wskazniki[i])
+                if (poprzednik <= pwo && pwo < (double)wskazniki[i])
                 {
                     osobnik = populacja[i];
                     break;
                 }
 
-                poprzednik = (float)wskazniki[i];
+                poprzednik = (double)wskazniki[i];
             }
             
             return osobnik;
@@ -50,7 +50,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
 
         protected override ArrayList ZwrocWskazniki(ReprezentacjaRozwiazania[] populacja)
         {
-            float suma = 0;
+            double suma = 0;
             ArrayList wskazniki = new ArrayList();
 
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
@@ -58,10 +58,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
                 suma += rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0];
             }
 
-            float sumaCzesciowa = 0;
+            double sumaCzesciowa = 0;
             foreach (ReprezentacjaRozwiazania osobnik in populacja)
             {
-                float wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
+                double wskaznik = rozwiazanie.FunkcjaDopasowania(osobnik)["max"][0] / suma;
 
                 sumaCzesciowa += wskaznik;
                 wskazniki.Add(sumaCzesciowa);

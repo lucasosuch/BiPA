@@ -22,16 +22,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
         public override ReprezentacjaRozwiazania Krzyzowanie(ReprezentacjaRozwiazania genotyp1, ReprezentacjaRozwiazania genotyp2)
         {
-            try
-            {
-                int test = genotyp1.ZwrocGenotyp2Wymiarowy().Length;
-            } catch(Exception e)
-            {
-                Console.WriteLine(e);
-                Console.WriteLine(genotyp1.ZwrocGenotyp2Wymiarowy());
-            }
-
-            // 
             ushort[][] przodek1 = genotyp1.ZwrocGenotyp2Wymiarowy(),
                        przodek2 = genotyp2.ZwrocGenotyp2Wymiarowy(),
                        potomekTTP = new ushort[przodek1.Length][],
@@ -45,22 +35,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 
                 for (int j = 0; j < przodek1.Length; j++)
                 {
-                    try
-                    {
-                        przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
+                    przodkowieTSP[i][j] = (i == 0) ? przodek1[j][0] : przodek2[j][0];
 
-                        int index = ((przodkowieTSP[i][j] - 1) == 0 && j != 0) ? przodek1.Length - 1 : przodkowieTSP[i][j] - 1;
-                        przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
+                    int index = ((przodkowieTSP[i][j] - 1) == 0 && j != 0) ? przodek1.Length - 1 : przodkowieTSP[i][j] - 1;
+                    przodkowieKP[i][index] = new ushort[przodek1[0].Length - 1];
 
-                        for (int k = 1; k <= przodkowieKP[i][index].Length; k++)
-                        {
-                            przodkowieKP[i][index][k - 1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
-                        }
-                    } catch(Exception e)
+                    for (int k = 1; k <= przodkowieKP[i][index].Length; k++)
                     {
-                        Console.WriteLine(e);
-                        Console.WriteLine("przodek1[j][0]: " + przodek1[j][0]);
-                        Console.WriteLine("przodek1[j][0]: " + przodek1[j][0]);
+                        przodkowieKP[i][index][k - 1] = (i == 0) ? przodek1[j][k] : przodek2[j][k];
                     }
                 }
             }
