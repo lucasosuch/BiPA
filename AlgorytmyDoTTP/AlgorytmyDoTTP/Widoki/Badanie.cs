@@ -206,7 +206,9 @@ namespace AlgorytmyDoTTP.Widoki
             badanie.UstawParametryBadania(ZwrocParametry());
             //Process import data
             await badanie.UruchomBadanie(nazwyPlikow, postep);
-            wynikiBadania.Text = badanie.wynikiBadania();
+            string noweWynikiBadania = badanie.wynikiBadania();
+
+            wynikiBadania.Text = noweWynikiBadania + wynikiBadania.Text;
             zapiszBadanie.Enabled = true;
             pobierzPlikCSV.Enabled = true;
             rysujWykes.Enabled = true;

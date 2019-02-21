@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -23,7 +22,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     class FormatkaBadania : FormatkaGlowna
     {
         private AAnalityka analityka = null;
-        private DateTime data = DateTime.Now;
         private Dictionary<string, string[]> wyniki;
         private Dictionary<string, string> parametry;
         private AE algorytmEwolucyjny = new AE();
@@ -54,8 +52,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public string wynikiBadania()
         {
             analityka = algorytm.ZwrocAnalityke();
-            return "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
-                            "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości (F(x)) " + analityka.ZwrocWartoscNiebo()["max"][0];
+            return  "---" + Environment.NewLine +
+                    "Data i czas badania: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + Environment.NewLine +
+                    "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
+                    "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości (F(x)) " + analityka.ZwrocWartoscNiebo()["max"][0] + Environment.NewLine;
         }
 
         public AAnalityka ZwrocAnalityke()
@@ -105,7 +105,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Nazwę pliku</returns>
         public string ZwrocNazwePliku(string rozszerzenie, string iter)
         {
-            return "("+ data.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter + rozszerzenie;
+            return "("+ DateTime.Now.ToString("d") +") "+ parametry["algorytm"] +"_"+ parametry["dane"] +""+ iter + rozszerzenie;
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             XElement czasDzialania = new XElement("czasDzialania", (analityka.ZwrocCzasDzialaniaAlgorytmu() * analityka.ZwrocLiczbeIteracji())),
                      maxWartosc = new XElement("maxWartosc", analityka.ZwrocWartoscNiebo()["max"][0]),
-                     dataZapisu = new XElement("dataZapisu", data.ToString("dd.MM.yyyy HH:mm:ss")),
+                     dataZapisu = new XElement("dataZapisu", DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")),
                      nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
                      plikDanych = new XElement("plikDanych", parametry["dane"]),
                      hash = new XElement("hash", hashPlikuDanych.InnerText),
