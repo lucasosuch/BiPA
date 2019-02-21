@@ -22,28 +22,43 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
             this.przeszukiwanieLokalne = przeszukiwanieLokalne;
         }
 
-        public void Start()
-        {
-            for (short i = 0; i < analityka.ZwrocLiczbeIteracji(); i++)
-            {
-                analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
-
-                while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
-                {
-                    przeszukiwanieLokalne.UstawRozwiazanie(przeszukiwanieLokalne.ZwrocInstancjeLosowania().ZwrocNajlepszeRozwiazanie());
-                    przeszukiwanieLokalne.ZnajdzOptimum();
-                    analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), przeszukiwanieLokalne.ZwrocRozwiazanie());
-                }
-
-                analityka.ResetPomiaruCzasu(); // zakończenie pomiaru czasu
-            }
-
-            analityka.ObliczSrednieWartosciProcesu();
-        }
-
         public Task Start(IProgress<PostepBadania> postep)
         {
-            throw new NotImplementedException();
+            int czas = 0,
+                poprzedniaSekunda = -1,
+                calkowityCzas = analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu();
+            PostepBadania postepBadania = new PostepBadania();
+
+            return Task.Run(() =>
+            {
+                for (short i = 0; i < analityka.ZwrocLiczbeIteracji(); i++)
+                {
+                    analityka.RozpocznijPomiarCzasu(); // rozpoczęcie pomiaru czasu
+
+                    while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
+                    {
+                        przeszukiwanieLokalne.UstawRozwiazanie(przeszukiwanieLokalne.ZwrocInstancjeLosowania().ZwrocNajlepszeRozwiazanie());
+                        przeszukiwanieLokalne.ZnajdzOptimum();
+                        analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), przeszukiwanieLokalne.ZwrocRozwiazanie());
+
+                        if (poprzedniaSekunda == -1 || poprzedniaSekunda != (int)analityka.IleCzasuDzialaAlgorytm("s"))
+                        {
+                            czas++;
+                            poprzedniaSekunda = (int)analityka.IleCzasuDzialaAlgorytm("s");
+                        }
+
+                        postepBadania.ProcentUkonczenia = (czas * 100 / calkowityCzas) - 1;
+                        if (postepBadania.ProcentUkonczenia < 0) postepBadania.ProcentUkonczenia = 0;
+                        if (postepBadania.ProcentUkonczenia > 100) postepBadania.ProcentUkonczenia = 100;
+                        postep.Report(postepBadania);
+                    }
+
+                    analityka.ResetPomiaruCzasu(); // zakończenie pomiaru czasu
+                    poprzedniaSekunda = -1;
+                }
+
+                analityka.ObliczSrednieWartosciProcesu();
+            });
         }
 
         public AAnalityka ZwrocAnalityke()
