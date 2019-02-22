@@ -54,14 +54,23 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
             ReprezentacjaRozwiazania[] listaRozwiazan = LosujRozwiazania(problemOptymalizacyjny, iloscRozwiazan, iloscElementow);
 
-            najlepszeRozwiazanie = listaRozwiazan[0];
-            najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[0]);
+            if (!problemOptymalizacyjny.CzyIstniejaOgraniczenia())
+            {
+                najlepszeRozwiazanie = listaRozwiazan[0];
+                najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[0]);
+            }
+
+            //System.Console.WriteLine(najlepszyWynik["max"][0] + " " + najlepszyWynik["min"][0]);
 
             int iterator = 1;
-            while (problemOptymalizacyjny.CzyIstniejaOgraniczenia() && (najlepszyWynik["min"][0] > problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0]))
+            while (problemOptymalizacyjny.CzyIstniejaOgraniczenia())
             {
-                najlepszeRozwiazanie = listaRozwiazan[iterator];
-                najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[iterator]);
+                if(osobnik.FunkcjaDopasowania(listaRozwiazan[iterator])["min"][0] <= problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0])
+                {
+                    najlepszeRozwiazanie = listaRozwiazan[iterator];
+                    najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[iterator]);
+                }
+                    
                 iterator++;
 
                 if (listaRozwiazan.Length == iterator) break;
@@ -71,7 +80,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             {
                 Dictionary<string, float[]> wynikElementu = osobnik.FunkcjaDopasowania(rozwiazanie);
 
-                if (wynikElementu["max"][0] > najlepszyWynik["max"][0])
+                if ((najlepszyWynik != null) && (wynikElementu["max"][0] > najlepszyWynik["max"][0]))
                 {
                     if (problemOptymalizacyjny.CzyIstniejaOgraniczenia() && (wynikElementu["min"][0] > problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0])) continue;
 

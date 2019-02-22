@@ -55,7 +55,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return  "---" + Environment.NewLine +
                     "Data i czas badania: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + Environment.NewLine +
                     "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
-                    "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości (F(x)) " + analityka.ZwrocWartoscNiebo()["max"][0] + Environment.NewLine;
+                    "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości (F(x)) " + analityka.ZwrocWartoscNiebo() + Environment.NewLine;
         }
 
         public AAnalityka ZwrocAnalityke()
@@ -130,7 +130,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             XmlNode hashPlikuDanych = dokument.DocumentElement.SelectSingleNode("/korzen/hash");
 
             XElement czasDzialania = new XElement("czasDzialania", (analityka.ZwrocCzasDzialaniaAlgorytmu() * analityka.ZwrocLiczbeIteracji())),
-                     maxWartosc = new XElement("maxWartosc", analityka.ZwrocWartoscNiebo()["max"][0]),
+                     maxWartosc = new XElement("maxWartosc", analityka.ZwrocWartoscNiebo()),
                      dataZapisu = new XElement("dataZapisu", DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")),
                      nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
                      plikDanych = new XElement("plikDanych", parametry["dane"]),

@@ -42,7 +42,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
                     while (analityka.IleCzasuDzialaAlgorytm("s") < analityka.ZwrocCzasDzialaniaAlgorytmu())
                     {
                         losowanie.SzukajNajlepszegoRozwiazania(iloscRozwiazan, iloscElementow);
-                        analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), losowanie.ZwrocNajlepszeRozwiazanie());
+                        analityka.DopiszWartoscProcesu(i, (int)analityka.IleCzasuDzialaAlgorytm("s"), losowanie.ZwrocNajlepszeRozwiazanie());
 
                         if (poprzedniaSekunda == -1 || poprzedniaSekunda != (int)analityka.IleCzasuDzialaAlgorytm("s"))
                         {

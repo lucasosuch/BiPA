@@ -14,11 +14,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
-        protected float[] najlepszaWartoscFunkcji;
+        protected float najlepszaWartoscFunkcji;
         protected double[][] minWartoscProcesuPoszukiwan;
         protected double[][] maxWartoscProcesuPoszukiwan;
         protected double[][] sredniaWartoscProcesuPoszukiwan;
-        protected ReprezentacjaRozwiazania[] najlepszeRozwiazanie;
+        protected ReprezentacjaRozwiazania najlepszeRozwiazanie;
 
         public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu, string[] nazwyPlikow)
         {
@@ -28,16 +28,14 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 
             liczbaWCzasie = new int[liczbaIteracji][];
-            najlepszaWartoscFunkcji = new float[liczbaIteracji];
+            najlepszaWartoscFunkcji = -100000;
             minWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             maxWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             sredniaWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
-            najlepszeRozwiazanie = new ReprezentacjaRozwiazania[liczbaIteracji];
 
             for (short i = 0; i < liczbaIteracji; i++)
             {
                 liczbaWCzasie[i] = new int[czasDzialaniaAlgorytmu + 1];
-                najlepszaWartoscFunkcji[i] = -10000;
                 minWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
                 maxWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
                 sredniaWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
@@ -76,43 +74,22 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         }
 
         /// <summary>
-        /// Metoda zwracająca najlepszą dziedzinę rozwiązania
-        /// </summary>
-        /// <returns>Dziedzina rozwiązania</returns>
-        public ReprezentacjaRozwiazania ZwrocNajlepszyGenotyp()
-        {
-            short najlepszyIndex = 0;
-            float maxWartosc = -1000000;
-
-            for (short i = 1; i < najlepszaWartoscFunkcji.Length; i++)
-            {
-                if (najlepszaWartoscFunkcji[i] > maxWartosc)
-                {
-                    najlepszyIndex = i;
-                    maxWartosc = najlepszaWartoscFunkcji[i];
-                }
-            }
-
-            return najlepszeRozwiazanie[najlepszyIndex];
-        }
-
-        /// <summary>
         /// Metoda zwracająca najlepsze rozwiązanie danego problemu optymalizacyjnego, w zależności od wybranego kodowania.
         /// </summary>
         /// <param name="najlepszeRozwiazanie">Najlepsze znalezione rozwiązanie</param>
         /// <returns>Zwraca najlepsze rozwiązanie dla wybranego problemu optymalizacyjnego</returns>
         public string ZwrocNajlepszeZnalezioneRozwiazanie()
         {
-            return rozwiazanie.DekodujRozwiazanie(ZwrocNajlepszyGenotyp());
+            return rozwiazanie.DekodujRozwiazanie(najlepszeRozwiazanie);
         }
 
         /// <summary>
         /// Metoda zwracająca najlepszą znalezioną wartość
         /// </summary>
         /// <returns>Wartość funkcji celu</returns>
-        public Dictionary<string, float[]> ZwrocWartoscNiebo()
+        public float ZwrocWartoscNiebo()
         {
-            return rozwiazanie.FunkcjaDopasowania(ZwrocNajlepszyGenotyp());
+            return najlepszaWartoscFunkcji;
         }
 
         /// <summary>
@@ -162,9 +139,10 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         {
             int srodek = wartosci.Length / 2;
             if (srodek == 0) throw new IndexOutOfRangeException();
+            double[] tmpWartosci = (double[])(wartosci.Clone());
 
-            Array.Sort(wartosci);// sortowanie wyników rosnąco
-            return (float)wartosci[srodek];
+            Array.Sort(tmpWartosci);// sortowanie wyników rosnąco
+            return (float)tmpWartosci[srodek];
         }
 
         /// <summary>
@@ -195,12 +173,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             {
                 float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
 
-                if (najlepszaWartoscFunkcji[index] < wartosc)
+                if (najlepszaWartoscFunkcji < wartosc)
                 {
-                    najlepszeRozwiazanie[index] = genotyp;
-                    najlepszaWartoscFunkcji[index] = wartosc;
+                    Console.WriteLine(najlepszaWartoscFunkcji +" < "+ wartosc);
+                    Console.WriteLine("min: "+ rozwiazanie.FunkcjaDopasowania(genotyp)["min"][0]);
+
+                    najlepszeRozwiazanie = genotyp;
+                    najlepszaWartoscFunkcji = wartosc;
                 }
-                
+
                 if (minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
                 {
                     minWartoscProcesuPoszukiwan[index][czas] = wartosc;

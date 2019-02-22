@@ -39,7 +39,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
                     {
                         przeszukiwanieLokalne.UstawRozwiazanie(przeszukiwanieLokalne.ZwrocInstancjeLosowania().ZwrocNajlepszeRozwiazanie());
                         przeszukiwanieLokalne.ZnajdzOptimum();
-                        analityka.DopiszWartoscProcesu(i, (short)analityka.IleCzasuDzialaAlgorytm("s"), przeszukiwanieLokalne.ZwrocRozwiazanie());
+                        analityka.DopiszWartoscProcesu(i, (int)analityka.IleCzasuDzialaAlgorytm("s"), przeszukiwanieLokalne.ZwrocRozwiazanie());
 
                         if (poprzedniaSekunda == -1 || poprzedniaSekunda != (int)analityka.IleCzasuDzialaAlgorytm("s"))
                         {

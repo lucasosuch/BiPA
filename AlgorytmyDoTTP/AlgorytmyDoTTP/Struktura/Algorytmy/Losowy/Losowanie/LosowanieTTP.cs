@@ -30,7 +30,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
                 double polowa = (Math.Pow(iloscRozwiazan, 2) / 2),
                        rozpietosc = Math.Abs(Math.Pow(iloscRozwiazan, 2) - (i + losowy.Next(iloscRozwiazan)) * iloscRozwiazan);
-                
+
                 for (int j = 0; j < wektorTSP.Length; j++)
                 {
                     int index = wektorTSP[j] - 1,
@@ -42,7 +42,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
                     for (int k = 1; k < macierzTTP[j].Length; k++)
                     {
-                        if (dostepnoscPrzedmiotow[index][(k - 1)] == 1)
+                        if ((dostepnoscPrzedmiotow[index][(k - 1)] == 1) && j != 0)
                         {
                             if (polowa >= rozpietosc)
                             {
