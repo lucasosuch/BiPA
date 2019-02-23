@@ -14,11 +14,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
         protected AOsobnik rozwiazanie;
-        protected float najlepszaWartoscFunkcji;
         protected double[][] minWartoscProcesuPoszukiwan;
         protected double[][] maxWartoscProcesuPoszukiwan;
         protected double[][] sredniaWartoscProcesuPoszukiwan;
         protected ReprezentacjaRozwiazania najlepszeRozwiazanie;
+        protected Dictionary<string, float[]> najlepszaWartoscFunkcji;
 
         public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu, string[] nazwyPlikow)
         {
@@ -28,7 +28,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 
             liczbaWCzasie = new int[liczbaIteracji][];
-            najlepszaWartoscFunkcji = -100000;
+            najlepszaWartoscFunkcji = new Dictionary<string, float[]>();
             minWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             maxWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
             sredniaWartoscProcesuPoszukiwan = new double[liczbaIteracji][];
@@ -40,6 +40,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 maxWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
                 sredniaWartoscProcesuPoszukiwan[i] = new double[czasDzialaniaAlgorytmu + 1];
             }
+
+            najlepszaWartoscFunkcji["max"] = new float[] { -100000 };
         }
 
         public double[][] ZwrocSredniaWartosciProcesuPoszukiwan()
@@ -87,7 +89,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         /// Metoda zwracająca najlepszą znalezioną wartość
         /// </summary>
         /// <returns>Wartość funkcji celu</returns>
-        public float ZwrocWartoscNiebo()
+        public Dictionary<string, float[]> ZwrocWartoscNiebo()
         {
             return najlepszaWartoscFunkcji;
         }
@@ -171,29 +173,26 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         {
             if (czas <= czasDzialaniaAlgorytmu)
             {
-                float wartosc = rozwiazanie.FunkcjaDopasowania(genotyp)["max"][0];
+                Dictionary<string, float[]> wartosc = rozwiazanie.FunkcjaDopasowania(genotyp);
 
-                if (najlepszaWartoscFunkcji < wartosc)
+                if (najlepszaWartoscFunkcji["max"][0] < wartosc["max"][0])
                 {
-                    Console.WriteLine(najlepszaWartoscFunkcji +" < "+ wartosc);
-                    Console.WriteLine("min: "+ rozwiazanie.FunkcjaDopasowania(genotyp)["min"][0]);
-
                     najlepszeRozwiazanie = genotyp;
                     najlepszaWartoscFunkcji = wartosc;
                 }
 
-                if (minWartoscProcesuPoszukiwan[index][czas] > wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+                if (minWartoscProcesuPoszukiwan[index][czas] > wartosc["max"][0] || maxWartoscProcesuPoszukiwan[index][czas] == 0)
                 {
-                    minWartoscProcesuPoszukiwan[index][czas] = wartosc;
+                    minWartoscProcesuPoszukiwan[index][czas] = wartosc["max"][0];
                 }
 
-                if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc || maxWartoscProcesuPoszukiwan[index][czas] == 0)
+                if (maxWartoscProcesuPoszukiwan[index][czas] < wartosc["max"][0] || maxWartoscProcesuPoszukiwan[index][czas] == 0)
                 {
-                    maxWartoscProcesuPoszukiwan[index][czas] = wartosc;
+                    maxWartoscProcesuPoszukiwan[index][czas] = wartosc["max"][0];
                 }
                 
                 liczbaWCzasie[index][czas]++;
-                sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc;
+                sredniaWartoscProcesuPoszukiwan[index][czas] += wartosc["max"][0];
             }
         }
 

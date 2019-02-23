@@ -16,6 +16,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
         public override ReprezentacjaRozwiazania[] LosujRozwiazania(ProblemOptymalizacyjny problemOptymalizacyjny, int iloscRozwiazan, int iloscElementow)
         {
+            bool startowyWektor = true;
             Random losowy = new Random();
             ReprezentacjaRozwiazania[] rozwiazania = new ReprezentacjaRozwiazania[iloscRozwiazan];
             
@@ -42,7 +43,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
 
                     for (int k = 1; k < macierzTTP[j].Length; k++)
                     {
-                        if ((dostepnoscPrzedmiotow[index][(k - 1)] == 1) && j != 0)
+                        if ((dostepnoscPrzedmiotow[index][(k - 1)] == 1) && !startowyWektor)
                         {
                             if (polowa >= rozpietosc)
                             {
@@ -63,6 +64,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
                 }
 
                 rozwiazania[i] = new ReprezentacjaRozwiazania(macierzTTP);
+                startowyWektor = false;
             }
 
             return rozwiazania;

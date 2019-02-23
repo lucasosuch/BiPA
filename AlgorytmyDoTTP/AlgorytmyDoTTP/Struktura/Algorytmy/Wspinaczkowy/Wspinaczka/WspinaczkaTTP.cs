@@ -56,6 +56,8 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
                                 tmpReprezentacjaRozwiazanie.ZmienGenotyp(tmpGenotyp);
                                 tmpWynik = osobnik.FunkcjaDopasowania(tmpReprezentacjaRozwiazanie);
                                 wspolczynnik = tmpWynik["min"][0] / problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0];
+
+                                if(wspolczynnik > 1) tmpGenotyp[i][j] = 0;
                             }
                         }
                     }

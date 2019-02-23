@@ -54,18 +54,15 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
             ProblemOptymalizacyjny problemOptymalizacyjny = osobnik.ZwrocInstancjeProblemu();
             ReprezentacjaRozwiazania[] listaRozwiazan = LosujRozwiazania(problemOptymalizacyjny, iloscRozwiazan, iloscElementow);
 
-            if (!problemOptymalizacyjny.CzyIstniejaOgraniczenia())
-            {
-                najlepszeRozwiazanie = listaRozwiazan[0];
-                najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[0]);
-            }
-
-            //System.Console.WriteLine(najlepszyWynik["max"][0] + " " + najlepszyWynik["min"][0]);
+            najlepszeRozwiazanie = listaRozwiazan[0];
+            najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[0]);
 
             int iterator = 1;
             while (problemOptymalizacyjny.CzyIstniejaOgraniczenia())
             {
-                if(osobnik.FunkcjaDopasowania(listaRozwiazan[iterator])["min"][0] <= problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0])
+                //System.Console.WriteLine("while: "+osobnik.FunkcjaDopasowania(listaRozwiazan[iterator])["max"][0] + " " + osobnik.FunkcjaDopasowania(listaRozwiazan[iterator])["min"][0]);
+
+                if (osobnik.FunkcjaDopasowania(listaRozwiazan[iterator])["min"][0] <= problemOptymalizacyjny.ZwrocOgraniczeniaProblemu()[0])
                 {
                     najlepszeRozwiazanie = listaRozwiazan[iterator];
                     najlepszyWynik = osobnik.FunkcjaDopasowania(listaRozwiazan[iterator]);
