@@ -54,8 +54,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             analityka = algorytm.ZwrocAnalityke();
             return  "---" + Environment.NewLine +
                     "Data i czas badania: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + Environment.NewLine +
-                    "Rozwiązano wybrany Problem Optymalizacyjny w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
-                    "Najlepszy znaleziony wynik (x) w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości F(x) = {" + analityka.ZwrocWartoscNiebo()["max"][0] +", "+ analityka.ZwrocWartoscNiebo()["min"][0] + "}"+ Environment.NewLine;
+                    "Rozwiązano "+ parametry["problem"] + ", metodą: "+ parametry["algorytm"] + ",  w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
+                    "Najlepszy znaleziony wynik x w toku całego procesu poszukiwań wynosi: " + analityka.ZwrocNajlepszeZnalezioneRozwiazanie() + ", o wartości F(x) = {" + analityka.ZwrocWartoscNiebo()["max"][0] +", "+ analityka.ZwrocWartoscNiebo()["min"][0] + "}"+ Environment.NewLine;
         }
 
         public AAnalityka ZwrocAnalityke()
@@ -114,7 +114,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public string ZapiszBadanie()
         {
             int iter = 0,
-                najlepszaIteracjaBadania = analityka.ZwrocNajlepszaIteracje();
+                najlepszaIteracjaBadania = (int)analityka.ZwrocRankingIteracji()[0][0];
             string[] znalezionePliki;
 
             do

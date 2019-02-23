@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -33,24 +34,32 @@ namespace AlgorytmyDoTTP.Widoki
             wykresMax.Width = obraz.Width;
         }
 
-        public void WyswietlInformacjeZwrotna(int iteracja, float[] srednie, float[] minima, float[] maxima)
+        public void WyswietlInformacjeZwrotna(float[][] ranking, float[][] srednie, float[][] minima, float[][] maxima)
         {
-            string tekst = "Najlepsza iteracja: " + (iteracja + 1) + Environment.NewLine +
-                           "---" + Environment.NewLine +
-                           "Wykres Średniej z najlepszej iteracji badania: " + Environment.NewLine +
-                           "- średnia: " + srednie[0] + Environment.NewLine +
-                           "- mediana: " + srednie[1] + Environment.NewLine +
-                           "- odchylenie standardowe: " + srednie[2] + Environment.NewLine +
-                           "---" + Environment.NewLine +
-                           "Wykres Minimów z najlepszej itracji badania: " + Environment.NewLine +
-                           "- średnia: " + minima[0] + Environment.NewLine +
-                           "- mediana: " + minima[1] + Environment.NewLine +
-                           "- odchylenie standardowe: " + minima[2] + Environment.NewLine +
-                           "---" + Environment.NewLine +
-                           "Wykres Maksimów z najlepszej itracji badania: " + Environment.NewLine +
-                           "- średnia: " + maxima[0] + Environment.NewLine +
-                           "- mediana: " + maxima[1] + Environment.NewLine +
-                           "- odchylenie standardowe: " + maxima[2];
+            string tekst = "";
+
+            for (int i = 0; i < srednie.Length; i++)
+            {
+                int iteracja = (int)(ranking[i][0] + 1);
+
+                tekst += "Iteracja: " + iteracja + ", zdobyła " + ranking[i][1] + " punktów" + Environment.NewLine +
+                        "---" + Environment.NewLine +
+                        "Wykres Średniej z iteracji " + iteracja + " badania: " + Environment.NewLine +
+                        "- średnia: " + srednie[i][0] + Environment.NewLine +
+                        "- mediana: " + srednie[i][1] + Environment.NewLine +
+                        "- odchylenie standardowe: " + srednie[i][2] + Environment.NewLine +
+                        "---" + Environment.NewLine +
+                        "Wykres Minimów z itracji " + iteracja + " badania: " + Environment.NewLine +
+                        "- średnia: " + minima[i][0] + Environment.NewLine +
+                        "- mediana: " + minima[i][1] + Environment.NewLine +
+                        "- odchylenie standardowe: " + minima[i][2] + Environment.NewLine +
+                        "---" + Environment.NewLine +
+                        "Wykres Maksimów z itracji " + iteracja + " badania: " + Environment.NewLine +
+                        "- średnia: " + maxima[i][0] + Environment.NewLine +
+                        "- mediana: " + maxima[i][1] + Environment.NewLine +
+                        "- odchylenie standardowe: " + maxima[i][2] + Environment.NewLine +
+                        "----------------------------------------------------------------------" + Environment.NewLine;
+            }
 
             wynikiBadnia.Text = tekst;
         }

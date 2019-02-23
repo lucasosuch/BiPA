@@ -196,7 +196,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             }
         }
 
-        public int ZwrocNajlepszaIteracje()
+        public float[][] ZwrocRankingIteracji()
         {
             float[] punkty = new float[liczbaIteracji],
                     srednieMin = new float[liczbaIteracji],
@@ -217,15 +217,23 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                 srednieMax[(int)maxMax[0]] = -100000;
 
                 float[] maxMin = ZnajdzMax(srednieMin);
-                punkty[(int)maxMax[0]] += (float)(srednieMin.Length - (i * 0.5));
-                srednieMin[(int)maxMax[0]] = -100000;
+                punkty[(int)maxMin[0]] += (float)(srednieMin.Length - (i * 0.5));
+                srednieMin[(int)maxMin[0]] = -100000;
 
                 float[] maxAvg = ZnajdzMax(srednieAvg);
-                punkty[(int)maxMax[0]] += (float)(srednieAvg.Length - (i * 0.75));
-                srednieAvg[(int)maxMax[0]] = -100000;
+                punkty[(int)maxAvg[0]] += (float)(srednieAvg.Length - (i * 0.75));
+                srednieAvg[(int)maxAvg[0]] = -100000;
+            }
+            
+            float[][] wyniki = new float[punkty.Length][];
+            for(int i = 0; i < punkty.Length; i++)
+            {
+                float[] max = ZnajdzMax(punkty);
+                wyniki[i] = new float[] { max[0], max[1] };
+                punkty[(int)max[0]] = -100000;
             }
 
-            return (int)ZnajdzMax(punkty)[0];
+            return wyniki;
         }
 
         public void ObliczSrednieWartosciProcesu()
@@ -252,8 +260,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             gnuplot = new GNUPlot();
             gnuplot.RysujWykresBadania(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
             gnuplot.ZakonczProcesGNUPlot();
-
-            ZwrocNajlepszaIteracje();
         }
 
         private float[] ZnajdzMax(float[] tablica)

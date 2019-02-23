@@ -159,15 +159,25 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 AAnalityka analityka = badanie.ZwrocAnalityke();
-                int iteracja = analityka.ZwrocNajlepszaIteracje();
+                float[][] ranking = analityka.ZwrocRankingIteracji();
+
                 double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
                            wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
                            wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
 
-                float[] tmpSrednie = new float[] { analityka.Srednia(wartosciSrednie[iteracja]), analityka.Srednia(wartosciMin[iteracja]), analityka.Srednia(wartosciMax[iteracja]) },
-                        srednie = new float[] { tmpSrednie[0], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[0]) },
-                        minima = new float[] { tmpSrednie[1], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[1]) },
-                        maxima = new float[] { tmpSrednie[2], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[2]) };
+                float[][] srednie = new float[ranking.Length][],
+                          minima = new float[ranking.Length][],
+                          maxima = new float[ranking.Length][];
+
+                for (int i = 0; i < ranking.Length; i++)
+                {
+                    int iteracja = (int)ranking[i][0];
+                    float[] tmpSrednie = new float[] { analityka.Srednia(wartosciSrednie[iteracja]), analityka.Srednia(wartosciMin[iteracja]), analityka.Srednia(wartosciMax[iteracja]) };
+
+                    srednie[i] = new float[] { tmpSrednie[0], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[0]) };
+                    minima[i] = new float[] { tmpSrednie[1], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[1]) };
+                    maxima[i] = new float[] { tmpSrednie[2], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[2]) };
+                }
 
                 if (!narysowanoWykres)
                 {
@@ -177,7 +187,7 @@ namespace AlgorytmyDoTTP.Widoki
 
                 RezultatBadania rezultatBadania = new RezultatBadania();
                 rezultatBadania.PokazWykresy(nazwyPlikow);
-                rezultatBadania.WyswietlInformacjeZwrotna(iteracja, srednie, minima, maxima);
+                rezultatBadania.WyswietlInformacjeZwrotna(ranking, srednie, minima, maxima);
                 rezultatBadania.Show();
             } catch( Exception exc)
             {
