@@ -95,7 +95,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                     i++;
                 }
 
-                string nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania").InnerText.Replace(" ", "").Trim();
+                string nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/porownawczyTekst").InnerText.Replace(" ", "").Trim();
                 paramentry[nazwaBadania] = new double[][] { avg, min, max };
 
                 //iter++;

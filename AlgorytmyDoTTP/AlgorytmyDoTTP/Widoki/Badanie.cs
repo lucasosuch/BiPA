@@ -56,24 +56,29 @@ namespace AlgorytmyDoTTP.Widoki
         {
             Dictionary<string, string> parametry = new Dictionary<string, string>();
 
+            parametry["doPorownania"] = "";
             switch (wybierzProblem.Text)
             {
                 case "Problem Podróżującego Złodzieja":
                     parametry["modelTTP"] = modelTTP.Text;
                     parametry["ograniczenie1"] = ttp_maxWagaPlecaka.Text;
                     parametry["wyporzyczeniePlecaka"] = wypozyczeniePlecaka.Text;
+                    parametry["doPorownania"] = "TTP";
                     break;
                 case "Problem Plecakowy":
                     parametry["ograniczenie1"] = kp_maxWagaPlecaka.Text;
+                    parametry["doPorownania"] = "KP";
                     break;
-                default:
+                case "Problem Komiwojażera":
                     parametry["ograniczenie1"] = "0";
+                    parametry["doPorownania"] = "TSP";
                     break;
             }
 
             switch (wybierzAlgorytm.Text)
             {
                 case "Algorytm Ewolucyjny":
+                    parametry["doPorownania"] += "_AE";
                     parametry["pwoMutacji"] = ae_pwoMutacji.Text;
                     parametry["pwoKrzyzowania"] = ae_pwoKrzyzowania.Text;
                     parametry["rozmiarPopulacji"] = ae_rozmiarPopulacji.Text;
@@ -81,9 +86,15 @@ namespace AlgorytmyDoTTP.Widoki
                     parametry["rodzajKrzyzowania"] = ae_rodzajKrzyzowania.Text;
                     break;
                 case "Algorytm Wspinaczkowy":
+                    parametry["doPorownania"] += "_AW";
                     parametry["parametrP"] = aw_parametrP.Text;
                     break;
+                case "Algorytm Losowy":
+                    parametry["doPorownania"] += "_AL";
+                    break;
             }
+
+            parametry["doPorownania"] += "_"+LosowyTekst(losowy.Next(3,3));
 
             badanie.WalidacjaKluczowychParametrow(wybierzPlikDanych.Text);
             badanie.WalidacjaKluczowychParametrow(wybierzProblem.Text);
@@ -144,7 +155,7 @@ namespace AlgorytmyDoTTP.Widoki
         /// </summary>
         private void zapiszBadanie_Click(object sender, EventArgs e)
         {
-            widokFormatkiGlownej.daneHistoryczne.Items.Add(badanie.ZapiszBadanie());
+            widokFormatkiGlownej.daneHistoryczne.Items.Add(new ListViewItem(badanie.ZapiszBadanie()));
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
             zapiszBadanie.Enabled = false;
             zapiszBadanie.Text = "Zapisano Badanie";
@@ -284,7 +295,6 @@ namespace AlgorytmyDoTTP.Widoki
                     break;
 
                 case "Algorytm Wspinaczkowy":
-                case "Algorytm Losowy":
                     aw_panel.Visible = true;
                     ae_panel.Visible = true;
                     break;

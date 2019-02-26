@@ -61,8 +61,6 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             SW.WriteLine("set title '" + tytul + "'");
             SW.WriteLine("set terminal pngcairo size " + szerokosc + ", " + wysokosc);
 
-            System.Console.WriteLine(string.Join(", ", nazwyBadan));
-
             for (short i = 0; i < wartosci.Length; i++)
             {
                 tablicaWartosci[i] += " ";
@@ -70,17 +68,14 @@ namespace AlgorytmyDoTTP.Rozszerzenia
                 {
                     tablicaWartosci[i] += wartosci[i][j].ToString().Replace(",", ".") + ",";
                 }
-
-                System.Console.WriteLine("array " + nazwyBadan[i] + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
-                SW.WriteLine("array "+ nazwyBadan[i] + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
+                
+                SW.WriteLine("array " + nazwyBadan[i] + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
                 nazwyPol[i] = nazwyBadan[i] + " w linespoints";
             }
-
-            System.Console.WriteLine(string.Join(", ", nazwyPol));
+            
             SW.WriteLine("plot " + string.Join(", ", nazwyPol));
             SW.WriteLine("exit");
-
-            System.Console.WriteLine("Koniec!!!");
+            
             Image png = Image.FromStream(SR.BaseStream);
             png.Save(@".\Wykresy\" + nazwaPliku + ".png");
         }

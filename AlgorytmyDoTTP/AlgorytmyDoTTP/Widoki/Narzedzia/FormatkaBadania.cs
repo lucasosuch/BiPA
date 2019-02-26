@@ -111,7 +111,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <summary>
         /// Metoda zapisuje badanie do pliku XML na dysku
         /// </summary>
-        public string ZapiszBadanie()
+        public string[] ZapiszBadanie()
         {
             int iter = 0,
                 najlepszaIteracjaBadania = (int)analityka.ZwrocRankingIteracji()[0][0];
@@ -134,6 +134,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                      minWartosc = new XElement("minWartosc", analityka.ZwrocWartoscNiebo()["min"][0]),
                      dataZapisu = new XElement("dataZapisu", DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")),
                      nazwaBadania = new XElement("nazwaBadania", parametry["algorytm"] + "_" + parametry["dane"] + "_" + iter),
+                     krotkiTekst = new XElement("porownawczyTekst", parametry["doPorownania"]),
                      plikDanych = new XElement("plikDanych", parametry["dane"]),
                      hash = new XElement("hash", hashPlikuDanych.InnerText),
                      dziedzina = new XElement("dziedzina", analityka.ZwrocNajlepszeZnalezioneRozwiazanie());
@@ -177,6 +178,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             dodatkoweDane.Add(dodatki);
             podstawoweDane.Add(nazwaBadania);
+            podstawoweDane.Add(krotkiTekst);
             podstawoweDane.Add(dataZapisu);
             podstawoweDane.Add(maxWartosc);
             podstawoweDane.Add(minWartosc);
@@ -194,7 +196,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             xml.Save("./Badania/"+ ZwrocNazwePliku(".xml", "_"+ iter));
 
-            return ZwrocNazwePliku("", "_" + iter);
+            return new string[] { ZwrocNazwePliku("", "_" + iter), DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") };
         }
 
         /// <summary>
