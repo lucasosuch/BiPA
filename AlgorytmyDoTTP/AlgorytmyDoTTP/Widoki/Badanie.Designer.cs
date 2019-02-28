@@ -989,7 +989,7 @@
             this.ClientSize = new System.Drawing.Size(1141, 726);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1157, 753);
+            this.MinimumSize = new System.Drawing.Size(1157, 751);
             this.Name = "Badanie";
             this.Text = "Badanie";
             this.Load += new System.EventHandler(this.Badanie_Load);

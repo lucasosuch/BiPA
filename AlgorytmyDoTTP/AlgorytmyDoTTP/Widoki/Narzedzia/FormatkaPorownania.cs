@@ -149,7 +149,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         {
             try
             {
-                FormatkaPorownania formatka = new FormatkaPorownania();
                 string[] nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
 
                 double[][] wartosciSrednie = new double[paramentry.Count][],

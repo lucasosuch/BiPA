@@ -21,17 +21,18 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaBadania : FormatkaGlowna
     {
+        private float[][] ranking = null;
         private AAnalityka analityka = null;
-        private Dictionary<string, string[]> wyniki;
         private Dictionary<string, string> parametry;
         private AE algorytmEwolucyjny = new AE();
         private Konfiguracja srodowisko = new Konfiguracja();
         private string nazwaFolderu = "";
         private IAlgorytm algorytm;
-
+        private WynikiAnalizy wynikiAnalizy = new WynikiAnalizy();
+        
         public FormatkaBadania()
         {
-            wyniki = new Dictionary<string, string[]>();
+
         }
 
         public void UstawParametryBadania(Dictionary<string, string> parametry)
@@ -43,15 +44,17 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// Metoda uruchamiająca badanie, tzn. rozpoczęcie rozwiązania wybranego Problemu Optymalizacyjnego za pomocą wybranego Algorytmu
         /// </summary>
         /// <returns>Wyniki czytelne dla człowieka</returns>
-        public Task UruchomBadanie(string[] nazwyPlikow, Progress<PostepBadania> postep)
+        public Task UruchomBadanie(Progress<PostepBadania> postep)
         {
-            algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem(), nazwyPlikow);
+            algorytm = ZwrocWybranyAlgorytm().ZbudujAlgorytm(parametry, ZwrocWybranyProblem());
             return algorytm.Start(postep);
         }
 
         public string wynikiBadania()
         {
             analityka = algorytm.ZwrocAnalityke();
+            ranking = wynikiAnalizy.ZwrocRanking(analityka.ZwrocMinWartoscProcesuPoszukiwan(), analityka.ZwrocMaxWartoscProcesuPoszukiwan(), analityka.ZwrocSredniaWartosciProcesuPoszukiwan());
+
             return  "---" + Environment.NewLine +
                     "Data i czas badania: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + Environment.NewLine +
                     "Rozwiązano "+ parametry["problem"] + ", metodą: "+ parametry["algorytm"] + ",  w czasie ok. " + (analityka.ZwrocLiczbeIteracji() * analityka.ZwrocCzasDzialaniaAlgorytmu()) + "s" + Environment.NewLine +
@@ -114,7 +117,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         public string[] ZapiszBadanie()
         {
             int iter = 0,
-                najlepszaIteracjaBadania = (int)analityka.ZwrocRankingIteracji()[0][0];
+                najlepszaIteracjaBadania = (int)ranking[0][0];
             string[] znalezionePliki;
 
             do
@@ -197,6 +200,22 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             xml.Save("./Badania/"+ ZwrocNazwePliku(".xml", "_"+ iter));
 
             return new string[] { ZwrocNazwePliku("", "_" + iter), DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") };
+        }
+
+        public string RysujWykres(bool narysowanoWykres, int szerokosc, int wysokosc, string[] nazwyPlikow)
+        {
+            double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
+                       wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
+                       wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
+
+            float[][][] wyniki = wynikiAnalizy.PrzetworzDane(ranking, wartosciSrednie, wartosciMin, wartosciMax);
+
+            if (!narysowanoWykres)
+            {
+                wynikiAnalizy.StworzWykresyGNUplot(szerokosc, wysokosc, nazwyPlikow, analityka.ZwrocMinWartoscProcesuPoszukiwan(), analityka.ZwrocMaxWartoscProcesuPoszukiwan(), analityka.ZwrocSredniaWartosciProcesuPoszukiwan());
+            }
+
+            return wynikiAnalizy.WyswietlInformacjeZwrotna(ranking, wyniki[2], wyniki[0], wyniki[1]);
         }
 
         /// <summary>

@@ -8,6 +8,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     /// </summary>
     class AnalizaEwolucyjny : AAnalityka
     {
-        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania, string[] nazwyPlikow) : base(rozwiazanie, liczbaIteracji, czasDzialania, nazwyPlikow) {}
+        public AnalizaEwolucyjny(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialania) : base(rozwiazanie, liczbaIteracji, czasDzialania) {}
     }
 }

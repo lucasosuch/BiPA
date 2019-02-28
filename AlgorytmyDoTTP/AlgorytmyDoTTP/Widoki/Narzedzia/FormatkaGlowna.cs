@@ -47,21 +47,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             foreach (ListViewItem element in zaznaczoneElementy)
             {
-                //XmlDocument plikDanych = new XmlDocument();
-                //plikDanych.Load("./Dane/" + nazwa + ".xml");
-
-                //if (iter == 0)
-                //{
-                //    hash = linia1.Value[3];
-                //}
-                //else
-                //{
-                //    if (hash != linia1.Value[3])
-                //    {
-                //        throw new Exception("Różne pliki danych");
-                //    }
-                //}
-
                 string nazwa = element.SubItems[0].Text;
 
                 XmlDocument dokument = new XmlDocument();
@@ -128,6 +113,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 dokument.Load("./Badania/" + nazwa + ".xml");
 
                 XmlNode maxWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/maxWartosc"),
+                        minWartosc = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/minWartosc"),
                         czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania"),
                         nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania"),
                         plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych"),
@@ -137,7 +123,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
                 odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
                             "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
-                            "Wartość: " + maxWartosc.InnerText + Environment.NewLine +
+                            "Najlepsza wartość funkcji celu: {" + maxWartosc.InnerText +", " + minWartosc.InnerText + "}" + Environment.NewLine +
                             "Czas działania: " + czasDzialania.InnerText + " s" + Environment.NewLine +
                             "Rozwiązanie: " + dziedzina.InnerText + Environment.NewLine + Environment.NewLine +
                             "Dane dodatkowe: " + Environment.NewLine;

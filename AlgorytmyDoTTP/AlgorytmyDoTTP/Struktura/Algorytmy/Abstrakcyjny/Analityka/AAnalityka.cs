@@ -9,7 +9,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
     abstract class AAnalityka
     {
         private Stopwatch pomiarCzasu = new Stopwatch();
-        protected string[] nazwyPlikow;
         protected readonly int[][] liczbaWCzasie;
         protected short czasDzialaniaAlgorytmu;
         protected short liczbaIteracji;
@@ -20,10 +19,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         protected ReprezentacjaRozwiazania najlepszeRozwiazanie;
         protected Dictionary<string, float[]> najlepszaWartoscFunkcji;
 
-        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu, string[] nazwyPlikow)
+        public AAnalityka(AOsobnik rozwiazanie, short liczbaIteracji, short czasDzialaniaAlgorytmu)
         {
             this.rozwiazanie = rozwiazanie;
-            this.nazwyPlikow = nazwyPlikow;
             this.liczbaIteracji = liczbaIteracji;
             this.czasDzialaniaAlgorytmu = czasDzialaniaAlgorytmu;
 
@@ -115,57 +113,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
         }
 
         /// <summary>
-        /// Metoda obliczająca średnią wartość funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="wartosci">Tablica rozwiązań</param>
-        /// <returns>Zwraca wartość średnią</returns>
-        public float Srednia(double[] wartosci)
-        {
-            float wynik = 0;
-            for (short i = 0; i < wartosci.Length; i++)
-            {
-                wynik += (float)wartosci[i];
-            }
-
-            wynik /= wartosci.Length;
-
-            return wynik;
-        }
-
-        /// <summary>
-        /// Metoda wyznaczająca medianę funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="Wartosci">Lista rozwiązań</param>
-        /// <returns>Zwraca medianę</returns>
-        public float Mediana(double[] wartosci)
-        {
-            int srodek = wartosci.Length / 2;
-            if (srodek == 0) throw new IndexOutOfRangeException();
-            double[] tmpWartosci = (double[])(wartosci.Clone());
-
-            Array.Sort(tmpWartosci);// sortowanie wyników rosnąco
-            return (float)tmpWartosci[srodek];
-        }
-
-        /// <summary>
-        /// Metoda obliczająca odchylenie standardowe funkcji celu z populacji rozwiązań
-        /// </summary>
-        /// <param name="wartosci">Lista rozwiązań</param>
-        /// <param name="srednia">Średnia z listy rozwiązań</param>
-        /// <returns>Zwraca odchylenie standardowe</returns>
-        public float OdchylenieStandardowe(double[] wartosci, float srednia)
-        {
-            float sumaKwadratow = 0;
-            foreach (double wartosc in wartosci)
-            {
-                sumaKwadratow += (float)((wartosc - srednia) * (wartosc - srednia));
-            }
-
-            float sredniaSumaKwadratow = sumaKwadratow / (wartosci.Length - 1);
-            return (float)Math.Sqrt(sredniaSumaKwadratow);
-        }
-
-        /// <summary>
         /// Metoda poszukująca najlepszego rozwiązania znalezionego do tej pory
         /// </summary>
         /// <param name="geny">Tablica definiująca dziedzinę rozwiązania</param>
@@ -196,46 +143,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             }
         }
 
-        public float[][] ZwrocRankingIteracji()
-        {
-            float[] punkty = new float[liczbaIteracji],
-                    srednieMin = new float[liczbaIteracji],
-                    srednieAvg = new float[liczbaIteracji],
-                    srednieMax = new float[liczbaIteracji];
-
-            for (short i = 0; i < liczbaIteracji; i++)
-            {
-                srednieMin[i] = Srednia(minWartoscProcesuPoszukiwan[i]);
-                srednieAvg[i] = Srednia(sredniaWartoscProcesuPoszukiwan[i]);
-                srednieMax[i] = Srednia(maxWartoscProcesuPoszukiwan[i]);
-            }
-
-            for (short i = 0; i < liczbaIteracji; i++)
-            {
-                float[] maxMax = ZnajdzMax(srednieMax);
-                punkty[(int)maxMax[0]] += srednieMax.Length - i;
-                srednieMax[(int)maxMax[0]] = -100000;
-
-                float[] maxMin = ZnajdzMax(srednieMin);
-                punkty[(int)maxMin[0]] += (float)(srednieMin.Length - (i * 0.5));
-                srednieMin[(int)maxMin[0]] = -100000;
-
-                float[] maxAvg = ZnajdzMax(srednieAvg);
-                punkty[(int)maxAvg[0]] += (float)(srednieAvg.Length - (i * 0.75));
-                srednieAvg[(int)maxAvg[0]] = -100000;
-            }
-            
-            float[][] wyniki = new float[punkty.Length][];
-            for(int i = 0; i < punkty.Length; i++)
-            {
-                float[] max = ZnajdzMax(punkty);
-                wyniki[i] = new float[] { max[0], max[1] };
-                punkty[(int)max[0]] = -100000;
-            }
-
-            return wyniki;
-        }
-
         public void ObliczSrednieWartosciProcesu()
         {
             for (short i = 0; i < liczbaIteracji; i++)
@@ -245,36 +152,6 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
                     sredniaWartoscProcesuPoszukiwan[i][j] /= liczbaWCzasie[i][j];
                 }
             }
-        }
-
-        public void StworzWykresyGNUplot(int szerokosc, int wysokosc)
-        {
-            GNUPlot gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(sredniaWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
-            gnuplot.ZakonczProcesGNUPlot();
-
-            gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(minWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
-            gnuplot.ZakonczProcesGNUPlot();
-
-            gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(maxWartoscProcesuPoszukiwan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
-            gnuplot.ZakonczProcesGNUPlot();
-        }
-
-        private float[] ZnajdzMax(float[] tablica)
-        {
-            float[] wynik = new float[] { 0, tablica[0] };
-            for (short i = 1; i < tablica.Length; i++)
-            {
-                if (tablica[i] > wynik[1])
-                {
-                    wynik[0] = i;
-                    wynik[1] = tablica[i];
-                }
-            }
-
-            return wynik;
         }
     }
 }

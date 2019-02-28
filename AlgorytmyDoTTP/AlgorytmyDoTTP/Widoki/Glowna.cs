@@ -37,14 +37,22 @@ namespace AlgorytmyDoTTP
 
             if (ilosc <= 10 && ilosc > 1)
             {
-                Rectangle ekran = Screen.FromControl(this).Bounds;
-                int szerokosc = ekran.Width,
-                    wysokosc = ekran.Height - 100;
-
-                FormatkaPorownania porownanieTemp = new FormatkaPorownania();
-                if(!porownanieTemp.ZwrocBladPlikuDanych())
+                try
                 {
-                    porownanieTemp.ZwrocRaport(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems), szerokosc, wysokosc);
+                    FormatkaPorownania porownanieTemp = new FormatkaPorownania();
+
+                    string raport = badanie.RysujWykres(narysowanoWykres, szerokosc, wysokosc, nazwyPlikow);
+
+                    if (!narysowanoWykres) narysowanoWykres = true;
+
+                    RezultatBadania rezultatBadania = new RezultatBadania();
+                    rezultatBadania.PokazWykresy(nazwyPlikow);
+                    rezultatBadania.WyswietlTekst(raport);
+                    rezultatBadania.Show();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if(ilosc < 2)

@@ -1,5 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -169,36 +168,13 @@ namespace AlgorytmyDoTTP.Widoki
 
             try
             {
-                AAnalityka analityka = badanie.ZwrocAnalityke();
-                float[][] ranking = analityka.ZwrocRankingIteracji();
+                string raport = badanie.RysujWykres(narysowanoWykres, szerokosc, wysokosc, nazwyPlikow);
 
-                double[][] wartosciSrednie = analityka.ZwrocSredniaWartosciProcesuPoszukiwan(),
-                           wartosciMin = analityka.ZwrocMinWartoscProcesuPoszukiwan(),
-                           wartosciMax = analityka.ZwrocMaxWartoscProcesuPoszukiwan();
-
-                float[][] srednie = new float[ranking.Length][],
-                          minima = new float[ranking.Length][],
-                          maxima = new float[ranking.Length][];
-
-                for (int i = 0; i < ranking.Length; i++)
-                {
-                    int iteracja = (int)ranking[i][0];
-                    float[] tmpSrednie = new float[] { analityka.Srednia(wartosciSrednie[iteracja]), analityka.Srednia(wartosciMin[iteracja]), analityka.Srednia(wartosciMax[iteracja]) };
-
-                    srednie[i] = new float[] { tmpSrednie[0], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[0]) };
-                    minima[i] = new float[] { tmpSrednie[1], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[1]) };
-                    maxima[i] = new float[] { tmpSrednie[2], analityka.Mediana(wartosciSrednie[iteracja]), analityka.OdchylenieStandardowe(wartosciSrednie[iteracja], tmpSrednie[2]) };
-                }
-
-                if (!narysowanoWykres)
-                {
-                    analityka.StworzWykresyGNUplot(szerokosc, wysokosc);
-                    narysowanoWykres = true;
-                }
+                if (!narysowanoWykres) narysowanoWykres = true;
 
                 RezultatBadania rezultatBadania = new RezultatBadania();
                 rezultatBadania.PokazWykresy(nazwyPlikow);
-                rezultatBadania.WyswietlInformacjeZwrotna(ranking, srednie, minima, maxima);
+                rezultatBadania.WyswietlTekst(raport);
                 rezultatBadania.Show();
             } catch( Exception exc)
             {
@@ -226,7 +202,7 @@ namespace AlgorytmyDoTTP.Widoki
             nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
             badanie.UstawParametryBadania(ZwrocParametry());
             //Process import data
-            await badanie.UruchomBadanie(nazwyPlikow, postep);
+            await badanie.UruchomBadanie(postep);
             string noweWynikiBadania = badanie.wynikiBadania();
 
             wynikiBadania.Text = noweWynikiBadania + wynikiBadania.Text;
@@ -243,11 +219,6 @@ namespace AlgorytmyDoTTP.Widoki
         {
             DodaniePlikowDanych dodaniePlikowDanych = new DodaniePlikowDanych(this);
             dodaniePlikowDanych.Show();
-
-            //for(int i = 0; i < dodaniePlikowDanych.plikiDanych.Items.Count; i++)
-            //{
-            //    Console.WriteLine("test: "+ dodaniePlikowDanych.plikiDanych.Items[i]);
-            //}
         }
 
         /// <summary>

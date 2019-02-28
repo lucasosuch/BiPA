@@ -10,7 +10,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
 {
     class PrzebiegAlgorytmu : Algorytm
     {
-        public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem, string[] nazwyPlikow)
+        public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
             int iloscRozwiazan = 100,
                 iloscElementow = problem.ZwrocDlugoscGenotypu();
@@ -22,17 +22,17 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
             {
                 case "Problem Plecakowy":
                     osobnik = new OsobnikKP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
 
                     return new RS(new LosowanieKP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Komiwojażera":
                     osobnik = new OsobnikTSP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
 
                     return new RS(new LosowanieTSP(osobnik), iloscRozwiazan, iloscElementow, analiza);
                 case "Problem Podróżującego Złodzieja":
                     osobnik = new OsobnikTTP(problem);
-                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]), nazwyPlikow);
+                    analiza = new AnalizaRLS_RS(osobnik, short.Parse(parametry["liczbaIteracji"]), short.Parse(parametry["czasPoszukiwania"]));
 
                     return new RS(new LosowanieTTP(osobnik), iloscRozwiazan, iloscElementow, analiza);
             }
