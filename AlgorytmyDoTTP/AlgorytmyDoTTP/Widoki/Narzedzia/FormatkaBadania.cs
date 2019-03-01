@@ -210,12 +210,18 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             float[][][] wyniki = wynikiAnalizy.PrzetworzDane(ranking, wartosciSrednie, wartosciMin, wartosciMax);
 
-            if (!narysowanoWykres)
+            string[] nazwyWykresow = new string[wartosciSrednie.Length];
+            for (int i = 0; i < wartosciSrednie.Length; i++)
             {
-                wynikiAnalizy.StworzWykresyGNUplot(szerokosc, wysokosc, nazwyPlikow, analityka.ZwrocMinWartoscProcesuPoszukiwan(), analityka.ZwrocMaxWartoscProcesuPoszukiwan(), analityka.ZwrocSredniaWartosciProcesuPoszukiwan());
+                nazwyWykresow[i] = "iteracja" + (i+1);
             }
 
-            return wynikiAnalizy.WyswietlInformacjeZwrotna(ranking, wyniki[2], wyniki[0], wyniki[1]);
+            if (!narysowanoWykres)
+            {
+                wynikiAnalizy.StworzWykresyGNUplot(szerokosc, wysokosc, nazwyWykresow, nazwyPlikow, analityka.ZwrocMinWartoscProcesuPoszukiwan(), analityka.ZwrocMaxWartoscProcesuPoszukiwan(), analityka.ZwrocSredniaWartosciProcesuPoszukiwan());
+            }
+
+            return wynikiAnalizy.WyswietlInformacjeZwrotna(ranking, wyniki[2], wyniki[0], wyniki[1], nazwyWykresow);
         }
 
         /// <summary>

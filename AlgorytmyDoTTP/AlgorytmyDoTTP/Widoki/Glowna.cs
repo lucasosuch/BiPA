@@ -3,6 +3,7 @@ using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
@@ -13,6 +14,7 @@ namespace AlgorytmyDoTTP
     public partial class Glowna : Form
     {
         private FormatkaGlowna glowna = new FormatkaGlowna();
+        private Random losowy = new Random();
 
         public Glowna()
         {
@@ -39,11 +41,14 @@ namespace AlgorytmyDoTTP
             {
                 try
                 {
+                    Rectangle ekran = Screen.FromControl(this).Bounds;
+
+                    int szerokosc = ekran.Width,
+                        wysokosc = ekran.Height - 100;
+
                     FormatkaPorownania porownanieTemp = new FormatkaPorownania();
-
-                    string raport = badanie.RysujWykres(narysowanoWykres, szerokosc, wysokosc, nazwyPlikow);
-
-                    if (!narysowanoWykres) narysowanoWykres = true;
+                    string[] nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
+                    string raport = porownanieTemp.RysujWykres(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems), szerokosc, wysokosc, nazwyPlikow);
 
                     RezultatBadania rezultatBadania = new RezultatBadania();
                     rezultatBadania.PokazWykresy(nazwyPlikow);
@@ -89,6 +94,12 @@ namespace AlgorytmyDoTTP
         {
             daneHistoryczne.Items.Clear();
             daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
+        }
+
+        private string LosowyTekst(int dlugosc)
+        {
+            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
         }
     }
 }

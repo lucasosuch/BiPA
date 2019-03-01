@@ -134,27 +134,25 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return wyniki;
         }
 
-        public string WyswietlInformacjeZwrotna(float[][] ranking, float[][] srednie, float[][] minima, float[][] maxima)
+        public string WyswietlInformacjeZwrotna(float[][] ranking, float[][] srednie, float[][] minima, float[][] maxima, string[] nazwyWykresow)
         {
             string tekst = "";
 
             for (int i = 0; i < srednie.Length; i++)
             {
-                int iteracja = (int)(ranking[i][0] + 1);
-
-                tekst += "Iteracja: " + iteracja + ", zdobyła " + ranking[i][1] + " punktów" + Environment.NewLine +
+                tekst += nazwyWykresow[(int)ranking[i][0]] + ", zdobyła " + ranking[i][1] + " punktów" + Environment.NewLine +
                         "---" + Environment.NewLine +
-                        "Wykres Średniej z iteracji " + iteracja + " badania: " + Environment.NewLine +
+                        "Wykres Średniej z " + nazwyWykresow[(int)ranking[i][0]] + " badania: " + Environment.NewLine +
                         "- średnia: " + srednie[i][0] + Environment.NewLine +
                         "- mediana: " + srednie[i][1] + Environment.NewLine +
                         "- odchylenie standardowe: " + srednie[i][2] + Environment.NewLine +
                         "---" + Environment.NewLine +
-                        "Wykres Minimów z itracji " + iteracja + " badania: " + Environment.NewLine +
+                        "Wykres Minimów z " + nazwyWykresow[(int)ranking[i][0]] + " badania: " + Environment.NewLine +
                         "- średnia: " + minima[i][0] + Environment.NewLine +
                         "- mediana: " + minima[i][1] + Environment.NewLine +
                         "- odchylenie standardowe: " + minima[i][2] + Environment.NewLine +
                         "---" + Environment.NewLine +
-                        "Wykres Maksimów z itracji " + iteracja + " badania: " + Environment.NewLine +
+                        "Wykres Maksimów z " + nazwyWykresow[(int)ranking[i][0]] + " badania: " + Environment.NewLine +
                         "- średnia: " + maxima[i][0] + Environment.NewLine +
                         "- mediana: " + maxima[i][1] + Environment.NewLine +
                         "- odchylenie standardowe: " + maxima[i][2] + Environment.NewLine +
@@ -164,18 +162,18 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return tekst;
         }
 
-        public void StworzWykresyGNUplot(int szerokosc, int wysokosc, string[] nazwyPlikow, double[][] minWartosci, double[][] maxWartosci, double[][] srednieWartosci)
+        public void StworzWykresyGNUplot(int szerokosc, int wysokosc, string[] nazwyWykresow, string[] nazwyPlikow, double[][] minWartosci, double[][] maxWartosci, double[][] srednieWartosci)
         {
             GNUPlot gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(srednieWartosci, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
+            gnuplot.RysujWykresBadania(srednieWartosci, szerokosc, wysokosc, "Średnia", nazwyPlikow[0], nazwyWykresow);
             gnuplot.ZakonczProcesGNUPlot();
 
             gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(maxWartosci, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
+            gnuplot.RysujWykresBadania(maxWartosci, szerokosc, wysokosc, "Maksimum", nazwyPlikow[1], nazwyWykresow);
             gnuplot.ZakonczProcesGNUPlot();
 
             gnuplot = new GNUPlot();
-            gnuplot.RysujWykresBadania(minWartosci, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
+            gnuplot.RysujWykresBadania(minWartosci, szerokosc, wysokosc, "Minimum", nazwyPlikow[2], nazwyWykresow);
             gnuplot.ZakonczProcesGNUPlot();
         }
     }

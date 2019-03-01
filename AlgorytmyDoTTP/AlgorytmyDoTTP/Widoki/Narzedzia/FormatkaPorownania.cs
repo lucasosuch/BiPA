@@ -1,8 +1,7 @@
-﻿using AlgorytmyDoTTP.Rozszerzenia;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
@@ -145,59 +144,35 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return wynik;
         }
 
-        public void ZwrocRaport(Dictionary<string, double[][]> paramentry, int szerokosc, int wysokosc)
+        public string RysujWykres(Dictionary<string, double[][]> paramentry, int szerokosc, int wysokosc, string[] nazwyPlikow)
         {
-            try
+            double[][] wartosciSrednie = new double[paramentry.Count][],
+                       wartosciMin = new double[paramentry.Count][],
+                       wartosciMax = new double[paramentry.Count][];
+            WynikiAnalizy wynikiAnalizy = new WynikiAnalizy();
+
+            int i = 0;
+            string[] nazwyBadan = new string[paramentry.Count];
+            foreach (KeyValuePair<string, double[][]> linia in paramentry)
             {
-                string[] nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
-
-                double[][] wartosciSrednie = new double[paramentry.Count][],
-                           wartosciMin = new double[paramentry.Count][],
-                           wartosciMax = new double[paramentry.Count][];
-
-                int i = 0;
-                string[] nazwyBadan = new string[paramentry.Count];
-                foreach (KeyValuePair<string, double[][]> linia in paramentry)
-                {
-                    nazwyBadan[i] = linia.Key;
-                    wartosciSrednie[i] = linia.Value[0];
-                    wartosciMin[i] = linia.Value[1];
-                    wartosciMax[i] = linia.Value[2];
-                    i++;
-                }
-
-                GNUPlot gnuplot = new GNUPlot();
-                gnuplot.RysujWykresPorownania(wartosciSrednie, nazwyBadan, szerokosc, wysokosc, "Średnia", nazwyPlikow[0]);
-                gnuplot.ZakonczProcesGNUPlot();
-
-                gnuplot = new GNUPlot();
-                gnuplot.RysujWykresPorownania(wartosciMin, nazwyBadan, szerokosc, wysokosc, "Minimum", nazwyPlikow[1]);
-                gnuplot.ZakonczProcesGNUPlot();
-
-                gnuplot = new GNUPlot();
-                gnuplot.RysujWykresPorownania(wartosciMax, nazwyBadan, szerokosc, wysokosc, "Maksimum", nazwyPlikow[2]);
-                gnuplot.ZakonczProcesGNUPlot();
-
-                RezultatBadania rezultatBadania = new RezultatBadania();
-                rezultatBadania.PokazWykresy(nazwyPlikow);
-                rezultatBadania.Show();
+                nazwyBadan[i] = linia.Key;
+                wartosciSrednie[i] = linia.Value[0];
+                wartosciMin[i] = linia.Value[1];
+                wartosciMax[i] = linia.Value[2];
+                i++;
             }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bladPlikuDanych = true;
-            }
+
+            float[][] ranking = wynikiAnalizy.ZwrocRanking(wartosciMin, wartosciMax, wartosciSrednie);
+            float[][][] wyniki = wynikiAnalizy.PrzetworzDane(ranking, wartosciSrednie, wartosciMin, wartosciMax);
+
+            wynikiAnalizy.StworzWykresyGNUplot(szerokosc, wysokosc, nazwyBadan, nazwyPlikow, wartosciMin, wartosciMax, wartosciSrednie);
+
+            return wynikiAnalizy.WyswietlInformacjeZwrotna(ranking, wyniki[2], wyniki[0], wyniki[1], nazwyBadan);
         }
 
         public bool ZwrocBladPlikuDanych()
         {
             return bladPlikuDanych;
-        }
-
-        private string LosowyTekst(int dlugosc)
-        {
-            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
         }
     }
 }

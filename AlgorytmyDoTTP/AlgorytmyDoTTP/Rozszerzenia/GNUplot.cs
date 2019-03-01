@@ -18,7 +18,7 @@ namespace AlgorytmyDoTTP.Rozszerzenia
             procesGnuplot.Start();
         }
 
-        public void RysujWykresBadania(double[][] wartosci, int szerokosc, int wysokosc, string tytul, string nazwaPliku)
+        public void RysujWykresBadania(double[][] wartosci, int szerokosc, int wysokosc, string tytul, string nazwaPliku, string[] nazwyWykresow)
         {
             StreamWriter SW = procesGnuplot.StandardInput;
             StreamReader SR = procesGnuplot.StandardOutput;
@@ -38,8 +38,8 @@ namespace AlgorytmyDoTTP.Rozszerzenia
                     tablicaWartosci[i] += wartosci[i][j].ToString().Replace(",", ".") + ",";
                 }
 
-                SW.WriteLine("array iteracja"+ (i + 1) + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
-                nazwyPol[i] = "iteracja" + (i + 1) + " w linespoints";
+                SW.WriteLine("array "+ nazwyWykresow[i] + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
+                nazwyPol[i] = nazwyWykresow[i] + " w linespoints";
             }
 
             SW.WriteLine("plot " + string.Join(", ", nazwyPol));
@@ -47,37 +47,6 @@ namespace AlgorytmyDoTTP.Rozszerzenia
 
             Image png = Image.FromStream(SR.BaseStream);
             png.Save(@".\Wykresy\"+ nazwaPliku + ".png");
-        }
-
-        public void RysujWykresPorownania(double[][] wartosci, string[] nazwyBadan, int szerokosc, int wysokosc, string tytul, string nazwaPliku)
-        {
-            StreamWriter SW = procesGnuplot.StandardInput;
-            StreamReader SR = procesGnuplot.StandardOutput;
-
-            string[] tablicaWartosci = new string[wartosci.Length];
-            string[] nazwyPol = new string[wartosci.Length];
-
-            SW.WriteLine("set grid");
-            SW.WriteLine("set title '" + tytul + "'");
-            SW.WriteLine("set terminal pngcairo size " + szerokosc + ", " + wysokosc);
-
-            for (short i = 0; i < wartosci.Length; i++)
-            {
-                tablicaWartosci[i] += " ";
-                for (short j = 0; j < wartosci[i].Length; j++)
-                {
-                    tablicaWartosci[i] += wartosci[i][j].ToString().Replace(",", ".") + ",";
-                }
-                
-                SW.WriteLine("array " + nazwyBadan[i] + "[" + wartosci[i].Length + "] = [" + tablicaWartosci[i] + "]");
-                nazwyPol[i] = nazwyBadan[i] + " w linespoints";
-            }
-            
-            SW.WriteLine("plot " + string.Join(", ", nazwyPol));
-            SW.WriteLine("exit");
-            
-            Image png = Image.FromStream(SR.BaseStream);
-            png.Save(@".\Wykresy\" + nazwaPliku + ".png");
         }
 
         public void ZakonczProcesGNUPlot()
