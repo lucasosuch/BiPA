@@ -17,15 +17,8 @@ namespace AlgorytmyDoTTP.Widoki
         public StronaDodaniaPlikowDanych(StronaBadania stronaBadania)
         {
             InitializeComponent();
+            WczytajPlikiDanych("< Nowy plik >");
             this.stronaBadania = stronaBadania;
-
-            // wczytanie plików danych dla TTP
-            plikiDanych.Items.Clear();
-            plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
-            
-            // domyślnie tworzymy nowy plik danych
-            plikiDanych.Items.Add("< Nowy plik >");
-            plikiDanych.Text = "< Nowy plik >";
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
@@ -41,29 +34,7 @@ namespace AlgorytmyDoTTP.Widoki
             {
                 if (plikiDanych.Text != "< Nowy plik >")
                 {
-                    // pobranie pliku z danymi z dysku
-                    XmlDocument dokument = new XmlDocument();
-                    dokument.Load("./Dane/TTP/" + plikiDanych.Text + ".xml");
-
-                    XmlNode przypadekTSP = dokument.DocumentElement.SelectSingleNode("/korzen/tsp");
-                    XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
-
-                    // jeżeli istnieją już dane do problemów optymalizacyjnych o wybranej konfiguracji - wtedy następuje usunięcie starych danych
-                    // i zastąpienie ich nowymi
-                    if (File.Exists(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml"))
-                    {
-                        File.Delete(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
-                    }
-
-                    if (File.Exists(@"./Dane/KP/" + przypadekKP.InnerText + ".xml"))
-                    {
-                        File.Delete(@"./Dane/KP/" + przypadekKP.InnerText + ".xml");
-                    }
-
-                    if (File.Exists(@"./Dane/TTP/" + plikiDanych.Text + ".xml"))
-                    {
-                        File.Delete(@"./Dane/TTP/" + plikiDanych.Text + ".xml");
-                    }
+                    UsunPlikDanych();
                 }
 
                 // wygenerowanie 3 plików XML na podstawie zadanej konfiguracji
@@ -165,26 +136,9 @@ namespace AlgorytmyDoTTP.Widoki
 
                 MessageBox.Show("Dodano plik danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                plikiDanych.Items.Clear();
-                plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
-                plikiDanych.Items.Add("< Nowy plik >");
+                WczytajPlikiDanych("< Nowy plik >");
                 plikiDanych.Text = "ttp_" + nazwaKP + "_" + nazwaTSP;
-                
-                if (stronaBadania.wybierzProblem.Text != "")
-                {
-                    if (stronaBadania.wybierzProblem.Text == "Problem Podróżującego Złodzieja")
-                    {
-                        stronaBadania.wybierzPlikDanych.Items.Add("ttp_" + nazwaKP + "_" + nazwaTSP);
-                    }
-                    else if (stronaBadania.wybierzProblem.Text == "Problem Plecakowy")
-                    {
-                        stronaBadania.wybierzPlikDanych.Items.Add(nazwaKP);
-                    }
-                    else
-                    {
-                        stronaBadania.wybierzPlikDanych.Items.Add(nazwaTSP);
-                    }
-                }
+                UsunPlikDanychBadanie();
             }
             else
             {
@@ -379,6 +333,8 @@ namespace AlgorytmyDoTTP.Widoki
 
             if (plikiDanych.Text != "< Nowy plik >")
             {
+                usunPlik.Enabled = true;
+
                 // pobranie pliku z danymi z dysku
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Dane/TTP/" + plikiDanych.Text + ".xml");
@@ -398,8 +354,6 @@ namespace AlgorytmyDoTTP.Widoki
 
                 dokument.Load("./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
                 XmlNodeList miasta = dokument.DocumentElement.SelectNodes("/korzen/mapa/miasto");
-
-                Console.WriteLine("tsp: "+ miasta[0]["x"] +" " + miasta[0]["y"]);
 
                 for (int i = 0; i < miasta.Count; i++)
                 {
@@ -424,6 +378,9 @@ namespace AlgorytmyDoTTP.Widoki
 
                 if (listaMiast.Items.Count == 0) this.dostepnePrzedmioty.Enabled = false;
                 else this.dostepnePrzedmioty.Enabled = true;
+            } else
+            {
+                usunPlik.Enabled = false;
             }
         }
 
@@ -467,6 +424,73 @@ namespace AlgorytmyDoTTP.Widoki
 
             kp_sumaWag.Text = "" + sumaWag;
             kp_sumaWartosci.Text = "" + sumaWartosci;
+        }
+
+        private void usunPlik_Click(object sender, EventArgs e)
+        {
+            UsunPlikDanych();
+            UsunPlikDanychBadanie();
+            MessageBox.Show("Usunięto plik danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            WczytajPlikiDanych("< Nowy plik >");
+        }
+
+        private void UsunPlikDanych()
+        {
+            // pobranie pliku z danymi z dysku
+            XmlDocument dokument = new XmlDocument();
+            dokument.Load("./Dane/TTP/" + plikiDanych.Text + ".xml");
+
+            XmlNode przypadekTSP = dokument.DocumentElement.SelectSingleNode("/korzen/tsp");
+            XmlNode przypadekKP = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
+
+            // jeżeli istnieją już dane do problemów optymalizacyjnych o wybranej konfiguracji - wtedy następuje usunięcie starych danych
+            // i zastąpienie ich nowymi
+            if (File.Exists(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml"))
+            {
+                File.Delete(@"./Dane/TSP/" + przypadekTSP.InnerText + ".xml");
+            }
+
+            if (File.Exists(@"./Dane/KP/" + przypadekKP.InnerText + ".xml"))
+            {
+                File.Delete(@"./Dane/KP/" + przypadekKP.InnerText + ".xml");
+            }
+
+            if (File.Exists(@"./Dane/TTP/" + plikiDanych.Text + ".xml"))
+            {
+                File.Delete(@"./Dane/TTP/" + plikiDanych.Text + ".xml");
+            }
+        }
+
+        private void UsunPlikDanychBadanie()
+        {
+            if (stronaBadania.wybierzProblem.Text != "")
+            {
+                stronaBadania.wybierzPlikDanych.Items.Clear();
+
+                if (stronaBadania.wybierzProblem.Text == "Problem Podróżującego Złodzieja")
+                {
+                    stronaBadania.wybierzPlikDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
+                }
+                else if (stronaBadania.wybierzProblem.Text == "Problem Plecakowy")
+                {
+                    stronaBadania.wybierzPlikDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Plecakowy"));
+                }
+                else
+                {
+                    stronaBadania.wybierzPlikDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Komiwojażera"));
+                }
+            }
+        }
+
+        private void WczytajPlikiDanych(string domyslny)
+        {
+            // wczytanie plików danych dla TTP
+            plikiDanych.Items.Clear();
+            plikiDanych.Items.AddRange(badanie.WczytajPlikiDanych("Problem Podróżującego Złodzieja"));
+
+            // domyślnie tworzymy nowy plik danych
+            plikiDanych.Items.Add(domyslny);
+            plikiDanych.Text = domyslny;
         }
     }
 }

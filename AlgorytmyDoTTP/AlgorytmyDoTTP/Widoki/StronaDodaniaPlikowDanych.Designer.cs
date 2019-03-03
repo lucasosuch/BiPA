@@ -104,6 +104,7 @@
             this.usunPlik.TabIndex = 130;
             this.usunPlik.Text = "Usuń plik";
             this.usunPlik.UseSelectable = true;
+            this.usunPlik.Click += new System.EventHandler(this.usunPlik_Click);
             // 
             // tabela
             // 
@@ -160,10 +161,10 @@
             // 
             // 
             this.kp_sumaWag.CustomButton.Image = null;
-            this.kp_sumaWag.CustomButton.Location = new System.Drawing.Point(136, 1);
+            this.kp_sumaWag.CustomButton.Location = new System.Drawing.Point(102, 1);
             this.kp_sumaWag.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.kp_sumaWag.CustomButton.Name = "";
-            this.kp_sumaWag.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.kp_sumaWag.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.kp_sumaWag.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.kp_sumaWag.CustomButton.TabIndex = 1;
             this.kp_sumaWag.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -196,10 +197,10 @@
             // 
             // 
             this.kp_sumaWartosci.CustomButton.Image = null;
-            this.kp_sumaWartosci.CustomButton.Location = new System.Drawing.Point(136, 1);
+            this.kp_sumaWartosci.CustomButton.Location = new System.Drawing.Point(102, 1);
             this.kp_sumaWartosci.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.kp_sumaWartosci.CustomButton.Name = "";
-            this.kp_sumaWartosci.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.kp_sumaWartosci.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.kp_sumaWartosci.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.kp_sumaWartosci.CustomButton.TabIndex = 1;
             this.kp_sumaWartosci.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -276,7 +277,7 @@
             this.listaPrzedmiotow.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listaPrzedmiotow.FullRowSelect = true;
             this.listaPrzedmiotow.Location = new System.Drawing.Point(0, 62);
-            this.listaPrzedmiotow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listaPrzedmiotow.Margin = new System.Windows.Forms.Padding(4);
             this.listaPrzedmiotow.Name = "listaPrzedmiotow";
             this.listaPrzedmiotow.OwnerDraw = true;
             this.listaPrzedmiotow.Size = new System.Drawing.Size(1009, 400);
@@ -307,10 +308,10 @@
             // 
             // 
             this.waga.CustomButton.Image = null;
-            this.waga.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.waga.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.waga.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waga.CustomButton.Name = "";
-            this.waga.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.waga.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.waga.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.waga.CustomButton.TabIndex = 1;
             this.waga.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -358,10 +359,10 @@
             // 
             // 
             this.wartosc.CustomButton.Image = null;
-            this.wartosc.CustomButton.Location = new System.Drawing.Point(147, 1);
+            this.wartosc.CustomButton.Location = new System.Drawing.Point(110, 1);
             this.wartosc.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wartosc.CustomButton.Name = "";
-            this.wartosc.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wartosc.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wartosc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wartosc.CustomButton.TabIndex = 1;
             this.wartosc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -426,10 +427,10 @@
             // 
             // 
             this.dostepnePrzedmioty.CustomButton.Image = null;
-            this.dostepnePrzedmioty.CustomButton.Location = new System.Drawing.Point(292, 1);
+            this.dostepnePrzedmioty.CustomButton.Location = new System.Drawing.Point(219, 1);
             this.dostepnePrzedmioty.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dostepnePrzedmioty.CustomButton.Name = "";
-            this.dostepnePrzedmioty.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.dostepnePrzedmioty.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.dostepnePrzedmioty.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.dostepnePrzedmioty.CustomButton.TabIndex = 1;
             this.dostepnePrzedmioty.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -500,7 +501,7 @@
             this.listaMiast.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listaMiast.FullRowSelect = true;
             this.listaMiast.Location = new System.Drawing.Point(0, 62);
-            this.listaMiast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listaMiast.Margin = new System.Windows.Forms.Padding(4);
             this.listaMiast.Name = "listaMiast";
             this.listaMiast.OwnerDraw = true;
             this.listaMiast.Size = new System.Drawing.Size(1009, 400);
@@ -536,10 +537,10 @@
             // 
             // 
             this.wsp_y.CustomButton.Image = null;
-            this.wsp_y.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.wsp_y.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.wsp_y.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wsp_y.CustomButton.Name = "";
-            this.wsp_y.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wsp_y.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wsp_y.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wsp_y.CustomButton.TabIndex = 1;
             this.wsp_y.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -587,10 +588,10 @@
             // 
             // 
             this.wsp_x.CustomButton.Image = null;
-            this.wsp_x.CustomButton.Location = new System.Drawing.Point(145, 1);
+            this.wsp_x.CustomButton.Location = new System.Drawing.Point(109, 1);
             this.wsp_x.CustomButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.wsp_x.CustomButton.Name = "";
-            this.wsp_x.CustomButton.Size = new System.Drawing.Size(28, 26);
+            this.wsp_x.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.wsp_x.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.wsp_x.CustomButton.TabIndex = 1;
             this.wsp_x.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -658,7 +659,7 @@
             this.plikiDanych.UseSelectable = true;
             this.plikiDanych.SelectedIndexChanged += new System.EventHandler(this.plikiDanych_SelectedIndexChanged);
             // 
-            // DodaniePlikowDanych
+            // StronaDodaniaPlikowDanych
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -667,7 +668,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(1058, 755);
             this.MinimumSize = new System.Drawing.Size(1058, 755);
-            this.Name = "DodaniePlikowDanych";
+            this.Name = "StronaDodaniaPlikowDanych";
             this.Text = "DodaniePlikowDanych";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
