@@ -1,11 +1,10 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Konfiguracja;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
 using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP;
-using AlgorytmyDoTTP.Widoki.KonfiguracjaAlgorytmow;
-using AlgorytmyDoTTP.Widoki.Walidacja;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,19 +20,13 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     /// </summary>
     class FormatkaBadania : FormatkaGlowna
     {
+        private string nazwaFolderu = "";
         private float[][] ranking = null;
+        private IAlgorytm algorytm = null;
         private AAnalityka analityka = null;
         private Dictionary<string, string> parametry;
-        private AE algorytmEwolucyjny = new AE();
-        private Konfiguracja srodowisko = new Konfiguracja();
-        private string nazwaFolderu = "";
-        private IAlgorytm algorytm;
+        private Glowna konfiguracjaSrodowiska = new Glowna();
         private WynikiAnalizy wynikiAnalizy = new WynikiAnalizy();
-        
-        public FormatkaBadania()
-        {
-
-        }
 
         public void UstawParametryBadania(Dictionary<string, string> parametry)
         {
@@ -153,7 +146,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             int i = 0;
             foreach (KeyValuePair<string, string> parametr in parametry)
             {
-                if (parametr.Key != "algorytm" && parametr.Key != "dane")
+                if (parametr.Key != "algorytm" && parametr.Key != "dane" && parametr.Key != "doPorownania")
                 {
                     dodatki[i] = new XElement(parametr.Key, parametr.Value);
                     i++;
@@ -233,14 +226,14 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             if (parametry["problem"] == "Problem Plecakowy")
             {
                 ProblemPlecakowy problemKP = new ProblemPlecakowy(parametry["dane"]);
-                problemKP.UstawOgraniczeniaProblemu(float.Parse(parametry["ograniczenie1"]));
+                problemKP.UstawOgraniczeniaProblemu(float.Parse(parametry["maxWaga"]));
 
                 return problemKP;
             }
             else if (parametry["problem"] == "Problem Podróżującego Złodzieja")
             {
                 ProblemPodrozujacegoZlodzieja problemTTP = new ProblemPodrozujacegoZlodzieja(parametry["dane"], parametry["modelTTP"]);
-                problemTTP.UstawOgraniczeniaProblemu(new float[] { float.Parse(parametry["ograniczenie1"]), float.Parse(parametry["wyporzyczeniePlecaka"]) });
+                problemTTP.UstawOgraniczeniaProblemu(new float[] { float.Parse(parametry["maxWaga"]), float.Parse(parametry["wyporzyczeniePlecaka"]) });
 
                 return problemTTP;
             }
@@ -272,11 +265,11 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Nazwy plików danych pod wybrany Problem Optymalizacyjny</returns>
         public object[] WczytajPlikiDanych(string wybranyProblem)
         {
-            for (int i = 0; i < srodowisko.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
+            for (int i = 0; i < konfiguracjaSrodowiska.PROBLEMY_OPTYMALIZACYJNE.Length; i++)
             {
-                if ((string)srodowisko.PROBLEMY_OPTYMALIZACYJNE[i] == wybranyProblem)
+                if ((string)konfiguracjaSrodowiska.PROBLEMY_OPTYMALIZACYJNE[i] == wybranyProblem)
                 {
-                    nazwaFolderu = srodowisko.FOLDERY_Z_DANYMI[i];
+                    nazwaFolderu = konfiguracjaSrodowiska.FOLDERY_Z_DANYMI[i];
                     break;
                 }
             }
@@ -300,26 +293,62 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
         public void WalidacjaFormatki(Dictionary<string, string> parametry)
         {
-            bool walidacja = new WalidacjaAE().CzyPoprawneCalkowite(parametry, algorytmEwolucyjny.parametryCalkowite) && new WalidacjaAE().CzyPoprawneZmiennoPrzecinkowe(parametry, algorytmEwolucyjny.parametryZmiennoPrzecinkowe);
+            bool walidacja = true;
+            string bladnaWartosc = "";
+            string[] polaTekstowe = konfiguracjaSrodowiska.PARAMETRY_TEKSTOWE,
+                     polaCalkowite = konfiguracjaSrodowiska.PARAMETRY_CALKOWITE,
+                     polaZmiennoprzecinkowe = konfiguracjaSrodowiska.PARAMETRY_ZMIENNOPRZECINKOWE;
+                     
+            MetodyWalidacji metodyWalidacji = new MetodyWalidacji();
 
-            if (!walidacja)
+            for (int i = 0; i < polaTekstowe.Length; i++)
             {
-                throw new Exception();
+                if (parametry.ContainsKey(polaTekstowe[i]))
+                {
+                    if (!metodyWalidacji.CzyPustePoleTekstowe(parametry[polaTekstowe[i]]))
+                    {
+                        bladnaWartosc = polaTekstowe[i];
+                        walidacja = false;
+                        break;
+                    }
+                }
             }
-        }
 
-        /// <summary>
-        /// Metoda odpowiada za walidację podstawowych parametrów odpowiadających za badania
-        /// </summary>
-        /// <param name="parametry">Parametr badania</param>
-        /// <exception cref="Exception">Zwraca wyjątek jeżeli jest błąd w formatce</exception>
-        public void WalidacjaKluczowychParametrow(string parametr)
-        {
-            bool walidacja = new WalidacjaAE().CzyPustePoleTekstowe(parametr);
+            if (walidacja)
+            {
+                for (int i = 0; i < polaCalkowite.Length; i++)
+                {
+                    if (parametry.ContainsKey(polaCalkowite[i]))
+                    {
+                        if (!metodyWalidacji.CzyPoprawneCalkowite(parametry[polaCalkowite[i]]))
+                        {
+                            bladnaWartosc = polaCalkowite[i];
+                            walidacja = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (walidacja)
+            {
+                for (int i = 0; i < polaZmiennoprzecinkowe.Length; i++)
+                {
+                    if (parametry.ContainsKey(polaZmiennoprzecinkowe[i]))
+                    {
+                        if (!metodyWalidacji.CzyPoprawneZmiennoPrzecinkowe(parametry[polaZmiennoprzecinkowe[i]]))
+                        {
+                            bladnaWartosc = polaZmiennoprzecinkowe[i];
+                            walidacja = false;
+                            break;
+                        }
+                    }
+                }
+            }
 
             if (!walidacja)
             {
-                throw new Exception("Parametr " + parametr + " nie może być pusty!");
+                throw new Exception("Wartość w polu: " + bladnaWartosc + " ma zły format!");
             }
         }
 
@@ -327,18 +356,9 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// Metoda zwraca instancję konfiguracji środowiskowej
         /// </summary>
         /// <returns>Zwraca instancję konfiguracji środowiska aplikacji</returns>
-        public Konfiguracja ZwrocZmiennaSrodowiskowa()
+        public Glowna ZwrocZmiennaSrodowiskowa()
         {
-            return srodowisko;
-        }
-
-        /// <summary>
-        /// Metoda zwraca instancję konfiguracji Algorytmu Ewolucyjnego
-        /// </summary>
-        /// <returns>Zwraca instancję konfiguracji Algorytmu Ewolucyjnego</returns>
-        public AE ZwrocKonfiguracjeAE()
-        {
-            return algorytmEwolucyjny;
+            return konfiguracjaSrodowiska;
         }
     }
 }

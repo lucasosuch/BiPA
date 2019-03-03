@@ -41,8 +41,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
         /// <returns>Parametry z badań potrzebne do porównania</returns>
         public Dictionary<string, double[][]> ZbierzDaneDoPorownania(ListView.CheckedListViewItemCollection zaznaczoneElementy)
         {
-            //int iter = 0;
-            //string hash = "";
+            string hash = "";
             Dictionary<string, double[][]> paramentry = new Dictionary<string, double[][]>();
 
             foreach (ListViewItem element in zaznaczoneElementy)
@@ -55,7 +54,18 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                 XmlNodeList srednia = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/srednia/x"),
                             minimum = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/minimum/x"),
                             maksimum = dokument.DocumentElement.SelectNodes("/badanie/rozwiazanie/przebiegBadania/maksimum/x");
-                
+
+                XmlNode hashBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/hash");
+
+                if (hash == "") hash = hashBadania.InnerText;
+                else
+                {
+                    if(hash != hashBadania.InnerText)
+                    {
+                        throw new Exception("Różne pliki danych");
+                    }
+                }
+
                 int i = 0;
                 double[] avg = new double[srednia.Count];
                 foreach (XmlNode dane in srednia)
@@ -82,8 +92,6 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
                 string nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/porownawczyTekst").InnerText.Replace(" ", "").Trim();
                 paramentry[nazwaBadania] = new double[][] { avg, min, max };
-
-                //iter++;
             }
 
             return paramentry;

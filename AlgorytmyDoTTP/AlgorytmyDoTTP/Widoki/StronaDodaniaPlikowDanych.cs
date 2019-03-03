@@ -7,17 +7,17 @@ using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki
 {
-    public partial class DodaniePlikowDanych : Form
+    public partial class StronaDodaniaPlikowDanych : Form
     {
         private int edycjaMiasta = -1;
         private int edycjaPrzedmiotu = -1;
         private FormatkaBadania badanie = new FormatkaBadania();
-        private Badanie widokBadania;
+        private StronaBadania stronaBadania;
 
-        public DodaniePlikowDanych(Badanie widokBadania)
+        public StronaDodaniaPlikowDanych(StronaBadania stronaBadania)
         {
             InitializeComponent();
-            this.widokBadania = widokBadania;
+            this.stronaBadania = stronaBadania;
 
             // wczytanie plików danych dla TTP
             plikiDanych.Items.Clear();
@@ -31,8 +31,8 @@ namespace AlgorytmyDoTTP.Widoki
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
         {
             // stworzenie losowej plików danych dla TTP, TSP, KP
-            GenerowaniePlikow generowaniePlikow = new GenerowaniePlikow(this);
-            generowaniePlikow.Show();
+            StronaGenerowaniaPlikow stronaGenerowaniaPlikow = new StronaGenerowaniaPlikow(this);
+            stronaGenerowaniaPlikow.Show();
         }
 
         private void stworzPlikDanych_Click(object sender, EventArgs e)
@@ -170,19 +170,19 @@ namespace AlgorytmyDoTTP.Widoki
                 plikiDanych.Items.Add("< Nowy plik >");
                 plikiDanych.Text = "ttp_" + nazwaKP + "_" + nazwaTSP;
                 
-                if (widokBadania.wybierzProblem.Text != "")
+                if (stronaBadania.wybierzProblem.Text != "")
                 {
-                    if (widokBadania.wybierzProblem.Text == "Problem Podróżującego Złodzieja")
+                    if (stronaBadania.wybierzProblem.Text == "Problem Podróżującego Złodzieja")
                     {
-                        widokBadania.wybierzPlikDanych.Items.Add("ttp_" + nazwaKP + "_" + nazwaTSP);
+                        stronaBadania.wybierzPlikDanych.Items.Add("ttp_" + nazwaKP + "_" + nazwaTSP);
                     }
-                    else if (widokBadania.wybierzProblem.Text == "Problem Plecakowy")
+                    else if (stronaBadania.wybierzProblem.Text == "Problem Plecakowy")
                     {
-                        widokBadania.wybierzPlikDanych.Items.Add(nazwaKP);
+                        stronaBadania.wybierzPlikDanych.Items.Add(nazwaKP);
                     }
                     else
                     {
-                        widokBadania.wybierzPlikDanych.Items.Add(nazwaTSP);
+                        stronaBadania.wybierzPlikDanych.Items.Add(nazwaTSP);
                     }
                 }
             }

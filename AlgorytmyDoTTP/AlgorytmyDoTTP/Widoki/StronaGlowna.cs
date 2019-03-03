@@ -1,9 +1,7 @@
 ﻿using AlgorytmyDoTTP.Widoki;
 using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
@@ -11,12 +9,11 @@ namespace AlgorytmyDoTTP
     /// <summary>
     /// Klasa widoku głownego
     /// </summary>
-    public partial class Glowna : Form
+    public partial class StronaGlowna : Form
     {
-        private FormatkaGlowna glowna = new FormatkaGlowna();
-        private Random losowy = new Random();
+        private FormatkaGlowna formatkaGlowna = new FormatkaGlowna();
 
-        public Glowna()
+        public StronaGlowna()
         {
             InitializeComponent();
         }
@@ -24,10 +21,6 @@ namespace AlgorytmyDoTTP
         private void Form1_Load(object sender, EventArgs e)
         {
             WczytajPlikiBadan();
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
         }
 
         /// <summary>
@@ -46,14 +39,16 @@ namespace AlgorytmyDoTTP
                     int szerokosc = ekran.Width,
                         wysokosc = ekran.Height - 100;
 
-                    FormatkaPorownania porownanieTemp = new FormatkaPorownania();
-                    string[] nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
-                    string raport = porownanieTemp.RysujWykres(glowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems), szerokosc, wysokosc, nazwyPlikow);
+                    PomocneFunkcje narzedziaWidokow = new PomocneFunkcje();
+                    FormatkaPorownania formatkaPorownania = new FormatkaPorownania();
 
-                    RezultatBadania rezultatBadania = new RezultatBadania();
-                    rezultatBadania.PokazWykresy(nazwyPlikow);
-                    rezultatBadania.WyswietlTekst(raport);
-                    rezultatBadania.Show();
+                    string[] nazwyPlikow = new string[] { narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10) };
+                    string raport = formatkaPorownania.RysujWykres(formatkaGlowna.ZbierzDaneDoPorownania(daneHistoryczne.CheckedItems), szerokosc, wysokosc, nazwyPlikow);
+
+                    StronaWynikow stronaWynikow = new StronaWynikow();
+                    stronaWynikow.PokazWykresy(nazwyPlikow);
+                    stronaWynikow.WyswietlTekst(raport);
+                    stronaWynikow.Show();
                 }
                 catch (Exception exc)
                 {
@@ -72,34 +67,28 @@ namespace AlgorytmyDoTTP
 
         private void podgladBadania(object sender, EventArgs e)
         {
-            podglad.Text = glowna.ZwrocDanePodgladanegoBadania(daneHistoryczne.SelectedItems);
+            podglad.Text = formatkaGlowna.ZwrocDanePodgladanegoBadania(daneHistoryczne.SelectedItems);
         }
 
         private void usuniecieBadania_Click(object sender, EventArgs e)
         {
             if(daneHistoryczne.CheckedItems.Count > 0)
             {
-                glowna.UsunWybraneBadania(daneHistoryczne.CheckedItems);
+                formatkaGlowna.UsunWybraneBadania(daneHistoryczne.CheckedItems);
                 WczytajPlikiBadan();
             }
         }
 
         private void dodajBadanie_Click(object sender, EventArgs e)
         {
-            Badanie widokBadania = new Badanie(this);
+            StronaBadania widokBadania = new StronaBadania(this);
             widokBadania.Show();
         }
 
         private void WczytajPlikiBadan()
         {
             daneHistoryczne.Items.Clear();
-            daneHistoryczne.Items.AddRange(glowna.WczytajHistoryczneBadania());
-        }
-
-        private string LosowyTekst(int dlugosc)
-        {
-            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
+            daneHistoryczne.Items.AddRange(formatkaGlowna.WczytajHistoryczneBadania());
         }
     }
 }

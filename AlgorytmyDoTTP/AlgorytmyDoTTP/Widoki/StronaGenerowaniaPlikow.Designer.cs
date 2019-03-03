@@ -1,6 +1,6 @@
 ﻿namespace AlgorytmyDoTTP.Widoki
 {
-    partial class GenerowaniePlikow
+    partial class StronaGenerowaniaPlikow
     {
         /// <summary>
         /// Required designer variable.

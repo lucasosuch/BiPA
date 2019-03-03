@@ -1,6 +1,6 @@
 ﻿namespace AlgorytmyDoTTP.Widoki
 {
-    partial class DodaniePlikowDanych
+    partial class StronaDodaniaPlikowDanych
     {
         /// <summary>
         /// Required designer variable.

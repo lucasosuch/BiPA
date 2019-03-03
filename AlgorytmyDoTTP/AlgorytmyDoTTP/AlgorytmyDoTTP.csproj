@@ -58,25 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Konfiguracja.cs" />
+    <Compile Include="Konfiguracja\Glowna.cs" />
     <Compile Include="Rozszerzenia\GNUPlot.cs" />
-    <Compile Include="Rozszerzenia\OldGnuPlot.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\WynikiAnalizy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
-    <Compile Include="Widoki\DodaniePlikowDanych.cs">
+    <Compile Include="Widoki\StronaDodaniaPlikowDanych.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Widoki\DodaniePlikowDanych.Designer.cs">
-      <DependentUpon>DodaniePlikowDanych.cs</DependentUpon>
+    <Compile Include="Widoki\StronaDodaniaPlikowDanych.Designer.cs">
+      <DependentUpon>StronaDodaniaPlikowDanych.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widoki\GenerowaniePlikow.cs">
+    <Compile Include="Widoki\StronaGenerowaniaPlikow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Widoki\GenerowaniePlikow.Designer.cs">
-      <DependentUpon>GenerowaniePlikow.cs</DependentUpon>
+    <Compile Include="Widoki\StronaGenerowaniaPlikow.Designer.cs">
+      <DependentUpon>StronaGenerowaniaPlikow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widoki\KonfiguracjaAlgorytmow\AE.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AAnalityka.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaEwolucyjny.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\AnalizaRLS_RS.cs" />
@@ -119,17 +117,17 @@
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\ProblemKomiwojazera.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Instancja.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\ProblemPodrozujacegoZlodzieja.cs" />
-    <Compile Include="Widoki\Badanie.cs">
+    <Compile Include="Widoki\StronaBadania.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Widoki\Badanie.Designer.cs">
-      <DependentUpon>Badanie.cs</DependentUpon>
+    <Compile Include="Widoki\StronaBadania.Designer.cs">
+      <DependentUpon>StronaBadania.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widoki\Glowna.cs">
+    <Compile Include="Widoki\StronaGlowna.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Widoki\Glowna.Designer.cs">
-      <DependentUpon>Glowna.cs</DependentUpon>
+    <Compile Include="Widoki\StronaGlowna.Designer.cs">
+      <DependentUpon>StronaGlowna.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,25 +136,25 @@
     <Compile Include="Widoki\Narzedzia\FormatkaGlowna.cs" />
     <Compile Include="Widoki\Narzedzia\FormatkaPorownania.cs" />
     <Compile Include="Widoki\Narzedzia\PostepBadania.cs" />
-    <Compile Include="Widoki\RezultatBadania.cs">
+    <Compile Include="Widoki\Narzedzia\PomocneFunkcje.cs" />
+    <Compile Include="Widoki\StronaWynikow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Widoki\RezultatBadania.Designer.cs">
-      <DependentUpon>RezultatBadania.cs</DependentUpon>
+    <Compile Include="Widoki\StronaWynikow.Designer.cs">
+      <DependentUpon>StronaWynikow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widoki\Walidacja\AWalidacja.cs" />
-    <Compile Include="Widoki\Walidacja\WalidacjaAE.cs" />
-    <EmbeddedResource Include="Widoki\Badanie.resx">
-      <DependentUpon>Badanie.cs</DependentUpon>
+    <Compile Include="Widoki\Narzedzia\MetodyWalidacji.cs" />
+    <EmbeddedResource Include="Widoki\StronaBadania.resx">
+      <DependentUpon>StronaBadania.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widoki\DodaniePlikowDanych.resx">
-      <DependentUpon>DodaniePlikowDanych.cs</DependentUpon>
+    <EmbeddedResource Include="Widoki\StronaDodaniaPlikowDanych.resx">
+      <DependentUpon>StronaDodaniaPlikowDanych.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widoki\GenerowaniePlikow.resx">
-      <DependentUpon>GenerowaniePlikow.cs</DependentUpon>
+    <EmbeddedResource Include="Widoki\StronaGenerowaniaPlikow.resx">
+      <DependentUpon>StronaGenerowaniaPlikow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widoki\Glowna.resx">
-      <DependentUpon>Glowna.cs</DependentUpon>
+    <EmbeddedResource Include="Widoki\StronaGlowna.resx">
+      <DependentUpon>StronaGlowna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -167,8 +165,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Widoki\RezultatBadania.resx">
-      <DependentUpon>RezultatBadania.cs</DependentUpon>
+    <EmbeddedResource Include="Widoki\StronaWynikow.resx">
+      <DependentUpon>StronaWynikow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -186,17 +184,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Dane\KP\kp20.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dane\TSP\tsp15.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dane\TTP\ttp15.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

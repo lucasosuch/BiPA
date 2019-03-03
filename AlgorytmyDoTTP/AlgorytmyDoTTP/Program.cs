@@ -13,7 +13,7 @@ namespace AlgorytmyDoTTP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Glowna());
+            Application.Run(new StronaGlowna());
         }
     }
 }

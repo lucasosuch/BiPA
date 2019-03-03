@@ -1,12 +1,11 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP.Widoki
 {
-    public partial class RezultatBadania : Form
+    public partial class StronaWynikow : Form
     {
-        public RezultatBadania()
+        public StronaWynikow()
         {
             WindowState = FormWindowState.Maximized;
             InitializeComponent();

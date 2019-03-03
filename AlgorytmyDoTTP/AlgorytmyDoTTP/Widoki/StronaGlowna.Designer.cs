@@ -1,6 +1,6 @@
 ﻿namespace AlgorytmyDoTTP
 {
-    partial class Glowna
+    partial class StronaGlowna
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Glowna));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StronaGlowna));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.podglad = new System.Windows.Forms.TextBox();
             this.daneHistoryczne = new MetroFramework.Controls.MetroListView();

@@ -9,7 +9,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
     {
         private Random losowy = new Random();
 
-        public string generujDanePodTSP(int liczbaMiast, string mapa)
+        public string GenerujDanePodTSP(int liczbaMiast, string mapa)
         {
             string nazwa = "tsp" + liczbaMiast + "_" + mapa;
             string[] punkty = mapa.Split("x".ToCharArray());
@@ -66,7 +66,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return nazwa;
         }
 
-        public string generujDanePodKP(float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        public string GenerujDanePodKP(float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
         {
             int tmpLiczbaPrzedmiotow = liczbaPrzedmiotow;
             string nazwa = "kp" + liczbaPrzedmiotow + "_" + sumaWagPrzedmiotow + "_" + sumaWartosciPrzedmiotow;
@@ -121,10 +121,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             return nazwa;
         }
 
-        public string generujDanePodTTP(int liczbaMiast, string mapa, float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
+        public string GenerujDanePodTTP(int liczbaMiast, string mapa, float sumaWagPrzedmiotow, float sumaWartosciPrzedmiotow, int liczbaPrzedmiotow, int procentRozrzutuWartosci)
         {
-            string nazwaKP = generujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
-                   nazwaTSP = generujDanePodTSP(liczbaMiast, mapa),
+            string nazwaKP = GenerujDanePodKP(sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci),
+                   nazwaTSP = GenerujDanePodTSP(liczbaMiast, mapa),
                    nazwa = "ttp_" + nazwaKP + "_" + nazwaTSP;
 
             XDocument xml = new XDocument();

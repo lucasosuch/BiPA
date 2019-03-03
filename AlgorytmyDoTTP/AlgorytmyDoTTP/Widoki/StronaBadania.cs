@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -12,39 +11,36 @@ namespace AlgorytmyDoTTP.Widoki
     /// <summary>
     /// Klasa widoku badania
     /// </summary>
-    public partial class Badanie : Form
+    public partial class StronaBadania : Form
     {
         private string[] nazwyPlikow;
-        private Random losowy = new Random();
         private bool narysowanoWykres = false;
-        private Glowna widokFormatkiGlownej;
-        private FormatkaBadania badanie = new FormatkaBadania();
+        private StronaGlowna stronaGlowna;
+        private PomocneFunkcje narzedziaWidokow = new PomocneFunkcje();
+        private FormatkaBadania formatkaBadania = new FormatkaBadania();
 
-        public Badanie(Glowna widokFormatkiGlownej)
+        public StronaBadania(StronaGlowna stronaGlowna)
         {
             InitializeComponent();
             UstawWartosciDomyslne();
-            this.widokFormatkiGlownej = widokFormatkiGlownej;
+            this.stronaGlowna = stronaGlowna;
         }
+
+        private void Badanie_Load(object sender, EventArgs e) {}
 
         /// <summary>
         /// Metoda ustawia wartości domyślne aplikacji
         /// </summary>
         private void UstawWartosciDomyslne()
         {
-            wybierzAlgorytm.Items.AddRange(badanie.ZwrocZmiennaSrodowiskowa().ALGORYTMY);
-            wybierzProblem.Items.AddRange(badanie.ZwrocZmiennaSrodowiskowa().PROBLEMY_OPTYMALIZACYJNE);
-            ae_rodzajKrzyzowania.Items.AddRange(badanie.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA);
-            ae_rodzajKrzyzowania.Text = (string)badanie.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA[0];
-            ae_metodaSelekcji.Items.AddRange(badanie.ZwrocKonfiguracjeAE().SELEKCJA);
-            ae_metodaSelekcji.Text = (string)badanie.ZwrocKonfiguracjeAE().SELEKCJA[0];
-            modelTTP.Items.AddRange(badanie.ZwrocKonfiguracjeAE().MODELE_TTP);
-            modelTTP.Text = (string)badanie.ZwrocKonfiguracjeAE().MODELE_TTP[0];
-        }
-
-        private void Badanie_Load(object sender, EventArgs e)
-        {
-            
+            wybierzAlgorytm.Items.AddRange(formatkaBadania.ZwrocZmiennaSrodowiskowa().ALGORYTMY);
+            wybierzProblem.Items.AddRange(formatkaBadania.ZwrocZmiennaSrodowiskowa().PROBLEMY_OPTYMALIZACYJNE);
+            ae_rodzajKrzyzowania.Items.AddRange(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_WEKTORA);
+            ae_rodzajKrzyzowania.Text = (string)formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_WEKTORA[0];
+            ae_metodaSelekcji.Items.AddRange(formatkaBadania.ZwrocZmiennaSrodowiskowa().SELEKCJA);
+            ae_metodaSelekcji.Text = (string)formatkaBadania.ZwrocZmiennaSrodowiskowa().SELEKCJA[0];
+            modelTTP.Items.AddRange(formatkaBadania.ZwrocZmiennaSrodowiskowa().MODELE_TTP);
+            modelTTP.Text = (string)formatkaBadania.ZwrocZmiennaSrodowiskowa().MODELE_TTP[0];
         }
 
         /// <summary>
@@ -60,16 +56,16 @@ namespace AlgorytmyDoTTP.Widoki
             {
                 case "Problem Podróżującego Złodzieja":
                     parametry["modelTTP"] = modelTTP.Text;
-                    parametry["ograniczenie1"] = ttp_maxWagaPlecaka.Text;
+                    parametry["maxWaga"] = ttp_maxWagaPlecaka.Text.Replace('.', ',');
                     parametry["wyporzyczeniePlecaka"] = wypozyczeniePlecaka.Text;
                     parametry["doPorownania"] = "TTP";
                     break;
                 case "Problem Plecakowy":
-                    parametry["ograniczenie1"] = kp_maxWagaPlecaka.Text;
+                    parametry["maxWaga"] = kp_maxWagaPlecaka.Text;
                     parametry["doPorownania"] = "KP";
                     break;
                 case "Problem Komiwojażera":
-                    parametry["ograniczenie1"] = "0";
+                    parametry["maxWaga"] = "0";
                     parametry["doPorownania"] = "TSP";
                     break;
             }
@@ -78,8 +74,8 @@ namespace AlgorytmyDoTTP.Widoki
             {
                 case "Algorytm Ewolucyjny":
                     parametry["doPorownania"] += "_AE";
-                    parametry["pwoMutacji"] = ae_pwoMutacji.Text;
-                    parametry["pwoKrzyzowania"] = ae_pwoKrzyzowania.Text;
+                    parametry["pwoMutacji"] = ae_pwoMutacji.Text.Replace('.', ',');
+                    parametry["pwoKrzyzowania"] = ae_pwoKrzyzowania.Text.Replace('.', ',');
                     parametry["rozmiarPopulacji"] = ae_rozmiarPopulacji.Text;
                     parametry["metodaSelekcji"] = ae_metodaSelekcji.Text;
                     parametry["rodzajKrzyzowania"] = ae_rodzajKrzyzowania.Text;
@@ -93,12 +89,7 @@ namespace AlgorytmyDoTTP.Widoki
                     break;
             }
 
-            parametry["doPorownania"] += "_"+LosowyTekst(losowy.Next(3,3));
-
-            badanie.WalidacjaKluczowychParametrow(wybierzPlikDanych.Text);
-            badanie.WalidacjaKluczowychParametrow(wybierzProblem.Text);
-            badanie.WalidacjaKluczowychParametrow(wybierzAlgorytm.Text);
-            badanie.WalidacjaKluczowychParametrow(liczbaIteracjiAlgorytmu.Text);
+            parametry["doPorownania"] += "_"+narzedziaWidokow.LosowyTekst(3, 3);
 
             parametry["dane"] = wybierzPlikDanych.Text;
             parametry["problem"] = wybierzProblem.Text;
@@ -106,7 +97,7 @@ namespace AlgorytmyDoTTP.Widoki
             parametry["liczbaIteracji"] = liczbaIteracjiAlgorytmu.Text;
             parametry["czasPoszukiwania"] = czasDzialaniaAlgorytmu.Text;
 
-            badanie.WalidacjaFormatki(parametry);
+            formatkaBadania.WalidacjaFormatki(parametry);
 
             return parametry;
         }
@@ -117,7 +108,7 @@ namespace AlgorytmyDoTTP.Widoki
         private void WczytajPliki()
         {
             wybierzPlikDanych.Items.Clear();
-            wybierzPlikDanych.Items.AddRange(badanie.WczytajPlikiDanych(wybierzProblem.Text));
+            wybierzPlikDanych.Items.AddRange(formatkaBadania.WczytajPlikiDanych(wybierzProblem.Text));
         }
 
         /// <summary>
@@ -139,13 +130,13 @@ namespace AlgorytmyDoTTP.Widoki
             try
             {
                 string pulpit = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string sciezka = Path.Combine(pulpit, badanie.ZwrocNazwePliku(".csv", ""));
+                string sciezka = Path.Combine(pulpit, formatkaBadania.ZwrocNazwePliku(".csv", ""));
 
-                File.WriteAllText(sciezka, badanie.ZwrocDaneDoCSV(), System.Text.Encoding.UTF8);
+                File.WriteAllText(sciezka, formatkaBadania.ZwrocDaneDoCSV(), System.Text.Encoding.UTF8);
                 MessageBox.Show("Pobrano plik CSV, na pulpit!", "Plik CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(IOException exc)
             {
-                Console.WriteLine(exc);
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -154,7 +145,7 @@ namespace AlgorytmyDoTTP.Widoki
         /// </summary>
         private void zapiszBadanie_Click(object sender, EventArgs e)
         {
-            widokFormatkiGlownej.daneHistoryczne.Items.Add(new ListViewItem(badanie.ZapiszBadanie()));
+            stronaGlowna.daneHistoryczne.Items.Add(new ListViewItem(formatkaBadania.ZapiszBadanie()));
             MessageBox.Show("Zapisano badanie na dysku!", "Zapis badania", MessageBoxButtons.OK, MessageBoxIcon.Information);
             zapiszBadanie.Enabled = false;
             zapiszBadanie.Text = "Zapisano Badanie";
@@ -168,11 +159,11 @@ namespace AlgorytmyDoTTP.Widoki
 
             try
             {
-                string raport = badanie.RysujWykres(narysowanoWykres, szerokosc, wysokosc, nazwyPlikow);
+                string raport = formatkaBadania.RysujWykres(narysowanoWykres, szerokosc, wysokosc, nazwyPlikow);
 
                 if (!narysowanoWykres) narysowanoWykres = true;
 
-                RezultatBadania rezultatBadania = new RezultatBadania();
+                StronaWynikow rezultatBadania = new StronaWynikow();
                 rezultatBadania.PokazWykresy(nazwyPlikow);
                 rezultatBadania.WyswietlTekst(raport);
                 rezultatBadania.Show();
@@ -183,41 +174,48 @@ namespace AlgorytmyDoTTP.Widoki
         }
 
         private async void uruchomBadanie_Click(object sender, EventArgs e)
-        {
-            zapiszBadanie.Enabled = false;
-            pobierzPlikCSV.Enabled = false;
-            rysujWykes.Enabled = false;
-            narysowanoWykres = false;
-            uruchomBadanie.Enabled = false;
-
-            Progress<PostepBadania> postep = new Progress<PostepBadania>();
-            postep.ProgressChanged += (o, report) =>
+        {   
+            try
             {
-                //Update your percentage
-                uruchomBadanie.Text = string.Format("Postęp...{0}%", report.ProcentUkonczenia);
-                czasDzialaniaBadania.Value = report.ProcentUkonczenia;
-                czasDzialaniaBadania.Update();
-            };
+                formatkaBadania.UstawParametryBadania(ZwrocParametry());
 
-            nazwyPlikow = new string[] { LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)), LosowyTekst(losowy.Next(2, 10)) };
-            badanie.UstawParametryBadania(ZwrocParametry());
-            //Process import data
-            await badanie.UruchomBadanie(postep);
-            string noweWynikiBadania = badanie.wynikiBadania();
+                zapiszBadanie.Enabled = false;
+                pobierzPlikCSV.Enabled = false;
+                rysujWykes.Enabled = false;
+                narysowanoWykres = false;
+                uruchomBadanie.Enabled = false;
+                nazwyPlikow = new string[] { narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10) };
 
-            wynikiBadania.Text = noweWynikiBadania + wynikiBadania.Text;
-            zapiszBadanie.Enabled = true;
-            pobierzPlikCSV.Enabled = true;
-            rysujWykes.Enabled = true;
-            uruchomBadanie.Enabled = true;
-            zapiszBadanie.Text = "Zapisz Badanie";
-            uruchomBadanie.Text = "Uruchom Badanie";
-            czasDzialaniaBadania.Value = 100;
+                Progress<PostepBadania> postep = new Progress<PostepBadania>();
+                postep.ProgressChanged += (o, report) =>
+                {
+                    // synchronizacja wartości procentowych
+                    uruchomBadanie.Text = string.Format("Postęp...{0}%", report.ProcentUkonczenia);
+                    czasDzialaniaBadania.Value = report.ProcentUkonczenia;
+                    czasDzialaniaBadania.Update();
+                };
+
+                await formatkaBadania.UruchomBadanie(postep);
+                string noweWynikiBadania = formatkaBadania.wynikiBadania();
+
+                wynikiBadania.Text = noweWynikiBadania + wynikiBadania.Text;
+                zapiszBadanie.Enabled = true;
+                pobierzPlikCSV.Enabled = true;
+                rysujWykes.Enabled = true;
+                uruchomBadanie.Enabled = true;
+                zapiszBadanie.Text = "Zapisz Badanie";
+                uruchomBadanie.Text = "Uruchom Badanie";
+                czasDzialaniaBadania.Value = 100;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void wygenerujPlikDanych_Click(object sender, EventArgs e)
         {
-            DodaniePlikowDanych dodaniePlikowDanych = new DodaniePlikowDanych(this);
+            StronaDodaniaPlikowDanych dodaniePlikowDanych = new StronaDodaniaPlikowDanych(this);
             dodaniePlikowDanych.Show();
         }
 
@@ -235,15 +233,15 @@ namespace AlgorytmyDoTTP.Widoki
             switch (wybierzProblem.Text)
             {
                 case "Problem Komiwojażera":
-                    UstawRodzajKrzyzowania(badanie.ZwrocKonfiguracjeAE().KRZYZOWANIE_TSP);
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
                     domyslnyProblemPanel.Visible = true;
                     break;
                 case "Problem Plecakowy":
-                    UstawRodzajKrzyzowania(badanie.ZwrocKonfiguracjeAE().KRZYZOWANIE_WEKTORA);
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_WEKTORA);
                     kp_panel.Visible = true;
                     break;
                 case "Problem Podróżującego Złodzieja":
-                    UstawRodzajKrzyzowania(badanie.ZwrocKonfiguracjeAE().KRZYZOWANIE_TSP);
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
                     kp_panel.Visible = true;
                     ttp_panel.Visible = true;
                     break;
@@ -303,12 +301,6 @@ namespace AlgorytmyDoTTP.Widoki
                 XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
                 ttp_maxWagaPlecaka.Text = (double.Parse(sumaWag.InnerText) * 0.5).ToString();
             }
-        }
-
-        private string LosowyTekst(int dlugosc)
-        {
-            const string znaki = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(znaki, dlugosc).Select(s => s[losowy.Next(s.Length)]).ToArray());
         }
     }
 }
