@@ -2,6 +2,7 @@
 using AlgorytmyDoTTP.Widoki.Narzedzia;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP
@@ -21,6 +22,11 @@ namespace AlgorytmyDoTTP
         private void Form1_Load(object sender, EventArgs e)
         {
             WczytajPlikiBadan();
+
+            if(!File.Exists(@"./gnuplot.exe.lnk"))
+            {
+                porownajBadania.Enabled = false;
+            }
         }
 
         /// <summary>

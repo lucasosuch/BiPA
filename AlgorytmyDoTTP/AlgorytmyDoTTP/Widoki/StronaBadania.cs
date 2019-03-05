@@ -14,6 +14,7 @@ namespace AlgorytmyDoTTP.Widoki
     public partial class StronaBadania : Form
     {
         private string[] nazwyPlikow;
+        private bool skrotDoGNUPlot = false;
         private bool narysowanoWykres = false;
         private StronaGlowna stronaGlowna;
         private PomocneFunkcje narzedziaWidokow = new PomocneFunkcje();
@@ -26,7 +27,10 @@ namespace AlgorytmyDoTTP.Widoki
             this.stronaGlowna = stronaGlowna;
         }
 
-        private void Badanie_Load(object sender, EventArgs e) {}
+        private void Badanie_Load(object sender, EventArgs e)
+        {
+            skrotDoGNUPlot = File.Exists(@"./gnuplot.exe.lnk");
+        }
 
         /// <summary>
         /// Metoda ustawia wartości domyślne aplikacji
@@ -201,11 +205,13 @@ namespace AlgorytmyDoTTP.Widoki
                 wynikiBadania.Text = noweWynikiBadania + wynikiBadania.Text;
                 zapiszBadanie.Enabled = true;
                 pobierzPlikCSV.Enabled = true;
-                rysujWykes.Enabled = true;
                 uruchomBadanie.Enabled = true;
+
                 zapiszBadanie.Text = "Zapisz Badanie";
                 uruchomBadanie.Text = "Uruchom Badanie";
                 czasDzialaniaBadania.Value = 100;
+
+                if (skrotDoGNUPlot) rysujWykes.Enabled = true;
             }
             catch (Exception exc)
             {

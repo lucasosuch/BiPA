@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Konfiguracja\Glowna.cs" />
     <Compile Include="Rozszerzenia\GNUPlot.cs" />
+    <Compile Include="Rozszerzenia\ResolvePath.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\WynikiAnalizy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
@@ -184,6 +185,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

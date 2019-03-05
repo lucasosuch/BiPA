@@ -1,21 +1,39 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AlgorytmyDoTTP.Rozszerzenia
 {
     class GNUPlot
     {
-        private readonly string sciezkaGNUPlot = @"C:\Program Files\gnuplot\bin\gnuplot.exe";
+        private readonly string sciezkaGNUPlot = @"./gnuplot.exe.lnk";
         Process procesGnuplot = new Process();
 
         public GNUPlot()
         {
-            procesGnuplot.StartInfo.FileName = sciezkaGNUPlot;
-            procesGnuplot.StartInfo.UseShellExecute = false;
-            procesGnuplot.StartInfo.RedirectStandardInput = true;
-            procesGnuplot.StartInfo.RedirectStandardOutput = true;
-            procesGnuplot.Start();
+            try
+            {
+                ResolvePath resolvePath = new ResolvePath();
+                string sciezka = resolvePath.GetShortcutTargetFile(sciezkaGNUPlot);
+
+                if (!File.Exists(sciezka))
+                {
+                    sciezka = resolvePath.GetShortcutTargetFile(sciezkaGNUPlot).Replace(" (x86)", "");
+                }
+
+                procesGnuplot.StartInfo.FileName = sciezka;
+                procesGnuplot.StartInfo.UseShellExecute = false;
+                procesGnuplot.StartInfo.RedirectStandardInput = true;
+                procesGnuplot.StartInfo.RedirectStandardOutput = true;
+                procesGnuplot.Start();
+            } catch(System.ComponentModel.Win32Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } catch (System.Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void RysujWykresBadania(double[][] wartosci, int szerokosc, int wysokosc, string tytul, string nazwaPliku, string[] nazwyWykresow)
