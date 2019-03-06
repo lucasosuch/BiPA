@@ -129,45 +129,45 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(243, 197);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(211, 20);
+            this.metroLabel7.Size = new System.Drawing.Size(219, 20);
             this.metroLabel7.TabIndex = 16;
-            this.metroLabel7.Text = "Procent rozrzutu parametrów KP";
+            this.metroLabel7.Text = "Procent rozrzutu parametrów (KP)";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(243, 0);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(185, 20);
+            this.metroLabel5.Size = new System.Drawing.Size(213, 20);
             this.metroLabel5.TabIndex = 14;
-            this.metroLabel5.Text = "Suma Wartości Przedmiotów";
+            this.metroLabel5.Text = "Suma Wartości Przedmiotów (KP)";
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(243, 98);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(114, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(100, 20);
             this.metroLabel6.TabIndex = 15;
-            this.metroLabel6.Text = "Typ siatki dla TSP";
+            this.metroLabel6.Text = "Typ siatki (TSP)";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(3, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(84, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(119, 20);
             this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Liczba Miast";
+            this.metroLabel1.Text = "Liczba Miast (TSP)";
             // 
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(3, 197);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(159, 20);
+            this.metroLabel4.Size = new System.Drawing.Size(187, 20);
             this.metroLabel4.TabIndex = 13;
-            this.metroLabel4.Text = "Suma Wag Przedmiotów";
+            this.metroLabel4.Text = "Suma Wag Przedmiotów (KP)";
             // 
             // ttp_liczbaMiast
             // 
@@ -191,9 +191,9 @@
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.Location = new System.Drawing.Point(3, 98);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(133, 20);
+            this.metroLabel3.Size = new System.Drawing.Size(161, 20);
             this.metroLabel3.TabIndex = 12;
-            this.metroLabel3.Text = "Liczba Przedmiotów";
+            this.metroLabel3.Text = "Liczba Przedmiotów (KP)";
             // 
             // ttp_liczbaPrzedmiotow
             // 

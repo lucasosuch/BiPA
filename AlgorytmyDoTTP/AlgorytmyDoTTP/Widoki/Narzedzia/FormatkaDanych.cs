@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace AlgorytmyDoTTP.Widoki.Narzedzia
@@ -133,9 +134,15 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                      kp = new XElement("kp", nazwaKP),
                      tsp = new XElement("tsp", nazwaTSP);
 
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load("./Dane/KP/" + nazwaKP + ".xml");
+            XmlNodeList przedmioty = xmlDocument.DocumentElement.SelectNodes("/korzen/przedmioty/przedmiot");
+
             korzen.Add(kp);
             korzen.Add(tsp);
 
+            float sumaWag = 0,
+                  sumaWartosci = 0;
             for (int i = 0; i < liczbaMiast; i++)
             {
                 int losowaDostepnosc = losowy.Next(liczbaPrzedmiotow);
@@ -149,6 +156,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
                         if (!dostepnosc.Contains(losowaWartosc))
                         {
+                            sumaWag += float.Parse(przedmioty[(losowaWartosc - 1)]["waga"].InnerText);
+                            sumaWartosci += float.Parse(przedmioty[(losowaWartosc - 1)]["wartosc"].InnerText);
                             dostepnosc.Add(losowaWartosc);
                         }
                     }
@@ -161,8 +170,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             korzen.Add(dostepnePrzedmioty);
             korzen.Add(new XElement("hash", korzen.GetHashCode()));
-            korzen.Add(new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow));
-            korzen.Add(new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow));
+            korzen.Add(new XElement("sumaWagPrzedmiotow", sumaWag));
+            korzen.Add(new XElement("sumaWartosciPrzedmiotow", sumaWartosci));
             xml.Add(korzen);
             xml.Save("./Dane/TTP/" + nazwa + ".xml");
 
