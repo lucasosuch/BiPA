@@ -25,9 +25,10 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
             {
                 XmlDocument dokument = new XmlDocument();
                 dokument.Load("./Badania/" + pliki[i].Name);
-                XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/dataZapisu");
+                XmlNode dataZapisu = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/dataZapisu"),
+                        porownawczyTekst = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/porownawczyTekst");
 
-                string[] wiersz = new string[] { pliki[i].Name.Replace(".xml", ""), dataZapisu.InnerText };
+                string[] wiersz = new string[] { pliki[i].Name.Replace(".xml", ""), dataZapisu.InnerText, porownawczyTekst.InnerText };
                 elementy[i] = new ListViewItem(wiersz);
             }
 
@@ -125,11 +126,13 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
                         czasDzialania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/czasDzialania"),
                         nazwaBadania = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/nazwaBadania"),
                         plikDanych = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/plikDanych"),
+                        porownawczyTekst = dokument.DocumentElement.SelectSingleNode("/badanie/podstawoweDane/porownawczyTekst"),
                         dziedzina = dokument.DocumentElement.SelectSingleNode("/badanie/rozwiazanie/dziedzina");
 
                 XmlNodeList dodatkoweDane = dokument.DocumentElement.SelectNodes("/badanie/dodatkoweDane");
 
                 odpowiedz = "Nazwa Badania: " + nazwaBadania.InnerText + Environment.NewLine +
+                            "Skrócona nazwa badania: " + porownawczyTekst.InnerText + Environment.NewLine +
                             "Plik danych: " + plikDanych.InnerText + Environment.NewLine +
                             "Najlepsza wartość funkcji celu: {" + maxWartosc.InnerText +", " + minWartosc.InnerText + "}" + Environment.NewLine +
                             "Czas działania: " + czasDzialania.InnerText + " s" + Environment.NewLine +

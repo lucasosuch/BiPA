@@ -192,7 +192,7 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             xml.Save("./Badania/"+ ZwrocNazwePliku(".xml", "_"+ iter));
 
-            return new string[] { ZwrocNazwePliku("", "_" + iter), DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") };
+            return new string[] { ZwrocNazwePliku("", "_" + iter), DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), parametry["doPorownania"] };
         }
 
         public string RysujWykres(bool narysowanoWykres, int szerokosc, int wysokosc, string[] nazwyPlikow)

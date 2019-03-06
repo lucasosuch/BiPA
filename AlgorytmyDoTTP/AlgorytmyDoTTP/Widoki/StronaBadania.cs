@@ -282,7 +282,9 @@ namespace AlgorytmyDoTTP.Widoki
 
         private void wybierzPlikDanych_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool pobierzSumeWag = false;
+            bool pobierzSumeWag = false,
+                 pobierzSumeWartosci = false;
+
             string nazwaPliku = "";
             XmlDocument dokument = new XmlDocument();
 
@@ -294,11 +296,9 @@ namespace AlgorytmyDoTTP.Widoki
 
             if (wybierzProblem.Text == "Problem Podróżującego Złodzieja")
             {
-                dokument.Load("./Dane/TTP/" + wybierzPlikDanych.Text + ".xml");
-                XmlNode kp = dokument.DocumentElement.SelectSingleNode("/korzen/kp");
-
-                nazwaPliku = "./Dane/KP/" + kp.InnerText + ".xml";
+                nazwaPliku = "./Dane/TTP/" + wybierzPlikDanych.Text + ".xml";
                 pobierzSumeWag = true;
+                pobierzSumeWartosci = true;
             }
 
             if (pobierzSumeWag)
@@ -306,6 +306,14 @@ namespace AlgorytmyDoTTP.Widoki
                 dokument.Load(nazwaPliku);
                 XmlNode sumaWag = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWagPrzedmiotow");
                 ttp_maxWagaPlecaka.Text = (double.Parse(sumaWag.InnerText) * 0.5).ToString();
+                kp_maxWagaPlecaka.Text = (double.Parse(sumaWag.InnerText) * 0.5).ToString();
+            }
+
+            if (pobierzSumeWartosci)
+            {
+                dokument.Load(nazwaPliku);
+                XmlNode sumaWartosci = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWartosciPrzedmiotow");
+                wypozyczeniePlecaka.Text = (double.Parse(sumaWartosci.InnerText) * 0.1).ToString();
             }
         }
     }

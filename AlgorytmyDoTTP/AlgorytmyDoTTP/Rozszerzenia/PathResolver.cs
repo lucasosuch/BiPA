@@ -8,7 +8,7 @@ using System.Text;
 
 namespace AlgorytmyDoTTP.Rozszerzenia
 {
-    class ResolvePath
+    class PathResolver
     {
         [DllImport("kernel32.dll", EntryPoint = "CreateFileW", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern SafeFileHandle CreateFile(string lpFileName, int dwDesiredAccess, int dwShareMode, IntPtr SecurityAttributes, int dwCreationDisposition, int dwFlagsAndAttributes, IntPtr hTemplateFile);

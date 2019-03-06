@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>GlobalizationRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,7 +61,7 @@
   <ItemGroup>
     <Compile Include="Konfiguracja\Glowna.cs" />
     <Compile Include="Rozszerzenia\GNUPlot.cs" />
-    <Compile Include="Rozszerzenia\ResolvePath.cs" />
+    <Compile Include="Rozszerzenia\PathResolver.cs" />
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\WynikiAnalizy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />

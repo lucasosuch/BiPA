@@ -102,6 +102,8 @@ namespace AlgorytmyDoTTP.Widoki
                 korzen.Add(kp);
                 korzen.Add(tsp);
 
+                sumaWagPrzedmiotow = 0;
+                sumaWartosciPrzedmiotow = 0;
                 foreach (ListViewItem m in listaMiast.Items)
                 {
                     string zwalidowaneDostepnePrzedmioty = "";
@@ -114,8 +116,11 @@ namespace AlgorytmyDoTTP.Widoki
                             try
                             {
                                 zwalidowaneDostepnePrzedmioty += listaPrzedmiotow.Items[(indeks - 1)].SubItems[0].Text + ", ";
+
+                                sumaWagPrzedmiotow += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[2].Text);
+                                sumaWartosciPrzedmiotow += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[1].Text);
                             } catch (Exception)
-                            { }
+                            {}
                         }
 
                         zwalidowaneDostepnePrzedmioty = (zwalidowaneDostepnePrzedmioty.Trim());
@@ -124,6 +129,9 @@ namespace AlgorytmyDoTTP.Widoki
 
                     dostepnePrzedmioty.Add(new XElement("miasto", zwalidowaneDostepnePrzedmioty));
                 }
+
+                sumaWag = new XElement("sumaWagPrzedmiotow", Math.Round(sumaWagPrzedmiotow).ToString());
+                sumaWartosci = new XElement("sumaWartosciPrzedmiotow", Math.Round(sumaWartosciPrzedmiotow).ToString());
 
                 korzen.Add(sumaWag);
                 korzen.Add(sumaWartosci);
@@ -242,6 +250,8 @@ namespace AlgorytmyDoTTP.Widoki
                         dostepnePrzedmioty.Enabled = true;
                     }
 
+                    ObliczSumeParametrowTTP();
+
                     stworzPlikDanych.Enabled = true;
                 }
                 else
@@ -324,6 +334,7 @@ namespace AlgorytmyDoTTP.Widoki
             }
 
             if(listaMiast.Items.Count == 0) dostepnePrzedmioty.Enabled = false;
+            ObliczSumeParametrowTTP();
         }
 
         private void plikiDanych_SelectedIndexChanged(object sender, EventArgs e)
@@ -376,6 +387,8 @@ namespace AlgorytmyDoTTP.Widoki
                 kp_sumaWag.Text = ""+ sumaWag;
                 kp_sumaWartosci.Text = ""+ sumaWartosci;
 
+                ObliczSumeParametrowTTP();
+
                 if (listaMiast.Items.Count == 0) this.dostepnePrzedmioty.Enabled = false;
                 else this.dostepnePrzedmioty.Enabled = true;
             } else
@@ -424,6 +437,29 @@ namespace AlgorytmyDoTTP.Widoki
 
             kp_sumaWag.Text = "" + sumaWag;
             kp_sumaWartosci.Text = "" + sumaWartosci;
+        }
+
+        private void ObliczSumeParametrowTTP()
+        {
+            float sumaWag = 0,
+                  sumaWartosci = 0;
+
+            foreach (ListViewItem m in listaMiast.Items)
+            {
+                if (m.SubItems[3].Text != "")
+                {
+                    foreach (string p in m.SubItems[3].Text.Split(','))
+                    {
+                        int indeks = int.Parse(p.Trim());
+
+                        sumaWag += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[2].Text);
+                        sumaWartosci += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[1].Text);
+                    }
+                }
+            }
+
+            ttp_sumaWag.Text = "" + sumaWag;
+            ttp_sumaWartosci.Text = "" + sumaWartosci;
         }
 
         private void usunPlik_Click(object sender, EventArgs e)

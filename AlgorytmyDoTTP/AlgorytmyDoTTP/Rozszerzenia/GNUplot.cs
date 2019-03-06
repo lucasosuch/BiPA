@@ -14,12 +14,12 @@ namespace AlgorytmyDoTTP.Rozszerzenia
         {
             try
             {
-                ResolvePath resolvePath = new ResolvePath();
-                string sciezka = resolvePath.GetShortcutTargetFile(sciezkaGNUPlot);
+                PathResolver pathResolver = new PathResolver();
+                string sciezka = pathResolver.GetShortcutTargetFile(sciezkaGNUPlot);
 
                 if (!File.Exists(sciezka))
                 {
-                    sciezka = resolvePath.GetShortcutTargetFile(sciezkaGNUPlot).Replace(" (x86)", "");
+                    sciezka = pathResolver.GetShortcutTargetFile(sciezkaGNUPlot).Replace(" (x86)", "");
                 }
 
                 procesGnuplot.StartInfo.FileName = sciezka;
