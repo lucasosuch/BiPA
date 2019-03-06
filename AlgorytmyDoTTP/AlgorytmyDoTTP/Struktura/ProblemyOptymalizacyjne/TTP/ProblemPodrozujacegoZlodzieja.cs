@@ -75,14 +75,15 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
 
         public override Dictionary<string, float[]> ObliczZysk(Dictionary<string, ushort[][]> macierz)
         {
+            ITTP obiektTTP = new TTP1();
             // pobranie planu podróży przez miasta
             IPomocniczy[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
             float[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
 
-            //Console.WriteLine("modelTTP: "+ modelTTP);
+            if (modelTTP == "TTP2") obiektTTP = new TTP2();
 
-            return new TTP1().ObliczWartoscFunkcjiCelu(dlugosciTrasy, macierz["kp"], ZwrocOgraniczeniaProblemu(), problemPlecakowy);
+            return obiektTTP.ObliczWartoscFunkcjiCelu(dlugosciTrasy, macierz["kp"], ZwrocOgraniczeniaProblemu(), problemPlecakowy);
         }
 
         public override Dictionary<string, ushort[][]> ZwrocWybraneElementy(ushort[][] wybraneElementy)

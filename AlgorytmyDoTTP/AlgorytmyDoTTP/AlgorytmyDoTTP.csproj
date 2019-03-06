@@ -65,6 +65,7 @@
     <Compile Include="Struktura\Algorytmy\Abstrakcyjny\Analityka\WynikiAnalizy.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\ITTP.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP1.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Model\TTP2.cs" />
     <Compile Include="Widoki\StronaDodaniaPlikowDanych.cs">
       <SubType>Form</SubType>
     </Compile>

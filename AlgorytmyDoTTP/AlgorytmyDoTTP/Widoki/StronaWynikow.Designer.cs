@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StronaWynikow));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.srednia = new MetroFramework.Controls.MetroTabPage();
             this.wykresSrednia = new System.Windows.Forms.PictureBox();
@@ -167,15 +168,16 @@
             this.wynikiBadnia.Size = new System.Drawing.Size(1099, 593);
             this.wynikiBadnia.TabIndex = 2;
             // 
-            // RezultatBadania
+            // StronaWynikow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 635);
             this.Controls.Add(this.metroTabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "RezultatBadania";
-            this.Text = "RezultatBadania";
+            this.Name = "StronaWynikow";
+            this.Text = "Wyniki Analizy";
             this.metroTabControl1.ResumeLayout(false);
             this.srednia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wykresSrednia)).EndInit();

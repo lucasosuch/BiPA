@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StronaGenerowaniaPlikow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -304,16 +305,17 @@
             this.zapiszPlik.UseSelectable = true;
             this.zapiszPlik.Click += new System.EventHandler(this.zapiszPlik_Click);
             // 
-            // GenerowaniePlikow
+            // StronaGenerowaniaPlikow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 375);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(577, 422);
             this.MinimumSize = new System.Drawing.Size(577, 422);
-            this.Name = "GenerowaniePlikow";
-            this.Text = "GenerowaniePlikow";
+            this.Name = "StronaGenerowaniaPlikow";
+            this.Text = "Generowanie Plików Danych";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);

@@ -188,6 +188,9 @@ namespace AlgorytmyDoTTP.Widoki
                 rysujWykes.Enabled = false;
                 narysowanoWykres = false;
                 uruchomBadanie.Enabled = false;
+                wybierzAlgorytm.Enabled = false;
+                wybierzPlikDanych.Enabled = false;
+                wybierzProblem.Enabled = false;
                 nazwyPlikow = new string[] { narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10), narzedziaWidokow.LosowyTekst(2, 10) };
 
                 Progress<PostepBadania> postep = new Progress<PostepBadania>();
@@ -206,6 +209,9 @@ namespace AlgorytmyDoTTP.Widoki
                 zapiszBadanie.Enabled = true;
                 pobierzPlikCSV.Enabled = true;
                 uruchomBadanie.Enabled = true;
+                wybierzAlgorytm.Enabled = true;
+                wybierzPlikDanych.Enabled = true;
+                wybierzProblem.Enabled = true;
 
                 zapiszBadanie.Text = "Zapisz Badanie";
                 uruchomBadanie.Text = "Uruchom Badanie";
@@ -280,6 +286,19 @@ namespace AlgorytmyDoTTP.Widoki
             }
         }
 
+        private void modelTTP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (modelTTP.Text == "TTP2")
+            {
+                wypozyczenieLabel.Text = "Współczynnik utraty wartości";
+                wypozyczeniePlecaka.Text = "0,9";
+            } else
+            {
+                wypozyczenieLabel.Text = "$ za h wypożyczenia plecaka";
+                wypozyczeniePlecaka.Text = "1";
+            }
+        }
+
         private void wybierzPlikDanych_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool pobierzSumeWag = false,
@@ -313,7 +332,7 @@ namespace AlgorytmyDoTTP.Widoki
             {
                 dokument.Load(nazwaPliku);
                 XmlNode sumaWartosci = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWartosciPrzedmiotow");
-                wypozyczeniePlecaka.Text = (double.Parse(sumaWartosci.InnerText) * 0.1).ToString();
+                if (modelTTP.Text != "TTP2") wypozyczeniePlecaka.Text = (double.Parse(sumaWartosci.InnerText) * 0.1).ToString();
             }
         }
     }
