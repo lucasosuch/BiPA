@@ -104,7 +104,7 @@
             // usunPlik
             // 
             this.usunPlik.Enabled = false;
-            this.usunPlik.Location = new System.Drawing.Point(396, 52);
+            this.usunPlik.Location = new System.Drawing.Point(616, 52);
             this.usunPlik.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usunPlik.Name = "usunPlik";
             this.usunPlik.Size = new System.Drawing.Size(165, 36);
@@ -740,7 +740,7 @@
             // wygenerujPlikDanych
             // 
             this.wygenerujPlikDanych.BackColor = System.Drawing.SystemColors.Control;
-            this.wygenerujPlikDanych.Location = new System.Drawing.Point(567, 52);
+            this.wygenerujPlikDanych.Location = new System.Drawing.Point(787, 52);
             this.wygenerujPlikDanych.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wygenerujPlikDanych.Name = "wygenerujPlikDanych";
             this.wygenerujPlikDanych.Size = new System.Drawing.Size(235, 36);
@@ -776,7 +776,7 @@
             this.plikiDanych.Location = new System.Drawing.Point(187, 52);
             this.plikiDanych.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.plikiDanych.Name = "plikiDanych";
-            this.plikiDanych.Size = new System.Drawing.Size(203, 30);
+            this.plikiDanych.Size = new System.Drawing.Size(423, 30);
             this.plikiDanych.TabIndex = 117;
             this.plikiDanych.UseSelectable = true;
             this.plikiDanych.SelectedIndexChanged += new System.EventHandler(this.plikiDanych_SelectedIndexChanged);
