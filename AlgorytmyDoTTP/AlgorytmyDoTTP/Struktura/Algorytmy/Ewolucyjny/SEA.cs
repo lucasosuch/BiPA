@@ -61,9 +61,9 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
                             // zależną od prawdopodobieństwa kzyżowania
                             // i przeprowadzamy operację tworzenia nowych osobników, pobierając rodziców z populacji
                             ReprezentacjaRozwiazania mama = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
-                                                    tata = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
-                                                    dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
-                                                    dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
+                                                     tata = selekcja.WybierzOsobnika(tmpPopulacja, liczbaPokolen),
+                                                     dziecko1 = rekombinacja.Krzyzowanie(mama, tata), // tworząc 1 dziecko
+                                                     dziecko2 = rekombinacja.Krzyzowanie(tata, mama); // oraz 2 dziecko
 
                             // dzieci dodajemy do nowej populacji
                             nowaPopulacja[j] = dziecko1;
