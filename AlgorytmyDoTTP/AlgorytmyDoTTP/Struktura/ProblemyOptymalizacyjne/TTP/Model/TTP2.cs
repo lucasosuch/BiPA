@@ -23,16 +23,16 @@ namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model
                 // obliczenie zysku z pobranych przedmiotów dla i-tego miasta
                 Dictionary<string, float[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(zebranePrzedmioty);
 
-                sumarycznaWaga += wynikCzesciowy["min"][0]; // całkowita waga
-                sumarycznaWartosc += (float)(wynikCzesciowy["max"][0] * Math.Pow(ograniczeniaProblemu[1], Math.Floor((wynikTTP1["min"][1] - czasPodrozy) / 10))); // całkowita wartość
-
                 // obliczenie prędkości złodzieja, gdzie maksymalna prędkość = 1, minimalna prękość = 0.1
                 double predkosc = 1 - sumarycznaWaga * (1 - 0.1) / ograniczeniaProblemu[0];
                 // jeżeli prędkość mniejsza od minimalnej, wtedy przypisz minimalną prędkość
                 predkosc = (predkosc < 0.1) ? 0.1 : predkosc;
 
                 // przy mieście nr. 1 czas podróży wynosi 0 jednostek
-                if (j != -1) czasPodrozy += (float)(dlugosciTrasy[j] * predkosc);
+                if (j != -1) czasPodrozy += (float)(dlugosciTrasy[j] / predkosc);
+
+                sumarycznaWaga += wynikCzesciowy["min"][0]; // całkowita waga
+                sumarycznaWartosc += (float)(wynikCzesciowy["max"][0] * Math.Pow(ograniczeniaProblemu[1], Math.Floor((wynikTTP1["min"][1] - czasPodrozy) / 10))); // całkowita wartość
             }
 
             wynik["min"] = new float[] { 0, 0 };
