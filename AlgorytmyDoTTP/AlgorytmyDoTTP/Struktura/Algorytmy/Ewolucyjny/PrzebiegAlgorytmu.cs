@@ -1,6 +1,6 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
 using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;

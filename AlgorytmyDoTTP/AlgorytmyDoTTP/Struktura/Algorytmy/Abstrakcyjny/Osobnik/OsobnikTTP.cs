@@ -1,9 +1,8 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik
+namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik
 {
     /// <summary>
     /// Klasa konkretna reprezentująca osobnika Problemu Podróżującego Złodzieja

@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 
 namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {

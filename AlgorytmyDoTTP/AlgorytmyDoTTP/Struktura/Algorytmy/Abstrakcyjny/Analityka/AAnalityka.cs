@@ -1,6 +1,4 @@
-﻿using AlgorytmyDoTTP.Rozszerzenia;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
-using System;
+﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using System.Collections.Generic;
 using System.Diagnostics;
 

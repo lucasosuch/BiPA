@@ -1,5 +1,5 @@
 ﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Osobnik;
+using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using System;
 using System.Collections;
 
