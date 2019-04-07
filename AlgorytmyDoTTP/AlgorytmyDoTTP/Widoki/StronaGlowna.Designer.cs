@@ -241,7 +241,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StronaGlowna";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Oprogramowanie do badania i porównywania algorytmów";
+            this.Text = "BiPA - Oprogramowanie do badania i porównywania algorytmów";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

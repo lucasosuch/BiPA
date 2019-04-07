@@ -1,7 +1,7 @@
 ﻿namespace AlgorytmyDoTTP.Widoki.Narzedzia
 {
     /// <summary>
-    /// Klasa odpowiada za walidację danych pod Algorytm Ewolucyjny
+    /// Klasa odpowiada za walidację danych w formatce
     /// </summary>
     public class MetodyWalidacji
     {

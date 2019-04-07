@@ -177,7 +177,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StronaWynikow";
-            this.Text = "Wyniki Analizy";
+            this.Text = "BiPA - Wyniki Analizy";
             this.metroTabControl1.ResumeLayout(false);
             this.srednia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wykresSrednia)).EndInit();

@@ -792,7 +792,7 @@
             this.MaximumSize = new System.Drawing.Size(1058, 770);
             this.MinimumSize = new System.Drawing.Size(1058, 770);
             this.Name = "StronaDodaniaPlikowDanych";
-            this.Text = "Dodanie Plików Danych";
+            this.Text = "BiPA - Dodanie Plików Danych";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.tabela.ResumeLayout(false);

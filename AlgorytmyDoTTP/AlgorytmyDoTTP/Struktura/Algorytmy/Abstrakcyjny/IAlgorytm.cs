@@ -8,7 +8,7 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
     interface IAlgorytm
     {
         /// <summary>
-        /// Metoda uruchamiająca Algorytm Ewolucyjny
+        /// Metoda uruchamiająca Algorytm
         /// </summary>
         Task Start(IProgress<PostepBadania> postep);
 

@@ -239,7 +239,7 @@
             this.rysujWykes.Name = "rysujWykes";
             this.rysujWykes.Size = new System.Drawing.Size(219, 36);
             this.rysujWykes.TabIndex = 2;
-            this.rysujWykes.Text = "Narysuj wykres w Gnuplot";
+            this.rysujWykes.Text = "Narysuj przebieg Badania";
             this.rysujWykes.UseSelectable = true;
             this.rysujWykes.Click += new System.EventHandler(this.rysujWykes_Click);
             // 
@@ -971,7 +971,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(1157, 747);
             this.Name = "StronaBadania";
-            this.Text = "Badanie Algorytmów";
+            this.Text = "BiPA - Badanie Algorytmów";
             this.Load += new System.EventHandler(this.Badanie_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

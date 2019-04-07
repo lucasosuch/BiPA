@@ -315,7 +315,7 @@
             this.MaximumSize = new System.Drawing.Size(577, 422);
             this.MinimumSize = new System.Drawing.Size(577, 422);
             this.Name = "StronaGenerowaniaPlikow";
-            this.Text = "Generowanie Plików Danych";
+            this.Text = "BiPA - Generowanie Plików Danych";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
