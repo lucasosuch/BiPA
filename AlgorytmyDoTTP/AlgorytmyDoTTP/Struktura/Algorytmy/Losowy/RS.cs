@@ -18,6 +18,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
         private ALosowanie losowanie;
         private AnalizaRLS_RS analityka;
 
+        public RS()
+        {
+            throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
+        }
+
         public RS(ALosowanie losowanie, int iloscRozwiazan, int iloscElementow, AnalizaRLS_RS analityka)
         {
             this.losowanie = losowanie;

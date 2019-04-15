@@ -34,7 +34,7 @@ namespace AlgorytmyDoTTP.Widoki
                 widokDodawaniaPlikow.plikiDanych.Items.Insert(0, (new FormatkaDanych()).GenerujDanePodTTP(liczbaMiast, ttp_typSiatki.Text, sumaWagPrzedmiotow, sumaWartosciPrzedmiotow, liczbaPrzedmiotow, procentRozrzutuWartosci));
                 MessageBox.Show("Wygenerowno plik danych!", "Nowy plik danych", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception exc)
+            catch (Exception)
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

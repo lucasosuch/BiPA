@@ -16,6 +16,11 @@ namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
         private AnalizaRLS_RS analityka;
         private AWspinaczka przeszukiwanieLokalne;
 
+        public RLS()
+        {
+            throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
+        }
+
         public RLS(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analityka)
         {
             this.analityka = analityka;
