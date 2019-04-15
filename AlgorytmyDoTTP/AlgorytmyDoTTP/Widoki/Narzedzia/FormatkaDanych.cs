@@ -170,8 +170,8 @@ namespace AlgorytmyDoTTP.Widoki.Narzedzia
 
             korzen.Add(dostepnePrzedmioty);
             korzen.Add(new XElement("hash", korzen.GetHashCode()));
-            korzen.Add(new XElement("sumaWagPrzedmiotow", sumaWag));
-            korzen.Add(new XElement("sumaWartosciPrzedmiotow", sumaWartosci));
+            korzen.Add(new XElement("sumaWagPrzedmiotow", Math.Round(sumaWag)));
+            korzen.Add(new XElement("sumaWartosciPrzedmiotow", Math.Round(sumaWartosci)));
             xml.Add(korzen);
             xml.Save("./Dane/TTP/" + nazwa + ".xml");
 

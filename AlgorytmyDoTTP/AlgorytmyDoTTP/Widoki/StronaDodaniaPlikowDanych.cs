@@ -42,7 +42,7 @@ namespace AlgorytmyDoTTP.Widoki
                 XElement korzen = new XElement("korzen"),
                          przedmioty = new XElement("przedmioty");
 
-                float sumaWagPrzedmiotow = 0,
+                double sumaWagPrzedmiotow = 0,
                       sumaWartosciPrzedmiotow = 0;
                 foreach (ListViewItem p in listaPrzedmiotow.Items)
                 {
@@ -52,12 +52,15 @@ namespace AlgorytmyDoTTP.Widoki
                     przedmiot.Add(new XElement("wartosc", p.SubItems[1].Text));
                     przedmioty.Add(przedmiot);
 
-                    sumaWagPrzedmiotow += float.Parse(p.SubItems[2].Text);
-                    sumaWartosciPrzedmiotow += float.Parse(p.SubItems[1].Text);
+                    sumaWagPrzedmiotow += double.Parse(p.SubItems[2].Text);
+                    sumaWartosciPrzedmiotow += double.Parse(p.SubItems[1].Text);
                 }
 
-                XElement sumaWag = new XElement("sumaWagPrzedmiotow", Math.Round(sumaWagPrzedmiotow).ToString()),
-                         sumaWartosci = new XElement("sumaWartosciPrzedmiotow", Math.Round(sumaWartosciPrzedmiotow).ToString());
+                sumaWagPrzedmiotow = Math.Round(sumaWagPrzedmiotow);
+                sumaWartosciPrzedmiotow = Math.Round(sumaWartosciPrzedmiotow);
+
+                XElement sumaWag = new XElement("sumaWagPrzedmiotow", sumaWagPrzedmiotow.ToString()),
+                         sumaWartosci = new XElement("sumaWartosciPrzedmiotow", sumaWartosciPrzedmiotow.ToString());
 
                 korzen.Add(przedmioty);
                 korzen.Add(sumaWag);
@@ -117,8 +120,8 @@ namespace AlgorytmyDoTTP.Widoki
                             {
                                 zwalidowaneDostepnePrzedmioty += listaPrzedmiotow.Items[(indeks - 1)].SubItems[0].Text + ", ";
 
-                                sumaWagPrzedmiotow += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[2].Text);
-                                sumaWartosciPrzedmiotow += float.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[1].Text);
+                                sumaWagPrzedmiotow += double.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[2].Text);
+                                sumaWartosciPrzedmiotow += double.Parse(listaPrzedmiotow.Items[(indeks - 1)].SubItems[1].Text);
                             } catch (Exception)
                             {}
                         }
