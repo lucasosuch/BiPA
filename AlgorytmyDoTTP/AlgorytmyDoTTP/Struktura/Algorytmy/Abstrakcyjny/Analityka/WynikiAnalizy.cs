@@ -56,6 +56,30 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return (float)Math.Sqrt(sredniaSumaKwadratow);
         }
 
+        private float Minimum(double[] wartosci)
+        {
+            float wynik = (float)wartosci[0];
+
+            for(int i = 0; i < wartosci.Length; i++)
+            {
+                if (wynik > wartosci[i]) wynik = (float)wartosci[i];
+            }
+
+            return wynik;
+        }
+
+        private float Maksimum(double[] wartosci)
+        {
+            float wynik = (float)wartosci[0];
+
+            for (int i = 0; i < wartosci.Length; i++)
+            {
+                if (wynik < wartosci[i]) wynik = (float)wartosci[i];
+            }
+
+            return wynik;
+        }
+
         private float[] ZnajdzMax(float[] tablica)
         {
             float[] wynik = new float[] { 0, tablica[0] };
@@ -69,6 +93,26 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
             }
 
             return wynik;
+        }
+
+        private float[] ObliczPunkty(float[] punkty, float[] zbiorMin, float[] zbiorSrednich, float[] zbiorMax)
+        {
+            for (short i = 0; i < punkty.Length; i++)
+            {
+                float[] max1 = ZnajdzMax(zbiorMax);
+                punkty[(int)max1[0]] += zbiorMax.Length - i;
+                zbiorMax[(int)max1[0]] = -100000;
+
+                float[] max2 = ZnajdzMax(zbiorMin);
+                punkty[(int)max2[0]] += (float)(zbiorMin.Length - (i * 0.5));
+                zbiorMin[(int)max2[0]] = -100000;
+
+                float[] max3 = ZnajdzMax(zbiorSrednich);
+                punkty[(int)max3[0]] += (float)(zbiorSrednich.Length - (i * 0.75));
+                zbiorSrednich[(int)max3[0]] = -100000;
+            }
+
+            return punkty;
         }
 
         public float[][][] PrzetworzDane(float[][] ranking, double[][] wartosciSrednie, double[][] wartosciMin, double[][] wartosciMax)
@@ -95,29 +139,32 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
             float[] punkty = new float[minWartosci.Length],
                     srednieMin = new float[minWartosci.Length],
                     srednieAvg = new float[minWartosci.Length],
-                    srednieMax = new float[minWartosci.Length];
+                    srednieMax = new float[minWartosci.Length],
+                    minMin = new float[minWartosci.Length],
+                    minAvg = new float[minWartosci.Length],
+                    minMax = new float[minWartosci.Length],
+                    maxMin = new float[minWartosci.Length],
+                    maxAvg = new float[minWartosci.Length],
+                    maxMax = new float[minWartosci.Length];
 
             for (short i = 0; i < minWartosci.Length; i++)
             {
                 srednieMin[i] = Srednia(minWartosci[i]);
                 srednieAvg[i] = Srednia(srednieWartosci[i]);
                 srednieMax[i] = Srednia(maxWartosci[i]);
+
+                minMin[i] = Minimum(minWartosci[i]);
+                minAvg[i] = Minimum(srednieWartosci[i]);
+                minMax[i] = Minimum(maxWartosci[i]);
+
+                maxMin[i] = Maksimum(minWartosci[i]);
+                maxAvg[i] = Maksimum(srednieWartosci[i]);
+                maxMax[i] = Maksimum(maxWartosci[i]);
             }
 
-            for (short i = 0; i < minWartosci.Length; i++)
-            {
-                float[] maxMax = ZnajdzMax(srednieMax);
-                punkty[(int)maxMax[0]] += srednieMax.Length - i;
-                srednieMax[(int)maxMax[0]] = -100000;
-
-                float[] maxMin = ZnajdzMax(srednieMin);
-                punkty[(int)maxMin[0]] += (float)(srednieMin.Length - (i * 0.5));
-                srednieMin[(int)maxMin[0]] = -100000;
-
-                float[] maxAvg = ZnajdzMax(srednieAvg);
-                punkty[(int)maxAvg[0]] += (float)(srednieAvg.Length - (i * 0.75));
-                srednieAvg[(int)maxAvg[0]] = -100000;
-            }
+            punkty = (float[])(ObliczPunkty(punkty, srednieMin, srednieAvg, srednieMax).Clone());
+            punkty = (float[])(ObliczPunkty(punkty, minMin, minAvg, minMax).Clone());
+            punkty = (float[])(ObliczPunkty(punkty, maxMin, maxAvg, maxMax).Clone());
 
             float[][] wyniki = new float[punkty.Length][];
             for (int i = 0; i < punkty.Length; i++)
