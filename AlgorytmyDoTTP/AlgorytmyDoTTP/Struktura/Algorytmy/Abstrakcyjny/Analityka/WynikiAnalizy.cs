@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Rozszerzenia;
+﻿using BiPA.Rozszerzenia;
 using System;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
+namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
     class WynikiAnalizy
     {

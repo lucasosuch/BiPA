@@ -1,6 +1,6 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
 {
     /// <summary>
     /// Klasa reprezentująca dostępność przedmiotów w danych miastach

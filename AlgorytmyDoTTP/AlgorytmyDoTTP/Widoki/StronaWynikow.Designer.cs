@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Widoki
+﻿namespace BiPA.Widoki
 {
     partial class StronaWynikow
     {

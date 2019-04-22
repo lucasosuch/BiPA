@@ -1,11 +1,11 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka;
+using BiPA.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy
+namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 {
     /// <summary>
     /// Klasa konkretna Algorytmu Wspinaczkowego.

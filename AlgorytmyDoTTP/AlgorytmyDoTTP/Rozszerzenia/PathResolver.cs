@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace AlgorytmyDoTTP.Rozszerzenia
+namespace BiPA.Rozszerzenia
 {
     class PathResolver
     {

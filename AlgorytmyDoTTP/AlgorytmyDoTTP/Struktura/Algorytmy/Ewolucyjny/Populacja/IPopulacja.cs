@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny.Populacja
 {
     interface IPopulacja
     {

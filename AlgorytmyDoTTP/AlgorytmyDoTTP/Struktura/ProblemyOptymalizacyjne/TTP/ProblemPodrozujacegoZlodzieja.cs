@@ -1,12 +1,12 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using BiPA.Struktura.ProblemyOptymalizacyjne.KP;
+using BiPA.Struktura.ProblemyOptymalizacyjne.TSP;
+using BiPA.Struktura.ProblemyOptymalizacyjne.TTP.Model;
 using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
 {
     /// <summary>
     /// Klasa konkretna reprezentująca Problem Podróżującego Złodzieja

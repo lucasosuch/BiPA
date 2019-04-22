@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+namespace BiPA.Struktura.Algorytmy.Abstrakcyjny
 {
     /// <summary>
     /// Klasa konfiguracyjna.

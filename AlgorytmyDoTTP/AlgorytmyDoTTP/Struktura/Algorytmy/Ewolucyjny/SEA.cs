@@ -1,12 +1,12 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
+using BiPA.Struktura.Algorytmy.Ewolucyjny.Selekcja;
+using BiPA.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny
 {
     /// <summary>
     /// Klasa konkretna Algorytmu Ewolucyjnego.

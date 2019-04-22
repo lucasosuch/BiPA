@@ -1,8 +1,8 @@
-﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Widoki.Narzedzia;
 using System;
 using System.Windows.Forms;
 
-namespace AlgorytmyDoTTP.Widoki
+namespace BiPA.Widoki
 {
     public partial class StronaGenerowaniaPlikow : Form
     {

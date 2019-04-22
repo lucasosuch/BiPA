@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny.Rekombinacja
 {
     /// <summary>
     /// Klasa konkretna odpowiedzialna za wymianę materiału genetycznego pomiędzy osobnikami - rozwiązaniami Problemu Plecakowego

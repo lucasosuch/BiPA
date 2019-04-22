@@ -1,12 +1,12 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+using BiPA.Struktura.Algorytmy.Losowy.Losowanie;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
+namespace BiPA.Struktura.Algorytmy.Losowy
 {
     class PrzebiegAlgorytmu : Algorytm
     {

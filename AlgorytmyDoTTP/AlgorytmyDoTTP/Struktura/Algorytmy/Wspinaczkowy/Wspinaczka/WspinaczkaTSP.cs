@@ -1,10 +1,10 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+using BiPA.Struktura.Algorytmy.Losowy.Losowanie;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
+namespace BiPA.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 {
     /// <summary>
     /// Klasa konkretna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego pod Problem Komiwojażera

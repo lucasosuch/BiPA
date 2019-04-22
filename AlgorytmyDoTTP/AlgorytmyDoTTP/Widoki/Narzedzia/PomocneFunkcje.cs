@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+namespace BiPA.Widoki.Narzedzia
 {
     class PomocneFunkcje
     {

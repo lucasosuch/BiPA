@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+namespace BiPA.Widoki.Narzedzia
 {
     class FormatkaDanych
     {

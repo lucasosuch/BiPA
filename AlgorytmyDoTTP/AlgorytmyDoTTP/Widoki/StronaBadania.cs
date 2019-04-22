@@ -1,4 +1,4 @@
-﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Widoki.Narzedzia;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace AlgorytmyDoTTP.Widoki
+namespace BiPA.Widoki
 {
     /// <summary>
     /// Klasa widoku badania

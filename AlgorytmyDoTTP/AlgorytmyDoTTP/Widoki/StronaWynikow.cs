@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace AlgorytmyDoTTP.Widoki
+namespace BiPA.Widoki
 {
     public partial class StronaWynikow : Form
     {

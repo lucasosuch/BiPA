@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+namespace BiPA.Widoki.Narzedzia
 {
     /// <summary>
     /// Klasa narzędziowa widoku głownego aplikacji

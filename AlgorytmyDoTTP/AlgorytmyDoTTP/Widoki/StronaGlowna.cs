@@ -1,11 +1,11 @@
-﻿using AlgorytmyDoTTP.Widoki;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Widoki;
+using BiPA.Widoki.Narzedzia;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace AlgorytmyDoTTP
+namespace BiPA
 {
     /// <summary>
     /// Klasa widoku głownego

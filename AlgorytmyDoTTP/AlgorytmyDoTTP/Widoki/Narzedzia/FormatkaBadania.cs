@@ -1,10 +1,10 @@
-﻿using AlgorytmyDoTTP.Konfiguracja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP;
+﻿using BiPA.Konfiguracja;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using BiPA.Struktura.ProblemyOptymalizacyjne.KP;
+using BiPA.Struktura.ProblemyOptymalizacyjne.TSP;
+using BiPA.Struktura.ProblemyOptymalizacyjne.TTP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+namespace BiPA.Widoki.Narzedzia
 {
     /// <summary>
     /// Klasa narzędziowa widoku badania

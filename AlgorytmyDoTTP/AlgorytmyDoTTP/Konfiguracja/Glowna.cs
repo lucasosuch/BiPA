@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Konfiguracja
+﻿namespace BiPA.Konfiguracja
 {
     class Glowna
     {

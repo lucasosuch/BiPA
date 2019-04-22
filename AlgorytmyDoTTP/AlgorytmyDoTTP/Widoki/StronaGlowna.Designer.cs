@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP
+﻿namespace BiPA
 {
     partial class StronaGlowna
     {

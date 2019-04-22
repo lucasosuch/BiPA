@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+﻿namespace BiPA.Struktura.Algorytmy.Abstrakcyjny
 {
     /// <summary>
     /// Klasa pełniąca rolę genotypu / zakodowanego rozwiązania w dowolnej strukturze danych

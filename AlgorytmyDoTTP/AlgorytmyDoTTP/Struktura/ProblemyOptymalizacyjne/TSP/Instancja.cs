@@ -1,6 +1,6 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TSP
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
 {
     /// <summary>
     /// Klasa reprezentująca krawędź na grafie dla TSP

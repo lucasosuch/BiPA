@@ -1,9 +1,9 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
 {
     /// <summary>
     /// Klasa konkretna reprezentująca Problem Plecakowy

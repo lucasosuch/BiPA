@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik
+namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik
 {
     /// <summary>
     /// Klasa konkretna reprezentująca osobnika Problemu Komiwojażera

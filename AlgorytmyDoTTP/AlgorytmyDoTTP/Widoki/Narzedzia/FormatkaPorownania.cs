@@ -1,7 +1,7 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Widoki.Narzedzia
+namespace BiPA.Widoki.Narzedzia
 {
     /// <summary>
     /// Klasa narzędziowa widoku porównywania

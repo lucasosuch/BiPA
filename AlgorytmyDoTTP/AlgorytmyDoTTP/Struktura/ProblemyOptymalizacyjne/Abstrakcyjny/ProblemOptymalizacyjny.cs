@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 {
     /// <summary>
     /// Klasa abstrakcyjna reprezentująca Problemy Optymalizacyjne

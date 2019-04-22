@@ -1,11 +1,11 @@
-﻿using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Widoki.Narzedzia;
 using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AlgorytmyDoTTP.Widoki
+namespace BiPA.Widoki
 {
     public partial class StronaDodaniaPlikowDanych : Form
     {

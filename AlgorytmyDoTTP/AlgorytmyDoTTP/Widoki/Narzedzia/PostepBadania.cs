@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Widoki.Narzedzia
+﻿namespace BiPA.Widoki.Narzedzia
 {
     class PostepBadania
     {

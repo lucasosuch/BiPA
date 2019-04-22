@@ -1,13 +1,13 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Populacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+using BiPA.Struktura.Algorytmy.Ewolucyjny.Populacja;
+using BiPA.Struktura.Algorytmy.Ewolucyjny.Rekombinacja;
+using BiPA.Struktura.Algorytmy.Ewolucyjny.Selekcja;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny
 {
     class PrzebiegAlgorytmu : Algorytm
     {

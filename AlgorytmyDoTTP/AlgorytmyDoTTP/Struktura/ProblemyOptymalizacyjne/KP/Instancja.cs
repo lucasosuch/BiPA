@@ -1,6 +1,6 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
 {
     /// <summary>
     /// Klasa reprezentująca przedmiot dla KP

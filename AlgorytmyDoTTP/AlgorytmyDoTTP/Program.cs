@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AlgorytmyDoTTP
+namespace BiPA
 {
     static class Program
     {

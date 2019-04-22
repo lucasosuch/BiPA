@@ -1,8 +1,8 @@
-﻿using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.KP;
+﻿using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+using BiPA.Struktura.ProblemyOptymalizacyjne.KP;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.TTP.Model
+namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP.Model
 {
     class TTP1 : ITTP
     {

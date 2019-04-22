@@ -1,4 +1,4 @@
-﻿namespace AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
+﻿namespace BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 {
     interface IPomocniczy
     {

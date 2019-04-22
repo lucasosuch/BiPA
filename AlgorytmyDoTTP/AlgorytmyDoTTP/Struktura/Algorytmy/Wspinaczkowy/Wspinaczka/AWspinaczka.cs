@@ -1,8 +1,8 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Losowy.Losowanie;
 using System;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
+namespace BiPA.Struktura.Algorytmy.Wspinaczkowy.Wspinaczka
 {
     /// <summary>
     /// Klasa abstrakcyjna reprezentująca rozwiązanie dla Algorytmu Wspinaczkowego

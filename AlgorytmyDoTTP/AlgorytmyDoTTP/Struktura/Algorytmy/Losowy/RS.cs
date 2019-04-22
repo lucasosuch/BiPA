@@ -1,11 +1,11 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Struktura.Algorytmy.Losowy.Losowanie;
+using BiPA.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy
+namespace BiPA.Struktura.Algorytmy.Losowy
 {
     /// <summary>
     /// Klasa konkretna Algorytmu Losowego.

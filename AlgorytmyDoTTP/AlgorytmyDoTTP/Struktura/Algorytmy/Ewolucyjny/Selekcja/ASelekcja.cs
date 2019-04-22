@@ -1,9 +1,9 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using System;
 using System.Collections;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
     /// <summary>
     /// Klasa abstrakcyjna udostępniająca metody służące do wyboru najlepiej przystosowanych osobników

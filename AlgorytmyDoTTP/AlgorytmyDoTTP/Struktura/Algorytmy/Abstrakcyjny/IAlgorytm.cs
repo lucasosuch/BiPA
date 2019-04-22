@@ -1,9 +1,9 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka;
-using AlgorytmyDoTTP.Widoki.Narzedzia;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka;
+using BiPA.Widoki.Narzedzia;
 using System;
 using System.Threading.Tasks;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny
+namespace BiPA.Struktura.Algorytmy.Abstrakcyjny
 {
     interface IAlgorytm
     {

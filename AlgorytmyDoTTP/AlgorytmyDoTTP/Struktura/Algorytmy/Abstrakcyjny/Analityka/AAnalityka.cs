@@ -1,8 +1,8 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Analityka
+namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
 {
     abstract class AAnalityka
     {

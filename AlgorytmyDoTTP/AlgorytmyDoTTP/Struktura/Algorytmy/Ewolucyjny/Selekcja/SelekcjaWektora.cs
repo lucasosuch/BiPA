@@ -1,9 +1,9 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Ewolucyjny.Selekcja
+namespace BiPA.Struktura.Algorytmy.Ewolucyjny.Selekcja
 {
     /// <summary>
     /// Klasa konkretna odpowiedzialna za wybór osobników z populacji na podstawie ich przystosowania

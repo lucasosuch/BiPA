@@ -1,10 +1,10 @@
-﻿using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny;
-using AlgorytmyDoTTP.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
-using AlgorytmyDoTTP.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
+﻿using BiPA.Struktura.Algorytmy.Abstrakcyjny;
+using BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik;
+using BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorytmyDoTTP.Struktura.Algorytmy.Losowy.Losowanie
+namespace BiPA.Struktura.Algorytmy.Losowy.Losowanie
 {
     /// <summary>
     /// Klasa konkretna odpowiedzialna za losowanie rozwiązań pod Problem Plecakowy
