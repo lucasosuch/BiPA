@@ -80,6 +80,31 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
             return wynik;
         }
 
+        private float[] UstalPunktacje(float[] tablica)
+        {
+            float[] wynik = new float[tablica.Length];
+            float[] posortowanaTablica = (float[])tablica.Clone();
+
+            Array.Sort(posortowanaTablica);
+
+            for (int i = 0; i < tablica.Length; i++)
+            {
+                int k = 0;
+                for (int j = posortowanaTablica.Length - 1; j >= 0; j--)
+                {
+                    if (tablica[i] == posortowanaTablica[j])
+                    {
+                        wynik[i] = (tablica.Length - k);
+                        break;
+                    }
+
+                    k++;
+                }
+            }
+
+            return wynik;
+        }
+
         private float[] ZnajdzMax(float[] tablica)
         {
             float[] wynik = new float[] { 0, tablica[0] };
@@ -97,19 +122,13 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
         private float[] ObliczPunkty(float[] punkty, float[] zbiorMin, float[] zbiorSrednich, float[] zbiorMax)
         {
-            for (short i = 0; i < punkty.Length; i++)
+            float[] punktyMin = UstalPunktacje(zbiorMin);
+            float[] punktySrednia = UstalPunktacje(zbiorSrednich);
+            float[] punktyMax = UstalPunktacje(zbiorMax);
+
+            for(int i = 0; i < punkty.Length; i++)
             {
-                float[] max1 = ZnajdzMax(zbiorMax);
-                punkty[(int)max1[0]] += zbiorMax.Length - i;
-                zbiorMax[(int)max1[0]] = -100000;
-
-                float[] max2 = ZnajdzMax(zbiorMin);
-                punkty[(int)max2[0]] += (float)(zbiorMin.Length - (i * 0.5));
-                zbiorMin[(int)max2[0]] = -100000;
-
-                float[] max3 = ZnajdzMax(zbiorSrednich);
-                punkty[(int)max3[0]] += (float)(zbiorSrednich.Length - (i * 0.75));
-                zbiorSrednich[(int)max3[0]] = -100000;
+                punkty[i] += (float)((0.8 * punktyMin[i]) + (0.8 * punktySrednia[i]) + punktyMax[i]);
             }
 
             return punkty;
