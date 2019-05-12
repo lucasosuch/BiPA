@@ -128,7 +128,7 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Analityka
 
             for(int i = 0; i < punkty.Length; i++)
             {
-                punkty[i] += (float)((0.75 * punktyMin[i]) + punktySrednia[i] + punktyMax[i]);
+                punkty[i] += punktyMin[i] + punktySrednia[i] + punktyMax[i];
             }
 
             return punkty;
