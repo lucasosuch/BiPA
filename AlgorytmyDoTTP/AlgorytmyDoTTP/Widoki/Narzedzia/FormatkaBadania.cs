@@ -249,13 +249,13 @@ namespace BiPA.Widoki.Narzedzia
         {
             if (parametry["algorytm"] == "Algorytm Ewolucyjny")
             {
-                return new Struktura.Algorytmy.Ewolucyjny.PrzebiegAlgorytmu();
+                return new Struktura.Algorytmy.Ewolucyjny.KonfiguracjaSEA();
             } else if(parametry["algorytm"] == "Algorytm Wspinaczkowy")
             {
-                return new Struktura.Algorytmy.Wspinaczkowy.PrzebiegAlgorytmu();
+                return new Struktura.Algorytmy.Wspinaczkowy.KonfiguracjaRLS();
             }
 
-            return new Struktura.Algorytmy.Losowy.PrzebiegAlgorytmu();
+            return new Struktura.Algorytmy.Losowy.KonfiguracjaRS();
         }
 
         /// <summary>

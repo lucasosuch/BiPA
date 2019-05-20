@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 {
-    class PrzebiegAlgorytmu : Algorytm
+    class KonfiguracjaRLS : Algorytm
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {

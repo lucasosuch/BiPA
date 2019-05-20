@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BiPA.Struktura.Algorytmy.Losowy
 {
-    class PrzebiegAlgorytmu : Algorytm
+    class KonfiguracjaRS : Algorytm
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
