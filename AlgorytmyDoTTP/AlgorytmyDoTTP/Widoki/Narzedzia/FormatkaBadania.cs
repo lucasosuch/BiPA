@@ -245,17 +245,17 @@ namespace BiPA.Widoki.Narzedzia
         /// Metoda zwraca instancję wybranego Algorytmu
         /// </summary>
         /// <returns>Instancję Algorytmu</returns>
-        private Algorytm ZwrocWybranyAlgorytm()
+        private Konfigurator ZwrocWybranyAlgorytm()
         {
             if (parametry["algorytm"] == "Algorytm Ewolucyjny")
             {
-                return new Struktura.Algorytmy.Ewolucyjny.KonfiguracjaSEA();
+                return new Struktura.Algorytmy.Ewolucyjny.KonfiguratorSEA();
             } else if(parametry["algorytm"] == "Algorytm Wspinaczkowy")
             {
-                return new Struktura.Algorytmy.Wspinaczkowy.KonfiguracjaRLS();
+                return new Struktura.Algorytmy.Wspinaczkowy.KonfiguratorRLS();
             }
 
-            return new Struktura.Algorytmy.Losowy.KonfiguracjaRS();
+            return new Struktura.Algorytmy.Losowy.KonfiguratorRS();
         }
 
         /// <summary>

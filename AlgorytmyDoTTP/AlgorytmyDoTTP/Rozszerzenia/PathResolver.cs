@@ -8,6 +8,9 @@ using System.Text;
 
 namespace BiPA.Rozszerzenia
 {
+    /// <summary>
+    /// Klasa pozwalająca na działanie na ścieżkach do plików
+    /// </summary>
     class PathResolver
     {
         [DllImport("kernel32.dll", EntryPoint = "CreateFileW", CharSet = CharSet.Unicode, SetLastError = true)]
@@ -19,6 +22,11 @@ namespace BiPA.Rozszerzenia
         private const int CREATION_DISPOSITION_OPEN_EXISTING = 3;
         private const int FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
 
+        /// <summary>
+        /// Metoda pobierająca plik z którego utworzono skrót
+        /// </summary>
+        /// <param name="shortcutFilename">Nazwa skrótu</param>
+        /// <returns>Ścieżkę prowadzącą z skrótu do pliku</returns>
         public string GetShortcutTargetFile(string shortcutFilename)
         {
             string realPath = GetRealPath(shortcutFilename),
@@ -39,6 +47,11 @@ namespace BiPA.Rozszerzenia
             return string.Empty;
         }
 
+        /// <summary>
+        /// Metoda pobierająca ścieżkę bezwzględną do pliku
+        /// </summary>
+        /// <param name="path">Ścieżka do pliku</param>
+        /// <returns>Ścieżkę bezwględną ze ścieżki względnej</returns>
         private string GetRealPath(string path)
         {
             if (!Directory.Exists(path) && !File.Exists(path))
@@ -46,7 +59,7 @@ namespace BiPA.Rozszerzenia
                 throw new IOException("Path not found");
             }
 
-            DirectoryInfo symlink = new DirectoryInfo(path);// No matter if it's a file or folder
+            DirectoryInfo symlink = new DirectoryInfo(path);
             SafeFileHandle directoryHandle = CreateFile(symlink.FullName, 0, 2, System.IntPtr.Zero, CREATION_DISPOSITION_OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, System.IntPtr.Zero); //Handle file / folder
 
             if (directoryHandle.IsInvalid)
@@ -64,7 +77,7 @@ namespace BiPA.Rozszerzenia
 
             if (result.Length >= 4 && result[0] == '\\' && result[1] == '\\' && result[2] == '?' && result[3] == '\\')
             {
-                return result.ToString().Substring(4); // "\\?\" remove
+                return result.ToString().Substring(4);
             }
             else
             {

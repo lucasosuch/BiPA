@@ -10,8 +10,12 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny
         /// <summary>
         /// Metoda uruchamiająca Algorytm
         /// </summary>
+        /// <param name="postep">Odpowiada za ustawianie postępu badania</param>
         Task Start(IProgress<PostepBadania> postep);
 
+        /// <summary>
+        /// Metoda zwracająca obiekt analityki porównawczo-badawczej
+        /// </summary>
         AAnalityka ZwrocAnalityke();
     }
 }

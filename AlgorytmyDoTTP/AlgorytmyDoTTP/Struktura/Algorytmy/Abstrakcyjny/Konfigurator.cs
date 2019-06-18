@@ -7,7 +7,7 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny
     /// Klasa konfiguracyjna.
     /// Będąca łącznikiem pomiędzy problemami optymalizacyjnymi i algorytmem Ewolucyjnym
     /// </summary>
-    abstract class Algorytm
+    abstract class Konfigurator
     {
         /// <summary>
         /// Metoda odpowiedzialna za uruchomienie algorytmu wg wybranego problemu optymalizacyjnego

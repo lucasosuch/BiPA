@@ -5,15 +5,19 @@ using System.Windows.Forms;
 
 namespace BiPA.Rozszerzenia
 {
+    /// <summary>
+    /// Klasa odpowiedzialna za połączenie z programem Gnuplot
+    /// </summary>
     class GNUPlot
     {
-        private readonly string sciezkaGNUPlot = @"./gnuplot.exe.lnk";
+        private readonly string sciezkaGNUPlot = @"./gnuplot.exe.lnk"; // skrót do pliku exe
         Process procesGnuplot = new Process();
 
         public GNUPlot()
         {
             try
             {
+                // wyciągnięcie ścieżki bezwzględnej ze skrótu
                 PathResolver pathResolver = new PathResolver();
                 string sciezka = pathResolver.GetShortcutTargetFile(sciezkaGNUPlot);
 
@@ -36,6 +40,15 @@ namespace BiPA.Rozszerzenia
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna za rysowanie wykresów w Gnuplot
+        /// </summary>
+        /// <param name="wartosci">Wartości, które zostaną naniesione na wykres</param>
+        /// <param name="szerokosc">Szerokość obrazka</param>
+        /// <param name="wysokosc">Wysokość obrazka</param>
+        /// <param name="tytul">Tytuł wykresu</param>
+        /// <param name="nazwaPliku">Nazwa pliku wykresu</param>
+        /// <param name="nazwyWykresow">Nazwy osi</param>
         public void RysujWykresBadania(double[][] wartosci, int szerokosc, int wysokosc, string tytul, string nazwaPliku, string[] nazwyWykresow)
         {
             StreamWriter SW = procesGnuplot.StandardInput;
@@ -67,6 +80,9 @@ namespace BiPA.Rozszerzenia
             png.Save(@".\Wykresy\"+ nazwaPliku + ".png");
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna za zakończenie działania programu Gnuplot
+        /// </summary>
         public void ZakonczProcesGNUPlot()
         {
             procesGnuplot.Close();
