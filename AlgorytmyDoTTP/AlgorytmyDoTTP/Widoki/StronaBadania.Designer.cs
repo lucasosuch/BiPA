@@ -457,7 +457,7 @@
             this.wybierzProblem.Size = new System.Drawing.Size(553, 30);
             this.wybierzProblem.TabIndex = 2;
             this.wybierzProblem.UseSelectable = true;
-            this.wybierzProblem.SelectedIndexChanged += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged_1);
+            this.wybierzProblem.SelectedIndexChanged += new System.EventHandler(this.wybierzProblem_SelectedIndexChanged);
             // 
             // kp_panel
             // 

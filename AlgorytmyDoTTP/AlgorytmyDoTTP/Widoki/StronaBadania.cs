@@ -232,35 +232,6 @@ namespace BiPA.Widoki
         }
 
         /// <summary>
-        /// Metoda zmienia panela w widoku głównym pod Problem Optymalizacyjny
-        /// </summary>
-        private void wybierzProblem_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            WczytajPliki();
-            kp_panel.Visible = false;
-            ttp_panel.Visible = false;
-            domyslnyProblemPanel.Visible = false;
-            wybierzPlikDanych.Enabled = true;
-
-            switch (wybierzProblem.Text)
-            {
-                case "Problem Komiwojażera":
-                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
-                    domyslnyProblemPanel.Visible = true;
-                    break;
-                case "Problem Plecakowy":
-                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_WEKTORA);
-                    kp_panel.Visible = true;
-                    break;
-                case "Problem Podróżującego Złodzieja":
-                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
-                    kp_panel.Visible = true;
-                    ttp_panel.Visible = true;
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Metoda zmienia panela w widoku głównym pod Algorytm
         /// </summary>
         private void wybierzAlgorytm_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,16 +257,32 @@ namespace BiPA.Widoki
             }
         }
 
-        private void modelTTP_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Metoda zmienia panela w widoku głównym pod Problem Optymalizacyjny
+        /// </summary>
+        private void wybierzProblem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (modelTTP.Text == "TTP2")
+            WczytajPliki();
+            kp_panel.Visible = false;
+            ttp_panel.Visible = false;
+            domyslnyProblemPanel.Visible = false;
+            wybierzPlikDanych.Enabled = true;
+
+            switch (wybierzProblem.Text)
             {
-                wypozyczenieLabel.Text = "Współczynnik utraty wartości";
-                wypozyczeniePlecaka.Text = "0,9";
-            } else
-            {
-                wypozyczenieLabel.Text = "$ za h wypożyczenia plecaka";
-                wypozyczeniePlecaka.Text = "1";
+                case "Problem Komiwojażera":
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
+                    domyslnyProblemPanel.Visible = true;
+                    break;
+                case "Problem Plecakowy":
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_WEKTORA);
+                    kp_panel.Visible = true;
+                    break;
+                case "Problem Podróżującego Złodzieja":
+                    UstawRodzajKrzyzowania(formatkaBadania.ZwrocZmiennaSrodowiskowa().KRZYZOWANIE_TSP);
+                    kp_panel.Visible = true;
+                    ttp_panel.Visible = true;
+                    break;
             }
         }
 
@@ -334,6 +321,20 @@ namespace BiPA.Widoki
                 dokument.Load(nazwaPliku);
                 XmlNode sumaWartosci = dokument.DocumentElement.SelectSingleNode("/korzen/sumaWartosciPrzedmiotow");
                 if (modelTTP.Text != "TTP2") wypozyczeniePlecaka.Text = (double.Parse(sumaWartosci.InnerText) * 0.1).ToString();
+            }
+        }
+
+        private void modelTTP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (modelTTP.Text == "TTP2")
+            {
+                wypozyczenieLabel.Text = "Współczynnik utraty wartości";
+                wypozyczeniePlecaka.Text = "0,9";
+            }
+            else
+            {
+                wypozyczenieLabel.Text = "$ za h wypożyczenia plecaka";
+                wypozyczeniePlecaka.Text = "1";
             }
         }
     }
