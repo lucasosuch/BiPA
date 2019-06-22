@@ -16,7 +16,7 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik
             return string.Join(" ", reprezentacjaGenotypu.ZwrocGenotyp1Wymiarowy());
         }
 
-        public override IPomocniczy[] Fenotyp(ushort[] genotyp)
+        public override IElement[] Fenotyp(ushort[] genotyp)
         {
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }

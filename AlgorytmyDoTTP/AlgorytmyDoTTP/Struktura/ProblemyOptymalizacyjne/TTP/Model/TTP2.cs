@@ -19,7 +19,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP.Model
             for (int i = 0, j = -1; i < mapaPrzedmiotow.Length; i++, j++)
             {
                 // zebrane przedmioty dla i-tego miasta
-                IPomocniczy[] zebranePrzedmioty = problemPlecakowy.ZwrocWybraneElementy(mapaPrzedmiotow[i]);
+                IElement[] zebranePrzedmioty = problemPlecakowy.ZwrocWybraneElementy(mapaPrzedmiotow[i]);
                 // obliczenie zysku z pobranych przedmiotów dla i-tego miasta
                 Dictionary<string, float[]> wynikCzesciowy = problemPlecakowy.ObliczZysk(zebranePrzedmioty);
 

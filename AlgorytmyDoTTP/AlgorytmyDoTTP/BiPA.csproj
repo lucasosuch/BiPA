@@ -113,13 +113,13 @@
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaKP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaTSP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaTTP.cs" />
-    <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IPomocniczy.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\IElement.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\Abstrakcyjny\ProblemOptymalizacyjny.cs" />
-    <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Instancja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\Przedmiot.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\KP\ProblemPlecakowy.cs" />
-    <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\Instancja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\Miasto.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TSP\ProblemKomiwojazera.cs" />
-    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Instancja.cs" />
+    <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\Miasto.cs" />
     <Compile Include="Struktura\ProblemyOptymalizacyjne\TTP\ProblemPodrozujacegoZlodzieja.cs" />
     <Compile Include="Widoki\StronaBadania.cs">
       <SubType>Form</SubType>

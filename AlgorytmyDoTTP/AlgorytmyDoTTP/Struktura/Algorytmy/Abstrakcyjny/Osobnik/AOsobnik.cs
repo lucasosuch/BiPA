@@ -21,7 +21,7 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik
         /// </summary>
         /// <param name="genotyp">Tablica definiująca dziedzinę rozwiązania</param>
         /// <returns>Dziedzinę wartości funkcji celu</returns>
-        public abstract IPomocniczy[] Fenotyp(ushort[] genotyp);
+        public abstract IElement[] Fenotyp(ushort[] genotyp);
 
         /// <summary>
         /// Metoda zwraca wektor osobnika opisanego genotypem

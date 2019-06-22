@@ -45,7 +45,7 @@ namespace BiPA.Struktura.Algorytmy.Abstrakcyjny.Osobnik
             return problemOptymalizacyjny.ZwrocWybraneElementy(genotyp);
         }
 
-        public override IPomocniczy[] Fenotyp(ushort[] genotyp)
+        public override IElement[] Fenotyp(ushort[] genotyp)
         {
             throw new NotImplementedException();
         }
