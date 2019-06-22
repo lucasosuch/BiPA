@@ -51,7 +51,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
             {
                 // dla każdego i-tego miasta przypisanie dostępności przedmiotów
                 dostepnePrzedmioty[i] = new ushort[problemPlecakowy.ZwrocDlugoscGenotypu()];
-                dostepnePrzedmioty[i] = (ushort[])((new Instancja()).ZwrocPrzedmioty(
+                dostepnePrzedmioty[i] = (ushort[])((new Miasto()).ZwrocPrzedmioty(
                     rozmieszczeniePrzedmiotow[i].InnerText, 
                     problemPlecakowy.ZwrocDlugoscGenotypu()
                     ).Clone());
@@ -77,7 +77,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
         {
             ITTP obiektTTP = new TTP1();
             // pobranie planu podróży przez miasta
-            IPomocniczy[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
+            IElement[] planPodrozy = problemKomiwojazera.ZwrocWybraneElementy(macierz["tsp"][0]);
             // pobranie długości trasy jako wektora pomiędzy wybranymi miastami
             float[] dlugosciTrasy = problemKomiwojazera.ZwrocDlugoscTrasy(planPodrozy, true);
 
@@ -117,12 +117,12 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
             return wynik;
         }
 
-        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] wybraneElementy)
+        public override IElement[] ZwrocWybraneElementy(ushort[] wybraneElementy)
         {
             throw new NotImplementedException();
         }
 
-        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IElement[] wektor)
         {
             throw new NotImplementedException();
         }

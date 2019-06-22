@@ -1,6 +1,6 @@
 ﻿namespace BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
 {
-    interface IPomocniczy
+    interface IElement
     {
         /// <summary>
         /// Metoda zwraca wagę przedmiotu

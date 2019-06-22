@@ -5,13 +5,13 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
     /// <summary>
     /// Klasa reprezentująca krawędź na grafie dla TSP
     /// </summary>
-    class Instancja : IPomocniczy
+    class Miasto : IElement
     {
         private ushort prowadziOd;
         private ushort prowadziDo;
         private float dlugosc;
 
-        public Instancja(ushort prowadziOd, ushort prowadziDo, float dlugosc)
+        public Miasto(ushort prowadziOd, ushort prowadziDo, float dlugosc)
         {
             this.prowadziOd = prowadziOd;
             this.prowadziDo = prowadziDo;

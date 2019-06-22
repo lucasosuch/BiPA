@@ -10,7 +10,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
     {
         protected ushort dlugoscGenotypu = 0;
         protected bool czyIstniejaOgraniczenia = false;
-        protected IPomocniczy[] instancje;
+        protected IElement[] instancje;
         protected float[] zwrocOgraniczenia;
 
         /// <summary>
@@ -78,14 +78,14 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.Abstrakcyjny
         /// </summary>
         /// <param name="wektor">Dziedzina problemu</param>
         /// <returns>Zwraca obliczoną wartość funkcji celu</returns>
-        public abstract Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor);
+        public abstract Dictionary<string, float[]> ObliczZysk(IElement[] wektor);
 
         /// <summary>
         /// Metoda zwraca wybrane elementy w reprezentacji listowej
         /// </summary>
         /// <param name="wybraneElementy">Dziedzina problemu</param>
         /// <returns>Zwraca wybrane elementy</returns>
-        public abstract IPomocniczy[] ZwrocWybraneElementy(ushort[] wybraneElementy);
+        public abstract IElement[] ZwrocWybraneElementy(ushort[] wybraneElementy);
 
         /// <summary>
         /// Metoda zwraca wybrane elementy w reprezentacji słownikowej

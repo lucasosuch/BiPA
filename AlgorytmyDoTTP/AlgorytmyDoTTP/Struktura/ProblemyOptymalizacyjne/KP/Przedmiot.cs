@@ -5,12 +5,12 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
     /// <summary>
     /// Klasa reprezentująca przedmiot dla KP
     /// </summary>
-    class Instancja : IPomocniczy
+    class Przedmiot : IElement
     {
         private float waga;
         private float wartosc;
 
-        public Instancja(float waga, float wartosc)
+        public Przedmiot(float waga, float wartosc)
         {
             this.waga = waga;
             this.wartosc = wartosc;

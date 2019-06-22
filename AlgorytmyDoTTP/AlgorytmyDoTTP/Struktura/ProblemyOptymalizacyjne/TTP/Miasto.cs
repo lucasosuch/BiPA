@@ -5,7 +5,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TTP
     /// <summary>
     /// Klasa reprezentująca dostępność przedmiotów w danych miastach
     /// </summary>
-    class Instancja : IPomocniczy
+    class Miasto : IElement
     {
         public float ZwrocDlugosc()
         {

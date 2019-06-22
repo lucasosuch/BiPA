@@ -33,7 +33,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
                 liczbaPermutacji += i;
             }
             
-            instancje = new Instancja[liczbaPermutacji];
+            instancje = new Miasto[liczbaPermutacji];
 
             int iter = 0;
             for (ushort i = 0; i < miasta.Count; i++)
@@ -48,14 +48,14 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
                               y2 = float.Parse(miasta[j]["y"].InnerText),
                               dystans = (float)Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
                         
-                        instancje[iter] = new Instancja((ushort)(i + 1), (ushort)(j + 1), dystans);
+                        instancje[iter] = new Miasto((ushort)(i + 1), (ushort)(j + 1), dystans);
                         iter++;
                     }
                 }
             }
         }
 
-        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IElement[] wektor)
         {
             Dictionary<string, float[]> wynik = new Dictionary<string, float[]>();
             float zysk = ZwrocDlugoscTrasy(wektor, false)[0];
@@ -66,7 +66,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public float[] ZwrocDlugoscTrasy(IPomocniczy[] wektor, bool zwrocWektor)
+        public float[] ZwrocDlugoscTrasy(IElement[] wektor, bool zwrocWektor)
         {
             int dlugoscWekotra = wektor.Length;
             float[] wynik = (zwrocWektor) ? new float[dlugoscWekotra] : new float[] { 0 };
@@ -86,10 +86,10 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.TSP
             return wynik;
         }
 
-        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] elementy)
+        public override IElement[] ZwrocWybraneElementy(ushort[] elementy)
         {
             int liczbaMiast = elementy.Length - 1;
-            IPomocniczy[] wybraneElementy = new IPomocniczy[liczbaMiast];
+            IElement[] wybraneElementy = new IElement[liczbaMiast];
 
             for (int i = 0; i < liczbaMiast; i++)
             {

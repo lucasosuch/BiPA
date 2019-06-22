@@ -15,7 +15,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
             Inicjalizacja(nazwaPakietu);
         }
 
-        public override IPomocniczy[] ZwrocWybraneElementy(ushort[] elementy)
+        public override IElement[] ZwrocWybraneElementy(ushort[] elementy)
         {
             int liczbaElementow = 0;
             for(int i = 0; i < elementy.Length; i++)
@@ -27,7 +27,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
             }
 
             int j = 0;
-            IPomocniczy[] wybraneElementy = new IPomocniczy[liczbaElementow];
+            IElement[] wybraneElementy = new IElement[liczbaElementow];
             for (int i = 0; i < elementy.Length; i++)
             {
                 if(elementy[i] == 1)
@@ -50,7 +50,7 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
             dokument.Load("./Dane/KP/" + nazwaPakietu + ".xml");
 
             XmlNodeList przedmioty = dokument.DocumentElement.SelectNodes("/korzen/przedmioty/przedmiot");
-            instancje = new Instancja[przedmioty.Count];
+            instancje = new Przedmiot[przedmioty.Count];
             dlugoscGenotypu = (ushort)przedmioty.Count;
 
             for (int i = 0; i < przedmioty.Count; i++)
@@ -58,17 +58,17 @@ namespace BiPA.Struktura.ProblemyOptymalizacyjne.KP
                 float waga = float.Parse(przedmioty[i]["waga"].InnerText),
                       wartosc = float.Parse(przedmioty[i]["wartosc"].InnerText);
 
-                instancje[i] = new Instancja(waga, wartosc);
+                instancje[i] = new Przedmiot(waga, wartosc);
             }
         }
 
-        public override Dictionary<string, float[]> ObliczZysk(IPomocniczy[] wektor)
+        public override Dictionary<string, float[]> ObliczZysk(IElement[] wektor)
         {
             Dictionary<string, float[]> wynik = new Dictionary<string, float[]>();
             wynik["min"] = new float[] { 0 };
             wynik["max"] = new float[] { 0 };
 
-            foreach (Instancja przedmiot in wektor)
+            foreach (Przedmiot przedmiot in wektor)
             {
                 wynik["min"][0] += przedmiot.ZwrocWage();
                 wynik["max"][0] += przedmiot.ZwrocWartosc();
