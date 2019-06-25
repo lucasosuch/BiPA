@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 {
-    class KonfiguratorRLS : Konfigurator
+    class KonfiguratorHCA : Konfigurator
     {
         public override IAlgorytm ZbudujAlgorytm(Dictionary<string, string> parametry, ProblemOptymalizacyjny problem)
         {
@@ -31,7 +31,7 @@ namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 
                     przeszukiwanieLokalne = new WspinaczkaKP(losowanie, int.Parse(parametry["parametrP"]));
 
-                    return new RLS(przeszukiwanieLokalne, analiza);
+                    return new HCA(przeszukiwanieLokalne, analiza);
                 case "Problem Komiwojażera":
                     osobnik = new OsobnikTSP(problem);
                     losowanie = new LosowanieTSP(osobnik);
@@ -40,7 +40,7 @@ namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 
                     przeszukiwanieLokalne = new WspinaczkaTSP(losowanie, int.Parse(parametry["parametrP"]));
 
-                    return new RLS(przeszukiwanieLokalne, analiza);
+                    return new HCA(przeszukiwanieLokalne, analiza);
                 case "Problem Podróżującego Złodzieja":
                     osobnik = new OsobnikTTP(problem);
                     losowanie = new LosowanieTTP(osobnik);
@@ -49,7 +49,7 @@ namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
 
                     przeszukiwanieLokalne = new WspinaczkaTTP(losowanie, int.Parse(parametry["parametrP"]));
 
-                    return new RLS(przeszukiwanieLokalne, analiza);
+                    return new HCA(przeszukiwanieLokalne, analiza);
             }
 
             throw new Exception();

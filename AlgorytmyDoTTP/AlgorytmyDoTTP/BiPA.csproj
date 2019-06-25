@@ -107,8 +107,8 @@
     <Compile Include="Struktura\Algorytmy\Losowy\Losowanie\LosowanieTTP.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\KonfiguratorRS.cs" />
     <Compile Include="Struktura\Algorytmy\Losowy\RS.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\KonfiguratorRLS.cs" />
-    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\RLS.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\KonfiguratorHCA.cs" />
+    <Compile Include="Struktura\Algorytmy\Wspinaczkowy\HCA.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\AWspinaczka.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaKP.cs" />
     <Compile Include="Struktura\Algorytmy\Wspinaczkowy\Wspinaczka\WspinaczkaTSP.cs" />

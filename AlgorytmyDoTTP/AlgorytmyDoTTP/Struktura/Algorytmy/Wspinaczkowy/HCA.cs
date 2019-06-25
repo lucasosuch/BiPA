@@ -11,17 +11,17 @@ namespace BiPA.Struktura.Algorytmy.Wspinaczkowy
     /// Klasa konkretna Algorytmu Wspinaczkowego.
     /// Pozwala na wyszukanie rozwiązania optymalnego danego problemu wg zasad działania Algorytmów Wspinaczkowych
     /// </summary>
-    class RLS : IAlgorytm
+    class HCA : IAlgorytm
     {
         private AnalizaRLS_RS analityka;
         private AWspinaczka przeszukiwanieLokalne;
 
-        public RLS()
+        public HCA()
         {
             throw new Exception(); // błąd, nie zbudowano kontekstu pod wybrany problem optymalizacyjny
         }
 
-        public RLS(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analityka)
+        public HCA(AWspinaczka przeszukiwanieLokalne, AnalizaRLS_RS analityka)
         {
             this.analityka = analityka;
             this.przeszukiwanieLokalne = przeszukiwanieLokalne;

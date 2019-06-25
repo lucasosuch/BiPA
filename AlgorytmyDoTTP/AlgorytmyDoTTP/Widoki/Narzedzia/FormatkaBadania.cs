@@ -252,7 +252,7 @@ namespace BiPA.Widoki.Narzedzia
                 return new Struktura.Algorytmy.Ewolucyjny.KonfiguratorSEA();
             } else if(parametry["algorytm"] == "Algorytm Wspinaczkowy")
             {
-                return new Struktura.Algorytmy.Wspinaczkowy.KonfiguratorRLS();
+                return new Struktura.Algorytmy.Wspinaczkowy.KonfiguratorHCA();
             }
 
             return new Struktura.Algorytmy.Losowy.KonfiguratorRS();
