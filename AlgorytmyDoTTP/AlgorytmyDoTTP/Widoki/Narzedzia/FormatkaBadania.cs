@@ -274,8 +274,8 @@ namespace BiPA.Widoki.Narzedzia
                 }
             }
 
-            DirectoryInfo d = new DirectoryInfo("./Dane/" + nazwaFolderu);
-            FileInfo[] files = d.GetFiles("*.xml");
+            DirectoryInfo sciezka = new DirectoryInfo("./Dane/" + nazwaFolderu);
+            FileInfo[] files = sciezka.GetFiles("*.xml");
             object[] pliki = new object[files.Length];
 
             for (int i = 0; i < files.Length; i++)
